@@ -1,0 +1,17 @@
+[pwsh7]
+repo = "https://github.com/BryanHeBY/mant-pwsh-docs.git"
+branch = "main"
+path = "docs/en-US/pwsh7"
+priority = 20
+
+[pwsh51]
+repo = "https://github.com/BryanHeBY/mant-pwsh-docs.git"
+branch = "main"
+path = "docs/en-US/pwsh51"
+priority = 10
+
+[pwsh-cli]
+repo = "https://github.com/BryanHeBY/mant-pwsh-docs.git"
+branch = "main"
+path = "docs/en-US/pwsh-cli"
+priority = 5
