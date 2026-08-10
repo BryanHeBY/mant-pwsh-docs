@@ -1,0 +1,65 @@
+{
+  "$schema": "./schema.json",
+  "schemaVersion": 1,
+  "source": {
+    "id": "pwsh7",
+    "title": "PowerShell 7",
+    "locale": "en-US",
+    "root": "docs/en-US/pwsh7",
+    "versionPolicy": "The supported PowerShell 7 LTS channel is the baseline; differences in newer stable releases are recorded per document."
+  },
+  "baselines": {
+    "powershell-docs": {
+      "type": "git",
+      "repository": "https://github.com/MicrosoftDocs/PowerShell-Docs.git",
+      "branch": "main",
+      "revision": "48b3cad41a1fc0c6e7e41991edb4d4cca7357382",
+      "license": {
+        "spdx": "CC-BY-4.0",
+        "url": "https://github.com/MicrosoftDocs/PowerShell-Docs/blob/main/LICENSE.md"
+      },
+      "retrievedAt": "2026-08-11"
+    },
+    "powershell": {
+      "type": "git",
+      "repository": "https://github.com/PowerShell/PowerShell.git",
+      "branch": "master",
+      "revision": "dba85f8b5dc99ef13875b1cb64cd17756a61ebf6",
+      "license": {
+        "spdx": "MIT",
+        "url": "https://github.com/PowerShell/PowerShell/blob/master/LICENSE.txt"
+      },
+      "retrievedAt": "2026-08-11"
+    }
+  },
+  "documents": {
+    "pwsh7.md": {
+      "kind": "source-index",
+      "status": "draft",
+      "versions": [
+        "7.x"
+      ],
+      "platforms": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference"
+        },
+        {
+          "type": "git",
+          "baseline": "powershell",
+          "path": "README.md"
+        }
+      ],
+      "notes": [
+        "The source index is original project text; the repositories define its product scope and future reference baseline.",
+        "Alias availability must be checked at runtime for each targeted release and platform."
+      ]
+    }
+  }
+}

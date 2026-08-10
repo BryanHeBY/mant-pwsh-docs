@@ -1,0 +1,299 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/BryanHeBY/mant-pwsh-docs/blob/main/upstream/schema.json",
+  "title": "ManT PowerShell upstream catalog",
+  "description": "Provenance for one publishable ManT documentation source.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "source",
+    "baselines",
+    "documents"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schemaVersion": {
+      "const": 1
+    },
+    "source": {
+      "$ref": "#/$defs/source"
+    },
+    "baselines": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[a-z0-9][a-z0-9-]*$"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/baseline"
+      }
+    },
+    "discovery": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/discovery"
+      },
+      "uniqueItems": true
+    },
+    "documents": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[^/\\\\]+\\.md$"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/document"
+      }
+    }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "locale",
+        "root",
+        "versionPolicy"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "locale": {
+          "const": "en-US"
+        },
+        "root": {
+          "type": "string",
+          "pattern": "^docs/en-US/[^/]+$"
+        },
+        "versionPolicy": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "license": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "spdx",
+        "url"
+      ],
+      "properties": {
+        "spdx": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "baseline": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "repository",
+        "branch",
+        "revision",
+        "license",
+        "retrievedAt"
+      ],
+      "properties": {
+        "type": {
+          "const": "git"
+        },
+        "repository": {
+          "type": "string",
+          "format": "uri"
+        },
+        "branch": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "license": {
+          "$ref": "#/$defs/license"
+        },
+        "retrievedAt": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
+    "discovery": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "name",
+        "endpoint",
+        "documentation",
+        "optional",
+        "purpose"
+      ],
+      "properties": {
+        "type": {
+          "const": "mcp"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "endpoint": {
+          "type": "string",
+          "format": "uri"
+        },
+        "documentation": {
+          "type": "string",
+          "format": "uri"
+        },
+        "optional": {
+          "const": true
+        },
+        "purpose": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "gitSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "baseline",
+        "path"
+      ],
+      "properties": {
+        "type": {
+          "const": "git"
+        },
+        "baseline": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "webSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "url",
+        "license",
+        "checkedAt"
+      ],
+      "properties": {
+        "type": {
+          "const": "web"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "license": {
+          "$ref": "#/$defs/license"
+        },
+        "checkedAt": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
+    "document": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "status",
+        "versions",
+        "platforms",
+        "sources"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "source-index",
+            "cmdlet",
+            "alias",
+            "about-topic",
+            "powershell-launcher",
+            "native-cli",
+            "native-cli-subcommand",
+            "guide"
+          ]
+        },
+        "status": {
+          "enum": [
+            "planned",
+            "draft",
+            "reviewed",
+            "verified"
+          ]
+        },
+        "versions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "platforms": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "windows",
+              "macos",
+              "linux"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/gitSource"
+              },
+              {
+                "$ref": "#/$defs/webSource"
+              }
+            ]
+          },
+          "minItems": 1
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "$schema": "./schema.json",
+  "schemaVersion": 1,
+  "source": {
+    "id": "pwsh-cli",
+    "title": "Command-line tools for PowerShell",
+    "locale": "en-US",
+    "root": "docs/en-US/pwsh-cli",
+    "versionPolicy": "Each document identifies the supported tool releases and platforms; no single repository-wide CLI version is implied."
+  },
+  "baselines": {
+    "winget-cli": {
+      "type": "git",
+      "repository": "https://github.com/microsoft/winget-cli.git",
+      "branch": "master",
+      "revision": "c7e7e6190cd1f8bdfcd41b43384c54af133ba5e6",
+      "license": {
+        "spdx": "MIT",
+        "url": "https://github.com/microsoft/winget-cli/blob/master/LICENSE"
+      },
+      "retrievedAt": "2026-08-11"
+    },
+    "windowsserverdocs": {
+      "type": "git",
+      "repository": "https://github.com/MicrosoftDocs/windowsserverdocs.git",
+      "branch": "main",
+      "revision": "0e41dfc209353e4614a9527b938b6dcafec2c9ff",
+      "license": {
+        "spdx": "CC-BY-4.0",
+        "url": "https://github.com/MicrosoftDocs/windowsserverdocs/blob/main/LICENSE"
+      },
+      "retrievedAt": "2026-08-11"
+    },
+    "microsoft-docs-mcp": {
+      "type": "git",
+      "repository": "https://github.com/MicrosoftDocs/mcp.git",
+      "branch": "main",
+      "revision": "caa3d670bf2814171dba4f7346ece5080964021e",
+      "license": {
+        "spdx": "CC-BY-4.0",
+        "url": "https://github.com/MicrosoftDocs/mcp/blob/main/LICENSE"
+      },
+      "retrievedAt": "2026-08-11"
+    }
+  },
+  "discovery": [
+    {
+      "type": "mcp",
+      "name": "Microsoft Learn MCP Server",
+      "endpoint": "https://learn.microsoft.com/api/mcp",
+      "documentation": "https://github.com/MicrosoftDocs/mcp",
+      "optional": true,
+      "purpose": "Find current Microsoft Learn pages for Microsoft command-line tools; the returned page, not the MCP response, becomes the document source of record."
+    }
+  ],
+  "documents": {
+    "pwsh-cli.md": {
+      "kind": "source-index",
+      "status": "draft",
+      "versions": [
+        "varies by tool"
+      ],
+      "platforms": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "winget-cli",
+          "path": "README.md"
+        },
+        {
+          "type": "git",
+          "baseline": "windowsserverdocs",
+          "path": "WindowsServerDocs/administration/windows-commands"
+        },
+        {
+          "type": "git",
+          "baseline": "microsoft-docs-mcp",
+          "path": "README.md"
+        }
+      ],
+      "notes": [
+        "The source index is original project text; the repositories establish examples of the planned official coverage.",
+        "The Microsoft Learn MCP service is optional and is never required to read or validate the published ManT documents."
+      ]
+    }
+  }
+}

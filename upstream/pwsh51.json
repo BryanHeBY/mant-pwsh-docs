@@ -1,0 +1,63 @@
+{
+  "$schema": "./schema.json",
+  "schemaVersion": 1,
+  "source": {
+    "id": "pwsh51",
+    "title": "Windows PowerShell 5.1",
+    "locale": "en-US",
+    "root": "docs/en-US/pwsh51",
+    "versionPolicy": "Windows PowerShell 5.1 as shipped with supported Windows releases; module and operating-system dependencies are recorded per document."
+  },
+  "baselines": {
+    "powershell-docs": {
+      "type": "git",
+      "repository": "https://github.com/MicrosoftDocs/PowerShell-Docs.git",
+      "branch": "main",
+      "revision": "48b3cad41a1fc0c6e7e41991edb4d4cca7357382",
+      "license": {
+        "spdx": "CC-BY-4.0",
+        "url": "https://github.com/MicrosoftDocs/PowerShell-Docs/blob/main/LICENSE.md"
+      },
+      "retrievedAt": "2026-08-11"
+    },
+    "windows-powershell-docs": {
+      "type": "git",
+      "repository": "https://github.com/MicrosoftDocs/windows-powershell-docs.git",
+      "branch": "main",
+      "revision": "aa9ab97f7e0038c51e92918e21aa8a2c77cc561d",
+      "license": {
+        "spdx": "CC-BY-4.0",
+        "url": "https://github.com/MicrosoftDocs/windows-powershell-docs/blob/main/LICENSE"
+      },
+      "retrievedAt": "2026-08-11"
+    }
+  },
+  "documents": {
+    "pwsh51.md": {
+      "kind": "source-index",
+      "status": "draft",
+      "versions": [
+        "5.1"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/5.1"
+        },
+        {
+          "type": "git",
+          "baseline": "windows-powershell-docs",
+          "path": "."
+        }
+      ],
+      "notes": [
+        "The source index is original project text; the repositories define its product scope and future reference baseline.",
+        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+      ]
+    }
+  }
+}
