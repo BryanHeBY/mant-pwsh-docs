@@ -38,6 +38,55 @@ sleep states, hibernation, wake devices/timers, power requests/overrides, and
 diagnostic reports. Many commands mutate system-wide policy or boot/sleep
 behavior; a successful command does not prove the hardware honors the setting.
 
+## Commands and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `powercfg.exe`: Inspect or change Windows power policy and produce supported
+  power diagnostics.
+
+Each slash command has its own argument contract. Run `powercfg.exe /? command`
+on the target before using a build-dependent or mutating family.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/list`: List installed power schemes and identify the active one; alias `/l`.
+- `/query`: Display settings for a scheme or subgroup; alias `/q`.
+- `/change`: Change one timeout value in the active scheme, in minutes; alias `/x`.
+- `/changename`: Change a scheme's name and optional description.
+- `/duplicatescheme`: Clone an existing power scheme.
+- `/delete`: Delete a power scheme; alias `/d`.
+- `/deletesetting`: Delete one power setting from a scheme.
+- `/setactive`: Make one scheme active; alias `/s`.
+- `/getactivescheme`: Display the active scheme and GUID.
+- `/setacvalueindex`: Set a setting value used while connected to AC power.
+- `/setdcvalueindex`: Set a setting value used while on DC/battery power.
+- `/import`: Import power settings from a file, optionally under a chosen GUID.
+- `/export`: Export one power scheme to a file.
+- `/aliases`: Display recognized aliases and their GUIDs.
+- `/getsecuritydescriptor`: Display the security descriptor for a supported
+  power setting, scheme, or action.
+- `/setsecuritydescriptor`: Replace a supported power object's security descriptor.
+- `/hibernate`: Enable, disable, size, or select the hibernation-file type; alias `/h`.
+- `/availablesleepstates`: Display supported and unavailable sleep states; alias `/a`.
+- `/devicequery`: List devices matching a documented wake or power capability.
+- `/deviceenablewake`: Allow one exact device to wake the system.
+- `/devicedisablewake`: Remove wake permission from one exact device.
+- `/lastwake`: Report information recorded for the most recent wake transition.
+- `/waketimers`: List active wake timers.
+- `/requests`: List current power requests from applications and drivers.
+- `/requestsoverride`: List, create, or remove a power-request override.
+- `/energy`: Trace an idle interval and write an energy-efficiency report.
+- `/batteryreport`: Write a battery usage and capacity report.
+- `/sleepstudy`: Write a Modern Standby session report where supported.
+- `/srumutil`: Export System Resource Usage Monitor energy-estimation data.
+- `/systemsleepdiagnostics`: Write a report about recent sleep-transition eligibility.
+- `/systempowerreport`: Write a system power-transition report where supported.
+- `/powerthrottling`: Inspect or change per-application power-throttling policy.
+- `/setacprofileindex`: Set an AC value in an overlay/profile setting where supported.
+- `/setdcprofileindex`: Set a DC value in an overlay/profile setting where supported.
+- `/listprofiles`: List nonempty processor power-management profiles; alias `/lp`.
+- `/pxml`: Generate provisioning XML for supported runtime power overrides.
+- `/?`: Display top-level or command-specific installed help.
+
 ## Common mistakes
 
 - Copying scheme/setting GUIDs or aliases without querying the target; OEM,
@@ -55,7 +104,7 @@ behavior; a successful command does not prove the hardware honors the setting.
 - Disabling hibernation casually: it affects hibernate and can affect Fast Startup.
   Wake/device changes can break manageability or cause unexpected wakeups.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use `powercfg.exe` explicitly; capture native streams/status and do not parse
 localized tables as invariant objects. Preserve `/getactivescheme`, `/list`,

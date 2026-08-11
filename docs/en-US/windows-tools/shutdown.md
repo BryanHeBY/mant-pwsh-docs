@@ -30,6 +30,37 @@ firmware flows, annotates unexpected shutdowns, and targets local or remote
 computers. Scheduling acceptance means the request was registered—not that
 applications, sessions, clustering, replication, updates, or recovery are safe.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `shutdown.exe`: Request a local or remote Windows sign-out, power transition,
+  restart, recovery boot, or shutdown-reason annotation.
+
+Choose one primary action unless the official syntax documents a combination.
+A nonzero `/t` timeout implies forced application closure even without `/f`.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/i`: Open Remote Shutdown UI; it must be first and other CLI options are ignored.
+- `/l`: Sign out the current user immediately; it cannot be combined with options.
+- `/s`: Shut down the selected computer.
+- `/sg`: Shut down, then use Automatic Restart Sign-On and registered-app restart
+  on the next boot where configured.
+- `/r`: Shut down and restart the selected computer.
+- `/g`: Fully restart, then use Automatic Restart Sign-On and registered-app restart.
+- `/a`: Abort a pending timed shutdown from a separate invocation.
+- `/p`: Power off the local computer immediately with no warning or timeout.
+- `/h`: Hibernate the local computer when hibernation is enabled.
+- `/e`: Record a reason for an unexpected shutdown of the local computer.
+- `/o`: Open Advanced startup after restart; use with `/r`.
+- `/hybrid`: Prepare a local shutdown for Fast Startup; use with `/s`.
+- `/fw`: Make the next restart enter firmware UI; combine only as documented.
+- `/f`: Force running applications to close without warning users.
+- `/m`: Select one remote computer by UNC-style name.
+- `/t`: Set the delay in seconds before shutdown or restart.
+- `/d`: Record planned/unplanned, major, and minor shutdown reason codes.
+- `/c`: Attach a reason comment of the documented maximum length.
+- `/?`: Display syntax, constraints, and reason codes for the installed build.
+
 ## Common mistakes
 
 - Missing that `/t` greater than zero implies `/f`: applications can be forced
@@ -47,7 +78,7 @@ applications, sessions, clustering, replication, updates, or recovery are safe.
 - Assuming `/a` can cancel after timeout/commit, or that a zero exit code proves
   restart completion. Verify target, notification, events, uptime, and health.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Call `shutdown.exe` explicitly and capture `$LASTEXITCODE`; the command returns
 before a delayed lifecycle operation completes. PowerShell `Restart-Computer`,

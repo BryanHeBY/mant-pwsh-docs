@@ -30,6 +30,20 @@ zone changes how UTC instants are represented locally and how future local-time
 schedules are interpreted; it does not set the clock, configure time service,
 or enable automatic time-zone detection.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `tzutil.exe`: Get, list, or set the Windows system time-zone identifier.
+
+Use an exact ID emitted by `/l`, not the localized display name above it. Quote
+IDs because they normally contain spaces.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/g`: Display the current Windows time-zone ID.
+- `/l`: List installed display names followed by their usable Windows IDs.
+- `/s`: Set an exact Windows ID; append `_dstoff` only to disable DST adjustments.
+- `/?`: Display installed TZUTIL syntax.
+
 ## Common mistakes
 
 - Passing an IANA ID (`America/Los_Angeles`), abbreviation (`PST`), display name,
@@ -45,7 +59,7 @@ or enable automatic time-zone detection.
 - Changing many hosts inside a loop while passing the whole host array, or
   allowing Group Policy/management to revert an unmanaged local change.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use `tzutil.exe` explicitly and quote the full ID. Capture `/g` before and after,
 native status, UTC/local timestamps, policy source, DST requirement, and affected

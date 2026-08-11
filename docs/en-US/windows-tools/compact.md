@@ -39,6 +39,27 @@ Compact does not create a ZIP, CAB, or portable archive and has no source/
 destination pair. Compressed files remain in place and are decompressed by the
 filesystem while applications read them.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `compact.exe`: Display or change NTFS, system-file, or CompactOS compression.
+
+Names after the switches are in-place file or directory patterns. An omitted
+name applies to the current directory, so prefer an explicit absolute scope.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/c`: Compress the selected files or mark a directory for new compressed files.
+- `/u`: Uncompress the selected files or clear a directory's compression default.
+- `/s`: Traverse the named directory and all descendants.
+- `/a`: Include hidden and system entries in display or mutation scope.
+- `/i`: Continue after errors, permitting a partial result.
+- `/f`: Force compression even when an item is already marked compressed.
+- `/q`: Suppress most result reporting.
+- `/exe`: Select `XPRESS4K`, `XPRESS8K`, `XPRESS16K`, or `LZX` system compression.
+- `/compactos`: Query or set installation-wide CompactOS policy with `query`,
+  `always`, or `never`.
+- `/?`: Display syntax supported by the installed executable.
+
 ## Scope and algorithms
 
 - Applying `/c` or `/u` to a directory changes its default for new files but
@@ -108,7 +129,7 @@ Availability and interaction vary with NTFS features, encryption, sparse
 files, integrity streams, deduplication, WOF/system compression, ReFS, and
 application requirements. Ordinary compact does not support FAT/FAT32.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Compact is a native text tool. Quote absolute paths and `/S:path` as one
 argument, capture output and `$LASTEXITCODE`, and do not infer complete tree

@@ -46,6 +46,24 @@ boot terminology contains boot files; the currently running Windows volume is
 often called “boot.” Those names are not interchangeable with a disk's label
 or with the EFI System Partition.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `bdehdcfg.exe`: Inspect or prepare a legacy BitLocker system-partition layout.
+
+The target modes are mutating layout decisions, not discovery aliases. Use
+`-driveinfo` and structured disk inventory before selecting one.
+
+<!-- mant:entries role=option case=insensitive -->
+- `-driveinfo`: Display drive characteristics that BdeHdCfg uses for legacy
+  preparation decisions.
+- `-target`: Select `default`, `unallocated`, `shrink`, or `merge` preparation.
+- `-newdriveletter`: Assign a drive letter to the newly prepared system drive.
+- `-size`: Set the requested system-partition size in megabytes.
+- `-quiet`: Suppress displayed actions/errors and answer Yes to later prompts.
+- `-restart`: Restart after preparation completes.
+- `/?`: Display syntax supported by the installed executable.
+
 ## Operation map
 
 | Form | Purpose | Boundary |
@@ -122,7 +140,7 @@ the intended partition type/flags/filesystem, boot files, BCD store, firmware
 entry, BitLocker state and recovery material. Maintain console access and known
 bootable recovery media; a successful process exit is not a successful boot.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Call `bdehdcfg.exe` explicitly and pass a scalar drive string. Preserve native
 stdout/stderr and `$LASTEXITCODE`, but independently query disks, partitions,

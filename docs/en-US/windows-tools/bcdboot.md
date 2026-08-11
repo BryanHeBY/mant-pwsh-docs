@@ -41,6 +41,31 @@ WinPE/WinRE letters commonly differ from those seen by the installed Windows.
 Inventory disks, firmware mode, partition style/type, BitLocker state, Windows
 source, and recovery media before running it.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `bcdboot.exe`: Copy boot-environment files from one Windows directory and
+  initialize or repair the selected system partition's BCD store.
+
+The Windows source directory is required. Options that select a system
+partition, firmware type, or migration policy change more than file-copy scope.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/l`: Set the locale used while initializing the BCD store.
+- `/s`: Select an explicit system partition; on UEFI this also changes normal
+  firmware-entry creation behavior.
+- `/f`: Select `UEFI`, `BIOS`, or `ALL` firmware boot files and require `/s`.
+- `/v`: Emit verbose operation details.
+- `/vb`: Enable verbose logging; availability depends on the installed build.
+- `/m`: Merge global BCD objects and, when supplied, one named loader object.
+- `/p`: Preserve the existing Windows Boot Manager position in UEFI boot order.
+- `/addlast`: Put the Windows Boot Manager firmware entry last instead of first.
+- `/d`: Preserve the existing default operating-system loader selection.
+- `/c`: Start from the template without migrating otherwise preserved elements.
+- `/bootex`: Use BootEx boot binaries for applicable Secure Boot servicing.
+- `/offline`: Force offline boot-file servicing on builds that support it.
+- `/?`: Display syntax supported by the installed BCDBoot executable.
+
 ## Target-selection model
 
 Without `/s`, BCDBoot uses the system partition identified by firmware and can
@@ -142,7 +167,7 @@ otherwise preserve, including diagnostic or flight settings. It can be useful
 for a deliberate clean template, but first determine which recovery, debugger,
 hypervisor, integrity, and deployment settings must survive.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 `bcdboot.exe` is a native state-changing tool. Quote Windows and target paths,
 preserve verbose output, and check `$LASTEXITCODE` immediately. A drive letter

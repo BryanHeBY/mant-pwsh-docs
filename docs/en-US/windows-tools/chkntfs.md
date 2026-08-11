@@ -35,6 +35,21 @@ countdown.
 CHKNTFS does not scan or repair a mounted volume. At startup, Autochk/CHKDSK
 runs according to dirty state, explicit schedule, exclusions, and policy.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `chkntfs.exe`: Query or change Autochk startup-check policy for named volumes.
+
+With only volume arguments, the command reports their current filesystem and
+startup-check state. Mutating switches require an elevated context.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/c`: Add one or more volumes to the startup-check schedule; calls accumulate.
+- `/x`: Replace the complete startup exclusion list with the named volumes.
+- `/d`: Restore default startup-check policy except for the countdown value.
+- `/t`: With no value, display the countdown; `/t:seconds` changes it globally.
+- `/?`: Display syntax supported by the installed executable.
+
 ## State-change semantics
 
 - `/c` is cumulative: later calls add scheduled volumes.
@@ -88,7 +103,7 @@ Mount points and letters can change across recovery, SAN, removable, or
 deployment environments. Record volume GUID, disk/partition identity,
 filesystem, and role before changing startup policy.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 CHKNTFS emits localized native text. Quote mount points, specify exact volumes,
 check `$LASTEXITCODE`, and do not parse a single English sentence as policy.

@@ -54,6 +54,72 @@ the process exit code.
 | Catalog | `restore catalog`, `delete catalog` | Catalog metadata is distinct from stored backup data; deletion impairs discovery. |
 | Retention | `delete systemstatebackup` | Deletes eligible system-state versions, not arbitrary backup kinds. |
 
+These complete families are semantic command entries. Run `wbadmin.exe help
+family` on the target because installed features and editions change support.
+
+<!-- mant:entries role=command case=insensitive -->
+- `wbadmin.exe`: Inspect or administer Windows Backup on supported installations.
+- `get status`: Display the currently running backup or recovery job.
+- `get disks`: List online disks using Windows Backup identity fields.
+- `get versions`: List cataloged backup version identifiers for a target and machine.
+- `get items`: List recoverable items contained in one exact backup version.
+- `start backup`: Start a one-time backup with explicit source, target, and VSS policy.
+- `enable backup`: Create or replace a scheduled backup policy.
+- `disable backup`: Disable the scheduled backup policy.
+- `start recovery`: Recover selected files, applications, or volumes.
+- `start systemstatebackup`: Start a system-state backup where supported.
+- `start systemstaterecovery`: Recover system state where supported.
+- `start sysrecovery`: Start full-system recovery from Windows Recovery Environment.
+- `stop job`: Interrupt the currently running backup or recovery operation.
+- `restore catalog`: Restore the local backup catalog from available backup media.
+- `delete catalog`: Delete a corrupted local catalog only under the documented conditions.
+- `delete systemstatebackup`: Delete eligible system-state backup versions.
+
+The same option name can have narrower semantics under different command
+families; inspect that family's help before constructing an invocation.
+
+<!-- mant:entries role=option case=insensitive -->
+- `-backupTarget`: Select the exact backup source or destination volume/UNC path.
+- `-machine`: Select the source computer represented at a shared or alternate target.
+- `-version`: Select the exact `MM/DD/YYYY-HH:MM` identifier returned by inventory.
+- `-include`: Select volumes, folders, or files for a backup family.
+- `-nonRecurseInclude`: Include selected paths without recursively including descendants.
+- `-exclude`: Exclude selected children from an included backup scope.
+- `-nonRecurseExclude`: Exclude selected paths without recursively matching descendants.
+- `-allCritical`: Include every volume required for bare-metal recovery.
+- `-systemState`: Include system state where the selected backup family supports it.
+- `-hyperv`: Select registered Hyper-V components for a supported backup.
+- `-vssFull`: Perform a VSS full backup and update applicable backup history/log state.
+- `-vssCopy`: Perform a VSS copy backup without updating applicable backup history.
+- `-user`: Supply an account for an explicit remote backup target.
+- `-password`: Supply its password on the command line, exposing a secret.
+- `-noInheritAcl`: Restrict a UNC backup folder to supplied credentials and
+  backup-administrator identities instead of inheriting the share folder ACL.
+- `-quiet`: Suppress confirmation prompts without adding validation.
+- `-items`: Select recoverable files, volumes, or applications from one version.
+- `-itemType`: Declare the item category expected by a recovery family.
+- `-recoveryTarget`: Select an alternate recovery destination.
+- `-recursive`: Include descendants in file recovery.
+- `-notRestoreAcl`: Inherit destination ACLs instead of restoring saved ACLs.
+- `-overwrite`: Choose `Skip`, `CreateCopy`, or `Overwrite` conflict behavior.
+- `-skipBadClusterCheck`: Skip restoring saved bad-cluster information during
+  volume/full-system recovery, requiring a separate filesystem-health plan.
+- `-noRollForward`: Prevent application recovery from rolling the latest backup forward.
+- `-noVerify`: Skip error verification for a backup written to removable media.
+- `-restoreAllVolumes`: Restore data volumes as well as critical volumes in WinRE.
+- `-recreateDisks`: Recreate backed-up disk layout during WinRE recovery and
+  potentially erase operating-system and data volumes.
+- `-excludeDisks`: Exclude listed WBAdmin disk identifiers from `-recreateDisks`.
+- `-showsummary`: Display the previous system-state recovery summary by itself.
+- `-authsysvol`: Perform an authoritative SYSVOL restore during system-state recovery.
+- `-autoReboot`: Restart automatically after original-location system-state recovery.
+- `-addtarget`: Add a disk, volume, or UNC target to scheduled backup policy.
+- `-removetarget`: Remove a disk target from scheduled backup policy.
+- `-schedule`: Set one or more daily scheduled backup times in `HH:MM` form.
+- `-allowDeleteOldBackups`: Permit removal of backups made before an OS upgrade.
+- `-deleteOldest`: Delete the oldest eligible system-state backup.
+- `-keepVersions`: Retain the newest requested number of system-state versions.
+
 ## Safe discovery sequence
 
 1. Record host name, edition/build, installed Windows Backup feature, current
@@ -153,7 +219,7 @@ time without a smooth percentage change. Correlate `get status`, storage I/O,
 events, and target health. `stop job` deliberately interrupts work and a
 partial output must not become the newest assumed-good recovery point.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Call `wbadmin.exe` explicitly and quote each native `-name:value` argument
 when its value contains spaces, braces, or UNC syntax. Avoid PowerShell's

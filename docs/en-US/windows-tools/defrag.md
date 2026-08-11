@@ -36,6 +36,33 @@ This is I/O-intensive maintenance, not a universal speed fix. Start with one
 exact volume and `/a`, confirm storage technology and ownership, then choose
 the smallest supported operation during a maintenance window.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `defrag.exe`: Analyze or optimize one or more Windows volumes.
+
+Specify an exact drive letter, mount point, or volume path unless intentionally
+using all-volume scope. Operation availability depends on the storage stack.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/a`: Analyze selected volumes without optimizing them.
+- `/b`: Optimize boot files to improve startup performance where supported.
+- `/c`: Select every eligible local volume.
+- `/d`: Perform traditional file defragmentation.
+- `/e`: Exclude the listed volumes from `/c` all-volume scope.
+- `/g`: Optimize storage tiers on supported tiered volumes.
+- `/h`: Run at normal instead of default low priority.
+- `/i`: Limit the seconds spent on each tier during tier optimization.
+- `/k`: Perform slab consolidation on supported thinly provisioned volumes.
+- `/l`: Send retrim hints for free blocks on supported storage.
+- `/m`: Run selected volumes in parallel, optionally limiting thread count.
+- `/o`: Choose the operation appropriate for the detected media type.
+- `/t`: Track an optimization already running on the selected volume.
+- `/u`: Display progress on screen.
+- `/v`: Display detailed analysis and operation statistics.
+- `/x`: Consolidate free space on selected volumes.
+- `/?`: Display syntax supported by the installed executable.
+
 ## Operation map
 
 | Option | Operation | Boundary |
@@ -99,7 +126,7 @@ vendor-managed volumes can require owner-specific maintenance. Determine the
 filesystem, media, allocation unit, tiering, trim/unmap support, and cluster or
 hypervisor guidance before manual optimization.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Defrag emits native progress and report text. Quote mount-point paths, save
 output, and check `$LASTEXITCODE`; do not parse localized report layout as a

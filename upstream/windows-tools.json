@@ -7856,6 +7856,41 @@
         {
           "type": "git",
           "baseline": "windowsserverdocs",
+          "path": "WindowsServerDocs/administration/windows-commands/wbadmin-enable-backup.md"
+        },
+        {
+          "type": "git",
+          "baseline": "windowsserverdocs",
+          "path": "WindowsServerDocs/administration/windows-commands/wbadmin-disable-backup.md"
+        },
+        {
+          "type": "git",
+          "baseline": "windowsserverdocs",
+          "path": "WindowsServerDocs/administration/windows-commands/wbadmin-start-systemstatebackup.md"
+        },
+        {
+          "type": "git",
+          "baseline": "windowsserverdocs",
+          "path": "WindowsServerDocs/administration/windows-commands/wbadmin-start-systemstaterecovery.md"
+        },
+        {
+          "type": "git",
+          "baseline": "windowsserverdocs",
+          "path": "WindowsServerDocs/administration/windows-commands/wbadmin-delete-systemstatebackup.md"
+        },
+        {
+          "type": "git",
+          "baseline": "windowsserverdocs",
+          "path": "WindowsServerDocs/administration/windows-commands/wbadmin-restore-catalog.md"
+        },
+        {
+          "type": "git",
+          "baseline": "windowsserverdocs",
+          "path": "WindowsServerDocs/administration/windows-commands/wbadmin-stop-job.md"
+        },
+        {
+          "type": "git",
+          "baseline": "windowsserverdocs",
           "path": "WindowsServerDocs/administration/windows-commands/wbadmin-delete-catalog.md"
         },
         {

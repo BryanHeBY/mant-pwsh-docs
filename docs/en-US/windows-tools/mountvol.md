@@ -39,6 +39,25 @@ multiple mount points; removing `/d` from one path does not delete the volume
 or necessarily remove its other paths. The stable native identity has the
 form `\\?\Volume{GUID}\` including the final backslash.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `mountvol.exe`: List Windows volumes or manage their drive-letter and NTFS
+  directory access paths.
+
+Creating a mount point uses `path volume-guid` with no switch. The target
+directory must already exist on NTFS and should be empty and dedicated.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/l`: Resolve one named mount point to its volume GUID path.
+- `/d`: Remove only the named mount point.
+- `/p`: Remove the named path, dismount the basic volume, and take it offline.
+- `/n`: Disable automatic mounting of newly discovered basic volumes globally.
+- `/e`: Re-enable automatic mounting of newly discovered basic volumes.
+- `/r`: Remove stale mount-point directories and registry mappings for absent volumes.
+- `/s`: Mount the EFI System Partition at the named drive letter.
+- `/?`: Display syntax supported by the installed executable.
+
 ## Operation boundaries
 
 | Form | Effect | Risk |
@@ -110,7 +129,7 @@ Verify the returned GUID, filesystem health, BitLocker lock state, permissions,
 free space, application service identity, and expected path behavior. Mounting
 cannot unlock BitLocker or make an unsupported filesystem/workload valid.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Mountvol is a native text tool. Quote both paths, pass the scalar volume GUID
 property rather than a storage object, and check `$LASTEXITCODE`. PowerShell

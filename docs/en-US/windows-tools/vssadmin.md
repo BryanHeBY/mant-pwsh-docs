@@ -53,6 +53,34 @@ a later application-consistent backup will complete or be restorable.
 | `delete shadows` | Remove one, oldest, or all eligible shadows | Removes recovery/backup dependencies; it is not generic disk cleanup. |
 | `create shadow` | Create a system-provider shadow where the installed version supports it | A snapshot is not automatically application-consistent, retained, exported, or backed up. |
 
+The following families are resolvable as complete ManT command entries; local
+verb help remains authoritative because installed Windows versions differ.
+
+<!-- mant:entries role=command case=insensitive -->
+- `vssadmin.exe`: Inspect or administer VSS state exposed by the installed build.
+- `list writers`: List registered VSS writers, current state, and last error.
+- `list providers`: List registered VSS providers.
+- `list shadows`: List shadow copies, optionally filtered by source volume or ID.
+- `list shadowstorage`: List source/diff-area associations and capacity values.
+- `create shadow`: Create a system-provider shadow where this verb is available.
+- `delete shadows`: Delete one, oldest, or all eligible system-provider shadows.
+- `add shadowstorage`: Add a source-to-diff-area association where available.
+- `resize shadowstorage`: Change an association's maximum diff-area size.
+- `delete shadowstorage`: Remove an association where the installed build supports it.
+
+Parameters below are valid only with the verbs that document them. Values use
+an equals sign in native syntax, such as `/for=C:` and `/maxsize=10GB`.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/for`: Select the protected source volume.
+- `/on`: Select the volume holding shadow-copy diff-area storage.
+- `/shadow`: Select one exact shadow-copy ID.
+- `/oldest`: Select only the oldest eligible shadow copy.
+- `/all`: Select every eligible shadow copy for a destructive verb.
+- `/maxsize`: Set a byte, KB, MB, GB, TB, PB, EB, or percentage capacity limit.
+- `/quiet`: Suppress a destructive command's confirmation prompt.
+- `/?`: Display top-level or verb-specific help supported by the installed build.
+
 VssAdmin administers shadows created by the system software provider. Use the
 requesting backup product or reviewed provider workflow for product-owned or
 hardware-provider snapshots.
@@ -117,7 +145,7 @@ or product APIs when automation needs structured identity and state. Capture
 `$LASTEXITCODE` immediately; a nonzero code and the actual backup result both
 matter.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use `vssadmin.exe` explicitly. Quote GUIDs because PowerShell uses braces as
 syntax, pass scalar volume strings, and avoid interpolating untrusted IDs into

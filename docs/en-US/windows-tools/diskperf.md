@@ -32,6 +32,23 @@ them. Microsoft documents that changes take effect when the computer restarts.
 DiskPerf configures collection support; it does not itself sample or diagnose
 storage performance.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `diskperf.exe`: Query or configure startup of Windows disk performance counters.
+
+With no switch, DiskPerf displays configured state. Every change documented by
+Microsoft takes effect only after the computer restarts.
+
+<!-- mant:entries role=option case=insensitive -->
+- `-y`: Enable physical- and logical-disk counters after restart.
+- `-yd`: Enable physical-disk counters after restart.
+- `-yv`: Enable logical-disk/volume counters after restart.
+- `-n`: Disable physical- and logical-disk counters after restart.
+- `-nd`: Disable physical-disk counters after restart.
+- `-nv`: Disable logical-disk/volume counters after restart.
+- `-?`: Display context-sensitive help supported by the installed executable.
+
 ## Common mistakes
 
 ### Expecting a switch to take effect immediately
@@ -57,7 +74,7 @@ the local counter set before changing DiskPerf or storage.
 Measure the actual collection path and workload first. Disabling counters can
 blind monitoring and requires coordination with observability owners.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 DiskPerf is a native configuration tool; `Get-Counter` returns typed samples.
 Counter set and path names can be localized. Capture native status and
