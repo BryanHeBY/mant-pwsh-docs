@@ -2,7 +2,7 @@
   "$schema": "release-manifest/v1",
   "release": "v1",
   "locale": "en-US",
-  "requiredDocumentCount": 163,
+  "requiredDocumentCount": 165,
   "sources": {
     "pwsh7": {
       "runtimePlatforms": ["windows", "linux", "macos"],
@@ -175,6 +175,8 @@
         "icacls.md",
         "takeown.md",
         "cipher.md",
+        "certreq.md",
+        "certutil.md",
         "git.md",
         "ssh.md",
         "curl.md",

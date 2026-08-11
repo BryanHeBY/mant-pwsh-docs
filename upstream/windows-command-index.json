@@ -168,12 +168,14 @@
     {
       "name": "certreq",
       "source": "certreq_1.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/certreq.md"
     },
     {
       "name": "certutil",
       "source": "certutil.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/certutil.md"
     },
     {
       "name": "change",

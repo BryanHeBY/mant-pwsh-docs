@@ -203,6 +203,8 @@ license in the document's provenance catalog before adapting material.
 - [icacls](icacls.md): DACL display, verification, backup, and inheritance safety.
 - [takeown](takeown.md): exact-object ownership recovery separate from access.
 - [cipher](cipher.md): EFS identity, recovery, scope, and free-space boundaries.
+- [certreq](certreq.md): explicit certificate request and acceptance lifecycle.
+- [certutil](certutil.md): certificate, store, chain, and hash diagnostics.
 
 ## Cross-platform developer tools
 

@@ -183,6 +183,12 @@ secedit.exe /validate $approvedTemplate
 icacls.exe $testRoot
 cipher.exe /C $approvedEfsFixture
 cipher.exe /U /N
+certreq.exe -new -?
+certutil.exe -?
+certutil.exe -dump $approvedCertificateFixture
+certutil.exe -hashfile $approvedHashFixture SHA256
+certutil.exe -user -store My
+certutil.exe -verify $approvedCertificateFixture
 ```
 
 Start a disposable process, record its PID/path/start time, preview
@@ -218,6 +224,14 @@ Do not add/delete stored credentials, refresh policy, or configure/import a
 security template merely for verification. If an approved template fixture is
 available, validate it only; protect exported reports and record which user,
 database, areas, log paths, and policy authority are involved.
+Keep certificate verification read-only unless a lab CA and disposable
+enrollment identity are explicitly approved. For `certreq`, record local
+verb help and inspect an approved existing request; do not generate a private
+key, submit, retrieve, renew, or accept merely to satisfy this checklist.
+For `certutil`, compare the SHA-256 result with `Get-FileHash`, record user
+versus machine store context, and protect subject/provider/store output. Do
+not import/delete/repair certificates, export private keys, change trust,
+flush retrieval caches, or run CA-management verbs merely for verification.
 Use a disposable NTFS test tree to display, verify, and save ACLs; do not reset,
 grant, deny, remove, restore, recurse ownership, encrypt/decrypt, rekey, or wipe
 free space merely for validation. Run the EFS check only when an approved

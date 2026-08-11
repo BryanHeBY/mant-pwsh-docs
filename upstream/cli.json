@@ -1221,6 +1221,24 @@
       "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/cipher.md"}],
       "notes": ["The TLDR is query-only; the page requires EFS key recovery before change, uses /U /N for inventory, defines /W as whole-volume unused-space overwrite, and verifies parent, descendant, destination, and recovery behavior.", "Windows runtime verification remains required."]
     },
+    "certreq.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases; enrollment features vary by CA and installed components"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/certreq_1.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=717178&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR follows an explicit create, submit, retrieve, and accept lifecycle; the page rejects historical SHA-1 defaults, preserves user/machine key context, inspects SAN/template policy, and verifies key association and application trust separately.", "Windows runtime verification remains required."]
+    },
+    "certutil.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["verbs and options vary by supported Windows release and installed AD CS components"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/certutil.md"},
+        {"type": "web", "url": "https://stackoverflow.com/questions/38771114/saving-result-of-certutil-hashfile-to-a-variable-and-remove-spaces-of-the-hash", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR is read-only; the page treats output as human-oriented, recommends Get-FileHash for automation, scopes certificate stores and identifiers exactly, separates parsing from verification, and contains high-risk store, private-key, trust, revocation, and CA-management verbs.", "Windows runtime verification remains required."]
+    },
     "git.md": {
       "kind": "native-cli",
       "status": "reviewed",
