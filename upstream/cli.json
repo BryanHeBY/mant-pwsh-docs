@@ -86,6 +86,120 @@
         "The source index is original project text; the repositories establish examples of the planned official coverage.",
         "The Microsoft Learn MCP service is optional and is never required to read or validate the published ManT documents."
       ]
+    },
+    "microsoft-learn-mcp.md": {
+      "kind": "guide",
+      "status": "draft",
+      "versions": ["service evolves"],
+      "platforms": ["windows", "macos", "linux"],
+      "sources": [{
+        "type": "git",
+        "baseline": "microsoft-docs-mcp",
+        "path": "README.md"
+      }],
+      "notes": [
+        "The guide describes an optional discovery channel; the returned Microsoft Learn page, not a transient MCP response, is the source of record for a command document.",
+        "A compatible MCP client is required only to make live queries, never to read or validate this source."
+      ]
+    },
+    "winget.md": {
+      "kind": "native-cli",
+      "status": "draft",
+      "versions": ["varies by App Installer"],
+      "platforms": ["windows"],
+      "sources": [{
+        "type": "git",
+        "baseline": "winget-cli",
+        "path": "doc/windows/package-manager/winget/index.md"
+      }],
+      "notes": [
+        "This is an original ManT-oriented overview, not a copy of the upstream document.",
+        "Client version, source policy, package availability, installer behavior, and Windows policy require target-environment verification."
+      ]
+    },
+    "winget-search.md": {
+      "kind": "native-cli-subcommand",
+      "status": "draft",
+      "versions": ["varies by App Installer"],
+      "platforms": ["windows"],
+      "sources": [{
+        "type": "git",
+        "baseline": "winget-cli",
+        "path": "doc/windows/package-manager/winget/search.md"
+      }],
+      "notes": [
+        "This guide treats search as discovery and requires an exact ID before a lifecycle operation."
+      ]
+    },
+    "winget-show.md": {
+      "kind": "native-cli-subcommand",
+      "status": "draft",
+      "versions": ["varies by App Installer"],
+      "platforms": ["windows"],
+      "sources": [{
+        "type": "git",
+        "baseline": "winget-cli",
+        "path": "doc/windows/package-manager/winget/show.md"
+      }],
+      "notes": [
+        "This guide requires package inspection before a change operation."
+      ]
+    },
+    "winget-install.md": {
+      "kind": "native-cli-subcommand",
+      "status": "draft",
+      "versions": ["varies by App Installer"],
+      "platforms": ["windows"],
+      "sources": [{
+        "type": "git",
+        "baseline": "winget-cli",
+        "path": "doc/windows/package-manager/winget/install.md"
+      }],
+      "notes": [
+        "This guide documents exact identity, agreements, and target-context verification for installation."
+      ]
+    },
+    "winget-upgrade.md": {
+      "kind": "native-cli-subcommand",
+      "status": "draft",
+      "versions": ["varies by App Installer"],
+      "platforms": ["windows"],
+      "sources": [{
+        "type": "git",
+        "baseline": "winget-cli",
+        "path": "doc/windows/package-manager/winget/upgrade.md"
+      }],
+      "notes": [
+        "This guide treats --all as a controlled maintenance operation rather than a casual update command."
+      ]
+    },
+    "winget-uninstall.md": {
+      "kind": "native-cli-subcommand",
+      "status": "draft",
+      "versions": ["varies by App Installer"],
+      "platforms": ["windows"],
+      "sources": [{
+        "type": "git",
+        "baseline": "winget-cli",
+        "path": "doc/windows/package-manager/winget/uninstall.md"
+      }],
+      "notes": [
+        "This guide treats uninstall as destructive and requires exact target confirmation."
+      ]
+    },
+    "winget-list.md": {
+      "kind": "native-cli-subcommand",
+      "status": "draft",
+      "versions": ["varies by App Installer"],
+      "platforms": ["windows"],
+      "sources": [{
+        "type": "git",
+        "baseline": "winget-cli",
+        "path": "doc/windows/package-manager/winget/list.md"
+      }],
+      "notes": [
+        "This guide documents inventory limitations and requires exact identity before action."
+      ]
     }
   }
 }

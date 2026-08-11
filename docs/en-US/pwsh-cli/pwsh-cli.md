@@ -35,7 +35,7 @@ The source covers tools shipped with Windows, cross-platform developer tools,
 package managers such as `winget`, and selected cloud or system-management
 CLIs. A command qualifies by practical usefulness, not by vendor.
 
-## Planned coverage
+## First-release coverage
 
 The first release prioritizes:
 
@@ -66,15 +66,30 @@ Their pages should explain the details that commonly cause automation bugs:
 ## Optional Microsoft Learn MCP queries
 
 Microsoft's official Microsoft Learn MCP server can provide current product
-documentation to compatible AI clients. A later guide in this source will
-show focused queries for finding additional details about Microsoft CLIs.
-Installing that MCP server will remain optional: every ManT page must stand on
-its own, and the MCP service is an additional discovery channel rather than a
-runtime dependency.
+documentation to compatible AI clients. Installing it remains optional: every
+ManT page stands on its own, and the MCP service is an additional discovery
+channel rather than a runtime dependency. See
+[microsoft-learn-mcp](microsoft-learn-mcp.md) for focused queries and
+provenance rules.
 
 Information found through MCP must still be checked against the returned
 Microsoft Learn page. Record that page, its applicable version, and its
 license in the document's provenance catalog before adapting material.
+
+## Documentation discovery
+
+- [microsoft-learn-mcp](microsoft-learn-mcp.md): optional live queries for
+  current Microsoft CLI documentation, without making MCP a ManT dependency.
+
+## Windows Package Manager
+
+- [winget](winget.md): package discovery and lifecycle safety from PowerShell.
+- [winget search](winget-search.md): find candidates and exact package IDs.
+- [winget show](winget-show.md): inspect package metadata before a change.
+- [winget install](winget-install.md): install one reviewed exact package.
+- [winget upgrade](winget-upgrade.md): controlled one-package or bulk upgrades.
+- [winget uninstall](winget-uninstall.md): exact-package removal safety.
+- [winget list](winget-list.md): inventory limits and upgrade-available review.
 
 ## Query with ManT
 
