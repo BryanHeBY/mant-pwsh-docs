@@ -49,6 +49,12 @@ applies to the older edition.
   Windows native-command boundaries.
 - [about_Redirection](about_Redirection.md): success, diagnostic, and
   information stream routing, including Windows PowerShell 5.1 text encoding.
+- [about_Automatic_Variables](about_Automatic_Variables.md): pipeline state,
+  invocation paths, runtime information, errors, and native exit status.
+- [about_Profiles](about_Profiles.md): Windows host customization without
+  making automation depend on startup state.
+- [about_Functions](about_Functions.md): reusable commands with parameters,
+  pipeline input, scope, and module-oriented design.
 - [native-commands](native-commands.md): executable resolution, argument
   conversion, text streams, exit codes, and safety.
 

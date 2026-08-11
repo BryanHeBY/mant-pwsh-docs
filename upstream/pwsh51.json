@@ -225,6 +225,69 @@
         "This is an original ManT-oriented topic guide, not a copy of the upstream reference.",
         "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
       ]
+    },
+    "about_Automatic_Variables.md": {
+      "kind": "about-topic",
+      "status": "draft",
+      "versions": [
+        "5.1"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/5.1/Microsoft.PowerShell.Core/About/about_Automatic_Variables.md"
+        }
+      ],
+      "notes": [
+        "This is an original ManT-oriented topic guide, not a copy of the upstream reference.",
+        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+      ]
+    },
+    "about_Profiles.md": {
+      "kind": "about-topic",
+      "status": "draft",
+      "versions": [
+        "5.1"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/5.1/Microsoft.PowerShell.Core/About/about_Profiles.md"
+        }
+      ],
+      "notes": [
+        "This is an original ManT-oriented topic guide, not a copy of the upstream reference.",
+        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+      ]
+    },
+    "about_Functions.md": {
+      "kind": "about-topic",
+      "status": "draft",
+      "versions": [
+        "5.1"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/5.1/Microsoft.PowerShell.Core/About/about_Functions.md"
+        }
+      ],
+      "notes": [
+        "This is an original ManT-oriented topic guide, not a copy of the upstream reference.",
+        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+      ]
     }
   }
 }
