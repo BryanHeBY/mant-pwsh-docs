@@ -490,6 +490,21 @@
         "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
       ]
     },
+    "irx.md": {
+      "kind": "alias",
+      "status": "draft",
+      "versions": ["5.1"],
+      "platforms": ["windows"],
+      "sources": [{
+        "type": "git",
+        "baseline": "powershell-docs",
+        "path": "reference/5.1/Microsoft.PowerShell.Core/About/about_Aliases.md"
+      }],
+      "notes": [
+        "The page is an availability guide for a custom shorthand, not a claim about a universal alias mapping.",
+        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+      ]
+    },
     "curl.md": {
       "kind": "alias",
       "status": "draft",

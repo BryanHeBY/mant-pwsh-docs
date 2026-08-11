@@ -30,6 +30,7 @@
         "irm.md",
         "iwr.md",
         "iex.md",
+        "irx.md",
         "curl.md",
         "powershell-5.1-compatibility.md"
       ]
@@ -60,6 +61,7 @@
         "irm.md",
         "iwr.md",
         "iex.md",
+        "irx.md",
         "curl.md",
         "powershell-7-compatibility.md"
       ]

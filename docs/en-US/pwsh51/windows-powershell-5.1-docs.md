@@ -89,6 +89,7 @@ applies to the older edition.
 - [irm](irm.md): alias for `Invoke-RestMethod`, with safe API and remote-content guidance.
 - [iwr](iwr.md): alias for `Invoke-WebRequest`, including legacy 5.1 parser guidance.
 - [iex](iex.md): alias for `Invoke-Expression`; use direct invocation instead.
+- [irx](irx.md): a non-built-in custom shorthand; resolve it in the current session before use.
 - [curl](curl.md): distinguish the `Invoke-WebRequest` alias from `curl.exe`.
 
 ## Migration

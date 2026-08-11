@@ -602,6 +602,21 @@
         "Alias availability requires verification on all declared platforms."
       ]
     },
+    "irx.md": {
+      "kind": "alias",
+      "status": "draft",
+      "versions": ["7.6"],
+      "platforms": ["windows", "macos", "linux"],
+      "sources": [{
+        "type": "git",
+        "baseline": "powershell-docs",
+        "path": "reference/7.6/Microsoft.PowerShell.Core/About/about_Aliases.md"
+      }],
+      "notes": [
+        "Runtime verification on the PowerShell 7.6 Linux authoring environment found no built-in irx command.",
+        "The page is an availability guide for a custom shorthand, not a claim about a universal alias mapping."
+      ]
+    },
     "curl.md": {
       "kind": "alias",
       "status": "draft",

@@ -91,6 +91,7 @@ Future introductory pages will cover moving scripts from Windows PowerShell
 - [irm](irm.md): alias for `Invoke-RestMethod`, with safe API and remote-content guidance.
 - [iwr](iwr.md): alias for `Invoke-WebRequest`, with explicit download verification.
 - [iex](iex.md): alias for `Invoke-Expression`; use safer direct invocation instead.
+- [irx](irx.md): a non-built-in custom shorthand; resolve it in the current session before use.
 - [curl](curl.md): resolve the Windows alias versus the native executable before using it.
 
 ## Migration
@@ -103,8 +104,8 @@ The first release will cover:
 
 - core cmdlets and their built-in aliases, including short forms such as
   `irm` and `iwr`;
-- compatibility and commonly encountered custom short names, including
-  `irx`, with their origin and availability stated explicitly;
+- compatibility and commonly encountered custom short names, with their
+  origin and availability stated explicitly;
 - discovery, help, pipelines, formatting, remoting, jobs, modules, and
   package management;
 - native-command interoperability, argument passing, output streams, and
