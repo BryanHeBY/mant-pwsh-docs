@@ -10,7 +10,7 @@ bundles.
 
 ### Added
 
-- First English release inventory: 180 reviewed ManT pages across `pwsh7`,
+- First English release inventory: 181 reviewed ManT pages across `pwsh7`,
   `pwsh51`, and `pwsh-cli`.
 - Broad `pwsh7` and `pwsh51` shell manuals, focused language/command pages,
   compatibility guides, and custom `irx` shorthand resolution guidance.
@@ -40,6 +40,9 @@ bundles.
 - Expanded Service Control Manager and Task Scheduler family guides for
   `sc.exe` and SchTasks, including PowerShell alias, scheduled-principal,
   quoting, security, and runtime-context traps.
+- Windows Net command-family coverage for local/domain identity, outbound SMB
+  connections, inbound shares/sessions/open files, services, discovery,
+  statistics, help, and legacy printing/messaging surfaces.
 - Windows adapter/DHCP/DNS inspection, bounded ICMP reachability, path tracing,
   path sampling, host identity, and direct DNS-query guides for `ipconfig`,
   `ping`, `tracert`, `pathping`, `hostname`, and `nslookup`.

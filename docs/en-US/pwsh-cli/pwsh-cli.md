@@ -99,6 +99,7 @@ license in the document's provenance catalog before adapting material.
 - [robocopy](robocopy.md): safe previews, mirror risk, and special exit codes.
 - [schtasks](schtasks.md): task definition, principal, trigger, action, and result identity.
 - [sc.exe](sc.md): SCM runtime, configuration, security, and control boundaries.
+- [net.exe](net.md): account, SMB client/server, service, discovery, and legacy command boundaries.
 
 ## Windows shell, GUI, and settings
 

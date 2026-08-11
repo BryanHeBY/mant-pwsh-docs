@@ -911,12 +911,14 @@
     {
       "name": "net print",
       "source": "net-print.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/net.md"
     },
     {
       "name": "net user",
       "source": "net-user.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/net.md"
     },
     {
       "name": "netsh",

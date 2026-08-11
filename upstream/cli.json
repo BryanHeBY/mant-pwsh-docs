@@ -361,6 +361,27 @@
         "Windows runtime verification remains required, including Windows PowerShell alias resolution separately from PowerShell 7."
       ]
     },
+    "net.md": {
+      "kind": "native-cli-family",
+      "status": "reviewed",
+      "versions": ["supported Windows client and server releases; subcommands, output, role dependencies, domain behavior, and legacy facilities vary by target build"],
+      "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/net-user.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/net-print.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-server/networking/net-commands-on-operating-systems", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/gg651155(v=ws.11)", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-client/networking/mapped-drives-not-available-from-elevated-command", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/sysinternals/downloads/psfile", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=57877&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=60119716&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=624934&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": [
+        "The TLDR is inventory-only and separates account authority, outbound SMB client connections, inbound SMB server state, remotely opened files, services, and legacy discovery; the page maps the complete installed family and contains secret, 1219, logon-token mapping, persistence, layered ACL, disconnect/close, local-handle, identity-scope, localized-output, and application-health risks.",
+        "Windows runtime verification remains required across representative member, domain, client, server, elevated, scheduled, and service contexts without mutating production identity, SMB, service, or time state."
+      ]
+    },
     "cmd.md": {
       "kind": "windows-shell",
       "status": "reviewed",

@@ -2,7 +2,7 @@
   "$schema": "release-manifest/v1",
   "release": "v1",
   "locale": "en-US",
-  "requiredDocumentCount": 180,
+  "requiredDocumentCount": 181,
   "sources": {
     "pwsh7": {
       "runtimePlatforms": ["windows", "linux", "macos"],
@@ -91,6 +91,7 @@
         "robocopy.md",
         "schtasks.md",
         "sc.md",
+        "net.md",
         "cmd.md",
         "start.md",
         "explorer.md",

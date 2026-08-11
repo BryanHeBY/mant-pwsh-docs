@@ -80,6 +80,16 @@ sc.exe query EventLog
 sc.exe qc EventLog
 sc.exe queryex EventLog
 sc.exe enumdepend EventLog
+net.exe help
+net.exe user
+net.exe localgroup
+net.exe accounts
+net.exe use
+net.exe share
+net.exe session
+net.exe file
+net.exe start
+net.exe view
 cmd.exe /d /c ver
 reg.exe query HKCU\Environment
 Get-Command explorer.exe, control.exe, mmc.exe, rundll32.exe -All
@@ -319,9 +329,14 @@ Review Windows-only commands on a non-production target. In particular, use
 `robocopy /L` before any real copy, query an existing known task before task
 changes, and query a known service before `sc.exe` configuration work.
 Record how `sc` resolves in both Windows PowerShell 5.1 and PowerShell 7, then
-invoke `sc.exe` explicitly. Keep service and task validation query-only; do not
+invoke `sc.exe` explicitly. Keep service, task, Net account/SMB, and discovery
+validation query-only; do not
 start, stop, create, configure, overwrite, run, end, or delete a real service or
-task merely for evidence. Use an approved disposable fixture for mutations.
+task, change account/group/policy/share/connection state, disconnect a session,
+close an open file, or set the clock merely for evidence. Record `net.exe`
+direction, logon/token identity, local versus domain scope, Server/Workstation
+service state, and any permission-denied or unavailable family as target-host
+evidence. Use an approved disposable fixture for mutations.
 
 On Windows, macOS, and Linux where declared by the document, record:
 
