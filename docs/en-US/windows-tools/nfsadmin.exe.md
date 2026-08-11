@@ -47,9 +47,41 @@ auditing, protocols, client groups, mappings, filename behavior, and caches.
 - `listmembers`: List hosts in one client group.
 - `deletemembers`: Remove hosts from one client group.
 
-Configuration fields such as `timeout=`, `audit=`, and `fileaccess=` are real
-native operands but cannot yet be ManT semantic entries because they use a bare
-equals-bearing token shape.
+Server and client configuration fields are native equals-bearing options. A
+bare `config` reads current settings; appending any field below changes service
+configuration and requires separate authorization and verification.
+
+<!-- mant:entries role=option case=insensitive -->
+- `mapsvr= SERVER`: Set the legacy User Name Mapping server for the selected NFS role; Microsoft recommends current identity-mapping tooling instead.
+- `auditlocation= LOCATION`: Send Server for NFS auditing to `eventlog`, `file`, `both`, or `none`.
+- `fname= FILE`: Set the Server for NFS audit-log file used by file-based auditing.
+- `fsize= SIZE`: Set the maximum audit-file size in megabytes.
+- `audit= EVENTS`: Enable or disable Server for NFS event families with documented `+` and `-` event tokens; do not combine `all` with another event.
+- `lockperiod= SECONDS`: Set how long Server for NFS waits for clients to reclaim locks after reconnect or service restart.
+- `portmapprotocol= PROTOCOL`: Select the Portmap `TCP`, `UDP`, or `TCP+UDP` transport set.
+- `mountprotocol= PROTOCOL`: Select the mount service `TCP`, `UDP`, or `TCP+UDP` transport set.
+- `nfsprotocol= PROTOCOL`: Select the NFS service `TCP`, `UDP`, or `TCP+UDP` transport set.
+- `nlmprotocol= PROTOCOL`: Select the Network Lock Manager `TCP`, `UDP`, or `TCP+UDP` transport set.
+- `nsmprotocol= PROTOCOL`: Select the Network Status Manager `TCP`, `UDP`, or `TCP+UDP` transport set.
+- `enableV3= VALUE`: Enable or disable NFS version 3 support with `yes` or `no`.
+- `renewauth= VALUE`: Require or disable periodic client reauthentication with `yes` or `no`.
+- `renewauthinterval= SECONDS`: Set the client reauthentication interval used when `renewauth=yes`.
+- `dircache= SIZE`: Set the Server for NFS directory-cache size in kilobytes within the documented range and alignment.
+- `translationfile= FILE`: Select the filename-character translation map, or omit its value to disable translation; a change requires service restart.
+- `dotfileshidden= VALUE`: Choose whether names beginning with a period receive the Windows hidden attribute.
+- `casesensitivelookups= VALUE`: Enable or disable exact-case directory lookup; enabling it also requires the documented system-wide kernel setting.
+- `ntfscase= MODE`: Return NTFS names as `lower`, `upper`, or `preserve`; it cannot change while case-sensitive lookup is enabled.
+- `fileaccess= MODE`: Set the three-digit default UNIX-style permission mode for files created by Client for NFS.
+- `mtype= TYPE`: Select `hard` RPC retry-until-success or `soft` bounded-retry mount behavior.
+- `retry= COUNT`: Set the Client for NFS retry count for soft mounts within the documented range.
+- `timeout= SECONDS`: Set the Client for NFS RPC wait interval within the documented fractional/integer range.
+- `protocol= PROTOCOL`: Select the Client for NFS `TCP`, `UDP`, or `TCP+UDP` transport set.
+- `rsize= SIZE`: Set the Client for NFS read buffer in kilobytes to one documented discrete value.
+- `wsize= SIZE`: Set the Client for NFS write buffer in kilobytes to one documented discrete value.
+- `perf=`: Restore the documented Client for NFS performance fields by supplying the single fixed value `default` as `perf=default`.
+
+The following traditional dash options select credentials or lock operations
+outside the equals-bearing `config` field grammar.
 
 <!-- mant:entries role=option case=insensitive -->
 - `-u`: Select an alternate remote administrative identity.
