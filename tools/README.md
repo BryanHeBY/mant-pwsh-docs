@@ -7,7 +7,13 @@ repository level. `tools/validate.mjs` runs on Node.js 20 or newer and checks:
 - optional embedded tldr structure when present;
 - one document H1 and a reader-facing `Sources and license` section;
 - provenance catalogs, baseline revisions, licenses, and source references;
-- ManT JSON diagnostics for every currently published document.
+- ManT v5 JSON diagnostics for every currently published document.
+
+Role-aware interface lists use the explicit `mant:entries` declarations in
+`AUTHORING.md`. The validator checks their ManT diagnostics; repository-wide
+semantic coverage and content-quality audits are developed as separate,
+portable Node.js checks so missing entry lists cannot be hidden by otherwise
+valid Markdown.
 
 Run the normal check with:
 
@@ -33,3 +39,15 @@ dependency.
 Set `MANT_BIN` or pass `--mant PATH` when the ManT executable is not named
 `mant`. Platform-specific runtime checks remain separate from this structural
 validator.
+
+Run the complete editorial gap inventory with:
+
+```text
+npm run audit:content -- --mant PATH
+```
+
+The audit reports every document, its ManT semantic entries, and structural
+signals such as missing interface summaries, version/availability guidance,
+PowerShell boundaries, related documents, or substantial TLDR examples. Use
+`--json` for the complete machine-readable matrix and `--strict` only after
+all reviewed exceptions and content gaps have been resolved.

@@ -35,6 +35,7 @@ command [global options] <subcommand> [options]
 
 ## Common options
 
+<!-- mant:entries role=option case=sensitive -->
 - `-h`, `--help`: Display command help.
 - `--version`: Display the installed version.
 

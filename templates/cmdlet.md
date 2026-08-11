@@ -35,6 +35,7 @@ Explain the command's behavior, inputs, outputs, and important side effects.
 
 ## Common parameters
 
+<!-- mant:entries role=option case=insensitive -->
 - `-Parameter VALUE`: Describe the parameter.
 - `-OtherParameter VALUE`: Describe the parameter.
 

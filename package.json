@@ -8,6 +8,7 @@
     "node": ">=20"
   },
   "scripts": {
+    "audit:content": "node tools/audit-content.mjs",
     "validate": "node tools/validate.mjs",
     "validate:structure": "node tools/validate.mjs --skip-mant",
     "validate:release": "node tools/validate.mjs --release v1",

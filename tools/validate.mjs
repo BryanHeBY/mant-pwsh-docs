@@ -437,7 +437,7 @@ function validateMant(documents) {
     }
     try {
       const output = JSON.parse(result.stdout);
-      if (output?.schema !== "mant.query/v4" || output.document === undefined) {
+      if (output?.schema !== "mant.query/v5" || output.document === undefined) {
         reportError(`${relative(file)}: ManT JSON output was not a document query result.`);
       } else if (output.diagnostics !== undefined && (!Array.isArray(output.diagnostics) || output.diagnostics.length !== 0)) {
         reportError(`${relative(file)}: ManT reported ${output.diagnostics.length} diagnostic(s).`);

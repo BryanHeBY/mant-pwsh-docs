@@ -82,19 +82,53 @@ help/version commands when more useful safe operations are known.
 
 ## Semantic parameters and options
 
-ManT recognizes a complete bullet list as semantic options when every item
-starts with one or more inline-code option names, followed by `:`, `—`, or
-`–` and a description:
+Declare every list that represents parameters, options, subcommands, or
+environment variables. The declaration makes each item addressable through
+ManT outline and explain operations and records the runtime matching policy:
 
 ```markdown
+<!-- mant:entries role=option case=insensitive -->
 - `-Name NAME`: Select commands by name.
 - `-Module MODULE`: Restrict results to a module.
 - `-All`: Include commands hidden by command precedence.
 ```
 
+Use `role=option` for PowerShell parameters and native switches,
+`role=command` for subcommands, and `role=environment-variable` for variables
+that form part of the documented interface. Use `case=insensitive` for
+PowerShell parameters and ordinary Windows switches. Use `case=sensitive`
+when a native tool distinguishes spellings such as `-p` and `-P`.
+
+The declaration must be the only construct on its line and must target the
+bullet list beginning on the next non-empty line. Every list item starts with
+one or more inline-code terms and includes `:`, `—`, or `–` in the same
+leading paragraph. Put placeholders in uppercase so ManT can distinguish a
+value placeholder from a fixed colon value:
+
+```markdown
+<!-- mant:entries role=option case=insensitive -->
+- `/S COMPUTER`: Select a remote computer.
+- `/server:NAME`: Select a server; the selector is `/server`.
+- `/reg:32`, `/reg:64`: Select a fixed registry view.
+```
+
+Do not split the term and its required delimiter across paragraphs. This is
+an ordinary list rather than a semantic entry list:
+
+```markdown
+- `-Name NAME`
+  Select commands by name.
+```
+
 Keep ordinary prose lists separate from semantic option lists. Describe the
 most useful options in the semantic summary, then use ordinary subsections
-when detailed behavior needs more space.
+when detailed behavior needs more space. A table does not create semantic
+entries in the current ManT release; use a declared list when rows need to be
+discoverable through outline or explain.
+
+Do not invent empty or dummy entries for a command that genuinely has no
+options, subcommands, or interface environment variables. The repository
+content audit records and reviews those pages separately.
 
 ## Examples and output
 

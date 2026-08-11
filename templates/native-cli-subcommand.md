@@ -27,6 +27,7 @@ command subcommand [options]
 
 ## Common options
 
+<!-- mant:entries role=option case=sensitive -->
 - `--option VALUE`: Describe the option.
 - `-h`, `--help`: Display subcommand help.
 
