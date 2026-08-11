@@ -91,9 +91,10 @@ mant git --source pwsh-cli --search=LASTEXITCODE
 ## Sources and license
 
 This source contains original ManT-oriented documentation informed by each
-tool vendor's official documentation and source repositories. Exact upstream
-revisions and page-level provenance are recorded in the repository's
-`upstream/cli.json` catalog.
+tool vendor's official documentation and source repositories, including the
+[Windows Package Manager documentation](https://learn.microsoft.com/windows/package-manager/winget/).
+Exact upstream revisions and page-level provenance are recorded in the
+repository's `upstream/cli.json` catalog.
 
 The documentation in this source is licensed under CC BY 4.0. Product names
 and trademarks belong to their respective owners.
