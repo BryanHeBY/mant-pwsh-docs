@@ -6,7 +6,7 @@ from PowerShell. The Markdown files are written for direct consumption by
 [ManT](https://github.com/BryanHeBY/ManT) and remain readable on ordinary
 CommonMark renderers.
 
-## Planned document sources
+## Document sources
 
 - `pwsh51`: Windows PowerShell 5.1 commands, aliases, and concepts.
 - `pwsh7`: PowerShell 7 commands, aliases, and concepts.
@@ -25,13 +25,35 @@ Windows. Cross-platform checks use Node.js and platform-neutral command-line
 interfaces. Tests that verify behavior unique to Windows PowerShell 5.1 are
 kept separate from the portable documentation checks.
 
+## Install with ManT
+
+Copy or merge the three source entries from
+[sources.example.toml](sources.example.toml) into ManT's `sources.toml`, then
+update the local cache:
+
+```text
+mant --update-docs
+mant pwsh7 --source pwsh7
+mant pwsh51 --source pwsh51
+mant pwsh-cli --source pwsh-cli
+```
+
+The source names keep shell manuals, Windows PowerShell 5.1 references, and
+native CLI documentation distinct even where a document name overlaps. For
+example, use `mant curl --source pwsh51` for the Windows PowerShell alias
+boundary and `mant curl --source pwsh-cli` for the native executable guide.
+
 ## Project status
 
-The repository foundation and primary shell manuals are in place. The first
-publishable English release is defined by [V1-SCOPE.md](V1-SCOPE.md); its
-required document inventory lives in [release/v1.json](release/v1.json).
-Portable validation, focused command pages, runtime verification, and release
-metadata are being added incrementally.
+The first English v1 inventory now contains 71 reviewed pages: 26 for
+PowerShell 7, 26 for Windows PowerShell 5.1, and 19 PowerShell-facing CLI
+pages. The normative inventory lives in [release/v1.json](release/v1.json).
+
+Portable ManT parsing, provenance validation, and locked-upstream
+accessibility audit pass locally. The final v1 tag remains pending recorded
+runtime verification on all platforms required by
+[V1-SCOPE.md](V1-SCOPE.md), including Windows PowerShell 5.1 on Windows. CI
+is manual-only while ManT 0.6.0 is not publicly installable.
 
 ## License
 
