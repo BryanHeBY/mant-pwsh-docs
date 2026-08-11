@@ -179,8 +179,8 @@ function mantEntries(file) {
   }
   try {
     const outline = JSON.parse(result.stdout);
-    if (outline?.schema !== "mant.outline/v5" || !Array.isArray(outline.nodes)) {
-      return { entries: [], error: "ManT did not return a mant.outline/v5 document." };
+    if (outline?.schema !== "mant.outline/v6" || !Array.isArray(outline.nodes)) {
+      return { entries: [], error: "ManT did not return a mant.outline/v6 document." };
     }
     if (outline.diagnostics !== undefined && !Array.isArray(outline.diagnostics)) {
       return { entries: [], error: "ManT returned a malformed outline diagnostics field." };
@@ -205,13 +205,13 @@ function auditDocument(sourceName, filename, metadata) {
   const sectionHeadings = headings(body);
   const semantic = mantEntries(file);
   const selectorAmbiguities = ambiguousSelectors(semantic.entries);
-  const directives = countMatches(body, /^<!-- mant:entries role=(option|command|environment-variable) case=(sensitive|insensitive) -->$/gmu);
+  const directives = countMatches(body, /^<!-- mant:entries role=(option|command|variable|environment-variable) case=(sensitive|insensitive)(?: attached=(fixed|infer))? -->$/gmu);
   const tldrExamples = countMatches(source, /^- .+:$/gmu);
   const lineCount = source.split(/\r?\n/u).length;
   const flags = [];
   const interfaceHeading = hasHeading(
     sectionHeadings,
-    /^(?:common )?(?:parameters|options|commands|subcommands|environment(?: variables)?)$/iu
+    /^(?:common )?(?:parameters|options|commands|subcommands|variables?|environment(?: variables)?)$/iu
   );
 
   if (semantic.error !== undefined) {

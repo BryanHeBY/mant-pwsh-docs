@@ -523,7 +523,7 @@ function validateMant(documents) {
     }
     try {
       const output = JSON.parse(result.stdout);
-      if (output?.schema !== "mant.query/v5" || output.document === undefined) {
+      if (output?.schema !== "mant.query/v6" || output.document === undefined) {
         reportError(`${relative(file)}: ManT JSON output was not a document query result.`);
         continue;
       }

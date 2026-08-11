@@ -116,8 +116,8 @@ function mantOptionNames(relativePath) {
   } catch (cause) {
     fail(`${relativePath}: ManT returned invalid JSON (${cause.message}).`);
   }
-  if (outline?.schema !== "mant.outline/v5" || !Array.isArray(outline.nodes)) {
-    fail(`${relativePath}: ManT did not return a mant.outline/v5 document.`);
+  if (outline?.schema !== "mant.outline/v6" || !Array.isArray(outline.nodes)) {
+    fail(`${relativePath}: ManT did not return a mant.outline/v6 document.`);
   }
   return new Set(
     collectEntries(outline.nodes)

@@ -94,9 +94,10 @@ help/version commands when more useful safe operations are known.
 
 ## Semantic parameters and options
 
-Declare every list that represents parameters, options, subcommands, or
-environment variables. The declaration makes each item addressable through
-ManT outline and explain operations and records the runtime matching policy:
+Declare every list that represents parameters, options, subcommands,
+PowerShell variables, or environment variables. The declaration makes each
+item addressable through ManT outline and explain operations and records the
+runtime matching policy:
 
 ```markdown
 <!-- mant:entries role=option case=insensitive -->
@@ -106,10 +107,26 @@ ManT outline and explain operations and records the runtime matching policy:
 ```
 
 Use `role=option` for PowerShell parameters and native switches,
-`role=command` for subcommands, and `role=environment-variable` for variables
-that form part of the documented interface. Use `case=insensitive` for
-PowerShell parameters and ordinary Windows switches. Use `case=sensitive`
+`role=command` for subcommands, `role=variable` for PowerShell variables such
+as `$?` and `$LASTEXITCODE`, and `role=environment-variable` for process
+environment names such as `PATH`. Use `case=insensitive` for PowerShell
+parameters and variables and ordinary Windows switches. Use `case=sensitive`
 when a native tool distinguishes spellings such as `-p` and `-P`.
+
+When an attached suffix is a literal part of the option rather than a value
+placeholder, add `attached=fixed`. This preserves exact fixed forms such as
+`/F:Y` and `perf=default` as selectors:
+
+```markdown
+<!-- mant:entries role=option case=insensitive attached=fixed -->
+- `/F:Y`: Run an extended scan and automatically clean detections.
+- `perf=default`: Restore the documented performance defaults.
+```
+
+The default legacy inference remains available by omitting `attached`; use
+`attached=infer` only when it is useful to state that policy explicitly.
+Angle-bracket values such as `--output=<FILE>` remain placeholders under the
+fixed policy.
 
 The declaration must be the only construct on its line and must target the
 bullet list beginning on the next non-empty line. Every list item starts with
@@ -139,8 +156,13 @@ entries in the current ManT release; use a declared list when rows need to be
 discoverable through outline or explain.
 
 Do not invent empty or dummy entries for a command that genuinely has no
-options, subcommands, or interface environment variables. The repository
-content audit records and reviews those pages separately.
+options, subcommands, variables, or interface environment variables. The
+repository content audit records and reviews those pages separately.
+
+Repository tooling targets ManT CLI protocol v6: document queries use
+`mant.query/v6` and entry outlines use `mant.outline/v6`. These protocol
+schemas are independent of the hand-maintained provenance catalog
+`schemaVersion` in `upstream/`.
 
 ## Examples and output
 
