@@ -122,6 +122,12 @@ A pipeline can continue after a pipe at the end of a line or with a pipe at
 the start of the next line. These natural continuation points are safer than
 a trailing backtick, whose meaning is easily changed by trailing whitespace.
 
+## Version and platform differences
+
+This page targets PowerShell 7.6. PowerShell object-pipeline semantics are
+cross-platform, while native byte streams, available commands, and formatting
+can differ by host and operating system.
+
 ## Related documents
 
 - [about_Redirection](about_Redirection.md)

@@ -105,6 +105,12 @@ not interchangeable. Capture diagnostic output when it is needed for an error
 report, avoid merging streams before a parser that relies on their distinction,
 and test redirection with the installed Windows PowerShell host.
 
+## Version and availability
+
+This page targets Windows PowerShell 5.1 and the Windows process command-line
+model. PowerShell 7 changed native argument passing and some redirection
+behavior; native utility availability also varies by Windows release.
+
 ## Related documents
 
 - [about_Parsing](about_Parsing.md)

@@ -29,6 +29,21 @@ Where-Object [-FilterScript] <scriptblock>
 `Where-Object` passes through only pipeline objects matching a condition. Use
 it before sorting, selecting properties, exporting, or performing an action.
 
+## Important parameters
+
+<!-- mant:entries role=option case=insensitive -->
+- `-FilterScript SCRIPTBLOCK`: Evaluate a predicate for every pipeline object; `$_` and `$PSItem` refer to the current object.
+- `-Property NAME`: Select the property used by the comparison parameter set.
+- `-Value VALUE`: Supply the comparison value when the selected operator requires one.
+- `-EQ`, `-IEQ`, `-CEQ`: Test equality with default, explicitly insensitive, or sensitive case handling.
+- `-NE`, `-INE`, `-CNE`: Test inequality with the corresponding case policy.
+- `-GT`, `-GE`, `-LT`, `-LE`: Perform ordered comparisons.
+- `-Like`, `-NotLike`: Match or reject wildcard patterns.
+- `-Match`, `-NotMatch`: Match or reject regular expressions.
+- `-Contains`, `-NotContains`: Test whether a property collection contains a value.
+- `-In`, `-NotIn`: Test whether a property value occurs in a supplied collection.
+- `-Is`, `-IsNot`: Test the runtime type of a property value.
+
 ## Comparison and predicate forms
 
 The concise form names a property, comparison operator, and value. Use it for
@@ -67,6 +82,28 @@ $items | Where-Object {
 `Where-Object` handles input as it arrives. When the source command or provider
 has its own filter parameter, use it first for filesystem, registry, remote,
 or API queries to reduce work and transfer.
+
+## Common mistakes
+
+### Filtering a formatting label
+
+Use `Get-Member` before formatting to confirm the actual source property.
+
+### Performing writes inside a predicate
+
+Keep the filter side-effect free and put state changes in an explicit later
+pipeline stage with its own error policy.
+
+### Fetching every remote or provider item first
+
+Prefer the source command's own filter when available, then use
+`Where-Object` for the remaining object predicate.
+
+## Version and availability
+
+This page targets Windows PowerShell 5.1. Operator and property availability
+inside a filter depends on the 5.1 language and the actual input type; avoid
+assuming examples written for newer PowerShell versions are accepted.
 
 ## Related documents
 

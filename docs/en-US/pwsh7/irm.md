@@ -48,12 +48,57 @@ $items | Select-Object id, name
 Treat remote data as untrusted input. Validate expected properties and error
 responses before using values in a filesystem, command, or deployment action.
 
+## Important parameters
+
+<!-- mant:entries role=option case=insensitive -->
+- `-Uri URI`: Set the required request URI; validate constructed or redirected destinations before sending secrets.
+- `-Method METHOD`, `-CustomMethod METHOD`: Select a standard HTTP method or supply a custom method token.
+- `-Headers HEADERS`: Add request headers from a dictionary; do not persist secrets in source or history.
+- `-Body BODY`: Supply request content or form values, depending on the value and content type.
+- `-Form FORM`: Build a multipart form from a dictionary; available in PowerShell 7, not Windows PowerShell 5.1.
+- `-ContentType TYPE`: Set the request content type, including an explicit charset when the server requires one.
+- `-Authentication TYPE`, `-Token TOKEN`, `-Credential CREDENTIAL`: Configure supported authentication; use TLS and the least-privileged credential.
+- `-WebSession SESSION`, `-SessionVariable NAME`: Reuse or capture cookies and connection state; do not combine these two parameters.
+- `-OutFile PATH`: Write the response body to a file instead of returning the converted response body.
+- `-PassThru`: Return results when `-OutFile` would otherwise suppress pipeline output.
+- `-FollowRelLink`, `-MaximumFollowRelLink COUNT`: Follow RFC link relations and cap the number of followed links.
+- `-MaximumRedirection COUNT`: Limit automatic HTTP redirects; redirects can cross a trust boundary.
+- `-SkipHttpErrorCheck`: Return non-success HTTP responses instead of turning them into terminating request errors.
+- `-ResponseHeadersVariable NAME`, `-StatusCodeVariable NAME`: Capture response headers or status without parsing display text.
+- `-ConnectionTimeoutSeconds SECONDS`, `-OperationTimeoutSeconds SECONDS`: Bound connection establishment and subsequent operation waits.
+- `-SkipCertificateCheck`: Disable certificate validation for the request; avoid it outside isolated diagnostics.
+
+## Version and platform differences
+
+This page targets PowerShell 7.6. Windows PowerShell 5.1 uses a different web
+stack and lacks several parameters listed here; consult the matching 5.1 page
+when maintaining legacy scripts.
+
 ## Do not pipe into Invoke-Expression
 
 Do not use `irm URL | iex` or similar patterns. It downloads remote text and
 immediately parses it as PowerShell code, giving the remote response the same
 authority as the current session. Download a reviewed artifact, verify its
 integrity and provenance, and execute it only through an explicit process.
+
+## Common mistakes
+
+### Treating converted JSON as a single predictable object
+
+The response can be a scalar, object, or collection. Validate its shape before
+property access, and explicitly enumerate an array when a downstream command
+must receive each member separately.
+
+### Trusting redirects, certificates, or HTTP status implicitly
+
+Set appropriate redirect and timeout limits, keep certificate checking
+enabled, and handle non-success status deliberately. A parsed response is
+still untrusted remote input.
+
+### Assuming `-OutFile` also returns the response
+
+`-OutFile` suppresses the normal response output unless the selected parameter
+set and version support `-PassThru` and it is requested.
 
 ## Full command
 

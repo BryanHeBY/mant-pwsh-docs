@@ -32,6 +32,13 @@ Never infer the meaning from the spelling alone. Query the current session:
 Get-Command curl -All
 ```
 
+## Command identities
+
+<!-- mant:entries role=command case=insensitive -->
+- `curl`: Resolve this ambient name before use; it can be an alias, function, or native application.
+- `curl.exe`: Request the native Windows executable explicitly, subject to normal application search order.
+- `Invoke-WebRequest`, `iwr`: Request the PowerShell web cmdlet or its built-in alias explicitly.
+
 ## Alias versus executable
 
 `Invoke-WebRequest` takes PowerShell cmdlet parameters such as `-Uri` and
@@ -58,6 +65,25 @@ if ($null -eq $command) {
 }
 & $command.Source --version
 ```
+
+## Version and platform differences
+
+PowerShell 7 does not define `curl` as a built-in alias on the tested Linux
+environment. Windows sessions and migrated profiles can still introduce one,
+while Windows editions vary in whether and which native `curl.exe` is
+installed.
+
+## Common mistakes
+
+### Copying curl options into an alias invocation
+
+Options such as `-L`, `-H`, and `--fail` belong to native curl. They are not a
+portable shorthand for `Invoke-WebRequest` parameters.
+
+### Checking only the first resolved command
+
+Use `Get-Command curl -All` to expose shadowed aliases, functions, and
+applications before deciding which command a script requires.
 
 ## Related documents
 

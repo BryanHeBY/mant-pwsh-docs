@@ -99,6 +99,12 @@ reviewable configuration process.
 Execution policy is not a security boundary. It can affect profile loading but
 does not make untrusted source safe to execute.
 
+## Version and availability
+
+These profile paths and loading rules apply to Windows PowerShell 5.1 hosts.
+PowerShell 7 uses different application and profile locations; host-specific
+profiles also remain distinct within the same edition.
+
 ## Related documents
 
 - [powershell](powershell.md)

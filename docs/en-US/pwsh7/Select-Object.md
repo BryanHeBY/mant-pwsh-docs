@@ -30,6 +30,22 @@ Select-Object [[-Property] <object[]>] [-First <int>] [-Last <int>]
 property, or limits pipeline output. Use it to shape data before display,
 export, or a downstream command that needs a smaller contract.
 
+## Important parameters
+
+<!-- mant:entries role=option case=insensitive -->
+- `-Property PROPERTY`: Select named, wildcard, or calculated properties in output order.
+- `-ExcludeProperty PROPERTY`: Remove matching properties from a wildcard property selection.
+- `-ExpandProperty PROPERTY`: Emit one property's value instead of a selected wrapper object.
+- `-First COUNT`: Return the first requested number of objects.
+- `-Last COUNT`: Return the last requested number of objects.
+- `-Skip COUNT`: Omit the first requested number of objects.
+- `-SkipLast COUNT`: Omit the requested number of objects from the end; availability depends on the PowerShell 7 version.
+- `-Index INDEX`: Return objects at zero-based input indexes.
+- `-SkipIndex INDEX`: Exclude objects at zero-based input indexes; availability depends on the PowerShell 7 version.
+- `-Unique`: Remove duplicate selected values according to the cmdlet's comparison behavior.
+- `-Wait`: Continue consuming upstream input after enough objects have been selected so upstream side effects can complete.
+- `-InputObject OBJECT`: Treat the supplied value as one object; pipeline input is the normal form for collections.
+
 ## Selecting properties
 
 Specify property names in order. The output is a selected object that contains
@@ -103,6 +119,24 @@ Return file paths as strings for a native command:
 Get-ChildItem -File |
     Select-Object -ExpandProperty FullName
 ```
+
+## Common mistakes
+
+### Expanding a property too early
+
+`-ExpandProperty` discards access to sibling properties from the original
+object. Select an object shape when later stages still need context.
+
+### Taking `-First` before defining order
+
+The first objects are whatever the upstream command emitted. Filter and sort
+explicitly when the retained subset has semantic meaning.
+
+### Expecting selection to be display-only
+
+`Select-Object -Property` creates selected wrapper objects. Use formatting
+cmdlets only at the presentation boundary, and preserve original objects when
+their methods or type identity are still required.
 
 ## Platform and version differences
 

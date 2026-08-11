@@ -82,6 +82,12 @@ Execution policy is not a security boundary in either edition. Avoid parsing unt
 4. Test Windows, Linux, and macOS behavior separately when the script claims portability.
 5. Keep Windows PowerShell 5.1 coverage until the production dependency is removed rather than treating one successful PowerShell 7 run as migration completion.
 
+## Version boundary
+
+This guide compares the PowerShell 7.6 documentation baseline with Windows
+PowerShell 5.1. It is a migration checklist, not a promise that every interim
+PowerShell 7 release or Windows image has the same modules and behavior.
+
 ## Related documents
 
 - [PowerShell 7 shell and language](pwsh7.md)

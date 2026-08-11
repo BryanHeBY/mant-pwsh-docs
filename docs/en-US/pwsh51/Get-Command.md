@@ -48,6 +48,7 @@ PowerShell 7 or Unix-like host.
 
 ## Common options
 
+<!-- mant:entries role=option case=insensitive -->
 - `-Name NAME`: Find commands by name, including wildcard patterns.
 - `-All`: Return every definition instead of only the precedence winner.
 - `-CommandType TYPE`: Limit results to aliases, functions, cmdlets, scripts, or applications.
@@ -92,6 +93,24 @@ if ($null -eq (Get-Command git.exe -CommandType Application -ErrorAction Silentl
     throw 'git.exe is required but was not found on PATH.'
 }
 ```
+
+## Version and availability
+
+This page targets Windows PowerShell 5.1. Results depend on Windows version,
+installed features, process bitness, modules, profiles, and `PATH`.
+
+## Common mistakes
+
+### Omitting `-All` while diagnosing a collision
+
+The default result can hide lower-precedence aliases, functions, scripts, or
+applications. Use `-All` and inspect `CommandType`, `Source`, and `Definition`.
+
+### Treating module discovery as proof that a command can run
+
+An exported name can still depend on a missing Windows feature, incompatible
+bitness, or unavailable service. Import and exercise the required operation on
+the target Windows baseline.
 
 ## Related documents
 

@@ -146,6 +146,12 @@ mant pwsh51 --source pwsh51 --node native-commands
 mant pwsh51 --source pwsh51 --search=LASTEXITCODE
 ```
 
+## Related documents
+
+- [Windows PowerShell 5.1 shell and language](pwsh51.md)
+- [powershell.exe launcher](powershell.md)
+- [PowerShell 7 compatibility](powershell-7-compatibility.md)
+
 ## Sources and license
 
 This source contains original ManT-oriented documentation informed by the

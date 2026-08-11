@@ -49,6 +49,7 @@ Base64-encoded command.
 
 ## Common options
 
+<!-- mant:entries role=option case=insensitive -->
 - `-Command COMMAND`, `-c COMMAND`: Execute PowerShell source and then exit unless `-NoExit` is present.
 - `-File PATH`, `-f PATH`: Run a Windows PowerShell script file with remaining arguments passed to that script.
 - `-NoProfile`, `-nop`: Do not load any Windows PowerShell profile scripts.
@@ -96,6 +97,23 @@ Windows PowerShell 5.1 is installed and serviced with Windows. It uses the
 Desktop edition, Windows providers, .NET Framework, and the Windows process
 model. It is not the same executable or edition as PowerShell 7's `pwsh`.
 Use `$PSVersionTable` to record the actual runtime in diagnostic output.
+
+## Common mistakes
+
+### Copying `pwsh` launcher options into `powershell.exe`
+
+Windows PowerShell 5.1 does not implement every modern PowerShell launcher
+option. Check `powershell.exe -Help` on the target Windows image.
+
+### Losing a native program's exit code
+
+Read and explicitly forward `$LASTEXITCODE` when the parent process needs the
+native result; interpret tool-specific success ranges before reducing them.
+
+### Relying on profiles or interactive prompts
+
+Use `-NoProfile -NonInteractive` for unattended work and load required state
+explicitly.
 
 ## Related documents
 

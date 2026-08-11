@@ -40,6 +40,7 @@ Invoke-Item -LiteralPath <string[]> [-Filter <string>]
 
 ## Important parameters
 
+<!-- mant:entries role=option case=insensitive -->
 - `-Path PATH`: Select one or more provider paths; wildcard characters are
   interpreted.
 - `-LiteralPath PATH`: Use the path exactly as written, without wildcard

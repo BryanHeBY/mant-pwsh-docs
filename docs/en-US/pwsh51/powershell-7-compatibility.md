@@ -62,6 +62,12 @@ Use explicit executable names and test encoding, output, redirection, and
 4. Test Windows, Linux, and macOS separately when the target script claims portability.
 5. Retain Windows PowerShell 5.1 coverage until every production dependency is removed.
 
+## Version boundary
+
+This guide compares Windows PowerShell 5.1 with the repository's PowerShell
+7.6 baseline. Module compatibility, remoting, and native tools still depend on
+the actual Windows release and installed products.
+
 ## Related documents
 
 - [Windows PowerShell 5.1 shell and language](pwsh51.md)

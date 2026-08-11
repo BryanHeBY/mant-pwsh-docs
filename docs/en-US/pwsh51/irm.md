@@ -43,12 +43,52 @@ before using them in a filesystem, native command, or deployment operation.
 Windows PowerShell 5.1 uses the legacy web-request implementation, so proxy,
 authentication, TLS, and response behavior can differ from PowerShell 7.
 
+## Important parameters
+
+<!-- mant:entries role=option case=insensitive -->
+- `-Uri URI`: Set the required request URI; validate constructed or redirected destinations before sending credentials.
+- `-Method METHOD`: Select a supported HTTP method.
+- `-Headers HEADERS`: Add request headers from a dictionary.
+- `-Body BODY`: Supply request content or form values, depending on the value and content type.
+- `-ContentType TYPE`: Set the request media type and any required charset.
+- `-Credential CREDENTIAL`, `-UseDefaultCredentials`: Select explicit or current Windows credentials; do not combine them.
+- `-WebSession SESSION`, `-SessionVariable NAME`: Reuse or capture cookies and session state; do not combine the parameters.
+- `-OutFile PATH`: Write the response body to a file instead of returning converted response content.
+- `-TimeoutSec SECONDS`: Bound the request timeout; DNS resolution can still exceed very small values.
+- `-MaximumRedirection COUNT`: Limit automatic redirects.
+- `-Proxy URI`, `-ProxyCredential CREDENTIAL`, `-ProxyUseDefaultCredentials`: Configure the proxy and its authentication.
+- `-Certificate CERTIFICATE`, `-CertificateThumbprint THUMBPRINT`: Select a client certificate for mutual TLS.
+
+## Version and compatibility
+
+This page is limited to Windows PowerShell 5.1. Parameters added to modern
+PowerShell—such as `-Authentication`, `-Token`, `-Form`,
+`-SkipHttpErrorCheck`, and status variables—must not be copied into 5.1
+scripts.
+
 ## Never pipe it to code execution
 
 Do not use `irm URL | iex`. It downloads remote text and parses it as code with
 the authority of the current Windows session. Download a reviewed artifact,
 verify its provenance and integrity, and execute only through an explicit,
 least-privilege process.
+
+## Common mistakes
+
+### Copying PowerShell 7 parameters into a 5.1 script
+
+Check the installed command with `Get-Command Invoke-RestMethod -Syntax`.
+The legacy web stack and parameter surface differ materially from PowerShell 7.
+
+### Treating converted content as trusted or shape-stable
+
+Validate the HTTP outcome and the returned scalar, object, or collection before
+using its values in commands, paths, or deployment actions.
+
+### Assuming `-OutFile` also emits the response
+
+In Windows PowerShell 5.1, `-OutFile` writes the body and does not provide the
+PowerShell 7 `-PassThru` behavior.
 
 ## Related documents
 

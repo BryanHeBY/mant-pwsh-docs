@@ -30,6 +30,22 @@ ForEach-Object [-MemberName] <string> [-ArgumentList <object[]>]
 is the streaming counterpart to the `foreach` language statement, which
 iterates an in-memory collection.
 
+## Important parameters
+
+<!-- mant:entries role=option case=insensitive -->
+- `-Process SCRIPTBLOCK`: Run one or more script blocks for every pipeline object; the first and last blocks can be mapped to begin/end behavior when several blocks are supplied positionally.
+- `-Begin SCRIPTBLOCK`: Run initialization once before pipeline input is processed.
+- `-End SCRIPTBLOCK`: Run finalization once after all pipeline input is processed.
+- `-RemainingScripts SCRIPTBLOCKS`: Supply additional per-item script blocks explicitly instead of relying on positional block mapping.
+- `-MemberName NAME`: Read an instance property or call an instance method for every input object.
+- `-ArgumentList ARGUMENTS`: Pass arguments to the method selected by `-MemberName`.
+- `-InputObject OBJECT`: Treat the supplied value as one input object; pipe a collection when each member must be processed separately.
+- `-Parallel SCRIPTBLOCK`: Run input operations in parallel runspaces; available in PowerShell 7 and not Windows PowerShell 5.1.
+- `-ThrottleLimit COUNT`: Limit concurrent `-Parallel` runspaces; the default pool size is five.
+- `-TimeoutSeconds SECONDS`: Stop parallel work after the requested timeout; zero means no timeout.
+- `-AsJob`: Return a parent job for parallel work instead of streaming results synchronously.
+- `-UseNewRunspace`: Create a new runspace for every parallel iteration instead of reusing the runspace pool.
+
 ## Process blocks
 
 The common form supplies a script block. `$_` and `$PSItem` name the current
@@ -106,8 +122,28 @@ Get-ChildItem ./input -Filter '*.json' -File |
     ForEach-Object {
         Get-Content -LiteralPath $_.FullName -Raw | ConvertFrom-Json | Out-Null
         $_.FullName
-    }
+}
 ```
+
+## Common mistakes
+
+### Passing a collection through `-InputObject`
+
+`-InputObject $items` treats the collection as one object. Use
+`$items | ForEach-Object ...` when the operation must run once per member.
+
+### Assuming `-Parallel` preserves order or caller state
+
+Parallel output can arrive out of order, and runspaces do not share ordinary
+caller variables or thread-unsafe state. Use `$using:` deliberately, return
+enough identity to reorder results, and keep the sequential form when the work
+is too small to justify runspace overhead.
+
+### Confusing the cmdlet with the `foreach` statement
+
+`ForEach-Object` receives streaming pipeline input. The `foreach` language
+statement iterates a collection in the current scope and has different syntax,
+control-flow behavior, and buffering implications.
 
 ## Platform and version differences
 

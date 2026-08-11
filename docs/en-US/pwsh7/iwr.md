@@ -48,6 +48,47 @@ Get-FileHash -LiteralPath $destination -Algorithm SHA256
 For API responses, `Invoke-RestMethod` is often more convenient because it
 converts supported structured content to PowerShell objects.
 
+## Important parameters
+
+<!-- mant:entries role=option case=insensitive -->
+- `-Uri URI`: Set the required request URI; validate constructed or redirected destinations before sending secrets.
+- `-Method METHOD`, `-CustomMethod METHOD`: Select a standard HTTP method or supply a custom method token.
+- `-Headers HEADERS`: Add request headers from a dictionary.
+- `-Body BODY`, `-Form FORM`, `-ContentType TYPE`: Supply request content and describe its media type; `-Form` builds multipart data.
+- `-Authentication TYPE`, `-Token TOKEN`, `-Credential CREDENTIAL`: Configure supported authentication over a trusted TLS connection.
+- `-WebSession SESSION`, `-SessionVariable NAME`: Reuse or capture cookies and session state; do not combine the parameters.
+- `-OutFile PATH`: Write the response body to a file instead of returning the response object.
+- `-PassThru`: Return results when `-OutFile` would otherwise suppress pipeline output.
+- `-Resume`: Resume a partial file transfer where the server and local file state permit it.
+- `-MaximumRedirection COUNT`: Limit automatic redirects.
+- `-SkipHttpErrorCheck`: Return non-success HTTP responses for explicit status handling.
+- `-ResponseHeadersVariable NAME`, `-StatusCodeVariable NAME`: Capture response metadata without scraping formatted output.
+- `-ConnectionTimeoutSeconds SECONDS`, `-OperationTimeoutSeconds SECONDS`: Bound connection and subsequent operation waits.
+- `-SkipCertificateCheck`: Disable certificate validation; reserve it for isolated diagnostics.
+
+## Version and platform differences
+
+This page targets PowerShell 7.6. Unlike Windows PowerShell 5.1,
+`Invoke-WebRequest` does not depend on Internet Explorer for HTML parsing.
+
+## Common mistakes
+
+### Expecting API objects from the response
+
+`Invoke-WebRequest` returns a web response object. Use `Invoke-RestMethod` when
+automatic conversion of supported JSON or XML is the intended contract.
+
+### Assuming a completed download is trusted
+
+Validate the destination, final URI, size, signature, or expected checksum
+before opening or executing an artifact.
+
+### Hiding status or TLS failures
+
+Do not reach first for `-SkipHttpErrorCheck` or `-SkipCertificateCheck`.
+Capture status explicitly and repair certificate trust rather than silently
+removing the boundary.
+
 ## Full command
 
 See [Invoke-WebRequest](https://learn.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest?view=powershell-7.6)

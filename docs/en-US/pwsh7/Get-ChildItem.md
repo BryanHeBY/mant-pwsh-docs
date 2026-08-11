@@ -30,6 +30,23 @@ Get-ChildItem [[-Path] <string[]>] [[-Filter] <string>] [-File] [-Directory]
 PowerShell provider. Its common aliases include `gci`, `dir`, and `ls`, but
 automation should prefer the full cmdlet name to avoid shell-specific habits.
 
+## Important parameters
+
+<!-- mant:entries role=option case=insensitive -->
+- `-Path PATH`: Enumerate one or more provider paths and expand wildcard characters.
+- `-LiteralPath PATH`: Enumerate an exact provider path without wildcard expansion.
+- `-Filter FILTER`: Ask the provider to filter near the source; syntax and support are provider-specific.
+- `-Include PATTERN`: Include matching child names after path/provider selection; test the path form because provider behavior differs.
+- `-Exclude PATTERN`: Exclude matching child names after path/provider selection.
+- `-Recurse`: Descend through child containers rather than listing only immediate children.
+- `-Depth COUNT`: Bound recursive descent to the requested number of levels.
+- `-File`: Return filesystem files only; this is a FileSystem-provider dynamic parameter.
+- `-Directory`: Return filesystem directories only; this is a FileSystem-provider dynamic parameter.
+- `-Attributes EXPRESSION`: Select filesystem items by attribute expression, including combined and negated attributes.
+- `-Force`: Include hidden or otherwise normally omitted items where the provider supports it; it does not bypass security checks.
+- `-Name`: Return relative name strings instead of provider item objects.
+- `-FollowSymlink`: Follow symbolic-link directories during recursion in PowerShell versions/providers that expose this dynamic parameter.
+
 ## Paths and providers
 
 `-Path` accepts one or more provider paths and supports wildcards. Use
@@ -95,6 +112,25 @@ Safely review files before a separate destructive action:
 Get-ChildItem -LiteralPath ./staging -File -Recurse |
     Select-Object FullName, Length
 ```
+
+## Common mistakes
+
+### Using wildcard paths for literal input
+
+A path containing `[` or `*` is interpreted by `-Path`. Use `-LiteralPath`
+when a path is data, especially before piping results into a modifying command.
+
+### Expecting provider parameters everywhere
+
+`-File`, `-Directory`, `-Attributes`, and `-FollowSymlink` are supplied by the
+FileSystem provider. They are not a portable contract for `Registry:`, `Env:`,
+or third-party providers.
+
+### Starting unbounded recursion
+
+`-Recurse` can cross large trees, links, mounts, network shares, and protected
+locations. Anchor an exact root, apply provider-side filtering, and use
+`-Depth` when the task has a natural bound.
 
 ## Platform and version differences
 

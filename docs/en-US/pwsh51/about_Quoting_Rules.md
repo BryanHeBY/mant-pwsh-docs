@@ -106,6 +106,12 @@ as a literal quote character. Pass values as separate arguments where possible,
 avoid `Invoke-Expression`, and test paths with spaces, quotes, backslashes,
 Unicode, and leading hyphens against the actual executable.
 
+## Version and availability
+
+This page follows Windows PowerShell 5.1. Quoting inside PowerShell is stable,
+but the final native command-line reconstruction is Windows- and
+application-specific and differs from modern PowerShell argument passing.
+
 ## Related documents
 
 - [about_Parsing](about_Parsing.md)

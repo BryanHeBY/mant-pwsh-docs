@@ -30,6 +30,20 @@ Sort-Object [[-Property] <object[]>] [-Descending] [-Unique] [-Stable]
 expressions. It buffers input to determine the order, so apply source-side
 filtering and selection first when input can be large.
 
+## Important parameters
+
+<!-- mant:entries role=option case=insensitive -->
+- `-Property PROPERTY`: Sort by one or more named or calculated keys; per-key hashtables can specify direction.
+- `-Ascending`: Sort in ascending order; this is the default when no direction is supplied.
+- `-Descending`: Reverse the selected sort direction.
+- `-Unique`: Return one object for each distinct comparison key after sorting.
+- `-Stable`: Preserve original input order when comparison keys are equal.
+- `-Top COUNT`: Return only the highest-ranked requested number of objects.
+- `-Bottom COUNT`: Return only the lowest-ranked requested number of objects.
+- `-CaseSensitive`: Use case-sensitive string comparison.
+- `-Culture CULTURE`: Use the named culture for string comparison.
+- `-InputObject OBJECT`: Treat the supplied value as one object; pipeline input is the normal form for collections.
+
 ## Sorting by properties
 
 Specify one or more property names. The first property is the primary key;
@@ -101,6 +115,25 @@ Get-ChildItem -LiteralPath ./logs -File -Recurse |
     Sort-Object Length -Descending |
     Select-Object -First 10 FullName, Length
 ```
+
+## Common mistakes
+
+### Sorting an unbounded stream
+
+Sorting requires enough buffering to compare the input. Filter near the
+source and bound the scope before sorting large filesystem, remote, or API
+results.
+
+### Treating `-Unique` as arbitrary deduplication
+
+Uniqueness follows the selected comparison keys and sort semantics. Select a
+normalized key deliberately when case, culture, or object string conversion
+would otherwise change the result.
+
+### Assuming ties keep input order
+
+Use `-Stable` when equal keys must retain source order and require a PowerShell
+version that provides it.
 
 ## Platform and version differences
 

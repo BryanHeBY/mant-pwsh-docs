@@ -30,6 +30,16 @@ Get-Member [[-Name] <string[]>] [-InputObject <psobject>] [-MemberType <PSMember
 pipeline or supplied through `-InputObject`. Use it to learn the object model
 before selecting properties, calling methods, or writing a formatting rule.
 
+## Important parameters
+
+<!-- mant:entries role=option case=insensitive -->
+- `-InputObject OBJECT`: Inspect the supplied value as one object instead of enumerating it through the pipeline.
+- `-Name NAME`: Select member names; wildcard patterns are accepted.
+- `-MemberType TYPE`: Restrict results to member categories such as properties, methods, events, or extended members.
+- `-Static`: Inspect static members on the supplied .NET type rather than instance members.
+- `-Force`: Include intrinsic, adapted, and otherwise hidden members.
+- `-View VIEW`: Select the adapted, extended, or base member view when diagnosing PowerShell's extended type system.
+
 ## Inspect pipeline objects
 
 Pipe a command's unformatted output into `Get-Member`. The result lists the
@@ -105,6 +115,24 @@ Get-Process |
     Get-Member -MemberType Property |
     Select-Object -ExpandProperty Name
 ```
+
+## Common mistakes
+
+### Inspecting formatted output
+
+`Format-Table`, `Format-List`, and `Out-String` replace domain objects with
+formatting or text data. Put `Get-Member` before formatting.
+
+### Confusing a collection with its elements
+
+Pipeline input enumerates a collection, while `-InputObject $collection`
+inspects the collection itself. Choose the form that matches the type whose
+members you need.
+
+### Treating every display column as a property
+
+Formatting definitions can calculate labels that are not real source
+properties. Verify the member and its type before using it in automation.
 
 ## Platform and version differences
 

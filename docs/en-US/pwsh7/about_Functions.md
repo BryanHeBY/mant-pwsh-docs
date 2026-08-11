@@ -139,6 +139,12 @@ and call them with a module-qualified name when command precedence matters.
 Do not define short aliases in a shared module unless the alias is explicitly
 part of its supported interface.
 
+## Version and platform differences
+
+This page follows PowerShell 7.6 on Windows, macOS, and Linux. Function syntax
+is largely portable, but commands called by a function, parameter types,
+providers, and modules can be platform- or version-specific.
+
 ## Related documents
 
 - [about_Pipelines](about_Pipelines.md)

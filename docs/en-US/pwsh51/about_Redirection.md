@@ -105,6 +105,12 @@ if ($LASTEXITCODE -ne 0) {
 }
 ```
 
+## Version and availability
+
+This page targets Windows PowerShell 5.1. Its text-based native redirection and
+default encodings differ from newer PowerShell releases; do not assume that a
+redirected binary stream is preserved byte for byte.
+
 ## Related documents
 
 - [about_Pipelines](about_Pipelines.md)

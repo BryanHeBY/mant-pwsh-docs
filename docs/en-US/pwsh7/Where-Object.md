@@ -30,6 +30,21 @@ Where-Object [-FilterScript] <scriptblock>
 Use it to filter objects before sorting, selecting properties, exporting, or
 performing an action.
 
+## Important parameters
+
+<!-- mant:entries role=option case=insensitive -->
+- `-FilterScript SCRIPTBLOCK`: Evaluate a predicate for every pipeline object; `$_` and `$PSItem` refer to the current object.
+- `-Property NAME`: Select the input property used by the comparison parameter set.
+- `-Value VALUE`: Supply the comparison value when the chosen operator requires one.
+- `-EQ`, `-IEQ`, `-CEQ`: Test equality using default, explicitly case-insensitive, or case-sensitive comparison.
+- `-NE`, `-INE`, `-CNE`: Test inequality with the corresponding case policy.
+- `-GT`, `-GE`, `-LT`, `-LE`: Perform ordered greater-than or less-than comparisons.
+- `-Like`, `-NotLike`: Match or reject wildcard patterns.
+- `-Match`, `-NotMatch`: Match or reject regular expressions.
+- `-Contains`, `-NotContains`: Test whether the property collection contains a value.
+- `-In`, `-NotIn`: Test whether the property value occurs in a supplied collection.
+- `-Is`, `-IsNot`: Test the runtime type of the property value.
+
 ## Property comparison syntax
 
 The concise form names a property, a comparison operator, and a value. It is
@@ -100,6 +115,24 @@ Get-Content -Raw ./items.json |
     ConvertFrom-Json |
     Where-Object Enabled
 ```
+
+## Common mistakes
+
+### Filtering on a formatted column
+
+A display label is not necessarily an object property. Place `Get-Member`
+before formatting and use the actual property name.
+
+### Putting side effects in a predicate
+
+A filter should decide whether an object passes. Move writes, deletion, or
+state changes to an explicit later stage so retries and failures remain clear.
+
+### Retrieving everything before filtering
+
+When a provider, remote command, or API exposes a server-side filter, prefer
+that parameter to reduce work and transfer; use `Where-Object` for conditions
+that cannot be expressed at the source.
 
 ## Platform and version differences
 

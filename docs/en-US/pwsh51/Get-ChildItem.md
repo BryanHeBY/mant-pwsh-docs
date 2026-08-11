@@ -30,6 +30,22 @@ Get-ChildItem [[-Path] <string[]>] [[-Filter] <string>] [-File] [-Directory]
 PowerShell provider. Common aliases include `gci`, `dir`, and `ls`; use the
 full cmdlet name in automation to avoid command-name ambiguity.
 
+## Important parameters
+
+<!-- mant:entries role=option case=insensitive -->
+- `-Path PATH`: Enumerate provider paths and expand wildcard characters.
+- `-LiteralPath PATH`: Enumerate exact provider paths without wildcard expansion.
+- `-Filter FILTER`: Ask the provider to filter near the source; syntax and support depend on the provider.
+- `-Include PATTERN`: Include matching child names after path/provider selection.
+- `-Exclude PATTERN`: Exclude matching child names after path/provider selection.
+- `-Recurse`: Descend through child containers.
+- `-Depth COUNT`: Bound recursive descent to the requested number of levels.
+- `-File`: Return filesystem files only; this is a FileSystem-provider dynamic parameter.
+- `-Directory`: Return filesystem directories only; this is a FileSystem-provider dynamic parameter.
+- `-Attributes EXPRESSION`: Select filesystem items using an attribute expression.
+- `-Force`: Include hidden or otherwise normally omitted items where supported; it does not bypass ACLs.
+- `-Name`: Return relative name strings instead of provider item objects.
+
 ## Paths and providers
 
 `-Path` accepts provider paths and wildcard patterns. Use `-LiteralPath` when
@@ -85,6 +101,23 @@ Review a staging tree before an independently approved destructive action:
 Get-ChildItem -LiteralPath C:\staging -File -Recurse |
     Select-Object FullName, Length
 ```
+
+## Common mistakes
+
+### Using `-Path` for literal wildcard characters
+
+Use `-LiteralPath` when filenames containing `[` or `*` are data rather than
+patterns.
+
+### Assuming filesystem switches work on every provider
+
+Dynamic parameters such as `-File`, `-Directory`, and `-Attributes` are not a
+contract for Registry, Certificate, Environment, or third-party providers.
+
+### Starting an unbounded recursive scan
+
+Anchor an exact root and use source filtering and `-Depth`. Junctions, shares,
+permissions, and profile trees can make a seemingly small traversal expensive.
 
 ## Windows-specific behavior
 

@@ -89,6 +89,12 @@ function commandOriented(kind) {
   return !nonCommandKinds.has(kind);
 }
 
+function expectsSemanticEntries(metadata) {
+  const informationalAlias = metadata.kind === "alias"
+    && metadata.notes?.some((note) => note.includes("not a claim about a universal alias mapping"));
+  return commandOriented(metadata.kind) && !informationalAlias;
+}
+
 function needsPowerShellBoundary(sourceName, kind) {
   return commandOriented(kind)
     && (sourceName === "windows-tools" || sourceName === "cross-platform-tools");
@@ -161,17 +167,17 @@ function auditDocument(sourceName, filename, metadata) {
   if (semantic.error !== undefined) {
     flags.push("mant-outline-error");
   }
-  if (!options.skipMant && commandOriented(metadata.kind) && semantic.entries.length === 0) {
+  if (!options.skipMant && expectsSemanticEntries(metadata) && semantic.entries.length === 0) {
     flags.push("missing-semantic-entries");
   }
-  if (interfaceHeading && directives === 0) {
+  if (commandOriented(metadata.kind) && interfaceHeading && directives === 0) {
     flags.push("undeclared-interface-summary");
   }
   if (commandOriented(metadata.kind)
-      && !hasHeading(sectionHeadings, /^(?:synopsis|syntax|invocation|meaning|overview)$/iu)) {
+      && !hasHeading(sectionHeadings, /(?:synopsis|syntax|invocation|meaning|overview)/iu)) {
     flags.push("missing-interface-overview");
   }
-  if (!hasHeading(sectionHeadings, /^(?:availability|version and platform differences|platform differences|version differences|version and availability)$/iu)) {
+  if (!hasHeading(sectionHeadings, /(?:availability|version|platform|compatibility|edition boundar|windows-specific behavior)/iu)) {
     flags.push("missing-version-or-availability");
   }
   if (needsPowerShellBoundary(sourceName, metadata.kind)

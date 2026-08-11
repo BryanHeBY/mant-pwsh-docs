@@ -49,6 +49,7 @@ assume the result is identical on Windows, Linux, and macOS.
 
 ## Common parameters
 
+<!-- mant:entries role=option case=insensitive -->
 - `-Name NAME`: Find commands by name, including wildcard patterns.
 - `-All`: Return all definitions for matching names instead of only the precedence winner.
 - `-CommandType TYPE`: Restrict results to aliases, functions, cmdlets, external scripts, applications, or other command types.
@@ -118,6 +119,19 @@ applications that do not exist on Unix-like systems; Unix-like systems can
 have native utilities with names that collide with Windows PowerShell aliases.
 Use `Get-Command -All` during compatibility testing rather than inferring from
 one machine.
+
+## Common mistakes
+
+### Omitting `-All` while diagnosing a collision
+
+The default result can hide lower-precedence aliases, functions, scripts, or
+applications. Use `-All` and inspect `CommandType`, `Source`, and `Definition`.
+
+### Treating discovery as a portability guarantee
+
+A command found through module auto-discovery or the current `PATH` may be
+absent or resolve differently on another host. Validate type, source, version,
+and prerequisites at the automation boundary.
 
 ## Related documents
 

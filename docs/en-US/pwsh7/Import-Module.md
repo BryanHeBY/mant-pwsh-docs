@@ -30,6 +30,26 @@ Import-Module [-Name] <string[]> [-Force] [-Global] [-NoClobber] [-Prefix <strin
 module can contain functions, cmdlets, aliases, variables, providers, types,
 and formatting data. Import only trusted modules from known sources.
 
+## Important parameters
+
+<!-- mant:entries role=option case=insensitive -->
+- `-Name NAME`: Import a module by installed name, manifest/module path, or another supported name form.
+- `-FullyQualifiedName SPECIFICATION`: Import a module selected by a module specification such as name plus exact version.
+- `-MinimumVersion VERSION`: Require at least the requested installed module version.
+- `-MaximumVersion VERSION`: Limit import to a version no newer than the requested value.
+- `-RequiredVersion VERSION`: Require one exact installed module version.
+- `-Function NAME`, `-Cmdlet NAME`, `-Variable NAME`, `-Alias NAME`: Restrict which exported members are imported; wildcard names are supported.
+- `-NoClobber`: Do not import commands whose names already exist in the target scope.
+- `-Prefix PREFIX`: Add a prefix to imported command nouns for this session.
+- `-Force`: Remove and reimport an already loaded module; it does not repair incompatibility or unload every external dependency.
+- `-PassThru`: Return the imported module object instead of producing no ordinary output.
+- `-Scope SCOPE`: Import into the local or global scope allowed by the current invocation context.
+- `-Global`: Import commands into global scope; prefer narrower scope unless global exposure is required.
+- `-SkipEditionCheck`: On Windows, bypass the compatible-editions check for a module under the Windows PowerShell module path; this does not make incompatible code safe.
+- `-UseWindowsPowerShell`: On Windows, load a compatible Windows PowerShell module through the compatibility session.
+- `-PSSession SESSION`: Import commands from a module available in a PowerShell remoting session.
+- `-CimSession SESSION`: Import a CIM/CDXML module through the supplied CIM session.
+
 ## Module discovery
 
 Import by module name when the module is installed in a location on
@@ -90,6 +110,25 @@ if ($null -eq (Get-Command Get-ContosoReport -ErrorAction SilentlyContinue)) {
     throw 'Contoso.Tools did not export Get-ContosoReport.'
 }
 ```
+
+## Common mistakes
+
+### Treating import as installation
+
+`Import-Module` loads an already discoverable artifact; it does not install a
+missing module. Establish a separate, reviewed acquisition and version-lock
+workflow.
+
+### Using `-Force` as a compatibility switch
+
+`-Force` reloads module state. It does not make a Windows PowerShell binary
+module compatible with PowerShell 7 or remove every loaded assembly and native
+dependency.
+
+### Ignoring command collisions
+
+An import can change which command wins. Use `-NoClobber`, a prefix, or a
+module-qualified command, then verify with `Get-Command NAME -All`.
 
 ## Platform and version differences
 

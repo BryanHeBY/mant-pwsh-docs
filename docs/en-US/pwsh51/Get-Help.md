@@ -30,6 +30,20 @@ Get-Help [[-Name] <string>] [-Full] [-Detailed] [-Examples] [-Online]
 content can come from a module, local help files, or fallback information when
 full help has not been downloaded.
 
+## Important parameters
+
+<!-- mant:entries role=option case=insensitive -->
+- `-Name NAME`: Select a command or conceptual topic; wildcard patterns are accepted.
+- `-Full`: Show all available parameter, input, output, note, and example information.
+- `-Detailed`: Show descriptions and examples without every full-view field.
+- `-Examples`: Show the examples section.
+- `-Parameter NAME`: Show help for matching parameter names.
+- `-Online`: Open the configured online help URI in an interactive browser.
+- `-ShowWindow`: Display help in a searchable Windows help window.
+- `-Category CATEGORY`: Restrict results to categories such as cmdlets, functions, aliases, or provider help.
+- `-Component COMPONENT`: Filter help by component metadata.
+- `-Role ROLE`, `-Functionality FUNCTIONALITY`: Filter help when topics supply role or functionality metadata.
+
 ## Help views
 
 The default view gives a summary and syntax. `-Detailed` adds parameter
@@ -70,6 +84,31 @@ Get-Help Get-Service -Full
 Installed help can be older than online documentation. Record the Windows
 release, Windows PowerShell version, and module version when help behavior
 affects a support or operational decision.
+
+## Common mistakes
+
+### Treating fallback help as the complete reference
+
+When detailed help files are absent, syntax fallback can still appear. Confirm
+the command with `Get-Command`, then obtain version-appropriate help through a
+reviewed update or online workflow.
+
+### Assuming the online page matches the inbox module
+
+Windows PowerShell 5.1 inbox modules are serviced with Windows and may not
+match the latest default Learn view. Preserve the `view=powershell-5.1`
+selection and record the module/Windows build.
+
+### Opening help windows from unattended sessions
+
+`-Online` and `-ShowWindow` require an interactive desktop. Use terminal or
+metadata output for remoting, scheduled tasks, and services.
+
+## Version and availability
+
+This page targets Windows PowerShell 5.1. Installed help can be older than the
+operating system or module, and online links can lead to a newer documentation
+version; verify the version selector before adopting an example.
 
 ## Related documents
 

@@ -31,6 +31,15 @@ The alias exists in the tested PowerShell 7.6.3 Linux session and is documented
 for `Invoke-Item`. The resulting action still depends on the provider,
 operating system, desktop session, and file association.
 
+## Important parameters
+
+<!-- mant:entries role=option case=insensitive -->
+- `-Path PATH`: Invoke the provider's default action for one or more paths; wildcard characters are interpreted.
+- `-LiteralPath PATH`: Invoke one or more exact paths without wildcard expansion.
+- `-Filter FILTER`: Ask a supporting provider to filter items before PowerShell receives them.
+- `-Include PATTERN`: Include only matching paths; its effect depends on path contents and provider expansion.
+- `-Exclude PATTERN`: Omit matching paths; it does not make an otherwise untrusted invocation safe.
+
 ## Common mistakes
 
 ### Treating `ii` as an Explorer-specific command

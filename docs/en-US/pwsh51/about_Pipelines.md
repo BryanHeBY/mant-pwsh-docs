@@ -108,6 +108,12 @@ A line can naturally continue after a pipe, comma, opening delimiter, or
 operator. Prefer these forms to a trailing backtick, whose meaning changes if
 whitespace follows it.
 
+## Version and availability
+
+This page targets Windows PowerShell 5.1. Object-pipeline behavior is part of
+the language, while installed commands, native encodings, and remoting object
+types depend on the Windows host.
+
 ## Related documents
 
 - [about_Redirection](about_Redirection.md)

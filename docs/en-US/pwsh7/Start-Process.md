@@ -54,6 +54,7 @@ for the exact behavior of the current PowerShell build.
 
 ## Important parameters
 
+<!-- mant:entries role=option case=insensitive -->
 - `-FilePath PATH`: Specify an executable, script, or a file whose registered
   handler should open it.
 - `-ArgumentList ARGUMENTS`: Supply the target command line. PowerShell joins an

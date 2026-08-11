@@ -26,6 +26,12 @@ executable. If it works on a Windows PowerShell machine, a profile, module,
 script, endpoint, or executable defined it; its meaning is not a portable
 Windows PowerShell contract.
 
+## Availability
+
+There is no built-in or portable `irx` interface to index. This page
+intentionally has no semantic command or option entries: resolve the actual
+definition, then use the documentation owned by its module or profile.
+
 ## Resolve rather than guess
 
 Inspect all matching definitions before using it:
@@ -55,6 +61,18 @@ if ($null -ne $irx) {
 
 Inspect profile files, imported modules, and `Get-Command irx -All` to find its
 origin. Do not execute an unknown definition merely to learn what it does.
+
+## Common mistakes
+
+### Guessing a meaning from nearby aliases
+
+`irm`, `iwr`, and `iex` have documented built-in targets; `irx` does not.
+Similar spelling is not evidence of a command contract.
+
+### Making the dependency ambient
+
+Avoid fixing a script by defining an undocumented profile alias. Use the full
+command name and declare its owning module or deployment prerequisite.
 
 ## Related documents
 

@@ -26,6 +26,12 @@ The PowerShell 7.6 Linux runtime used for this source did not resolve it. If it
 works in a session, it was supplied by a profile, module, script, endpoint, or
 executable on that environment; its meaning is not portable.
 
+## Availability
+
+There is no portable `irx` interface to index. This page intentionally has no
+semantic command or option entries: resolve the session-specific definition
+before consulting its owning module or profile documentation.
+
 ## Resolve rather than guess
 
 Inspect every matching definition before using `irx` in an interactive command
@@ -57,6 +63,18 @@ if ($null -ne $irx) {
 When diagnosing its origin, inspect profile files, imported modules, and
 `Get-Command irx -All`. Do not execute unknown alias definitions merely to
 discover their behavior.
+
+## Common mistakes
+
+### Guessing a meaning from nearby aliases
+
+`irm`, `iwr`, and `iex` are built-in aliases with documented targets; `irx`
+is not. Similar spelling does not establish a command contract.
+
+### Adding a placeholder alias to shared scripts
+
+Defining `irx` locally can hide the dependency rather than fix it. Use the
+full owned command name and declare the module or profile that provides it.
 
 ## Related documents
 

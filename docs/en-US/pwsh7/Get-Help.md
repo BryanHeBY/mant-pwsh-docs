@@ -30,6 +30,20 @@ Get-Help [[-Name] <string>] [-Full] [-Detailed] [-Examples] [-Online]
 content comes from the command's module, local help files, or fallback
 information when full help has not been installed.
 
+## Important parameters
+
+<!-- mant:entries role=option case=insensitive -->
+- `-Name NAME`: Select a command or conceptual help topic; wildcard patterns are accepted.
+- `-Full`: Show every available section, including detailed parameters, inputs, outputs, notes, and examples.
+- `-Detailed`: Show descriptions and examples without every field from the full view.
+- `-Examples`: Show only the examples section.
+- `-Parameter NAME`: Show help for matching parameter names; wildcard patterns are accepted.
+- `-Online`: Open the command's configured online help URI in an interactive browser.
+- `-ShowWindow`: Display help in a searchable window on supported Windows hosts.
+- `-Category CATEGORY`: Restrict results to command or help categories such as cmdlets, functions, aliases, or provider help.
+- `-Component COMPONENT`: Filter help by the component metadata supplied by help authors.
+- `-Role ROLE`, `-Functionality FUNCTIONALITY`: Filter help using role or functionality metadata when a help topic supplies it.
+
 ## Help views
 
 The default view gives a short description and syntax. `-Detailed` adds
@@ -93,6 +107,25 @@ Find the required parameter details for a command:
 ```powershell
 Get-Help Invoke-Command -Parameter ComputerName
 ```
+
+## Common mistakes
+
+### Treating missing local prose as a missing command
+
+Fallback help can show syntax while detailed help files are absent. Confirm
+the command with `Get-Command`, then use `Update-Help` or the version-matched
+online reference instead of concluding that the command is unavailable.
+
+### Assuming installed and online help describe the same version
+
+Module help can lag the installed binary, while `-Online` can open a newer
+documentation version. Record PowerShell and module versions when exact
+parameter behavior matters.
+
+### Using GUI help in unattended automation
+
+`-Online` and `-ShowWindow` require an interactive environment. Use terminal
+or generated metadata views for CI, remoting, and service sessions.
 
 ## Platform and version differences
 

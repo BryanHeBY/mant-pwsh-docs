@@ -86,6 +86,12 @@ if ($LASTEXITCODE -ne 0) {
 
 `>` is redirection in command context, but it can be confused with comparison syntax in other language contexts. Prefer the named comparison operators such as `-gt`, `-lt`, and `-eq` in PowerShell expressions. Keep redirection next to the command whose streams it controls.
 
+## Version and platform differences
+
+This page follows PowerShell 7.6. Redirection of native standard output changed
+across PowerShell 7 releases, and filesystem encoding expectations vary among
+native tools; label scripts that depend on byte-preserving behavior.
+
 ## Related documents
 
 - [about_Pipelines](about_Pipelines.md)

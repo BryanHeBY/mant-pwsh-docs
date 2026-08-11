@@ -30,6 +30,17 @@ Sort-Object [[-Property] <object[]>] [-Descending] [-Unique]
 It buffers input to determine the order, so filter at the source and bound the
 result before sorting large Windows directory trees or service inventories.
 
+## Important parameters
+
+<!-- mant:entries role=option case=insensitive -->
+- `-Property PROPERTY`: Sort by one or more named or calculated keys.
+- `-Ascending`: Sort in ascending order; this is the default.
+- `-Descending`: Reverse the selected sort direction.
+- `-Unique`: Return one object for each distinct comparison key after sorting.
+- `-CaseSensitive`: Use case-sensitive string comparison.
+- `-Culture CULTURE`: Use the named culture for string comparison.
+- `-InputObject OBJECT`: Treat the supplied value as one object; pipeline input is the normal form for collections.
+
 ## Properties and calculated keys
 
 Specify one or more properties. The first is the primary key; later properties
@@ -77,6 +88,30 @@ Get-ChildItem -LiteralPath C:\logs -File -Recurse |
 
 Input objects and display names depend on providers, modules, Windows version,
 and locale. Record culture assumptions if sorting affects a saved result.
+
+## Common mistakes
+
+### Copying PowerShell 7-only switches
+
+Windows PowerShell 5.1 has no `-Stable`, `-Top`, or `-Bottom`. Sort and then
+use `Select-Object -First` when that behavior is adequate, without claiming
+that equal-key order is stable.
+
+### Sorting an unbounded input set
+
+Sorting buffers input. Filter and bound expensive filesystem, remote, or API
+queries as near to the source as possible.
+
+### Assuming culture-independent uniqueness
+
+`-Unique` follows the chosen comparison keys and string rules. Normalize keys
+and specify culture/case requirements when output must be reproducible.
+
+## Version and availability
+
+This page targets Windows PowerShell 5.1. Do not use PowerShell 7 parameters
+such as `-Stable`, `-Top`, or `-Bottom` in a 5.1 script; implement and test the
+required ordering explicitly.
 
 ## Related documents
 

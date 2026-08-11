@@ -30,6 +30,16 @@ Get-Member [[-Name] <string[]>] [-InputObject <psobject>]
 pipeline or given to `-InputObject`. Use it to understand the object model
 before selecting properties, calling methods, or constructing formatting rules.
 
+## Important parameters
+
+<!-- mant:entries role=option case=insensitive -->
+- `-InputObject OBJECT`: Inspect the supplied value as one object instead of enumerating it through the pipeline.
+- `-Name NAME`: Select member names; wildcard patterns are accepted.
+- `-MemberType TYPE`: Restrict results to properties, methods, events, or other member categories.
+- `-Static`: Inspect static members on a supplied .NET Framework type.
+- `-Force`: Include intrinsic, adapted, and otherwise hidden members.
+- `-View VIEW`: Select the adapted, extended, or base member view.
+
 ## Inspect pipeline objects
 
 Pipe unformatted output to `Get-Member`. The result lists type names,
@@ -78,6 +88,29 @@ type behavior, not as a contract to depend on internal implementation details.
 Object types and members vary by Windows version, installed modules, provider,
 .NET Framework behavior, and architecture. Inspect objects on the target host
 before shipping property or method access in a shared script.
+
+## Common mistakes
+
+### Inspecting after formatting
+
+Formatting cmdlets replace the original domain objects with presentation data.
+Pipe to `Get-Member` before `Format-Table`, `Out-String`, or text redirection.
+
+### Confusing the collection and element types
+
+Pipeline input enumerates a collection, whereas `-InputObject $items` inspects
+the collection object. Choose the form deliberately.
+
+### Depending on a display-only column
+
+Formatting definitions can show calculated labels that are not real object
+properties. Verify the member before using it in a script.
+
+## Version and availability
+
+This page describes Windows PowerShell 5.1. Members depend on the runtime type,
+loaded type data, remoting serialization, and installed .NET Framework rather
+than only on the spelling of the originating command.
 
 ## Related documents
 

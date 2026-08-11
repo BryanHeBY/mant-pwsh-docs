@@ -109,6 +109,12 @@ In argument mode, `~` can expand to the current user's home directory at the
 start of an unquoted path-like argument. Do not use it when a literal tilde is
 required; quote the value or use `-LiteralPath` as appropriate.
 
+## Version and platform differences
+
+This page follows the PowerShell 7.6 parser. Native argument passing and the
+meaning of platform paths can vary by operating system and by PowerShell 7
+version; test the actual native executable boundary.
+
 ## Related documents
 
 - [about_Quoting_Rules](about_Quoting_Rules.md)

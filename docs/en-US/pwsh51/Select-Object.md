@@ -30,6 +30,20 @@ Select-Object [[-Property] <object[]>] [-First <int>] [-Last <int>]
 property, or limits pipeline output. Shape data before display, export, or a
 downstream command that needs a smaller contract.
 
+## Important parameters
+
+<!-- mant:entries role=option case=insensitive -->
+- `-Property PROPERTY`: Select named, wildcard, or calculated properties in output order.
+- `-ExcludeProperty PROPERTY`: Remove matching properties from a wildcard property selection.
+- `-ExpandProperty PROPERTY`: Emit one property's value instead of a selected wrapper object.
+- `-First COUNT`: Return the first requested number of objects.
+- `-Last COUNT`: Return the last requested number of objects.
+- `-Skip COUNT`: Omit the first requested number of objects.
+- `-Index INDEX`: Return objects at zero-based input indexes.
+- `-Unique`: Remove duplicate selected values according to the cmdlet's comparison behavior.
+- `-Wait`: Continue consuming upstream input after the selected result is known so upstream side effects can complete.
+- `-InputObject OBJECT`: Treat the supplied value as one object; pipeline input is the normal form for collections.
+
 ## Properties and calculations
 
 Specify property names in order. The result is a selected object, not the
@@ -81,6 +95,23 @@ Get-Service |
 
 Input property types depend on the source cmdlet, module, provider, Windows
 version, and architecture. Verify calculated properties on target systems.
+
+## Common mistakes
+
+### Expanding away needed context
+
+`-ExpandProperty` emits only the selected value. Keep a selected object when a
+later stage still needs sibling properties.
+
+### Using `-First` before defining order
+
+Filter and sort before selecting a bounded subset when “first” has operational
+meaning.
+
+### Copying newer selection parameters
+
+PowerShell 7 documentation can include parameters such as `-SkipLast` or
+`-SkipIndex` that Windows PowerShell 5.1 does not provide. Check 5.1 syntax.
 
 ## Related documents
 

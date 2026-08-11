@@ -30,6 +30,17 @@ ForEach-Object [-MemberName] <string> [-ArgumentList <object[]>]
 streams input, unlike the `foreach` language statement, which iterates an
 in-memory collection.
 
+## Important parameters
+
+<!-- mant:entries role=option case=insensitive -->
+- `-Process SCRIPTBLOCK`: Run one or more script blocks for every pipeline object.
+- `-Begin SCRIPTBLOCK`: Run initialization once before pipeline input is processed.
+- `-End SCRIPTBLOCK`: Run finalization once after all pipeline input is processed.
+- `-RemainingScripts SCRIPTBLOCKS`: Supply additional per-item script blocks explicitly instead of relying on positional block mapping.
+- `-MemberName NAME`: Read an instance property or call an instance method for every input object.
+- `-ArgumentList ARGUMENTS`: Pass arguments to the method selected by `-MemberName`.
+- `-InputObject OBJECT`: Treat the supplied value as one input object; pipe a collection to process its members separately.
+
 ## Process blocks
 
 The usual form supplies a script block. `$_` and `$PSItem` name the current
@@ -66,6 +77,30 @@ the pipeline. Keep objects in the pipeline until final display or serialization.
 Windows PowerShell 5.1 has no `ForEach-Object -Parallel`. Use jobs, remoting,
 or a deliberate concurrency design only when ordered sequential processing has
 first been verified.
+
+## Common mistakes
+
+### Passing a collection through `-InputObject`
+
+`-InputObject $items` handles the collection as one object. Pipe `$items` when
+the operation must run once per element.
+
+### Copying PowerShell 7 parallel syntax
+
+Windows PowerShell 5.1 has no `-Parallel`, `-ThrottleLimit`, or `-AsJob`
+parameter set for this cmdlet. Choose a deliberate jobs/remoting design and
+document ordering, serialization, throttling, and failure handling.
+
+### Confusing the cmdlet with the `foreach` statement
+
+The cmdlet receives streaming pipeline input; the language statement iterates
+a collection in the current scope and supports language control flow.
+
+## Version and availability
+
+This page targets Windows PowerShell 5.1. It does not provide PowerShell 7's
+`-Parallel`, `-ThrottleLimit`, `-TimeoutSeconds`, `-AsJob`, or
+`-UseNewRunspace` parameter set.
 
 ## Related documents
 

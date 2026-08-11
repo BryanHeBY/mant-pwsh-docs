@@ -96,6 +96,12 @@ portable quoting mechanism or a substitute for a script-file interface.
 It does not define a universal escape rule for native programs. Each native
 CLI owns its own option and argument conventions.
 
+## Version and availability
+
+This page describes the Windows PowerShell 5.1 parser on Windows. Do not copy
+PowerShell 7 native-argument behavior or newer parsing features into a 5.1
+script without testing the exact host.
+
 ## Related documents
 
 - [about_Quoting_Rules](about_Quoting_Rules.md)

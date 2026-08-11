@@ -31,6 +31,24 @@ PowerShell session. A module can contain functions, cmdlets, aliases,
 variables, providers, types, and formatting data. Import only trusted modules
 from known sources.
 
+## Important parameters
+
+<!-- mant:entries role=option case=insensitive -->
+- `-Name NAME`: Import an installed module name, manifest/module path, or another supported name form.
+- `-FullyQualifiedName SPECIFICATION`: Import a module selected by a module specification.
+- `-MinimumVersion VERSION`: Require at least the requested installed module version.
+- `-MaximumVersion VERSION`: Limit import to a version no newer than the requested value.
+- `-RequiredVersion VERSION`: Require one exact installed module version.
+- `-Function NAME`, `-Cmdlet NAME`, `-Variable NAME`, `-Alias NAME`: Restrict the exported members imported into the session.
+- `-NoClobber`: Do not import commands whose names already exist.
+- `-Prefix PREFIX`: Add a prefix to imported command nouns for this session.
+- `-Force`: Remove and reimport an already loaded module; it does not repair binary incompatibility.
+- `-PassThru`: Return the imported module object.
+- `-Scope SCOPE`: Select local or global import scope where supported by the invocation context.
+- `-Global`: Import commands into global scope.
+- `-PSSession SESSION`: Import commands from a module available through PowerShell remoting.
+- `-CimSession SESSION`: Import a CIM/CDXML module through the supplied CIM session.
+
 ## Discovery and explicit imports
 
 Import by name when a module is installed below `$env:PSModulePath`. Import by
@@ -79,6 +97,23 @@ if ($null -eq (Get-Command Get-ContosoReport -ErrorAction SilentlyContinue)) {
 PowerShell 7 modules are not automatically compatible with 5.1, and 5.1
 modules can require the PowerShell 7 Windows PowerShell compatibility layer.
 Test the intended edition rather than inferring from module name alone.
+
+## Common mistakes
+
+### Treating import as installation
+
+The cmdlet loads an already available module. Use a separate, reviewed module
+installation and version-lock process.
+
+### Assuming `-Force` solves architecture or .NET incompatibility
+
+Reloading cannot make an incompatible assembly, native dependency, or module
+edition requirement work in Windows PowerShell 5.1.
+
+### Letting imported commands silently win
+
+Use `-NoClobber`, a prefix, or module-qualified invocation and verify command
+resolution with `Get-Command NAME -All`.
 
 ## Related documents
 

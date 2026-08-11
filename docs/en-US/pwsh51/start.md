@@ -35,6 +35,24 @@ Get-Alias start
 Profiles and functions can shadow the built-in alias. Use the full cmdlet name
 in reviewed scripts.
 
+## Important parameters
+
+<!-- mant:entries role=option case=insensitive -->
+- `-FilePath PATH`: Select the executable, document, or command to start.
+- `-ArgumentList ARGUMENTS`: Supply process arguments; Windows PowerShell joins array elements into one string for the target parser.
+- `-WorkingDirectory PATH`: Set the new process's initial working directory.
+- `-Wait`: Wait for the started process and its descendants to exit before returning.
+- `-PassThru`: Return a process object instead of producing no output.
+- `-NoNewWindow`: Reuse the current console; it cannot be combined with `-WindowStyle`.
+- `-RedirectStandardInput PATH`, `-RedirectStandardOutput PATH`, `-RedirectStandardError PATH`: Connect standard streams to files.
+- `-Credential CREDENTIAL`: Start with another Windows credential where the operating system permits it.
+- `-Verb VERB`: Request a ShellExecute verb such as `RunAs`; it belongs to the shell-execute parameter set.
+
+## Version and availability
+
+The alias and cmdlet are built into Windows PowerShell 5.1 on Windows. Do not
+infer PowerShell 7 cross-platform behavior from this interface.
+
 ## Common mistakes
 
 ### Supplying cmd's empty title argument

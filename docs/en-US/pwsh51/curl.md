@@ -26,6 +26,13 @@ In a default Windows PowerShell 5.1 session, `curl` is an alias for
 curl -All` to inspect the actual session rather than assuming the name's
 meaning from a guide or another shell.
 
+## Command identities
+
+<!-- mant:entries role=command case=insensitive -->
+- `curl`: In a default Windows PowerShell 5.1 session, resolve the alias to `Invoke-WebRequest`.
+- `curl.exe`: Request the native executable explicitly, subject to Windows application search order.
+- `Invoke-WebRequest`, `iwr`: Request the Windows PowerShell cmdlet or its built-in alias explicitly.
+
 ## Alias versus executable
 
 `Invoke-WebRequest` accepts PowerShell cmdlet parameters such as `-Uri` and
@@ -51,6 +58,24 @@ if ($null -eq $command) {
 }
 & $command.Source --version
 ```
+
+## Version and availability
+
+The `curl` alias belongs to Windows PowerShell 5.1. Native `curl.exe` became a
+Windows inbox component only in later Windows 10-era releases, so older or
+serviced hosts can differ in presence and version.
+
+## Common mistakes
+
+### Passing native curl options to the alias
+
+Options such as `-L`, `-H`, and `--fail` are native curl syntax. A bare `curl`
+in Windows PowerShell 5.1 normally binds `Invoke-WebRequest` parameters.
+
+### Assuming `curl.exe` exists because the alias exists
+
+The alias does not prove that the executable is installed. Resolve
+`curl.exe` as an application and validate its version when it is a dependency.
 
 ## Related documents
 

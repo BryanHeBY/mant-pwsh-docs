@@ -47,6 +47,46 @@ target Windows host.
 
 For structured API responses, `Invoke-RestMethod` is often more convenient.
 
+## Important parameters
+
+<!-- mant:entries role=option case=insensitive -->
+- `-Uri URI`: Set the required request URI; validate constructed or redirected destinations before sending credentials.
+- `-Method METHOD`: Select a supported HTTP method.
+- `-Headers HEADERS`: Add request headers from a dictionary.
+- `-Body BODY`, `-ContentType TYPE`: Supply request content and describe its media type.
+- `-Credential CREDENTIAL`, `-UseDefaultCredentials`: Select explicit or current Windows credentials; do not combine them.
+- `-WebSession SESSION`, `-SessionVariable NAME`: Reuse or capture cookies and session state; do not combine the parameters.
+- `-OutFile PATH`: Write the response body to a file instead of returning a response object.
+- `-UseBasicParsing`: Avoid the Internet Explorer DOM parser and return reduced parsing behavior.
+- `-TimeoutSec SECONDS`: Bound the request timeout; DNS resolution can still exceed very small values.
+- `-MaximumRedirection COUNT`: Limit automatic redirects.
+- `-Proxy URI`, `-ProxyCredential CREDENTIAL`, `-ProxyUseDefaultCredentials`: Configure the proxy and its authentication.
+- `-Certificate CERTIFICATE`, `-CertificateThumbprint THUMBPRINT`: Select a client certificate for mutual TLS.
+
+## Version and compatibility
+
+This page is limited to Windows PowerShell 5.1. Its default HTML parser and
+parameter surface differ from PowerShell 7; `-UseBasicParsing` is especially
+important on hosts without a usable Internet Explorer engine.
+
+## Common mistakes
+
+### Depending on the Internet Explorer parser
+
+Default parsing can fail when Internet Explorer components are unavailable or
+not initialized. Use `-UseBasicParsing` when its reduced response model is
+sufficient, and test on the target host.
+
+### Expecting converted API objects
+
+`Invoke-WebRequest` returns a web response representation. Use
+`Invoke-RestMethod` when supported structured content should be converted.
+
+### Treating a successful transfer as artifact verification
+
+Check the final destination, expected size, signature, or checksum before
+opening or executing a downloaded file.
+
 ## Related documents
 
 - [irm](irm.md)

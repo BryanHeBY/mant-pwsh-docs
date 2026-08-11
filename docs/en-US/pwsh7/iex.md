@@ -49,6 +49,11 @@ Invoke-Expression [-Command] <string> [<CommonParameters>]
 `iex` is an alias, so it has the same parameter binding behavior as
 `Invoke-Expression`.
 
+## Important parameter
+
+<!-- mant:entries role=option case=insensitive -->
+- `-Command COMMAND`: Evaluate one required string as PowerShell source in the current scope. The parameter is positional and accepts pipeline input by value.
+
 ## Pipeline input
 
 `-Command` accepts `System.String` values from the pipeline by value. Each

@@ -41,6 +41,7 @@ Invoke-Item -LiteralPath <string[]> [-Filter <string>]
 
 ## Important parameters
 
+<!-- mant:entries role=option case=insensitive -->
 - `-Path PATH`: Select provider paths and interpret wildcard characters.
 - `-LiteralPath PATH`: Use an exact path without wildcard interpretation.
 - `-Filter`, `-Include`, `-Exclude`: Limit selected items where the provider

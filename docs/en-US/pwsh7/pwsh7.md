@@ -65,6 +65,7 @@ script files are easier to review, quote, test, and log.
 
 ## Common invocation options
 
+<!-- mant:entries role=option case=insensitive -->
 - `-Command COMMAND`, `-c COMMAND`: Execute PowerShell source and then exit.
 - `-CommandWithArgs COMMAND`, `-cwa COMMAND`: Execute a command and expose the remaining launcher arguments through `$args`; this option is experimental in the 7.6 baseline.
 - `-File PATH`, `-f PATH`: Run a PowerShell script file.
@@ -293,6 +294,24 @@ operating system. `$PSVersionTable` is the authoritative runtime summary.
 This manual follows the supported PowerShell 7 LTS channel. Features added in
 later stable releases must be labeled with their minimum version. Do not infer
 Windows PowerShell 5.1 compatibility from this page.
+
+## Common mistakes
+
+### Confusing object output with display text
+
+Formatting is a host view, not the object contract. Inspect members and export
+a deliberate interchange format instead of parsing tables.
+
+### Reusing native-shell quoting rules unchanged
+
+PowerShell parses arguments before a native program receives them. Keep data
+as separate arguments, use the stop-parsing token only for its documented
+Windows cases, and test the actual target executable.
+
+### Treating non-terminating errors as process failure
+
+Set an intentional error and exit-status policy for automation; inspect
+`$LASTEXITCODE` separately after native commands.
 
 ## Examples
 

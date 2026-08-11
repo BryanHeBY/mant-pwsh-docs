@@ -25,6 +25,20 @@
 the provider's default action; `ii .` normally opens the current filesystem
 folder in Explorer.
 
+## Availability
+
+The alias is built into Windows PowerShell 5.1. The resulting action depends
+on the provider, desktop session, and Windows file association.
+
+## Important parameters
+
+<!-- mant:entries role=option case=insensitive -->
+- `-Path PATH`: Invoke the provider's default action for one or more paths; wildcard characters are interpreted.
+- `-LiteralPath PATH`: Invoke one or more exact paths without wildcard expansion.
+- `-Filter FILTER`: Ask a supporting provider to filter items before Windows PowerShell receives them.
+- `-Include PATTERN`: Include only matching paths; its effect depends on path contents and provider expansion.
+- `-Exclude PATTERN`: Omit matching paths; it does not make an otherwise untrusted invocation safe.
+
 ## Common mistakes
 
 ### Treating `ii` as an Explorer-only executable

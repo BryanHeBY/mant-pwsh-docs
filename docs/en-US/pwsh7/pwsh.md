@@ -53,6 +53,7 @@ must run on earlier PowerShell 7 releases.
 
 ## Common options
 
+<!-- mant:entries role=option case=insensitive -->
 - `-Command COMMAND`, `-c COMMAND`: Execute PowerShell source, then exit unless `-NoExit` is also present.
 - `-CommandWithArgs COMMAND`, `-cwa COMMAND`: Execute a command and make following launcher arguments available as `$args`; experimental in the 7.6 baseline.
 - `-File PATH`, `-f PATH`: Run a PowerShell script file with remaining arguments passed to that script.
@@ -108,6 +109,24 @@ Windows. `-ExecutionPolicy` affects the process environment only on Windows.
 
 Check `pwsh -Help` and `$PSVersionTable` on the target machine before relying
 on an option added in a later PowerShell 7 release.
+
+## Common mistakes
+
+### Combining `-Command` and `-File`
+
+They select different invocation modes and are not interchangeable. Choose
+one boundary and pass the remaining arguments according to that mode.
+
+### Assuming native failure becomes the process exit code
+
+Forward `$LASTEXITCODE` explicitly when a caller needs the exact native
+status. Non-terminating PowerShell errors also require an intentional failure
+contract.
+
+### Depending on profiles in automation
+
+Use `-NoProfile` and normally `-NonInteractive`; load required modules and
+configuration explicitly.
 
 ## Examples
 

@@ -64,6 +64,7 @@ script files are easier to review, quote, test, and log.
 
 ## Common invocation options
 
+<!-- mant:entries role=option case=insensitive -->
 - `-Command COMMAND`, `-c COMMAND`: Execute PowerShell source and then exit.
 - `-File PATH`, `-f PATH`: Run a Windows PowerShell script file.
 - `-NoProfile`, `-nop`: Do not load any Windows PowerShell profile scripts.
@@ -299,6 +300,23 @@ Available inbox modules and command versions depend on the Windows edition,
 Windows release, installed roles and features, and management products.
 Record those dependencies per document. Do not infer 5.1 behavior from a
 PowerShell 7 runtime test.
+
+## Common mistakes
+
+### Confusing formatted output with objects
+
+Pipeline commands receive objects, while the host renders selected properties.
+Do not parse the default table as an automation interface.
+
+### Ignoring process bitness and redirection
+
+The 32-bit and 64-bit hosts can see different registry and filesystem views
+and load different binary modules. Record which host an operation requires.
+
+### Treating non-terminating errors as process failure
+
+Choose an explicit error and exit-status policy; preserve `$LASTEXITCODE`
+separately for native commands.
 
 ## Examples
 

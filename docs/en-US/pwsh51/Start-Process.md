@@ -46,6 +46,7 @@ Start-Process [-FilePath] <string> [[-ArgumentList] <string[]>]
 
 ## Important parameters
 
+<!-- mant:entries role=option case=insensitive -->
 - `-FilePath PATH`: Specify an executable, script, or registered document/URL.
 - `-ArgumentList ARGUMENTS`: Supply the target command line. Windows PowerShell
   joins an array into a space-separated string; one carefully quoted string is
