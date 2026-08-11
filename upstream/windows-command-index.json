@@ -1599,72 +1599,86 @@
     {
       "name": "subcommand set device",
       "source": "wdsutil-set-device.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/wdsutil.md"
     },
     {
       "name": "subcommand set drivergroup",
       "source": "wdsutil-set-drivergroup.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/wdsutil.md"
     },
     {
       "name": "subcommand set drivergroupfilter",
       "source": "wdsutil-set-drivergroupfilter.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/wdsutil.md"
     },
     {
       "name": "subcommand set driverpackage",
       "source": "wdsutil-set-driverpackage.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/wdsutil.md"
     },
     {
       "name": "subcommand set image",
       "source": "wdsutil-set-image.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/wdsutil.md"
     },
     {
       "name": "subcommand set imagegroup",
       "source": "wdsutil-set-imagegroup.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/wdsutil.md"
     },
     {
       "name": "subcommand set server",
       "source": "wdsutil-set-server.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/wdsutil.md"
     },
     {
       "name": "subcommand set transportserver",
       "source": "wdsutil-set-transportserver.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/wdsutil.md"
     },
     {
       "name": "subcommand set multicasttransmission",
       "source": "wdsutil-start-multicasttransmission.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/wdsutil.md"
     },
     {
       "name": "subcommand start namespace",
       "source": "wdsutil-start-namespace.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/wdsutil.md"
     },
     {
       "name": "subcommand start server",
       "source": "wdsutil-start-server.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/wdsutil.md"
     },
     {
       "name": "subcommand start transportserver",
       "source": "wdsutil-start-transportserver.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/wdsutil.md"
     },
     {
       "name": "subcommand stop server",
       "source": "wdsutil-stop-server.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/wdsutil.md"
     },
     {
       "name": "subcommand stop transportserver",
       "source": "wdsutil-stop-transportserver.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/wdsutil.md"
     },
     {
       "name": "subst",
@@ -1896,7 +1910,8 @@
     {
       "name": "wdsutil",
       "source": "wdsutil.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/wdsutil.md"
     },
     {
       "name": "wecutil",

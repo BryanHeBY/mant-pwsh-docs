@@ -486,6 +486,9 @@ sfc.exe /verifyonly
 pnputil.exe /enum-drivers
 pnputil.exe /enum-devices /connected /problem
 pnpunattend.exe auditsystem /s /l
+wdsutil.exe /?
+wdsutil.exe /Get-Server /Server:"wds01.example.com" /Show:Config
+wdsutil.exe /Verbose /Get-Server /Server:"wds01.example.com" /Show:Images /Detailed
 dispdiag.exe -?
 msdt.exe /?
 dtrace.exe -V
@@ -585,6 +588,14 @@ component query/list and a new protected binding-map artifact; never run `/i`,
 `/u`, `/winpe`, `/d`, or `/x`. Run PnPUnattend only with `/s` and `/l` so it
 searches without installation; do not add driver paths, alter PATH/registry,
 stage/install a driver, reboot, or change a device merely for validation.
+Keep WDSUtil to help plus exact approved-server configuration/image inventory.
+Do not initialize/uninitialize, authorize, approve/reject/prestage or change a
+device; add/remove/replace/copy/set an image, group, driver, filter, namespace
+or multicast transmission; change server/transport/PXE/DHCP/TFTP/unattended
+policy; start/stop services or sessions; expose secrets; enable insecure
+hands-free deployment; or reboot merely for evidence. Record role/build, full
+server FQDN, current boot.wim support status, April 2026 hardening state, active
+clients/deployments and sensitive output handling.
 Keep security/authentication checks read-only except for `auditpol /backup` to
 a protected temporary path. Do not clear/restore policy, refresh Group Policy,
 purge/request Kerberos tickets, change KDC bindings, or add/delete/reset SPNs

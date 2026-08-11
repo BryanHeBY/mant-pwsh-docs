@@ -10,7 +10,7 @@ bundles.
 
 ### Added
 
-- First English release inventory: 317 reviewed ManT pages across `pwsh7`,
+- First English release inventory: 318 reviewed ManT pages across `pwsh7`,
   `pwsh51`, and `pwsh-cli`.
 - Broad `pwsh7` and `pwsh51` shell manuals, focused language/command pages,
   compatibility guides, and custom `irx` shorthand resolution guidance.
@@ -73,6 +73,10 @@ bundles.
   `dispdiag`, `dtrace`, `msdt`, `netcfg`, and `pnpunattend`, with inspect/compile/
   search-first TLDRs and explicit active-INF, binary-artifact, destructive-
   probe, retired-pack, all-adapter cleanup, and accidental-driver-install traps.
+- Windows Deployment Services family coverage for `wdsutil` device, driver,
+  image, server/transport, multicast/namespace, and lifecycle subcommands, with
+  exact-server query-first TLDRs plus current boot.wim support and April 2026
+  hands-free Unattend/RPC hardening boundaries.
 - Windows time-service, power/sleep, recovery-environment, and DirectX diagnostic
   guides for `w32tm`, `powercfg`, `reagentc`, and `dxdiag`, including bounded
   offset sampling, effective policy, protected report export, and boot/recovery

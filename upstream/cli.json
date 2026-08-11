@@ -2597,6 +2597,33 @@
       "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/pnpunattend.md"}],
       "notes": ["Microsoft's counterintuitive syntax makes auditsystem an online install unless /s requests search-only, and mixes Windows 7 prerequisites with current applicability. The TLDR preserves /s /l and correlates Driver Store inventory.", "Windows runtime verification remains help and auditsystem /s /l only; no driver-path/PATH/registry, staging/install, device, policy, reboot or removal mutation is permitted merely for evidence."]
     },
+    "wdsutil.md": {
+      "kind": "native-cli-family", "status": "reviewed", "versions": ["Windows Deployment Services role/administration tooling; WDS-only OS deployment is partially deprecated and April 2026 hands-free deployment is secure-disabled/unsupported by default"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/wdsutil.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/wdsutil-get.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/wdsutil-get-server.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/wdsutil-get-device.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/wdsutil-set-device.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/wdsutil-set-drivergroup.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/wdsutil-set-drivergroupfilter.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/wdsutil-set-driverpackage.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/wdsutil-set-image.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/wdsutil-set-imagegroup.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/wdsutil-set-server.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/wdsutil-set-transportserver.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/wdsutil-start-multicasttransmission.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/wdsutil-start-namespace.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/wdsutil-start-server.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/wdsutil-start-transportserver.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/wdsutil-stop-server.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/wdsutil-stop-transportserver.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/windows/deployment/wds-boot-support", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://support.microsoft.com/en-US/servicing/os/windows/2025/12/windows-deployment-services-wds-hands-free-deployment-hardening-guidance-related-to-cve-2026-0386", "license": {"spdx": "LicenseRef-Microsoft-Web-Terms", "url": "https://www.microsoft.com/en-us/legal/terms-of-use"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/questions/536587/windows-11-deployment-via-wds", "license": {"spdx": "LicenseRef-Microsoft-Web-Terms", "url": "https://www.microsoft.com/en-us/legal/terms-of-use"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The family page maps query and all indexed device/driver/image/server/transport/multicast/namespace set/start/stop entries, requires exact-server/object identity, and incorporates Microsoft's current WDS boot.wim support matrix plus CVE-2026-0386 April 2026 secure-by-default hands-free deployment boundary. Community demand is used only to evidence recurring Windows 11 support confusion.", "Windows runtime verification remains help and exact approved-server configuration/image inventory only; no role/service, initialization, authorization, device/AD, client approval, image/driver/group/filter, PXE/DHCP/TFTP, transport/multicast/namespace, unattended file/secret, insecure override, lifecycle or reboot mutation is permitted merely for evidence."]
+    },
     "mount.md": {
       "kind": "native-cli", "status": "reviewed", "versions": ["optional Windows Client for NFS; protocol, authentication, mapping and locking behavior vary by Windows build and server"], "platforms": ["windows"],
       "sources": [

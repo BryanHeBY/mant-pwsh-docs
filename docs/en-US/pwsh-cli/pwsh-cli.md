@@ -329,6 +329,7 @@ license in the document's provenance catalog before adapting material.
 - [sfc](sfc.md): protected-system-file verification and scoped repair.
 - [pnputil](pnputil.md): Driver Store, device, and interface identity safety.
 - [pnpunattend](pnpunattend.md): search-only unattended driver audit that avoids implicit online installation.
+- [wdsutil](wdsutil.md): WDS device, driver, image, PXE, transport, multicast, lifecycle, boot-image support, and unattended-security boundaries.
 - [fondue](fondue.md): single-feature enablement and source-policy boundaries.
 
 ## Windows security policy and authentication diagnosis
