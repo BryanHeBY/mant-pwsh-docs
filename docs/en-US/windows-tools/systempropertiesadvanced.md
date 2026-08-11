@@ -26,6 +26,12 @@ Properties. It links to performance/virtual memory, user profiles, startup and
 recovery, and environment variables. These are separate configuration surfaces
 with different scopes, privilege, restart and rollback requirements.
 
+## Command interface
+
+<!-- mant:entries role=command case=insensitive -->
+- `SystemPropertiesAdvanced.exe`: Open the Advanced classic System Properties
+  entry point for interactive environment, performance, profile, and recovery settings.
+
 ## Common mistakes
 
 - Confusing the current process environment (`$env:*`) with persistent User and
@@ -47,7 +53,7 @@ with different scopes, privilege, restart and rollback requirements.
   restart without free-space, workload, crash-capture, backup and
   console-recovery planning.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use `Start-Process "$env:SystemRoot\System32\SystemPropertiesAdvanced.exe"`
 for interactive launch. `$env:Name = value` changes only the current process and

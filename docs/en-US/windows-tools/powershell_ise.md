@@ -34,10 +34,17 @@ supported scripting environment for PowerShell 7.
 
 ## Launcher options
 
-`-File <path>` opens a supported script/module/manifest or text file,
-`-NoProfile` skips Windows PowerShell profiles, and `-Help`, `-?`, or `/?`
-shows launcher help. The ISE requires a graphical Windows installation and an
-interactive desktop; it does not run on Server Core.
+<!-- mant:entries role=command case=insensitive -->
+- `powershell_ise.exe`: Start the graphical Windows PowerShell 5.1 ISE host;
+  it never selects the PowerShell 7 engine.
+
+The launcher accepts a small option surface. The ISE requires a graphical
+Windows installation and interactive desktop and does not run on Server Core.
+
+<!-- mant:entries role=option case=insensitive -->
+- `-File`: Open the following supported script, module, manifest, or text path.
+- `-NoProfile`: Skip Windows PowerShell profile scripts for this ISE launch.
+- `-Help`, `-?`, `/?`: Display launcher help.
 
 ## Common mistakes
 
@@ -73,7 +80,7 @@ ISE supplies an interactive GUI host and does not accurately reproduce Task
 Scheduler, service, remoting, constrained-language, noninteractive, redirected
 stream, or headless execution. Test in the real host and security context.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 The launcher is a native GUI executable, so starting successfully does not mean
 the opened script ran or finished. Use `Start-Process -Wait -PassThru` only when

@@ -31,6 +31,22 @@ Monitor, and `/report` starts the System Diagnostics Data Collector Set before
 displaying results. These are interactive views, not stable machine-readable
 APIs, and each answers a different question.
 
+## Command and options
+
+<!-- mant:entries role=command case=insensitive -->
+- `perfmon.exe`: Open one Windows performance/resource/reliability view or start
+  the System Diagnostics report workflow.
+
+The launcher modes below select distinct interactive views or one collector
+workflow; they do not turn GUI output into a machine-readable result.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/sys`: Open the standalone Performance Monitor counter view.
+- `/res`: Open Resource Monitor.
+- `/rel`: Open Reliability Monitor.
+- `/report`: Start the System Diagnostics Data Collector Set and display its
+  report; this is not a read-only existing-report viewer.
+
 ## Common mistakes
 
 - Treating a quiet instant in Resource Monitor as a baseline. Record host,
@@ -46,7 +62,7 @@ APIs, and each answers a different question.
 - Interpreting missing counters, blank charts, or incomplete reports as absence
   of activity before checking providers, permissions, services, drops, and logs.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use `Start-Process perfmon.exe -ArgumentList '/sys'` when launch semantics matter.
 The GUI process lifetime is not the diagnostic result; record the exact mode and

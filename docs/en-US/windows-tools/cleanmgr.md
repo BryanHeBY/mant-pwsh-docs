@@ -30,6 +30,27 @@ selected cleanup handlers in registry state, `/sagerun:n` executes that profile
 against enumerated drives, `/tuneup:n` configures and runs it, and `/lowdisk`,
 `/verylowdisk`, and `/autoclean` select increasingly automatic behaviors.
 
+## Command and options
+
+<!-- mant:entries role=command case=insensitive -->
+- `cleanmgr.exe`: Open legacy Disk Cleanup or configure/run one stored cleanup
+  profile under the exact user/elevation/build context.
+
+Profile IDs identify registry-backed selections on one context; they are not
+portable cleanup specifications or dry-run identities.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/d`: Select a drive for applicable interactive modes; it does not constrain
+  `/sagerun`, which enumerates drives.
+- `/sageset`: Open handler selection and store it under the following profile ID.
+- `/sagerun`: Run the stored profile ID against enumerated drives.
+- `/tuneup`: Configure and then run the following profile ID.
+- `/lowdisk`: Open with low-disk defaults and normal confirmation UI.
+- `/verylowdisk`: Run more automatically with very-low-disk behavior.
+- `/autoclean`: Run automatic cleanup after a Windows upgrade/setup context.
+- `/setup`: Run setup-related cleanup behavior exposed by the installed build.
+- `/?`: Display installed command help where available.
+
 ## Common mistakes
 
 - Assuming `/d C` limits `/sagerun:n`; Microsoft documents that `/d` is not used
@@ -45,7 +66,7 @@ against enumerated drives, `/tuneup:n` configures and runs it, and `/lowdisk`,
 - Editing `VolumeCaches`/`StateFlags` registry values copied from web scripts.
   Handlers and meanings are build/product specific and can expand future scope.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use `cleanmgr.exe` explicitly; `/sageset` is interactive and stored state is not
 a PowerShell object. Record profile ID, caller/elevation, handler selections,

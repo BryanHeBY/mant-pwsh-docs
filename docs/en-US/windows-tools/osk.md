@@ -26,6 +26,11 @@ software keyboard usable with a mouse, touch, pen, switch or other pointing
 device. It is not the same component as the touch keyboard, an input method
 editor (IME), or the keyboard shown on the secure sign-in desktop.
 
+## Command interface
+
+<!-- mant:entries role=command case=insensitive -->
+- `osk.exe`: Start classic On-Screen Keyboard for the current interactive desktop.
+
 ## Common mistakes
 
 - Assuming `osk.exe` is the touch keyboard and applying touch-keyboard service,
@@ -42,7 +47,7 @@ editor (IME), or the keyboard shown on the secure sign-in desktop.
 - Assuming desktop OSK behavior applies to single-app kiosk, Windows IoT,
   Remote Desktop, UAC or the secure sign-in desktop.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use `Start-Process osk.exe` only for an interactive user. Process creation and
 `$LASTEXITCODE` do not prove that the keyboard is visible in the intended

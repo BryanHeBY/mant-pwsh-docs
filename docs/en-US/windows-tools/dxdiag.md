@@ -26,6 +26,25 @@ information through an interactive GUI and can export support reports on builds
 that expose the corresponding command-line switches. It diagnoses and reports;
 it does not install DirectX, update drivers, or prove an application will work.
 
+## Command and options
+
+<!-- mant:entries role=command case=insensitive -->
+- `dxdiag.exe`: Open DirectX Diagnostic Tool or collect one support report on
+  Windows builds that expose the requested export mode.
+
+Export switches and architecture/WHQL behavior have varied; verify installed
+`/?`, wait for completion, and validate a newly created artifact.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/t`: Export a text diagnostic report to the following explicit path.
+- `/x`: Export an XML diagnostic report where supported by the target build.
+- `/whql`: Control WHQL signature checking where the installed version supports
+  the switch/value; checking can add time/network/privacy considerations.
+- `/dontskip`: Avoid skipping diagnostics previously bypassed after a failure;
+  use only for a bounded support workflow on the target build.
+- `/64bit`: Request 64-bit collection behavior on builds that expose it.
+- `/?`: Display target-local launcher help.
+
 ## Common mistakes
 
 - Treating the displayed DirectX version as the GPU's supported feature level,
@@ -41,7 +60,7 @@ it does not install DirectX, update drivers, or prove an application will work.
 - Publishing full reports without redaction; they can expose machine, firmware,
   device IDs, drivers, paths, display/audio/input and troubleshooting details.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use `Start-Process -Wait` with an argument array and a new explicit output path.
 Do not trust process start or an old file as success; validate content and record

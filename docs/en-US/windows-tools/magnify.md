@@ -25,6 +25,12 @@
 current interactive desktop. Magnifier can enlarge all or part of the display
 and follows its per-user Accessibility settings.
 
+## Command interface
+
+<!-- mant:entries role=command case=insensitive -->
+- `magnify.exe`: Start Windows Magnifier using the intended interactive user's
+  per-user Accessibility settings.
+
 ## Common mistakes
 
 - Taking ownership, changing ACLs, renaming or deleting `Magnify.exe` to disable
@@ -41,7 +47,7 @@ and follows its per-user Accessibility settings.
 - Treating Magnifier as a screenshot, OCR, UI-automation or evidence-capture
   API. Use supported tools for those jobs.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Run `magnify.exe` or `Start-Process magnify.exe` only for the intended
 interactive user. Native launch success does not prove that a usable window

@@ -26,6 +26,12 @@ interactive user. It reads UI through accessibility frameworks and can interact
 with speech, Braille, keyboard focus, scan mode and application-specific
 accessibility information.
 
+## Command interface
+
+<!-- mant:entries role=command case=insensitive -->
+- `narrator.exe`: Start Windows Narrator for the current interactive user and
+  accessibility/audio/Braille context.
+
 ## Common mistakes
 
 - Launching Narrator on another person's session as a harmless test. Speech,
@@ -44,7 +50,7 @@ accessibility information.
   accessibility evidence. Test supported accessibility APIs and representative
   keyboard/screen-reader workflows separately.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use `Start-Process narrator.exe` only inside the intended interactive session.
 Remote/service launch, process existence and exit status do not prove usable

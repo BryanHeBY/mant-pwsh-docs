@@ -26,6 +26,12 @@ policy objects. It edits configured policy, not the Resultant Set of Policy
 (RSoP). Domain, site, organizational-unit, MDM, security baseline and local
 authorities can overlap, and a higher-precedence source can win.
 
+## Command interface
+
+<!-- mant:entries role=command case=insensitive -->
+- `gpedit.msc`: Open the Local Group Policy Editor snap-in when present on the
+  Windows edition; it edits configured local policy, not resultant policy.
+
 ## Common mistakes
 
 - Assuming `gpedit.msc` is missing or corrupt when Windows Home does not include
@@ -46,7 +52,7 @@ authorities can overlap, and a higher-precedence source can win.
 - Automating localized editor labels or importing unreviewed ADMX files. Treat
   templates as versioned definitions and use supported management interfaces.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use `Start-Process mmc.exe -ArgumentList 'gpedit.msc'` for interactive editing.
 For evidence, invoke `gpresult.exe` explicitly and check `$LASTEXITCODE`; an

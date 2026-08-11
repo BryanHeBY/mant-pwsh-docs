@@ -27,6 +27,12 @@ general service manager, autorun inventory, boot editor or permanent hardening
 tool. A clean-boot test is useful only when its baseline, excluded components,
 restart and result are recorded.
 
+## Command interface
+
+<!-- mant:entries role=command case=insensitive -->
+- `msconfig.exe`: Open the interactive System Configuration troubleshooting UI
+  for controlled startup/service/boot isolation and later baseline restoration.
+
 ## Common mistakes
 
 - Disabling many services/startup items at once and learning nothing about
@@ -48,7 +54,7 @@ restart and result are recorded.
 - Assuming a checkbox or successful restart proves root cause. Reproduce the
   original workload and compare logs, timing and health after each change.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use `Start-Process msconfig.exe` for an interactive launch. PowerShell cannot
 reliably automate localized System Configuration controls. Use dedicated,

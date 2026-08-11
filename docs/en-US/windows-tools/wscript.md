@@ -26,6 +26,30 @@
 such as `WScript.Echo` commonly produce dialogs. It is suited to reviewed,
 interactive legacy scripts, not headless automation.
 
+## Command and options
+
+<!-- mant:entries role=command case=insensitive -->
+- `wscript.exe`: Run one reviewed Windows Script Host script with GUI/dialog
+  semantics, or open per-user host settings when no script is supplied.
+
+Double-slash switches belong to WSH and must precede the script path.
+
+<!-- mant:entries role=option case=insensitive -->
+- `//B`: Use batch mode and suppress alerts/prompts; the script still needs a
+  safe unattended error/output contract.
+- `//D`: Enable active debugging.
+- `//E`: Use the following script engine instead of extension-based selection.
+- `//H`: Make `cscript.exe` or `wscript.exe` the current user's default WSH host.
+- `//I`: Use interactive mode (the default).
+- `//Job`: Run one named job from a `.wsf` file.
+- `//Logo`: Display the host banner.
+- `//Nologo`: Suppress the host banner.
+- `//S`: Save current command options as per-user defaults.
+- `//T`: Stop the script after the following number of seconds.
+- `//X`: Launch under a debugger.
+- `//U`: Use Unicode for redirected console I/O where applicable to the host.
+- `//?`: Display installed WSH command help.
+
 ## Common mistakes
 
 - Expecting PowerShell capture or redirection to receive `WScript.Echo` text.
@@ -42,7 +66,7 @@ interactive legacy scripts, not headless automation.
   retain the user's file, registry, COM, network and application access.
 - Confusing `.js` with Node.js or a browser runtime, and `.wsf` with inert XML.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Invoke `wscript.exe` explicitly and use a fully resolved, quoted script path.
 PowerShell normally cannot consume GUI dialog text as stdout.

@@ -30,6 +30,24 @@ collect local or remote hardware, components, resources, drivers, and software
 environment data; `/showcategories` exposes category IDs, `/categories` limits
 the collection, `/nfo` writes the native format, and `/report` writes text.
 
+## Command and options
+
+<!-- mant:entries role=command case=insensitive -->
+- `msinfo32.exe`: Open Windows System Information or collect one scoped local or
+  remote diagnostic report.
+
+Report collection is asynchronous unless the caller explicitly waits for the
+process; output can contain sensitive host/user/software details.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/nfo`: Save the collected report in native System Information NFO format.
+- `/report`: Save the collected report as text at the following exact filename.
+- `/computer`: Collect from the following remote Windows computer using the
+  caller's permitted remote-management context.
+- `/showcategories`: Display category IDs that can be used for scoped collection.
+- `/categories`: Include/exclude the following category-ID expression.
+- `/?`: Display installed launcher help where supported.
+
 ## Common mistakes
 
 - Launching export asynchronously and copying, hashing, or uploading a partial
@@ -46,7 +64,7 @@ the collection, `/nfo` writes the native format, and `/report` writes text.
 - Treating remote `/computer` as a credential switch or proof of completeness.
   Record caller, target, RPC/firewall/services/permissions, failures, and locality.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use `Start-Process -Wait` with an argument array and a new explicit destination.
 Avoid `Invoke-Expression`; never derive categories or paths from untrusted text.
