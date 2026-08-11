@@ -29,6 +29,61 @@ copies symbolic links rather than targets, and `/-y` requests overwrite prompts.
 For robust modern tree replication, especially restart, metadata, exclusions,
 and deletion policy, consider [robocopy](robocopy.md).
 
+## Options
+
+<!-- mant:entries role=command case=insensitive -->
+- `xcopy.exe`: Copy selected files and directory trees using the classic
+  Windows selection, metadata, and restart behavior.
+
+The source is required and destination defaults to the current directory.
+Preview with `/l` using the identical selection and link options.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/w`: Wait for an attended key press before beginning the copy.
+- `/p`: Prompt before creating each destination file.
+- `/c`: Continue after copy errors, potentially leaving a partial destination.
+- `/v`: Verify each destination write under XCOPY's comparison contract.
+- `/q`: Suppress normal copy messages.
+- `/f`: Display full source and destination filenames while copying.
+- `/l`: List selected files without copying them.
+- `/g`: Create decrypted destinations when the destination does not support EFS.
+- `/d`: With a date, select files changed on/after it; without a date, select
+  sources newer than existing destinations.
+- `/u`: Copy only source files that already exist at the destination.
+- `/i`: When source is a directory or wildcard and destination is absent,
+  assume the destination is a directory and create it.
+- `/s`: Copy subdirectories but omit empty ones.
+- `/e`: Include empty subdirectories; use with `/s` or `/t`.
+- `/t`: Copy directory structure without files; add `/e` for empty directories.
+- `/k`: Retain the source read-only attribute on destination files.
+- `/r`: Permit copying over read-only destination files.
+- `/h`: Include hidden and system files.
+- `/a`: Select sources with the archive attribute without clearing it.
+- `/m`: Select sources with the archive attribute and clear it after copying.
+- `/n`: Create destination copies using available 8.3 short names.
+- `/o`: Copy owner and discretionary ACL information.
+- `/x`: Copy audit/SACL information and imply `/o`; requires sufficient rights.
+- `/exclude`: Read path-substring exclusions from the following colon-delimited
+  file or `+`-joined files.
+- `/y`: Suppress overwrite confirmation.
+- `/-y`: Require overwrite confirmation and override `COPYCMD=/y`.
+- `/z`: Use restartable mode for a network copy.
+- `/b`: Copy a symbolic link itself instead of its target.
+- `/j`: Use unbuffered I/O, intended for very large files.
+- `/compress`: Request network compression where both ends support it.
+- `/sparse`: Preserve sparse state during copying where supported.
+- `/-sparse`: Disable sparse-state preservation; it wins if both forms appear.
+- `/noclone`: Do not attempt block cloning as a copy optimization.
+- `/?`: Display installed command help.
+
+## PowerShell boundaries
+
+`xcopy.exe` is native text software, not a PowerShell provider cmdlet. Pass
+source/destination and each colon-form switch as distinct reviewed arguments,
+capture `$LASTEXITCODE` immediately, and interpret its documented 0/1/2/4/5
+contract. Use `/l` before mutation and compare destination inventory/metadata;
+status alone does not prove that the intended set and security data arrived.
+
 ## Exit codes
 
 - `0`: Files copied without error.

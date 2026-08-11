@@ -25,19 +25,48 @@
 In PowerShell, bare `dir` normally aliases `Get-ChildItem`, which returns
 objects and has different parameters.
 
-## Syntax and useful switches
+## Syntax and options
 
 ```text
 dir [DRIVE:][PATH][NAME] [/p] [/q] [/w] [/d] [/a[:ATTRS]]
     [/o[:ORDER]] [/t[:FIELD]] [/s] [/b] [/l] [/n] [/x] [/c] [/4] [/r]
 ```
 
-- `/a`: include all attributes; filters include `d`, `h`, `s`, `l`, `r`, `a`,
-  `i`, with `-` for negation.
-- `/s`: recurse; `/b`: emit one bare path per line.
-- `/o`: order by name, extension, directory grouping, size, or date.
-- `/t:c|a|w`: choose creation, access, or write time.
-- `/x`: show generated short names; `/r`: show alternate data streams.
+<!-- mant:entries role=command case=insensitive -->
+- `dir`: Format a directory listing through the `cmd.exe` builtin; it is not a
+  standalone `dir.exe`.
+
+The path operand uses Cmd wildcard and short-name matching. The following
+switches control presentation and traversal, not PowerShell object properties.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/p`: Pause after each screenful of output for attended viewing.
+- `/q`: Display each entry's owner where available and permitted.
+- `/w`: Use a wide name-only display.
+- `/d`: Use a wide display sorted down columns rather than across them.
+- `/a`: Include all entries or, after a colon, filter by attribute letters
+  such as `d`, `h`, `s`, `l`, `r`, `a`, and `i`; `-` negates a letter.
+- `/o`: Order by a field such as name, extension, size, date, or directory
+  grouping; `-` reverses the selected order.
+- `/t`: Select creation (`c`), last-access (`a`), or last-write (`w`) time for
+  display and date ordering.
+- `/s`: Recurse into matching subdirectories.
+- `/b`: Use bare format without headings or summaries; with `/s`, emit paths.
+- `/l`: Display names in lowercase without renaming filesystem entries.
+- `/n`: Use the long-list format with filenames at the right.
+- `/x`: Display generated 8.3 short names where they exist.
+- `/c`: Show the locale's thousands separator in file sizes; this is default.
+- `/-c`: Omit the thousands separator from displayed sizes.
+- `/4`: Display four-digit years.
+- `/r`: Display alternate data streams associated with each entry.
+- `/?`: Display installed builtin help through `cmd.exe`.
+
+## PowerShell boundaries
+
+Bare `dir` normally resolves to `Get-ChildItem`. Use that cmdlet for typed
+items, `-LiteralPath`, and provider-aware filtering. Invoke the builtin through
+`cmd.exe /d /c` only for its exact textual contract; check the child exit code
+and do not treat `/b` text as race-free filesystem inventory.
 
 ## Common mistakes
 

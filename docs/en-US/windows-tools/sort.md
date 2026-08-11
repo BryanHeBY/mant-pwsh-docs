@@ -25,14 +25,35 @@
 text. PowerShell's bare `sort` aliases `Sort-Object`, which compares objects
 and properties rather than feeding their display rendering to `sort.exe`.
 
-## Useful options
+## Options
 
-- `/r`: Reverse the result.
-- `/unique`: Return unique lines.
-- `/+N`: Start comparison at one-based character position N.
-- `/l LOCALE`: Select supported collation; `C` is the documented alternative.
-- `/rec N`: Set maximum record length, up to 65,535 characters.
-- `/o FILE`: Write to an output file.
+<!-- mant:entries role=command case=insensitive -->
+- `sort.exe`: Sort text records using the selected Windows collation and write
+  the resulting text to standard output or one distinct output file.
+
+Options may precede or follow the input filename in the documented syntax.
+Keep input and `/o` output paths distinct.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/r`: Reverse the sort order.
+- `/unique`: Return one line for records that compare equal under this sort.
+- `/l`: Select a supported locale/collation name; `C` is the documented
+  alternative to the system locale.
+- `/m`: Set the amount of main memory in kilobytes used by the sort operation.
+- `/rec`: Set maximum input-record length up to 65,535 characters.
+- `/o`: Write sorted text to the following output file instead of stdout.
+- `/?`: Display installed command help.
+
+The special positional form `/+N` starts comparison at one-based character
+position `N`. It is part of the native syntax but is described outside the
+semantic option list because the digits are embedded in the switch name.
+
+## PowerShell boundaries
+
+Bare `sort` normally resolves to `Sort-Object`. Use that cmdlet for properties,
+typed numbers, and deliberate comparer logic. Call `sort.exe` for its text
+contract, pass `/o` as a separate native argument pair, check `$LASTEXITCODE`,
+and do not overwrite the input until the distinct result is validated.
 
 ## Common mistakes
 

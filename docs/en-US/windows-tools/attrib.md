@@ -26,11 +26,41 @@ read-only (`r`), archive (`a`), system (`s`), hidden (`h`), offline (`o`), not
 content-indexed (`i`), pinned (`p`), and unpinned (`u`). Prefix an attribute
 with `+` to set it or `-` to clear it.
 
-## Scope options
+## Attributes and scope options
 
+<!-- mant:entries role=command case=insensitive -->
+- `attrib.exe`: Display attributes, or set/clear selected attributes on
+  matching Windows filesystem entries.
+
+Each listed `-LETTER` form clears an attribute; replace `-` with `+` to set
+the same attribute. A path without an attribute modifier is read-only display.
+
+<!-- mant:entries role=option case=insensitive -->
+- `-r`: Clear read-only; the paired `+r` form sets read-only.
+- `-a`: Clear archive; the paired `+a` form sets archive.
+- `-s`: Clear system; the paired `+s` form sets system.
+- `-h`: Clear hidden; the paired `+h` form sets hidden.
+- `-o`: Clear offline; the paired `+o` form sets offline.
+- `-i`: Clear not-content-indexed; the paired `+i` form sets it.
+- `-x`: Clear no-scrub-data; the paired `+x` form sets it where supported.
+- `-p`: Clear pinned; the paired `+p` form pins provider-backed content where
+  the filesystem/provider implements that attribute.
+- `-u`: Clear unpinned; the paired `+u` form marks content unpinned where
+  supported.
+- `-b`: Clear the SMR blob attribute; the paired `+b` form sets it on storage
+  configurations that implement the attribute.
 - `/s`: Apply to matching files below the path recursively.
-- `/d`: Include directories as well as files.
+- `/d`: Include matching directories as well as files; use with `/s` for a
+  recursive directory scope.
 - `/l`: Act on a symbolic link itself rather than its target.
+- `/?`: Display installed command help.
+
+## PowerShell boundaries
+
+Use `attrib.exe` explicitly. PowerShell's `Get-Item`/`Get-ChildItem` expose
+typed filesystem attributes but provider and link behavior still require
+care. Native output is localized text; after a change check `$LASTEXITCODE`
+and re-query the exact literal path and link/target identity.
 
 ## Common mistakes
 

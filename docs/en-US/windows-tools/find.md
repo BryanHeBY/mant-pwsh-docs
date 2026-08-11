@@ -31,12 +31,38 @@ Unix `find`, PowerShell filtering, or a regular-expression engine.
 find [/v] [/c] [/n] [/i] [/offline] "STRING" [FILE ...]
 ```
 
+<!-- mant:entries role=command case=insensitive -->
+- `find.exe`: Search standard input or named files for one quoted literal text
+  string and write selected text lines or a count.
+
+The search string is literal and required. When no filename follows it,
+`find.exe` consumes standard input from the native pipeline.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/v`: Select lines that do not contain the literal search string.
+- `/c`: Print only the count of selected lines for each input.
+- `/n`: Prefix selected lines with their source line numbers.
+- `/i`: Compare letters without regard to case.
+- `/off`: Include files with the offline attribute; `/offline` is the
+  documented full spelling.
+- `/?`: Display installed command help.
+
+The process exit status describes the search outcome separately from these
+input options:
+
 - `0`: At least one match.
 - `1`: No match.
 - `2`: Missing file or invalid command line.
 
 `/v` inverts matches, `/c` counts matching lines, `/n` adds line numbers, and
 `/i` ignores case. The search string must be quoted.
+
+## PowerShell boundaries
+
+Use `find.exe` explicitly because other platforms use `find` for filesystem
+traversal. PowerShell object input is first rendered to native text; select and
+format deliberate strings, or use `Select-String` for PowerShell text objects.
+Read `$LASTEXITCODE` immediately and treat 1 as the normal no-match result.
 
 ## Common mistakes
 

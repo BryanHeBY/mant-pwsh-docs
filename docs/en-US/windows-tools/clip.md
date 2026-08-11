@@ -32,6 +32,23 @@ COMMAND | clip.exe
 clip.exe < FILE
 ```
 
+## Command interface
+
+<!-- mant:entries role=command case=insensitive -->
+- `clip.exe`: Read text from standard input and replace the current interactive
+  Windows session's text clipboard contents.
+
+`clip.exe` has no documented content operand or clipboard-read mode. Cmd input
+redirection and a pipeline are shell operations that attach its standard input.
+
+## PowerShell boundaries
+
+PowerShell serializes pipeline values to native text before `clip.exe` receives
+them, with encoding and formatting behavior that differs between Windows
+PowerShell 5.1 and PowerShell 7. Prefer `Set-Clipboard -Value` for deliberate
+PowerShell strings. Check `$LASTEXITCODE`, but also read/validate clipboard
+content when fidelity matters because process success is not durable delivery.
+
 ## Common mistakes
 
 ### Expecting clipboard content on standard output

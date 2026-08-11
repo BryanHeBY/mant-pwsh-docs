@@ -31,6 +31,22 @@ parameters, encoding behavior, output objects, and wildcard semantics.
 type [DRIVE:][PATH]FILENAME [FILENAME ...]
 ```
 
+## Command interface
+
+<!-- mant:entries role=command case=insensitive -->
+- `type`: Write one or more named files to standard output through the
+  `cmd.exe` builtin; it is not a standalone `type.exe`.
+
+The builtin has no encoding selector, binary-safe mode, or stdin operand. Its
+filenames are parsed by the child Cmd shell.
+
+## PowerShell boundaries
+
+Bare `type` normally resolves to `Get-Content`. Prefer the full cmdlet name
+with `-LiteralPath`, `-Raw`, and explicit `-Encoding`. Invoke the builtin only
+through `cmd.exe /d /c` when its exact byte-to-console text path is required;
+check the child exit code and never display untrusted binary/control content.
+
 ## Common mistakes
 
 ### Using cmd syntax with PowerShell's alias

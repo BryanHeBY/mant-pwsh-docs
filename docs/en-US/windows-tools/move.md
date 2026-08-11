@@ -31,10 +31,18 @@ two commands accept different syntax and have different overwrite behavior.
 move [/y | /-y] SOURCE TARGET
 ```
 
-- `/y`: Suppress the normal overwrite prompt.
-- `/-y`: Require an overwrite prompt.
-- `SOURCE`: One file, a file pattern, or a directory path.
-- `TARGET`: A destination directory or a new target path/name.
+<!-- mant:entries role=command case=insensitive -->
+- `move`: Move files, or move/rename a directory, through the `cmd.exe`
+  builtin; it is not a standalone `move.exe`.
+
+`SOURCE` is one file, a file pattern, or a directory path. `TARGET` is an
+existing destination directory or the new target path/name.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/y`: Suppress the normal prompt before overwriting an existing destination.
+- `/-y`: Require an overwrite prompt and override a `COPYCMD=/y` environment
+  default.
+- `/?`: Display installed builtin help through `cmd.exe`.
 
 `COPYCMD` can preset `/y`; an explicit `/-y` overrides it. Batch execution can
 also differ from interactive prompting, so unattended automation must specify
@@ -71,6 +79,13 @@ deliberately or select an EFS-capable target and verify protection afterward.
 Multi-file moves can partially succeed. Check cmd's exit status and the final
 source/destination inventories; do not interpret one summary line as an
 all-or-nothing guarantee.
+
+## PowerShell boundaries
+
+Bare `move` normally resolves to `Move-Item`. Prefer the full cmdlet name with
+literal paths and `-WhatIf`/`-Confirm`. Invoke the builtin through
+`cmd.exe /d /c` only for its contract, explicitly quote child-shell paths,
+check the child exit code, and compare final source/destination inventories.
 
 ## PowerShell-native alternative
 

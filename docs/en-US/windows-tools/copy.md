@@ -36,6 +36,39 @@ copy [/d] [/v] [/n] [/y | /-y] [/z] [/a | /b]
 restartable network copy, `/d` permits encrypted input to be written decrypted,
 and `/a`/`/b` select text/whole-byte behavior by position.
 
+## Commands and options
+
+<!-- mant:entries role=command case=insensitive -->
+- `copy`: Copy files or concatenate multiple sources through the `cmd.exe`
+  builtin; it is not a standalone `copy.exe`.
+
+Invoke this grammar with `cmd.exe /d /c` from PowerShell. The position of
+`/a` or `/b` matters because it can qualify a source or destination.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/d`: Allow an encrypted source file to be written decrypted when the
+  destination does not support EFS; verify the resulting protection state.
+- `/v`: Verify that new destination data can be read correctly under the
+  builtin's write-verification contract.
+- `/n`: Use an available short filename while copying a source whose name is
+  not compatible with an 8.3 destination convention.
+- `/y`: Suppress confirmation before overwriting an existing destination file.
+- `/-y`: Require confirmation before overwriting; this overrides `COPYCMD=/y`.
+- `/z`: Copy a network file in restartable mode.
+- `/a`: Select ASCII/text behavior for the source or destination at that
+  position, including Ctrl+Z end-of-file handling.
+- `/b`: Select binary behavior and copy all bytes for the source or destination
+  at that position.
+- `/?`: Display the builtin's installed help through `cmd.exe`.
+
+## PowerShell boundaries
+
+Bare `copy` resolves to `Copy-Item` in normal PowerShell sessions. Use the
+cmdlet for ordinary copies, or quote a complete reviewed builtin command for
+`cmd.exe /d /c` when concatenation or positional `/a`/`/b` semantics are
+required. Capture the destination before-state, check the child cmd exit code,
+and verify the resulting file rather than parsing one localized summary line.
+
 ## Common mistakes
 
 ### Running PowerShell's `copy` alias by accident

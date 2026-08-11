@@ -36,6 +36,33 @@ erase [/p] [/f] [/s] [/q] [/a[:ATTRIBUTES]] NAMES
 suppresses confirmation, and `/a` filters attributes including `r`, `h`, `i`,
 `s`, `a`, `l`, with `-` for negation.
 
+## Commands and options
+
+<!-- mant:entries role=command case=insensitive -->
+- `del`, `erase`: Permanently delete matching files through equivalent
+  `cmd.exe` builtin names; neither name identifies a standalone executable.
+
+The `NAMES` operand uses Cmd path and wildcard rules. Preview the exact same
+path, pattern, attribute filter, and recursion root before mutation.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/p`: Prompt before deleting each selected file.
+- `/f`: Force deletion of read-only files; it does not bypass ACLs, locks, or
+  other filesystem protections.
+- `/s`: Delete matching files in the named directory and all subdirectories.
+- `/q`: Suppress confirmation when a global wildcard is used; it does not make
+  the operation a dry run or suppress every diagnostic.
+- `/a`: Select files by attributes after an optional colon; prefix an attribute
+  letter with `-` to require that attribute to be absent.
+- `/?`: Display installed builtin help through `cmd.exe`.
+
+## PowerShell boundaries
+
+Bare `del` and `erase` normally resolve to `Remove-Item` aliases, not Cmd.
+Prefer `Remove-Item -LiteralPath` for exact PowerShell targets. If the builtin
+is required, invoke it through `cmd.exe /d /c`, keep the pattern quoted for
+the child shell, check its exit code, and re-enumerate the intended scope.
+
 ## Common mistakes
 
 ### Combining `/s /q` with an unreviewed pattern

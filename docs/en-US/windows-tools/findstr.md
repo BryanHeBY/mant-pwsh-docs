@@ -25,19 +25,49 @@
 small Windows-specific regex dialect. It is useful for simple installed-box
 searches, but it is not compatible with .NET, PCRE, grep, or JavaScript regex.
 
-## Useful options and status
+## Options and status
 
-- `/l`: Treat patterns literally.
-- `/r`: Use the limited regex dialect; this is the documented default.
-- `/c:"STRING"`: Keep a phrase with spaces as one pattern.
-- `/i`: Ignore case.
-- `/n`: Prefix matching lines with line numbers.
-- `/s`: Recurse below the current directory.
-- `/m`: Print only names of files containing a match.
-- `/v`: Print nonmatching lines.
+<!-- mant:entries role=command case=insensitive -->
+- `findstr.exe`: Search named files or standard input using literal strings or
+  the command's limited Windows regular-expression dialect.
+
+Every switch must precede the search strings and filenames. Colon forms take
+their value in the same native argument unless installed help says otherwise.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/b`: Match only when the pattern occurs at the beginning of a line.
+- `/e`: Match only when the pattern occurs at the end of a line.
+- `/l`: Treat search strings literally.
+- `/r`: Use the limited regular-expression dialect; this is the default.
+- `/s`: Search the current directory and all subdirectories.
+- `/i`: Ignore letter case.
+- `/x`: Print only lines that match the pattern exactly.
+- `/v`: Print only lines that do not contain a match.
+- `/n`: Prefix every matching line with its line number.
+- `/m`: Print only each filename that contains a match.
+- `/o`: Prefix each matching line with its character offset.
+- `/p`: Skip files that contain non-printable characters.
+- `/off`: Include files with the offline attribute; `/offline` is the full
+  documented spelling.
+- `/f`: Read the list of files to search from the following colon-delimited
+  filename.
+- `/c`: Treat the following colon-delimited value as one literal search string,
+  preserving spaces inside a quoted value.
+- `/g`: Read search strings from the following colon-delimited filename.
+- `/d`: Search the following semicolon-delimited directory list.
+- `/a`: Select the two-hex-digit console color attribute for matching output.
+- `/?`: Display installed command help.
 
 Options must precede search strings and filenames. Status is normally 0 for a
 match, 1 for no match, and 2 for an operational/syntax error.
+
+## PowerShell boundaries
+
+Call `findstr.exe` explicitly and pass `/c:VALUE`, `/f:FILE`, `/g:FILE`, and
+similar colon forms as single native arguments. PowerShell objects are rendered
+to text before a native pipeline. Prefer `Select-String` for .NET regex and
+match objects; otherwise read `$LASTEXITCODE` immediately and accept 1 as
+no-match rather than an execution failure.
 
 ## Common mistakes
 
