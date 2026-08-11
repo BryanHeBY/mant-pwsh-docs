@@ -1292,6 +1292,27 @@
       ],
       "notes": ["The TLDR inventories recursive and CompactOS state before exact file changes; the page distinguishes in-place NTFS/system compression from archives, directory defaults from existing descendants, and contains current-directory, partial-result, algorithm, CompactOS, and storage-accounting risks.", "Windows runtime verification remains required."]
     },
+    "manage-bde.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases with BitLocker components and an applicable edition or role"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/manage-bde.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/manage-bde-status.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/manage-bde-protectors.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/manage-bde-unlock.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/manage-bde-autounlock.md"}
+      ],
+      "notes": ["The TLDR leads with conversion/protection/lock/protector inventory, preserves the special protection result code, and uses an interactive unlock prompt; the page distinguishes encryption from protection and access, requires add/escrow/verify/test/delete rotation, and contains suspension, force-recovery, auto-unlock, secret, and recovery risks.", "Windows runtime verification remains required."]
+    },
+    "mountvol.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/mountvol.md"},
+        {"type": "web", "url": "https://stackoverflow.com/questions/11547239/mount-point-in-powershell", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR inventories and verifies a full volume GUID before creating or deleting one access path; the page requires scalar DeviceID values, trailing-slash syntax, dedicated empty NTFS directories, and distinguishes /D from offline /P plus stale cleanup, automount, and ESP exposure.", "Windows runtime verification remains required."]
+    },
     "git.md": {
       "kind": "native-cli",
       "status": "reviewed",

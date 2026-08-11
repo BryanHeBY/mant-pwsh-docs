@@ -774,7 +774,8 @@
     {
       "name": "manage bde",
       "source": "manage-bde.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/manage-bde.md"
     },
     {
       "name": "mapadmin",
@@ -828,7 +829,8 @@
     {
       "name": "mountvol",
       "source": "mountvol.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/mountvol.md"
     },
     {
       "name": "move",

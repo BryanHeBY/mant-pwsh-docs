@@ -199,6 +199,11 @@ chkntfs.exe /t
 defrag.exe C: /A /U /V
 compact.exe $testRoot
 compact.exe /CompactOS:query
+manage-bde.exe -status
+manage-bde.exe -status C: -protectionaserrorlevel
+manage-bde.exe -protectors -get C:
+mountvol.exe
+mountvol.exe C:\ /L
 ```
 
 Start a disposable process, record its PID/path/start time, preview
@@ -255,6 +260,13 @@ repair or surface-scan a filesystem, schedule/exclude a startup check, optimize
 or retrim storage, or change NTFS/CompactOS compression merely to satisfy this
 checklist. Treat a read-only CHKDSK finding on an active volume as evidence to
 investigate, not authorization for automatic repair.
+Keep BitLocker and mount-point checks query-only and protect all output as
+storage/recovery topology. Record stable volume, disk, partition, protector,
+and mount identities; do not enable/disable/decrypt/unlock/lock BitLocker,
+change protectors or auto-unlock, expose the ESP, create/delete mount points,
+take volumes offline, clean stale mappings, or change automount merely for
+verification. Interpret `-protectionaserrorlevel` 0/1 as protected/unprotected
+status rather than generic command success/failure.
 Use a disposable NTFS test tree to display, verify, and save ACLs; do not reset,
 grant, deny, remove, restore, recurse ownership, encrypt/decrypt, rekey, or wipe
 free space merely for validation. Run the EFS check only when an approved

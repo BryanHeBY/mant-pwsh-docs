@@ -214,6 +214,8 @@ license in the document's provenance catalog before adapting material.
 - [chkntfs](chkntfs.md): startup check scheduling and exclusion policy.
 - [defrag](defrag.md): media-aware optimization, retrim, tiers, and scope.
 - [compact](compact.md): NTFS, executable, and CompactOS compression boundaries.
+- [manage-bde](manage-bde.md): BitLocker state, protectors, escrow, and access.
+- [mountvol](mountvol.md): volume GUID, mount-point, automount, and ESP safety.
 
 ## Cross-platform developer tools
 
