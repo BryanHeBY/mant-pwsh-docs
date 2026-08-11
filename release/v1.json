@@ -2,7 +2,7 @@
   "$schema": "release-manifest/v1",
   "release": "v1",
   "locale": "en-US",
-  "requiredDocumentCount": 175,
+  "requiredDocumentCount": 178,
   "sources": {
     "pwsh7": {
       "runtimePlatforms": ["windows", "linux", "macos"],
@@ -187,6 +187,9 @@
         "mountvol.md",
         "diskpart.md",
         "fsutil.md",
+        "vssadmin.md",
+        "diskshadow.md",
+        "wbadmin.md",
         "git.md",
         "ssh.md",
         "curl.md",

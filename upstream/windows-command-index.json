@@ -17,17 +17,20 @@
     {
       "name": "add",
       "source": "add.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskshadow.md"
     },
     {
       "name": "add alias",
       "source": "add-alias.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskshadow.md"
     },
     {
       "name": "add volume",
       "source": "add-volume.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskshadow.md"
     },
     {
       "name": "adprep",
@@ -128,12 +131,14 @@
     {
       "name": "begin backup",
       "source": "begin-backup.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskshadow.md"
     },
     {
       "name": "begin restore",
       "source": "begin-restore.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskshadow.md"
     },
     {
       "name": "bitsadmin",
@@ -411,7 +416,8 @@
     {
       "name": "diskshadow",
       "source": "diskshadow.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/diskshadow.md"
     },
     {
       "name": "dispdiag",
@@ -458,7 +464,8 @@
     {
       "name": "end restore",
       "source": "end-restore.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskshadow.md"
     },
     {
       "name": "erase",
@@ -500,7 +507,8 @@
     {
       "name": "expose",
       "source": "expose.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskshadow.md"
     },
     {
       "name": "extend",
@@ -669,7 +677,8 @@
     {
       "name": "import (shadowdisk)",
       "source": "import.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskshadow.md"
     },
     {
       "name": "import (diskpart)",
@@ -736,7 +745,8 @@
     {
       "name": "load metadata",
       "source": "load-metadata.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskshadow.md"
     },
     {
       "name": "lodctr",
@@ -1241,7 +1251,8 @@
     {
       "name": "reset",
       "source": "reset.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskshadow.md"
     },
     {
       "name": "retain",
@@ -1251,7 +1262,8 @@
     {
       "name": "revert",
       "source": "revert.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskshadow.md"
     },
     {
       "name": "rexec",
@@ -1387,7 +1399,8 @@
     {
       "name": "set shadow copy",
       "source": "set.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskshadow.md"
     },
     {
       "name": "setlocal",
@@ -1440,7 +1453,8 @@
     {
       "name": "simulate restore",
       "source": "simulate-restore.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskshadow.md"
     },
     {
       "name": "sort",
@@ -1682,7 +1696,8 @@
     {
       "name": "unexpose",
       "source": "unexpose.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskshadow.md"
     },
     {
       "name": "uniqueid",
@@ -1717,7 +1732,8 @@
     {
       "name": "vssadmin",
       "source": "vssadmin.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/vssadmin.md"
     },
     {
       "name": "waitfor",
@@ -1727,7 +1743,8 @@
     {
       "name": "wbadmin",
       "source": "wbadmin.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/wbadmin.md"
     },
     {
       "name": "wdsutil",
@@ -1789,7 +1806,8 @@
     {
       "name": "writer",
       "source": "writer.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskshadow.md"
     },
     {
       "name": "wscript",

@@ -209,7 +209,21 @@ fsutil.exe fsinfo drives
 fsutil.exe fsinfo volumeinfo C:
 fsutil.exe dirty query C:
 fsutil.exe behavior query DisableDeleteNotify
+vssadmin.exe list writers
+vssadmin.exe list providers
+vssadmin.exe list shadowstorage
+vssadmin.exe list shadows
+diskshadow.exe /?
+wbadmin.exe get status
+wbadmin.exe get disks
+wbadmin.exe get versions
 ```
+
+Keep VSS and backup validation query-only. Do not create, expose, import,
+break, mask, revert, resize, or delete shadows, and do not start/stop a backup,
+recovery, schedule, or catalog mutation merely to satisfy this checklist.
+Record the installed DiskShadow platform/help discrepancy when the executable
+is absent on a Microsoft page's nominally listed client release.
 
 Start a disposable process, record its PID/path/start time, preview
 `Stop-Process -WhatIf`, terminate it without `/f` or `/t`, and verify it exited.

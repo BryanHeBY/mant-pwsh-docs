@@ -218,6 +218,9 @@ license in the document's provenance catalog before adapting material.
 - [mountvol](mountvol.md): volume GUID, mount-point, automount, and ESP safety.
 - [diskpart](diskpart.md): focus-driven disk, partition, volume, and VHD safety.
 - [fsutil](fsutil.md): advanced filesystem, journal, link, and behavior state.
+- [vssadmin](vssadmin.md): VSS writer, provider, shadow, and diff-area evidence.
+- [diskshadow](diskshadow.md): scripted VSS backup, restore, and transport boundaries.
+- [wbadmin](wbadmin.md): Windows Backup catalog, version, target, and recovery identity.
 
 ## Cross-platform developer tools
 

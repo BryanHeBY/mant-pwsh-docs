@@ -1341,6 +1341,65 @@
       ],
       "notes": ["The TLDR is query-only and corrects negative DisableDeleteNotify semantics; the page maps the supported family and contains global behavior/reboot, dirty-bit, hard-link/reparse, sparse/range, valid-data, USN, 8.3-name, dismount, and unstable-text risks.", "Windows runtime verification remains required."]
     },
+    "vssadmin.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["supported Windows client and server releases; verbs and manageable shadows vary by build and provider"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/vssadmin.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/vssadmin-list-shadows.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/vssadmin-list-writers.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/vssadmin-resize-shadowstorage.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/windows-server/storage/file-server/volume-shadow-copy-service", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=755787&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR is query-only; the page distinguishes writers, providers, shadows, source/diff-area associations, and snapshot versus backup, and contains timing-sensitive writer-state, blind restart/re-registration, deletion, resizing, ownership, capacity, and localized-output risks.", "Windows runtime verification remains required."]
+    },
+    "diskshadow.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["availability and commands vary by Windows edition/build, VSS provider, writer, and storage hardware; current Microsoft pages conflict about client availability"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/diskshadow.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/set.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/set-context.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/set-option.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/set-metadata.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/add.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/writer.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/begin-backup.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/end-backup.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/load-metadata.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/begin-restore.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/end-restore.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/simulate-restore.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/expose.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/unexpose.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/import.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/mask.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/break_2.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/revert.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/reset.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/delete-shadows.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/windows-server/storage/file-server/volume-shadow-copy-service", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR uses only interpreter queries and target-host discovery; the page records Microsoft's platform conflict and generic-page collisions, maps creation/backup/restore/exposure/transport/destructive families, and contains context, writer, metadata, reset, exposure, revert, hardware-provider, and script-exec risks.", "Windows Server and any present Windows client runtime verification remain required."]
+    },
+    "wbadmin.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["supported Windows client and server releases; commands and backup features vary by edition, installed feature, target, and recovery environment"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/wbadmin.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/wbadmin-get-disks.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/wbadmin-get-status.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/wbadmin-get-versions.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/wbadmin-get-items.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/wbadmin-start-backup.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/wbadmin-start-recovery.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/wbadmin-start-sysrecovery.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/wbadmin-delete-catalog.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=634574&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR is discovery-only and binds version, target, and machine identity; the page maps backup/schedule/recovery/catalog families and contains unavailable-catalog, locale/time, UNC overwrite, credential, quiet, VSS full/copy, critical/system-state, ACL/overwrite, catalog, and stopped-job risks.", "Windows runtime verification remains required."]
+    },
     "git.md": {
       "kind": "native-cli",
       "status": "reviewed",
