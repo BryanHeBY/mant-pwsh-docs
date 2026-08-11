@@ -10,7 +10,7 @@ bundles.
 
 ### Added
 
-- First English release inventory: 143 reviewed ManT pages across `pwsh7`,
+- First English release inventory: 148 reviewed ManT pages across `pwsh7`,
   `pwsh51`, and `pwsh-cli`.
 - Broad `pwsh7` and `pwsh51` shell manuals, focused language/command pages,
   compatibility guides, and custom `irx` shorthand resolution guidance.
@@ -42,6 +42,8 @@ bundles.
   `ping`, `tracert`, `pathping`, `hostname`, and `nslookup`.
 - Windows socket/PID, IPv4 routing, per-interface neighbor cache, and adapter
   MAC inventory guides for `netstat`, `route`, `arp`, and `getmac`.
+- Legacy NetBIOS diagnosis and Netsh family guides for context discovery,
+  interface/IP state, Wi-Fi inventory, and Winsock provider inspection.
 - Per-page locked provenance catalogs, reader-facing source/license sections,
   and an optional upstream accessibility audit.
 - Portable Node.js validation with ManT JSON diagnostics and a v1 release gate.

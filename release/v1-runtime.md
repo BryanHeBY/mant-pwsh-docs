@@ -161,6 +161,12 @@ netstat.exe -ano -p udp
 route.exe print
 arp.exe -a
 getmac.exe /v /fo csv
+nbtstat.exe /n
+nbtstat.exe /c
+netsh.exe help
+netsh.exe interface ipv4 show config
+netsh.exe wlan show interfaces
+netsh.exe winsock show catalog
 ```
 
 Start a disposable process, record its PID/path/start time, preview
@@ -177,6 +183,10 @@ Keep route and ARP verification query-only. Correlate a known disposable
 listener with `Get-NetTCPConnection` and its current PID, distinguish TCP from
 UDP endpoint semantics, and confirm physical and virtual adapter rows instead
 of accepting the first MAC address.
+Preserve `nbtstat` option case and skip purge/refresh operations. Discover the
+installed Netsh contexts on the test host and keep interface, WLAN, and Winsock
+checks read-only; do not export clear-text Wi-Fi keys, reset catalogs, change
+interfaces, or enable persistent tracing merely for validation.
 
 Review Windows-only commands on a non-production target. In particular, use
 `robocopy /L` before any real copy, query an existing known task before task

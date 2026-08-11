@@ -177,6 +177,11 @@ license in the document's provenance catalog before adapting material.
 - [route](route.md): IPv4 route inspection and high-risk mutation boundaries.
 - [arp](arp.md): per-interface IPv4 neighbor-cache evidence.
 - [getmac](getmac.md): physical and virtual adapter MAC inventory.
+- [nbtstat](nbtstat.md): legacy NetBIOS name, cache, and session diagnosis.
+- [netsh](netsh.md): installed context discovery and safe family boundaries.
+- [netsh-interface](netsh-interface.md): IP, interface, tunnel, and proxy state.
+- [netsh-wlan](netsh-wlan.md): Wi-Fi interfaces, networks, and profile safety.
+- [netsh-winsock](netsh-winsock.md): provider catalog and autotuning evidence.
 
 ## Cross-platform developer tools
 

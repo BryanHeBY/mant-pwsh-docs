@@ -1068,6 +1068,36 @@
       "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/getmac.md"}],
       "notes": ["The page distinguishes physical, virtual, disconnected, randomized, and remote adapter identities and prohibits inline passwords.", "Windows runtime verification remains required."]
     },
+    "nbtstat.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/nbtstat.md"}],
+      "notes": ["The page preserves case-sensitive option pairs, keeps the TLDR read-only, and limits claims to NetBIOS over TCP/IP.", "Windows runtime verification remains required."]
+    },
+    "netsh.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/netsh.md"}],
+      "notes": ["The page requires target-side context discovery, full non-interactive context paths, protected remote credentials, and typed PowerShell alternatives where supported.", "Windows runtime verification remains required."]
+    },
+    "netsh-interface.md": {
+      "kind": "native-cli-subcommand", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/netsh-interface.md"}],
+      "notes": ["The TLDR is query-only and the page covers active/persistent stores, interface-session loss, port-proxy boundaries, tunnels, and exact target identity.", "Windows runtime verification remains required."]
+    },
+    "netsh-wlan.md": {
+      "kind": "native-cli-subcommand", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/netsh-wlan.md"}],
+      "notes": ["The TLDR avoids secret-bearing exports and state changes; the page covers wildcard/profile/interface scope, connection verification, reports, and persistent tracing.", "Windows runtime verification remains required."]
+    },
+    "netsh-winsock.md": {
+      "kind": "native-cli-subcommand", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/netsh-winsock.md"}],
+      "notes": ["The TLDR is query-only and rejects universal reset recipes, unverified provider removal, blind dump replay, and autotuning-context confusion.", "Windows runtime verification remains required."]
+    },
     "git.md": {
       "kind": "native-cli",
       "status": "reviewed",

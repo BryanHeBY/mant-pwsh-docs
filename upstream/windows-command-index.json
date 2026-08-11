@@ -863,7 +863,8 @@
     {
       "name": "nbtstat",
       "source": "nbtstat.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/nbtstat.md"
     },
     {
       "name": "netcfg",
@@ -888,7 +889,8 @@
     {
       "name": "netsh",
       "source": "netsh.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/netsh.md"
     },
     {
       "name": "netstat",
