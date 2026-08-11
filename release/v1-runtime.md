@@ -118,6 +118,14 @@ wevtutil.exe enum-publishers
 wecutil.exe /?
 sc.exe query Wecsvc
 eventcreate.exe /?
+logman.exe query
+logman.exe query providers
+typeperf.exe -q
+typeperf.exe -qx
+relog.exe /?
+tracerpt.exe /?
+lodctr.exe /q
+unlodctr.exe /?
 cmd.exe /d /c ver
 reg.exe query HKCU\Environment
 Get-Command explorer.exe, control.exe, mmc.exe, rundll32.exe -All
@@ -399,6 +407,13 @@ change WEF credentials/authorization/delivery, or create even a test marker
 merely for evidence. Marker/forwarding mutation tests require a disposable
 source/collector, unique `TEST ONLY` identity and correlation ID, capacity/
 retention/security review, and end-to-end cleanup/verification plan.
+Keep performance-counter and tracing verification inventory/help-only: do not
+create, import, update, start, stop, or delete a collector; run an unbounded
+sample; overwrite/SQL-export evidence; globally rebuild counter registration;
+or register, unregister, enable, or disable a provider merely for validation.
+Bounded sampling or conversion requires an approved fixture/host and a new
+explicit output. Record locale, exact counter formula and instances, interval,
+sample count, clock, provider identity/status, native status, and artifact hash.
 
 On Windows, macOS, and Linux where declared by the document, record:
 

@@ -545,6 +545,61 @@
       "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/eventcreate.md"}],
       "notes": ["The TLDR labels mutations as disposable TEST ONLY markers and immediately re-queries exact source/ID; the page contains Security/audit-provenance, source impersonation, remote credential/target, end-to-end forwarding, untrusted description, schema/ID/type, and cleanup/retention risks.", "Windows runtime verification remains help-only unless an approved disposable marker and end-to-end forwarding fixture exist."]
     },
+    "logman.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["supported Windows client and server releases; collector types, counters, providers, schemas, and options vary by build and installed workload"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/logman.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/windows/win32/perfctrs/performance-counters-tools", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR inventories collector definitions and ETW providers before lifecycle actions; performance-counter path discovery is deliberately delegated to typeperf instead of the unsupported-looking logman query counters combination. The page contains scope/overhead, overwrite/circular, provider GUID/keyword/level, interval, remote identity, ownership, import, native-status, and evidence-integrity risks.", "Windows runtime verification remains query-only unless an approved disposable collector fixture and evidence plan exist."]
+    },
+    "typeperf.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows client and server releases; counter names, formulas, instances, and providers vary by build, language, role, product, and workload"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/typeperf.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/windows/win32/perfctrs/performance-counters-tools", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=77629160&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR discovers target-localized paths and bounds sample interval/count/output; the page contains localization, rate warm-up, UI-comparison, wildcard-instance, interval, CSV/locale, repair, quoting, and evidence-provenance risks.", "Windows runtime verification remains inventory-only unless bounded sampling on an approved host/output is authorized."]
+    },
+    "relog.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows client and server releases; accepted input/output formats and counter metadata vary by build and source log"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/relog.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/windows/win32/perfctrs/performance-counters-tools", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR inventories copied logs, writes new outputs, selects exact counters, and states resampling loss; the page contains overwrite, sample-selection, clock/merge, localization, base-counter, CSV-fidelity, SQL, and native-status risks.", "Windows runtime verification remains help-only unless approved copied input and a new explicit output are available."]
+    },
+    "tracerpt.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows client and server releases; parsing fidelity depends on trace format, provider schema, symbols, clock, and installed components"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/tracerpt.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-server/system-management-components/event-tracing-for-windows-simplified", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR preserves copied ETL input and writes new CSV/XML/EVTX outputs; the page contains overwrite, clock/merge, schema/symbol, lossy-conversion, root-cause, size, native-status, and artifact-provenance risks.", "Windows runtime verification remains help-only unless an approved copied trace and new explicit outputs are available."]
+    },
+    "lodctr.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows client and server releases; provider registration and repair behavior vary by build, architecture, language, and installed product"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/lodctr.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/windows/win32/perfctrs/performance-counters-tools", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR inventories exact provider state, saves a backup, and corroborates sampling before repair; the page records that the current Learn page omits query/enable/disable forms found in many installed help versions, and contains blind-global-rebuild, untrusted-registration-file, disabled-versus-missing, backup-scope, native-status, and product-lifecycle risks.", "Windows runtime verification must confirm installed help and remains query-only; provider repair requires product support guidance and a rollback-tested fixture."]
+    },
+    "unlodctr.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows client and server releases; applicable primarily to legacy performance-counter provider registration"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/unlodctr.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/windows/win32/perfctrs/performance-counters-tools", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR makes inventory and backup precede an explicitly lifecycle-scoped unregister example; the page contains wrong-provider, unregister-versus-disable, invocation-path, rollback, active-monitoring, native-status, and product-support risks.", "Windows runtime verification remains help/query-only; unregistration requires an approved disposable product lifecycle fixture and rollback validation."]
+    },
     "cmd.md": {
       "kind": "windows-shell",
       "status": "reviewed",

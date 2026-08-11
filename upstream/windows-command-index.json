@@ -753,12 +753,14 @@
     {
       "name": "lodctr",
       "source": "lodctr.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/lodctr.md"
     },
     {
       "name": "logman",
       "source": "logman.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/logman.md"
     },
     {
       "name": "logoff",
@@ -1216,7 +1218,8 @@
     {
       "name": "relog",
       "source": "relog.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/relog.md"
     },
     {
       "name": "rem",
@@ -1652,7 +1655,8 @@
     {
       "name": "tracerpt",
       "source": "tracerpt.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/tracerpt.md"
     },
     {
       "name": "tracert",
@@ -1703,7 +1707,8 @@
     {
       "name": "typeperf",
       "source": "typeperf.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/typeperf.md"
     },
     {
       "name": "tzutil",
@@ -1724,7 +1729,8 @@
     {
       "name": "unlodctr",
       "source": "unlodctr.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/unlodctr.md"
     },
     {
       "name": "ver",

@@ -2,7 +2,7 @@
   "$schema": "release-manifest/v1",
   "release": "v1",
   "locale": "en-US",
-  "requiredDocumentCount": 198,
+  "requiredDocumentCount": 204,
   "sources": {
     "pwsh7": {
       "runtimePlatforms": ["windows", "linux", "macos"],
@@ -109,6 +109,12 @@
         "wevtutil.md",
         "wecutil.md",
         "eventcreate.md",
+        "logman.md",
+        "typeperf.md",
+        "relog.md",
+        "tracerpt.md",
+        "lodctr.md",
+        "unlodctr.md",
         "cmd.md",
         "start.md",
         "explorer.md",

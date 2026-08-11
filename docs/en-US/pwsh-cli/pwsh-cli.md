@@ -127,6 +127,15 @@ license in the document's provenance catalog before adapting material.
 - [wecutil](wecutil.md): Event Collector subscription configuration, per-source runtime status, delivery, and scale boundaries.
 - [eventcreate](eventcreate.md): explicitly labeled test/operational markers without fabricating audit provenance.
 
+## Windows performance counters and tracing
+
+- [logman](logman.md): Data Collector Set and ETW provider inventory before lifecycle changes.
+- [typeperf](typeperf.md): target-localized counter discovery and bounded live sampling.
+- [relog](relog.md): inspect, select, convert, and resample copied performance logs.
+- [tracerpt](tracerpt.md): parse copied ETL/performance traces while preserving source evidence.
+- [lodctr](lodctr.md): performance-counter provider registration inventory and backup before repair.
+- [unlodctr](unlodctr.md): exact provider unregistration only in a supported uninstall or repair workflow.
+
 ## Windows shell, GUI, and settings
 
 - [cmd](cmd.md): cmd builtins, child-shell parsing, AutoRun, and exit status.

@@ -10,7 +10,7 @@ bundles.
 
 ### Added
 
-- First English release inventory: 198 reviewed ManT pages across `pwsh7`,
+- First English release inventory: 204 reviewed ManT pages across `pwsh7`,
   `pwsh51`, and `pwsh-cli`.
 - Broad `pwsh7` and `pwsh51` shell manuals, focused language/command pages,
   compatibility guides, and custom `irx` shorthand resolution guidance.
@@ -60,6 +60,10 @@ bundles.
   `eventcreate`, including bounded XML/XPath queries, EVTX evidence, channel/
   manifest/clear risks, subscription runtime status, WEF delivery/scale, and
   explicitly labeled non-audit test markers.
+- Windows performance-counter and ETW diagnostic guides for `logman`,
+  `typeperf`, `relog`, `tracerpt`, `lodctr`, and `unlodctr`, including localized
+  counter discovery, bounded sampling, evidence-preserving conversion, and
+  provider-registration repair boundaries.
 - Windows adapter/DHCP/DNS inspection, bounded ICMP reachability, path tracing,
   path sampling, host identity, and direct DNS-query guides for `ipconfig`,
   `ping`, `tracert`, `pathping`, `hostname`, and `nslookup`.
