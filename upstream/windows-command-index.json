@@ -12,7 +12,8 @@
     {
       "name": "active",
       "source": "active.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskpart.md"
     },
     {
       "name": "add",
@@ -51,7 +52,8 @@
     {
       "name": "assign",
       "source": "assign.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskpart.md"
     },
     {
       "name": "assoc",
@@ -72,7 +74,8 @@
     {
       "name": "attach-vdisk",
       "source": "attach-vdisk.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskpart.md"
     },
     {
       "name": "attrib",
@@ -83,7 +86,8 @@
     {
       "name": "attributes",
       "source": "attributes.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskpart.md"
     },
     {
       "name": "auditpol",
@@ -109,7 +113,8 @@
     {
       "name": "automount",
       "source": "automount.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskpart.md"
     },
     {
       "name": "bcdboot",
@@ -243,7 +248,8 @@
     {
       "name": "clean",
       "source": "clean.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskpart.md"
     },
     {
       "name": "cleanmgr",
@@ -298,12 +304,14 @@
     {
       "name": "compact vdisk",
       "source": "compact-vdisk.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskpart.md"
     },
     {
       "name": "convert",
       "source": "convert.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskpart.md"
     },
     {
       "name": "copy",
@@ -314,7 +322,8 @@
     {
       "name": "create",
       "source": "create.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskpart.md"
     },
     {
       "name": "cscript",
@@ -357,17 +366,20 @@
     {
       "name": "delete",
       "source": "delete.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskpart.md"
     },
     {
       "name": "detach vdisk",
       "source": "detach-vdisk.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskpart.md"
     },
     {
       "name": "detail",
       "source": "detail.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskpart.md"
     },
     {
       "name": "dfsdiag",
@@ -506,7 +518,8 @@
     {
       "name": "expand vdisk",
       "source": "expand-vdisk.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskpart.md"
     },
     {
       "name": "expose",
@@ -517,7 +530,8 @@
     {
       "name": "extend",
       "source": "extend.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskpart.md"
     },
     {
       "name": "extract",
@@ -533,7 +547,8 @@
     {
       "name": "filesystems",
       "source": "filesystems.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskpart.md"
     },
     {
       "name": "find",
@@ -637,7 +652,8 @@
     {
       "name": "gpt",
       "source": "gpt.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskpart.md"
     },
     {
       "name": "gpupdate",
@@ -687,12 +703,14 @@
     {
       "name": "import (diskpart)",
       "source": "import_1.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskpart.md"
     },
     {
       "name": "inactive",
       "source": "inactive.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskpart.md"
     },
     {
       "name": "ipconfig",
@@ -744,7 +762,8 @@
     {
       "name": "list",
       "source": "list.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskpart.md"
     },
     {
       "name": "load metadata",
@@ -810,7 +829,8 @@
     {
       "name": "merge vdisk",
       "source": "merge-vdisk.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskpart.md"
     },
     {
       "name": "mkdir",
@@ -990,12 +1010,14 @@
     {
       "name": "offline",
       "source": "offline.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskpart.md"
     },
     {
       "name": "online",
       "source": "online.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskpart.md"
     },
     {
       "name": "openfiles",
@@ -1196,7 +1218,8 @@
     {
       "name": "recover disk group",
       "source": "recover_1.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskpart.md"
     },
     {
       "name": "refsutil",
@@ -1235,7 +1258,8 @@
     {
       "name": "remove",
       "source": "remove.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskpart.md"
     },
     {
       "name": "ren",
@@ -1257,7 +1281,8 @@
     {
       "name": "repair",
       "source": "repair.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskpart.md"
     },
     {
       "name": "replace",
@@ -1267,7 +1292,8 @@
     {
       "name": "rescan",
       "source": "rescan.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskpart.md"
     },
     {
       "name": "reset",
@@ -1278,7 +1304,8 @@
     {
       "name": "retain",
       "source": "retain.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskpart.md"
     },
     {
       "name": "revert",
@@ -1349,7 +1376,8 @@
     {
       "name": "san",
       "source": "san.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskpart.md"
     },
     {
       "name": "sc config",
@@ -1395,7 +1423,8 @@
     {
       "name": "select",
       "source": "select.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskpart.md"
     },
     {
       "name": "serverceipoptin",
@@ -1467,7 +1496,8 @@
     {
       "name": "shrink",
       "source": "shrink.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskpart.md"
     },
     {
       "name": "shutdown",
@@ -1734,7 +1764,8 @@
     {
       "name": "uniqueid",
       "source": "uniqueid.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskpart.md"
     },
     {
       "name": "unlodctr",
