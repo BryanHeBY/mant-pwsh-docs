@@ -37,6 +37,9 @@ bundles.
 - Windows process listing/termination, host, effective-token identity, open-
   file, and driver inventory guides for `tasklist`, `taskkill`, `systeminfo`,
   `whoami`, `openfiles`, and `driverquery`.
+- Expanded Service Control Manager and Task Scheduler family guides for
+  `sc.exe` and SchTasks, including PowerShell alias, scheduled-principal,
+  quoting, security, and runtime-context traps.
 - Windows adapter/DHCP/DNS inspection, bounded ICMP reachability, path tracing,
   path sampling, host identity, and direct DNS-query guides for `ipconfig`,
   `ping`, `tracert`, `pathping`, `hostname`, and `nslookup`.

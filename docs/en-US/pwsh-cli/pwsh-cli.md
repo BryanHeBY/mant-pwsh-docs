@@ -97,8 +97,8 @@ license in the document's provenance catalog before adapting material.
 - [wsl](wsl.md): explicit distribution selection and Windows/Linux boundaries.
 - [where](where.md): Windows executable lookup versus PowerShell resolution.
 - [robocopy](robocopy.md): safe previews, mirror risk, and special exit codes.
-- [schtasks](schtasks.md): scheduled-task inspection and change safety.
-- [sc](sc.md): Windows service query and configuration safety.
+- [schtasks](schtasks.md): task definition, principal, trigger, action, and result identity.
+- [sc.exe](sc.md): SCM runtime, configuration, security, and control boundaries.
 
 ## Windows shell, GUI, and settings
 

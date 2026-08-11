@@ -307,23 +307,30 @@
       ]
     },
     "schtasks.md": {
-      "kind": "native-cli",
+      "kind": "native-cli-family",
       "status": "reviewed",
-      "versions": ["varies by Windows release"],
+      "versions": ["supported Windows client and server releases; Task Scheduler schema, options, principals, and remote behavior vary by target build"],
       "platforms": ["windows"],
-      "sources": [{
-        "type": "git",
-        "baseline": "windowsserverdocs",
-        "path": "WindowsServerDocs/administration/windows-commands/schtasks.md"
-      }],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/schtasks.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/schtasks-query.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/schtasks-create.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/schtasks-change.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/schtasks-run.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/schtasks-end.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/schtasks-delete.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=440366&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=55214284&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
       "notes": [
-        "This guide requires exact task identity and target-host-context review before changes."
+        "The TLDR is query/export/event-only; the page maps query/create/change/run/end/delete and contains creation validation, management/runtime identities, secret, noninteractive context, relative/mapped path, quote layering, locale date, principal/logon, force overwrite, trigger testing, asynchronous result, end/delete, ACL visibility, remote context, and privileged-content risks.",
+        "Windows runtime verification remains required on representative local and remote task contexts without mutating production tasks."
       ]
     },
     "sc.md": {
-      "kind": "native-cli",
+      "kind": "native-cli-family",
       "status": "reviewed",
-      "versions": ["varies by Windows release"],
+      "versions": ["supported Windows client and server releases; commands and fields vary by build, service/driver type, protection, triggers, and privilege"],
       "platforms": ["windows"],
       "sources": [
         {
@@ -345,10 +352,13 @@
           "type": "git",
           "baseline": "windowsserverdocs",
           "path": "WindowsServerDocs/administration/windows-commands/sc-delete.md"
-        }
+        },
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/windows/win32/services/configuring-a-service-using-sc", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=76074&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
       ],
       "notes": [
-        "This guide uses sc.exe explicitly and documents its syntax and service-change hazards."
+        "The TLDR is query-only and begins with PowerShell command resolution; the page maps runtime, configuration, security, control, registration, recovery/trigger, and driver families and contains alias, option spacing, service identity, shared PID, pending state, replace semantics, binary quoting, secret, uninstall, disabling, security descriptor, and remote-RPC risks.",
+        "Windows runtime verification remains required, including Windows PowerShell alias resolution separately from PowerShell 7."
       ]
     },
     "cmd.md": {

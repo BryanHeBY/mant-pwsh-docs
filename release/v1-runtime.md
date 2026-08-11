@@ -71,8 +71,15 @@ winget --version
 wsl --status
 where.exe winget
 robocopy.exe /?
-schtasks.exe /query
-sc.exe query
+schtasks.exe /query /fo CSV /v
+schtasks.exe /query /tn "\\Microsoft\\Windows\\Defrag\\ScheduledDefrag" /fo LIST /v
+schtasks.exe /query /tn "\\Microsoft\\Windows\\Defrag\\ScheduledDefrag" /xml
+Get-Command sc -All -ErrorAction SilentlyContinue
+sc.exe query state= all
+sc.exe query EventLog
+sc.exe qc EventLog
+sc.exe queryex EventLog
+sc.exe enumdepend EventLog
 cmd.exe /d /c ver
 reg.exe query HKCU\Environment
 Get-Command explorer.exe, control.exe, mmc.exe, rundll32.exe -All
@@ -311,6 +318,10 @@ certificate thumbprint, target volume, and exact scope.
 Review Windows-only commands on a non-production target. In particular, use
 `robocopy /L` before any real copy, query an existing known task before task
 changes, and query a known service before `sc.exe` configuration work.
+Record how `sc` resolves in both Windows PowerShell 5.1 and PowerShell 7, then
+invoke `sc.exe` explicitly. Keep service and task validation query-only; do not
+start, stop, create, configure, overwrite, run, end, or delete a real service or
+task merely for evidence. Use an approved disposable fixture for mutations.
 
 On Windows, macOS, and Linux where declared by the document, record:
 
