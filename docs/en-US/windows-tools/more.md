@@ -36,6 +36,23 @@ replacement for bounded queries. The producer continues or blocks according to
 pipe buffering, so paging a live/unbounded command can hold processes and
 resources open.
 
+## Command and options
+
+<!-- mant:entries role=command case=insensitive -->
+- `more.com`: Page text from named files or native standard input in a
+  forward-only interactive Windows console viewer.
+
+The special `+N` operand starts at a line number but cannot be represented as
+a conventional slash option. It remains interactive and unsuitable for jobs.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/e`: Enable extended prompt commands such as line/file skipping and help.
+- `/c`: Clear the screen before displaying each page.
+- `/p`: Expand form-feed characters before displaying content.
+- `/s`: Collapse multiple blank lines into one.
+- `/t`: Expand tabs using the attached tab width (for example `/t4`).
+- `/?`: Display installed command help.
+
 ## Common mistakes
 
 ### Assuming bare `more` always means `more.com`
@@ -82,7 +99,7 @@ type and size, limit producer output, and protect terminal logs and history.
 tab display. They transform presentation and can make evidence differ from the
 original. Preserve the source and record every display option.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use `more.com` for deterministic native resolution. Capture or select data
 before paging because the interactive process is a terminal endpoint, not an

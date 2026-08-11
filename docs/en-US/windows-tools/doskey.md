@@ -49,6 +49,25 @@ history buffers are in-memory console state. `/macrofile` imports definitions;
 `/reinstall` clears history while reinstalling DOSKEY behavior. Exported macro
 and history files can contain credentials, tokens, hostnames, paths, or commands.
 
+## Command and options
+
+<!-- mant:entries role=command case=insensitive -->
+- `doskey.exe`: Manage interactive line editing, history, and text macros for
+  one compatible executable in the current console session.
+
+Macros are input-line expansion and cannot be invoked reliably from batch files.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/reinstall`: Reinstall DOSKEY behavior and clear the associated command history.
+- `/listsize`: Set the maximum history-buffer size.
+- `/macros`: Display macros for the current executable context.
+- `/history`: Display command history for the selected executable context.
+- `/insert`: Insert newly typed characters at the cursor.
+- `/overstrike`: Replace existing characters as new characters are typed.
+- `/exename`: Select the executable context whose macros/history are managed.
+- `/macrofile`: Import macro definitions from the following reviewed text file.
+- `/?`: Display installed command help.
+
 ## Common mistakes
 
 ### Calling a macro from `.bat` or `.cmd`
@@ -90,7 +109,7 @@ than executing it directly.
 in-memory buffer. Record anything required for an investigation first and
 coordinate with the console owner.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Invoke `doskey.exe` explicitly for inspection. PowerShell's `$` interpolation
 can alter macro-token text in double-quoted strings, while Cmd metacharacters

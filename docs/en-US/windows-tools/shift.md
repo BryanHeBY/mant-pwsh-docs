@@ -27,6 +27,18 @@ to the preceding slot. It enables access to arguments beyond `%9`. `/N n`
 (written commonly as `/2`) starts at slot 0 through 8 and requires command
 extensions. `%*` retains the original full argument text and is not shifted.
 
+## Command and option
+
+<!-- mant:entries role=command case=insensitive -->
+- `shift`: Destructively move later batch arguments into earlier `%0` through
+  `%9` slots; it does not change the original `%*` text.
+
+The extension form commonly written `/2` begins shifting at a selected slot.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/N`: Begin shifting at slot number `N` from 0 through 8 when command
+  extensions are enabled; replace `N` with the actual digit.
+
 ## Common mistakes
 
 ### Reading `%10` as the tenth argument
@@ -57,7 +69,7 @@ remaining queue after shifting; it still represents the original argument text.
 syntax when expanded. Avoid re-parsing untrusted arguments, preserve path/data
 boundaries, and test spaces, empty strings, `&|<>^%!`, and Unicode.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 SHIFT is only a Cmd batch builtin. PowerShell exposes `$args` and declared
 parameters; use parameter binding rather than spawning Cmd. A batch file called

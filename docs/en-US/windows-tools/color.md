@@ -37,6 +37,16 @@ example describes first-digit background and second-digit foreground, matching
 traditional target-local `color /?` behavior. Treat installed help and a
 disposable visual test as the runtime authority; do not silently choose one.
 
+## Command interface
+
+<!-- mant:entries role=command case=insensitive -->
+- `color`: Restore default Cmd console colors with no operand, or request one
+  two-hex-digit background/foreground palette attribute.
+
+Target-local `color /?` is the authority for digit order because Microsoft's
+current prose/example are internally inconsistent. Equal digits fail with
+ERRORLEVEL 1.
+
 ## Common mistakes
 
 ### Reversing foreground and background from copied documentation
@@ -68,7 +78,7 @@ Same foreground/background is rejected with ERRORLEVEL 1. Capture result before
 another command and restore defaults in cleanup when a script temporarily
 changes presentation.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Bare `color` is not a PowerShell cmdlet. Use `cmd.exe /d /k` only for an
 interactive Cmd session. PowerShell `Write-Host` colors one host stream and is

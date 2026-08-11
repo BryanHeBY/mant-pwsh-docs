@@ -34,6 +34,15 @@ Message text still passes through Cmd expansion and metacharacter parsing.
 `&`, `|`, `<`, `>`, `^`, parentheses, `%variables%`, and delayed `!variables!`
 can change control flow, redirection, or content. ECHO is not a safe encoder.
 
+## Command interface
+
+<!-- mant:entries role=command case=insensitive -->
+- `echo`: Display Cmd message text, display current command-echo state, or set
+  that state with the `on`/`off` operand.
+
+The `@` prefix suppresses command echoing for one batch line; `echo(` is a
+parser idiom for deliberate blank/value output, not a safe data encoder.
+
 ## Common mistakes
 
 ### Getting “ECHO is off/on” instead of a value
@@ -67,7 +76,7 @@ A caret may be consumed by a parent Cmd, batch block, pipe-created child Cmd,
 or another nested shell. Avoid nested command strings and test exact fixtures
 for literal metacharacters, Unicode, empty values, and newlines.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 PowerShell's `Write-Output`, `Write-Host`, and `echo` alias have object/stream
 semantics unrelated to Cmd echo state. Use `cmd.exe /d /c` only when testing a

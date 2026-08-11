@@ -34,6 +34,12 @@ The displayed filesystem serial is not the same as a disk hardware serial,
 GPT partition GUID, volume GUID path, filesystem object ID, BitLocker identity,
 or cloud/virtual-storage identifier. Labels are mutable and non-unique.
 
+## Command interface
+
+<!-- mant:entries role=command case=insensitive -->
+- `vol`: Display a selected drive's filesystem volume label and volume serial
+  as localized Cmd text; it does not identify the physical disk globally.
+
 ## Common mistakes
 
 ### Running bare `vol` in PowerShell
@@ -66,7 +72,7 @@ PowerShell providers, per-drive locations, UNC paths, and a child Cmd process
 have different current-location models. Pass `X:` explicitly instead of relying
 on inherited state.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use a single quoted command string only for the simple, fixed Cmd builtin call;
 do not concatenate untrusted input. Validate a drive letter against an allowlist,

@@ -38,6 +38,12 @@ that equates the major/minor value with the marketed product name will
 misclassify it. Prefer a capability check for feature gating; when inventory is
 required, collect explicit typed fields and record their source.
 
+## Command interface
+
+<!-- mant:entries role=command case=insensitive -->
+- `ver`: Display Cmd's compact localized Windows version string; it is not a
+  complete product, edition, UBR, servicing, or capability inventory.
+
 ## Common mistakes
 
 ### Classifying Windows 10 versus Windows 11 from `10.0`
@@ -76,7 +82,7 @@ layers, containers, remote target, and servicing can differ at the same build.
 Resolve the executable/module/API or query the specific capability whenever
 possible.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 `ver` is not a PowerShell command. Invoke it through `cmd.exe /d /c ver`. In
 PowerShell, capture typed CIM or registry properties rather than scraping the

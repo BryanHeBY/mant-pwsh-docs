@@ -37,6 +37,15 @@ This command is unrelated to PowerShell's `break` language keyword. Cmd has no
 general `break` statement for leaving `for` loops; structure batch control flow
 explicitly rather than relying on this compatibility name.
 
+## Command interface
+
+<!-- mant:entries role=command case=insensitive -->
+- `break`: Display or set the obsolete Cmd `break=on|off` compatibility state;
+  it does not exit loops in ordinary batch execution.
+
+The `on` and `off` values are operands, not PowerShell switches. Redirection
+still occurs even though the compatibility setting has no normal effect.
+
 ## Common mistakes
 
 ### Using `break` to exit a Cmd loop
@@ -72,7 +81,7 @@ A legacy line that appears inert can behave differently while the batch file is
 under a debugger with command extensions enabled. Preserve it only with a known
 compatibility reason and test the actual debug workflow.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 In PowerShell source, `break` is a language keyword, not a command resolved by
 `Get-Command`. To reach the Cmd compatibility builtin, invoke an explicit child

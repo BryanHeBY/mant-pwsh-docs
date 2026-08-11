@@ -26,6 +26,12 @@
 operation, not data deletion or security cleanup. Calling `cmd /c cls` clears a
 short-lived child context and is not a reliable way to clear the parent host.
 
+## Command interface
+
+<!-- mant:entries role=command case=insensitive -->
+- `cls`: Clear the visible display requested by the current Cmd console; it
+  does not delete scrollback, logs, history, transcripts, or retained data.
+
 ## Common mistakes
 
 ### Using CLS to remove sensitive output
@@ -52,7 +58,7 @@ Copy the command, timestamp, raw output, exit status, and relevant state before
 changing the display. A clean screen can make diagnosis harder without fixing
 anything.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use `Clear-Host` for the current PowerShell host, noting host implementations
 vary. Do not spawn Cmd solely for CLS. Neither mechanism guarantees clearing

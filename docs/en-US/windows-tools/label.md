@@ -35,6 +35,18 @@ A label is display metadata, not a volume GUID, hardware serial, access-control
 boundary, mount guarantee, or globally unique key. Scripts and operators should
 use durable identity plus label, size, filesystem, and ownership evidence.
 
+## Command and options
+
+<!-- mant:entries role=command case=insensitive -->
+- `label.exe`: Create, replace, or remove the filesystem label of one explicitly
+  identified volume; it is not a read-only identity query.
+
+Without a nonempty label the command can prompt or remove the existing label.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/mp`: Treat the target operand as a mount point or volume name.
+- `/?`: Display installed command help.
+
 ## Common mistakes
 
 ### Running `label` with no explicit target or label
@@ -67,7 +79,7 @@ Applications, backup policies, monitoring, scripts, operators, mount logic, and
 runbooks can display or match labels even though drive access still works.
 Search dependencies, schedule the change, update inventories, and verify after.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Invoke `label.exe` explicitly and pass target and label as separate quoted
 arguments. Prefer `Get-Volume` for typed inventory and `Set-Volume` when its

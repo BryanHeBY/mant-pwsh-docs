@@ -31,6 +31,12 @@ blocks until console input arrives. It provides no parameter for a custom
 message, allowed keys, default action, or timeout. Ctrl+C enters Cmd's batch-
 termination confirmation flow.
 
+## Command interface
+
+<!-- mant:entries role=command case=insensitive -->
+- `pause`: Display Cmd's fixed any-key prompt and block the current batch file
+  until console input arrives; it has no timeout, default, or custom-message option.
+
 ## Common mistakes
 
 ### Leaving PAUSE in CI, remoting, scheduled tasks, or services
@@ -62,7 +68,7 @@ Refactor the script rather than automating keystrokes.
 Run the script from an existing terminal, capture logs, or fix the launcher.
 An unconditional final pause annoys callers and breaks composition.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 PAUSE is not a PowerShell command. `Read-Host` waits for a line, not any key;
 `$Host.UI.RawUI.ReadKey()` is host-dependent. Prefer explicit parameters and

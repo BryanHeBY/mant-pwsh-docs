@@ -36,6 +36,15 @@ end-to-end UTF-8 pipeline. The producer, pipe encoding, native program, console
 input/output encodings, font/rendering stack, file reader/writer, BOM policy,
 and PowerShell edition all have independent behavior.
 
+## Command interface
+
+<!-- mant:entries role=command case=insensitive -->
+- `chcp.com`: Display the active console code page, or select the following
+  numeric code page for programs started afterward in that console.
+
+The number is an operand. A successful change is not file conversion or an
+end-to-end native-pipeline encoding contract.
+
 ## Common mistakes
 
 ### Treating code-page selection as file conversion
@@ -79,7 +88,7 @@ Do not parse “Active code page:” by language. If automation must obtain the
 value, constrain the environment or use an API whose numeric result is stable,
 and preserve target build/locale evidence.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use `chcp.com` explicitly. A change made directly in the current terminal is
 session state and can affect later native commands, so save the original number

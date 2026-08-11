@@ -28,6 +28,12 @@ be used in a batch-file REM comment. Comments are not a universal lexical layer:
 percent expansion, blocks, pipes, continuations, and nested Cmd parsing can
 still make supposedly disabled text fail or affect surrounding syntax.
 
+## Command interface
+
+<!-- mant:entries role=command case=insensitive -->
+- `rem`: Introduce a supported plain-text comment line in a Cmd batch file;
+  it is not a universal lexical comment wrapper for arbitrary disabled syntax.
+
 ## Common mistakes
 
 ### Commenting out arbitrary code by prefixing `rem`
@@ -60,7 +66,7 @@ REM records source commentary; it is not user-facing output. Use ECHO or a
 logging command for deliberate messages and keep operational output separate
 from source comments.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 REM has meaning only after Cmd parses a batch file or command string. In
 PowerShell use `#` or `<# ... #>` comments. Do not pass a REM line through

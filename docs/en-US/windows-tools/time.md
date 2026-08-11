@@ -38,6 +38,17 @@ formatting. For clock incidents, diagnose the authoritative source, hierarchy,
 offset, Windows Time service, policy, VM host integration, and time zone before
 deciding whether a correction is needed.
 
+## Command and option
+
+<!-- mant:entries role=command case=insensitive -->
+- `time`: Display and prompt to change local time-of-day, or accept a
+  locale-sensitive replacement time when authorized.
+
+The read-only switch avoids the interactive setting prompt.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/t`: Display the current local time without prompting for a replacement.
+
 ## Common mistakes
 
 ### Running bare `time` in unattended work
@@ -85,7 +96,7 @@ AM/PM, including an unusual upper hour boundary. Do not rely on edge inputs or
 locale parsing. If a legacy workflow must set time, validate a four-part change
 plan on a disposable representative system before production approval.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Bare `time` does not invoke this Cmd builtin in PowerShell. Use
 `cmd.exe /d /c "time /t"` for its display. `Measure-Command` measures a script

@@ -47,6 +47,21 @@ binary transfer, or modern terminal behavior.
 - Encoding: `mode CON codepage /status` or `select=<number>`.
 - Presentation/input: `mode CON cols= lines=` and `rate= delay=`.
 
+## Families and option
+
+<!-- mant:entries role=command case=insensitive -->
+- `mode.com`: Display controllable console/COM state or address one explicit
+  serial, console, keyboard, code-page, or legacy printer-redirection family.
+- `COMn`: Query or configure one exact serial device's framing/flow-control state.
+- `CON`: Query or configure console dimensions, code page, or keyboard rate/delay.
+- `LPTn`: Query legacy printer-device status or configure supported COM redirection.
+
+The slash status form is read-only; key/value operands can mutate device state.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/status`: Display status for the selected console, COM, or legacy LPT device.
+- `/?`: Display installed command help and target-local family syntax.
+
 ## Common mistakes
 
 ### Treating `mode COM3` as a harmless query after adding options
@@ -91,7 +106,7 @@ LPT-to-COM is a privileged legacy mapping, not a Windows print queue, driver,
 port monitor or rendering configuration. Inventory queues/ports/drivers with
 print-management tools and preserve any existing mapping before migration.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Invoke `mode.com` explicitly; `mode` can collide with functions/applications on
 other platforms. Output is localized display text. Avoid parsing column labels;

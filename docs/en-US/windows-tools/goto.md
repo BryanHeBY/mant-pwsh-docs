@@ -27,6 +27,12 @@ for a colon-prefixed label and resumes at the line after it. With command
 extensions enabled, the virtual `:EOF` label exits the current batch script or
 `call :label` subroutine without requiring a physical label.
 
+## Command interface
+
+<!-- mant:entries role=command case=insensitive -->
+- `goto`: Resume the current batch file after one fixed colon-prefixed label;
+  the virtual `:EOF` target returns from the current batch/subroutine context.
+
 ## Common mistakes
 
 ### Falling through into subroutine labels
@@ -58,7 +64,7 @@ handling; remember CALL adds another expansion phase in some constructs.
 Every backward jump needs a proven progress condition, cancellation/timeout,
 and error path. Log bounded iteration state without leaking secrets.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 GOTO exists only inside Cmd batch processing. PowerShell uses functions, loops,
 `break`, `continue`, `return`, and exceptions; invoking `cmd /c goto ...` cannot

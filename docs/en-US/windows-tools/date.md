@@ -38,6 +38,17 @@ midnight. Clock correction is an infrastructure change: diagnose source,
 hierarchy, offset, policy, virtualization, time zone, and service health before
 changing wall-clock state.
 
+## Command and option
+
+<!-- mant:entries role=command case=insensitive -->
+- `date`: Display and prompt to change the local calendar date, or accept a
+  locale-sensitive replacement date when authorized.
+
+The read-only switch avoids the interactive setting prompt.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/t`: Display the current local date without prompting for a replacement.
+
 ## Common mistakes
 
 ### Running bare `date` in unattended work
@@ -79,7 +90,7 @@ procedure, and verify convergence and event logs. Never use a copied literal
 date against a domain controller, cluster, database host, VM fleet, or evidence
 system.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Bare `date` is not the Cmd builtin in PowerShell; resolution can differ by
 profile and platform. Use `cmd.exe /d /c "date /t"` when the localized Cmd

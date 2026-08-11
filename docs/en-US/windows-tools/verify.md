@@ -37,6 +37,12 @@ hash content for later comparison, validate an Authenticode signature and trust
 policy, inspect filesystem/device health, or test an application artifact after
 a controlled write. None of those claims follows from `verify on`.
 
+## Command interface
+
+<!-- mant:entries role=command case=insensitive -->
+- `verify`: Display or set the legacy Cmd `verify on|off` write-verification
+  setting; it accepts no filename and produces no digest or authenticity proof.
+
 ## Common mistakes
 
 ### Passing a filename to `verify`
@@ -70,7 +76,7 @@ sessions. Do not toggle it globally in shared batch logic based only on its
 promising name. If compatibility requires it, isolate the child shell and
 validate behavior on the exact supported Windows builds.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Bare `verify` is not a PowerShell cmdlet. Use `cmd.exe /d /c verify` to query a
 clean child Cmd. Prefer PowerShell's typed file, hash, and signature cmdlets for

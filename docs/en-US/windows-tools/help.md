@@ -42,6 +42,12 @@ may use `/?`, `-?`, `--help`, a subcommand, or no conventional switch at all.
 Never execute a guessed help switch against a tool whose syntax could treat it
 as a target or change request.
 
+## Command interface
+
+<!-- mant:entries role=command case=insensitive -->
+- `help`: List Cmd builtin help topics or request one resolved Cmd topic; inside
+  another interpreter it instead addresses that interpreter's help context.
+
 ## Common mistakes
 
 ### Running bare `help` in PowerShell and assuming it is Cmd help
@@ -76,7 +82,7 @@ version-specific syntax matters.
 policy approval. It does not update native executable help. Treat downloaded
 help as versioned input, not permission to run examples or make changes.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 PowerShell's `help` function produces display-oriented, paged text around
 `Get-Help`; `Get-Help` returns help objects that are more suitable for further

@@ -31,6 +31,15 @@
 time/date/version, network association, or stack depth. With no text it restores
 the default current-drive/path plus `>` prompt.
 
+## Command interface
+
+<!-- mant:entries role=command case=insensitive -->
+- `prompt`: Set the current Cmd session's user-controlled prompt template, or
+  restore the default when no template is supplied.
+
+Dollar tokens such as `$p`, `$g`, `$t`, `$d`, and `$e` are Cmd prompt-template
+data and must survive any outer PowerShell quoting layer unchanged.
+
 ## Common mistakes
 
 ### Configuring Cmd PROMPT and expecting PowerShell to change
@@ -62,7 +71,7 @@ AutoRun affects scripts and tools that start Cmd and can already contain other
 commands. Prefer session-local configuration. Review user/machine AutoRun values,
 escaping, `/D` bypass, policy, and rollback before persistent changes.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use PowerShell's `prompt` function for PowerShell sessions. `cmd.exe /d /k`
 creates an interactive child and keeps it open; do not use it in unattended
