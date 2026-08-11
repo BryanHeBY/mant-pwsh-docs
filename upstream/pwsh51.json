@@ -527,6 +527,111 @@
         "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
       ]
     },
+    "Start-Process.md": {
+      "kind": "cmdlet",
+      "status": "reviewed",
+      "versions": ["5.1"],
+      "platforms": ["windows"],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/5.1/Microsoft.PowerShell.Management/Start-Process.md"
+        },
+        {
+          "type": "web",
+          "url": "https://stackoverflow.com/questions/1741490/powershell-wait-for-process-to-finish",
+          "license": {
+            "spdx": "CC-BY-SA-4.0",
+            "url": "https://stackoverflow.com/help/licensing"
+          },
+          "checkedAt": "2026-08-11"
+        }
+      ],
+      "notes": [
+        "The guide emphasizes when direct native invocation is preferable and explains wait, exit-code, stream, and argument-list pitfalls.",
+        "Runtime verification requires Windows PowerShell 5.1 on Windows."
+      ]
+    },
+    "start.md": {
+      "kind": "alias",
+      "status": "reviewed",
+      "versions": ["5.1"],
+      "platforms": ["windows"],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/5.1/Microsoft.PowerShell.Management/Start-Process.md"
+        },
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/5.1/Microsoft.PowerShell.Core/About/about_Aliases.md"
+        }
+      ],
+      "notes": [
+        "The page distinguishes the PowerShell alias from the cmd.exe start builtin.",
+        "Runtime verification requires Windows PowerShell 5.1 on Windows."
+      ]
+    },
+    "Invoke-Item.md": {
+      "kind": "cmdlet",
+      "status": "reviewed",
+      "versions": ["5.1"],
+      "platforms": ["windows"],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/5.1/Microsoft.PowerShell.Management/Invoke-Item.md"
+        },
+        {
+          "type": "web",
+          "url": "https://stackoverflow.com/questions/320509/is-it-possible-to-open-a-windows-explorer-window-from-powershell/321092",
+          "license": {
+            "spdx": "CC-BY-SA-4.0",
+            "url": "https://stackoverflow.com/help/licensing"
+          },
+          "checkedAt": "2026-08-11"
+        }
+      ],
+      "notes": [
+        "The guide highlights exact-path input, provider-dependent actions, pipeline binding, and the risk of opening untrusted items.",
+        "Runtime verification requires Windows PowerShell 5.1 on Windows."
+      ]
+    },
+    "ii.md": {
+      "kind": "alias",
+      "status": "reviewed",
+      "versions": ["5.1"],
+      "platforms": ["windows"],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/5.1/Microsoft.PowerShell.Management/Invoke-Item.md"
+        },
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/5.1/Microsoft.PowerShell.Core/About/about_Aliases.md"
+        },
+        {
+          "type": "web",
+          "url": "https://stackoverflow.com/questions/320509/is-it-possible-to-open-a-windows-explorer-window-from-powershell/321092",
+          "license": {
+            "spdx": "CC-BY-SA-4.0",
+            "url": "https://stackoverflow.com/help/licensing"
+          },
+          "checkedAt": "2026-08-11"
+        }
+      ],
+      "notes": [
+        "The page documents the common ii . workflow while preserving broader provider semantics and trust boundaries.",
+        "Runtime verification requires Windows PowerShell 5.1 on Windows."
+      ]
+    },
     "powershell-7-compatibility.md": {
       "kind": "guide",
       "status": "reviewed",

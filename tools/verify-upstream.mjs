@@ -52,6 +52,31 @@ function addTarget(label, url) {
   }
 }
 
+function webAuditUrl(url) {
+  let parsed;
+  try {
+    parsed = new URL(url);
+  } catch {
+    return url;
+  }
+  if (parsed.hostname !== "stackoverflow.com" && parsed.hostname !== "www.stackoverflow.com") {
+    return url;
+  }
+  const question = /^\/questions\/(\d+)(?:\/|$)/u.exec(parsed.pathname)?.[1];
+  if (question === undefined) {
+    return url;
+  }
+  const query = new URLSearchParams({
+    question,
+    service: "stackoverflow",
+    language: "en",
+    hideAnswers: "false",
+    showAll: "true",
+    width: "640"
+  });
+  return `https://stackprinter.appspot.com/export?${query}`;
+}
+
 for (const catalogPath of catalogPaths) {
   const catalog = loadCatalog(catalogPath);
   if (catalog === undefined) {
@@ -61,7 +86,10 @@ for (const catalogPath of catalogPaths) {
     for (const source of document.sources ?? []) {
       const label = `${catalogPath}: ${filename}`;
       if (source.type === "web") {
-        addTarget(label, source.url);
+        // Stack Overflow blocks unattended curl requests with HTTP 403. Its
+        // read-only Stack Printer endpoint provides a stable, auditable view
+        // while reader-facing pages continue to link the canonical question.
+        addTarget(label, webAuditUrl(source.url));
       } else if (source.type === "git") {
         const baseline = catalog.baselines?.[source.baseline];
         if (baseline === undefined) {
@@ -85,25 +113,39 @@ for (const catalogPath of catalogPaths) {
 }
 
 async function checkTarget(url, labels) {
-  const result = await new Promise((resolve) => {
-    const child = spawn(process.env.CURL_BIN || "curl", [
+  const runCurl = (headOnly) => new Promise((resolve) => {
+    const args = [
       "--silent",
       "--show-error",
       "--location",
       "--fail",
-      "--head",
       "--max-time",
       String(timeoutSeconds),
       "--user-agent",
-      "mant-pwsh-docs-upstream-audit/1.0",
-      url
-    ], { stdio: ["ignore", "ignore", "pipe"] });
+      "mant-pwsh-docs-upstream-audit/1.0"
+    ];
+    if (headOnly) {
+      args.push("--head");
+    } else {
+      args.push("--range", "0-0");
+    }
+    args.push(url);
+    const child = spawn(process.env.CURL_BIN || "curl", args, {
+      stdio: ["ignore", "ignore", "pipe"]
+    });
     let stderr = "";
     child.stderr.setEncoding("utf8");
     child.stderr.on("data", (chunk) => { stderr += chunk; });
     child.on("error", (cause) => resolve({ cause, stderr }));
     child.on("close", (status) => resolve({ status, stderr }));
   });
+  let result = await runCurl(true);
+  if (result.cause === undefined && result.status !== 0) {
+    // Some valid documentation servers reject or mishandle HEAD. A one-byte
+    // range request provides a bounded GET fallback; servers that ignore the
+    // range still stream to a discarded stdout rather than repository files.
+    result = await runCurl(false);
+  }
   if (result.cause !== undefined) {
     fail(`${labels.join(", ")}: ${url} could not start curl (${result.cause.message}).`);
   } else if (result.status !== 0) {

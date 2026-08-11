@@ -360,6 +360,56 @@ function validateRelease(name, sourceData) {
   }
 }
 
+function validateWindowsCommandIndex(sourceData) {
+  const indexPath = "upstream/windows-command-index.json";
+  const index = readJson(indexPath);
+  if (index === undefined) {
+    return;
+  }
+  if (index.$schema !== "windows-command-index/v1") {
+    reportError(`${indexPath}: unsupported schema identifier.`);
+  }
+  const cliBaseline = sourceData.get("pwsh-cli")?.catalog?.baselines?.windowsserverdocs;
+  if (index.baseline?.catalog !== "upstream/cli.json" || index.baseline?.baseline !== "windowsserverdocs") {
+    reportError(`${indexPath}: baseline must reference the windowsserverdocs entry in upstream/cli.json.`);
+  }
+  if (index.baseline?.revision !== cliBaseline?.revision) {
+    reportError(`${indexPath}: revision must match the windowsserverdocs catalog baseline.`);
+  }
+  if (!Array.isArray(index.entries)) {
+    reportError(`${indexPath}: entries must be an array.`);
+    return;
+  }
+  if (index.entryCount !== index.entries.length) {
+    reportError(`${indexPath}: entryCount must match entries.length.`);
+  }
+  const allowedStatuses = new Set(["unclassified", "documented", "family", "alias", "legacy", "excluded"]);
+  const names = new Set();
+  for (const [position, entry] of index.entries.entries()) {
+    const context = `${indexPath}: entries[${position}]`;
+    if (typeof entry?.name !== "string" || entry.name.length === 0) {
+      reportError(`${context}: name is required.`);
+    } else if (names.has(entry.name.toLocaleLowerCase("en-US"))) {
+      reportError(`${context}: duplicate command name ${entry.name}.`);
+    } else {
+      names.add(entry.name.toLocaleLowerCase("en-US"));
+    }
+    if (typeof entry?.source !== "string" || entry.source.length === 0) {
+      reportError(`${context}: source is required.`);
+    }
+    if (!allowedStatuses.has(entry?.status)) {
+      reportError(`${context}: invalid status ${String(entry?.status)}.`);
+    }
+    if (entry?.status !== "unclassified") {
+      if (typeof entry?.target !== "string" || !/^[^/]+\/[^/]+\.md$/u.test(entry.target)) {
+        reportError(`${context}: classified entries require a source/document.md target.`);
+      } else if (!fs.existsSync(path.join(docsRoot, entry.target))) {
+        reportError(`${context}: target ${entry.target} does not exist.`);
+      }
+    }
+  }
+}
+
 function validateMant(documents) {
   if (options.skipMant) {
     warnings.push("ManT invocation skipped by --skip-mant.");
@@ -415,6 +465,7 @@ for (const [sourceName, catalogPath] of catalogs) {
 if (options.release !== undefined) {
   validateRelease(options.release, sourceData);
 }
+validateWindowsCommandIndex(sourceData);
 validateMant(allDocuments);
 
 for (const message of warnings) {

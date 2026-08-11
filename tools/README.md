@@ -23,9 +23,12 @@ manifest in `release/v1.json`.
 
 `npm run validate:upstream` is a separate networked editorial audit. It checks
 that every locked Git source path and every web source URL in the provenance
-catalogs is reachable. The normal validators intentionally remain offline so
-they work in restricted or air-gapped environments; upstream verification is
-not a document-reading dependency.
+catalogs is reachable. Because Stack Overflow blocks unattended requests to
+canonical question pages, the audit checks the corresponding read-only Stack
+Printer representation while documents retain the canonical reader link. The
+normal validators intentionally remain offline so they work in restricted or
+air-gapped environments; upstream verification is not a document-reading
+dependency.
 
 Set `MANT_BIN` or pass `--mant PATH` when the ManT executable is not named
 `mant`. Platform-specific runtime checks remain separate from this structural

@@ -40,7 +40,8 @@ CLIs. A command qualifies by practical usefulness, not by vendor.
 The first release prioritizes:
 
 - Windows tools and package management, including `winget`, `wsl`, `where`,
-  `robocopy`, `schtasks`, `sc`, and selected networking commands;
+  `robocopy`, `schtasks`, `sc`, shell/GUI entry points, registry operations,
+  and selected networking commands;
 - cross-platform development tools, including `git`, `ssh`, `curl`, `tar`,
   `dotnet`, and container tooling;
 - JSON and text-processing tools commonly composed in automation;
@@ -98,6 +99,20 @@ license in the document's provenance catalog before adapting material.
 - [robocopy](robocopy.md): safe previews, mirror risk, and special exit codes.
 - [schtasks](schtasks.md): scheduled-task inspection and change safety.
 - [sc](sc.md): Windows service query and configuration safety.
+
+## Windows shell, GUI, and settings
+
+- [cmd](cmd.md): cmd builtins, child-shell parsing, AutoRun, and exit status.
+- [start](start.md): cmd launch semantics versus PowerShell `Start-Process`.
+- [explorer](explorer.md): supported folder opening and interactive-shell limits.
+- [ms-settings](ms-settings.md): open documented Windows Settings URI pages.
+- [control](control.md): canonical Control Panel names and migration limits.
+- [mmc](mmc.md): saved consoles, author mode, snap-ins, and architecture.
+
+## Windows registry and compatibility hosts
+
+- [reg](reg.md): query, views, types, backup, modification, and verification.
+- [rundll32](rundll32.md): documented entry points and arbitrary-export hazards.
 
 ## Cross-platform developer tools
 

@@ -9,10 +9,10 @@ is [`release/v1.json`](release/v1.json).
 
 | Source | Required pages | Purpose |
 | --- | ---: | --- |
-| `pwsh7` | 26 | PowerShell 7 shell, language, common commands, aliases, custom-shorthand guidance, and compatibility guidance. |
-| `pwsh51` | 26 | Windows PowerShell 5.1 equivalents, custom-shorthand guidance, and edition-specific behavior. |
-| `pwsh-cli` | 19 | Native tools frequently called from PowerShell, including winget and optional Microsoft Learn MCP discovery. |
-| **Total** | **71** | First-release document inventory. |
+| `pwsh7` | 30 | PowerShell 7 shell, language, common commands, aliases, process/item actions, custom-shorthand guidance, and compatibility guidance. |
+| `pwsh51` | 30 | Windows PowerShell 5.1 equivalents, process/item actions, custom-shorthand guidance, and edition-specific behavior. |
+| `pwsh-cli` | 27 | Native tools frequently called from PowerShell, including Windows shell/GUI/registry entry points, winget, and optional Microsoft Learn MCP discovery. |
+| **Total** | **87** | Current first-release document inventory. |
 
 The two shell manuals, `pwsh7` and `pwsh51`, remain the broad equivalent of a
 traditional `sh` manual. The `*-docs` pages are deliberately separate
@@ -66,7 +66,7 @@ Every required page must:
 
 The v1 tag may be created only when:
 
-- all 71 manifest documents exist and pass portable validation;
+- all 87 manifest documents exist and pass portable validation;
 - every document is at least `reviewed` in its provenance catalog;
 - PowerShell 7 runtime checks pass on Windows, Linux, and macOS;
 - Windows PowerShell 5.1 runtime checks pass on Windows;
@@ -78,6 +78,7 @@ The v1 tag may be created only when:
 
 ## Deferred from version 1
 
-Version 1 does not aim to duplicate every cmdlet, every `about_*` topic, every
-Windows command, or every third-party CLI. Additional pages are welcome after
-v1 if they meet the same attribution, portability, and validation rules.
+Version 1 does not duplicate upstream pages one-for-one. The Windows CLI
+catalog aims for comprehensive supported inbox-command coverage, delivered in
+reviewable batches; related subcommands can share a family page. PowerShell
+cmdlets, `about_*` topics, and third-party CLI ecosystems remain selective.

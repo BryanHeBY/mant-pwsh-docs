@@ -340,10 +340,248 @@
           "type": "git",
           "baseline": "windowsserverdocs",
           "path": "WindowsServerDocs/administration/windows-commands/sc-create.md"
+        },
+        {
+          "type": "git",
+          "baseline": "windowsserverdocs",
+          "path": "WindowsServerDocs/administration/windows-commands/sc-delete.md"
         }
       ],
       "notes": [
         "This guide uses sc.exe explicitly and documents its syntax and service-change hazards."
+      ]
+    },
+    "cmd.md": {
+      "kind": "windows-shell",
+      "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"],
+      "platforms": ["windows"],
+      "sources": [{
+        "type": "git",
+        "baseline": "windowsserverdocs",
+        "path": "WindowsServerDocs/administration/windows-commands/cmd.md"
+      }],
+      "notes": [
+        "The guide distinguishes PowerShell parsing from cmd.exe parsing and recommends /d for deterministic child-shell automation.",
+        "Windows runtime verification remains required."
+      ]
+    },
+    "start.md": {
+      "kind": "cmd-builtin",
+      "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"],
+      "platforms": ["windows"],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "windowsserverdocs",
+          "path": "WindowsServerDocs/administration/windows-commands/start.md"
+        },
+        {
+          "type": "web",
+          "url": "https://stackoverflow.com/questions/45122619/powershell-waits-on-cmd-exe-differently-depending-on-environment",
+          "license": {
+            "spdx": "CC-BY-SA-4.0",
+            "url": "https://stackoverflow.com/help/licensing"
+          },
+          "checkedAt": "2026-08-11"
+        }
+      ],
+      "notes": [
+        "The official source defines syntax and support; the community source records recurring wait and shell-context behavior.",
+        "The guide distinguishes the cmd builtin from PowerShell's Start-Process alias."
+      ]
+    },
+    "explorer.md": {
+      "kind": "windows-gui-entrypoint",
+      "status": "reviewed",
+      "versions": ["supported Windows desktop releases"],
+      "platforms": ["windows"],
+      "sources": [
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/powershell/scripting/samples/manipulating-items-directly",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-11"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/powershell/module/microsoft.powershell.management/invoke-item",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-11"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows/configuration/shell-launcher/",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-11"
+        },
+        {
+          "type": "web",
+          "url": "https://stackoverflow.com/questions/320509/is-it-possible-to-open-a-windows-explorer-window-from-powershell/321092",
+          "license": {
+            "spdx": "CC-BY-SA-4.0",
+            "url": "https://stackoverflow.com/help/licensing"
+          },
+          "checkedAt": "2026-08-11"
+        }
+      ],
+      "notes": [
+        "The page recommends documented shell actions and deliberately avoids presenting an unsupported comprehensive Explorer switch contract.",
+        "The community source records the high-frequency ii and Invoke-Item use case."
+      ]
+    },
+    "ms-settings.md": {
+      "kind": "windows-uri-entrypoint",
+      "status": "reviewed",
+      "versions": ["varies by Windows release and SKU"],
+      "platforms": ["windows"],
+      "sources": [
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows/apps/develop/launch/launch-settings",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-11"
+        },
+        {
+          "type": "web",
+          "url": "https://stackoverflow.com/questions/53938350/open-and-change-windows-settings-via-powershell",
+          "license": {
+            "spdx": "CC-BY-SA-4.0",
+            "url": "https://stackoverflow.com/help/licensing"
+          },
+          "checkedAt": "2026-08-11"
+        }
+      ],
+      "notes": [
+        "The page distinguishes opening a Settings page from reading or changing configuration.",
+        "URI availability requires target Windows version, SKU, hardware, package, and policy verification."
+      ]
+    },
+    "control.md": {
+      "kind": "windows-gui-entrypoint",
+      "status": "reviewed",
+      "versions": ["Windows Vista and later; item availability varies"],
+      "platforms": ["windows"],
+      "sources": [
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows/win32/shell/executing-control-panel-items",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-11"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows/win32/shell/controlpanel-canonical-names",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-11"
+        }
+      ],
+      "notes": [
+        "The page prefers nonlocalized canonical names and records the migration boundary between Control Panel and Settings.",
+        "GUI launch is not treated as configuration verification."
+      ]
+    },
+    "mmc.md": {
+      "kind": "windows-gui-entrypoint",
+      "status": "reviewed",
+      "versions": ["varies by Windows release, edition, role, and snap-in"],
+      "platforms": ["windows"],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "windowsserverdocs",
+          "path": "WindowsServerDocs/administration/windows-commands/mmc.md"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/troubleshoot/windows-server/system-management-components/what-is-microsoft-management-console",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-11"
+        }
+      ],
+      "notes": [
+        "The page covers saved consoles, author mode, host architecture, feature prerequisites, and the GUI automation boundary."
+      ]
+    },
+    "reg.md": {
+      "kind": "native-cli-family",
+      "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"],
+      "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/reg.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/reg-query.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/reg-add.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/reg-delete.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/reg-export.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/reg-import.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/reg-compare.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/reg-copy.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/reg-load.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/reg-restore.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/reg-save.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/reg-unload.md"},
+        {
+          "type": "web",
+          "url": "https://stackoverflow.com/questions/630382/how-to-access-the-64-bit-registry-from-a-32-bit-powershell-instance",
+          "license": {
+            "spdx": "CC-BY-SA-4.0",
+            "url": "https://stackoverflow.com/help/licensing"
+          },
+          "checkedAt": "2026-08-11"
+        }
+      ],
+      "notes": [
+        "The family page covers every official reg subcommand and gives detailed treatment to query, add, delete, export, and import.",
+        "The community source records the recurring 32-bit versus 64-bit registry-view failure mode."
+      ]
+    },
+    "rundll32.md": {
+      "kind": "windows-compatibility-host",
+      "status": "reviewed",
+      "versions": ["varies by Windows component and entry point"],
+      "platforms": ["windows"],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "windowsserverdocs",
+          "path": "WindowsServerDocs/administration/windows-commands/rundll32.md"
+        },
+        {
+          "type": "web",
+          "url": "https://stackoverflow.com/questions/3207365/how-to-use-rundll32-to-execute-dll-function",
+          "license": {
+            "spdx": "CC-BY-SA-4.0",
+            "url": "https://stackoverflow.com/help/licensing"
+          },
+          "checkedAt": "2026-08-11"
+        }
+      ],
+      "notes": [
+        "The page rejects arbitrary DLL export invocation and requires an exact documented Rundll32-compatible entry point.",
+        "The community source illustrates the real failure mode without serving as a vendor support contract."
       ]
     },
     "git.md": {

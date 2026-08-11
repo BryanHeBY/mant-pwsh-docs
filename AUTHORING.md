@@ -73,6 +73,13 @@ Use concise imperative example descriptions and runnable commands. Use
 preface, it must parse successfully even though tldr coverage itself is not a
 release gate.
 
+Choose tldr examples from actual high-frequency tasks and the shortest
+important correction. For a conflicted command name, include an unambiguous
+form; for a destructive tool, lead with inspection or preview; for a GUI
+launcher, show the supported PowerShell entry point; and for an unusual success
+contract, show the correct status check. Avoid filling the preface with generic
+help/version commands when more useful safe operations are known.
+
 ## Semantic parameters and options
 
 ManT recognizes a complete bullet list as semantic options when every item
@@ -155,6 +162,14 @@ shortened, and supplemented with ManT-specific structure and examples.
 
 Do not assume that content returned by an MCP server has one blanket license.
 Record and verify the final page or repository that supplied the information.
+
+High-quality community questions, answers, and issue reports are valuable
+page-level sources for real usage patterns, recurring failure modes, and
+shell-integration gaps that an official syntax reference might not emphasize.
+Verify their technical claims against current product behavior and official
+contracts, link the exact discussion, and record its applicable license in the
+upstream catalog. Distinguish community evidence from a vendor support promise;
+neither source type makes the other unnecessary.
 
 ## Portable repository tooling
 

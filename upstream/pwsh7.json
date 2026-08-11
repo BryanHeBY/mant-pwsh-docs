@@ -645,6 +645,111 @@
         "Windows alias behavior and native executable availability require verification on all declared platforms."
       ]
     },
+    "Start-Process.md": {
+      "kind": "cmdlet",
+      "status": "reviewed",
+      "versions": ["7.6"],
+      "platforms": ["windows", "macos", "linux"],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Management/Start-Process.md"
+        },
+        {
+          "type": "web",
+          "url": "https://stackoverflow.com/questions/1741490/powershell-wait-for-process-to-finish",
+          "license": {
+            "spdx": "CC-BY-SA-4.0",
+            "url": "https://stackoverflow.com/help/licensing"
+          },
+          "checkedAt": "2026-08-11"
+        }
+      ],
+      "notes": [
+        "The guide emphasizes when direct native invocation is preferable and explains wait, exit-code, stream, and argument-list pitfalls.",
+        "Core behavior was checked with PowerShell 7.6.3 on Linux; Windows and macOS verification remains outstanding."
+      ]
+    },
+    "start.md": {
+      "kind": "alias",
+      "status": "reviewed",
+      "versions": ["7.6"],
+      "platforms": ["windows", "macos", "linux"],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Management/Start-Process.md"
+        },
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Core/About/about_Aliases.md"
+        }
+      ],
+      "notes": [
+        "The page distinguishes the Windows-only PowerShell alias from the cmd.exe start builtin and records its absence on non-Windows PowerShell 7.",
+        "PowerShell 7.6.3 on Linux confirmed that the start alias is absent by default."
+      ]
+    },
+    "Invoke-Item.md": {
+      "kind": "cmdlet",
+      "status": "reviewed",
+      "versions": ["7.6"],
+      "platforms": ["windows", "macos", "linux"],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Management/Invoke-Item.md"
+        },
+        {
+          "type": "web",
+          "url": "https://stackoverflow.com/questions/320509/is-it-possible-to-open-a-windows-explorer-window-from-powershell/321092",
+          "license": {
+            "spdx": "CC-BY-SA-4.0",
+            "url": "https://stackoverflow.com/help/licensing"
+          },
+          "checkedAt": "2026-08-11"
+        }
+      ],
+      "notes": [
+        "The guide highlights exact-path input, provider-dependent actions, pipeline binding, and the risk of opening untrusted items.",
+        "Alias and pipeline behavior were checked with PowerShell 7.6.3 on Linux; desktop actions still require platform verification."
+      ]
+    },
+    "ii.md": {
+      "kind": "alias",
+      "status": "reviewed",
+      "versions": ["7.6"],
+      "platforms": ["windows", "macos", "linux"],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Management/Invoke-Item.md"
+        },
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Core/About/about_Aliases.md"
+        },
+        {
+          "type": "web",
+          "url": "https://stackoverflow.com/questions/320509/is-it-possible-to-open-a-windows-explorer-window-from-powershell/321092",
+          "license": {
+            "spdx": "CC-BY-SA-4.0",
+            "url": "https://stackoverflow.com/help/licensing"
+          },
+          "checkedAt": "2026-08-11"
+        }
+      ],
+      "notes": [
+        "The page documents the common ii . workflow while preserving the broader provider semantics and trust boundary.",
+        "PowerShell 7.6.3 on Linux confirmed that ii resolves to Invoke-Item."
+      ]
+    },
     "powershell-5.1-compatibility.md": {
       "kind": "guide",
       "status": "reviewed",

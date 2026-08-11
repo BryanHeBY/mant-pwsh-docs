@@ -1,0 +1,1722 @@
+{
+  "$schema": "windows-command-index/v1",
+  "baseline": {
+    "catalog": "upstream/cli.json",
+    "baseline": "windowsserverdocs",
+    "revision": "0e41dfc209353e4614a9527b938b6dcafec2c9ff",
+    "indexPath": "WindowsServerDocs/administration/windows-commands/windows-commands.md",
+    "retrievedAt": "2026-08-11"
+  },
+  "entryCount": 339,
+  "entries": [
+    {
+      "name": "active",
+      "source": "active.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "add",
+      "source": "add.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "add alias",
+      "source": "add-alias.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "add volume",
+      "source": "add-volume.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "adprep",
+      "source": "adprep.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "append",
+      "source": "append.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "arp",
+      "source": "arp.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "assign",
+      "source": "assign.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "assoc",
+      "source": "assoc.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "at",
+      "source": "at.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "atmadm",
+      "source": "atmadm.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "attach-vdisk",
+      "source": "attach-vdisk.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "attrib",
+      "source": "attrib.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "attributes",
+      "source": "attributes.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "auditpol",
+      "source": "auditpol.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "autochk",
+      "source": "autochk.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "autoconv",
+      "source": "autoconv.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "autofmt",
+      "source": "autofmt.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "automount",
+      "source": "automount.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "bcdboot",
+      "source": "bcdboot.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "bcdedit",
+      "source": "bcdedit.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "bdehdcfg",
+      "source": "bdehdcfg.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "begin backup",
+      "source": "begin-backup.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "begin restore",
+      "source": "begin-restore.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "bitsadmin",
+      "source": "bitsadmin.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "bootcfg",
+      "source": "bootcfg.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "break",
+      "source": "break.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "cacls",
+      "source": "cacls.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "call",
+      "source": "call.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "cd",
+      "source": "cd.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "certreq",
+      "source": "certreq_1.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "certutil",
+      "source": "certutil.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "change",
+      "source": "change.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "chcp",
+      "source": "chcp.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "chdir",
+      "source": "chdir.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "chglogon",
+      "source": "chglogon.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "chgport",
+      "source": "chgport.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "chgusr",
+      "source": "chgusr.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "chkdsk",
+      "source": "chkdsk.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "chkntfs",
+      "source": "chkntfs.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "choice",
+      "source": "choice.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "cipher",
+      "source": "cipher.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "clean",
+      "source": "clean.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "cleanmgr",
+      "source": "cleanmgr.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "clip",
+      "source": "clip.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "cls",
+      "source": "cls.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "cmd",
+      "source": "Cmd.md",
+      "status": "documented",
+      "target": "pwsh-cli/cmd.md"
+    },
+    {
+      "name": "cmdkey",
+      "source": "cmdkey.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "cmstp",
+      "source": "cmstp.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "color",
+      "source": "color.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "comp",
+      "source": "comp.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "compact",
+      "source": "compact.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "compact vdisk",
+      "source": "compact-vdisk.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "convert",
+      "source": "convert.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "copy",
+      "source": "copy.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "create",
+      "source": "create.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "cscript",
+      "source": "cscript.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "date",
+      "source": "date.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "dcdiag",
+      "source": "dcdiag.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "dcgpofix",
+      "source": "dcgpofix.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "dcpromo",
+      "source": "dcpromo.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "defrag",
+      "source": "defrag.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "del",
+      "source": "del.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "delete",
+      "source": "delete.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "detach vdisk",
+      "source": "detach-vdisk.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "detail",
+      "source": "detail.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "dfsdiag",
+      "source": "dfsdiag.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "dfsrmig",
+      "source": "dfsrmig.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "diantz",
+      "source": "diantz.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "dir",
+      "source": "dir.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "diskcomp",
+      "source": "diskcomp.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "diskcopy",
+      "source": "diskcopy.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "diskpart",
+      "source": "diskpart.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "diskperf",
+      "source": "diskperf.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "diskraid",
+      "source": "diskraid.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "diskshadow",
+      "source": "diskshadow.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "dispdiag",
+      "source": "dispdiag.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "dnscmd",
+      "source": "dnscmd.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "doskey",
+      "source": "doskey.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "driverquery",
+      "source": "driverquery.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "dtrace",
+      "source": "dtrace.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "echo",
+      "source": "echo.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "edit",
+      "source": "edit.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "endlocal",
+      "source": "endlocal.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "end restore",
+      "source": "end-restore.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "erase",
+      "source": "erase.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "eventcreate",
+      "source": "eventcreate.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "Evntcmd",
+      "source": "evntcmd.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "exec",
+      "source": "exec.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "exit",
+      "source": "exit.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "expand",
+      "source": "expand.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "expand vdisk",
+      "source": "expand-vdisk.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "expose",
+      "source": "expose.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "extend",
+      "source": "extend.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "extract",
+      "source": "extract.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "fc",
+      "source": "fc.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "filesystems",
+      "source": "filesystems.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "find",
+      "source": "find.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "findstr",
+      "source": "findstr.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "finger",
+      "source": "finger.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "flattemp",
+      "source": "flattemp.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "fondue",
+      "source": "fondue.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "for",
+      "source": "for.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "forfiles",
+      "source": "forfiles.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "format",
+      "source": "format.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "freedisk",
+      "source": "freedisk.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "fsutil",
+      "source": "fsutil.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "ftp",
+      "source": "ftp.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "ftype",
+      "source": "ftype.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "fveupdate",
+      "source": "fveupdate.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "getmac",
+      "source": "getmac.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "gettype",
+      "source": "gettype.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "goto",
+      "source": "goto.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "gpfixup",
+      "source": "gpfixup.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "gpresult",
+      "source": "gpresult.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "gpt",
+      "source": "gpt.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "gpupdate",
+      "source": "gpupdate.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "graftabl",
+      "source": "graftabl.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "help",
+      "source": "help.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "helpctr",
+      "source": "helpctr.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "hostname",
+      "source": "hostname.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "icacls",
+      "source": "icacls.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "if",
+      "source": "if.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "import (shadowdisk)",
+      "source": "import.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "import (diskpart)",
+      "source": "import_1.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "inactive",
+      "source": "inactive.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "ipconfig",
+      "source": "ipconfig.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "ipxroute",
+      "source": "ipxroute.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "irftp",
+      "source": "irftp.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "jetpack",
+      "source": "jetpack.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "klist",
+      "source": "klist.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "ksetup",
+      "source": "ksetup.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "ktmutil",
+      "source": "ktmutil.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "ktpass",
+      "source": "ktpass.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "label",
+      "source": "label.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "list",
+      "source": "list.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "load metadata",
+      "source": "load-metadata.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "lodctr",
+      "source": "lodctr.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "logman",
+      "source": "logman.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "logoff",
+      "source": "logoff.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "lpq",
+      "source": "lpq.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "lpr",
+      "source": "lpr.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "macfile",
+      "source": "macfile.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "makecab",
+      "source": "makecab.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "manage bde",
+      "source": "manage-bde.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "mapadmin",
+      "source": "mapadmin.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "md",
+      "source": "md.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "merge vdisk",
+      "source": "merge-vdisk.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "mkdir",
+      "source": "mkdir.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "mklink",
+      "source": "mklink.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "mmc",
+      "source": "mmc.md",
+      "status": "documented",
+      "target": "pwsh-cli/mmc.md"
+    },
+    {
+      "name": "mode",
+      "source": "mode.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "more",
+      "source": "more.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "mount",
+      "source": "mount.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "mountvol",
+      "source": "mountvol.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "move",
+      "source": "move.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "mqbkup",
+      "source": "mqbkup.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "mqsvc",
+      "source": "mqsvc.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "mqtgsvc",
+      "source": "mqtgsvc.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "msdt",
+      "source": "msdt.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "msg",
+      "source": "msg.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "msiexec",
+      "source": "msiexec.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "msinfo32",
+      "source": "msinfo32.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "mstsc",
+      "source": "mstsc.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "nbtstat",
+      "source": "nbtstat.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "netcfg",
+      "source": "netcfg.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "netdom",
+      "source": "netdom.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "net print",
+      "source": "net-print.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "net user",
+      "source": "net-user.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "netsh",
+      "source": "netsh.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "netstat",
+      "source": "netstat.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "nfsadmin",
+      "source": "nfsadmin.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "nfsshare",
+      "source": "nfsshare.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "nfsstat",
+      "source": "nfsstat.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "nlbmgr",
+      "source": "nlbmgr.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "nltest",
+      "source": "/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc731935(v=ws.11)",
+      "status": "unclassified"
+    },
+    {
+      "name": "nslookup",
+      "source": "nslookup.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "ntbackup",
+      "source": "ntbackup.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "ntcmdprompt",
+      "source": "ntcmdprompt.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "ntfrsutl",
+      "source": "ntfrsutl.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "offline",
+      "source": "offline.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "online",
+      "source": "online.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "openfiles",
+      "source": "openfiles.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "pagefileconfig",
+      "source": "pagefileconfig.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "path",
+      "source": "path.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "pathping",
+      "source": "pathping.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "pause",
+      "source": "pause.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "pbadmin",
+      "source": "pbadmin.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "pentnt",
+      "source": "pentnt.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "perfmon",
+      "source": "perfmon.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "ping",
+      "source": "ping.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "pktmon",
+      "source": "pktmon.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "pnpunattend",
+      "source": "pnpunattend.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "pnputil",
+      "source": "pnputil.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "popd",
+      "source": "popd.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "powershell",
+      "source": "powershell.md",
+      "status": "documented",
+      "target": "pwsh51/powershell.md"
+    },
+    {
+      "name": "powershell ise",
+      "source": "powershell_ise.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "print",
+      "source": "print.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "prncnfg",
+      "source": "prncnfg.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "prndrvr",
+      "source": "prndrvr.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "prnjobs",
+      "source": "prnjobs.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "prnmngr",
+      "source": "prnmngr.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "prnport",
+      "source": "prnport.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "prnqctl",
+      "source": "prnqctl.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "prompt",
+      "source": "prompt.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "pubprn",
+      "source": "pubprn.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "pushd",
+      "source": "pushd.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "pushprinterconnections",
+      "source": "pushprinterconnections.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "pwlauncher",
+      "source": "pwlauncher.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "pwsh",
+      "source": "/powershell/module/microsoft.powershell.core/about/about_pwsh",
+      "status": "documented",
+      "target": "pwsh7/pwsh.md"
+    },
+    {
+      "name": "qappsrv",
+      "source": "qappsrv.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "qprocess",
+      "source": "qprocess.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "query",
+      "source": "query.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "quser",
+      "source": "quser.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "qwinsta",
+      "source": "qwinsta.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "rd",
+      "source": "rd.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "rdpsign",
+      "source": "rdpsign.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "recover",
+      "source": "recover.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "recover disk group",
+      "source": "recover_1.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "refsutil",
+      "source": "refsutil.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "reg",
+      "source": "reg.md",
+      "status": "documented",
+      "target": "pwsh-cli/reg.md"
+    },
+    {
+      "name": "regini",
+      "source": "regini.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "regsvr32",
+      "source": "regsvr32.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "relog",
+      "source": "relog.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "rem",
+      "source": "rem.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "remove",
+      "source": "remove.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "ren",
+      "source": "ren.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "rename",
+      "source": "rename.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "repadmin",
+      "source": "/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc770963(v=ws.11)",
+      "status": "unclassified"
+    },
+    {
+      "name": "repair",
+      "source": "repair.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "replace",
+      "source": "replace.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "rescan",
+      "source": "rescan.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "reset",
+      "source": "reset.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "retain",
+      "source": "retain.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "revert",
+      "source": "revert.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "rexec",
+      "source": "rexec.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "risetup",
+      "source": "risetup.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "rmdir",
+      "source": "rmdir.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "robocopy",
+      "source": "robocopy.md",
+      "status": "documented",
+      "target": "pwsh-cli/robocopy.md"
+    },
+    {
+      "name": "route ws2008",
+      "source": "route_ws2008.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "rpcinfo",
+      "source": "rpcinfo.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "rpcping",
+      "source": "rpcping.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "rsh",
+      "source": "rsh.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "rundll32",
+      "source": "rundll32.md",
+      "status": "documented",
+      "target": "pwsh-cli/rundll32.md"
+    },
+    {
+      "name": "rundll32 printui",
+      "source": "rundll32-printui.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "rwinsta",
+      "source": "rwinsta.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "san",
+      "source": "san.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "sc config",
+      "source": "sc-config.md",
+      "status": "family",
+      "target": "pwsh-cli/sc.md"
+    },
+    {
+      "name": "sc create",
+      "source": "sc-create.md",
+      "status": "family",
+      "target": "pwsh-cli/sc.md"
+    },
+    {
+      "name": "sc delete",
+      "source": "sc-delete.md",
+      "status": "family",
+      "target": "pwsh-cli/sc.md"
+    },
+    {
+      "name": "sc query",
+      "source": "sc-query.md",
+      "status": "family",
+      "target": "pwsh-cli/sc.md"
+    },
+    {
+      "name": "schtasks",
+      "source": "schtasks.md",
+      "status": "documented",
+      "target": "pwsh-cli/schtasks.md"
+    },
+    {
+      "name": "scwcmd",
+      "source": "scwcmd.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "secedit",
+      "source": "secedit.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "select",
+      "source": "select.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "serverceipoptin",
+      "source": "serverceipoptin.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "servermanagercmd",
+      "source": "servermanagercmd.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "serverweroptin",
+      "source": "serverweroptin.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "set environmental variables",
+      "source": "set_1.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "set shadow copy",
+      "source": "set.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "setlocal",
+      "source": "setlocal.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "setspn",
+      "source": "setspn.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "setx",
+      "source": "setx.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "sfc",
+      "source": "sfc.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "shadow",
+      "source": "shadow.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "shift",
+      "source": "shift.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "showmount",
+      "source": "showmount.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "shrink",
+      "source": "shrink.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "shutdown",
+      "source": "shutdown.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "simulate restore",
+      "source": "simulate-restore.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "sort",
+      "source": "sort.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "start",
+      "source": "start.md",
+      "status": "documented",
+      "target": "pwsh-cli/start.md"
+    },
+    {
+      "name": "subcommand set device",
+      "source": "wdsutil-set-device.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "subcommand set drivergroup",
+      "source": "wdsutil-set-drivergroup.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "subcommand set drivergroupfilter",
+      "source": "wdsutil-set-drivergroupfilter.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "subcommand set driverpackage",
+      "source": "wdsutil-set-driverpackage.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "subcommand set image",
+      "source": "wdsutil-set-image.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "subcommand set imagegroup",
+      "source": "wdsutil-set-imagegroup.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "subcommand set server",
+      "source": "wdsutil-set-server.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "subcommand set transportserver",
+      "source": "wdsutil-set-transportserver.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "subcommand set multicasttransmission",
+      "source": "wdsutil-start-multicasttransmission.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "subcommand start namespace",
+      "source": "wdsutil-start-namespace.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "subcommand start server",
+      "source": "wdsutil-start-server.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "subcommand start transportserver",
+      "source": "wdsutil-start-transportserver.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "subcommand stop server",
+      "source": "wdsutil-stop-server.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "subcommand stop transportserver",
+      "source": "wdsutil-stop-transportserver.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "subst",
+      "source": "subst.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "sxstrace",
+      "source": "sxstrace.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "sysmon",
+      "source": "sysmon.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "sysocmgr",
+      "source": "sysocmgr.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "systeminfo",
+      "source": "systeminfo.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "takeown",
+      "source": "takeown.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "tapicfg",
+      "source": "tapicfg.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "taskkill",
+      "source": "taskkill.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "tasklist",
+      "source": "tasklist.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "tcmsetup",
+      "source": "tcmsetup.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "telnet",
+      "source": "telnet.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "tftp",
+      "source": "tftp.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "time",
+      "source": "time.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "timeout",
+      "source": "timeout.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "title",
+      "source": "title.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "tlntadmn",
+      "source": "tlntadmn.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "tpmtool",
+      "source": "tpmtool.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "tpmvscmgr",
+      "source": "tpmvscmgr.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "tracerpt",
+      "source": "tracerpt.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "tracert",
+      "source": "tracert.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "tree",
+      "source": "tree.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "tscon",
+      "source": "tscon.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "tsdiscon",
+      "source": "tsdiscon.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "tsecimp",
+      "source": "tsecimp.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "tskill",
+      "source": "tskill.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "tsprof",
+      "source": "tsprof.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "type",
+      "source": "type.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "typeperf",
+      "source": "typeperf.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "tzutil",
+      "source": "tzutil.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "unexpose",
+      "source": "unexpose.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "uniqueid",
+      "source": "uniqueid.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "unlodctr",
+      "source": "unlodctr.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "ver",
+      "source": "ver.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "verifier",
+      "source": "verifier.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "verify",
+      "source": "verify.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "vol",
+      "source": "vol.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "vssadmin",
+      "source": "vssadmin.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "waitfor",
+      "source": "waitfor.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "wbadmin",
+      "source": "wbadmin.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "wdsutil",
+      "source": "wdsutil.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "wecutil",
+      "source": "wecutil.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "wevtutil",
+      "source": "wevtutil.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "where",
+      "source": "where.md",
+      "status": "documented",
+      "target": "pwsh-cli/where.md"
+    },
+    {
+      "name": "whoami",
+      "source": "whoami.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "winnt",
+      "source": "winnt.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "winnt32",
+      "source": "winnt32.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "winrs",
+      "source": "winrs.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "winsat mem",
+      "source": "winsat-mem.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "winsat mfmedia",
+      "source": "winsat-mfmedia.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "wmic",
+      "source": "wmic.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "writer",
+      "source": "writer.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "wscript",
+      "source": "wscript.md",
+      "status": "unclassified"
+    },
+    {
+      "name": "xcopy",
+      "source": "xcopy.md",
+      "status": "unclassified"
+    }
+  ]
+}

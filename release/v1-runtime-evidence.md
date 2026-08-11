@@ -11,6 +11,10 @@ source cache at repository revision `e6e7c9f54a2944ddff86181e038395949581db41`.
 
 `mant --update-docs` reported these installed document counts:
 
+These are historical counts for the recorded repository revision. Pages added
+after that revision still require fresh platform evidence even though this
+earlier run remains valid for the documents it exercised.
+
 | Source | Documents |
 | --- | ---: |
 | `pwsh7` | 26 |

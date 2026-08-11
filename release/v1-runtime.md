@@ -73,6 +73,9 @@ where.exe winget
 robocopy.exe /?
 schtasks.exe /query
 sc.exe query
+cmd.exe /d /c ver
+reg.exe query HKCU\Environment
+Get-Command explorer.exe, control.exe, mmc.exe, rundll32.exe -All
 ```
 
 Review Windows-only commands on a non-production target. In particular, use

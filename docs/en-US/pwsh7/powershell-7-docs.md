@@ -86,6 +86,17 @@ Future introductory pages will cover moving scripts from Windows PowerShell
 - [Import-Module](Import-Module.md): explicitly load trusted module commands
   while managing conflicts and compatibility.
 
+## Items and processes
+
+- [Invoke-Item](Invoke-Item.md): perform a provider item's default action,
+  including opening folders and associated documents on Windows.
+- [ii](ii.md): built-in shorthand for `Invoke-Item`, with trust and
+  portability boundaries.
+- [Start-Process](Start-Process.md): launch a process when window, verb,
+  environment, redirection, or lifecycle controls are required.
+- [start](start.md): Windows-only PowerShell alias for `Start-Process`, not the
+  `cmd.exe` builtin of the same name.
+
 ## Aliases and web commands
 
 - [irm](irm.md): alias for `Invoke-RestMethod`, with safe API and remote-content guidance.
