@@ -2016,6 +2016,53 @@
       ],
       "notes": ["The TLDR is query-only; the page requires exact SPN/account/service identity, current -S guidance, duplicate/forest checks, replication awareness, and protocol verification.", "Windows runtime verification remains required."]
     },
+    "ksetup.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["supported Windows client and server releases; realm, trust, flag, encryption, and switch behavior varies by build and Kerberos topology"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/ksetup.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/ksetup-dumpstate.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/ksetup-listrealmflags.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/ksetup-getenctypeattr.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=1169586&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The official family reference establishes registry-backed realm/KDC/password-server/host/flag/encryption and password operations; practitioner demand highlights non-AD realm discovery, DNS SRV, host naming and delegation confusion. The TLDR is local-state/ticket query-only.", "Windows runtime verification remains dump/list/get and ticket-query only; no realm, KDC, password-server, host-map, flag, encryption, computer-password, user-password, server-target or credential mutation is permitted merely for evidence."]
+    },
+    "ktpass.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows client and server releases with the applicable AD DS administrative tool; defaults and cryptographic behavior vary by build, domain policy, account, and target Kerberos implementation"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/ktpass.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=64459376&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=40760205&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official documentation establishes that Ktpass maps an SPN/account, can set UPN/password/encryption properties, and generates a keytab secret; practitioner reports expose recurring password, UPN, case, salt and key invalidation mistakes. The TLDR stops at help plus exact AD account/SPN prerequisite inventory because no general key export is read-only.", "Windows runtime verification remains help and separate AD read queries only; no Ktpass mapping, password/key rotation, keytab generation, UPN/SPN/encryption mutation, inline secret, or artifact creation is permitted merely for evidence."]
+    },
+    "rdpsign.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["Windows releases where RdpSign is present; SHA selector and trusted-publisher policy behavior vary by build and security-update level"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/rdpsign.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/windows-server/remote/remote-desktop-services/remotepc/manage-rdp-file-security-settings-with-group-policy", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=865292&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official sources establish dry-run versus in-place file replacement, exact-file/no-wildcard syntax, SHA selector evolution and the separate client trusted-publisher policy; practitioner demand exposes certificate fingerprint versus signature-algorithm and trust confusion. The TLDR inventories candidates, trial-signs one exact file and preserves the source before an intentional sign.", "Windows runtime verification remains help and approved /l trial-signing with a disposable reviewed RDP file and certificate; no production-file overwrite, trust-policy change, connection, authentication, redirection or server-certificate mutation is permitted merely for evidence."]
+    },
+    "scwcmd.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["Windows builds and editions where Security Configuration Wizard is installed; database, role, remote and family behavior vary by build and installed features"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/scwcmd.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/scwcmd-analyze.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/scwcmd-configure.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/scwcmd-register.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/scwcmd-rollback.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/scwcmd-transform.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/scwcmd-view.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=402735&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official family pages distinguish compliance analysis/rendering from server configuration, consumable rollback, database registration and AD GPO creation; practitioner demand highlights the role-policy/current-setting mental-model gap. The TLDR uses exact-target analysis and XML rendering only.", "Windows runtime verification remains help and approved local/single-target analysis or existing-XML rendering only; no configure, rollback, register, transform, OU/list fan-out, alternate password, event logging, production policy or GPO mutation is permitted merely for evidence."]
+    },
     "dcdiag.md": {
       "kind": "native-cli-family", "status": "reviewed",
       "versions": ["supported Windows Server domain controllers and Windows clients/servers with the applicable AD DS RSAT tools; test availability and semantics vary by build and AD configuration"], "platforms": ["windows"],

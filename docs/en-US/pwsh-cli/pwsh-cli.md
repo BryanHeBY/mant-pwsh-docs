@@ -311,6 +311,10 @@ license in the document's provenance catalog before adapting material.
 - [gpresult](gpresult.md): exact user/computer RSoP and report protection.
 - [klist](klist.md): Kerberos tickets, logon sessions, and binding evidence.
 - [setspn](setspn.md): AD SPN ownership, duplicates, and safe registration boundaries.
+- [ksetup](ksetup.md): Windows realm/KDC mappings, flags, encryption attributes, and non-AD Kerberos boundaries.
+- [ktpass](ktpass.md): AD service mapping and keytab rotation with SPN/UPN, password, salt, KVNO, and crypto safeguards.
+- [rdpsign](rdpsign.md): trial-first RDP-file publisher signing separated from client trust and server TLS identity.
+- [scwcmd](scwcmd.md): SCW compliance analysis/rendering separated from server apply, rollback, database, and GPO mutation.
 - [cmdkey](cmdkey.md): exact credential targets without inline secret exposure.
 - [gpupdate](gpupdate.md): scoped policy refresh after preserving RSoP evidence.
 - [secedit](secedit.md): validate/export/analyze security templates before apply.

@@ -10,7 +10,7 @@ bundles.
 
 ### Added
 
-- First English release inventory: 286 reviewed ManT pages across `pwsh7`,
+- First English release inventory: 290 reviewed ManT pages across `pwsh7`,
   `pwsh51`, and `pwsh-cli`.
 - Broad `pwsh7` and `pwsh51` shell manuals, focused language/command pages,
   compatibility guides, and custom `irx` shorthand resolution guidance.
@@ -137,6 +137,11 @@ bundles.
   `dcdiag`, `repadmin`, `nltest`, and `netdom`, with single-target read-only
   TLDRs and explicit event-history, scope-expansion, replication-trigger,
   credential, rename, reset, and trust-direction boundaries.
+- Windows Kerberos realm/keytab interoperability, RDP-file publisher signing,
+  and Security Configuration Wizard guides for `ksetup`, `ktpass`, `rdpsign`,
+  and `scwcmd`, with query/trial-first TLDRs and explicit realm, SPN/UPN,
+  password/key, salt/KVNO, certificate-fingerprint/trust, overwrite, apply,
+  rollback, fan-out, credential, and GPO-creation boundaries.
 - Active Directory schema/forest/domain preparation, legacy DC promotion and
   demotion migration, default-GPO disaster recovery, and post-domain-rename GPO
   rewrite guides for `adprep`, `dcpromo`, `dcgpofix`, and `gpfixup`, with

@@ -769,7 +769,8 @@
     {
       "name": "ksetup",
       "source": "ksetup.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/ksetup.md"
     },
     {
       "name": "ktmutil",
@@ -779,7 +780,8 @@
     {
       "name": "ktpass",
       "source": "ktpass.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/ktpass.md"
     },
     {
       "name": "label",
@@ -1246,7 +1248,8 @@
     {
       "name": "rdpsign",
       "source": "rdpsign.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/rdpsign.md"
     },
     {
       "name": "recover",
@@ -1454,7 +1457,8 @@
     {
       "name": "scwcmd",
       "source": "scwcmd.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/scwcmd.md"
     },
     {
       "name": "secedit",

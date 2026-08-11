@@ -439,6 +439,11 @@ auditpol.exe /get /category:* /r
 gpresult.exe /scope user /r
 klist.exe tickets
 setspn.exe -Q "host/$env:COMPUTERNAME"
+ksetup.exe /dumpstate
+ksetup.exe /listrealmflags
+ktpass.exe /?
+rdpsign.exe /?
+scwcmd.exe /?
 cmdkey.exe /list
 gpresult.exe /scope user /r
 secedit.exe /validate $approvedTemplate
@@ -524,6 +529,16 @@ a protected temporary path. Do not clear/restore policy, refresh Group Policy,
 purge/request Kerberos tickets, change KDC bindings, or add/delete/reset SPNs
 merely for verification. Record elevation, user/computer target, logon-session
 LUID, domain/forest scope, timestamps, and report sensitivity.
+Keep Ksetup validation to dump/list/get operations and Ktpass to help plus
+separate read-only AD/SPN inventory. Do not change realm/KDC/password-server/
+host mappings, flags, encryption attributes, user/computer passwords, SPNs,
+UPNs, account keys, or create a keytab merely for release evidence. Trial
+RdpSign only with `/l`, one reviewed disposable RDP file, and an approved
+nonproduction signing identity; never overwrite a production file or change
+publisher policy. Keep Scwcmd to help or an approved single-target analysis
+and existing-XML view; do not configure, roll back, register, transform,
+fan out to an OU/list, pass a plaintext alternate password, log test events,
+or create/link a GPO merely for verification.
 Do not add/delete stored credentials, refresh policy, or configure/import a
 security template merely for verification. If an approved template fixture is
 available, validate it only; protect exported reports and record which user,
