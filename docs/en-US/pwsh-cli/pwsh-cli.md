@@ -321,6 +321,13 @@ license in the document's provenance catalog before adapting material.
 - [certreq](certreq.md): explicit certificate request and acceptance lifecycle.
 - [certutil](certutil.md): certificate, store, chain, and hash diagnostics.
 
+## Windows Active Directory diagnosis
+
+- [dcdiag](dcdiag.md): exact-DC health tests with test, naming-context, event-window, and repair boundaries.
+- [repadmin](repadmin.md): directional, partition-specific replication evidence before any synchronization or topology change.
+- [nltest](nltest.md): site, DC Locator, trust, and secure-channel query semantics distinct from verification and reset.
+- [netdom](netdom.md): domain/DC/FSMO/trust inventory and member verification separated from membership, name, credential, and trust mutation.
+
 ## Windows storage, boot, and recovery
 
 - [bcdboot](bcdboot.md): explicit Windows/system partition boot-file repair.

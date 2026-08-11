@@ -2,7 +2,7 @@
   "$schema": "release-manifest/v1",
   "release": "v1",
   "locale": "en-US",
-  "requiredDocumentCount": 274,
+  "requiredDocumentCount": 278,
   "sources": {
     "pwsh7": {
       "runtimePlatforms": ["windows", "linux", "macos"],
@@ -258,6 +258,10 @@
         "gpresult.md",
         "klist.md",
         "setspn.md",
+        "dcdiag.md",
+        "repadmin.md",
+        "nltest.md",
+        "netdom.md",
         "cmdkey.md",
         "gpupdate.md",
         "secedit.md",

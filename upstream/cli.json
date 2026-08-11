@@ -2016,6 +2016,51 @@
       ],
       "notes": ["The TLDR is query-only; the page requires exact SPN/account/service identity, current -S guidance, duplicate/forest checks, replication awareness, and protocol verification.", "Windows runtime verification remains required."]
     },
+    "dcdiag.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["supported Windows Server domain controllers and Windows clients/servers with the applicable AD DS RSAT tools; test availability and semantics vary by build and AD configuration"], "platforms": ["windows"],
+      "sources": [
+        {"type": "web", "url": "https://learn.microsoft.com/windows-server/administration/windows-commands/dcdiag", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=958824&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=851101&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official documentation defines exact DC/site/enterprise scope, default/nondefault tests, DNS subtests, event-history windows, protocol boundaries and repair behavior; practitioner questions expose repeated DNS-subtest and current-versus-historical interpretation errors. The TLDR resolves the binary and runs only focused read-only tests against one exact DC.", "Windows runtime verification remains help and approved single-DC Connectivity, DNS Basic and Replications tests only; no repair, comprehensive, CutoffServers, Intersite, broad site/enterprise, alternate-password or unprotected log operation is permitted merely for evidence."]
+    },
+    "repadmin.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["supported Windows Server AD DS environments where Repadmin is present on a DC or in the applicable RSAT tools; detailed command syntax remains target-build dependent"], "platforms": ["windows"],
+      "sources": [
+        {"type": "web", "url": "https://learn.microsoft.com/windows-server/identity/ad-ds/manage/troubleshoot/troubleshooting-active-directory-replication-problems", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/troubleshoot/windows-server/active-directory/replication-error-8464", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc770963(v=ws.11)", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc835092(v=ws.11)", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc742066(v=ws.11)", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc742012(v=ws.11)", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=818195&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Current Microsoft troubleshooting material establishes continued Repadmin use and CSV monitoring; the legacy exhaustive reference and current error guidance establish command/status semantics. Community demand highlights rolling-summary versus current-partition confusion, but its forced-sync suggestion is explicitly rejected as a diagnostic probe. The TLDR contains exact-DC inventory only.", "Windows runtime verification remains help, exact-DC summary, exact-destination showrepl/queue and protected CSV collection only; no sync, replicate, KCC, topology/configuration, lingering-object, rehost, password-policy, broad DSA-list or wildcard recovery operation is permitted merely for evidence."]
+    },
+    "nltest.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["Windows environments with AD DS, AD LDS, or the applicable RSAT tools; the exhaustive Microsoft reference is a previous-version page and local help governs exact behavior"], "platforms": ["windows"],
+      "sources": [
+        {"type": "web", "url": "https://learn.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc731935(v=ws.11)", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=430042&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The official reference distinguishes site/DC Locator, trust, last-used secure-channel query, verification that may rebuild a broken channel, explicit reset/password, DNS registration and debug families; practitioner discussion shows strong repair demand and widespread query/verify/reset conflation. The TLDR is site/locator/list/query-only.", "Windows runtime verification remains help, approved site/DC Locator/DC-list and local member secure-channel query only; no verify, reset, password, DNS registration, debug/log, service/cache or legacy BDC operation is permitted merely for evidence."]
+    },
+    "netdom.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["supported Windows Server AD DS environments and systems with the applicable RSAT tools; family behavior varies by build, role, trust type and functional level"], "platforms": ["windows"],
+      "sources": [
+        {"type": "web", "url": "https://learn.microsoft.com/windows-server/administration/windows-commands/netdom", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/windows-server/administration/windows-commands/netdom-query", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/windows-server/administration/windows-commands/netdom-verify", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/windows-server/administration/windows-commands/netdom-resetpwd", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=430042&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Current Microsoft documentation separates query/verify from membership, naming, member reset, DC password reset, trust and reboot-capable families; repair demand shows how easily secure-channel tools are conflated. The TLDR contains exact-domain query and exact-member verify only and the page defines role, direction, credential and reboot boundaries.", "Windows runtime verification remains help, exact-domain DC/FSMO/trust query and explicitly approved member verify only; no account, join/move/remove, rename/name, reset/password, trust-change, inline-secret or reboot operation is permitted merely for evidence."]
+    },
     "cmdkey.md": {
       "kind": "native-cli", "status": "reviewed",
       "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],

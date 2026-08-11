@@ -221,6 +221,25 @@ tftp.exe /?
 Get-WindowsOptionalFeature -Online -FeatureName TelnetClient
 telnet.exe /?
 finger.exe /?
+Get-Command dcdiag.exe, repadmin.exe, nltest.exe, netdom.exe -All -ErrorAction SilentlyContinue
+dcdiag.exe /?
+repadmin.exe /?
+nltest.exe /?
+netdom.exe help
+dcdiag.exe /s:"dc01.example.com" /test:Connectivity /v
+dcdiag.exe /s:"dc01.example.com" /test:DNS /DnsBasic /v
+dcdiag.exe /s:"dc01.example.com" /test:Replications /v
+repadmin.exe /replsummary "dc01.example.com" /bysrc /bydest
+repadmin.exe /showrepl "dc01.example.com" /all /verbose
+repadmin.exe /queue "dc01.example.com"
+nltest.exe /dsgetsite
+nltest.exe /dsgetdc:"example.com"
+nltest.exe /dclist:"example.com"
+nltest.exe /sc_query:"example.com"
+netdom.exe query /domain:"example.com" DC
+netdom.exe query /domain:"example.com" FSMO
+netdom.exe query /domain:"example.com" TRUST
+netdom.exe verify "member01.example.com" /domain:"example.com"
 Get-Command echo, cls, prompt -All -ErrorAction SilentlyContinue
 reg.exe query HKCU\Environment
 Get-Command explorer.exe, control.exe, mmc.exe, rundll32.exe -All
@@ -271,6 +290,16 @@ send credentials or input, transfer/delete/rename a file, query remote users, or
 create a plaintext protocol transcript merely for evidence. Approved TCP
 reachability checks do not establish protocol, authentication, encryption,
 authorization, data-channel or application health.
+
+Replace every AD placeholder only with an approved lab or production target
+whose owner has authorized the exact read-only collection. Do not run DCDiag
+`/fix`, `/c`, CutoffServers or Intersite; Repadmin synchronization, KCC,
+configuration, or recovery families; NLTest verify/reset/password/DNS/debug
+families; or Netdom membership, rename, reset/password, trust-change, or reboot
+families merely for evidence. Protect DC, site, trust, partner, SPN, account,
+event, and replication output as sensitive topology. A separate reviewed
+procedure is required before broad site/enterprise/forest selection or any
+operation that initiates replication or changes AD/host state.
 
 Keep Cmd builtin verification to `help` and PowerShell resolution in the shared
 evidence session. Do not pause for input, change a persistent/current prompt or

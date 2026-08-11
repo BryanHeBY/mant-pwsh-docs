@@ -10,7 +10,7 @@ bundles.
 
 ### Added
 
-- First English release inventory: 258 reviewed ManT pages across `pwsh7`,
+- First English release inventory: 278 reviewed ManT pages across `pwsh7`,
   `pwsh51`, and `pwsh-cli`.
 - Broad `pwsh7` and `pwsh51` shell manuals, focused language/command pages,
   compatibility guides, and custom `irx` shorthand resolution guidance.
@@ -132,6 +132,11 @@ bundles.
 - Advanced audit policy, Group Policy RSoP, Kerberos ticket/session, and
   Active Directory SPN diagnosis guides for `auditpol`, `gpresult`, `klist`,
   and `setspn`.
+- Active Directory DC health, directional per-partition replication, client
+  site/DC Locator, member secure-channel, FSMO, and trust diagnosis guides for
+  `dcdiag`, `repadmin`, `nltest`, and `netdom`, with single-target read-only
+  TLDRs and explicit event-history, scope-expansion, replication-trigger,
+  credential, rename, reset, and trust-direction boundaries.
 - Stored credential target, scoped Group Policy refresh, and security-template
   validation/export/analysis guides for `cmdkey`, `gpupdate`, and `secedit`.
 - Windows DACL/inheritance, ownership recovery, and EFS encryption/recovery

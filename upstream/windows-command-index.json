@@ -349,7 +349,8 @@
     {
       "name": "dcdiag",
       "source": "dcdiag.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/dcdiag.md"
     },
     {
       "name": "dcgpofix",
@@ -958,7 +959,8 @@
     {
       "name": "netdom",
       "source": "netdom.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/netdom.md"
     },
     {
       "name": "net print",
@@ -1007,7 +1009,8 @@
     {
       "name": "nltest",
       "source": "/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc731935(v=ws.11)",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/nltest.md"
     },
     {
       "name": "nslookup",
@@ -1305,7 +1308,8 @@
     {
       "name": "repadmin",
       "source": "/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc770963(v=ws.11)",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/repadmin.md"
     },
     {
       "name": "repair",
