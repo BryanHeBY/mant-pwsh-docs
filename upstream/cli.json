@@ -471,6 +471,33 @@
       ],
       "notes": ["The TLDR places warning and process/identity revalidation before force reset; the page maps rwinsta to reset session and contains lifecycle, idle/disconnected, stale-ID, root-cause, broad-permission, automation, and data-loss risks.", "Windows runtime verification remains help-only unless an approved disposable malfunctioning-session fixture and recovery evidence exist."]
     },
+    "tscon.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows client and server releases; behavior depends on local Session Host, ownership, console topology, delegation, and policy"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/tscon.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=78028752&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR inventories source/destination identities and prompts rather than exposing another user's password; the page contains direction, secret, console/UI-automation, no-server-operand, delegation, physical/virtual-console, and reporting-channel risks.", "Windows runtime verification remains help-only unless an approved disposable host/session topology and physical-console security review exist."]
+    },
+    "shadow.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows client and server releases; view/control, consent, console, and audit behavior depend on RDS policy and target"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/shadow.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-server/remote/shadow-terminal-server-session", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR requires identity revalidation, support notice, approved consent, and a documented stop chord; the page contains shadow-versus-mstsc syntax, stale-ID, informed-consent, no-consent policy, broad-rights, console/resolution, privacy, audit, and stop-path risks.", "Windows runtime verification remains help-only unless an approved disposable support session, consenting test user, privacy policy, and audit evidence exist."]
+    },
+    "tskill.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows client and server releases where the legacy executable is present; process access depends on session, protection, and caller token"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/tskill.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=1189975&service=superuser&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR uses one corroborated PID after graceful recovery fails and omits name/wildcard/all-session forms; the page contains wildcard, /a, PID/session-ID, identity reuse, diagnosis, protected/owned process, remote-token, parsing, and session-ending risks.", "Windows runtime verification remains help-only unless an approved disposable process/session fixture and recovery evidence exist."]
+    },
     "cmd.md": {
       "kind": "windows-shell",
       "status": "reviewed",

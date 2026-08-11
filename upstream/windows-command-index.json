@@ -1440,7 +1440,8 @@
     {
       "name": "shadow",
       "source": "shadow.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/shadow.md"
     },
     {
       "name": "shift",
@@ -1667,7 +1668,8 @@
     {
       "name": "tscon",
       "source": "tscon.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/tscon.md"
     },
     {
       "name": "tsdiscon",
@@ -1683,7 +1685,8 @@
     {
       "name": "tskill",
       "source": "tskill.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/tskill.md"
     },
     {
       "name": "tsprof",

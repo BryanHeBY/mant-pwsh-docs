@@ -102,6 +102,9 @@ msg.exe /?
 tsdiscon.exe /?
 logoff.exe /?
 rwinsta.exe /?
+tscon.exe /?
+shadow.exe /?
+tskill.exe /?
 cmd.exe /d /c ver
 reg.exe query HKCU\Environment
 Get-Command explorer.exe, control.exe, mmc.exe, rundll32.exe -All
@@ -342,14 +345,15 @@ Review Windows-only commands on a non-production target. In particular, use
 changes, and query a known service before `sc.exe` configuration work.
 Record how `sc` resolves in both Windows PowerShell 5.1 and PowerShell 7, then
 invoke `sc.exe` explicitly. Keep service, task, Net account/SMB, and discovery
-validation query-only; do not
-start, stop, create, configure, overwrite, run, end, or delete a real service or
+validation query-only; do not start, stop, create, configure, overwrite, run,
+end, or delete a real service or
 task, change account/group/policy/share/connection state, disconnect a session,
 close an open file, or set the clock merely for evidence. Record `net.exe`
 direction, logon/token identity, local versus domain scope, Server/Workstation
 service state, and any permission-denied or unavailable family as target-host
 evidence. Keep Remote Desktop session checks query-only. Record the `>` marker
-for the current session, blank/listener rows, session versus process IDs, caller rights,
+for the current session, blank/listener rows, session versus process IDs,
+caller rights,
 native exit status, locale, and collection time; do not parse a zero-row result
 from failed text, or log off, disconnect, reset, connect, shadow, message, or
 terminate anything for validation. Use an approved disposable fixture for
@@ -358,6 +362,12 @@ verification is help/discovery-only unless a separately approved disposable
 RDS test session, test user, saved-work confirmation, and rollback/recovery
 record exist; never message real users or disconnect/delete a real session just
 to satisfy the checklist.
+Treat `tscon`, `shadow`, and `tskill` as help-only for normal release
+verification. Do not attach a session to another transport/console, request or
+suppress shadow consent, view/control a user's screen, prompt for another
+user's password, or terminate a process merely for evidence. Any mutation test
+requires a separately approved disposable host/session/process, privacy and
+physical-console review, exact identity revalidation, and recovery plan.
 
 On Windows, macOS, and Linux where declared by the document, record:
 

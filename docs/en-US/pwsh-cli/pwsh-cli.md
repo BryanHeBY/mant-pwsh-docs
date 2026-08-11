@@ -112,6 +112,9 @@ license in the document's provenance catalog before adapting material.
 - [tsdiscon](tsdiscon.md): disconnect while preserving session processes/state.
 - [logoff](logoff.md): normal session termination and data-loss boundary.
 - [rwinsta](rwinsta.md): force-reset escalation for a malfunctioning session.
+- [tscon](tscon.md): attach/switch sessions with destination and credential boundaries.
+- [shadow](shadow.md): consent-governed session viewing or remote control.
+- [tskill](tskill.md): exact-PID session process termination after graceful recovery.
 
 ## Windows shell, GUI, and settings
 
