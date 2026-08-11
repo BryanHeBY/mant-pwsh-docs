@@ -2,7 +2,7 @@
   "$schema": "release-manifest/v1",
   "release": "v1",
   "locale": "en-US",
-  "requiredDocumentCount": 218,
+  "requiredDocumentCount": 222,
   "sources": {
     "pwsh7": {
       "runtimePlatforms": ["windows", "linux", "macos"],
@@ -129,6 +129,10 @@
         "resmon.md",
         "eventvwr.md",
         "compmgmt.md",
+        "devmgmt.md",
+        "diskmgmt.md",
+        "services.md",
+        "optionalfeatures.md",
         "cmd.md",
         "start.md",
         "explorer.md",

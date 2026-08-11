@@ -152,6 +152,10 @@ license in the document's provenance catalog before adapting material.
 - [resmon](resmon.md): direct searchable Resource Monitor entry with sampling and automation boundaries.
 - [eventvwr](eventvwr.md): interactive event exploration while preserving raw XML/EVTX provenance.
 - [compmgmt](compmgmt.md): Computer Management console entry with per-snap-in target/change boundaries.
+- [devmgmt](devmgmt.md): Device Manager entry with exact instance/package/stack identity safeguards.
+- [diskmgmt](diskmgmt.md): Disk Management entry with unique disk/volume/boot/recovery identity safeguards.
+- [services](services.md): Services console entry with SCM runtime/configuration/security boundaries.
+- [optionalfeatures](optionalfeatures.md): classic/Settings feature entry with feature/capability/servicing distinctions.
 
 ## Windows shell, GUI, and settings
 

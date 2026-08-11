@@ -143,6 +143,8 @@ reagentc.exe /info
 Get-Command dxdiag.exe -All
 Get-Command taskmgr.exe, resmon.exe, eventvwr.exe, mmc.exe -All
 Get-Item "$env:SystemRoot\System32\eventvwr.msc", "$env:SystemRoot\System32\compmgmt.msc"
+Get-Item "$env:SystemRoot\System32\devmgmt.msc", "$env:SystemRoot\System32\diskmgmt.msc", "$env:SystemRoot\System32\services.msc"
+Get-Command optionalfeatures.exe -All
 cmd.exe /d /c ver
 reg.exe query HKCU\Environment
 Get-Command explorer.exe, control.exe, mmc.exe, rundll32.exe -All
@@ -452,6 +454,9 @@ disk/BCD/image/encryption evidence, console/media, rollback and boot testing.
 GUI management entry verification is existence/manual launch-and-close only in
 an interactive session. Do not end/suspend/reprioritize a process, change startup,
 clear/configure logs, or mutate any Computer Management snap-in merely for evidence.
+Do not enable/disable/uninstall/update/rescan devices; initialize/format/delete/
+resize/convert/offline disks or volumes; control/reconfigure services; or add/
+remove features/capabilities merely for GUI-entry verification.
 
 On Windows, macOS, and Linux where declared by the document, record:
 

@@ -721,6 +721,33 @@
       "sources": [{"type": "web", "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-server/system-management-components/error-connect-device-manager-remotely", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"}],
       "notes": ["The TLDR is launch-only; the page contains per-snap-in local/remote target and authorization, broad mutation, false GUI success, UAC/session, localized-MMC automation, and dedicated-CLI before/after/rollback requirements.", "Windows runtime verification remains manual launch-and-close only; no contained snap-in mutation is permitted merely for evidence."]
     },
+    "devmgmt.md": {
+      "kind": "windows-gui-entrypoint", "status": "reviewed",
+      "versions": ["supported Windows client and server releases; device classes, actions, remote behavior, and drivers vary by build and hardware"], "platforms": ["windows"],
+      "sources": [{"type": "web", "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-server/system-management-components/error-connect-device-manager-remotely", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"}],
+      "notes": ["The TLDR is launch-only and requires exact device-instance/package/stack identity; the page contains duplicate friendly-name, update compatibility, device-versus-driver-package removal, critical-device/console/recovery, rescan-as-repair, localized-GUI automation, and postchange health risks.", "Windows runtime verification remains manual launch-and-close only; no device mutation is permitted merely for evidence."]
+    },
+    "diskmgmt.md": {
+      "kind": "windows-gui-entrypoint", "status": "reviewed",
+      "versions": ["supported Windows client and server releases; operations vary by storage stack, disk/partition type, filesystem, hardware, and edition"], "platforms": ["windows"],
+      "sources": [
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/windows-server/storage/disk-management/overview-of-disk-management", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-server/backup-and-storage/troubleshoot-disk-management", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR is launch-only and requires unique disk/partition/volume/boot/recovery/encryption identity; the page contains number/letter selection, unknown-disk initialization, format/delete, extend layout, EFI/Recovery, dynamic/basic/offline/letter, remote VDS, localized-GUI automation, backup and rollback risks.", "Windows runtime verification remains manual launch-and-close only; no storage mutation is permitted merely for evidence."]
+    },
+    "services.md": {
+      "kind": "windows-gui-entrypoint", "status": "reviewed",
+      "versions": ["supported Windows client and server releases; services, triggers, controls, security, and protected status vary by build and installed product"], "platforms": ["windows"],
+      "sources": [{"type": "web", "url": "https://learn.microsoft.com/en-us/windows/win32/services/about-services", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"}],
+      "notes": ["The TLDR is launch-only and requires service-name/runtime/config/security identity; the page contains display-name, dependency/shared-process/workload, automatic/delayed/trigger state, service-account/SPN/rights, DACL/elevation, localized-GUI automation, policy/servicing and health-verification risks.", "Windows runtime verification remains manual launch-and-close only; no service control/configuration mutation is permitted merely for evidence."]
+    },
+    "optionalfeatures.md": {
+      "kind": "windows-gui-entrypoint", "status": "reviewed",
+      "versions": ["Windows 10 and Windows 11; feature/capability inventory, payload sources, UI, and servicing vary by edition/build/language/architecture"], "platforms": ["windows"],
+      "sources": [{"type": "web", "url": "https://learn.microsoft.com/en-us/windows/client-management/client-tools/add-remove-hide-features", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"}],
+      "notes": ["The TLDR launches classic/Settings UI and inventories feature state; the page contains exact identity/target, optional-feature-versus-capability/package/server-role/winget distinctions, payload/network/policy, restart/pending/security, removal/rollback/dependency, localized-GUI automation and postchange verification risks.", "Windows runtime verification remains discovery/manual launch-and-close only; no feature/capability mutation is permitted merely for evidence."]
+    },
     "cmd.md": {
       "kind": "windows-shell",
       "status": "reviewed",
