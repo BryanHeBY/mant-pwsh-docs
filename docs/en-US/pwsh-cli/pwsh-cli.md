@@ -91,6 +91,14 @@ license in the document's provenance catalog before adapting material.
 - [winget uninstall](winget-uninstall.md): exact-package removal safety.
 - [winget list](winget-list.md): inventory limits and upgrade-available review.
 
+## Windows system tools
+
+- [wsl](wsl.md): explicit distribution selection and Windows/Linux boundaries.
+- [where](where.md): Windows executable lookup versus PowerShell resolution.
+- [robocopy](robocopy.md): safe previews, mirror risk, and special exit codes.
+- [schtasks](schtasks.md): scheduled-task inspection and change safety.
+- [sc](sc.md): Windows service query and configuration safety.
+
 ## Query with ManT
 
 After adding this repository to `sources.toml` and running

@@ -41,6 +41,17 @@
         "url": "https://github.com/MicrosoftDocs/mcp/blob/main/LICENSE"
       },
       "retrievedAt": "2026-08-11"
+    },
+    "wsl-docs": {
+      "type": "git",
+      "repository": "https://github.com/MicrosoftDocs/WSL.git",
+      "branch": "main",
+      "revision": "8842def77a852af26318b9ebec78063a94b068ed",
+      "license": {
+        "spdx": "CC-BY-4.0",
+        "url": "https://github.com/MicrosoftDocs/WSL/blob/main/LICENSE"
+      },
+      "retrievedAt": "2026-08-11"
     }
   },
   "discovery": [
@@ -199,6 +210,96 @@
       }],
       "notes": [
         "This guide documents inventory limitations and requires exact identity before action."
+      ]
+    },
+    "wsl.md": {
+      "kind": "native-cli",
+      "status": "draft",
+      "versions": ["varies by Windows and WSL release"],
+      "platforms": ["windows"],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "wsl-docs",
+          "path": "WSL/install.md"
+        },
+        {
+          "type": "git",
+          "baseline": "wsl-docs",
+          "path": "WSL/basic-commands.md"
+        }
+      ],
+      "notes": [
+        "This guide separates WSL process invocation from the Linux command environment it starts.",
+        "Windows release, WSL package, distribution, and organization policy require target-environment verification."
+      ]
+    },
+    "where.md": {
+      "kind": "native-cli",
+      "status": "draft",
+      "versions": ["varies by Windows release"],
+      "platforms": ["windows"],
+      "sources": [{
+        "type": "git",
+        "baseline": "windowsserverdocs",
+        "path": "WindowsServerDocs/administration/windows-commands/where.md"
+      }],
+      "notes": [
+        "This guide distinguishes where.exe path lookup from PowerShell command precedence."
+      ]
+    },
+    "robocopy.md": {
+      "kind": "native-cli",
+      "status": "draft",
+      "versions": ["varies by Windows release"],
+      "platforms": ["windows"],
+      "sources": [{
+        "type": "git",
+        "baseline": "windowsserverdocs",
+        "path": "WindowsServerDocs/administration/windows-commands/robocopy.md"
+      }],
+      "notes": [
+        "This guide treats /MIR as destructive and documents Robocopy's nonstandard exit-code contract."
+      ]
+    },
+    "schtasks.md": {
+      "kind": "native-cli",
+      "status": "draft",
+      "versions": ["varies by Windows release"],
+      "platforms": ["windows"],
+      "sources": [{
+        "type": "git",
+        "baseline": "windowsserverdocs",
+        "path": "WindowsServerDocs/administration/windows-commands/schtasks.md"
+      }],
+      "notes": [
+        "This guide requires exact task identity and target-host-context review before changes."
+      ]
+    },
+    "sc.md": {
+      "kind": "native-cli",
+      "status": "draft",
+      "versions": ["varies by Windows release"],
+      "platforms": ["windows"],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "windowsserverdocs",
+          "path": "WindowsServerDocs/administration/windows-commands/sc-query.md"
+        },
+        {
+          "type": "git",
+          "baseline": "windowsserverdocs",
+          "path": "WindowsServerDocs/administration/windows-commands/sc-config.md"
+        },
+        {
+          "type": "git",
+          "baseline": "windowsserverdocs",
+          "path": "WindowsServerDocs/administration/windows-commands/sc-create.md"
+        }
+      ],
+      "notes": [
+        "This guide uses sc.exe explicitly and documents its syntax and service-change hazards."
       ]
     }
   }
