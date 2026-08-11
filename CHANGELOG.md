@@ -111,6 +111,10 @@ bundles.
   guides plus a current BITSAdmin family guide, with query-only TLDRs and
   explicit task principal, ACL inheritance, BCD identity, GUID/job completion,
   delayed execution, ownership, credential, and artifact-trust boundaries.
+- Windows MODE device-family and PRINT text-submission guides with query-only
+  TLDRs and explicit serial framing/ownership, console-host, encoding, legacy
+  LPT, exact queue, rendering, spool-completion, duplicate and physical-output
+  boundaries.
 - Windows adapter/DHCP/DNS inspection, bounded ICMP reachability, path tracing,
   path sampling, host identity, and direct DNS-query guides for `ipconfig`,
   `ping`, `tracert`, `pathping`, `hostname`, and `nslookup`.

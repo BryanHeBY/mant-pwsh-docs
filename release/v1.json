@@ -2,7 +2,7 @@
   "$schema": "release-manifest/v1",
   "release": "v1",
   "locale": "en-US",
-  "requiredDocumentCount": 268,
+  "requiredDocumentCount": 270,
   "sources": {
     "pwsh7": {
       "runtimePlatforms": ["windows", "linux", "macos"],
@@ -180,6 +180,8 @@
         "cacls.md",
         "bootcfg.md",
         "bitsadmin.md",
+        "mode.md",
+        "print.md",
         "exit.md",
         "for.md",
         "if.md",

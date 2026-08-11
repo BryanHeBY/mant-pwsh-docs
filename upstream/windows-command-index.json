@@ -872,7 +872,8 @@
     {
       "name": "mode",
       "source": "mode.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/mode.md"
     },
     {
       "name": "more",
@@ -1127,7 +1128,8 @@
     {
       "name": "print",
       "source": "print.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/print.md"
     },
     {
       "name": "prncnfg",

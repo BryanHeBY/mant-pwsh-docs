@@ -285,6 +285,11 @@ license in the document's provenance catalog before adapting material.
 
 - [bitsadmin](bitsadmin.md): GUID-bound BITS job lifecycle, completion, ownership, security, and artifact-trust boundaries.
 
+## Windows devices and printing
+
+- [mode](mode.md): query-first serial, console, code-page, typematic, and legacy printer-device management.
+- [print](print.md): reviewed text-file submission with exact queue, rendering, spool, and physical-output boundaries.
+
 ## Windows installation, servicing, and drivers
 
 - [msiexec](msiexec.md): package identity, logging, waiting, and restart codes.

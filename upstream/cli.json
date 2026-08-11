@@ -1150,6 +1150,24 @@
       ],
       "notes": ["Official documentation establishes nonunique display names, GUID identity, owner/elevation visibility and the broad switch surface; community sources show repeated explicit-completion and stale-object/error-state failures. The TLDR is current-user GUID-bound inventory only; the page maps discovery, lifecycle, network/authentication, execution/ownership and cache/peer/service families plus incident-response and artifact-trust boundaries.", "Windows runtime verification remains current-user list/help and exact reviewed-job read-only info/listfiles only; no create, add, transfer, resume, suspend, complete, cancel, reset, ownership, notification, credential, header, proxy, peer/cache or service mutation is permitted merely for evidence."]
     },
+    "mode.md": {
+      "kind": "native-cli-family", "status": "reviewed", "versions": ["supported Windows client and server releases; device, console-host, code-page and legacy printer capabilities vary by build and hardware"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/mode.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=401621&service=superuser&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=36443169&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official documentation defines serial, status, LPT redirection, code-page, display-size and typematic families; high-demand questions expose console-host and COM namespace/binary-transfer mistakes. The TLDR is query-only and correlates PnP identity; the page separates families and covers ownership, complete framing, byte transport, host limitations, encoding and modern print management.", "Windows runtime verification remains mode/help, all-device status, exact approved inactive COM status, console code-page query and PnP inventory only; no serial, LPT, code-page, buffer-size or typematic mutation is permitted merely for evidence."]
+    },
+    "print.md": {
+      "kind": "native-cli", "status": "reviewed", "versions": ["supported Windows client and server releases; queue, driver, spooler, port and device behavior vary by build and environment"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/print.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=22839084&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=30255647&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official documentation limits PRINT to text files and port/UNC queue destinations with LPT1 default; community sources show repeated friendly-name and page-layout/raw-language confusion. The TLDR deliberately submits nothing and instead inventories the queue and previews an exact text file; the page covers format/rendering, irreversible output, device identity, completion, duplicates, confidentiality and untrusted content.", "Windows runtime verification remains help, queue/port inventory and inert local file inspection only; no print job, raw byte stream, port mapping, queue/default, driver or spooler mutation is permitted merely for evidence."]
+    },
     "cmd.md": {
       "kind": "windows-shell",
       "status": "reviewed",

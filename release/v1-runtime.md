@@ -208,6 +208,12 @@ bcdedit.exe /enum all /v
 bitsadmin.exe /?
 bitsadmin.exe /list /verbose
 Get-BitsTransfer -ErrorAction SilentlyContinue
+mode.com /?
+mode.com
+mode.com con codepage /status
+Get-PnpDevice -Class Ports -PresentOnly -ErrorAction SilentlyContinue
+print.exe /?
+Get-Printer -ErrorAction SilentlyContinue
 Get-Command echo, cls, prompt -All -ErrorAction SilentlyContinue
 reg.exe query HKCU\Environment
 Get-Command explorer.exe, control.exe, mmc.exe, rundll32.exe -All
@@ -247,6 +253,11 @@ ownership or inheritance; edit Boot.ini/BCD/firmware; or create, resume,
 complete, cancel, reset, take ownership of, or otherwise mutate a BITS job merely
 for evidence. BITS all-users inventory also requires a separate data-handling
 review because URLs, paths, owners and headers can be sensitive.
+
+Do not reconfigure a serial/LPT device, console code page/dimensions/typematic
+state, or submit any print/raw-device job merely for evidence. Query only an
+approved inactive COM port; protect printer and BITS inventory as potentially
+sensitive operational data.
 
 Keep Cmd builtin verification to `help` and PowerShell resolution in the shared
 evidence session. Do not pause for input, change a persistent/current prompt or
