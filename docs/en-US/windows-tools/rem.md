@@ -79,7 +79,7 @@ block, pipe, expansion, command-extension, and nested-shell context.
 
 ## Related documents
 
-- [cmd](cmd.md)
+- [cmd.exe](cmd.exe.md)
 - [echo](echo.md)
 - [goto](goto.md)
 

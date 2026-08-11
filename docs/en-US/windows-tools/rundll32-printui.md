@@ -145,10 +145,10 @@ per-machine realization, and WOW64 behavior vary by build and patch level.
 
 ## Related documents
 
-- [rundll32](rundll32.md)
-- [prndrvr](prndrvr.md)
-- [prnmngr](prnmngr.md)
-- [pushprinterconnections](pushprinterconnections.md)
+- [rundll32.exe](rundll32.exe.md)
+- [prndrvr.vbs](prndrvr.vbs.md)
+- [prnmngr.vbs](prnmngr.vbs.md)
+- [pushprinterconnections.exe](pushprinterconnections.exe.md)
 
 ## Sources and license
 

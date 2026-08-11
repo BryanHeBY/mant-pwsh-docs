@@ -100,9 +100,9 @@ recovery or deployment workflow.
 
 ## Related documents
 
-- [expand](expand.md)
-- [makecab](makecab.md)
-- [dism](dism.md)
+- [expand.exe](expand.exe.md)
+- [makecab.exe](makecab.exe.md)
+- [dism.exe](dism.exe.md)
 
 ## Sources and license
 

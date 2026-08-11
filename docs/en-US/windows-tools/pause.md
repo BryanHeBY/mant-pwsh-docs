@@ -82,9 +82,9 @@ and locale. “Any key,” Ctrl+C, and noninteractive behavior can differ by hos
 
 ## Related documents
 
-- [choice](choice.md)
-- [timeout](timeout.md)
-- [waitfor](waitfor.md)
+- [choice.exe](choice.exe.md)
+- [timeout.exe](timeout.exe.md)
+- [waitfor.exe](waitfor.exe.md)
 
 ## Sources and license
 

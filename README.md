@@ -50,6 +50,25 @@ example, use `mant curl --source pwsh51` for the Windows PowerShell alias
 boundary and `mant curl --source cross-platform-tools` for the native
 executable guide.
 
+Windows entry-point documents retain their canonical suffixes, for example
+`winget.exe`, `tree.com`, `services.msc`, and `prncnfg.vbs`. On Windows, ManT
+tries `PATHEXT` after an extensionless exact-name lookup, so this works when
+`.EXE` is present:
+
+```text
+mant winget --source windows-tools
+```
+
+An explicitly suffixed query is exact and portable across host platforms:
+
+```text
+mant winget.exe --source windows-tools
+```
+
+ManT does not omit Windows suffixes on macOS or Linux. Cmd builtins such as
+`dir`, PowerShell cmdlets and aliases, URI entries, and conceptual family or
+subcommand pages remain unsuffixed.
+
 ## Project status
 
 The first English v1 inventory now contains 367 reviewed pages: 30 for

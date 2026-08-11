@@ -20,6 +20,50 @@ const statuses = new Map([
   ["verified", 3]
 ]);
 const platforms = new Set(["windows", "linux", "macos"]);
+const windowsEntrypointKinds = new Set([
+  "native-cli",
+  "native-cli-family",
+  "windows-gui-entrypoint",
+  "windows-gui-cli",
+  "native-script-host",
+  "deprecated-native-cli",
+  "destructive-native-cli",
+  "security-diagnostic-cli",
+  "native-packaging-cli",
+  "native-cli-alias",
+  "native-extraction-cli",
+  "native-console-cli",
+  "native-interactive-cli",
+  "native-storage-cli",
+  "native-synchronization-cli",
+  "windows-printing-admin-script",
+  "windows-policy-runtime-utility",
+  "windows-shell",
+  "windows-compatibility-host",
+  "legacy-native-cli-family",
+  "legacy-native-cli",
+  "destructive-native-cli-family"
+]);
+const windowsTopicFamilies = new Set(["extract", "msmq", "server-telemetry", "winnt"]);
+const windowsSpecialEntrypoints = new Map([
+  ["chcp", "chcp.com.md"],
+  ["mode", "mode.com.md"],
+  ["more", "more.com.md"],
+  ["tree", "tree.com.md"],
+  ["compmgmt", "compmgmt.msc.md"],
+  ["devmgmt", "devmgmt.msc.md"],
+  ["diskmgmt", "diskmgmt.msc.md"],
+  ["eventvwr", "eventvwr.msc.md"],
+  ["gpedit", "gpedit.msc.md"],
+  ["services", "services.msc.md"],
+  ["prncnfg", "prncnfg.vbs.md"],
+  ["prndrvr", "prndrvr.vbs.md"],
+  ["prnjobs", "prnjobs.vbs.md"],
+  ["prnmngr", "prnmngr.vbs.md"],
+  ["prnport", "prnport.vbs.md"],
+  ["prnqctl", "prnqctl.vbs.md"],
+  ["pubprn", "pubprn.vbs.md"]
+]);
 const errors = [];
 const warnings = [];
 let checkedDocuments = 0;
@@ -209,6 +253,25 @@ function validateLicense(license, context) {
   }
 }
 
+function validateRegisteredName(sourceName, filename, document, context) {
+  if (sourceName === "pwsh51" && document?.kind === "powershell-launcher"
+      && filename !== "powershell.exe.md") {
+    reportError(`${context}: Windows PowerShell launcher must be registered as powershell.exe.md.`);
+  }
+  if (sourceName !== "windows-tools" || !windowsEntrypointKinds.has(document?.kind)) {
+    return;
+  }
+  const registeredName = filename.slice(0, -3);
+  const suffix = registeredName.match(/^(.*)\.(?:exe|com|msc|vbs)$/iu);
+  const baseName = suffix?.[1] ?? registeredName;
+  const expected = windowsTopicFamilies.has(baseName)
+    ? `${baseName}.md`
+    : windowsSpecialEntrypoints.get(baseName) ?? `${baseName}.exe.md`;
+  if (filename.toLocaleLowerCase("en-US") !== expected) {
+    reportError(`${context}: registered Windows entry point must be ${expected}.`);
+  }
+}
+
 function validateCatalog(sourceName, catalogPath, actualDocuments) {
   const catalog = readJson(catalogPath);
   if (catalog === undefined) {
@@ -259,6 +322,7 @@ function validateCatalog(sourceName, catalogPath, actualDocuments) {
     if (typeof document?.kind !== "string" || document.kind.length === 0) {
       reportError(`${context}: kind is required.`);
     }
+    validateRegisteredName(sourceName, filename, document, context);
     if (!statuses.has(document?.status)) {
       reportError(`${context}: invalid status ${String(document?.status)}.`);
     }

@@ -92,10 +92,10 @@ for any legacy application's compatibility behavior.
 
 ## Related documents
 
-- [fc](fc.md)
-- [verifier](verifier.md)
-- [sfc](sfc.md)
-- [chkdsk](chkdsk.md)
+- [fc.exe](fc.exe.md)
+- [verifier.exe](verifier.exe.md)
+- [sfc.exe](sfc.exe.md)
+- [chkdsk.exe](chkdsk.exe.md)
 
 ## Sources and license
 

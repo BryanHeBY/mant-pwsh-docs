@@ -95,7 +95,7 @@ currently contradicts its own example.
 
 - [cls](cls.md)
 - [prompt](prompt.md)
-- [cmd](cmd.md)
+- [cmd.exe](cmd.exe.md)
 
 ## Sources and license
 

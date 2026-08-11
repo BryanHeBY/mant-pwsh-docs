@@ -94,7 +94,7 @@ and can navigate non-filesystem drives; cmd's drive-directory model is not.
 - [chdir](chdir.md)
 - [pushd](pushd.md)
 - [popd](popd.md)
-- [cmd](cmd.md)
+- [cmd.exe](cmd.exe.md)
 
 ## Sources and license
 

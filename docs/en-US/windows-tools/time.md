@@ -114,9 +114,9 @@ round-trip formatting is broadly portable.
 ## Related documents
 
 - [date](date.md)
-- [w32tm](w32tm.md)
-- [tzutil](tzutil.md)
-- [logman](logman.md)
+- [w32tm.exe](w32tm.exe.md)
+- [tzutil.exe](tzutil.exe.md)
+- [logman.exe](logman.exe.md)
 
 ## Sources and license
 

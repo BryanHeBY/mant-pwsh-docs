@@ -229,6 +229,10 @@ bundles.
 
 ### Changed
 
+- Windows entry-point documents now retain canonical `.exe`, `.com`, `.msc`,
+  or `.vbs` suffixes for ManT's Windows `PATHEXT` lookup model; Cmd builtins,
+  PowerShell commands, URI entries, and conceptual family pages remain
+  unsuffixed.
 - CI is manual-only until ManT 0.6.0 is publicly installable.
 
 ### Pending release verification

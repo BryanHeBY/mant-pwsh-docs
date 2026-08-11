@@ -91,7 +91,7 @@ mode, pipe/subshell context, code page, locale, and nested launch syntax.
 
 ## Related documents
 
-- [cmd](cmd.md)
+- [cmd.exe](cmd.exe.md)
 - [set](set.md)
 - [setlocal](setlocal.md)
 

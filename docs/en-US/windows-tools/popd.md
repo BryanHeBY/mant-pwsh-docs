@@ -67,7 +67,7 @@ requires command extensions.
 ## Related documents
 
 - [pushd](pushd.md)
-- [cmd](cmd.md)
+- [cmd.exe](cmd.exe.md)
 - [start](start.md)
 
 ## Sources and license

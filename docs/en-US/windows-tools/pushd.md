@@ -84,7 +84,7 @@ require command extensions, enabled by default.
 ## Related documents
 
 - [popd](popd.md)
-- [cmd](cmd.md)
+- [cmd.exe](cmd.exe.md)
 - [path](path.md)
 
 ## Sources and license

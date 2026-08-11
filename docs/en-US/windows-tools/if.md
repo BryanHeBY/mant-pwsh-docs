@@ -103,7 +103,7 @@ This page targets supported Windows `cmd.exe`. `/i`, comparison operators,
 
 ## Related documents
 
-- [choice](choice.md)
+- [choice.exe](choice.exe.md)
 - [for](for.md)
 - [setlocal](setlocal.md)
 - [exit](exit.md)

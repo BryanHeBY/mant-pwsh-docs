@@ -61,7 +61,7 @@ version constrain actual deletion.
 ## Related documents
 
 - [del](del.md)
-- [cmd](cmd.md)
+- [cmd.exe](cmd.exe.md)
 - [rmdir](rmdir.md)
 
 ## Sources and license

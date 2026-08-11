@@ -84,7 +84,7 @@ drive/network mapping, console/terminal rendering, code page, locale, and font.
 
 ## Related documents
 
-- [cmd](cmd.md)
+- [cmd.exe](cmd.exe.md)
 - [pushd](pushd.md)
 - [title](title.md)
 

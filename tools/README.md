@@ -4,6 +4,7 @@ Maintenance and validation tools are cross-platform and dependency-free at the
 repository level. `tools/validate.mjs` runs on Node.js 20 or newer and checks:
 
 - flat, portable source filenames and local links;
+- canonical Windows entry-point suffixes used by ManT `PATHEXT` lookup;
 - optional embedded tldr structure when present;
 - one document H1 and a reader-facing `Sources and license` section;
 - provenance catalogs, baseline revisions, licenses, and source references;

@@ -58,7 +58,7 @@ availability can be changed by profiles or constrained sessions; inspect with
 ## Related documents
 
 - [cd](cd.md)
-- [cmd](cmd.md)
+- [cmd.exe](cmd.exe.md)
 - [pushd](pushd.md)
 - [popd](popd.md)
 

@@ -101,7 +101,7 @@ This page targets supported Windows cmd. WinRE differs. Filesystem semantics,
 - [erase alias](erase.md)
 - [dir](dir.md)
 - [rd](rd.md)
-- [cmd](cmd.md)
+- [cmd.exe](cmd.exe.md)
 
 ## Sources and license
 

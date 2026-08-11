@@ -102,9 +102,9 @@ policy; current PowerShell networking cmdlets are preferred when equivalent.
 
 ## Related documents
 
-- [netsh](netsh.md)
-- [ipconfig](ipconfig.md)
-- [route](route.md)
+- [netsh.exe](netsh.exe.md)
+- [ipconfig.exe](ipconfig.exe.md)
+- [route.exe](route.exe.md)
 
 ## Sources and license
 

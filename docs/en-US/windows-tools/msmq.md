@@ -103,8 +103,8 @@ clustering, feature names, and PowerShell module availability vary by release.
 
 ## Related documents
 
-- [sc](sc.md)
-- [wevtutil](wevtutil.md)
+- [sc.exe](sc.exe.md)
+- [wevtutil.exe](wevtutil.exe.md)
 
 ## Sources and license
 

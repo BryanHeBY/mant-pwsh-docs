@@ -89,7 +89,7 @@ versions and management policy even when the classic command remains present.
 ## Related documents
 
 - [assoc](assoc.md)
-- [cmd](cmd.md)
+- [cmd.exe](cmd.exe.md)
 - [path](path.md)
 
 ## Sources and license

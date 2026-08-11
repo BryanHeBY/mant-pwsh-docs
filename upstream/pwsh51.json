@@ -100,7 +100,7 @@
         "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
       ]
     },
-    "powershell.md": {
+    "powershell.exe.md": {
       "kind": "powershell-launcher",
       "status": "reviewed",
       "versions": [

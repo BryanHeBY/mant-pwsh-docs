@@ -58,7 +58,7 @@ contract.
 ## Related documents
 
 - [md](md.md)
-- [cmd](cmd.md)
+- [cmd.exe](cmd.exe.md)
 - [rmdir](rmdir.md)
 
 ## Sources and license

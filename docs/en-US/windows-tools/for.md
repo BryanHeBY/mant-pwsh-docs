@@ -98,7 +98,7 @@ listed modifiers require command extensions, enabled by default.
 
 ## Related documents
 
-- [cmd](cmd.md)
+- [cmd.exe](cmd.exe.md)
 - [setlocal](setlocal.md)
 - [if](if.md)
 

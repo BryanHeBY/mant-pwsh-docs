@@ -115,7 +115,7 @@ behavior; native utility availability also varies by Windows release.
 
 - [about_Parsing](about_Parsing.md)
 - [about_Quoting_Rules](about_Quoting_Rules.md)
-- [powershell](powershell.md)
+- [powershell.exe](powershell.exe.md)
 - [Windows PowerShell 5.1 shell and language](pwsh51.md)
 
 ## Sources and license

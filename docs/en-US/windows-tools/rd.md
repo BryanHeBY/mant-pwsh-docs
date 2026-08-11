@@ -96,7 +96,7 @@ filesystem, permissions, reparse points, sharing, and active processes.
 - [rmdir alias](rmdir.md)
 - [del](del.md)
 - [dir](dir.md)
-- [cmd](cmd.md)
+- [cmd.exe](cmd.exe.md)
 
 ## Sources and license
 

@@ -87,9 +87,9 @@ volumes, recovery environments, and storage virtualization affect results.
 
 ## Related documents
 
-- [label](label.md)
-- [mountvol](mountvol.md)
-- [cmd](cmd.md)
+- [label.exe](label.exe.md)
+- [mountvol.exe](mountvol.exe.md)
+- [cmd.exe](cmd.exe.md)
 
 ## Sources and license
 

@@ -86,9 +86,9 @@ software; restart requirements and application impact must be verified.
 
 ## Related documents
 
-- [netsh](netsh.md)
+- [netsh.exe](netsh.exe.md)
 - [netsh-interface](netsh-interface.md)
-- [netstat](netstat.md)
+- [netstat.exe](netstat.exe.md)
 
 ## Sources and license
 

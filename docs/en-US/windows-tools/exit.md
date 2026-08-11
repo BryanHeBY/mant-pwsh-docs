@@ -94,10 +94,10 @@ PowerShell was hosted.
 
 ## Related documents
 
-- [cmd](cmd.md)
+- [cmd.exe](cmd.exe.md)
 - [call](call.md)
 - [setlocal](setlocal.md)
-- [robocopy](robocopy.md)
+- [robocopy.exe](robocopy.exe.md)
 
 ## Sources and license
 

@@ -79,10 +79,10 @@ types depend on filesystem, Windows configuration, and target location.
 
 ## Related documents
 
-- [attrib](attrib.md)
+- [attrib.exe](attrib.exe.md)
 - [dir](dir.md)
 - [rd](rd.md)
-- [xcopy](xcopy.md)
+- [xcopy.exe](xcopy.exe.md)
 
 ## Sources and license
 

@@ -39,7 +39,7 @@ applies to the older edition.
 
 - [pwsh51](pwsh51.md): shell invocation, language, object pipelines, streams,
   errors, native commands, modules, profiles, and Windows-specific behavior.
-- [powershell](powershell.md): `powershell.exe` launcher options for
+- [powershell.exe](powershell.exe.md): `powershell.exe` launcher options for
   interactive sessions, scripts, and automation.
 - [about_Parsing](about_Parsing.md): expression mode, argument mode, literal
   input, and Windows native-command boundaries.
@@ -149,7 +149,7 @@ mant pwsh51 --source pwsh51 --search=LASTEXITCODE
 ## Related documents
 
 - [Windows PowerShell 5.1 shell and language](pwsh51.md)
-- [powershell.exe launcher](powershell.md)
+- [powershell.exe launcher](powershell.exe.md)
 - [PowerShell 7 compatibility](powershell-7-compatibility.md)
 
 ## Sources and license

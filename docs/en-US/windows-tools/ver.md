@@ -99,9 +99,9 @@ inventory source or vice versa.
 
 ## Related documents
 
-- [systeminfo](systeminfo.md)
-- [cmd](cmd.md)
-- [dism](dism.md)
+- [systeminfo.exe](systeminfo.exe.md)
+- [cmd.exe](cmd.exe.md)
+- [dism.exe](dism.exe.md)
 
 ## Sources and license
 

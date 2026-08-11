@@ -90,10 +90,10 @@ launchers have their own command-resolution layers before Windows searches PATH.
 
 ## Related documents
 
-- [where](where.md)
+- [where.exe](where.exe.md)
 - [set](set.md)
 - [setlocal](setlocal.md)
-- [cmd](cmd.md)
+- [cmd.exe](cmd.exe.md)
 
 ## Sources and license
 

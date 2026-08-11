@@ -106,8 +106,8 @@ the page identifier must be checked for the target version and SKU.
 
 ## Related documents
 
-- [control](control.md)
-- [explorer](explorer.md)
+- [control.exe](control.exe.md)
+- [explorer.exe](explorer.exe.md)
 - [start](start.md)
 - [Windows tools for PowerShell](windows-tools.md)
 

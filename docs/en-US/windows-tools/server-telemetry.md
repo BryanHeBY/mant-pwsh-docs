@@ -86,8 +86,8 @@ switch controls every current collection/submission path.
 
 ## Related documents
 
-- [wevtutil](wevtutil.md)
-- [sc](sc.md)
+- [wevtutil.exe](wevtutil.exe.md)
+- [sc.exe](sc.exe.md)
 
 ## Sources and license
 

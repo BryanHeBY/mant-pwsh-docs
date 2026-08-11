@@ -86,8 +86,8 @@ defaults add per-user and managed-policy layers beyond this classic mapping.
 ## Related documents
 
 - [ftype](ftype.md)
-- [cmd](cmd.md)
-- [control](control.md)
+- [cmd.exe](cmd.exe.md)
+- [control.exe](control.exe.md)
 - [ms-settings](ms-settings.md)
 
 ## Sources and license

@@ -99,7 +99,7 @@ language, date format, 8.3-name creation, filesystems, and permissions vary.
 
 ## Related documents
 
-- [cmd](cmd.md)
+- [cmd.exe](cmd.exe.md)
 - [for](for.md)
 - [del](del.md)
 - [Windows tools index](windows-tools.md)

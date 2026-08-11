@@ -119,9 +119,9 @@ component servicing differ fundamentally on current Windows.
 
 ## Related documents
 
-- [dism](dism.md)
-- [wdsutil](wdsutil.md)
-- [bcdboot](bcdboot.md)
+- [dism.exe](dism.exe.md)
+- [wdsutil.exe](wdsutil.exe.md)
+- [bcdboot.exe](bcdboot.exe.md)
 
 ## Sources and license
 

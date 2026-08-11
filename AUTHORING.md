@@ -17,12 +17,24 @@ source. Keep its Markdown files physically flat because ManT installs source
 documents into a flat namespace.
 
 - Preserve official PowerShell casing for cmdlets, such as `Get-Command.md`.
-- Use lowercase command names for aliases and native executables, such as
-  `irm.md` and `winget.md`.
+- Use lowercase command names for aliases and native entry points. Retain the
+  real suffix for Windows entry points, such as `irm.md`, `winget.exe.md`,
+  `tree.com.md`, `services.msc.md`, and `prncnfg.vbs.md`.
 - Name a CLI subcommand with a hyphen, such as `winget-install.md`.
 - Use official `about_*` topic names, such as `about_Pipelines.md`.
 - Avoid filenames that are not portable across Windows, macOS, and Linux.
 - Treat filename stems as case-insensitively unique within one source.
+
+The suffix is part of the registered ManT document name. On Windows, an
+extensionless query first checks the exact name and then tries `PATHEXT` in
+order, so `mant winget` can resolve `winget.exe.md`; `mant winget.exe` is an
+exact query. On non-Windows platforms, query the full registered name because
+ManT does not elide Windows suffixes there.
+
+Do not add an executable suffix to PowerShell cmdlets or aliases, Cmd builtins,
+URI schemes, conceptual command-family pages, or subcommand topic pages. A
+cross-platform executable page may retain its extensionless portable name,
+such as `git.md`, when that is the executable name on non-Windows platforms.
 
 ## Document structure
 

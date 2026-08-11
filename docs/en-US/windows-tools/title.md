@@ -77,9 +77,9 @@ host, terminal settings, remote/session context, and host support.
 
 ## Related documents
 
-- [cmd](cmd.md)
+- [cmd.exe](cmd.exe.md)
 - [start](start.md)
-- [timeout](timeout.md)
+- [timeout.exe](timeout.exe.md)
 
 ## Sources and license
 

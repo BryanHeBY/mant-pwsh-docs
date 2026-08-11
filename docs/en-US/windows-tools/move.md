@@ -105,7 +105,7 @@ PowerShell platforms but its provider and filesystem behavior varies.
 - [copy](copy.md)
 - [dir](dir.md)
 - [ren](ren.md)
-- [cmd](cmd.md)
+- [cmd.exe](cmd.exe.md)
 
 ## Sources and license
 

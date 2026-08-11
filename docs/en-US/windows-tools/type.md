@@ -79,9 +79,9 @@ PowerShell 7.
 
 ## Related documents
 
-- [find](find.md)
-- [findstr](findstr.md)
-- [cmd](cmd.md)
+- [find.exe](find.exe.md)
+- [findstr.exe](findstr.exe.md)
+- [cmd.exe](cmd.exe.md)
 
 ## Sources and license
 

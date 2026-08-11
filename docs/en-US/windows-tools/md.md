@@ -92,7 +92,7 @@ session. Inspect resolution and provider semantics on the target edition.
 - [mkdir](mkdir.md)
 - [cd](cd.md)
 - [rd](rd.md)
-- [cmd](cmd.md)
+- [cmd.exe](cmd.exe.md)
 
 ## Sources and license
 

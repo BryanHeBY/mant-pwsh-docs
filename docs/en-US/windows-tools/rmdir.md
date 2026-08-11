@@ -60,7 +60,7 @@ Protect required data before an approved recursive deletion.
 ## Related documents
 
 - [rd](rd.md)
-- [cmd](cmd.md)
+- [cmd.exe](cmd.exe.md)
 - [erase](erase.md)
 
 ## Sources and license

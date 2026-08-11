@@ -123,8 +123,8 @@ policy. GUI and URL examples require an interactive desktop session.
 
 ## Related documents
 
-- [cmd](cmd.md)
-- [explorer](explorer.md)
+- [cmd.exe](cmd.exe.md)
+- [explorer.exe](explorer.exe.md)
 - [ms-settings](ms-settings.md)
 - [Windows tools for PowerShell](windows-tools.md)
 

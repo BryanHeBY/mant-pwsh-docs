@@ -120,7 +120,7 @@ capabilities and validate every answer against the target product and version.
 ## Related documents
 
 - [Windows tools for PowerShell](windows-tools.md)
-- [winget](winget.md)
+- [winget.exe](winget.exe.md)
 
 ## Sources and license
 

@@ -107,7 +107,7 @@ profiles also remain distinct within the same edition.
 
 ## Related documents
 
-- [powershell](powershell.md)
+- [powershell.exe](powershell.exe.md)
 - [about_Automatic_Variables](about_Automatic_Variables.md)
 - [Windows PowerShell 5.1 shell and language](pwsh51.md)
 

@@ -113,7 +113,7 @@ launcher options, or an outer batch scope.
 ## Related documents
 
 - [set](set.md)
-- [cmd](cmd.md)
+- [cmd.exe](cmd.exe.md)
 - [Windows tools index](windows-tools.md)
 
 ## Sources and license

@@ -98,7 +98,7 @@ the applicable PowerShell edition and language version.
 
 - [for](for.md)
 - [goto](goto.md)
-- [cmd](cmd.md)
+- [cmd.exe](cmd.exe.md)
 - [del](del.md)
 
 ## Sources and license

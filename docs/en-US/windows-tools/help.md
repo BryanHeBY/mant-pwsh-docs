@@ -102,8 +102,8 @@ installed help, and network/update state.
 
 ## Related documents
 
-- [cmd](cmd.md)
-- [where](where.md)
+- [cmd.exe](cmd.exe.md)
+- [where.exe](where.exe.md)
 - [microsoft-learn-mcp](microsoft-learn-mcp.md)
 
 ## Sources and license

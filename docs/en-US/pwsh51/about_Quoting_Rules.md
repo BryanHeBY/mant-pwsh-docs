@@ -116,7 +116,7 @@ application-specific and differs from modern PowerShell argument passing.
 
 - [about_Parsing](about_Parsing.md)
 - [native-commands](native-commands.md)
-- [powershell](powershell.md)
+- [powershell.exe](powershell.exe.md)
 - [Windows PowerShell 5.1 shell and language](pwsh51.md)
 
 ## Sources and license

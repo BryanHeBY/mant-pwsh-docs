@@ -59,7 +59,7 @@ then verify every result before removing a rollback copy.
 ## Related documents
 
 - [ren](ren.md)
-- [cmd](cmd.md)
+- [cmd.exe](cmd.exe.md)
 - [move](move.md)
 
 ## Sources and license

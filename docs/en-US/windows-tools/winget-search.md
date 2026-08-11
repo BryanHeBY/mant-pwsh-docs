@@ -94,7 +94,7 @@ also produce incomplete discovery. Check source and exit state.
 
 ## Related documents
 
-- [winget](winget.md)
+- [winget.exe](winget.exe.md)
 - [winget show](winget-show.md)
 - [winget install](winget-install.md)
 

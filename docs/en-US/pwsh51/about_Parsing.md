@@ -106,7 +106,7 @@ script without testing the exact host.
 
 - [about_Quoting_Rules](about_Quoting_Rules.md)
 - [native-commands](native-commands.md)
-- [powershell](powershell.md)
+- [powershell.exe](powershell.exe.md)
 - [Windows PowerShell 5.1 shell and language](pwsh51.md)
 
 ## Sources and license

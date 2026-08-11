@@ -72,7 +72,7 @@ output, CI, and non-Windows terminals.
 
 ## Related documents
 
-- [cmd](cmd.md)
+- [cmd.exe](cmd.exe.md)
 - [color](color.md)
 - [prompt](prompt.md)
 

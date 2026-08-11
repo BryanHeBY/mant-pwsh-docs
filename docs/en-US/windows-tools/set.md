@@ -117,9 +117,9 @@ releases. The Windows Recovery Environment exposes a different `set` form.
 
 ## Related documents
 
-- [cmd](cmd.md)
+- [cmd.exe](cmd.exe.md)
 - [setlocal](setlocal.md)
-- [timeout](timeout.md)
+- [timeout.exe](timeout.exe.md)
 - [Windows tools index](windows-tools.md)
 
 ## Sources and license

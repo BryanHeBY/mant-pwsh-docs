@@ -108,9 +108,9 @@ version, while the .NET round-trip `o` format is broadly available.
 ## Related documents
 
 - [time](time.md)
-- [w32tm](w32tm.md)
-- [tzutil](tzutil.md)
-- [cmd](cmd.md)
+- [w32tm.exe](w32tm.exe.md)
+- [tzutil.exe](tzutil.exe.md)
+- [cmd.exe](cmd.exe.md)
 
 ## Sources and license
 

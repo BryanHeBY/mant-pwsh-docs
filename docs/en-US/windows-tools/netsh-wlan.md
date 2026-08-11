@@ -103,9 +103,9 @@ visible fields vary by hardware, driver, Windows release, and organization.
 
 ## Related documents
 
-- [netsh](netsh.md)
-- [getmac](getmac.md)
-- [ipconfig](ipconfig.md)
+- [netsh.exe](netsh.exe.md)
+- [getmac.exe](getmac.exe.md)
+- [ipconfig.exe](ipconfig.exe.md)
 
 ## Sources and license
 

@@ -107,8 +107,8 @@ preset `/y`, so automation should specify overwrite policy explicitly.
 
 ## Related documents
 
-- [cmd](cmd.md)
-- [robocopy](robocopy.md)
+- [cmd.exe](cmd.exe.md)
+- [robocopy.exe](robocopy.exe.md)
 - [dir](dir.md)
 
 ## Sources and license

@@ -119,7 +119,7 @@
         "A compatible MCP client is required only to make live queries, never to read or validate this source."
       ]
     },
-    "winget.md": {
+    "winget.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -260,7 +260,7 @@
         "This guide documents inventory limitations and requires exact identity before action."
       ]
     },
-    "wsl.md": {
+    "wsl.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -286,7 +286,7 @@
         "Windows release, WSL package, distribution, and organization policy require target-environment verification."
       ]
     },
-    "where.md": {
+    "where.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -306,7 +306,7 @@
         "This guide distinguishes where.exe path lookup from PowerShell command precedence."
       ]
     },
-    "robocopy.md": {
+    "robocopy.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -326,7 +326,7 @@
         "This guide treats /MIR as destructive and documents Robocopy's nonstandard exit-code contract."
       ]
     },
-    "schtasks.md": {
+    "schtasks.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -395,7 +395,7 @@
         "Windows runtime verification remains required on representative local and remote task contexts without mutating production tasks."
       ]
     },
-    "sc.md": {
+    "sc.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -449,7 +449,7 @@
         "Windows runtime verification remains required, including Windows PowerShell alias resolution separately from PowerShell 7."
       ]
     },
-    "net.md": {
+    "net.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -538,7 +538,7 @@
         "Windows runtime verification remains required across representative member, domain, client, server, elevated, scheduled, and service contexts without mutating production identity, SMB, service, or time state."
       ]
     },
-    "query.md": {
+    "query.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -606,8 +606,8 @@
         "Windows runtime verification remains required across representative client/Session Host, local/remote, active/disconnected/listener, elevated/unelevated, and localized contexts without changing sessions or processes."
       ]
     },
-    "quser.md": {
-      "kind": "alias",
+    "quser.exe.md": {
+      "kind": "native-cli-alias",
       "status": "reviewed",
       "versions": [
         "same supported Windows targets as query user"
@@ -632,8 +632,8 @@
         "Windows runtime verification remains required."
       ]
     },
-    "qwinsta.md": {
-      "kind": "alias",
+    "qwinsta.exe.md": {
+      "kind": "native-cli-alias",
       "status": "reviewed",
       "versions": [
         "same supported Windows targets as query session"
@@ -658,8 +658,8 @@
         "Windows runtime verification remains required."
       ]
     },
-    "qprocess.md": {
-      "kind": "alias",
+    "qprocess.exe.md": {
+      "kind": "native-cli-alias",
       "status": "reviewed",
       "versions": [
         "same supported Windows targets as query process"
@@ -684,8 +684,8 @@
         "Windows runtime verification remains required."
       ]
     },
-    "qappsrv.md": {
-      "kind": "alias",
+    "qappsrv.exe.md": {
+      "kind": "native-cli-alias",
       "status": "reviewed",
       "versions": [
         "same supported Windows targets as query termserver; discovery usefulness depends on legacy role and network behavior"
@@ -710,7 +710,7 @@
         "Windows runtime verification remains required where the executable and discovery mechanism are available."
       ]
     },
-    "msg.md": {
+    "msg.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -740,7 +740,7 @@
         "Windows runtime verification remains help-only unless an approved disposable active session and user are available."
       ]
     },
-    "tsdiscon.md": {
+    "tsdiscon.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -761,7 +761,7 @@
         "Windows runtime verification remains help-only unless an approved disposable session exists."
       ]
     },
-    "logoff.md": {
+    "logoff.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -791,8 +791,8 @@
         "Windows runtime verification remains help-only unless an approved disposable session with saved-work confirmation exists."
       ]
     },
-    "rwinsta.md": {
-      "kind": "alias",
+    "rwinsta.exe.md": {
+      "kind": "native-cli-alias",
       "status": "reviewed",
       "versions": [
         "supported Windows client and server releases; same target behavior as reset session"
@@ -817,7 +817,7 @@
         "Windows runtime verification remains help-only unless an approved disposable malfunctioning-session fixture and recovery evidence exist."
       ]
     },
-    "tscon.md": {
+    "tscon.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -847,7 +847,7 @@
         "Windows runtime verification remains help-only unless an approved disposable host/session topology and physical-console security review exist."
       ]
     },
-    "shadow.md": {
+    "shadow.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -877,7 +877,7 @@
         "Windows runtime verification remains help-only unless an approved disposable support session, consenting test user, privacy policy, and audit evidence exist."
       ]
     },
-    "tskill.md": {
+    "tskill.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -907,7 +907,7 @@
         "Windows runtime verification remains help-only unless an approved disposable process/session fixture and recovery evidence exist."
       ]
     },
-    "winrm.md": {
+    "winrm.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -968,7 +968,7 @@
         "Windows runtime verification remains local query-only unless a separately approved disposable remote endpoint, exact transport/authentication/identity design, and recovery path exist."
       ]
     },
-    "winrs.md": {
+    "winrs.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -1007,7 +1007,7 @@
         "Windows runtime verification remains help/local-query-only unless an approved disposable remote endpoint and allowlisted harmless command exist."
       ]
     },
-    "wevtutil.md": {
+    "wevtutil.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -1037,7 +1037,7 @@
         "Windows runtime verification remains query/export-only; destructive event configuration and evidence mutation require separate approval and custody controls."
       ]
     },
-    "wecutil.md": {
+    "wecutil.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -1076,7 +1076,7 @@
         "Windows runtime verification remains query/help-only unless an approved disposable source/collector and test subscription exist."
       ]
     },
-    "eventcreate.md": {
+    "eventcreate.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -1097,7 +1097,7 @@
         "Windows runtime verification remains help-only unless an approved disposable marker and end-to-end forwarding fixture exist."
       ]
     },
-    "logman.md": {
+    "logman.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -1127,7 +1127,7 @@
         "Windows runtime verification remains query-only unless an approved disposable collector fixture and evidence plan exist."
       ]
     },
-    "typeperf.md": {
+    "typeperf.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -1166,7 +1166,7 @@
         "Windows runtime verification remains inventory-only unless bounded sampling on an approved host/output is authorized."
       ]
     },
-    "relog.md": {
+    "relog.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -1196,7 +1196,7 @@
         "Windows runtime verification remains help-only unless approved copied input and a new explicit output are available."
       ]
     },
-    "tracerpt.md": {
+    "tracerpt.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -1226,7 +1226,7 @@
         "Windows runtime verification remains help-only unless an approved copied trace and new explicit outputs are available."
       ]
     },
-    "lodctr.md": {
+    "lodctr.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -1256,7 +1256,7 @@
         "Windows runtime verification must confirm installed help and remains query-only; provider repair requires product support guidance and a rollback-tested fixture."
       ]
     },
-    "unlodctr.md": {
+    "unlodctr.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -1286,7 +1286,7 @@
         "Windows runtime verification remains help/query-only; unregistration requires an approved disposable product lifecycle fixture and rollback validation."
       ]
     },
-    "perfmon.md": {
+    "perfmon.exe.md": {
       "kind": "windows-gui-entrypoint",
       "status": "reviewed",
       "versions": [
@@ -1316,7 +1316,7 @@
         "Windows runtime verification remains manual GUI launch/close only; /report requires a separately approved collector fixture."
       ]
     },
-    "msinfo32.md": {
+    "msinfo32.exe.md": {
       "kind": "windows-gui-entrypoint",
       "status": "reviewed",
       "versions": [
@@ -1355,7 +1355,7 @@
         "Windows runtime verification remains help/GUI-only unless a new protected local fixture path and content checks are approved."
       ]
     },
-    "cleanmgr.md": {
+    "cleanmgr.exe.md": {
       "kind": "windows-gui-entrypoint",
       "status": "reviewed",
       "versions": [
@@ -1394,7 +1394,7 @@
         "Windows runtime verification remains executable/help discovery-only; no cleanup profile may be run merely for evidence."
       ]
     },
-    "shutdown.md": {
+    "shutdown.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -1433,7 +1433,7 @@
         "Windows runtime verification is help-only; no lifecycle or cancellation action may be performed on a real host merely for evidence."
       ]
     },
-    "tzutil.md": {
+    "tzutil.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -1472,7 +1472,7 @@
         "Windows runtime verification remains /g and /l only; system time-zone mutation requires a disposable fixture and affected-workload plan."
       ]
     },
-    "verifier.md": {
+    "verifier.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -1511,7 +1511,7 @@
         "Windows runtime verification remains /querysettings and /query only; mutation/reset requires a dedicated crash-safe test fixture and recovery validation."
       ]
     },
-    "w32tm.md": {
+    "w32tm.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -1554,7 +1554,7 @@
         "Windows runtime verification remains local query-only; offset sampling requires an approved endpoint and any configuration/resync requires an identity/topology/rollback plan."
       ]
     },
-    "powercfg.md": {
+    "powercfg.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -1588,7 +1588,7 @@
         "Windows runtime verification remains query-only; reports require a protected new fixture path and all scheme/sleep/wake mutations require representative hardware and rollback."
       ]
     },
-    "reagentc.md": {
+    "reagentc.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -1631,7 +1631,7 @@
         "Windows runtime verification remains /info-only; mutation requires a disposable boot/recovery fixture, exact BCD/disk/image identity, recovery keys/media, and tested rollback."
       ]
     },
-    "dxdiag.md": {
+    "dxdiag.exe.md": {
       "kind": "windows-gui-entrypoint",
       "status": "reviewed",
       "versions": [
@@ -1665,7 +1665,7 @@
         "Windows runtime verification remains executable/help discovery-only; report collection requires a new protected fixture path, process/content verification, and privacy review."
       ]
     },
-    "taskmgr.md": {
+    "taskmgr.exe.md": {
       "kind": "windows-gui-entrypoint",
       "status": "reviewed",
       "versions": [
@@ -1690,7 +1690,7 @@
         "Windows runtime verification remains manual launch-and-close only."
       ]
     },
-    "resmon.md": {
+    "resmon.exe.md": {
       "kind": "windows-gui-entrypoint",
       "status": "reviewed",
       "versions": [
@@ -1711,7 +1711,7 @@
         "Windows runtime verification remains manual launch-and-close only."
       ]
     },
-    "eventvwr.md": {
+    "eventvwr.msc.md": {
       "kind": "windows-gui-entrypoint",
       "status": "reviewed",
       "versions": [
@@ -1736,7 +1736,7 @@
         "Windows runtime verification remains manual launch-and-close only."
       ]
     },
-    "compmgmt.md": {
+    "compmgmt.msc.md": {
       "kind": "windows-gui-entrypoint",
       "status": "reviewed",
       "versions": [
@@ -1761,7 +1761,7 @@
         "Windows runtime verification remains manual launch-and-close only; no contained snap-in mutation is permitted merely for evidence."
       ]
     },
-    "devmgmt.md": {
+    "devmgmt.msc.md": {
       "kind": "windows-gui-entrypoint",
       "status": "reviewed",
       "versions": [
@@ -1786,7 +1786,7 @@
         "Windows runtime verification remains manual launch-and-close only; no device mutation is permitted merely for evidence."
       ]
     },
-    "diskmgmt.md": {
+    "diskmgmt.msc.md": {
       "kind": "windows-gui-entrypoint",
       "status": "reviewed",
       "versions": [
@@ -1820,7 +1820,7 @@
         "Windows runtime verification remains manual launch-and-close only; no storage mutation is permitted merely for evidence."
       ]
     },
-    "services.md": {
+    "services.msc.md": {
       "kind": "windows-gui-entrypoint",
       "status": "reviewed",
       "versions": [
@@ -1845,7 +1845,7 @@
         "Windows runtime verification remains manual launch-and-close only; no service control/configuration mutation is permitted merely for evidence."
       ]
     },
-    "optionalfeatures.md": {
+    "optionalfeatures.exe.md": {
       "kind": "windows-gui-entrypoint",
       "status": "reviewed",
       "versions": [
@@ -1870,7 +1870,7 @@
         "Windows runtime verification remains discovery/manual launch-and-close only; no feature/capability mutation is permitted merely for evidence."
       ]
     },
-    "msconfig.md": {
+    "msconfig.exe.md": {
       "kind": "windows-gui-entrypoint",
       "status": "reviewed",
       "versions": [
@@ -1913,7 +1913,7 @@
         "Windows runtime verification remains discovery/manual launch-and-close/query-only; no startup, service or boot mutation is permitted merely for evidence."
       ]
     },
-    "gpedit.md": {
+    "gpedit.msc.md": {
       "kind": "windows-gui-entrypoint",
       "status": "reviewed",
       "versions": [
@@ -1965,7 +1965,7 @@
         "Windows runtime verification remains discovery/manual launch-and-close/query-only; no policy edit or refresh is permitted merely for evidence."
       ]
     },
-    "systempropertiesadvanced.md": {
+    "systempropertiesadvanced.exe.md": {
       "kind": "windows-gui-entrypoint",
       "status": "reviewed",
       "versions": [
@@ -2008,7 +2008,7 @@
         "Windows runtime verification remains discovery/manual launch-and-close/query-only; no environment, memory, profile, dump, startup or recovery mutation is permitted merely for evidence."
       ]
     },
-    "magnify.md": {
+    "magnify.exe.md": {
       "kind": "windows-gui-entrypoint",
       "status": "reviewed",
       "versions": [
@@ -2051,7 +2051,7 @@
         "Windows runtime verification is disposable interactive launch-and-normal-close only; no startup, protected-file, ACL or forced-termination mutation is permitted merely for evidence."
       ]
     },
-    "narrator.md": {
+    "narrator.exe.md": {
       "kind": "windows-gui-entrypoint",
       "status": "reviewed",
       "versions": [
@@ -2094,7 +2094,7 @@
         "Windows runtime verification is disposable interactive launch-and-normal-close only; no startup, protected-file, ACL, IFEO or forced-termination mutation is permitted merely for evidence."
       ]
     },
-    "osk.md": {
+    "osk.exe.md": {
       "kind": "windows-gui-entrypoint",
       "status": "reviewed",
       "versions": [
@@ -2137,7 +2137,7 @@
         "Windows runtime verification is disposable interactive launch-and-normal-close only; no startup, input automation, protected-file, ACL or forced-termination mutation is permitted merely for evidence."
       ]
     },
-    "mstsc.md": {
+    "mstsc.exe.md": {
       "kind": "windows-gui-cli",
       "status": "reviewed",
       "versions": [
@@ -2167,7 +2167,7 @@
         "Windows runtime verification remains help and local monitor inventory only; no connection, authentication, RDP-file launch, redirection or shadow/control is permitted merely for evidence."
       ]
     },
-    "setx.md": {
+    "setx.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -2197,7 +2197,7 @@
         "Windows runtime verification remains help and persistent-value query-only; no environment/Path write, deletion, remote credential or truncation test is permitted merely for evidence."
       ]
     },
-    "cscript.md": {
+    "cscript.exe.md": {
       "kind": "native-script-host",
       "status": "reviewed",
       "versions": [
@@ -2227,7 +2227,7 @@
         "Windows runtime verification remains help-only unless an approved inert code-reviewed least-privilege fixture exists; no WSH default/persisted option change is permitted merely for evidence."
       ]
     },
-    "wscript.md": {
+    "wscript.exe.md": {
       "kind": "native-script-host",
       "status": "reviewed",
       "versions": [
@@ -2257,7 +2257,7 @@
         "Windows runtime verification remains help-only unless an approved inert interactive fixture exists; no WSH default/persisted option change is permitted merely for evidence."
       ]
     },
-    "regsvr32.md": {
+    "regsvr32.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -2287,7 +2287,7 @@
         "Windows runtime verification remains help-only; no DLL/OCX load, register, unregister or install action is permitted merely for evidence."
       ]
     },
-    "wmic.md": {
+    "wmic.exe.md": {
       "kind": "deprecated-native-cli",
       "status": "reviewed",
       "versions": [
@@ -2335,7 +2335,7 @@
         "Windows runtime verification remains executable/FoD discovery and typed-CIM query-only; do not install WMIC or invoke mutating aliases/methods merely for evidence."
       ]
     },
-    "sxstrace.md": {
+    "sxstrace.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -2365,7 +2365,7 @@
         "Windows runtime verification remains help-only unless an approved disposable failing application and protected fixture paths exist; every capture must stop in cleanup and preserve the ETL before parse."
       ]
     },
-    "format.md": {
+    "format.exe.md": {
       "kind": "destructive-native-cli",
       "status": "reviewed",
       "versions": [
@@ -2404,7 +2404,7 @@
         "Windows runtime verification is help and query-only; no format, dismount, overwrite, label, filesystem, allocation-unit or media mutation is permitted merely for evidence."
       ]
     },
-    "recover.md": {
+    "recover.exe.md": {
       "kind": "destructive-native-cli",
       "status": "reviewed",
       "versions": [
@@ -2425,7 +2425,7 @@
         "Windows runtime verification remains help-only; no production, failing, unique, evidentiary or user-data file may be read or changed merely for evidence."
       ]
     },
-    "pktmon.md": {
+    "pktmon.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -2485,7 +2485,7 @@
         "Windows runtime verification remains status/list/filter-list/counter-query and help-only unless an approved isolated traffic fixture exists; no reset, unload, filter mutation, packet/ETW capture or sensitive conversion is permitted merely for evidence."
       ]
     },
-    "tpmtool.md": {
+    "tpmtool.exe.md": {
       "kind": "security-diagnostic-cli",
       "status": "reviewed",
       "versions": [
@@ -2515,7 +2515,7 @@
         "Windows runtime verification remains help and getdeviceinformation only; no log collection, driver trace, TPM clear/provision/ownership, firmware, BitLocker, Windows Hello or reboot mutation is permitted merely for evidence."
       ]
     },
-    "makecab.md": {
+    "makecab.exe.md": {
       "kind": "native-packaging-cli",
       "status": "reviewed",
       "versions": [
@@ -2563,7 +2563,7 @@
         "Windows runtime verification remains help-only unless an approved disposable build fixture exists; no production package, update, driver, installer or signed artifact may be created, replaced or installed merely for evidence."
       ]
     },
-    "diantz.md": {
+    "diantz.exe.md": {
       "kind": "native-cli-alias",
       "status": "reviewed",
       "versions": [
@@ -2589,7 +2589,7 @@
         "Windows runtime verification remains resolution and help-only; no cabinet creation or artifact mutation is permitted merely for evidence."
       ]
     },
-    "expand.md": {
+    "expand.exe.md": {
       "kind": "native-extraction-cli",
       "status": "reviewed",
       "versions": [
@@ -2619,7 +2619,7 @@
         "Windows runtime verification remains help and list-only against a reviewed inert fixture; no extraction over existing, system or application paths and no execution, rebuild, installation or servicing is permitted merely for evidence."
       ]
     },
-    "chcp.md": {
+    "chcp.com.md": {
       "kind": "native-console-cli",
       "status": "reviewed",
       "versions": [
@@ -2649,7 +2649,7 @@
         "Windows runtime verification remains query/help and encoding-property inspection only; no shared-session, profile, registry AutoRun, system-locale or file conversion change is permitted merely for evidence."
       ]
     },
-    "doskey.md": {
+    "doskey.exe.md": {
       "kind": "native-interactive-cli",
       "status": "reviewed",
       "versions": [
@@ -2697,7 +2697,7 @@
         "Windows runtime verification remains help and command-resolution only unless history/macro data handling is approved; no macro import/creation/clear, history export/clear or input automation is permitted merely for evidence."
       ]
     },
-    "more.md": {
+    "more.com.md": {
       "kind": "native-interactive-cli",
       "status": "reviewed",
       "versions": [
@@ -2736,7 +2736,7 @@
         "Windows runtime verification remains help and resolution-only; no interactive pager against real, unbounded, binary or sensitive output is permitted merely for evidence."
       ]
     },
-    "comp.md": {
+    "comp.exe.md": {
       "kind": "native-interactive-cli",
       "status": "reviewed",
       "versions": [
@@ -2775,7 +2775,7 @@
         "Windows runtime verification remains help-only unless approved inert exact-file fixtures exist; never block an unattended evidence run at COMP's prompt."
       ]
     },
-    "replace.md": {
+    "replace.exe.md": {
       "kind": "destructive-native-cli",
       "status": "reviewed",
       "versions": [
@@ -2805,7 +2805,7 @@
         "Windows runtime verification remains help-only unless approved disposable file fixtures exist; no real file add, replacement, read-only override or recursive destination scan is permitted merely for evidence."
       ]
     },
-    "label.md": {
+    "label.exe.md": {
       "kind": "native-storage-cli",
       "status": "reviewed",
       "versions": [
@@ -2847,7 +2847,7 @@
         "Windows runtime verification is one explicit local drive query through cmd /d plus typed storage inventory; no downstream action may select a target from label or filesystem serial alone."
       ]
     },
-    "waitfor.md": {
+    "waitfor.exe.md": {
       "kind": "native-synchronization-cli",
       "status": "reviewed",
       "versions": [
@@ -3315,7 +3315,7 @@
         "Windows runtime verification remains time /T, typed Get-Date and W32Time queries only; no system clock, timezone, service, source, policy or synchronization change is permitted merely for evidence."
       ]
     },
-    "at.md": {
+    "at.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -3350,7 +3350,7 @@
         "Windows runtime verification remains executable/help and read-only AT/Task Scheduler inventory; no task creation, edit, run or deletion is permitted merely for evidence."
       ]
     },
-    "cacls.md": {
+    "cacls.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -3394,7 +3394,7 @@
         "Windows runtime verification remains help and exact inert read-only ACL display; no ownership, DACL, SACL, inheritance or recursive mutation is permitted merely for evidence."
       ]
     },
-    "bootcfg.md": {
+    "bootcfg.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -3420,7 +3420,7 @@
         "Windows runtime verification remains resolution/help and query-only on an explicitly identified compatible legacy fixture or BCD host; no boot store, Boot.ini, firmware, debugger, EMS, integrity or timeout mutation is permitted merely for evidence."
       ]
     },
-    "bitsadmin.md": {
+    "bitsadmin.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -3494,7 +3494,7 @@
         "Windows runtime verification remains current-user list/help and exact reviewed-job read-only info/listfiles only; no create, add, transfer, resume, suspend, complete, cancel, reset, ownership, notification, credential, header, proxy, peer/cache or service mutation is permitted merely for evidence."
       ]
     },
-    "mode.md": {
+    "mode.com.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -3533,7 +3533,7 @@
         "Windows runtime verification remains mode/help, all-device status, exact approved inactive COM status, console code-page query and PnP inventory only; no serial, LPT, code-page, buffer-size or typematic mutation is permitted merely for evidence."
       ]
     },
-    "print.md": {
+    "print.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -3572,7 +3572,7 @@
         "Windows runtime verification remains help, queue/port inventory and inert local file inspection only; no print job, raw byte stream, port mapping, queue/default, driver or spooler mutation is permitted merely for evidence."
       ]
     },
-    "prncnfg.md": {
+    "prncnfg.vbs.md": {
       "kind": "windows-printing-admin-script",
       "status": "reviewed",
       "versions": [
@@ -3602,7 +3602,7 @@
         "Windows runtime verification remains script discovery, help, exact queue reads and typed inventory only; no queue configuration, rename, publication, scheduling, retention, sharing, port, credential or spooler mutation is permitted merely for evidence."
       ]
     },
-    "prndrvr.md": {
+    "prndrvr.vbs.md": {
       "kind": "windows-printing-admin-script",
       "status": "reviewed",
       "versions": [
@@ -3632,7 +3632,7 @@
         "Windows runtime verification remains script discovery/help and local/exact-server driver listing only; no install, delete, delete-all, staging, package, credential or spooler mutation is permitted merely for evidence."
       ]
     },
-    "prnjobs.md": {
+    "prnjobs.vbs.md": {
       "kind": "windows-printing-admin-script",
       "status": "reviewed",
       "versions": [
@@ -3662,7 +3662,7 @@
         "Windows runtime verification remains script discovery/help and exact-queue job listing only; no pause, resume, cancel, spool-file, spooler, credential or physical-output action is permitted merely for evidence."
       ]
     },
-    "prnmngr.md": {
+    "prnmngr.vbs.md": {
       "kind": "windows-printing-admin-script",
       "status": "reviewed",
       "versions": [
@@ -3701,7 +3701,7 @@
         "Windows runtime verification remains discovery/help/list/get-default and typed inventory only in recorded identity/session context; no add/delete/all-delete/default/connection/driver/port/credential mutation is permitted merely for evidence."
       ]
     },
-    "prnport.md": {
+    "prnport.vbs.md": {
       "kind": "windows-printing-admin-script",
       "status": "reviewed",
       "versions": [
@@ -3731,7 +3731,7 @@
         "Windows runtime verification remains script discovery/help and port list/get plus typed inventory only; no create/configure/delete, RAW/LPR/SNMP, credential, queue or device mutation is permitted merely for evidence."
       ]
     },
-    "prnqctl.md": {
+    "prnqctl.vbs.md": {
       "kind": "windows-printing-admin-script",
       "status": "reviewed",
       "versions": [
@@ -3761,7 +3761,7 @@
         "Windows runtime verification remains discovery/help and separate typed inventory only; no pause, resume, all-job cancel, test page, spooler/spool-file, credential or physical-output operation is permitted merely for evidence."
       ]
     },
-    "pubprn.md": {
+    "pubprn.vbs.md": {
       "kind": "windows-printing-admin-script",
       "status": "reviewed",
       "versions": [
@@ -3791,7 +3791,7 @@
         "Windows runtime verification remains discovery/help and separate print/AD queries only; no publication, directory object, ACL, queue/share, credential or client-deployment mutation is permitted merely for evidence."
       ]
     },
-    "pushprinterconnections.md": {
+    "pushprinterconnections.exe.md": {
       "kind": "windows-policy-runtime-utility",
       "status": "reviewed",
       "versions": [
@@ -3860,7 +3860,7 @@
         "Windows runtime verification remains local help, local/exact-computer /ge and typed inventory only; no queue/connection/default/driver/test-page/property/settings save/restore, UI, quiet, argument-file, credential or spooler mutation is permitted merely for evidence."
       ]
     },
-    "ftp.md": {
+    "ftp.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -3899,7 +3899,7 @@
         "Windows runtime verification remains resolution/help and approved TCP reachability only; no FTP login, credential, script execution, data-channel connection, transfer, rename or deletion is permitted merely for evidence."
       ]
     },
-    "tftp.md": {
+    "tftp.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -3920,7 +3920,7 @@
         "Windows runtime verification remains optional-feature state, resolution and help-only unless an approved isolated non-sensitive fixture exists; do not enable the feature or transfer any file merely for evidence."
       ]
     },
-    "telnet.md": {
+    "telnet.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -3941,7 +3941,7 @@
         "Windows runtime verification remains optional-feature state, resolution/help and approved TCP reachability only; do not enable the feature, negotiate Telnet, send input/credentials or create a transcript merely for evidence."
       ]
     },
-    "finger.md": {
+    "finger.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -3962,7 +3962,7 @@
         "Windows runtime verification remains resolution/help, DNS and approved TCP reachability only; do not request one or all users or enable/expose a Finger service merely for evidence."
       ]
     },
-    "cmd.md": {
+    "cmd.exe.md": {
       "kind": "windows-shell",
       "status": "reviewed",
       "versions": [
@@ -4013,7 +4013,7 @@
         "The guide distinguishes the cmd builtin from PowerShell's Start-Process alias."
       ]
     },
-    "explorer.md": {
+    "explorer.exe.md": {
       "kind": "windows-gui-entrypoint",
       "status": "reviewed",
       "versions": [
@@ -4099,7 +4099,7 @@
         "URI availability requires target Windows version, SKU, hardware, package, and policy verification."
       ]
     },
-    "control.md": {
+    "control.exe.md": {
       "kind": "windows-gui-entrypoint",
       "status": "reviewed",
       "versions": [
@@ -4133,7 +4133,7 @@
         "GUI launch is not treated as configuration verification."
       ]
     },
-    "mmc.md": {
+    "mmc.exe.md": {
       "kind": "windows-gui-entrypoint",
       "status": "reviewed",
       "versions": [
@@ -4162,7 +4162,7 @@
         "The page covers saved consoles, author mode, host architecture, feature prerequisites, and the GUI automation boundary."
       ]
     },
-    "reg.md": {
+    "reg.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -4247,7 +4247,7 @@
         "The community source records the recurring 32-bit versus 64-bit registry-view failure mode."
       ]
     },
-    "rundll32.md": {
+    "rundll32.exe.md": {
       "kind": "windows-compatibility-host",
       "status": "reviewed",
       "versions": [
@@ -4328,7 +4328,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "choice.md": {
+    "choice.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -4358,7 +4358,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "timeout.md": {
+    "timeout.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -5120,7 +5120,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "find.md": {
+    "find.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -5141,7 +5141,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "findstr.md": {
+    "findstr.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -5171,7 +5171,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "fc.md": {
+    "fc.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -5192,7 +5192,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "sort.md": {
+    "sort.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -5222,7 +5222,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "clip.md": {
+    "clip.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -5252,7 +5252,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "attrib.md": {
+    "attrib.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -5273,7 +5273,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "forfiles.md": {
+    "forfiles.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -5312,7 +5312,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "tree.md": {
+    "tree.com.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -5333,7 +5333,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "subst.md": {
+    "subst.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -5411,7 +5411,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "xcopy.md": {
+    "xcopy.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -5450,7 +5450,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "tasklist.md": {
+    "tasklist.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -5471,7 +5471,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "taskkill.md": {
+    "taskkill.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -5501,7 +5501,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "systeminfo.md": {
+    "systeminfo.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -5522,7 +5522,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "whoami.md": {
+    "whoami.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -5552,7 +5552,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "openfiles.md": {
+    "openfiles.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -5573,7 +5573,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "driverquery.md": {
+    "driverquery.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -5594,7 +5594,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "ipconfig.md": {
+    "ipconfig.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -5615,7 +5615,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "ping.md": {
+    "ping.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -5636,7 +5636,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "tracert.md": {
+    "tracert.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -5657,7 +5657,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "pathping.md": {
+    "pathping.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -5678,7 +5678,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "hostname.md": {
+    "hostname.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -5699,7 +5699,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "nslookup.md": {
+    "nslookup.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -5729,7 +5729,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "netstat.md": {
+    "netstat.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -5759,7 +5759,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "route.md": {
+    "route.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -5780,7 +5780,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "arp.md": {
+    "arp.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -5801,7 +5801,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "getmac.md": {
+    "getmac.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -5822,7 +5822,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "nbtstat.md": {
+    "nbtstat.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -5843,7 +5843,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "netsh.md": {
+    "netsh.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -5927,7 +5927,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "msiexec.md": {
+    "msiexec.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -5957,7 +5957,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "dism.md": {
+    "dism.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -6000,7 +6000,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "sfc.md": {
+    "sfc.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -6021,7 +6021,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "pnputil.md": {
+    "pnputil.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -6060,7 +6060,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "fondue.md": {
+    "fondue.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -6090,7 +6090,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "auditpol.md": {
+    "auditpol.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -6120,7 +6120,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "gpresult.md": {
+    "gpresult.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -6150,7 +6150,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "klist.md": {
+    "klist.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -6171,7 +6171,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "setspn.md": {
+    "setspn.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -6201,7 +6201,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "ksetup.md": {
+    "ksetup.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -6246,7 +6246,7 @@
         "Windows runtime verification remains dump/list/get and ticket-query only; no realm, KDC, password-server, host-map, flag, encryption, computer-password, user-password, server-target or credential mutation is permitted merely for evidence."
       ]
     },
-    "ktpass.md": {
+    "ktpass.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -6285,7 +6285,7 @@
         "Windows runtime verification remains help and separate AD read queries only; no Ktpass mapping, password/key rotation, keytab generation, UPN/SPN/encryption mutation, inline secret, or artifact creation is permitted merely for evidence."
       ]
     },
-    "rdpsign.md": {
+    "rdpsign.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -6324,7 +6324,7 @@
         "Windows runtime verification remains help and approved /l trial-signing with a disposable reviewed RDP file and certificate; no production-file overwrite, trust-policy change, connection, authentication, redirection or server-certificate mutation is permitted merely for evidence."
       ]
     },
-    "scwcmd.md": {
+    "scwcmd.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -6384,7 +6384,7 @@
         "Windows runtime verification remains help and approved local/single-target analysis or existing-XML rendering only; no configure, rollback, register, transform, OU/list fan-out, alternate password, event logging, production policy or GPO mutation is permitted merely for evidence."
       ]
     },
-    "dcdiag.md": {
+    "dcdiag.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -6427,7 +6427,7 @@
         "Windows runtime verification remains help and approved single-DC Connectivity, DNS Basic and Replications tests only; no repair, comprehensive, CutoffServers, Intersite, broad site/enterprise, alternate-password or unprotected log operation is permitted merely for evidence."
       ]
     },
-    "repadmin.md": {
+    "repadmin.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -6506,7 +6506,7 @@
         "Windows runtime verification remains help, exact-DC summary, exact-destination showrepl/queue and protected CSV collection only; no sync, replicate, KCC, topology/configuration, lingering-object, rehost, password-policy, broad DSA-list or wildcard recovery operation is permitted merely for evidence."
       ]
     },
-    "nltest.md": {
+    "nltest.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -6540,7 +6540,7 @@
         "Windows runtime verification remains help, approved site/DC Locator/DC-list and local member secure-channel query only; no verify, reset, password, DNS registration, debug/log, service/cache or legacy BDC operation is permitted merely for evidence."
       ]
     },
-    "netdom.md": {
+    "netdom.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -6601,7 +6601,7 @@
         "Windows runtime verification remains help, exact-domain DC/FSMO/trust query and explicitly approved member verify only; no account, join/move/remove, rename/name, reset/password, trust-change, inline-secret or reboot operation is permitted merely for evidence."
       ]
     },
-    "adprep.md": {
+    "adprep.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -6644,7 +6644,7 @@
         "Windows runtime verification remains approved-media binary/signature and read-only FSMO/schema inventory only; no forest, domain, GPO or RODC preparation, silent execution, schema/role bypass or retry is permitted merely for evidence."
       ]
     },
-    "dcpromo.md": {
+    "dcpromo.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -6705,7 +6705,7 @@
         "Windows runtime verification remains legacy help, modern module/cmdlet discovery, existing-DC inventory and exact-partner health queries only; no promotion, demotion, forced removal, role binary, RODC, IFM, answer-file, credential or reboot operation is permitted merely for evidence."
       ]
     },
-    "dcgpofix.md": {
+    "dcgpofix.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -6784,7 +6784,7 @@
         "Windows runtime verification remains help and exact default-GPO inventory/report only; a separately approved protected path is required even for backup. No GPO recreation, both-target action, schema bypass, restore, link or replication change is permitted merely for evidence."
       ]
     },
-    "gpfixup.md": {
+    "gpfixup.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -6845,7 +6845,7 @@
         "Windows runtime verification remains help and explicitly approved read-only domain/GPO inventory only; backup requires a protected path and no GPO/link/SYSVOL/software reference, credential, DC selection, or domain-rename state may be changed merely for evidence."
       ]
     },
-    "dnscmd.md": {
+    "dnscmd.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -6906,7 +6906,7 @@
         "Windows runtime verification remains approved exact-server enumzones/zoneinfo/enumrecords/enumdirectorypartitions only; no record/node, aging/scavenging, zone, server/config, cache, forwarding, partition, export/import, logging, plug-in, policy/scope or DNSSEC mutation is permitted merely for evidence."
       ]
     },
-    "dfsdiag.md": {
+    "dfsdiag.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -6940,7 +6940,7 @@
         "Windows runtime verification remains exact machine/root/path DFSN tests only; broad domain testdcs and recurse/full expansion require separate target-count/load approval, and no cache flush, target, priority, namespace, share or replication mutation is permitted merely for evidence."
       ]
     },
-    "dfsrmig.md": {
+    "dfsrmig.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -6983,7 +6983,7 @@
         "Windows runtime verification remains PDC identity and approved global/local state plus share/service inventory only; no state transition, global-object/member deletion/creation, AD/DFSR/FRS polling, service, registry, authoritative/non-authoritative restore or metadata cleanup is permitted merely for evidence."
       ]
     },
-    "ntfrsutl.md": {
+    "ntfrsutl.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -7035,7 +7035,7 @@
         "Windows runtime verification remains exact approved legacy-FRS server help/version/sets/poll display only after mechanism/membership proof; no forced/fast/slow poll, service, registry, AD/replica-set object, D2/D4, journal-wrap, staging/log or recovery mutation is permitted merely for evidence."
       ]
     },
-    "cmdkey.md": {
+    "cmdkey.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -7056,7 +7056,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "gpupdate.md": {
+    "gpupdate.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -7077,7 +7077,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "secedit.md": {
+    "secedit.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -7108,7 +7108,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "icacls.md": {
+    "icacls.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -7138,7 +7138,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "takeown.md": {
+    "takeown.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -7168,7 +7168,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "cipher.md": {
+    "cipher.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -7189,7 +7189,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "certreq.md": {
+    "certreq.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -7219,7 +7219,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "certutil.md": {
+    "certutil.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -7249,7 +7249,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "bcdboot.md": {
+    "bcdboot.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -7279,7 +7279,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "bcdedit.md": {
+    "bcdedit.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -7327,7 +7327,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "chkdsk.md": {
+    "chkdsk.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -7357,7 +7357,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "chkntfs.md": {
+    "chkntfs.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -7378,7 +7378,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "defrag.md": {
+    "defrag.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -7408,7 +7408,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "compact.md": {
+    "compact.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -7438,7 +7438,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "manage-bde.md": {
+    "manage-bde.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -7479,7 +7479,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "mountvol.md": {
+    "mountvol.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -7509,7 +7509,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "diskpart.md": {
+    "diskpart.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -7544,7 +7544,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "fsutil.md": {
+    "fsutil.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -7619,7 +7619,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "vssadmin.md": {
+    "vssadmin.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -7673,7 +7673,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "diskshadow.md": {
+    "diskshadow.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -7803,7 +7803,7 @@
         "Windows Server and any present Windows client runtime verification remain required."
       ]
     },
-    "wbadmin.md": {
+    "wbadmin.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -7908,7 +7908,7 @@
         "Windows runtime verification remains required."
       ]
     },
-    "bdehdcfg.md": {
+    "bdehdcfg.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -7968,7 +7968,7 @@
         "Windows runtime verification remains required only where the executable is present and the deployment workflow supports it."
       ]
     },
-    "refsutil.md": {
+    "refsutil.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -8038,7 +8038,7 @@
         "Windows/ReFS runtime verification remains required on representative supported builds and disposable volumes."
       ]
     },
-    "nfsadmin.md": {
+    "nfsadmin.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -8077,7 +8077,7 @@
         "Windows runtime verification remains resolution/help, server/client config display and lock listing only where the corresponding optional feature is already installed; no service, lock, audit, protocol, group/member, cache, mapping, case, credential or registry mutation is permitted merely for evidence."
       ]
     },
-    "nfsshare.md": {
+    "nfsshare.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -8116,7 +8116,7 @@
         "Windows runtime verification remains no-argument/exact-share listing plus typed NFS and NTFS ACL reads only; no export create/change/delete, wildcard, root/anonymous, host/group, encoding, mapping, ACL, cluster or service mutation is permitted merely for evidence."
       ]
     },
-    "nfsstat.md": {
+    "nfsstat.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -8146,7 +8146,7 @@
         "Windows runtime verification remains read-only counter/mount display on hosts where NFS is already installed; no -z reset, feature/service, mount, workload or firewall change is permitted merely for evidence."
       ]
     },
-    "showmount.md": {
+    "showmount.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -8176,7 +8176,7 @@
         "Windows runtime verification remains resolution and exact approved-server -e, with -d/-a only under data-handling approval; no mount, feature, export, identity, firewall or remote configuration mutation is permitted merely for evidence."
       ]
     },
-    "rpcinfo.md": {
+    "rpcinfo.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -8206,7 +8206,7 @@
         "Windows runtime verification remains help and exact approved-host /p plus bounded reachability; no /b broadcast, unspecified-version /t or /u call, feature, server, firewall or network mutation is permitted merely for evidence."
       ]
     },
-    "rpcping.md": {
+    "rpcping.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -8254,7 +8254,7 @@
         "Windows runtime verification remains help/DNS/TCP 135 and one approved exact-server single-iteration verbose Endpoint Mapper call; no credential/proxy/Basic/smart-card/UI/quiet/high-iteration, interface guessing, firewall/dynamic-port, registry, SPN, certificate or service mutation is permitted merely for evidence."
       ]
     },
-    "cmstp.md": {
+    "cmstp.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -8275,7 +8275,7 @@
         "Windows runtime verification remains executable/help discovery only; no INF/package, profile install/uninstall, silent mode, support file, connection, credential, route, service or policy mutation is permitted merely for evidence."
       ]
     },
-    "dispdiag.md": {
+    "dispdiag.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -8305,7 +8305,7 @@
         "Windows runtime verification is help-only unless a new protected base DAT artifact is approved; no overwrite, dump, interactive key test, driver/display change or public disclosure is permitted merely for evidence."
       ]
     },
-    "dtrace.md": {
+    "dtrace.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -8344,7 +8344,7 @@
         "Windows runtime verification remains version/exact-provider listing and -e compilation only; no BCD/security/reboot, enabled trace/target, -w/destructive action, output capture, live dump, registry or protection mutation is permitted merely for evidence."
       ]
     },
-    "msdt.md": {
+    "msdt.exe.md": {
       "kind": "legacy-native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -8392,7 +8392,7 @@
         "Windows runtime verification remains executable/help and current troubleshooting-platform inventory only; no pack/CAB/directory, passkey, parameter, collector, fix or external artifact may be run merely for evidence."
       ]
     },
-    "netcfg.md": {
+    "netcfg.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -8422,7 +8422,7 @@
         "Windows runtime verification remains /s, exact /q and one new protected /m artifact only; no INF/component, WinPE, all-device cleanup, reboot, binding, adapter or management-path mutation is permitted merely for evidence."
       ]
     },
-    "pnpunattend.md": {
+    "pnpunattend.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -8443,7 +8443,7 @@
         "Windows runtime verification remains help and auditsystem /s /l only; no driver-path/PATH/registry, staging/install, device, policy, reboot or removal mutation is permitted merely for evidence."
       ]
     },
-    "autochk.md": {
+    "autochk.exe.md": {
       "kind": "legacy-native-cli",
       "status": "reviewed",
       "versions": [
@@ -8478,7 +8478,7 @@
         "Windows runtime verification remains fsutil dirty query, chkntfs display and Wininit event reading only; no BootExecute, exclusion, schedule, countdown, filesystem, volume, repair or reboot mutation is permitted merely for evidence."
       ]
     },
-    "autoconv.md": {
+    "autoconv.exe.md": {
       "kind": "legacy-native-cli",
       "status": "reviewed",
       "versions": [
@@ -8499,7 +8499,7 @@
         "Windows runtime verification remains typed volume inventory, convert help and read-only chkdsk only; no conversion, schedule, repair, filesystem, volume, partition or reboot mutation is permitted merely for evidence."
       ]
     },
-    "autofmt.md": {
+    "autofmt.exe.md": {
       "kind": "legacy-native-cli",
       "status": "reviewed",
       "versions": [
@@ -8520,7 +8520,7 @@
         "Windows runtime verification remains online inventory/settings launch/help only; no recovery boot, AutoFmt invocation, format, filesystem, volume, partition, encryption or boot mutation is permitted merely for evidence."
       ]
     },
-    "diskcomp.md": {
+    "diskcomp.exe.md": {
       "kind": "legacy-native-cli",
       "status": "reviewed",
       "versions": [
@@ -8541,7 +8541,7 @@
         "Windows runtime verification remains resolution/help only unless approved test floppies and interactive hardware are dedicated; no production/evidence media read or any media write is permitted merely for evidence."
       ]
     },
-    "diskcopy.md": {
+    "diskcopy.exe.md": {
       "kind": "legacy-native-cli",
       "status": "reviewed",
       "versions": [
@@ -8562,7 +8562,7 @@
         "Windows runtime verification remains resolution/help only; no floppy/media formatting, copying, swapping or writes are permitted merely for evidence."
       ]
     },
-    "diskperf.md": {
+    "diskperf.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -8601,7 +8601,7 @@
         "Windows runtime verification remains diskperf query and bounded counter discovery/sample only; no counter, registry, service, agent, collector, monitoring or reboot mutation is permitted merely for evidence."
       ]
     },
-    "freedisk.md": {
+    "freedisk.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -8622,7 +8622,7 @@
         "Windows runtime verification remains approved local or test-target free-space queries only; no credentials, installation, cleanup, quota, filesystem, volume, share or remote mutation is permitted merely for evidence."
       ]
     },
-    "fveupdate.md": {
+    "fveupdate.exe.md": {
       "kind": "legacy-native-cli",
       "status": "reviewed",
       "versions": [
@@ -8643,7 +8643,7 @@
         "Windows runtime verification remains file metadata, manage-bde status/protector inventory and event reading only; no FveUpdate execution, protector, encryption, suspension, volume, setup, recovery or reboot mutation is permitted merely for evidence."
       ]
     },
-    "ktmutil.md": {
+    "ktmutil.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -8673,7 +8673,7 @@
         "Windows runtime verification remains installed help and list operations only; no resolve, force, forget, transaction, enlistment, resource-manager, service, database or recovery-state mutation is permitted merely for evidence."
       ]
     },
-    "pagefileconfig.md": {
+    "pagefileconfig.exe.md": {
       "kind": "deprecated-native-cli",
       "status": "reviewed",
       "versions": [
@@ -8712,7 +8712,7 @@
         "Windows runtime verification remains read-only command resolution and CIM queries only; no page-file, automatic-management, registry, dump, storage, workload or reboot mutation is permitted merely for evidence."
       ]
     },
-    "pentnt.md": {
+    "pentnt.exe.md": {
       "kind": "deprecated-native-cli",
       "status": "reviewed",
       "versions": [
@@ -8733,7 +8733,7 @@
         "Windows runtime verification remains read-only resolution, processor/OS inventory and scoped text search only; no PentNT execution, emulation, startup, boot, firmware, hypervisor or script mutation is permitted merely for evidence."
       ]
     },
-    "powershell_ise.md": {
+    "powershell_ise.exe.md": {
       "kind": "windows-gui-cli",
       "status": "reviewed",
       "versions": [
@@ -8781,7 +8781,7 @@
         "Windows runtime verification remains resolution/version and opening/closing a no-profile empty or reviewed-file session only; no script, selection, profile, module, debugger, remoting, policy or feature mutation is permitted merely for evidence."
       ]
     },
-    "sysmon.md": {
+    "sysmon.exe.md": {
       "kind": "security-diagnostic-cli",
       "status": "reviewed",
       "versions": [
@@ -8820,7 +8820,7 @@
         "Windows runtime verification remains signature/version, service, current configuration/schema and bounded existing-event reads only; no optional feature, service/driver, manifest, EULA, configuration, event, forwarding, retention or uninstall mutation is permitted merely for evidence."
       ]
     },
-    "tpmvscmgr.md": {
+    "tpmvscmgr.exe.md": {
       "kind": "security-diagnostic-cli",
       "status": "reviewed",
       "versions": [
@@ -8850,7 +8850,7 @@
         "Windows runtime verification remains help and read-only TPM/PnP/certificate inventory only; no card, PIN/PUK/admin key, TPM, certificate, enrollment, authentication, DCOM or device mutation is permitted merely for evidence."
       ]
     },
-    "pwlauncher.md": {
+    "pwlauncher.exe.md": {
       "kind": "deprecated-native-cli",
       "status": "reviewed",
       "versions": [
@@ -8871,7 +8871,7 @@
         "Windows runtime verification remains help/firmware/USB inventory only; no PwLauncher, firmware, boot, BCD, USB, encryption, recovery or reboot mutation is permitted merely for evidence."
       ]
     },
-    "regini.md": {
+    "regini.exe.md": {
       "kind": "destructive-native-cli",
       "status": "reviewed",
       "versions": [
@@ -8901,7 +8901,7 @@
         "Windows runtime verification remains help plus read-only export/ACL/script/hash inspection against an approved fixture; no RegIni execution, registry, ACL, hive, service, remote or startup mutation is permitted merely for evidence."
       ]
     },
-    "winsat.md": {
+    "winsat.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -8927,7 +8927,7 @@
         "Windows runtime verification remains help only unless an idle disposable Windows performance host and trusted media fixture are approved; no production load, untrusted parsing, audio, existing artifact overwrite, power/driver/codec or system mutation is permitted merely for evidence."
       ]
     },
-    "evntcmd.md": {
+    "evntcmd.exe.md": {
       "kind": "legacy-native-cli",
       "status": "reviewed",
       "versions": [
@@ -8948,7 +8948,7 @@
         "Windows runtime verification remains help, service, file/hash and provider inventory only; no mapping, destination, SNMP, service, firewall, receiver or remote mutation is permitted merely for evidence."
       ]
     },
-    "jetpack.md": {
+    "jetpack.exe.md": {
       "kind": "destructive-native-cli",
       "status": "reviewed",
       "versions": [
@@ -9000,7 +9000,7 @@
         "Windows runtime verification remains feature/service/help/queue/new-path inventory only; no service executable, backup/restore, folder deletion, queue/message/trigger, feature, service or application mutation is permitted merely for evidence."
       ]
     },
-    "nlbmgr.md": {
+    "nlbmgr.exe.md": {
       "kind": "windows-gui-cli",
       "status": "reviewed",
       "versions": [
@@ -9030,7 +9030,7 @@
         "Windows runtime verification remains help, feature/cmdlet and reviewed host-list inventory plus an empty GUI session only; no host contact, WMI, cluster, host, port rule, replication, convergence or network mutation is permitted merely for evidence."
       ]
     },
-    "pbadmin.md": {
+    "pbadmin.exe.md": {
       "kind": "deprecated-native-cli",
       "status": "reviewed",
       "versions": [
@@ -9051,7 +9051,7 @@
         "Windows runtime verification remains resolution and scoped artifact/hash inventory only; no GUI parse/save, phone book, package, connection, endpoint, route, credential or script mutation is permitted merely for evidence."
       ]
     },
-    "tapicfg.md": {
+    "tapicfg.exe.md": {
       "kind": "legacy-native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -9072,7 +9072,7 @@
         "Windows runtime verification remains help/show and read-only domain/SCP inventory only; no AD partition, SCP, default, replication, DNS, trust, credential or TAPI mutation is permitted merely for evidence."
       ]
     },
-    "tcmsetup.md": {
+    "tcmsetup.exe.md": {
       "kind": "legacy-native-cli",
       "status": "reviewed",
       "versions": [
@@ -9129,7 +9129,7 @@
         "Windows runtime verification remains copied artifact metadata/signature/hash/text and current build/feature inventory only; no legacy binary, Setup, answer command, disk, boot, RIS/WDS or servicing mutation is permitted merely for evidence."
       ]
     },
-    "ntbackup.md": {
+    "ntbackup.exe.md": {
       "kind": "legacy-native-cli",
       "status": "reviewed",
       "versions": [
@@ -9150,7 +9150,7 @@
         "Windows runtime verification remains copied file metadata/hash/ACL, executable resolution and WbAdmin inventory only; no legacy utility install/launch, catalog, backup, restore, extraction or production write is permitted merely for evidence."
       ]
     },
-    "servermanagercmd.md": {
+    "servermanagercmd.exe.md": {
       "kind": "deprecated-native-cli",
       "status": "reviewed",
       "versions": [
@@ -9206,7 +9206,7 @@
         "Windows runtime verification remains query/service/policy reads only; no telemetry, WER, dump, consent, policy, service, registry, upload or network mutation is permitted merely for evidence."
       ]
     },
-    "helpctr.md": {
+    "helpctr.exe.md": {
       "kind": "deprecated-native-cli",
       "status": "reviewed",
       "versions": [
@@ -9227,7 +9227,7 @@
         "Runtime verification remains resolution and current help queries only; no legacy binary/content installation or launch is permitted merely for evidence."
       ]
     },
-    "ntcmdprompt.md": {
+    "ntcmdprompt.exe.md": {
       "kind": "legacy-native-cli",
       "status": "reviewed",
       "versions": [
@@ -9248,7 +9248,7 @@
         "Runtime verification remains resolution, clean Cmd launch/exit and copied Config.nt reading only; no PIF/Config.nt/TSR/NTVDM/system mutation is permitted merely for evidence."
       ]
     },
-    "append.md": {
+    "append.exe.md": {
       "kind": "deprecated-native-cli",
       "status": "reviewed",
       "versions": [
@@ -9269,7 +9269,7 @@
         "Windows runtime verification remains executable resolution, parameterless list and environment reads only on an approved compatible fixture; no list, environment, executable-search, working-directory or application mutation is permitted merely for evidence."
       ]
     },
-    "atmadm.md": {
+    "atmadm.exe.md": {
       "kind": "legacy-native-cli",
       "status": "reviewed",
       "versions": [
@@ -9290,7 +9290,7 @@
         "Windows runtime verification remains resolution, adapter inventory and /c /a /s reads only on an approved ATM fixture; no driver, adapter, link, call, signaling or network mutation is permitted merely for evidence."
       ]
     },
-    "diskraid.md": {
+    "diskraid.exe.md": {
       "kind": "destructive-native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -9311,7 +9311,7 @@
         "Windows runtime verification remains resolution plus help/list/select/detail/exit against an explicitly approved nonproduction VDS fixture; no create/delete/add/break/extend/shrink/recover/replace, mask/access/path/session/authentication/cache/controller/provider/name/online state or script mutation is permitted merely for evidence."
       ]
     },
-    "edit.md": {
+    "edit.exe.md": {
       "kind": "legacy-native-cli",
       "status": "reviewed",
       "versions": [
@@ -9362,7 +9362,7 @@
         "Windows runtime verification remains resolution/help and /D listing of an approved inert fixture; extraction requires a separately approved disposable empty directory and independent manifest/hash checks. Never execute untrusted SFX content or overwrite existing/system/application paths merely for evidence."
       ]
     },
-    "gettype.md": {
+    "gettype.exe.md": {
       "kind": "deprecated-native-cli",
       "status": "reviewed",
       "versions": [
@@ -9383,7 +9383,7 @@
         "Runtime verification remains resolution and copied artifact/script metadata, signature/hash/text reads only; do not acquire or execute an unknown legacy gettype binary merely for evidence."
       ]
     },
-    "graftabl.md": {
+    "graftabl.exe.md": {
       "kind": "legacy-native-cli",
       "status": "reviewed",
       "versions": [
@@ -9404,7 +9404,7 @@
         "Windows runtime verification remains resolution, /status and encoding reads only; no graphics/input/output/file/native-pipe code-page or font mutation is permitted merely for evidence."
       ]
     },
-    "ipxroute.md": {
+    "ipxroute.exe.md": {
       "kind": "legacy-native-cli",
       "status": "reviewed",
       "versions": [
@@ -9434,7 +9434,7 @@
         "Windows runtime verification remains resolution/binding/config/servers/resolve reads only on an approved isolated legacy fixture; no board, broadcast, source-route, binding, driver, protocol or network mutation is permitted merely for evidence."
       ]
     },
-    "irftp.md": {
+    "irftp.exe.md": {
       "kind": "legacy-native-cli",
       "status": "reviewed",
       "versions": [
@@ -9455,7 +9455,7 @@
         "Windows runtime verification remains resolution and source-file hash only; no UI launch, device/link enablement or file transfer is permitted merely for evidence unless a disposable approved pair and nonsensitive fixture are separately authorized."
       ]
     },
-    "macfile.md": {
+    "macfile.exe.md": {
       "kind": "legacy-native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -9476,7 +9476,7 @@
         "Windows runtime verification remains resolution plus copied file/tree/ACL/fork/hash inventory only; no role, directory metadata/permission, fork, server, volume, guest/password/session/message or file mutation is permitted merely for evidence."
       ]
     },
-    "mapadmin.md": {
+    "mapadmin.exe.md": {
       "kind": "legacy-native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -9515,7 +9515,7 @@
         "Windows runtime verification remains resolution, parameterless settings, list/listdomainmaps and current typed store reads only against an approved exact server; backup requires a separately approved new protected path. No credential argument, service/config, add/delete/primary/domain-map/restore/store/export/ACL or identity mutation is permitted merely for evidence."
       ]
     },
-    "change.md": {
+    "change.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -9569,7 +9569,7 @@
         "Windows runtime verification remains query-only; no admission, session mapping, install mode, installer, user, session or reboot mutation is permitted merely for evidence."
       ]
     },
-    "chglogon.md": {
+    "chglogon.exe.md": {
       "kind": "native-cli-alias",
       "status": "reviewed",
       "versions": [
@@ -9589,7 +9589,7 @@
         "Searchable replacement page; runtime remains change logon /query only."
       ]
     },
-    "chgport.md": {
+    "chgport.exe.md": {
       "kind": "native-cli-alias",
       "status": "reviewed",
       "versions": [
@@ -9609,7 +9609,7 @@
         "Searchable replacement page; runtime remains change port /query only."
       ]
     },
-    "chgusr.md": {
+    "chgusr.exe.md": {
       "kind": "native-cli-alias",
       "status": "reviewed",
       "versions": [
@@ -9629,7 +9629,7 @@
         "Searchable replacement page; runtime remains change user /query only."
       ]
     },
-    "flattemp.md": {
+    "flattemp.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -9650,7 +9650,7 @@
         "Windows runtime verification remains query/effective-path inventory only; no flattening, environment, policy, directory, ACL, cleanup or session mutation is permitted merely for evidence."
       ]
     },
-    "tsecimp.md": {
+    "tsecimp.exe.md": {
       "kind": "legacy-native-cli",
       "status": "reviewed",
       "versions": [
@@ -9671,7 +9671,7 @@
         "Windows runtime verification remains /d and /f on an approved copy with /v only; no import, domain-wide check, Tsec.ini, provider, line, address or user mutation is permitted merely for evidence."
       ]
     },
-    "tsprof.md": {
+    "tsprof.exe.md": {
       "kind": "legacy-native-cli",
       "status": "reviewed",
       "versions": [
@@ -9701,7 +9701,7 @@
         "Windows runtime verification remains /q for one approved test user and read-only resultant policy; no field copy/update, file/profile/container, ACL, session, GPO or directory mutation is permitted merely for evidence."
       ]
     },
-    "wdsutil.md": {
+    "wdsutil.exe.md": {
       "kind": "native-cli-family",
       "status": "reviewed",
       "versions": [
@@ -9834,7 +9834,7 @@
         "Windows runtime verification remains help and exact approved-server configuration/image inventory only; no role/service, initialization, authorization, device/AD, client approval, image/driver/group/filter, PXE/DHCP/TFTP, transport/multicast/namespace, unattended file/secret, insecure override, lifecycle or reboot mutation is permitted merely for evidence."
       ]
     },
-    "mount.md": {
+    "mount.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
       "versions": [
@@ -9873,7 +9873,7 @@
         "Windows runtime verification remains executable resolution and no-argument mount inventory only; no feature, service, identity, mapping, export, credential, mount, lock, ACL or firewall mutation is permitted merely for evidence."
       ]
     },
-    "lpq.md": {
+    "lpq.exe.md": {
       "kind": "legacy-native-cli",
       "status": "reviewed",
       "versions": [
@@ -9894,7 +9894,7 @@
         "Windows runtime verification remains local help and one approved exact-server/queue query only; protect job metadata and do not submit, cancel, pause, purge, configure or retry anything merely for evidence."
       ]
     },
-    "lpr.md": {
+    "lpr.exe.md": {
       "kind": "legacy-native-cli",
       "status": "reviewed",
       "versions": [
@@ -9960,7 +9960,7 @@
         "Windows runtime verification is executable resolution/help only; no print job, retry, port-monitor registry change or Spooler restart may be performed merely for evidence."
       ]
     },
-    "rexec.md": {
+    "rexec.exe.md": {
       "kind": "legacy-native-cli",
       "status": "reviewed",
       "versions": [
@@ -9981,7 +9981,7 @@
         "Runtime verification remains command resolution, signature/version and local help only; no remote call, daemon installation/exposure, credential transmission or firewall exception is permitted merely for evidence."
       ]
     },
-    "rsh.md": {
+    "rsh.exe.md": {
       "kind": "legacy-native-cli",
       "status": "reviewed",
       "versions": [
@@ -10002,7 +10002,7 @@
         "Runtime verification remains command resolution, signature/version and local help only; no RSH connection, host-based trust file, privileged-port exception or daemon exposure is permitted merely for evidence."
       ]
     },
-    "tlntadmn.md": {
+    "tlntadmn.exe.md": {
       "kind": "legacy-native-cli-family",
       "status": "reviewed",
       "versions": [

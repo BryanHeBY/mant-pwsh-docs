@@ -92,7 +92,7 @@ extensions, enabled by default on supported Windows releases.
 
 ## Related documents
 
-- [cmd](cmd.md)
+- [cmd.exe](cmd.exe.md)
 - [setlocal](setlocal.md)
 - [exit](exit.md)
 

@@ -107,7 +107,7 @@ collisions, and allowed names depend on the provider and filesystem.
 - [move](move.md)
 - [dir](dir.md)
 - [for](for.md)
-- [cmd](cmd.md)
+- [cmd.exe](cmd.exe.md)
 
 ## Sources and license
 
