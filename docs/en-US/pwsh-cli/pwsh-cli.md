@@ -296,6 +296,13 @@ license in the document's provenance catalog before adapting material.
 
 - [mode](mode.md): query-first serial, console, code-page, typematic, and legacy printer-device management.
 - [print](print.md): reviewed text-file submission with exact queue, rendering, spool, and physical-output boundaries.
+- [prncnfg](prncnfg.md): exact-queue configuration inventory through a localized inbox VBScript.
+- [prndrvr](prndrvr.md): printer-driver inventory with INF model, signature, architecture, and broad-removal safeguards.
+- [prnjobs](prnjobs.md) / [prnqctl](prnqctl.md): exact job evidence separated from queue-wide pause, purge, and physical test output.
+- [prnmngr](prnmngr.md) / [prnport](prnport.md): user/machine queue/connection and logical TCP/IP port identity.
+- [pubprn](pubprn.md): AD printer publication gated by exact shared queue and directory-container identity.
+- [pushprinterconnections](pushprinterconnections.md): startup/logon policy processing diagnosed through RSoP rather than manual replay.
+- [rundll32 printui](rundll32-printui.md): case-sensitive PrintUI entry point, per-computer connections, drivers, and settings boundaries.
 
 ## Windows installation, servicing, and drivers
 

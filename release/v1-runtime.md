@@ -214,6 +214,13 @@ mode.com con codepage /status
 Get-PnpDevice -Class Ports -PresentOnly -ErrorAction SilentlyContinue
 print.exe /?
 Get-Printer -ErrorAction SilentlyContinue
+Get-ChildItem -LiteralPath "$env:WINDIR\System32\Printing_Admin_Scripts" -Filter '*.vbs' -Recurse
+Get-PrinterDriver -ErrorAction SilentlyContinue
+Get-PrinterPort -ErrorAction SilentlyContinue
+Get-PrintJob -PrinterName $approvedQueue -ErrorAction SilentlyContinue
+Get-Command PushPrinterConnections.exe -ErrorAction SilentlyContinue
+rundll32.exe printui.dll,PrintUIEntry /?
+rundll32.exe printui.dll,PrintUIEntry /ge
 Get-Command ftp.exe, tftp.exe, telnet.exe, finger.exe -All -ErrorAction SilentlyContinue
 ftp.exe -?
 Get-WindowsOptionalFeature -Online -FeatureName TFTP
@@ -306,6 +313,14 @@ Do not reconfigure a serial/LPT device, console code page/dimensions/typematic
 state, or submit any print/raw-device job merely for evidence. Query only an
 approved inactive COM port; protect printer and BITS inventory as potentially
 sensitive operational data.
+Discover localized Printing Administration scripts rather than assuming an
+`en-US` path, and keep them to help/list/get forms. Do not add/configure/rename/
+delete a queue, connection, driver or port; set a default; pause/resume/cancel
+a job or queue; purge jobs; print a test page; publish to AD; pass `-w`; run
+PushPrinterConnections interactively; change deployed-printer policy; or use
+PrintUI to install/delete/restore/quietly mutate anything merely for evidence.
+Record user versus computer/session scope, exact server/queue/job/driver/port,
+script language, RSoP and potentially sensitive output.
 
 Do not enable TFTP/Telnet features, start an FTP/TFTP/Telnet/Finger connection,
 send credentials or input, transfer/delete/rename a file, query remote users, or

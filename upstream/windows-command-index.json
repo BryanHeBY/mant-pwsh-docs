@@ -1149,32 +1149,38 @@
     {
       "name": "prncnfg",
       "source": "prncnfg.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/prncnfg.md"
     },
     {
       "name": "prndrvr",
       "source": "prndrvr.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/prndrvr.md"
     },
     {
       "name": "prnjobs",
       "source": "prnjobs.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/prnjobs.md"
     },
     {
       "name": "prnmngr",
       "source": "prnmngr.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/prnmngr.md"
     },
     {
       "name": "prnport",
       "source": "prnport.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/prnport.md"
     },
     {
       "name": "prnqctl",
       "source": "prnqctl.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/prnqctl.md"
     },
     {
       "name": "prompt",
@@ -1185,7 +1191,8 @@
     {
       "name": "pubprn",
       "source": "pubprn.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/pubprn.md"
     },
     {
       "name": "pushd",
@@ -1196,7 +1203,8 @@
     {
       "name": "pushprinterconnections",
       "source": "pushprinterconnections.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/pushprinterconnections.md"
     },
     {
       "name": "pwlauncher",
@@ -1410,7 +1418,8 @@
     {
       "name": "rundll32 printui",
       "source": "rundll32-printui.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/rundll32-printui.md"
     },
     {
       "name": "rwinsta",
