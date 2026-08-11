@@ -237,7 +237,8 @@
     {
       "name": "clip",
       "source": "clip.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/clip.md"
     },
     {
       "name": "cls",
@@ -499,7 +500,8 @@
     {
       "name": "fc",
       "source": "fc.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/fc.md"
     },
     {
       "name": "filesystems",
@@ -509,12 +511,14 @@
     {
       "name": "find",
       "source": "find.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/find.md"
     },
     {
       "name": "findstr",
       "source": "findstr.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/findstr.md"
     },
     {
       "name": "finger",
@@ -1400,7 +1404,8 @@
     {
       "name": "sort",
       "source": "sort.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/sort.md"
     },
     {
       "name": "start",
@@ -1613,7 +1618,8 @@
     {
       "name": "type",
       "source": "type.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/type.md"
     },
     {
       "name": "typeperf",

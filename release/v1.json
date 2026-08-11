@@ -2,7 +2,7 @@
   "$schema": "release-manifest/v1",
   "release": "v1",
   "locale": "en-US",
-  "requiredDocumentCount": 115,
+  "requiredDocumentCount": 121,
   "sources": {
     "pwsh7": {
       "runtimePlatforms": ["windows", "linux", "macos"],
@@ -127,6 +127,12 @@
         "mkdir.md",
         "ren.md",
         "rename.md",
+        "type.md",
+        "find.md",
+        "findstr.md",
+        "fc.md",
+        "sort.md",
+        "clip.md",
         "git.md",
         "ssh.md",
         "curl.md",

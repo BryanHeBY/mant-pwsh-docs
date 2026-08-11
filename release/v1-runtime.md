@@ -105,6 +105,22 @@ Confirm that cmd printed `$testRoot`, created `nested\child`, and left exactly
 in both target PowerShell editions and compare the results with the command-
 resolution notes; `rename` is not a built-in PowerShell alias.
 
+For native text tools, create representative ASCII, UTF-8, UTF-16, long-line,
+and binary fixtures in the temporary directory, then record:
+
+```powershell
+Get-Command type, find.exe, findstr.exe, fc, fc.exe, sort, sort.exe, clip.exe -All
+find.exe /i "test" $fixture; $LASTEXITCODE
+findstr.exe /i /n /l /c:"test phrase" $fixture; $LASTEXITCODE
+fc.exe /b $fixture $copy; $LASTEXITCODE
+sort.exe $fixture /o $sorted
+Get-Content -LiteralPath $fixture -Raw | Set-Clipboard
+```
+
+Verify match/no-match/error and identical/different/error separately, compare
+non-ASCII and long-line results with `Select-String`, and do not paste secrets
+or production data through the clipboard test.
+
 Review Windows-only commands on a non-production target. In particular, use
 `robocopy /L` before any real copy, query an existing known task before task
 changes, and query a known service before `sc.exe` configuration work.

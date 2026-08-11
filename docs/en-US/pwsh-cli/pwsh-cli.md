@@ -142,6 +142,14 @@ license in the document's provenance catalog before adapting material.
 - [del](del.md) / [erase](erase.md): permanent file deletion with exact previews.
 - [rd](rd.md) / [rmdir](rmdir.md): empty or recursive directory removal.
 
+## Windows text pipelines
+
+- [type](type.md): display text while distinguishing PowerShell `Get-Content`.
+- [find](find.md) / [findstr](findstr.md): literal and limited-regex searches.
+- [fc](fc.md): text/binary comparison and its three-way exit contract.
+- [sort](sort.md): locale-sensitive line sorting versus `Sort-Object`.
+- [clip](clip.md): deliberate transfer of text into the Windows clipboard.
+
 ## Cross-platform developer tools
 
 - [git](git.md): repository context, configuration, and native exit codes.

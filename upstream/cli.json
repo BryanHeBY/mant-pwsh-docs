@@ -863,6 +863,51 @@
       ],
       "notes": ["This concise lookup page records that rename is a cmd synonym but not a built-in PowerShell alias; ren is the Rename-Item alias.", "Windows runtime verification remains required."]
     },
+    "type.md": {
+      "kind": "cmd-builtin", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/type.md"}],
+      "notes": ["The page distinguishes cmd type from PowerShell Get-Content and warns against binary/control-data and implicit-encoding use.", "Windows runtime verification remains required."]
+    },
+    "find.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/find.md"}],
+      "notes": ["The page makes the 0 match, 1 no-match, and 2 error contract prominent and distinguishes Unix find.", "Windows runtime verification remains required."]
+    },
+    "findstr.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/findstr.md"},
+        {"type": "web", "url": "https://stackoverflow.com/questions/8844868/what-are-the-undocumented-features-and-limitations-of-the-windows-findstr-comman", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The page recommends explicit literal phrases and treats community-discovered regex, encoding, and line-length behavior as risk evidence rather than current support guarantees.", "Windows runtime verification remains required."]
+    },
+    "fc.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/fc.md"}],
+      "notes": ["The page uses fc.exe to avoid Format-Custom and distinguishes identical, different, and comparison-error statuses.", "Windows runtime verification remains required."]
+    },
+    "sort.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/sort.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/powershell/module/microsoft.powershell.utility/sort-object", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The page distinguishes locale-sensitive line sorting from PowerShell object sorting and forbids in-place output.", "Windows runtime verification remains required."]
+    },
+    "clip.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/clip.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/powershell/module/microsoft.powershell.management/set-clipboard", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The page treats the clipboard as shared interactive state and recommends Set-Clipboard for deliberate PowerShell text.", "Windows runtime verification remains required."]
+    },
     "git.md": {
       "kind": "native-cli",
       "status": "reviewed",
