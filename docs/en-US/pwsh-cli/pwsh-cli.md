@@ -183,6 +183,14 @@ license in the document's provenance catalog before adapting material.
 - [netsh-wlan](netsh-wlan.md): Wi-Fi interfaces, networks, and profile safety.
 - [netsh-winsock](netsh-winsock.md): provider catalog and autotuning evidence.
 
+## Windows installation, servicing, and drivers
+
+- [msiexec](msiexec.md): package identity, logging, waiting, and restart codes.
+- [dism](dism.md): explicit online/offline Windows image inventory and servicing.
+- [sfc](sfc.md): protected-system-file verification and scoped repair.
+- [pnputil](pnputil.md): Driver Store, device, and interface identity safety.
+- [fondue](fondue.md): single-feature enablement and source-policy boundaries.
+
 ## Cross-platform developer tools
 
 - [git](git.md): repository context, configuration, and native exit codes.

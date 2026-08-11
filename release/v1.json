@@ -2,7 +2,7 @@
   "$schema": "release-manifest/v1",
   "release": "v1",
   "locale": "en-US",
-  "requiredDocumentCount": 148,
+  "requiredDocumentCount": 153,
   "sources": {
     "pwsh7": {
       "runtimePlatforms": ["windows", "linux", "macos"],
@@ -160,6 +160,11 @@
         "netsh-interface.md",
         "netsh-wlan.md",
         "netsh-winsock.md",
+        "msiexec.md",
+        "dism.md",
+        "sfc.md",
+        "pnputil.md",
+        "fondue.md",
         "git.md",
         "ssh.md",
         "curl.md",

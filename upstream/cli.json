@@ -1098,6 +1098,50 @@
       "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/netsh-winsock.md"}],
       "notes": ["The TLDR is query-only and rejects universal reset recipes, unverified provider removal, blind dump replay, and autotuning-context confusion.", "Windows runtime verification remains required."]
     },
+    "msiexec.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/msiexec.md"},
+        {"type": "web", "url": "https://stackoverflow.com/questions/73063024/msiexec-powershell-silent-install", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The page verifies package identity, waits for the actual process, classifies 0/1641/3010, logs operations, and distinguishes product code, package properties, shells, and restart policy.", "Windows runtime verification remains required."]
+    },
+    "dism.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["varies by host DISM and target Windows image"], "platforms": ["windows"],
+      "sources": [
+        {"type": "web", "url": "https://learn.microsoft.com/windows-hardware/manufacture/desktop/what-is-dism?view=windows-11", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/windows-hardware/manufacture/desktop/deployment-image-servicing-and-management--dism--command-line-options?view=windows-11", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/windows-hardware/manufacture/desktop/enable-or-disable-windows-features-using-dism?view=windows-11", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR is query-only; the page distinguishes online/offline/container targets, host-target compatibility, repair sources, mount commit/discard, servicing identities, logs, and pending restart.", "Windows runtime verification remains required."]
+    },
+    "sfc.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/sfc.md"}],
+      "notes": ["The page leads with verification, preserves slash/equals syntax, identifies offline boot and Windows roots, and limits repair claims to protected system files.", "Windows runtime verification remains required."]
+    },
+    "pnputil.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["verb and filter availability varies by Windows release"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/pnputil.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/windows-hardware/drivers/devtest/pnputil", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/windows-hardware/drivers/devtest/pnputil-examples", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR is inventory-only; the page distinguishes source/published INF, ranking, wildcard scope, device instance identity, uninstall/force impact, and Sysnative redirection.", "Windows runtime verification remains required."]
+    },
+    "fondue.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/fondue.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/windows-hardware/manufacture/desktop/enable-or-disable-windows-features-using-dism?view=windows-11", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR inventories exact feature identity before and after enablement and avoids hidden UI; the page distinguishes features, capabilities, packages, source policy, and pending restart.", "Windows runtime verification remains required."]
+    },
     "git.md": {
       "kind": "native-cli",
       "status": "reviewed",

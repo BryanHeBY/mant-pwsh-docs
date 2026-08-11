@@ -536,7 +536,8 @@
     {
       "name": "fondue",
       "source": "fondue.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/fondue.md"
     },
     {
       "name": "for",
@@ -848,7 +849,8 @@
     {
       "name": "msiexec",
       "source": "msiexec.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/msiexec.md"
     },
     {
       "name": "msinfo32",
@@ -1016,7 +1018,8 @@
     {
       "name": "pnputil",
       "source": "pnputil.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/pnputil.md"
     },
     {
       "name": "popd",
@@ -1385,7 +1388,8 @@
     {
       "name": "sfc",
       "source": "sfc.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/sfc.md"
     },
     {
       "name": "shadow",

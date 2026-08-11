@@ -167,6 +167,12 @@ netsh.exe help
 netsh.exe interface ipv4 show config
 netsh.exe wlan show interfaces
 netsh.exe winsock show catalog
+msiexec.exe /?
+dism.exe /Online /Get-Features /Format:Table
+dism.exe /Online /Cleanup-Image /CheckHealth
+sfc.exe /verifyonly
+pnputil.exe /enum-drivers
+pnputil.exe /enum-devices /connected /problem
 ```
 
 Start a disposable process, record its PID/path/start time, preview
@@ -187,6 +193,12 @@ Preserve `nbtstat` option case and skip purge/refresh operations. Discover the
 installed Netsh contexts on the test host and keep interface, WLAN, and Winsock
 checks read-only; do not export clear-text Wi-Fi keys, reset catalogs, change
 interfaces, or enable persistent tracing merely for validation.
+Keep servicing verification read-only: do not install/uninstall an MSI, repair
+an image, replace protected files, change a device/driver, or enable a feature
+merely to satisfy this checklist. Confirm current `pnputil /?` verbs on the
+host, preserve DISM/SFC output and elevation context, and separately validate
+the documented MSI argument/exit-code handling with an approved disposable
+test package in an isolated Windows test environment.
 
 Review Windows-only commands on a non-production target. In particular, use
 `robocopy /L` before any real copy, query an existing known task before task
