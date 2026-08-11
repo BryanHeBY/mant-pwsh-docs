@@ -16,7 +16,8 @@ npm run validate
 ```
 
 Use `npm run validate:structure` only when ManT is intentionally unavailable;
-CI and release work must run the normal command. Use
+release work must run the normal command. The GitHub Actions workflow is
+manual-only until ManT 0.6.0 is publicly installable in CI. Use
 `npm run validate:release` before creating v1 to enforce the full release
 manifest in `release/v1.json`.
 
