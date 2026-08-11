@@ -83,6 +83,8 @@ cmd.exe /d /c "for %N in (one two) do @echo %N"
 cmd.exe /d /c "if 1 EQU 1 (exit /b 0) else (exit /b 1)"
 cmd.exe /d /c "pushd %TEMP% & popd"
 cmd.exe /d /c "assoc .txt & ftype txtfile"
+cmd.exe /d /c "dir /b /a:-d %SystemRoot%\System32\cmd.exe"
+cmd.exe /d /c "copy /? & del /? & rd /?"
 ```
 
 Review Windows-only commands on a non-production target. In particular, use

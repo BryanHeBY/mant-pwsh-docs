@@ -753,6 +753,48 @@
       ],
       "notes": ["The page emphasizes executable and filename-placeholder quoting plus modern default-app precedence.", "Windows runtime verification remains required."]
     },
+    "dir.md": {
+      "kind": "cmd-builtin", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/dir.md"}],
+      "notes": ["The page emphasizes localized text, bare listings, short-name wildcard expansion, and reparse points.", "Windows runtime verification remains required."]
+    },
+    "copy.md": {
+      "kind": "cmd-builtin", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/copy.md"},
+        {"type": "web", "url": "https://stackoverflow.com/questions/71209707/copy-append-multiple-files-into-a-single-destination-file", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The page distinguishes PowerShell's copy alias, cmd concatenation, overwrite policy, and artifact verification.", "Windows runtime verification remains required."]
+    },
+    "del.md": {
+      "kind": "cmd-builtin", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/del.md"}],
+      "notes": ["The page leads with exact-pattern preview and documents permanent, recursive, attribute, wildcard, and alias risks.", "Windows runtime verification remains required."]
+    },
+    "erase.md": {
+      "kind": "alias", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/del.md"}],
+      "notes": ["This concise lookup page points to the canonical del safety guide.", "Windows runtime verification remains required."]
+    },
+    "rd.md": {
+      "kind": "cmd-builtin", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/rd.md"},
+        {"type": "web", "url": "https://stackoverflow.com/questions/22948189/how-to-solve-the-directory-is-not-empty-error-when-running-rmdir-command-in-a", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The page treats /s /q as destructive escalation and requires scope/reparse diagnostics.", "Windows runtime verification remains required."]
+    },
+    "rmdir.md": {
+      "kind": "alias", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/rd.md"}],
+      "notes": ["This concise lookup page distinguishes the cmd synonym from PowerShell's rmdir alias.", "Windows runtime verification remains required."]
+    },
     "git.md": {
       "kind": "native-cli",
       "status": "reviewed",

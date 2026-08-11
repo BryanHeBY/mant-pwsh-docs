@@ -286,7 +286,8 @@
     {
       "name": "copy",
       "source": "copy.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/copy.md"
     },
     {
       "name": "create",
@@ -326,7 +327,8 @@
     {
       "name": "del",
       "source": "del.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/del.md"
     },
     {
       "name": "delete",
@@ -361,7 +363,8 @@
     {
       "name": "dir",
       "source": "dir.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/dir.md"
     },
     {
       "name": "diskcomp",
@@ -442,7 +445,8 @@
     {
       "name": "erase",
       "source": "erase.md",
-      "status": "unclassified"
+      "status": "alias",
+      "target": "pwsh-cli/erase.md"
     },
     {
       "name": "eventcreate",
@@ -1102,7 +1106,8 @@
     {
       "name": "rd",
       "source": "rd.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/rd.md"
     },
     {
       "name": "rdpsign",
@@ -1213,7 +1218,8 @@
     {
       "name": "rmdir",
       "source": "rmdir.md",
-      "status": "unclassified"
+      "status": "alias",
+      "target": "pwsh-cli/rmdir.md"
     },
     {
       "name": "robocopy",

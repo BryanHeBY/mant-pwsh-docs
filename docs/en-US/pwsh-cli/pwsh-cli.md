@@ -131,6 +131,13 @@ license in the document's provenance catalog before adapting material.
 - [assoc](assoc.md) / [ftype](ftype.md): classic file-type mappings versus
   protected modern default apps.
 
+## Cmd files and directories
+
+- [dir](dir.md): text listings, attributes, short-name wildcards, and reparse points.
+- [copy](copy.md): ordinary copies versus concatenation and PowerShell's alias.
+- [del](del.md) / [erase](erase.md): permanent file deletion with exact previews.
+- [rd](rd.md) / [rmdir](rmdir.md): empty or recursive directory removal.
+
 ## Cross-platform developer tools
 
 - [git](git.md): repository context, configuration, and native exit codes.
