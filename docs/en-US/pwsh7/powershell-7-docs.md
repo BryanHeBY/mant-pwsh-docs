@@ -38,10 +38,15 @@ differences in newer stable releases.
 
 - [pwsh7](pwsh7.md): shell invocation, language, object pipelines, streams,
   errors, native commands, modules, profiles, and platform behavior.
+- [pwsh](pwsh.md): launcher options for interactive sessions, scripts, and
+  automation.
+- [about_Parsing](about_Parsing.md): expression mode, argument mode, literal
+  input, and native-command boundaries.
+- [about_Quoting_Rules](about_Quoting_Rules.md): literal, expandable, and
+  multi-line strings.
 
-Future introductory pages will cover the `pwsh` executable, discovering
-commands, using the help system, and moving scripts from Windows PowerShell
-5.1.
+Future introductory pages will cover command discovery, using the help system,
+and moving scripts from Windows PowerShell 5.1.
 
 ## Planned command reference
 

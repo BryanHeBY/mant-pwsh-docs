@@ -103,6 +103,75 @@
         "This document is the navigation index; pwsh7.md is the primary shell and language manual.",
         "Alias availability must be checked at runtime for each targeted release and platform."
       ]
+    },
+    "pwsh.md": {
+      "kind": "powershell-launcher",
+      "status": "draft",
+      "versions": [
+        "7.6"
+      ],
+      "platforms": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Core/About/about_Pwsh.md"
+        }
+      ],
+      "notes": [
+        "The page is an original task-oriented adaptation of the launcher reference.",
+        "Launcher help and selected exit behavior were checked with PowerShell 7.6.3 on Linux; Windows and macOS verification remains outstanding."
+      ]
+    },
+    "about_Parsing.md": {
+      "kind": "about-topic",
+      "status": "draft",
+      "versions": [
+        "7.6"
+      ],
+      "platforms": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Core/About/about_Parsing.md"
+        }
+      ],
+      "notes": [
+        "The page distinguishes cross-platform parsing from the Windows-only stop-parsing token.",
+        "Runtime examples require verification on all declared platforms."
+      ]
+    },
+    "about_Quoting_Rules.md": {
+      "kind": "about-topic",
+      "status": "draft",
+      "versions": [
+        "7.6"
+      ],
+      "platforms": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Core/About/about_Quoting_Rules.md"
+        }
+      ],
+      "notes": [
+        "The page is original guidance emphasizing literal data and native-command boundaries.",
+        "Culture and target-native-parser examples require verification on all declared platforms."
+      ]
     }
   }
 }
