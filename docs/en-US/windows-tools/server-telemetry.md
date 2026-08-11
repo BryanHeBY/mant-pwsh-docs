@@ -32,6 +32,22 @@ Reporting. Effective modern diagnostic-data/error-reporting behavior can also
 be governed by edition, policy, servicing, endpoint management, privacy and
 network configuration.
 
+## Commands and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `serverceipoptin.exe`: Query or change historical Server CEIP participation.
+- `serverweroptin.exe`: Query or configure historical Windows Error Reporting detail.
+
+The similarly named programs expose different modes and policy boundaries.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/query`: Display the local tool's current telemetry/reporting setting.
+- `/enable`: Enable historical Server CEIP participation.
+- `/disable`: Disable historical Server CEIP participation.
+- `/summary`: Select summary Windows Error Reporting data.
+- `/detailed`: Select detailed Windows Error Reporting data.
+- `/?`: Display installed tool-specific syntax.
+
 ## Common mistakes
 
 ### Treating one local query as effective organization policy
@@ -56,7 +72,7 @@ under approved policy and diagnose the failing component separately.
 Telemetry choices are organization-level governance decisions, not an agent's
 local optimization. Use managed policy and record authority/change evidence.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Both are native query/mutation tools with localized text. Capture
 `$LASTEXITCODE` immediately. Registry/service inventory is supporting evidence;

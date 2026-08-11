@@ -41,6 +41,31 @@ destination events must be checked per source.
 
 ## Subscription dimensions
 
+<!-- mant:entries role=command case=insensitive -->
+- `wecutil.exe`: Inspect or administer Windows Event Collector subscriptions.
+- `es`: Enumerate configured subscription names.
+- `gs`: Get one subscription's stored configuration.
+- `gr`: Get one subscription's runtime source status.
+- `cs`: Create a subscription from reviewed XML.
+- `ss`: Set one subscription from switches or reviewed XML.
+- `ds`: Delete one subscription.
+- `rs`: Retry one subscription against an exact source.
+- `qc`: Quick-configure the collector service and channel ACLs; state-changing.
+- `enum-logs`: Enumerate forwarding-related logs where supported.
+- `get-log`: Read one forwarding log's configuration.
+- `set-log`: Change one forwarding log's configuration.
+
+Switches are command-specific; credentials and XML can contain secrets.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/c`: Read subscription configuration from a reviewed XML file.
+- `/f`: Select terse or XML output where supported.
+- `/q`: Suppress prompts for a state-changing operation.
+- `/rd`: Select whether existing events are read when activating a source.
+- `/up`: Supply an alternate subscription username.
+- `/cup`: Supply or prompt for its password; prefer `*` console input.
+- `/?`: Display command-specific installed help.
+
 Preserve subscription ID/type (collector- or source-initiated), enabled/source
 state, source addresses/authorization, QueryList and URI/dialect, destination
 log/publisher, content/locale, read-existing policy/bookmarks, delivery mode/
@@ -115,7 +140,7 @@ scale. Do not deny or edit internal subscription registry keys from a workaround
 Use supported WEC sizing/sharding, stale-source lifecycle, `wecutil`, monitoring,
 backup, and Microsoft guidance; preserve bookmarks needed for correctness.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use `wecutil.exe` explicitly with scalar subscription/source identifiers.
 Capture stdout/stderr and `$LASTEXITCODE`; preserve XML and runtime status before

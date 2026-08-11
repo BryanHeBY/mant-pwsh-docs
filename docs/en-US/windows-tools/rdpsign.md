@@ -34,6 +34,20 @@ The signature identifies the file publisher and detects changes to settings in
 the signed scope. It does not encrypt the file, authenticate the remote server,
 or prove that every requested redirection and connection target is safe.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `rdpsign.exe`: Sign one or more RDP connection files with an eligible certificate.
+
+Test exact files and certificate lookup before modifying publication artifacts.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/sha1`: Select a certificate by SHA-1 thumbprint on older supported systems.
+- `/sha256`: Select a certificate by SHA-256 fingerprint on newer systems.
+- `/l`: Validate signing inputs without changing the RDP file.
+- `/v`: Display verbose signing diagnostics.
+- `/?`: Display installed syntax.
+
 ## Common mistakes
 
 ### Confusing the certificate's signature algorithm with its thumbprint
@@ -77,7 +91,7 @@ Microsoft documents that the tool continues after a file cannot be read or
 written. Check the exit/output and each artifact individually; do not infer that
 all files were signed because one succeeded.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Call `rdpsign.exe` explicitly. Use full literal paths because wildcard input is
 unsupported and because PowerShell glob expansion would weaken artifact

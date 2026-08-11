@@ -43,6 +43,14 @@ workload together with the output.
 
 ## Output and evidence
 
+<!-- mant:entries role=command case=insensitive -->
+- `tpmtool.exe`: Query TPM device information or gather TPM diagnostic logs/traces.
+- `getdeviceinformation`: Display TPM readiness and device information.
+- `gatherlogs`: Collect TPM logs into an explicit protected output directory.
+- `drivertracing`: Start or stop TPM driver tracing according to the supplied mode.
+
+The tool exposes diagnostics, not clear/initialize ownership operations.
+
 `getdeviceinformation` displays readiness fields whose bit meanings are defined
 by the `Win32_Tpm::IsReadyInformation` contract. Preserve the raw output; do
 not infer undocumented flag names or remediation from a numeric value.
@@ -98,7 +106,7 @@ Firmware updates, TPM clear/provision, credential reset, BitLocker protector
 changes, and reboot can erase or transform the evidence. Gather read-only state
 and recovery material before approved changes whenever possible.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Invoke `tpmtool.exe` explicitly and capture raw native output plus
 `$LASTEXITCODE`; the output is not documented as a stable structured schema.

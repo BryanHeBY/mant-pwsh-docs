@@ -36,6 +36,22 @@ The destination operand is a directory, not a destination filename. The source
 filename is required and can contain wildcards. Hidden and system files cannot
 be updated by this command.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `replace.exe`: Add or replace matching files in one or more destination directories.
+
+There is no true dry-run; `/p` is only an interactive confirmation boundary.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/a`: Add source files absent from destination; incompatible with `/s` and `/u`.
+- `/p`: Prompt before each selected file operation.
+- `/r`: Permit replacement of read-only files.
+- `/s`: Search destination subdirectories for matching filenames.
+- `/w`: Wait for a disk insertion before beginning.
+- `/u`: Replace only destination files older than their source counterpart.
+- `/?`: Display installed syntax.
+
 ## Common mistakes
 
 ### Reversing source and destination
@@ -82,7 +98,7 @@ Microsoft documents exit codes `0`, `1`, `2`, `3`, `5`, `8`, and `11` for
 distinct results. Capture `$LASTEXITCODE` immediately, preserve output, then
 verify every expected path/hash and absence of unexpected additions.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Invoke `replace.exe` explicitly because `Replace` is also a common method name
 and function name. Native wildcards are interpreted by REPLACE; PowerShell

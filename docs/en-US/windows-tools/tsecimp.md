@@ -30,6 +30,20 @@ TAPI server security file (`Tsec.ini`). `/d` inventories providers/devices and
 assignments; `/f <file> /v` validates XML structure without import; `/f <file>
 /u` checks domain membership and may be slow. Plain `/f <file>` is a mutation.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `tsecimp.exe`: Display or import TAPI server security assignments from XML.
+
+Plain `/f` imports; only `/f` combined with `/v` is validation-only.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/d`: Display current TAPI providers, devices, and assignments.
+- `/f`: Select the XML security file and import unless `/v` is also present.
+- `/v`: Validate selected XML structure without importing assignments.
+- `/u`: Check referenced domain users and potentially contact domain services.
+- `/?`: Display installed syntax.
+
 ## Common mistakes
 
 ### Running `/f` after “just checking” the XML
@@ -62,7 +76,7 @@ Provider, line, address and domain-user mappings are sensitive communications
 topology. Protect collection, restrict access/retention and redact only copies
 while preserving original evidence.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Call `tsecimp.exe` explicitly and capture `$LASTEXITCODE`. `[xml]` proves XML
 well-formedness, not TSec schema semantics or safe intent. Use `-LiteralPath`,

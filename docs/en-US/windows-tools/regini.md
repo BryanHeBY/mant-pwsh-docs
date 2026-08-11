@@ -37,6 +37,17 @@ ACL tools for inventory and backup.
 
 ## Input model
 
+<!-- mant:entries role=command case=insensitive -->
+- `regini.exe`: Apply a line-oriented registry mutation script.
+
+RegIni has no dry-run mode; bracketed permissions replace ACL state rather than
+adding to it.
+
+<!-- mant:entries role=option case=insensitive -->
+- `-m`: Select a remote computer for registry mutation.
+- `-h`: Select an offline hive file and root mapping.
+- `-?`: Display installed syntax.
+
 RegIni scripts use kernel registry paths such as `\Registry\Machine`, not
 ordinary `HKLM:` PowerShell paths. Indentation describes a key tree; comments
 must have a semicolon as the first nonblank character, and a trailing backslash
@@ -76,7 +87,7 @@ Registry changes can establish code execution, disable security, redirect
 components, or damage startup. Validate provenance, signature/hash, every key,
 value type/data, ACL, view, scope, and rollback.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 RegIni consumes file paths and native text, not pipeline objects. Quote each
 path, preserve the exact input hash, stdout/stderr, and `$LASTEXITCODE`, then

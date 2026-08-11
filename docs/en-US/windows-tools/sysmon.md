@@ -38,6 +38,19 @@ Microsoft states that built-in and standalone Sysmon cannot coexist.
 
 ## Lifecycle and syntax
 
+<!-- mant:entries role=command case=insensitive -->
+- `sysmon.exe`: Install, configure, inspect, or uninstall built-in Windows Sysmon.
+
+This page covers built-in Sysmon and must not be mixed with standalone Sysinternals syntax.
+
+<!-- mant:entries role=option case=insensitive -->
+- `-i`: Install Sysmon, optionally with a reviewed configuration file.
+- `-c`: Display current configuration or replace/reset it when an operand follows.
+- `-s`: Display the current or all supported event schemas.
+- `-m`: Install the Sysmon event manifest.
+- `-u`: Uninstall Sysmon; optional `force` broadens cleanup.
+- `-?`: Display installed built-in syntax.
+
 `-i [config]` installs, `-c` without a file dumps current configuration,
 `-c <config>` changes it, `-s [version|all]` prints schemas, `-m` installs the
 event manifest, and `-u [force]` uninstalls. `sysmon -c --` resets configuration
@@ -84,7 +97,7 @@ Process command lines, hashes, network destinations, DNS, clipboard/archive or
 file events can contain sensitive data. Apply least collection, access control,
 retention, forwarding, and incident-handling policy.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Sysmon is a native text command; configuration output is not a PowerShell
 object. Preserve stdout/stderr and `$LASTEXITCODE`. Use `Get-WinEvent` for typed

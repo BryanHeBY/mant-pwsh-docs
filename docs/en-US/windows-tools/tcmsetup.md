@@ -30,6 +30,20 @@ a TAPI client. `/c /d` clears the list and disables remote-provider use. `/q`
 suppresses message boxes, while `/x` selects connection-oriented callbacks for
 lossy/high-traffic networks. Administrative/delegated authority is required.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `tcmsetup.exe`: Configure the legacy TAPI client remote-server list and callback mode.
+
+The supplied server list replaces rather than appends to current state.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/c`: Select client configuration mode.
+- `/d`: Clear the remote TAPI server list and disable remote-provider use.
+- `/q`: Suppress message boxes without becoming validation-only.
+- `/x`: Select connection-oriented callbacks for supported transports.
+- `/?`: Display installed syntax.
+
 ## Common mistakes
 
 ### Assuming new server names are appended
@@ -55,7 +69,7 @@ It changes callback transport behavior and does not repair poor topology or
 incorrect servers. Validate compatibility and measure the stated packet-loss/
 traffic condition.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 This native administrative command has no documented query form. PowerShell DNS
 and domain inventory is supporting evidence, not the stored TAPI list. Capture

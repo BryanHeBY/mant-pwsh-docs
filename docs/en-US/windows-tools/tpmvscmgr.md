@@ -35,6 +35,22 @@ Windows Hello for Business or FIDO2 and recommends those technologies for new
 deployments. Treat TpmVscMgr as lifecycle tooling for an established design,
 not the default for a new authentication architecture.
 
+## Commands and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `tpmvscmgr.exe`: Create or destroy legacy TPM virtual smart cards.
+- `create`: Create one TPM-backed virtual smart-card instance.
+- `destroy`: Permanently remove one selected virtual smart-card instance.
+
+Creation parameters determine secrets, management, and recoverability.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/name`: Set the virtual smart-card display name.
+- `/pin`: Supply or prompt for the user PIN; avoid inline secrets.
+- `/adminkey`: Select a supplied, default, or random administrative key.
+- `/generate`: Permit supported key generation needed by standard management.
+- `/?`: Display installed syntax.
+
 ## Common mistakes
 
 ### Using DEFAULT secrets outside an isolated demonstration
@@ -65,7 +81,7 @@ TPM reset, OS reinstall, or ownership/provisioning changes can invalidate virtua
 cards and other protected keys. Inventory BitLocker, Windows Hello, certificates,
 attestation, recovery keys, and organizational ownership first.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 TpmVscMgr is native and administrative. Prompt modes require an interactive
 secure console; they are not suitable for unattended remoting. Capture the

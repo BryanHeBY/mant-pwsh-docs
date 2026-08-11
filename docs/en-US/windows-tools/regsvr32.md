@@ -28,6 +28,18 @@ query command. Target code runs with the caller's rights.
 
 ## Syntax
 
+<!-- mant:entries role=command case=insensitive -->
+- `regsvr32.exe`: Load a DLL/OCX and call its registration or installation export.
+
+Registration executes target-controlled native code; it is not passive metadata import.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/u`: Call the component's unregistration/uninstall behavior.
+- `/s`: Suppress messages without suppressing code execution or side effects.
+- `/n`: Skip `DllRegisterServer`; requires `/i`.
+- `/i`: Pass optional text to `DllInstall`, or uninstall behavior with `/u`.
+- `/?`: Display installed syntax.
+
 ```text
 regsvr32 [/u] [/s] [/n] [/i[:COMMAND_LINE]] DLL
 ```
@@ -58,7 +70,7 @@ regsvr32 [/u] [/s] [/n] [/i[:COMMAND_LINE]] DLL
 - Registering in-place from a temporary/user-writable directory that will later
   be removed, replaced or become writable by a less-trusted principal.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Resolve and inspect a `FileInfo`, but pass its absolute `.FullName` string to
 `regsvr32.exe`. Use `Start-Process -Wait -PassThru` when an installer needs the

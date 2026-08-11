@@ -34,6 +34,17 @@ new deployment design.
 
 ## Syntax
 
+<!-- mant:entries role=command case=insensitive -->
+- `pwlauncher.exe`: Query, enable, or disable the legacy Windows To Go startup option.
+
+State changes affect firmware startup behavior and normally require a restart.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/query`: Display the current Windows To Go startup-option state.
+- `/enable`: Enable the startup option for compatible USB workspaces.
+- `/disable`: Disable that startup option without blocking all USB boot paths.
+- `/?`: Display installed syntax.
+
 ```text
 pwlauncher /enable
 pwlauncher /disable
@@ -70,7 +81,7 @@ Boot-policy changes can expose encryption recovery, unexpected media, or an
 unbootable sequence. Preserve BitLocker recovery, current boot configuration,
 firmware access, and a tested rollback before restart.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 PwLauncher is a native command with no documented state-query output. Capture
 `$LASTEXITCODE`, but verify the next boot in a controlled window. Typed disk

@@ -28,6 +28,24 @@ extraction modes and remote credential options are legacy text interfaces.
 
 ## Core syntax
 
+<!-- mant:entries role=command case=insensitive -->
+- `setx.exe`: Persist environment-variable text for future processes or extract text into variables.
+
+SetX does not update the current process and can expand/truncate values.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/m`: Write Machine scope instead of the current user's environment.
+- `/s`: Select a remote computer.
+- `/u`: Select an alternate remote account.
+- `/p`: Supply its password inline and expose the secret.
+- `/k`: Extract a value from a registry path into an environment variable.
+- `/f`: Extract values from a text file.
+- `/a`: Select an absolute coordinate in file-extraction mode.
+- `/r`: Select a relative coordinate in file-extraction mode.
+- `/d`: Choose delimiters used for file parsing.
+- `/x`: Display coordinates instead of writing extracted values.
+- `/?`: Display installed syntax.
+
 ```text
 setx NAME VALUE
 setx NAME VALUE /m
@@ -60,7 +78,7 @@ before a write; a process's effective `$env:Path` is not either stored Path.
 - Treating `/k` or `/f` extraction as typed data. Multi-string, expandable,
   numeric, delimiter, line-ending and coordinate conversions can lose meaning.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 PowerShell expands `$env:*` before launching native tools, whereas `%NAME%` is
 expanded only by `cmd.exe`. Prefer `[Environment]::GetEnvironmentVariable()` and

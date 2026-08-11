@@ -30,6 +30,19 @@ Directory service connection points. `show` is the read-only discovery family;
 `install`, `remove`, `publishscp`, `removescp`, and `makedefault` mutate
 forest/domain discovery state. Install/remove requires Enterprise Admins.
 
+## Command families
+
+<!-- mant:entries role=command case=insensitive -->
+- `tapicfg.exe`: Inspect or administer legacy TAPI application-directory partitions.
+- `show`: Display partition, default, or service-connection-point state.
+- `install`: Create a TAPI application-directory partition.
+- `remove`: Remove one exact partition.
+- `publishscp`: Publish a partition service connection point in AD DS.
+- `removescp`: Remove one published service connection point.
+- `makedefault`: Select the default TAPI application-directory partition.
+
+Use family-specific installed help before any mutation.
+
 ## Common mistakes
 
 ### Creating a partition before proving a client dependency
@@ -55,7 +68,7 @@ rollback, and stale-object cleanup.
 Use delegated read-only discovery for `show` and AD inventory. Do not normalize
 Enterprise Admin credentials in scripts or interactive troubleshooting.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 TapiCfg emits native text; AD cmdlets return objects only when the ActiveDirectory
 module and permissions are available. Capture exact forest/domain/DC context and
