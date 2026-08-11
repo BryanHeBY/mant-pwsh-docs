@@ -103,6 +103,7 @@ license in the document's provenance catalog before adapting material.
 
 ## Windows Remote Desktop session inventory
 
+- [mstsc](mstsc.md): classic Remote Desktop client with identity, credential-mode, RDP-file, redirection, and consent boundaries.
 - [query.exe](query.md): user, session, process, and legacy Session Host discovery boundaries.
 - [quser](quser.md): searchable `query user` executable alias.
 - [qwinsta](qwinsta.md): searchable `query session` executable alias.
@@ -162,6 +163,15 @@ license in the document's provenance catalog before adapting material.
 - [magnify](magnify.md): Magnifier launch/settings entry without protected-file disable workarounds.
 - [narrator](narrator.md): Narrator launch/settings entry with user, privacy, and input boundaries.
 - [osk](osk.md): classic On-Screen Keyboard entry distinct from touch, IME, and secure-desktop input.
+
+## Windows scripting and compatibility hosts
+
+- [setx](setx.md): persistent environment writes with scope, inheritance, expansion, and truncation safeguards.
+- [cscript](cscript.md): reviewed Windows Script Host execution with console output, least privilege, and bounded runtime.
+- [wscript](wscript.md): interactive GUI script hosting distinct from unattended console automation.
+- [regsvr32](regsvr32.md): trusted self-registering COM component lifecycle with code-execution and architecture boundaries.
+- [wmic](wmic.md): deprecated/optional compatibility utility and typed CIM migration guidance.
+- [sxstrace](sxstrace.md): bounded side-by-side activation tracing and evidence-preserving parse workflow.
 
 ## Windows shell, GUI, and settings
 

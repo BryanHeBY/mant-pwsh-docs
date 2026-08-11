@@ -2,7 +2,7 @@
   "$schema": "release-manifest/v1",
   "release": "v1",
   "locale": "en-US",
-  "requiredDocumentCount": 228,
+  "requiredDocumentCount": 235,
   "sources": {
     "pwsh7": {
       "runtimePlatforms": ["windows", "linux", "macos"],
@@ -139,6 +139,13 @@
         "magnify.md",
         "narrator.md",
         "osk.md",
+        "mstsc.md",
+        "setx.md",
+        "cscript.md",
+        "wscript.md",
+        "regsvr32.md",
+        "wmic.md",
+        "sxstrace.md",
         "cmd.md",
         "start.md",
         "explorer.md",

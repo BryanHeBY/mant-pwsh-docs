@@ -10,7 +10,7 @@ bundles.
 
 ### Added
 
-- First English release inventory: 228 reviewed ManT pages across `pwsh7`,
+- First English release inventory: 235 reviewed ManT pages across `pwsh7`,
   `pwsh51`, and `pwsh-cli`.
 - Broad `pwsh7` and `pwsh51` shell manuals, focused language/command pages,
   compatibility guides, and custom `irx` shorthand resolution guidance.
@@ -82,6 +82,12 @@ bundles.
   Properties, Magnifier, Narrator, and On-Screen Keyboard entries, with
   resultant-policy, environment-scope, startup/recovery, assistive-technology,
   session, privacy, and protected-system-file safeguards.
+- Windows persistent-environment, Windows Script Host, COM self-registration,
+  deprecated WMIC/CIM migration, classic Remote Desktop client, and side-by-side
+  activation diagnostic guides for `setx`, `cscript`, `wscript`, `regsvr32`,
+  `wmic`, `mstsc`, and `sxstrace`, including high-frequency data-loss,
+  privilege, credential, architecture, dialog, deprecation, and trace-lifecycle
+  mistakes drawn from official documentation and community demand signals.
 - Windows adapter/DHCP/DNS inspection, bounded ICMP reachability, path tracing,
   path sampling, host identity, and direct DNS-query guides for `ipconfig`,
   `ping`, `tracert`, `pathping`, `hostname`, and `nslookup`.

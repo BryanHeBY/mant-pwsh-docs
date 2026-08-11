@@ -319,7 +319,8 @@
     {
       "name": "cscript",
       "source": "cscript.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/cscript.md"
     },
     {
       "name": "date",
@@ -897,7 +898,8 @@
     {
       "name": "mstsc",
       "source": "mstsc.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/mstsc.md"
     },
     {
       "name": "nbtstat",
@@ -1216,7 +1218,8 @@
     {
       "name": "regsvr32",
       "source": "regsvr32.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/regsvr32.md"
     },
     {
       "name": "relog",
@@ -1436,7 +1439,8 @@
     {
       "name": "setx",
       "source": "setx.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/setx.md"
     },
     {
       "name": "sfc",
@@ -1568,7 +1572,8 @@
     {
       "name": "sxstrace",
       "source": "sxstrace.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/sxstrace.md"
     },
     {
       "name": "sysmon",
@@ -1833,7 +1838,8 @@
     {
       "name": "wmic",
       "source": "wmic.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/wmic.md"
     },
     {
       "name": "writer",
@@ -1844,7 +1850,8 @@
     {
       "name": "wscript",
       "source": "wscript.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/wscript.md"
     },
     {
       "name": "xcopy",

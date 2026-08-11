@@ -809,6 +809,71 @@
       ],
       "notes": ["Official sources establish classic OSK role, distinction from touch keyboard, Settings URI, modes and sign-in/device considerations. The TLDR gives launch/settings/discovery; the page covers component confusion, session, secrets/input automation, user dependence, layout/focus and kiosk/secure-desktop boundaries.", "Windows runtime verification is disposable interactive launch-and-normal-close only; no startup, input automation, protected-file, ACL or forced-termination mutation is permitted merely for evidence."]
     },
+    "mstsc.md": {
+      "kind": "windows-gui-cli", "status": "reviewed",
+      "versions": ["supported Windows client and server releases where classic Remote Desktop Connection is included; modes and policy vary by client/server build and deployment"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/mstsc.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=237626&service=superuser&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official documentation establishes syntax; the community source records the persistent /admin privilege misconception. The TLDR is help/local-monitor/explicit-target/RDP-file-inspection-first; the page covers FQDN/certificate/gateway, credential modes, redirection, public caching, shadow consent, password and result boundaries.", "Windows runtime verification remains help and local monitor inventory only; no connection, authentication, RDP-file launch, redirection or shadow/control is permitted merely for evidence."]
+    },
+    "setx.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows client and server releases; environment limits, broadcast/inheritance, registry types and remote behavior vary by build and context"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/setx.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=19287379&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official documentation defines syntax and explicitly warns about future-process visibility, reference expansion and 1,024-character truncation; the community question supplies high-volume scope-duplication/data-loss demand evidence. The TLDR avoids Path mutation and reads/verifies exact scopes.", "Windows runtime verification remains help and persistent-value query-only; no environment/Path write, deletion, remote credential or truncation test is permitted merely for evidence."]
+    },
+    "cscript.md": {
+      "kind": "native-script-host", "status": "reviewed",
+      "versions": ["supported Windows client and server releases where Windows Script Host and a requested engine are available"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/cscript.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=8678441&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official documentation defines WSH console-host options; the community source records high-volume console-versus-GUI output confusion. The TLDR uses reviewed local scripts, no logo, batch and timeout; the page covers arbitrary script capability, hidden dialogs, persistent defaults, JScript identity, quoting, encoding and exit contracts.", "Windows runtime verification remains help-only unless an approved inert code-reviewed least-privilege fixture exists; no WSH default/persisted option change is permitted merely for evidence."]
+    },
+    "wscript.md": {
+      "kind": "native-script-host", "status": "reviewed",
+      "versions": ["supported Windows client and server releases where Windows Script Host and a requested engine are available"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/wscript.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=8678441&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official documentation defines WSH GUI-host options and persisted settings; the community source records high-volume dialog-versus-console confusion. The TLDR redirects automation to cscript; the page covers output capture, wait semantics, batch hiding, no-script settings, persistent default changes, untrusted code and runtime confusion.", "Windows runtime verification remains help-only unless an approved inert interactive fixture exists; no WSH default/persisted option change is permitted merely for evidence."]
+    },
+    "regsvr32.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows client and server releases; behavior depends on target component exports, architecture, registry view, caller rights and vendor contract"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/regsvr32.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=18935163&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official documentation defines export-calling syntax; the community source is an architecture-confusion demand signal. The TLDR is help/hash/signature/version-first and labels registration as code execution; the page covers non-COM DLLs, untrusted downloads/search paths, bitness/views, false rollback/silence, DllInstall and writable deployment paths.", "Windows runtime verification remains help-only; no DLL/OCX load, register, unregister or install action is permitted merely for evidence."]
+    },
+    "wmic.md": {
+      "kind": "deprecated-native-cli", "status": "reviewed",
+      "versions": ["deprecated since Windows 10/Server 21H1-era releases; optional Feature on Demand on Windows 11 22H2 and later and not preinstalled starting with Windows 11 24H2"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/wmic.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/windows/win32/wmisdk/wmic", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/features-on-demand-non-language-fod?view=windows-11", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=57121875&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Current Microsoft sources establish that only WMIC is deprecated and document FoD availability; the community source records high-volume migration demand. The TLDR detects executable/capability and uses typed CIM without installing WMIC; the page covers aliases/text, shallow status, Win32_Product side effects, mutation translation and remote transport differences.", "Windows runtime verification remains executable/FoD discovery and typed-CIM query-only; do not install WMIC or invoke mutating aliases/methods merely for evidence."]
+    },
+    "sxstrace.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["supported Windows client and server releases where Side-by-Side tracing is included; results depend on build, servicing state, architecture and installed components"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/sxstrace.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=3961742&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official documentation defines trace/stop/parse syntax; the community source demonstrates high-volume but heterogeneous SxS failure demand. The TLDR enforces a new path, one reproduction, stop and copied parse; the page covers leaked/global sessions, stale evidence, wrong context, random runtime/DLL repair, debug CRT/component-store and trace disclosure risks.", "Windows runtime verification remains help-only unless an approved disposable failing application and protected fixture paths exist; every capture must stop in cleanup and preserve the ETL before parse."]
+    },
     "cmd.md": {
       "kind": "windows-shell",
       "status": "reviewed",

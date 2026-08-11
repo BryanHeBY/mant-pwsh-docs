@@ -151,6 +151,15 @@ Get-CimInstance Win32_StartupCommand | Select-Object Name, Command, Location, Us
 gpresult.exe /scope user /r
 [Environment]::GetEnvironmentVariable('Path', 'User')
 [Environment]::GetEnvironmentVariable('Path', 'Machine')
+Get-Command setx.exe, cscript.exe, wscript.exe, regsvr32.exe, wmic.exe, mstsc.exe, sxstrace.exe -All -ErrorAction SilentlyContinue
+setx.exe /?
+cscript.exe //?
+wscript.exe //?
+regsvr32.exe /?
+Get-WindowsCapability -Online | Where-Object Name -Like 'WMIC*'
+mstsc.exe /?
+mstsc.exe /l
+sxstrace.exe -?
 cmd.exe /d /c ver
 reg.exe query HKCU\Environment
 Get-Command explorer.exe, control.exe, mmc.exe, rundll32.exe -All
@@ -473,6 +482,18 @@ with audio/privacy/accessibility impact understood, then close them through thei
 normal UI or documented shortcut. Do not change automatic-start settings, force-
 terminate assistive tools, automate user input/secrets, or rename/delete/take
 ownership/change ACLs/redirect protected accessibility executables for validation.
+Keep `setx` verification to help and persistent User/Machine value reads; do not
+write/delete a variable, touch Path, pass remote credentials or test truncation
+merely for evidence. Keep WSH verification to host help unless an approved inert
+fixture is code-reviewed and run without elevation, persistence, network or COM
+side effects. Do not change the default script host or saved WSH options.
+Keep Regsvr32 verification help-only: do not load/register/unregister/install any
+DLL/OCX merely for evidence. Record WMIC executable and FoD availability without
+installing the deprecated capability, and validate new examples through typed CIM.
+Keep MSTSC to help/local-monitor inventory: do not connect, authenticate, open an
+untrusted RDP file, redirect resources or shadow/control a session for evidence.
+Keep SxSTrace to help-only unless a disposable failing application and new protected
+paths are approved; any capture must be stopped in cleanup and preserved before parse.
 
 On Windows, macOS, and Linux where declared by the document, record:
 
