@@ -70,8 +70,8 @@ reg.exe query KEY [/v VALUE | /ve] [/s] [/se SEPARATOR] [/f DATA]
 - `/v NAME`: Query a named value.
 - `/ve`: Query the unnamed default value.
 - `/s`: Recurse through all subkeys and values.
-- `/f DATA`: Search for a data pattern; the default pattern is `*`.
-- `/k`, `/d`: Restrict `/f` matching to key names or data.
+- `/k`: Restrict a `/f` search to key names; the context-dependent `/d`
+  selector restricts the same search to value data.
 - `/c`: Make search matching case-sensitive.
 - `/e`: Require an exact match.
 - `/t TYPE`: Restrict search to a registry data type.
@@ -95,10 +95,20 @@ another exact type. `/f` suppresses confirmation and therefore requires an
 already verified key, view, value name, type, data, and rollback.
 
 <!-- mant:entries role=option case=insensitive -->
-- `/d DATA`: For `reg add`, set the value data using the type and separator selected for that operation.
 - `/va`: For `reg delete`, delete all values in the key but retain its subkeys.
-- `/f`: For `reg add` or `reg delete`, suppress confirmation; it does not validate the target or create rollback.
 - `/y`: For supported copy/export/save/restore operations, overwrite without prompting; inspect the exact subcommand contract first.
+
+## Context-dependent parameters
+
+The meaning of these selectors is owned by the selected `reg` subcommand.
+Inspect the complete command family before constructing an invocation.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/f`: With `query`, search for the following data pattern (default `*`);
+  with `add` or `delete`, suppress confirmation without validating the target
+  or creating rollback.
+- `/d`: With `query /f`, restrict matching to value data; with `add`, supply
+  the new value data using the selected registry type and separator.
 
 For `delete`, omitting `/v`, `/ve`, and `/va` deletes the named key and its
 subkeys and values. `/va` deletes all values in the key but not its subkeys.

@@ -118,6 +118,45 @@ function collectEntries(nodes, entries = []) {
   return entries;
 }
 
+function ambiguousSelectors(entries) {
+  const aliases = entries.flatMap((entry) =>
+    (entry.names || []).map((name) => ({
+      case: entry.case,
+      id: entry.id,
+      name,
+      role: entry.role
+    }))
+  );
+  const collisions = new Map();
+  for (let left = 0; left < aliases.length; left += 1) {
+    for (let right = left + 1; right < aliases.length; right += 1) {
+      const first = aliases[left];
+      const second = aliases[right];
+      if (first.id === second.id && first.role === second.role) {
+        continue;
+      }
+      const overlaps = first.case === "insensitive" || second.case === "insensitive"
+        ? first.name.toLocaleLowerCase("en-US") === second.name.toLocaleLowerCase("en-US")
+        : first.name === second.name;
+      if (!overlaps) {
+        continue;
+      }
+      const selector = first.case === "insensitive"
+        ? first.name.toLocaleLowerCase("en-US")
+        : first.name;
+      const owners = collisions.get(selector) || new Map();
+      for (const alias of [first, second]) {
+        owners.set(`${alias.role}:${alias.id}`, alias);
+      }
+      collisions.set(selector, owners);
+    }
+  }
+  return [...collisions.entries()].map(([selector, owners]) => ({
+    owners: [...owners.values()],
+    selector
+  }));
+}
+
 function mantEntries(file) {
   if (options.skipMant) {
     return { entries: [], skipped: true };
@@ -165,6 +204,7 @@ function auditDocument(sourceName, filename, metadata) {
   const body = markdownBody(source);
   const sectionHeadings = headings(body);
   const semantic = mantEntries(file);
+  const selectorAmbiguities = ambiguousSelectors(semantic.entries);
   const directives = countMatches(body, /^<!-- mant:entries role=(option|command|environment-variable) case=(sensitive|insensitive) -->$/gmu);
   const tldrExamples = countMatches(source, /^- .+:$/gmu);
   const lineCount = source.split(/\r?\n/u).length;
@@ -182,6 +222,9 @@ function auditDocument(sourceName, filename, metadata) {
   }
   if (semantic.entriesComplete === false) {
     flags.push("incomplete-semantic-entries");
+  }
+  if (selectorAmbiguities.length > 0) {
+    flags.push("ambiguous-semantic-selector");
   }
   if (!options.skipMant && expectsSemanticEntries(metadata) && semantic.entries.length === 0) {
     flags.push("missing-semantic-entries");
@@ -224,6 +267,7 @@ function auditDocument(sourceName, filename, metadata) {
     mantDiagnostics: semantic.diagnostics,
     mantError: semantic.error,
     path: relative(file),
+    selectorAmbiguities,
     source: sourceName,
     status: metadata.status,
     tldrExamples
