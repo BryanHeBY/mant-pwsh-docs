@@ -31,6 +31,14 @@ NTBackup-created backups; the Windows NT Backup Restore utility is required.
 Treat legacy backups as protected evidence requiring a compatible isolated
 recovery environment.
 
+## Command boundary
+
+<!-- mant:entries role=command case=insensitive -->
+- `ntbackup.exe`: Create or restore legacy NT Backup artifacts in a compatible environment.
+
+Do not invent current syntax or use `wbadmin` on BKF media; recovery requires
+the supported legacy restore utility and an isolated compatible system.
+
 ## Common mistakes
 
 ### Trying to restore BKF media with WbAdmin
@@ -56,7 +64,7 @@ application-level consistency, encryption/compression, and recovery objectives.
 Executable, DLL, removable-storage, catalog and OS dependencies matter. Verify
 Microsoft provenance/signatures and licensing; never download an unknown bundle.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 PowerShell should inventory copied artifacts and orchestrate a controlled lab,
 not parse BKF as ordinary archives. `wbadmin get versions` inventories its own

@@ -33,6 +33,12 @@ a reviewed change.
 
 ## Configuration, runtime, and policy
 
+<!-- mant:entries role=command case=insensitive -->
+- `pagefileconfig.exe`: Deprecated paging-file configuration utility; migrate to CIM.
+
+The command is indexed for legacy discovery only. Current automation should
+distinguish startup settings, runtime usage, and automatic management.
+
 `Win32_PageFileSetting` represents startup settings and can be absent when
 Windows automatically manages paging files. `Win32_PageFileUsage` represents
 runtime state. `Win32_ComputerSystem.AutomaticManagedPagefile` identifies the
@@ -62,7 +68,7 @@ usage and crash-dump readiness. Do not claim completion from a CIM write alone.
 This can affect commit capacity and crash dumps. Preserve a recovery route and
 coordinate with workload and incident-response owners before any mutation.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 `Get-CimInstance` returns typed data and works in PowerShell 5.1 and 7 on
 Windows. Creating or changing `Win32_PageFileSetting` needs administrative

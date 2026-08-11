@@ -30,6 +30,14 @@ marks it deprecated and not guaranteed to be supported. This page exists so
 old scripts and images are understandable; it is not a current general help
 launcher.
 
+## Command boundary
+
+<!-- mant:entries role=command case=insensitive -->
+- `helpctr.exe`: Launch the deprecated Windows Server 2003 Help and Support Center.
+
+No current supported parameter contract exists; preserve old references only
+for isolated historical analysis.
+
 ## Common mistakes
 
 ### Downloading old Help Center binaries or content packs
@@ -47,7 +55,7 @@ PowerShell module help, and current versioned vendor documentation.
 Historical help packages can contain active links, scripts or vulnerable
 parsers. Treat them as untrusted artifacts and inspect offline.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 PowerShell `Get-Help` is command/module-aware and separate from HelpCtr. Native
 executables have their own conventions. Resolve the command first to avoid alias

@@ -33,6 +33,21 @@ Use this page to recognize and migrate old instructions. A modern editor,
 PowerShell text cmdlets, or a reviewed encoding-aware library is a better fit
 for current automation.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `edit.exe`: Start the legacy interactive MS-DOS Editor for one or more files.
+
+The numeric `/<nnn>` binary-wrap form remains prose because it embeds a value
+directly in the switch token.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/b`: Use monochrome display mode.
+- `/h`: Display the maximum number of lines supported by the monitor.
+- `/r`: Open files read-only.
+- `/s`: Force short-filename handling.
+- `/?`: Display installed syntax when the legacy binary exists.
+
 ## Common mistakes
 
 ### Assuming the Microsoft Learn banner guarantees `edit.exe`
@@ -53,7 +68,7 @@ encoding, and verify round-trip content before conversion.
 the wrong file. Use `Get-Content`, `Set-Content`, or a structured editor only
 after defining encoding, newline, backup, and atomic-write behavior.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 PowerShell does not supply an `edit` command. Command discovery may find a
 third-party function or executable with that name, so resolve `edit.exe`

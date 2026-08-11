@@ -30,6 +30,18 @@ and reports its previous/current graphics code page. Microsoft marks it legacy
 and normally not installed on modern Windows. Its documented code pages are
 437, 850, 852, 855, 857, 860, 861, 863, 865, 866, and 869.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `graftabl.exe`: Load or report a DOS-display extended graphics code page.
+
+The positional code-page number changes display glyph mapping, not input or
+file encoding.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/status`: Display the graphics code page previously and currently selected.
+- `/?`: Display installed legacy syntax.
+
 ## Common mistakes
 
 ### Using Graftabl to change console input or file encoding
@@ -51,7 +63,7 @@ Documented status codes distinguish success, bad parameter, and file error;
 they cannot prove that a font has the required glyphs or an application decoded
 bytes correctly. Verify representative text visually and byte-for-byte.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 PowerShell exposes several distinct encoding layers. `$OutputEncoding` affects
 data sent from PowerShell to native commands, while console input/output and

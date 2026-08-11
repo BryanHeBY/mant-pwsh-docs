@@ -30,6 +30,26 @@ troubleshooting packs. Microsoft deprecated MSDT and redirected many built-in
 troubleshooters to Get Help while retiring others. Presence of the executable
 or a broad Learn applicability banner is not a commitment that a pack remains.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `msdt.exe`: Run a verified legacy Microsoft Support Diagnostic Tool pack.
+
+The tool and many inbox packs are deprecated; pack selection does not guarantee
+that a target build still supports it.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/id`: Select a registered troubleshooting-pack ID.
+- `/path`: Select a verified troubleshooting-pack directory or package path.
+- `/cab`: Select a verified diagnostic Cabinet.
+- `/diagcfg`: Select a verified diagnostic configuration file.
+- `/param`: Supply noninteractive pack-specific name/value input.
+- `/advanced`: Open advanced troubleshooting choices.
+- `/custom`: Require confirmation for proposed resolutions, not read-only mode.
+- `/moreoptions`: Offer additional troubleshooting choices where supported.
+- `/dci`: Pass support-workflow context rather than ordinary pack selection.
+- `/?`: Display installed syntax.
+
 ## Common mistakes
 
 ### Running `msdt.exe` with no package and treating the passkey prompt as a fix path
@@ -63,7 +83,7 @@ MSDT documents `0` as at least one root cause fixed with none left not-fixed;
 These are pack results, not proof of root cause, durability, policy compliance,
 or end-to-end service health.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Call `msdt.exe` explicitly only for a verified remaining legacy workflow. GUI
 execution and diagnostic completion may not align with a simple process wait;

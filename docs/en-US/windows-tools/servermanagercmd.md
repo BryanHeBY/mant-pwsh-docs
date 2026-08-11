@@ -30,6 +30,24 @@ role services, and features, directly or from XML. Microsoft deprecates it and
 recommends Server Manager PowerShell cmdlets. Migrate by semantic intent and
 exact target build, not by mechanically translating old identifiers.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `servermanagercmd.exe`: Deprecated Windows Server role/feature management front end.
+
+Migrate semantic intent to target-build Server Manager cmdlets or DISM.
+
+<!-- mant:entries role=option case=insensitive -->
+- `-query`: List installed/available legacy role and feature identifiers.
+- `-install`: Install one legacy role or feature identifier.
+- `-remove`: Remove one legacy role or feature identifier.
+- `-inputPath`: Process a reviewed XML answer file.
+- `-resultPath`: Write XML operation results to an explicit protected path.
+- `-restart`: Restart automatically after changes; unsafe in generic automation.
+- `-whatIf`: Preview an operation against current machine state.
+- `-logPath`: Select an explicit diagnostic log path.
+- `-help`: Display installed deprecated syntax.
+
 ## Common mistakes
 
 ### Treating `-whatif` on an answer file as permanent validation
@@ -53,7 +71,7 @@ Use typed PowerShell results and their documented restart/success properties;
 do not scrape localized ServerManagerCmd output or equate process code alone
 with an operational role.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Server Manager cmdlets are Windows PowerShell/Windows Server management APIs
 and may be available through compatibility/remoting rather than natively on

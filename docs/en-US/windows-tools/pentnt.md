@@ -30,6 +30,14 @@ defect and could disable floating-point hardware in favor of emulation.
 Microsoft marks the command deprecated. It is retained here so old scripts,
 images, incident notes, and command inventories can be interpreted and retired.
 
+## Command boundary
+
+<!-- mant:entries role=command case=insensitive -->
+- `pentnt.exe`: Deprecated detector/workaround for the historical Pentium FDIV defect.
+
+Do not reconstruct or execute mutation parameters on modern systems; retain the
+entry only to explain and retire old startup instructions.
+
 ## Common mistakes
 
 ### Using PentNT for a modern floating-point or CPU problem
@@ -50,7 +58,7 @@ In a preserved legacy image, the command may document a compatibility
 assumption. Record the image, hardware/VM, startup context, and replacement
 decision before removing it.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 PowerShell is useful for read-only legacy discovery. `Select-String` operates on
 text files and can report false positives or miss encoded/binary/configuration

@@ -31,6 +31,14 @@ linked previous-version detail is no longer generally accessible and the
 current page provides no syntax or semantic contract. This page therefore
 documents safe identification and migration, not guessed behavior.
 
+## Command boundary
+
+<!-- mant:entries role=command case=insensitive -->
+- `gettype.exe`: Deprecated Server 2003-era utility with no surviving public syntax contract.
+
+Do not infer parameters or behavior from its name; identify the exact binary
+and historical caller before selecting a typed replacement.
+
 ## Common mistakes
 
 ### Inventing syntax from the command name
@@ -53,7 +61,7 @@ The body explicitly identifies Windows Server 2003 and deprecation. That is
 stronger lifecycle evidence than a modern generic banner. Absence on a current
 host is expected and should trigger migration, not an arbitrary download.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 `Get-Command gettype.exe` disambiguates a native executable from PowerShell or
 third-party names. Preserve `$LASTEXITCODE` and raw output only after the binary

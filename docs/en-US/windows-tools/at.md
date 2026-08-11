@@ -38,6 +38,21 @@ The legacy model has materially different identity, principal, working-
 directory, desktop-interaction, network-drive, command-parsing, duration, and
 remote-host behavior. Do not translate a line mechanically into a modern task.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `at.exe`: List, create, or delete legacy Schedule-service jobs.
+
+Use only for inventory/migration; new automation belongs in Task Scheduler.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/delete`: Delete one ID or, when no ID is supplied, every AT job.
+- `/yes`: Suppress confirmation for broad deletion.
+- `/interactive`: Request obsolete interactive-desktop behavior.
+- `/every`: Repeat on the supplied weekday/date set.
+- `/next`: Run at the next occurrence of the supplied weekday/date.
+- `/?`: Display installed syntax and deprecation status.
+
 ## Common mistakes
 
 ### Creating a new AT job because the online page still lists syntax
@@ -75,7 +90,7 @@ system clock changes, the legacy 72-hour default, credentials, output, exit
 status, and remote target. Run the migrated task in a nonproduction fixture and
 verify Task Scheduler operational events plus the real artifact.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Invoke `at.exe` explicitly; bare `at` can resolve differently by profile or
 platform. Prefer the ScheduledTasks module for typed local management and

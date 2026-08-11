@@ -33,6 +33,37 @@ interfaces for Windows 10/11 or supported current Windows Server releases.
 
 ## Historical roles
 
+<!-- mant:entries role=command case=insensitive -->
+- `winnt`: Historical text-mode Windows Setup command.
+- `winnt32`: Historical Windows Server 2003 install/upgrade front end.
+- `risetup`: Historical Remote Installation Services image builder.
+- `sysocmgr`: Deprecated optional-component answer-file processor.
+
+The following are representative official Winnt32 families needed to interpret
+preserved scripts, not supported deployment switches for current Windows.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/checkupgradeonly`: Run Server 2003-era upgrade compatibility checking.
+- `/unattend`: Use or generate an unattended setup path.
+- `/udf`: Apply a uniqueness database and identifier.
+- `/syspart`: Copy startup files and mark another disk active.
+
+Additional source, recovery, and restart families are distinct legacy tokens.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/tempdrive`: Select a drive for temporary Setup files.
+- `/makelocalsource`: Copy installation source files locally.
+
+Recovery-console and restart behavior must be interpreted in their original
+Setup phase and operating-system context.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/cmdcons`: Add the historical Recovery Console startup option.
+
+The additional `/noreboot` token prevents the automatic restart after the
+file-copy phase. ManT currently rejects that spelling as a semantic option, so
+it remains documented in prose rather than being rewritten inaccurately.
+
 - `winnt` was a text-mode-era Setup command and is deprecated.
 - `winnt32` installed/upgraded Windows Server 2003 and could copy sources,
   consume answer/UDF files, run commands, alter startup/recovery choices, and
@@ -73,7 +104,7 @@ Some Microsoft command pages display broad current applicability while their
 body explicitly describes Server 2003 or deprecation. Record both, and let the
 body/tool version and supported deployment docs govern use.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Do not invoke these binaries from PowerShell on a current host. PowerShell is
 useful for artifact metadata, signatures, hashes, and offline text review. Use

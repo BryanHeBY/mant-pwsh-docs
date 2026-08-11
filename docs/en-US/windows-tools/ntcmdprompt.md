@@ -30,6 +30,13 @@ from an MS-DOS application's prompt, and could be placed in `Config.nt`/PIF
 startup configuration. It belongs to the NTVDM-era 16-bit compatibility model;
 it is not another name for ordinary modern Command Prompt.
 
+## Command boundary
+
+<!-- mant:entries role=command case=insensitive -->
+- `ntcmdprompt`: Select `cmd.exe` inside the historical NTVDM/DOS application environment.
+
+This is not elevation, architecture selection, or a modern Command Prompt alias.
+
 ## Common mistakes
 
 ### Running it to obtain an elevated or 64-bit shell
@@ -48,7 +55,7 @@ compatible environment.
 Microsoft notes that the TSR might not remain usable under Cmd. Preserve the
 whole application/runtime dependency and migrate or virtualize deliberately.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 `cmd.exe /d` disables Cmd AutoRun for that child, reducing hidden startup state.
 PowerShell and Cmd have different quoting, variables, pipelines, aliases and
