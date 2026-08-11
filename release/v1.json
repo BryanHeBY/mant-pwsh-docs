@@ -2,7 +2,7 @@
   "$schema": "release-manifest/v1",
   "release": "v1",
   "locale": "en-US",
-  "requiredDocumentCount": 195,
+  "requiredDocumentCount": 198,
   "sources": {
     "pwsh7": {
       "runtimePlatforms": ["windows", "linux", "macos"],
@@ -106,6 +106,9 @@
         "tskill.md",
         "winrm.md",
         "winrs.md",
+        "wevtutil.md",
+        "wecutil.md",
+        "eventcreate.md",
         "cmd.md",
         "start.md",
         "explorer.md",

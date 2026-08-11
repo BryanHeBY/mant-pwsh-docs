@@ -121,6 +121,12 @@ license in the document's provenance catalog before adapting material.
 - [winrm.exe](winrm.md): WS-Management identity, client/service, listener, authentication, plugin, and shell configuration boundaries.
 - [winrs](winrs.md): explicit remote native command execution through an approved WinRM endpoint.
 
+## Windows eventing and forwarding
+
+- [wevtutil](wevtutil.md): channel/provider inventory, bounded XML queries, EVTX evidence export, and destructive configuration boundaries.
+- [wecutil](wecutil.md): Event Collector subscription configuration, per-source runtime status, delivery, and scale boundaries.
+- [eventcreate](eventcreate.md): explicitly labeled test/operational markers without fabricating audit provenance.
+
 ## Windows shell, GUI, and settings
 
 - [cmd](cmd.md): cmd builtins, child-shell parsing, AutoRun, and exit status.

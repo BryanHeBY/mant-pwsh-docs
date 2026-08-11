@@ -520,6 +520,31 @@
       ],
       "notes": ["The TLDR verifies endpoint, remote host/token, explicit cmd parsing, and HTTPS without inline credentials; the page contains secret, unencrypted, delegation/second-hop, profile, local/remote parsing, remote path/environment, cancellation, deprecated-timeout, native-result, command-injection, and PowerShell-versus-native remoting risks.", "Windows runtime verification remains help/local-query-only unless an approved disposable remote endpoint and allowlisted harmless command exist."]
     },
+    "wevtutil.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["supported Windows client and server releases; channels, providers, schemas, access, rendering, and retention vary by installed system"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/wevtutil.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=36789558&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR inventories channels/config/providers, performs bounded recent/XML queries, exports a new EVTX, and analyzes a copy; the page contains limited-XPath, UTC/time, direction/count, rendered-message, clear, overwrite/archive/reparse, retention/size/access, manifest, remote-secret, parsing, and evidence-provenance risks.", "Windows runtime verification remains query/export-only; destructive event configuration and evidence mutation require separate approval and custody controls."]
+    },
+    "wecutil.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["supported Windows client and server releases with Windows Event Collector and compatible WS-Management/event sources"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/wecutil.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/windows/win32/wec/wecutil", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=1148013&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR inventories subscription IDs/XML/runtime status, Wecsvc, and received events; the page contains create-versus-runtime, delayed credential failure, quick-config/service, BOM/localization, source-versus-collector authorization, secret, ReadExisting/bookmark/replay, delivery/capacity, scale/internal-registry, and end-to-end provenance risks.", "Windows runtime verification remains query/help-only unless an approved disposable source/collector and test subscription exist."]
+    },
+    "eventcreate.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows client and server releases; custom events are limited to Application or System and IDs 1 through 1000"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/eventcreate.md"}],
+      "notes": ["The TLDR labels mutations as disposable TEST ONLY markers and immediately re-queries exact source/ID; the page contains Security/audit-provenance, source impersonation, remote credential/target, end-to-end forwarding, untrusted description, schema/ID/type, and cleanup/retention risks.", "Windows runtime verification remains help-only unless an approved disposable marker and end-to-end forwarding fixture exist."]
+    },
     "cmd.md": {
       "kind": "windows-shell",
       "status": "reviewed",

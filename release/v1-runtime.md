@@ -111,6 +111,13 @@ winrm.exe get winrm/config/service
 winrm.exe enumerate winrm/config/listener
 winrm.exe enumerate winrm/config/plugin
 winrs.exe /?
+wevtutil.exe enum-logs
+wevtutil.exe get-log System /f:xml
+wevtutil.exe query-events System /c:20 /rd:true /f:RenderedXml /e:Events
+wevtutil.exe enum-publishers
+wecutil.exe /?
+sc.exe query Wecsvc
+eventcreate.exe /?
 cmd.exe /d /c ver
 reg.exe query HKCU\Environment
 Get-Command explorer.exe, control.exe, mmc.exe, rundll32.exe -All
@@ -383,6 +390,15 @@ unencrypted traffic/delegation, open firewall rules, or execute a remote command
 merely for evidence. A remote test requires an approved disposable endpoint,
 exact identity and transport validation, allowlisted harmless command, and
 remote process/result/audit verification.
+Keep eventing verification query/help-only. Preserve channel configuration,
+raw XML/EVTX, query/time/locale, collector subscription configuration and
+runtime status separately. Do not clear a log, overwrite/archive evidence into
+an unsafe path, set channel retention/size/access/isolation, install/uninstall
+manifests, quick-configure/start Wecsvc, create/set/delete/retry subscriptions,
+change WEF credentials/authorization/delivery, or create even a test marker
+merely for evidence. Marker/forwarding mutation tests require a disposable
+source/collector, unique `TEST ONLY` identity and correlation ID, capacity/
+retention/security review, and end-to-end cleanup/verification plan.
 
 On Windows, macOS, and Linux where declared by the document, record:
 

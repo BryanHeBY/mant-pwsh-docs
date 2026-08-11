@@ -477,7 +477,8 @@
     {
       "name": "eventcreate",
       "source": "eventcreate.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/eventcreate.md"
     },
     {
       "name": "Evntcmd",
@@ -1770,12 +1771,14 @@
     {
       "name": "wecutil",
       "source": "wecutil.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/wecutil.md"
     },
     {
       "name": "wevtutil",
       "source": "wevtutil.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/wevtutil.md"
     },
     {
       "name": "where",

@@ -10,7 +10,7 @@ bundles.
 
 ### Added
 
-- First English release inventory: 195 reviewed ManT pages across `pwsh7`,
+- First English release inventory: 198 reviewed ManT pages across `pwsh7`,
   `pwsh51`, and `pwsh-cli`.
 - Broad `pwsh7` and `pwsh51` shell manuals, focused language/command pages,
   compatibility guides, and custom `irx` shorthand resolution guidance.
@@ -56,6 +56,10 @@ bundles.
   `winrs` remote native command execution, including TrustedHosts direction,
   authentication/encryption, HTTPS certificate, delegation, endpoint, quoting,
   remote-context, and second-hop boundaries.
+- Windows Event Log and forwarding guides for `wevtutil`, `wecutil`, and
+  `eventcreate`, including bounded XML/XPath queries, EVTX evidence, channel/
+  manifest/clear risks, subscription runtime status, WEF delivery/scale, and
+  explicitly labeled non-audit test markers.
 - Windows adapter/DHCP/DNS inspection, bounded ICMP reachability, path tracing,
   path sampling, host identity, and direct DNS-query guides for `ipconfig`,
   `ping`, `tracert`, `pathping`, `hostname`, and `nslookup`.
