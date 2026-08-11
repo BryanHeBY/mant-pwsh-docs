@@ -10,7 +10,7 @@ bundles.
 
 ### Added
 
-- First English release inventory: 193 reviewed ManT pages across `pwsh7`,
+- First English release inventory: 195 reviewed ManT pages across `pwsh7`,
   `pwsh51`, and `pwsh-cli`.
 - Broad `pwsh7` and `pwsh51` shell manuals, focused language/command pages,
   compatibility guides, and custom `irx` shorthand resolution guidance.
@@ -52,6 +52,10 @@ bundles.
 - Remote Desktop attach, consent-governed shadowing, and session-process
   termination guides for `tscon`, `shadow`, and `tskill`, including console/
   physical-access, password, privacy, wildcard, PID, and session-ID traps.
+- Windows remote-management guides for `winrm` WS-Management configuration and
+  `winrs` remote native command execution, including TrustedHosts direction,
+  authentication/encryption, HTTPS certificate, delegation, endpoint, quoting,
+  remote-context, and second-hop boundaries.
 - Windows adapter/DHCP/DNS inspection, bounded ICMP reachability, path tracing,
   path sampling, host identity, and direct DNS-query guides for `ipconfig`,
   `ping`, `tracert`, `pathping`, `hostname`, and `nslookup`.

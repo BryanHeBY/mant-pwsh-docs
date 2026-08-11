@@ -105,6 +105,12 @@ rwinsta.exe /?
 tscon.exe /?
 shadow.exe /?
 tskill.exe /?
+winrm.exe help
+winrm.exe get winrm/config/client
+winrm.exe get winrm/config/service
+winrm.exe enumerate winrm/config/listener
+winrm.exe enumerate winrm/config/plugin
+winrs.exe /?
 cmd.exe /d /c ver
 reg.exe query HKCU\Environment
 Get-Command explorer.exe, control.exe, mmc.exe, rundll32.exe -All
@@ -368,6 +374,15 @@ suppress shadow consent, view/control a user's screen, prompt for another
 user's password, or terminate a process merely for evidence. Any mutation test
 requires a separately approved disposable host/session/process, privacy and
 physical-console review, exact identity revalidation, and recovery plan.
+Keep WinRM/WinRS verification local and query/help-only by default. Record
+client versus service direction, listeners, transport/port/address/certificate,
+authentication, TrustedHosts, plugins/endpoint ACLs, shells, firewall/network
+profile, and policy ownership. Do not run quickconfig, start/reconfigure the
+service, create/set/delete listeners/plugins/trust, enable weak authentication/
+unencrypted traffic/delegation, open firewall rules, or execute a remote command
+merely for evidence. A remote test requires an approved disposable endpoint,
+exact identity and transport validation, allowlisted harmless command, and
+remote process/result/audit verification.
 
 On Windows, macOS, and Linux where declared by the document, record:
 

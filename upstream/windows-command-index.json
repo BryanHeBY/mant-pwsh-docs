@@ -1802,7 +1802,8 @@
     {
       "name": "winrs",
       "source": "winrs.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/winrs.md"
     },
     {
       "name": "winsat mem",

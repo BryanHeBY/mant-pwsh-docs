@@ -116,6 +116,11 @@ license in the document's provenance catalog before adapting material.
 - [shadow](shadow.md): consent-governed session viewing or remote control.
 - [tskill](tskill.md): exact-PID session process termination after graceful recovery.
 
+## Windows remote management
+
+- [winrm.exe](winrm.md): WS-Management identity, client/service, listener, authentication, plugin, and shell configuration boundaries.
+- [winrs](winrs.md): explicit remote native command execution through an approved WinRM endpoint.
+
 ## Windows shell, GUI, and settings
 
 - [cmd](cmd.md): cmd builtins, child-shell parsing, AutoRun, and exit status.

@@ -498,6 +498,28 @@
       ],
       "notes": ["The TLDR uses one corroborated PID after graceful recovery fails and omits name/wildcard/all-session forms; the page contains wildcard, /a, PID/session-ID, identity reuse, diagnosis, protected/owned process, remote-token, parsing, and session-ending risks.", "Windows runtime verification remains help-only unless an approved disposable process/session fixture and recovery evidence exist."]
     },
+    "winrm.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["Windows WinRM/WS-Management versions shipped with supported Windows releases; defaults and resources vary by Windows/WMF, policy, and endpoint"], "platforms": ["windows"],
+      "sources": [
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/windows/win32/winrm/installation-and-configuration-for-windows-remote-management", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/powershell/scripting/security/remoting/winrm-security", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_remote_troubleshooting", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-client/system-management-components/configure-winrm-for-https", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=12110355&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR inventories endpoint identity plus client/service/listener/plugin/shell state only; the page maps identity, client, service, listener, network, plugin, and shell layers and contains quickconfig, TrustedHosts direction/wildcard, HTTP/HTTPS/message encryption, Basic/unencrypted, certificate, client-versus-server, endpoint ACL, CredSSP/second-hop, quota, parsing, and PowerShell-endpoint risks.", "Windows runtime verification remains local query-only unless a separately approved disposable remote endpoint, exact transport/authentication/identity design, and recovery path exist."]
+    },
+    "winrs.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows client and server releases with compatible WinRM service/endpoint configuration"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/winrs.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/windows/win32/winrm/installation-and-configuration-for-windows-remote-management", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/powershell/scripting/security/remoting/winrm-security", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR verifies endpoint, remote host/token, explicit cmd parsing, and HTTPS without inline credentials; the page contains secret, unencrypted, delegation/second-hop, profile, local/remote parsing, remote path/environment, cancellation, deprecated-timeout, native-result, command-injection, and PowerShell-versus-native remoting risks.", "Windows runtime verification remains help/local-query-only unless an approved disposable remote endpoint and allowlisted harmless command exist."]
+    },
     "cmd.md": {
       "kind": "windows-shell",
       "status": "reviewed",
