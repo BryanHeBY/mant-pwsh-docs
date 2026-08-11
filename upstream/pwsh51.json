@@ -183,6 +183,48 @@
         "No official about_Native_Commands topic exists in the locked 5.1 PowerShell-Docs baseline; this original guide is a project topic name informed by about_Parsing.",
         "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
       ]
+    },
+    "about_Pipelines.md": {
+      "kind": "about-topic",
+      "status": "draft",
+      "versions": [
+        "5.1"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/5.1/Microsoft.PowerShell.Core/About/about_Pipelines.md"
+        }
+      ],
+      "notes": [
+        "This is an original ManT-oriented topic guide, not a copy of the upstream reference.",
+        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+      ]
+    },
+    "about_Redirection.md": {
+      "kind": "about-topic",
+      "status": "draft",
+      "versions": [
+        "5.1"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/5.1/Microsoft.PowerShell.Core/About/about_Redirection.md"
+        }
+      ],
+      "notes": [
+        "This is an original ManT-oriented topic guide, not a copy of the upstream reference.",
+        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+      ]
     }
   }
 }
