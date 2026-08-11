@@ -79,6 +79,10 @@ Get-Command explorer.exe, control.exe, mmc.exe, rundll32.exe -All
 cmd.exe /d /v:on /c "set MANT_TEST=value & if not !MANT_TEST!==value exit /b 1"
 choice.exe /?
 timeout.exe /?
+cmd.exe /d /c "for %N in (one two) do @echo %N"
+cmd.exe /d /c "if 1 EQU 1 (exit /b 0) else (exit /b 1)"
+cmd.exe /d /c "pushd %TEMP% & popd"
+cmd.exe /d /c "assoc .txt & ftype txtfile"
 ```
 
 Review Windows-only commands on a non-production target. In particular, use

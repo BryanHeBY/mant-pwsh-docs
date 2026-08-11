@@ -116,6 +116,8 @@ license in the document's provenance catalog before adapting material.
 
 ## Cmd batch state and interaction
 
+- [for](for.md): iteration, `/f` parsing, expansion timing, and child shells.
+- [if](if.md): conditional tests without ERRORLEVEL or expansion mistakes.
 - [set](set.md): cmd environment variables versus PowerShell's `set` alias.
 - [setlocal](setlocal.md): localized batch state and delayed expansion.
 - [endlocal](endlocal.md): restore a batch scope and safely design returned values.
@@ -123,6 +125,11 @@ license in the document's provenance catalog before adapting material.
 - [choice](choice.md): single-character prompts and one-based result handling.
 - [timeout](timeout.md): Windows delays, redirected input, and name conflicts.
 - [exit](exit.md): distinguish batch return codes from terminating `cmd.exe`.
+- [path](path.md): process search path, resolution order, and safe scoping.
+- [pushd](pushd.md) / [popd](popd.md): balanced local/UNC directory stacks.
+- [title](title.md): interactive cmd window title and terminal-host limits.
+- [assoc](assoc.md) / [ftype](ftype.md): classic file-type mappings versus
+  protected modern default apps.
 
 ## Cross-platform developer tools
 

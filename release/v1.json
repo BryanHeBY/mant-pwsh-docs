@@ -2,7 +2,7 @@
   "$schema": "release-manifest/v1",
   "release": "v1",
   "locale": "en-US",
-  "requiredDocumentCount": 94,
+  "requiredDocumentCount": 102,
   "sources": {
     "pwsh7": {
       "runtimePlatforms": ["windows", "linux", "macos"],
@@ -106,6 +106,14 @@
         "choice.md",
         "timeout.md",
         "exit.md",
+        "for.md",
+        "if.md",
+        "path.md",
+        "pushd.md",
+        "popd.md",
+        "title.md",
+        "assoc.md",
+        "ftype.md",
         "git.md",
         "ssh.md",
         "curl.md",

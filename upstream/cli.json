@@ -689,6 +689,70 @@
       ],
       "notes": ["The page distinguishes batch /b return, cmd process termination, and PowerShell exit semantics.", "Windows runtime verification remains required."]
     },
+    "for.md": {
+      "kind": "cmd-builtin", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/for.md"},
+        {"type": "web", "url": "https://stackoverflow.com/questions/13013378/read-lines-with-blank-spaces-from-a-file-using-batch", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The page emphasizes /f tokenization, blank-line loss, delayed expansion, and child cmd parsing.", "Windows runtime verification remains required."]
+    },
+    "if.md": {
+      "kind": "cmd-builtin", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/if.md"},
+        {"type": "web", "url": "https://stackoverflow.com/questions/34690602/why-is-processing-of-my-batch-file-exited-with-a-syntax-error-on-string-comparsi", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The page explains that IF ERRORLEVEL is a threshold and that untrusted expansion can alter syntax.", "Windows runtime verification remains required."]
+    },
+    "path.md": {
+      "kind": "cmd-builtin", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/path.md"}],
+      "notes": ["The page distinguishes process-local changes, persistent environment management, and executable shadowing.", "Windows runtime verification remains required."]
+    },
+    "pushd.md": {
+      "kind": "cmd-builtin", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/pushd.md"},
+        {"type": "web", "url": "https://stackoverflow.com/questions/24482801/cmd-does-not-support-unc-paths-as-current-directories-pushd", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The page records per-process stack ownership and temporary UNC drive mapping.", "Windows runtime verification remains required."]
+    },
+    "popd.md": {
+      "kind": "cmd-builtin", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/popd.md"}],
+      "notes": ["The page requires balanced same-process cleanup and distinguishes PowerShell's location stack.", "Windows runtime verification remains required."]
+    },
+    "title.md": {
+      "kind": "cmd-builtin", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/title.md"}],
+      "notes": ["The page treats the title as interactive UI state rather than automation state.", "Windows runtime verification remains required."]
+    },
+    "assoc.md": {
+      "kind": "cmd-builtin", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/assoc.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/windows/apps/develop/windows-integration/default-apps-platform", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The page distinguishes classic mappings from protected modern per-user defaults.", "Windows runtime verification remains required."]
+    },
+    "ftype.md": {
+      "kind": "cmd-builtin", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/ftype.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/windows/apps/develop/windows-integration/default-apps-platform", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackoverflow.com/questions/39027059/ftype-script-omitting-1-when-running", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The page emphasizes executable and filename-placeholder quoting plus modern default-app precedence.", "Windows runtime verification remains required."]
+    },
     "git.md": {
       "kind": "native-cli",
       "status": "reviewed",

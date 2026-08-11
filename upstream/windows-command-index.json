@@ -52,7 +52,8 @@
     {
       "name": "assoc",
       "source": "assoc.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/assoc.md"
     },
     {
       "name": "at",
@@ -527,7 +528,8 @@
     {
       "name": "for",
       "source": "for.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/for.md"
     },
     {
       "name": "forfiles",
@@ -557,7 +559,8 @@
     {
       "name": "ftype",
       "source": "ftype.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/ftype.md"
     },
     {
       "name": "fveupdate",
@@ -627,7 +630,8 @@
     {
       "name": "if",
       "source": "if.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/if.md"
     },
     {
       "name": "import (shadowdisk)",
@@ -938,7 +942,8 @@
     {
       "name": "path",
       "source": "path.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/path.md"
     },
     {
       "name": "pathping",
@@ -988,7 +993,8 @@
     {
       "name": "popd",
       "source": "popd.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/popd.md"
     },
     {
       "name": "powershell",
@@ -1049,7 +1055,8 @@
     {
       "name": "pushd",
       "source": "pushd.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/pushd.md"
     },
     {
       "name": "pushprinterconnections",
@@ -1532,7 +1539,8 @@
     {
       "name": "title",
       "source": "title.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/title.md"
     },
     {
       "name": "tlntadmn",
