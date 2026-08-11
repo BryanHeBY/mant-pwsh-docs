@@ -2,7 +2,7 @@
   "$schema": "release-manifest/v1",
   "release": "v1",
   "locale": "en-US",
-  "requiredDocumentCount": 375,
+  "requiredDocumentCount": 383,
   "sources": {
     "pwsh7": {
       "runtimePlatforms": [
@@ -157,6 +157,14 @@
         "lusrmgr.msc.md",
         "fsmgmt.msc.md",
         "regedit.exe.md",
+        "appwiz.cpl.md",
+        "ncpa.cpl.md",
+        "sysdm.cpl.md",
+        "inetcpl.cpl.md",
+        "mmsys.cpl.md",
+        "powercfg.cpl.md",
+        "firewall.cpl.md",
+        "intl.cpl.md",
         "compmgmt.msc.md",
         "devmgmt.msc.md",
         "diskmgmt.msc.md",

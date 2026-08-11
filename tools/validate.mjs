@@ -50,17 +50,25 @@ const windowsSpecialEntrypoints = new Map([
   ["mode", "mode.com.md"],
   ["more", "more.com.md"],
   ["tree", "tree.com.md"],
+  ["appwiz", "appwiz.cpl.md"],
   ["certlm", "certlm.msc.md"],
   ["certmgr", "certmgr.msc.md"],
   ["compmgmt", "compmgmt.msc.md"],
   ["devmgmt", "devmgmt.msc.md"],
   ["diskmgmt", "diskmgmt.msc.md"],
   ["eventvwr", "eventvwr.msc.md"],
+  ["firewall", "firewall.cpl.md"],
   ["fsmgmt", "fsmgmt.msc.md"],
   ["gpedit", "gpedit.msc.md"],
+  ["inetcpl", "inetcpl.cpl.md"],
+  ["intl", "intl.cpl.md"],
   ["lusrmgr", "lusrmgr.msc.md"],
+  ["mmsys", "mmsys.cpl.md"],
+  ["ncpa", "ncpa.cpl.md"],
+  ["powercfg", ["powercfg.exe.md", "powercfg.cpl.md"]],
   ["secpol", "secpol.msc.md"],
   ["services", "services.msc.md"],
+  ["sysdm", "sysdm.cpl.md"],
   ["taskschd", "taskschd.msc.md"],
   ["wf", "wf.msc.md"],
   ["prncnfg", "prncnfg.vbs.md"],
@@ -269,13 +277,16 @@ function validateRegisteredName(sourceName, filename, document, context) {
     return;
   }
   const registeredName = filename.slice(0, -3);
-  const suffix = registeredName.match(/^(.*)\.(?:exe|com|msc|vbs)$/iu);
+  const suffix = registeredName.match(/^(.*)\.(?:exe|com|msc|vbs|cpl)$/iu);
   const baseName = suffix?.[1] ?? registeredName;
+  const special = windowsSpecialEntrypoints.get(baseName);
   const expected = windowsTopicFamilies.has(baseName)
-    ? `${baseName}.md`
-    : windowsSpecialEntrypoints.get(baseName) ?? `${baseName}.exe.md`;
-  if (filename.toLocaleLowerCase("en-US") !== expected) {
-    reportError(`${context}: registered Windows entry point must be ${expected}.`);
+    ? [`${baseName}.md`]
+    : special === undefined
+      ? [`${baseName}.exe.md`]
+      : Array.isArray(special) ? special : [special];
+  if (!expected.includes(filename.toLocaleLowerCase("en-US"))) {
+    reportError(`${context}: registered Windows entry point must be one of ${expected.join(", ")}.`);
   }
 }
 

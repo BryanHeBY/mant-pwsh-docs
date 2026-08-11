@@ -163,6 +163,15 @@ Get-LocalUser -ErrorAction SilentlyContinue
 Get-SmbShare -ErrorAction SilentlyContinue
 Get-SmbSession -ErrorAction SilentlyContinue
 Get-SmbOpenFile -ErrorAction SilentlyContinue
+Get-Item "$env:SystemRoot\System32\appwiz.cpl", "$env:SystemRoot\System32\ncpa.cpl", "$env:SystemRoot\System32\sysdm.cpl", "$env:SystemRoot\System32\inetcpl.cpl"
+Get-Item "$env:SystemRoot\System32\mmsys.cpl", "$env:SystemRoot\System32\powercfg.cpl", "$env:SystemRoot\System32\firewall.cpl", "$env:SystemRoot\System32\intl.cpl"
+Get-NetAdapter -ErrorAction SilentlyContinue
+Get-NetIPConfiguration -ErrorAction SilentlyContinue
+netsh.exe winhttp show proxy
+Get-PnpDevice -Class AudioEndpoint -ErrorAction SilentlyContinue
+Get-Culture
+Get-WinSystemLocale -ErrorAction SilentlyContinue
+Get-WinUserLanguageList -ErrorAction SilentlyContinue
 Get-Command optionalfeatures.exe -All
 Get-Command msconfig.exe, SystemPropertiesAdvanced.exe, magnify.exe, narrator.exe, osk.exe -All
 Get-Item "$env:SystemRoot\System32\gpedit.msc" -ErrorAction SilentlyContinue

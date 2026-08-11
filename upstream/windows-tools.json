@@ -2062,6 +2062,216 @@
         "Windows runtime verification remains executable discovery or manual launch-and-close plus read-only registry queries; no registry state is changed for evidence."
       ]
     },
+    "appwiz.cpl.md": {
+      "kind": "windows-gui-entrypoint",
+      "status": "reviewed",
+      "versions": ["supported Windows releases; inventory, package types, Settings migration, and actions vary by build, scope, and installed products"],
+      "platforms": ["windows"],
+      "sources": [
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows/win32/shell/controlpanel-canonical-names",
+          "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"},
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows/win32/shell/executing-control-panel-items",
+          "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"},
+          "checkedAt": "2026-08-12"
+        }
+      ],
+      "notes": [
+        "The page separates the interactive registration view from complete software inventory and records exact package technology/identity/scope/dependencies/data/restart/rollback plus owning-manager automation and post-uninstall verification.",
+        "Windows runtime verification remains module discovery or manual launch-and-close plus read-only package inventory; no package is changed for evidence."
+      ]
+    },
+    "ncpa.cpl.md": {
+      "kind": "windows-gui-entrypoint",
+      "status": "reviewed",
+      "versions": ["supported Windows releases; connections, Net* cmdlets, drivers, virtual adapters, and actions vary by build and installed components"],
+      "platforms": ["windows"],
+      "sources": [
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/troubleshoot/windows-client/networking/disconnect-incoming-vpn-connection",
+          "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"},
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/powershell/module/netadapter/",
+          "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"},
+          "checkedAt": "2026-08-12"
+        }
+      ],
+      "notes": [
+        "The page records stable adapter/PnP identity, link/IP/DNS/route/profile/binding/VPN/virtual ownership, IPv4/IPv6/compartment, management-path recovery, typed cmdlet, and real-connectivity boundaries.",
+        "Windows runtime verification remains module discovery, manual launch-and-close, or read-only Net* inventory; no adapter or network state is changed for evidence."
+      ]
+    },
+    "sysdm.cpl.md": {
+      "kind": "windows-gui-entrypoint",
+      "status": "reviewed",
+      "versions": ["supported Windows releases; pages, Settings redirection, policy, and actions vary by build, edition, role, and components"],
+      "platforms": ["windows"],
+      "sources": [
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows/win32/shell/controlpanel-canonical-names",
+          "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"},
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows/win32/shell/executing-control-panel-items",
+          "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"},
+          "checkedAt": "2026-08-12"
+        }
+      ],
+      "notes": [
+        "The page treats each System Properties subsystem as a separate authority and records computer/domain, protection, profile, environment, performance, remote, startup/recovery, restart/token, and recovery boundaries without promising numeric tab selectors.",
+        "Windows runtime verification remains module discovery, manual launch-and-close, or read-only CIM inventory; no system setting is changed for evidence."
+      ]
+    },
+    "inetcpl.cpl.md": {
+      "kind": "windows-gui-entrypoint",
+      "status": "reviewed",
+      "versions": ["supported Windows releases where Internet Properties remains available; pages, policy, TLS, proxy, and consumers vary by build and runtime"],
+      "platforms": ["windows"],
+      "sources": [
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows/win32/shell/controlpanel-canonical-names",
+          "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"},
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows/win32/shell/executing-control-panel-items",
+          "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"},
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows/win32/wininet/about-wininet",
+          "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"},
+          "checkedAt": "2026-08-12"
+        }
+      ],
+      "notes": [
+        "The page separates WinINet/legacy Internet Options from WinHTTP, browser, service, PowerShell/.NET, and application-specific proxy/TLS/trust behavior and requires validation from the real consuming identity and API.",
+        "Windows runtime verification remains module discovery, manual launch-and-close, or read-only WinHTTP/consumer queries; no Internet Option is changed for evidence."
+      ]
+    },
+    "mmsys.cpl.md": {
+      "kind": "windows-gui-entrypoint",
+      "status": "reviewed",
+      "versions": ["supported Windows releases; endpoints, roles, Settings migration, drivers, privacy, and extensions vary by build and hardware"],
+      "platforms": ["windows"],
+      "sources": [
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows/win32/coreaudio/using-the-communication-device",
+          "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"},
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows/win32/shell/controlpanel-canonical-names",
+          "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"},
+          "checkedAt": "2026-08-12"
+        }
+      ],
+      "notes": [
+        "The page records endpoint/PnP identity, render/capture direction, console/multimedia/communications roles, format/mode/enhancements, application sessions, privacy, driver/hardware, and Core Audio automation boundaries.",
+        "Windows runtime verification remains module discovery, manual launch-and-close, or read-only PnP inventory; no audio setting is changed for evidence."
+      ]
+    },
+    "powercfg.cpl.md": {
+      "kind": "windows-gui-entrypoint",
+      "status": "reviewed",
+      "versions": ["supported Windows releases; plans, overlays, sleep states, UI, policy, and hardware behavior vary by device and build"],
+      "platforms": ["windows"],
+      "sources": [
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows/win32/shell/executing-control-panel-items",
+          "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"},
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows-hardware/design/device-experiences/powercfg-command-line-options",
+          "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"},
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows/win32/power/administrator-overrides",
+          "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"},
+          "checkedAt": "2026-08-12"
+        }
+      ],
+      "notes": [
+        "The page distinguishes powercfg.cpl from powercfg.exe and records scheme/subgroup/setting GUIDs, AC/DC units, overlays, policy, requests, sleep capability, hibernation, Modern Standby, hardware, and runtime verification boundaries.",
+        "Windows runtime verification remains module discovery, manual launch-and-close, or read-only powercfg queries; no power state or configuration is changed for evidence."
+      ]
+    },
+    "firewall.cpl.md": {
+      "kind": "windows-gui-entrypoint",
+      "status": "reviewed",
+      "versions": ["supported Windows releases; naming, policy ownership, profiles, rules, and UI vary by build and installed security products"],
+      "platforms": ["windows"],
+      "sources": [
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows/security/operating-system-security/network-security/windows-firewall/tools",
+          "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"},
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows/win32/shell/controlpanel-canonical-names",
+          "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"},
+          "checkedAt": "2026-08-12"
+        }
+      ],
+      "notes": [
+        "The page separates the basic applet from WFAS/NetSecurity and records effective store, complete rule/filter/flow identity, narrow diagnosis, policy override, reset/export, remote recovery, and real-traffic verification boundaries.",
+        "Windows runtime verification remains module discovery, manual launch-and-close, or read-only ActiveStore inventory; no firewall state is changed for evidence."
+      ]
+    },
+    "intl.cpl.md": {
+      "kind": "windows-gui-entrypoint",
+      "status": "reviewed",
+      "versions": ["supported Windows releases; Settings migration, languages, cmdlets, code pages, and scopes vary by build and installed capabilities"],
+      "platforms": ["windows"],
+      "sources": [
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows-hardware/manufacture/desktop/configure-international-settings-in-windows",
+          "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"},
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/powershell/module/international/",
+          "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"},
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows/win32/shell/controlpanel-canonical-names",
+          "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"},
+          "checkedAt": "2026-08-12"
+        }
+      ],
+      "notes": [
+        "The page separates user culture/format/region/language/input, system locale/code page, time zone, welcome/new-user defaults, and offline image scopes and records invariant-data, UTF-8 beta, policy, sign-in/restart, and supported-tool boundaries.",
+        "Windows runtime verification remains module discovery, manual launch-and-close, or read-only International cmdlet inventory; no locale/language setting is changed for evidence."
+      ]
+    },
     "compmgmt.msc.md": {
       "kind": "windows-gui-entrypoint",
       "status": "reviewed",

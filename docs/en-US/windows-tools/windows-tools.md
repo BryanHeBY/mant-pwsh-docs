@@ -215,6 +215,14 @@ license in the document's provenance catalog before adapting material.
 - [explorer.exe](explorer.exe.md): supported folder opening and interactive-shell limits.
 - [ms-settings](ms-settings.md): open documented Windows Settings URI pages.
 - [control.exe](control.exe.md): canonical Control Panel names and migration limits.
+- [appwiz.cpl](appwiz.cpl.md): classic Programs and Features entry distinct from complete package inventory and unattended deployment.
+- [ncpa.cpl](ncpa.cpl.md): Network Connections entry with stable adapter identity, complete network state, and remote-recovery boundaries.
+- [sysdm.cpl](sysdm.cpl.md): classic System Properties entry whose pages belong to separate configuration authorities.
+- [inetcpl.cpl](inetcpl.cpl.md): Internet Properties entry distinct from WinHTTP, browser, service, and runtime-specific network configuration.
+- [mmsys.cpl](mmsys.cpl.md): classic Sound entry with endpoint/PnP identity, audio roles, sessions, driver, and privacy boundaries.
+- [powercfg.cpl](powercfg.cpl.md): Power Options entry distinct from the parameterized `powercfg.exe` automation surface.
+- [firewall.cpl](firewall.cpl.md): basic firewall applet distinct from advanced WFAS rules, filters, stores, and effective policy.
+- [intl.cpl](intl.cpl.md): Region entry separating culture, locale, language, input, code-page, user/system, and offline-image scopes.
 - [mmc.exe](mmc.exe.md): saved consoles, author mode, snap-ins, and architecture.
 
 ## Windows registry and compatibility hosts
