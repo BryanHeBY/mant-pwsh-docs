@@ -394,7 +394,8 @@
     {
       "name": "diantz",
       "source": "diantz.md",
-      "status": "unclassified"
+      "status": "alias",
+      "target": "pwsh-cli/diantz.md"
     },
     {
       "name": "dir",
@@ -513,7 +514,8 @@
     {
       "name": "expand",
       "source": "expand.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/expand.md"
     },
     {
       "name": "expand vdisk",
@@ -593,7 +595,8 @@
     {
       "name": "format",
       "source": "format.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/format.md"
     },
     {
       "name": "freedisk",
@@ -807,7 +810,8 @@
     {
       "name": "makecab",
       "source": "makecab.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/makecab.md"
     },
     {
       "name": "manage bde",
@@ -1072,7 +1076,8 @@
     {
       "name": "pktmon",
       "source": "pktmon.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/pktmon.md"
     },
     {
       "name": "pnpunattend",
@@ -1213,7 +1218,8 @@
     {
       "name": "recover",
       "source": "recover.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/recover.md"
     },
     {
       "name": "recover disk group",
@@ -1684,7 +1690,8 @@
     {
       "name": "tpmtool",
       "source": "tpmtool.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/tpmtool.md"
     },
     {
       "name": "tpmvscmgr",

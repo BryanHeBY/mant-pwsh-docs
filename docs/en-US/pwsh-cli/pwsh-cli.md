@@ -137,6 +137,11 @@ license in the document's provenance catalog before adapting material.
 - [lodctr](lodctr.md): performance-counter provider registration inventory and backup before repair.
 - [unlodctr](unlodctr.md): exact provider unregistration only in a supported uninstall or repair workflow.
 
+## Windows packet and security diagnostics
+
+- [pktmon](pktmon.md): filtered, bounded packet counters/capture with component, privacy, lifecycle, and lossy-conversion boundaries.
+- [tpmtool](tpmtool.md): TPM information, protected log gathering, and bounded driver tracing without clear/provision confusion.
+
 ## Windows system diagnostics and maintenance
 
 - [perfmon](perfmon.md): explicit Performance, Resource, Reliability, and bounded System Diagnostics views.
@@ -287,6 +292,10 @@ license in the document's provenance catalog before adapting material.
 - [chkntfs](chkntfs.md): startup check scheduling and exclusion policy.
 - [defrag](defrag.md): media-aware optimization, retrim, tiers, and scope.
 - [compact](compact.md): NTFS, executable, and CompactOS compression boundaries.
+- [format](format.md): destructive filesystem creation gated by durable volume identity, restore, and media-aware sanitization limits.
+- [recover](recover.md): single-file readable-sector salvage on an imaged/clone copy, distinct from filesystem and disk recovery.
+- [makecab](makecab.md) / [diantz](diantz.md): explicit Cabinet builds, directive-file review, artifact verification, and searchable compatibility naming.
+- [expand](expand.md): list-first, isolated Cabinet extraction with path, collision, signature, and format boundaries.
 - [manage-bde](manage-bde.md): BitLocker state, protectors, escrow, and access.
 - [mountvol](mountvol.md): volume GUID, mount-point, automount, and ESP safety.
 - [diskpart](diskpart.md): focus-driven disk, partition, volume, and VHD safety.

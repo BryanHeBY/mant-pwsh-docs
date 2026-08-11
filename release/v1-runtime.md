@@ -160,6 +160,16 @@ Get-WindowsCapability -Online | Where-Object Name -Like 'WMIC*'
 mstsc.exe /?
 mstsc.exe /l
 sxstrace.exe -?
+Get-Command format.exe, recover.exe, pktmon.exe, tpmtool.exe, makecab.exe, diantz.exe, expand.exe -All -ErrorAction SilentlyContinue
+format.exe /?
+recover.exe /?
+pktmon.exe status
+pktmon.exe list --json
+pktmon.exe filter list
+tpmtool.exe getdeviceinformation
+makecab.exe /?
+diantz.exe /?
+expand.exe /?
 cmd.exe /d /c ver
 reg.exe query HKCU\Environment
 Get-Command explorer.exe, control.exe, mmc.exe, rundll32.exe -All
@@ -173,6 +183,14 @@ cmd.exe /d /c "assoc .txt & ftype txtfile"
 cmd.exe /d /c "dir /b /a:-d %SystemRoot%\System32\cmd.exe"
 cmd.exe /d /c "copy /? & del /? & rd /?"
 ```
+
+For this query-only evidence pass, do not format or dismount any volume; run
+`recover` on any file; add/remove Packet Monitor filters, capture packets,
+reset/unload Packet Monitor, or collect TPM logs/traces; and do not create or
+extract cabinets. Record absence and version-specific help differences rather
+than mutating a host to make an example pass. Any later fixture-based packet,
+TPM, Cabinet, format, or recovery test requires its separately approved
+isolated procedure and the cleanup/evidence gates in the corresponding page.
 
 Exercise directory creation, exact rename, move, and both `cd` spellings in a
 fresh temporary directory, then inspect before removing that directory:

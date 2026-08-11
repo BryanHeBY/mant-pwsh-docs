@@ -10,7 +10,7 @@ bundles.
 
 ### Added
 
-- First English release inventory: 235 reviewed ManT pages across `pwsh7`,
+- First English release inventory: 242 reviewed ManT pages across `pwsh7`,
   `pwsh51`, and `pwsh-cli`.
 - Broad `pwsh7` and `pwsh51` shell manuals, focused language/command pages,
   compatibility guides, and custom `irx` shorthand resolution guidance.
@@ -88,6 +88,11 @@ bundles.
   `wmic`, `mstsc`, and `sxstrace`, including high-frequency data-loss,
   privilege, credential, architecture, dialog, deprecation, and trace-lifecycle
   mistakes drawn from official documentation and community demand signals.
+- Windows filesystem formatting, single-file sector salvage, bounded packet
+  monitoring, TPM diagnosis, and Cabinet packaging/extraction guides for
+  `format`, `recover`, `pktmon`, `tpmtool`, `makecab`, `diantz`, and `expand`,
+  with list/query-first TLDRs and explicit identity, evidence, privacy,
+  lifecycle, alias, artifact, collision, and destructive-operation boundaries.
 - Windows adapter/DHCP/DNS inspection, bounded ICMP reachability, path tracing,
   path sampling, host identity, and direct DNS-query guides for `ipconfig`,
   `ping`, `tracert`, `pathping`, `hostname`, and `nslookup`.

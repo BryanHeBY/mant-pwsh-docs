@@ -874,6 +874,77 @@
       ],
       "notes": ["Official documentation defines trace/stop/parse syntax; the community source demonstrates high-volume but heterogeneous SxS failure demand. The TLDR enforces a new path, one reproduction, stop and copied parse; the page covers leaked/global sessions, stale evidence, wrong context, random runtime/DLL repair, debug CRT/component-store and trace disclosure risks.", "Windows runtime verification remains help-only unless an approved disposable failing application and protected fixture paths exist; every capture must stop in cleanup and preserve the ETL before parse."]
     },
+    "format.md": {
+      "kind": "destructive-native-cli", "status": "reviewed",
+      "versions": ["supported Windows client and server releases; filesystems, options, defaults and Recovery Environment syntax vary by build and storage stack"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/format.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/previous-versions/troubleshoot/windows-server/format-command-not-write-zeros-to-disk", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=1596556&service=superuser&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official documentation establishes destructive syntax, filesystem options, /Q versus /P behavior, dismount consequences and exit codes; the community source records recurring full-versus-quick bad-sector confusion. The TLDR starts with help and durable volume/disk identity before one unmistakable placeholder operation; the page covers sanitization limits, storage health, workload handles, advanced features and backup/restore.", "Windows runtime verification is help and query-only; no format, dismount, overwrite, label, filesystem, allocation-unit or media mutation is permitted merely for evidence."]
+    },
+    "recover.md": {
+      "kind": "destructive-native-cli", "status": "reviewed",
+      "versions": ["supported Windows client and server releases; usefulness and risk depend on filesystem, storage failure mode and recovery workflow"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/recover.md"}
+      ],
+      "notes": ["Official documentation establishes the one-file/no-wildcard syntax and explicit loss of data in bad sectors. The TLDR requires an image or clone, exact-file metadata/hashes and a disposable copy; the page distinguishes this utility from DiskPart recover, WinFR, CHKDSK, undelete and hardware repair.", "Windows runtime verification remains help-only; no production, failing, unique, evidentiary or user-data file may be read or changed merely for evidence."]
+    },
+    "pktmon.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["supported Windows client and server releases where Packet Monitor is included; subcommands, options, component topology and conversion support vary by build"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/pktmon.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/pktmon-list.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/pktmon-filter-add.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/pktmon-start.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/pktmon-counters.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/pktmon-etl2pcap.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/networking/technologies/pktmon/pktmon-syntax.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=1048026&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official documentation defines filters, their nondirectional endpoint matching, 32-filter limit, component inventory, counters, bounded logging modes and lossy PCAPNG conversion; the community source records real version-dependent subcommand confusion. The TLDR is status/list/filter/counter-first and the page specifies filter-before-capture, minimum payload, bounded circular storage, stop cleanup, shared-session coordination, duplicate stack snapshots and evidence protection.", "Windows runtime verification remains status/list/filter-list/counter-query and help-only unless an approved isolated traffic fixture exists; no reset, unload, filter mutation, packet/ETW capture or sensitive conversion is permitted merely for evidence."]
+    },
+    "tpmtool.md": {
+      "kind": "security-diagnostic-cli", "status": "reviewed",
+      "versions": ["supported Windows client and server releases where TPMTool is included; output depends on build, firmware, physical or virtual TPM, boot mode and policy"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/tpmtool.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/windows/win32/secprov/win32-tpm-isreadyinformation", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official sources establish the diagnostic-only surface, possible gathered artifacts, fixed trace filename and readiness bit contract. The TLDR starts with device information/help, requires a protected new directory, and pairs trace start/stop; the page prevents clear/provision confusion and covers evidence sensitivity, current-directory, stale-state, virtual TPM, recovery-key and pre-remediation collection boundaries.", "Windows runtime verification remains help and getdeviceinformation only; no log collection, driver trace, TPM clear/provision/ownership, firmware, BitLocker, Windows Hello or reboot mutation is permitted merely for evidence."]
+    },
+    "makecab.md": {
+      "kind": "native-packaging-cli", "status": "reviewed",
+      "versions": ["supported Windows client and server releases; advanced layout depends on Cabinet directive variables and consumer requirements"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/makecab.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/windows/win32/devnotes/cabinet-api-functions", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=15843347&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=25662399&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official documentation establishes single-source and directive-file modes plus exact equivalence with Diantz; community sources provide high-demand evidence for multi-file and output-template confusion. The TLDR uses explicit source/destination/output and list verification; the page treats DDF as build code and covers implicit names, paths, collisions, non-append behavior, signatures and reproducible artifact review.", "Windows runtime verification remains help-only unless an approved disposable build fixture exists; no production package, update, driver, installer or signed artifact may be created, replaced or installed merely for evidence."]
+    },
+    "diantz.md": {
+      "kind": "native-cli-alias", "status": "reviewed",
+      "versions": ["supported Windows client and server releases where the compatibility executable remains present; discover path and file version on target"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/diantz.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/makecab.md"}
+      ],
+      "notes": ["Microsoft explicitly documents Diantz as performing the same actions as updated MakeCab. The searchable alias page redirects new automation to makecab.exe and highlights filename-only allowlist/telemetry gaps while preserving target-host availability checks.", "Windows runtime verification remains resolution and help-only; no cabinet creation or artifact mutation is permitted merely for evidence."]
+    },
+    "expand.md": {
+      "kind": "native-extraction-cli", "status": "reviewed",
+      "versions": ["supported Windows client and server releases; Windows Recovery Environment has different parameters"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/expand.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=24034003&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official documentation establishes list-only -D, selected extraction, rename and ignore-directory options plus WinRE differences; the community source records CAB rebuild/layout/signature confusion. The TLDR is help/list/list-filter/exact-extract into a new isolated directory; the page covers wildcards, collisions, untrusted content, ZIP confusion, repackaging signatures and filesystem-result verification.", "Windows runtime verification remains help and list-only against a reviewed inert fixture; no extraction over existing, system or application paths and no execution, rebuild, installation or servicing is permitted merely for evidence."]
+    },
     "cmd.md": {
       "kind": "windows-shell",
       "status": "reviewed",
