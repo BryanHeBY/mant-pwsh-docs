@@ -31,6 +31,35 @@ run one complete command, execute a script with `-f`, enter an interactive
 context, or target some remote operations. Microsoft recommends PowerShell
 networking cmdlets instead when an equivalent supported interface exists.
 
+## Shell options
+
+<!-- mant:entries role=option case=insensitive -->
+- `-a FILE`: Run commands from an alias file and return to the Netsh shell afterward.
+- `-c CONTEXT`: Enter one installed helper context before executing the remaining command.
+- `-r COMPUTER`: Target a remote computer for contexts that implement remote operation.
+- `-u DOMAIN\USER`: Select credentials for a supported remote operation.
+- `-p PASSWORD`: Supply a remote password; use `*` for an interactive prompt instead of an inline secret.
+- `-f FILE`: Execute a reviewed Netsh script file.
+
+## Resolvable contexts
+
+<!-- mant:entries role=command case=insensitive -->
+- `interface`: Inspect or manage IPv4/IPv6 interfaces, addresses, DNS, TCP/UDP, tunnels, and port proxy.
+- `wlan`: Inspect or manage Wi-Fi interfaces, networks, profiles, filters, reports, and tracing.
+- `winsock`: Inspect or reset provider catalogs and related Winsock settings.
+- `advfirewall`: Inspect or manage Windows Defender Firewall policy where this context is installed.
+- `winhttp`: Inspect or manage WinHTTP proxy state, distinct from browser/user proxy state.
+- `http`: Inspect or manage HTTP Service configuration according to installed context help.
+- `trace`, `wfp`: Capture network tracing or inspect Windows Filtering Platform diagnostics with protected output handling.
+- `dump`: Emit script-like configuration for contexts that implement it; read-only output can still contain sensitive topology.
+- `help`: Display top-level or context-specific installed help.
+
+## PowerShell boundaries
+
+Call `netsh.exe` explicitly and place the full context path in one invocation.
+Interactive prompt text is not executable syntax. Prefer typed NetTCPIP,
+NetAdapter, NetSecurity, or DnsClient cmdlets when they cover the operation.
+
 ## Common mistakes
 
 ### Copying an interactive prompt line into PowerShell

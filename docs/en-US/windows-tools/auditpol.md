@@ -31,6 +31,29 @@ delegation security descriptors, and version-limited global resource SACLs.
 `/r` requests report output suitable for preserving or processing rather than
 the default display table.
 
+## Operations and selectors
+
+<!-- mant:entries role=option case=insensitive -->
+- `/get`: Display effective system or per-user audit policy for an exact category/subcategory selection.
+- `/set`: Change success/failure audit settings for an exact system or per-user selection.
+- `/list`: List selectable audit categories, subcategories, users, or options.
+- `/backup`: Save current system audit policy to an explicit file for evidence and rollback planning.
+- `/restore`: Replace policy from a backup file; compare authority and effective state afterward.
+- `/clear`: Remove system audit policy settings and potentially disable required coverage.
+- `/remove`: Remove per-user audit policy for an exact user or all users according to the full command.
+- `/resourceSACL`: Configure version-limited global resource SACL policy.
+- `/category:VALUE`, `/subcategory:VALUE`: Select exact categories/subcategories by name, wildcard, or stable GUID as documented.
+- `/user:VALUE`: Select one per-user policy identity; resolve the account/SID before change.
+- `/success:VALUE`, `/failure:VALUE`: Enable, disable, or leave audit outcome settings according to the selected operation.
+- `/file:FILE`: Select an explicit backup or restore file.
+- `/r`: Request report-friendly output; headers and names can still be localized.
+
+## PowerShell boundaries
+
+Call `auditpol.exe` explicitly and pass a brace-wrapped GUID as one quoted
+argument. Output is native text/CSV rather than typed policy objects; preserve
+the raw report and check `$LASTEXITCODE` immediately.
+
 ## Common mistakes
 
 ### Passing an unquoted GUID through PowerShell

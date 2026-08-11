@@ -41,6 +41,41 @@ and provides no live-site compatibility guarantee. Use it for bounded
 interactive administration and diagnosis; prefer supported PowerShell/.NET or
 Windows certificate APIs when software needs structured, stable behavior.
 
+## Common verbs
+
+<!-- mant:entries role=option case=insensitive -->
+- `-dump`: Parse and display a certificate, request, CRL, or supported ASN.1 file without establishing trust.
+- `-hashfile`: Calculate a selected file hash for interactive diagnostics; prefer `Get-FileHash` for typed automation.
+- `-encode`, `-decode`: Convert between binary and Base64 representation without validating trust or content safety.
+- `-encodehex`, `-decodehex`: Convert supported binary/hexadecimal forms according to installed help.
+- `-enumstore`: Enumerate logical certificate stores in the selected machine/user/service/policy scope.
+- `-store`: Inspect certificates in one exact logical store and selected scope.
+- `-verify`: Build and verify a certificate chain under current time, trust, policy, cache, and revocation conditions.
+- `-verifyCTL`: Verify a certificate trust list under the selected policy.
+- `-URL`: Open the URL retrieval/verification UI for a certificate or CRL in an interactive session.
+- `-URLCache`: Inspect or change URL cache entries; deletion changes diagnostic state.
+- `-csplist`: Enumerate cryptographic providers visible on the host.
+- `-key`: Inspect key containers for a selected provider/context; output is sensitive security metadata.
+- `-addstore`, `-delstore`: Add or remove an exact certificate in an exact store and scope.
+- `-importPFX`: Import a PFX and private-key material using a protected credential workflow.
+- `-repairstore`: Repair an existing certificate-to-key association or properties; it cannot recover a missing key.
+- `-setreg`, `-delreg`: Change AD CS/cryptographic registry state only through an approved product runbook.
+- `-backup`, `-restore`: Back up or restore AD CS state with protected key material and tested recovery procedures.
+
+## Scope and behavior options
+
+<!-- mant:entries role=option case=insensitive -->
+- `-user`: Select the current process user's certificate/key context instead of the default machine context.
+- `-enterprise`: Select enterprise registry/store behavior for a supported verb.
+- `-GroupPolicy`: Select Group Policy certificate stores where the verb supports them.
+- `-service`: Select a named service certificate store/context.
+- `-config CA`: Select an exact certification-authority configuration for AD CS operations.
+- `-urlfetch`: Permit chain verification to retrieve AIA certificates and CRLs from network locations.
+- `-v`: Request verbose diagnostics that can reveal security metadata.
+- `-p PASSWORD`: Supply a password to a supported verb; avoid exposing secrets on the command line.
+- `-f`: Force a supported operation; it does not make the target, certificate, or trust change safe.
+- `-silent`: Suppress supported UI prompts; unattended failure handling still requires explicit checks.
+
 ## Useful read-only operations
 
 | Goal | Command shape | Important boundary |

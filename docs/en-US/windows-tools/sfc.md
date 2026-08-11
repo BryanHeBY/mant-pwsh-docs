@@ -30,6 +30,23 @@ for scan operations, replaces incorrect versions when possible. `/verifyonly`
 and `/verifyfile=` do not repair; `/scannow` and `/scanfile=` attempt repair.
 Offline operation requires both the boot directory and Windows directory.
 
+## Operations and offline options
+
+<!-- mant:entries role=option case=insensitive -->
+- `/scannow`: Verify all protected system files and repair incorrect versions when possible.
+- `/verifyonly`: Verify all protected files without attempting repair.
+- `/scanfile`: Written `/scanfile=FULL-PATH`, verify and repair one exact protected file.
+- `/verifyfile`: Written `/verifyfile=FULL-PATH`, verify one exact protected file without repair.
+- `/offbootdir`: Written `/offbootdir=PATH`, select the offline boot directory for an offline operation.
+- `/offwindir`: Written `/offwindir=PATH`, select the offline Windows directory; do not infer its drive letter from the running environment.
+- `/offlogfile`: Written `/offlogfile=FILE`, write offline servicing log output to an explicit file.
+
+## PowerShell boundaries
+
+Call `sfc.exe` explicitly and preserve each equals-bearing option as one native
+argument. Capture output and `$LASTEXITCODE`, then correlate CBS/SFC logs and
+the original symptom instead of parsing one localized final sentence.
+
 ## Common mistakes
 
 ### Omitting the slash or equals sign

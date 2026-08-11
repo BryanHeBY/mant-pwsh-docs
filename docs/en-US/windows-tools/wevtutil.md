@@ -43,6 +43,39 @@ uninstalls event manifests, changes channel configuration, and clears logs. The
 last four categories can alter evidence, collection, provider registration,
 retention, access, and system behavior. The TLDR is query/export-only.
 
+## Commands
+
+<!-- mant:entries role=command case=insensitive -->
+- `el`, `enum-logs`: Enumerate event-log channel names visible to the caller.
+- `gl`, `get-log`: Retrieve configuration and status for one exact channel.
+- `sl`, `set-log`: Change one channel's enablement, retention, size, file, isolation, or access settings.
+- `ep`, `enum-publishers`: Enumerate registered event publishers.
+- `gp`, `get-publisher`: Retrieve one publisher's metadata and resources.
+- `im`, `install-manifest`: Register channels and publishers from a reviewed product manifest.
+- `um`, `uninstall-manifest`: Unregister a reviewed manifest and its provider/channel definitions.
+- `qe`, `query-events`: Query bounded events from a channel, log file, or structured query.
+- `gli`, `get-log-info`: Retrieve status information for a channel or log file.
+- `epl`, `export-log`: Export a channel or filtered events to a new EVTX file.
+- `al`, `archive-log`: Archive a log with locale resources, protecting the output path from replacement and reparse attacks.
+- `cl`, `clear-log`: Clear one live channel, optionally requesting a backup; this destroys live evidence.
+
+## Common query and export options
+
+<!-- mant:entries role=option case=insensitive -->
+- `/q:QUERY`: Apply an Event Log XPath or structured-query expression as one quoted argument.
+- `/c:COUNT`: Limit the maximum number of returned events.
+- `/rd:VALUE`: Select reverse direction when true so newest matching events are returned first.
+- `/f:FORMAT`: Select text, XML, or rendered XML according to the command's supported formats.
+- `/e:ELEMENT`: Wrap XML results in one root element so the output can form a complete XML document.
+- `/lf:VALUE`: Treat the path as a log file rather than a live channel when true.
+- `/sq:VALUE`: Treat the input as a structured query file where supported.
+- `/ow:VALUE`: Allow or refuse overwriting an export/archive output; default to a new evidence path.
+- `/r:COMPUTER`: Target a remote computer for commands that support remoting.
+- `/u:USER`, `/p:PASSWORD`: Select remote credentials; use approved secret handling instead of an inline password.
+- `/a:AUTH`: Select the supported remote authentication type.
+- `/uni:VALUE`: Request Unicode output for a supported remote operation.
+- `/bu:FILE`: Back up a log before a clear operation; verify the artifact independently before approved clearing.
+
 ## Safe evidence workflow
 
 1. Record host, build, time/timezone/clock source, caller/token, channel name,

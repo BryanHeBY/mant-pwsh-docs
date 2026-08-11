@@ -31,6 +31,39 @@ target selection such as `/Online` or `/Image:path` combines with a servicing
 family such as `/Cleanup-Image`, `/Get-Features`, `/Get-Packages`,
 `/Get-Capabilities`, `/Add-Driver`, or image-management operations.
 
+## Targets and operations
+
+<!-- mant:entries role=option case=insensitive -->
+- `/Online`: Target the currently running Windows installation.
+- `/Image:PATH`: Target an offline Windows directory, not a WIM container path.
+- `/ImageFile:FILE`: Select a WIM, ESD, or FFU container for image-management operations.
+- `/Index:NUMBER`, `/Name:NAME`: Select one image in a multi-image container.
+- `/Get-ImageInfo`: Enumerate images in a container or inspect one selected image.
+- `/Mount-Image`: Mount one selected image at an explicit empty directory for servicing.
+- `/Unmount-Image`: Unmount a mounted image with an explicit commit or discard decision.
+- `/Commit-Image`: Save changes to a mounted image while leaving it mounted.
+- `/Cleanup-Mountpoints`: Remove resources associated with corrupted mounts; it is not a general image repair command.
+- `/Cleanup-Image`: Select component-store health, cleanup, or repair operations for the target image.
+- `/CheckHealth`: Report whether corruption was already detected without scanning or repairing.
+- `/ScanHealth`: Scan component-store health without repairing; it can take substantially longer than `CheckHealth`.
+- `/RestoreHealth`: Scan and repair component-store corruption using configured or explicit sources.
+- `/Source:PATH`: Specify one or more known-compatible repair sources for a supported servicing operation.
+- `/LimitAccess`: Prevent DISM from contacting Windows Update as a repair source or backup source.
+- `/Get-Features`, `/Enable-Feature`, `/Disable-Feature`: Inventory or change optional Windows features by exact feature name.
+- `/Get-Capabilities`, `/Add-Capability`, `/Remove-Capability`: Inventory or change Windows capabilities by exact identity.
+- `/Get-Packages`, `/Add-Package`, `/Remove-Package`: Inventory or service packages using exact package/path and target compatibility.
+- `/Get-Drivers`, `/Add-Driver`, `/Remove-Driver`: Inventory or service offline driver packages; use PnPUtil for running-system device/Driver Store workflows.
+- `/Format:FORMAT`: Select supported table or list display for operations that expose this option.
+- `/LogPath:FILE`: Write the DISM log to an explicit path with adequate space and protected access.
+- `/ScratchDir:PATH`: Select a scratch directory with sufficient local space for the operation.
+- `/NoRestart`: Suppress an automatic restart where supported; it does not remove pending-restart requirements.
+
+## PowerShell boundaries
+
+Call `dism.exe` explicitly, pass colon-bearing options as single arguments,
+and capture `$LASTEXITCODE` plus the DISM/CBS logs. Display tables are not a
+stable object API, and completion can still leave a pending restart.
+
 ## Common mistakes
 
 ### Servicing the wrong image

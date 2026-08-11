@@ -29,6 +29,35 @@ robocopy <source> <destination> [<file> [...]] [<options>]
 copy jobs. It is a native program: it reports its own multi-valued exit codes,
 not normal PowerShell error records.
 
+## Important options
+
+<!-- mant:entries role=option case=insensitive -->
+- `/L`: List the proposed operation without copying, deleting, or changing file attributes.
+- `/E`: Copy subdirectories including empty ones.
+- `/S`: Copy nonempty subdirectories and omit empty ones.
+- `/LEV:N`: Limit recursion to `N` levels below the source root.
+- `/MIR`: Mirror the directory tree, equivalent to `/E` plus purge behavior; destination-only content can be deleted.
+- `/PURGE`: Delete destination files and directories that no longer exist in the source.
+- `/MOV`, `/MOVE`: Move files, or files plus directories, by deleting source items after successful copy.
+- `/COPY:FLAGS`: Select file data, attributes, timestamps, ACL, owner, and audit fields to copy.
+- `/DCOPY:FLAGS`: Select directory data, attributes, timestamps, extended attributes, or skip-alt-stream behavior supported by the installed build.
+- `/SEC`, `/COPYALL`: Copy security or all file metadata; verify privileges, ownership, and destination policy.
+- `/SECFIX`, `/TIMFIX`: Correct security or timestamps on selected destination files, including skipped files.
+- `/Z`, `/B`, `/ZB`: Select restartable, backup, or restartable-then-backup copy mode with different privilege and performance boundaries.
+- `/J`: Use unbuffered I/O, commonly useful for large files.
+- `/MT:N`: Use multithreaded copy with the selected thread count; observe server, network, and storage load.
+- `/R:N`, `/W:N`: Set retry count and wait time explicitly instead of accepting unexpectedly long defaults.
+- `/TBD`: Wait for a network share name to become available after system error 67.
+- `/IPG:N`: Add an inter-packet gap to reduce network pressure on slower links.
+- `/XJ`, `/XJD`, `/XJF`: Exclude junction/reparse traversal broadly, for directories, or for files as supported.
+- `/XF FILE`, `/XD DIRECTORY`: Exclude matching files or directories; verify wildcard and path matching with `/L`.
+- `/MAXAGE:N`, `/MINAGE:N`: Bound files by age/date according to Robocopy's documented value grammar.
+- `/FFT`: Use two-second timestamp granularity for cross-filesystem comparisons.
+- `/DST`: Compensate for one-hour daylight-saving timestamp differences.
+- `/LOG:FILE`, `/UNILOG:FILE`: Write a normal or Unicode log to an explicit protected path.
+- `/TEE`: Write status to both the console and the selected log.
+- `/NJH`, `/NJS`, `/NP`: Suppress job header, job summary, or progress percentages; keep enough evidence for diagnosis.
+
 ## Start with a bounded preview
 
 Specify a source and a narrowly scoped destination. Use `/L` to list what a
@@ -75,7 +104,7 @@ to the mirror operation.
 Another native executable overwrites `$LASTEXITCODE`. Save or test Robocopy's
 code immediately after it exits.
 
-## Exit codes and PowerShell
+## PowerShell boundaries
 
 Robocopy uses bitmapped/graded exit codes. Values below `8` can mean files were
 copied, skipped, or had nonfatal differences; `8` and higher indicate at least
@@ -89,6 +118,12 @@ if ($LASTEXITCODE -ge 8) {
 ```
 
 Do not use `$?` alone for Robocopy success criteria.
+
+## Version and availability
+
+Robocopy is Windows-only. Options and metadata behavior vary by Windows build,
+source/destination filesystem, SMB/server capabilities, privileges, reparse
+points, and installed tool version. Query `robocopy /?` on the target.
 
 ## Related documents
 

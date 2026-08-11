@@ -32,6 +32,38 @@ include `/enum-drivers`, `/add-driver`, `/delete-driver`, `/export-driver`,
 `/remove-device`, `/scan-devices`, and `/enum-interfaces`; availability varies
 by Windows release.
 
+## Operations and filters
+
+<!-- mant:entries role=option case=insensitive -->
+- `/enum-drivers`: Enumerate third-party Driver Store packages and their published names.
+- `/add-driver INF`: Add one INF or a reviewed wildcard set to the Driver Store.
+- `/delete-driver OEM-INF`: Delete one exact published package such as `oem42.inf`.
+- `/export-driver OEM-INF PATH`: Export one or all third-party packages to an explicit destination.
+- `/enum-devices`: Enumerate devices with supported class, instance, problem, connection, bus, or other filters.
+- `/enum-interfaces`: Enumerate device interfaces and associated device-instance identities.
+- `/disable-device`, `/enable-device`, `/restart-device`, `/remove-device`: Change one exactly selected device instance or supported filtered set.
+- `/scan-devices`: Request a Plug and Play hardware rescan.
+- `/enum-classes`, `/enum-containers`: Enumerate installed device setup classes or device containers where supported.
+- `/subdirs`: Include INF files in subdirectories during a reviewed add-driver operation.
+- `/install`: With add-driver, install/update matching devices only when normal driver ranking selects the package.
+- `/uninstall`: With delete-driver, uninstall the package from devices using it before package deletion.
+- `/force`: Override selected delete protections; this increases device and recovery risk.
+- `/reboot`: Reboot if needed to complete a supported operation; do not use without restart coordination.
+- `/files`: Include package files in supported driver enumeration output.
+- `/instanceid ID`: Select one exact Plug and Play device instance.
+- `/class NAME`, `/class GUID`: Restrict supported device operations to a setup class.
+- `/problem`, `/problem CODE`: Restrict enumeration to devices with any or one exact problem code.
+- `/connected`, `/disconnected`: Restrict device enumeration by current connection state.
+- `/drivers`: Include matching/installed driver information for enumerated devices.
+- `/bus NAME`, `/bus GUID`: Restrict supported enumeration or operation to a bus identity.
+- `/enabled`, `/disabled`: Restrict interface enumeration by current enabled state.
+
+## PowerShell boundaries
+
+Call `pnputil.exe` explicitly and pass native path strings rather than
+`FileInfo` objects. Output is versioned text, so preserve the raw inventory,
+check `$LASTEXITCODE`, and re-query exact package/device identity after change.
+
 ## Common mistakes
 
 ### Confusing source INF and published Driver Store name

@@ -55,6 +55,25 @@ Use the installed `chkdsk /?` because filesystem and recovery-environment
 support can differ. A drive letter redirected to a network share is not a
 supported local target.
 
+## Resolvable options
+
+<!-- mant:entries role=option case=insensitive -->
+- `/scan`: Run an online NTFS scan; combine with deliberate performance and offline-fix policy.
+- `/forceofflinefix`: With `/scan`, queue detected NTFS repairs for offline processing instead of fixing online.
+- `/spotfix`: Perform a short offline NTFS repair of previously recorded defects.
+- `/offlinescanandfix`: Run an offline scan and repair on the selected volume.
+- `/f`: Repair logical filesystem errors and obtain or schedule exclusive access.
+- `/r`: Locate bad sectors and recover readable data in addition to `/f`; this performs much more I/O.
+- `/b`: On NTFS, clear the bad-cluster list and rescan all clusters; intended for specific post-imaging workflows.
+- `/x`: Force dismount before checking and imply `/f`; open handles become invalid.
+- `/i`: On NTFS, perform a less vigorous index-entry check.
+- `/c`: On NTFS, skip cycle checking within folder structures.
+- `/l:SIZE`: Change the NTFS log-file size, or display current size when no value is supplied.
+- `/perf`: With `/scan`, use more system resources to finish faster and potentially impact workloads.
+- `/sdcleanup`: Garbage-collect unneeded NTFS security descriptor data and imply `/f`.
+- `/freeorphanedchains`: On FAT/FAT32/exFAT, free orphaned chains instead of recovering their contents.
+- `/markclean`: On FAT/FAT32/exFAT, mark a volume clean if no corruption is detected, even without `/f`.
+
 ## Exit codes
 
 CHKDSK uses result codes, not a simple zero/nonzero success contract:
