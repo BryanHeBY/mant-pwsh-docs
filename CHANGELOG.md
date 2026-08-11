@@ -10,7 +10,7 @@ bundles.
 
 ### Added
 
-- First English release inventory: 278 reviewed ManT pages across `pwsh7`,
+- First English release inventory: 282 reviewed ManT pages across `pwsh7`,
   `pwsh51`, and `pwsh-cli`.
 - Broad `pwsh7` and `pwsh51` shell manuals, focused language/command pages,
   compatibility guides, and custom `irx` shorthand resolution guidance.
@@ -137,6 +137,11 @@ bundles.
   `dcdiag`, `repadmin`, `nltest`, and `netdom`, with single-target read-only
   TLDRs and explicit event-history, scope-expansion, replication-trigger,
   credential, rename, reset, and trust-direction boundaries.
+- Active Directory schema/forest/domain preparation, legacy DC promotion and
+  demotion migration, default-GPO disaster recovery, and post-domain-rename GPO
+  rewrite guides for `adprep`, `dcpromo`, `dcgpofix`, and `gpfixup`, with
+  inventory/backup-only TLDRs and explicit media, FSMO, convergence, secret,
+  replication, rollback, and workload-compatibility gates.
 - Stored credential target, scoped Group Policy refresh, and security-template
   validation/export/analysis guides for `cmdkey`, `gpupdate`, and `secedit`.
 - Windows DACL/inheritance, ownership recovery, and EFS encryption/recovery

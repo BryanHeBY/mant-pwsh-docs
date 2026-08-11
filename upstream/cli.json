@@ -2061,6 +2061,54 @@
       ],
       "notes": ["Current Microsoft documentation separates query/verify from membership, naming, member reset, DC password reset, trust and reboot-capable families; repair demand shows how easily secure-channel tools are conflated. The TLDR contains exact-domain query and exact-member verify only and the page defines role, direction, credential and reboot boundaries.", "Windows runtime verification remains help, exact-domain DC/FSMO/trust query and explicitly approved member verify only; no account, join/move/remove, rename/name, reset/password, trust-change, inline-secret or reboot operation is permitted merely for evidence."]
     },
+    "adprep.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["target Windows Server installation-media version and the existing forest/domain schema state; exact operations, versions and exit behavior vary by release"], "platforms": ["windows"],
+      "sources": [
+        {"type": "web", "url": "https://learn.microsoft.com/windows-server/administration/windows-commands/adprep", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/windows-server/identity/ad-ds/deploy/troubleshooting-domain-controller-deployment", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=1090562&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Microsoft defines installation-media provenance, forest/domain/GPO/RODC preparation scope, FSMO/privilege requirements, ordering, logs and expanded exit codes; practitioner failure reports reinforce that FSMO reachability and logs must be diagnosed rather than bypassed. Because every preparation mode mutates AD, the TLDR performs binary/signature, FSMO and schema inventory only.", "Windows runtime verification remains approved-media binary/signature and read-only FSMO/schema inventory only; no forest, domain, GPO or RODC preparation, silent execution, schema/role bypass or retry is permitted merely for evidence."]
+    },
+    "dcpromo.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["legacy Dcpromo behavior varies by Windows Server release; supported modern deployments use the target release's ADDSDeployment module and Server Manager"], "platforms": ["windows"],
+      "sources": [
+        {"type": "web", "url": "https://learn.microsoft.com/windows-server/administration/windows-commands/dcpromo", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-forest--level-200-", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/windows-server/identity/ad-ds/deploy/troubleshooting-domain-controller-deployment", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/powershell/module/addsdeployment/install-addsforest?view=windowsserver2025-ps", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=758812&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The current command reference preserves legacy promotion/demotion/RODC/IFM syntax, while Microsoft deployment guidance explicitly deprecates Dcpromo automation for ADDSDeployment and documents stronger prerequisite checks. Official examples also demonstrate why secret-bearing historical commands must not be copied. Community failures reinforce replication/schema precheck and orphan-state boundaries. The TLDR is discovery/inventory only.", "Windows runtime verification remains legacy help, modern module/cmdlet discovery, existing-DC inventory and exact-partner health queries only; no promotion, demotion, forced removal, role binary, RODC, IFM, answer-file, credential or reboot operation is permitted merely for evidence."]
+    },
+    "dcgpofix.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["supported Windows Server releases with AD DS and Group Policy Management; recreated defaults and schema compatibility vary by Server/tool generation"], "platforms": ["windows"],
+      "sources": [
+        {"type": "web", "url": "https://learn.microsoft.com/windows-server/administration/windows-commands/dcgpofix", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/troubleshoot/windows-server/group-policy/dcgpofix-not-restore-default-domain-controller-policy-security-settings", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/windows-server/identity/ad-ds/manage/group-policy/group-policy-backup-restore", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/powershell/module/grouppolicy/get-gpo?view=windowsserver2025-ps", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/powershell/module/grouppolicy/get-gporeport?view=windowsserver2025-ps", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/powershell/module/grouppolicy/backup-gpo?view=windowsserver2025-ps", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=1114901&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Microsoft restricts DcgpoFix to disaster recovery, prefers GPMC backup/restore and explicitly documents that recreated Default Domain Controllers Policy security differs from original promotion state. Practitioner demand shows administrators consider it for cleanup/security-baseline tasks that it cannot safely perform. The TLDR is help, GUID-bound inventory/report and protected backup only.", "Windows runtime verification remains help and exact default-GPO inventory/report only; a separately approved protected path is required even for backup. No GPO recreation, both-target action, schema bypass, restore, link or replication change is permitted merely for evidence."]
+    },
+    "gpfixup.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["Windows Server AD DS domain-rename environments with Group Policy Management; workload/domain-rename support and behavior vary by release"], "platforms": ["windows"],
+      "sources": [
+        {"type": "web", "url": "https://learn.microsoft.com/windows-server/administration/windows-commands/gpfixup", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/powershell/module/activedirectory/get-addomain?view=windowsserver2025-ps", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/powershell/module/grouppolicy/get-gpo?view=windowsserver2025-ps", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/powershell/module/grouppolicy/backup-gpo?view=windowsserver2025-ps", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=1070462&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Microsoft defines paired old/new DNS/NetBIOS mappings, writable-DC targeting, software-installation-only mutation and credential behavior; community failures demonstrate that successful Gpfixup output does not prove DNS, SPN, RDP, SYSVOL, replication or client health after rename. The TLDR performs help, exact-domain identity/GPO inventory and protected backup only.", "Windows runtime verification remains help and explicitly approved read-only domain/GPO inventory only; backup requires a protected path and no GPO/link/SYSVOL/software reference, credential, DC selection, or domain-rename state may be changed merely for evidence."]
+    },
     "cmdkey.md": {
       "kind": "native-cli", "status": "reviewed",
       "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],

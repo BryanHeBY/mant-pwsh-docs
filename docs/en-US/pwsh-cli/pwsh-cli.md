@@ -327,6 +327,10 @@ license in the document's provenance catalog before adapting material.
 - [repadmin](repadmin.md): directional, partition-specific replication evidence before any synchronization or topology change.
 - [nltest](nltest.md): site, DC Locator, trust, and secure-channel query semantics distinct from verification and reset.
 - [netdom](netdom.md): domain/DC/FSMO/trust inventory and member verification separated from membership, name, credential, and trust mutation.
+- [adprep](adprep.md): installation-media, FSMO, schema-version, convergence, and forest/domain/RODC preparation boundaries.
+- [dcpromo](dcpromo.md): legacy DC promotion/demotion syntax with modern ADDSDeployment discovery and secret-safe migration guidance.
+- [dcgpofix](dcgpofix.md): disaster-only recovery of the two default GPOs after inventory and protected backup.
+- [gpfixup](gpfixup.md): GPO dependency rewriting only inside a complete supported domain-rename workflow.
 
 ## Windows storage, boot, and recovery
 

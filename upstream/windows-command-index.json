@@ -36,7 +36,8 @@
     {
       "name": "adprep",
       "source": "adprep.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/adprep.md"
     },
     {
       "name": "append",
@@ -355,12 +356,14 @@
     {
       "name": "dcgpofix",
       "source": "dcgpofix.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/dcgpofix.md"
     },
     {
       "name": "dcpromo",
       "source": "dcpromo.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/dcpromo.md"
     },
     {
       "name": "defrag",
@@ -660,7 +663,8 @@
     {
       "name": "gpfixup",
       "source": "gpfixup.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/gpfixup.md"
     },
     {
       "name": "gpresult",

@@ -240,6 +240,13 @@ netdom.exe query /domain:"example.com" DC
 netdom.exe query /domain:"example.com" FSMO
 netdom.exe query /domain:"example.com" TRUST
 netdom.exe verify "member01.example.com" /domain:"example.com"
+Get-Command dcgpofix.exe, dcpromo.exe, gpfixup.exe -All -ErrorAction SilentlyContinue
+dcgpofix.exe /?
+dcpromo.exe /?:Promotion
+gpfixup.exe /?
+Get-Command -Module ADDSDeployment -Name 'Install-ADDS*','Uninstall-ADDS*','Test-ADDS*' -ErrorAction SilentlyContinue
+Get-Command Get-ADRootDSE, Get-ADObject, Get-ADDomain, Get-ADDomainController -ErrorAction SilentlyContinue
+Get-Command Get-GPO, Get-GPOReport, Backup-GPO -ErrorAction SilentlyContinue
 Get-Command echo, cls, prompt -All -ErrorAction SilentlyContinue
 reg.exe query HKCU\Environment
 Get-Command explorer.exe, control.exe, mmc.exe, rundll32.exe -All
@@ -300,6 +307,16 @@ families merely for evidence. Protect DC, site, trust, partner, SPN, account,
 event, and replication output as sensitive topology. A separate reviewed
 procedure is required before broad site/enterprise/forest selection or any
 operation that initiates replication or changes AD/host state.
+
+For Adprep, Dcpromo, DcgpoFix, and Gpfixup, shared runtime evidence is limited to
+binary/module/help discovery and the explicitly approved read-only AD/GPO
+inventory above. Do not prepare a schema/forest/domain/RODC, promote/demote a
+DC, install/remove AD DS binaries, recreate either default GPO, bypass a schema
+check, or rewrite any GPO/link/software reference merely for evidence. Inspect
+an Adprep binary only from approved target-version installation media, and do
+not copy secrets from Dcpromo examples into a command, answer file, transcript,
+or repository. GPO backup creation requires an approved protected directory and
+data-handling plan; it is not performed by this generic checklist.
 
 Keep Cmd builtin verification to `help` and PowerShell resolution in the shared
 evidence session. Do not pause for input, change a persistent/current prompt or
