@@ -31,6 +31,17 @@ Prefer `makecab.exe` in new commands, documentation, allowlists, telemetry,
 and process-launch policy. The alternate filename does not change the input,
 output, signing, encryption, or directive-file safety model.
 
+## Command identities
+
+<!-- mant:entries role=command case=insensitive -->
+- `diantz.exe`, `makecab.exe`: Package files into Microsoft Cabinet format through the documented equivalent utility names.
+
+## PowerShell boundaries
+
+Resolve the intended executable explicitly, pass source/destination/directive
+paths as separate native arguments, and capture `$LASTEXITCODE`. Cabinet output
+is not signed, encrypted, or trusted merely because packaging succeeded.
+
 ## Common mistakes
 
 ### Treating the names as different compression formats
@@ -55,6 +66,12 @@ test artifact hashes and layout in the supported build environment.
 See [makecab](makecab.md) for single-file and directive-file modes, output-name
 defaults, multi-file layouts, PowerShell invocation, signature/provenance, and
 artifact verification. See [expand](expand.md) for CAB listing and extraction.
+
+## Related documents
+
+- [makecab](makecab.md)
+- [expand](expand.md)
+- [extract](extract.md)
 
 ## Version and platform differences
 

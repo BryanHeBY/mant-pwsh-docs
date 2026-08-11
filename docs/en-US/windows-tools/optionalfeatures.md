@@ -26,6 +26,16 @@ also exposes Optional Features/Features on Demand in Settings. Windows optional
 features, capabilities/FODs, packages, Server roles/features and winget features
 are different inventories with different names, sources and servicing commands.
 
+## Entry points
+
+<!-- mant:entries role=command case=insensitive -->
+- `optionalfeatures.exe`: Open the classic interactive Windows Features dialog.
+- `ms-settings:optionalfeatures`: Open the Settings Optional Features page where the target Windows release exposes it.
+- `Get-WindowsOptionalFeature`: Inventory exact optional-feature identities as PowerShell objects before change.
+- `Get-WindowsCapability`: Inventory Features on Demand/capability identities, which are distinct from optional features.
+
+Opening either UI does not report or enforce configuration for automation.
+
 ## Common mistakes
 
 - Enabling a display label without resolving its exact feature/capability identity,

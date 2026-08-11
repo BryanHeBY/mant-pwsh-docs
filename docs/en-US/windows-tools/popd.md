@@ -25,6 +25,18 @@
 changes back to that saved directory. With command extensions, it also removes
 the temporary drive mapping created when `pushd` entered a UNC path.
 
+## Command identities
+
+<!-- mant:entries role=command case=insensitive -->
+- `popd`: In cmd, restore and remove the latest entry from that cmd process's directory stack.
+- `Pop-Location`: In PowerShell, restore the latest location from a PowerShell location stack.
+
+## PowerShell boundaries
+
+Cmd and PowerShell keep separate, process-local stacks. Use an explicit
+same-process pairing and `try`/`finally` or equivalent failure cleanup; neither
+command can pop state owned by the other shell.
+
 ## Common mistakes
 
 ### Calling it without a matching `pushd`

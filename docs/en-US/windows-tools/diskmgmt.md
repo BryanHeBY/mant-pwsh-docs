@@ -22,6 +22,15 @@ volumes, drive letters and selected storage configuration. Initialize, format,
 delete, shrink, extend, convert, offline/online and letter actions can destroy data,
 break boot/recovery, expose volumes, or affect encryption and applications.
 
+## Entry points
+
+<!-- mant:entries role=command case=insensitive -->
+- `diskmgmt.msc`: Open Disk Management for interactive storage inspection and administration.
+- `mmc.exe`: Host `diskmgmt.msc` explicitly; the GUI is not a transactional storage API.
+
+Corroborate the selected disk/volume through stable identifiers and preserve a
+recoverable backup before any layout, filesystem, or access change.
+
 ## Common mistakes
 
 - Choosing “Disk 1” or a drive letter from memory/screenshot without unique ID,

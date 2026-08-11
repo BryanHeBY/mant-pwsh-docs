@@ -22,6 +22,15 @@ drivers, status/problem codes, resources and selected lifecycle actions. A frien
 device label is not a stable identity; use instance IDs, class, hardware IDs,
 driver package/provider/version and parent/container relationships.
 
+## Entry points
+
+<!-- mant:entries role=command case=insensitive -->
+- `devmgmt.msc`: Open Device Manager for interactive device and driver inspection.
+- `mmc.exe`: Host the Device Manager snap-in explicitly; it is not a device automation API.
+
+Use stable instance/package identities and the supported PnP/driver tools for
+changes that must be logged, repeated, verified, or rolled back.
+
 ## Common mistakes
 
 - Acting on a duplicate friendly name without resolving the exact instance ID,

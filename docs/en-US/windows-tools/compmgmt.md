@@ -22,6 +22,15 @@ Shared Folders, local users/groups, performance, Device Manager, Disk Management
 services and other snap-ins. It is a broad administrative surface, not one atomic
 command; permissions and targets can differ between contained snap-ins.
 
+## Entry points
+
+<!-- mant:entries role=command case=insensitive -->
+- `compmgmt.msc`: Open the Computer Management console definition in an interactive Windows session.
+- `mmc.exe`: Host `compmgmt.msc` explicitly; launch success does not verify any contained snap-in action.
+
+Resolve the intended machine separately inside every snap-in and use a
+dedicated management interface for reproducible state changes.
+
 ## Common mistakes
 
 - Connecting the console to one remote computer and assuming every snap-in uses

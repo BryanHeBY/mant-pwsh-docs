@@ -25,6 +25,18 @@
 includes filenames and `/a` selects plain text connectors instead of extended
 graphics characters.
 
+## Important options
+
+<!-- mant:entries role=option case=insensitive -->
+- `/f`: Include filenames as well as directory names in the rendered hierarchy.
+- `/a`: Use plain ASCII connector characters instead of code-page-dependent extended graphics.
+
+## PowerShell boundaries
+
+Call `tree.com` explicitly because another platform or profile can provide a
+different `tree`. The output is a diagram, not filesystem objects; use
+`Get-ChildItem` and deliberate metadata export for automation.
+
 ## Common mistakes
 
 ### Parsing the diagram as a stable inventory

@@ -22,6 +22,15 @@ It displays service state and selected configuration/control actions. Display na
 service name, process, host group, driver service and executable are distinct, and
 running state does not prove readiness or workload health.
 
+## Entry points
+
+<!-- mant:entries role=command case=insensitive -->
+- `services.msc`: Open the Services MMC snap-in for interactive inspection and selected controls.
+- `mmc.exe`: Host `services.msc` explicitly; the GUI does not expose a stable automation result.
+
+Resolve the service key name and owner before action. Use service cmdlets,
+`sc.exe`, CIM, or SCM APIs for state that must be queried and verified.
+
 ## Common mistakes
 
 - Selecting by localized display name rather than immutable service name and owner.

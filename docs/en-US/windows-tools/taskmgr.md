@@ -22,6 +22,15 @@ performance, applications, services, users, details, and startup items. Its UI i
 not a stable structured API, and visible rows/metrics depend on privilege, session,
 filters, update speed, Windows build, process lifetime and protected boundaries.
 
+## Entry point
+
+<!-- mant:entries role=command case=insensitive -->
+- `taskmgr.exe`: Open Task Manager in the current interactive Windows session.
+
+The launcher exposes no stable process/query option interface documented here.
+Use typed process, service, counter, event, and startup-management interfaces
+when the operation must be automated or independently verified.
+
 ## Common mistakes
 
 - Ending a process from name/CPU alone without PID, owner/session, command line,

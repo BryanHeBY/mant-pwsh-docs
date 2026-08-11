@@ -26,6 +26,15 @@ starts a GUI used by historical Connection Manager/phone-book workflows. This
 page supports discovery and migration of old packages; it does not recommend a
 new dial-up/VPN provisioning design.
 
+## Entry point
+
+<!-- mant:entries role=command case=insensitive -->
+- `pbadmin.exe`: Open the deprecated Phone Book Administrator GUI when the legacy component is present.
+
+There is no supported modern automation interface behind this launcher. Treat
+its presence and artifacts as migration evidence, not a reason to extend the
+legacy deployment.
+
 ## Common mistakes
 
 ### Opening an untrusted legacy package on a production endpoint

@@ -450,6 +450,14 @@ mant winget-install --source windows-tools --search=--id
 mant reg --source windows-tools --search=registry
 ```
 
+## Related documents
+
+- [Microsoft Learn MCP queries](microsoft-learn-mcp.md)
+- [cmd](cmd.md)
+- [Windows Package Manager](winget.md)
+- [Registry command](reg.md)
+- [Windows event log utility](wevtutil.md)
+
 ## Sources and license
 
 This source contains original ManT-oriented documentation informed by each

@@ -36,8 +36,14 @@ mmc.exe [FULL-PATH\CONSOLE.msc] [/a] [/32 | /64]
 
 ## Options
 
-- `FULL-PATH\CONSOLE.msc`: Open a saved console. Microsoft documents a complete
-  path; use an expanded PowerShell path rather than cmd `%VARIABLE%` syntax.
+<!-- mant:entries role=command case=insensitive -->
+- `mmc.exe`: Open Microsoft Management Console, optionally with one explicit saved `.msc` console path.
+
+A leading `FULL-PATH\CONSOLE.msc` operand opens a saved console. Microsoft
+documents a complete path; use an expanded PowerShell path rather than cmd
+`%VARIABLE%` syntax.
+
+<!-- mant:entries role=option case=insensitive -->
 - `/a`: Open the saved console in author mode so its layout and snap-ins can be
   changed. This does not permanently change the file's default mode by itself.
 - `/32`: Use the 32-bit MMC host on 64-bit Windows for a 32-bit-only snap-in.
@@ -47,6 +53,12 @@ mmc.exe [FULL-PATH\CONSOLE.msc] [/a] [/32 | /64]
 $console = Join-Path $env:SystemRoot 'System32\eventvwr.msc'
 mmc.exe $console /64
 ```
+
+## PowerShell boundaries
+
+Pass the resolved `.msc` path and architecture switch as separate arguments to
+`mmc.exe`. Starting the GUI returns no structured result for actions later
+performed inside a snap-in; use the owning management API for automation.
 
 ## Common mistakes
 

@@ -21,6 +21,15 @@ Event Viewer is an MMC interface for Windows Logs, Applications and Services
 Logs, subscriptions, saved logs, filters and event details. Rendered text is a
 view over provider metadata; raw XML and EVTX provenance remain essential.
 
+## Entry points
+
+<!-- mant:entries role=command case=insensitive -->
+- `eventvwr.msc`, `eventvwr.exe`: Open Event Viewer for interactive channel, event, subscription, and saved-log exploration.
+- `mmc.exe`: Host the Event Viewer console explicitly; visible rendering is not the raw evidence contract.
+
+Use `Get-WinEvent` or `wevtutil.exe` for bounded reproducible queries and
+preserve XML/EVTX provenance independently of the GUI view.
+
 ## Common mistakes
 
 - Searching only rendered messages and losing provider GUID/name, channel,

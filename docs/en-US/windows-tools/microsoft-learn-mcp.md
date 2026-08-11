@@ -110,6 +110,13 @@ Review package identifiers, URLs, scripts, privileges, and destructive options
 before running a command. For non-Microsoft tools such as Git, OpenSSH, curl,
 or tar, use their own vendor documentation as the source of record.
 
+## Version and availability
+
+The Microsoft Learn MCP server is an optional external information channel,
+not a dependency of this repository or ManT. Server tools, client setup, and
+returned documentation can evolve; inspect the connected server's advertised
+capabilities and validate every answer against the target product and version.
+
 ## Related documents
 
 - [Windows tools for PowerShell](windows-tools.md)

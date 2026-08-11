@@ -22,6 +22,15 @@
 but is not a recorder, stable structured API, capacity baseline, or root-cause
 engine. A process can change or exit between display and action.
 
+## Entry points
+
+<!-- mant:entries role=command case=insensitive -->
+- `resmon.exe`: Open Resource Monitor directly in the current interactive session.
+- `perfmon.exe`: Use `/res` to open the Resource Monitor view through the documented Performance Monitor launcher.
+
+This is live presentation, not a recording contract. Use counters, ETW, or
+other supported APIs when timing, reproducibility, or machine processing matters.
+
 ## Common mistakes
 
 - Treating one quiet/busy instant as representative without sampling duration,
