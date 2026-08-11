@@ -27,6 +27,36 @@ Native curl is a data-transfer executable. In Windows PowerShell 5.1, bare
 diagnose the current session. On macOS and Linux, still check the installed
 curl path and version because features are build-dependent.
 
+## Important options
+
+<!-- mant:entries role=option case=sensitive -->
+- `-V`, `--version`: Print curl, libcurl, protocol, TLS backend, and compiled feature information.
+- `-f`, `--fail`: Fail without returning an HTTP error body for status 400 or later; authentication statuses can still escape detection.
+- `--fail-with-body`: Return an HTTP error status as failure while retaining the response body; requires a sufficiently recent curl.
+- `-L`, `--location`: Follow redirects; credentials are restricted across hosts unless broader trust is requested explicitly.
+- `--max-redirs COUNT`: Cap redirect following; zero rejects redirects and a negative value removes the limit.
+- `-o FILE`, `--output FILE`: Write response bytes to an explicit file instead of standard output.
+- `-O`, `--remote-name`: Derive the local filename from the URL path; it does not make the server-supplied content trusted.
+- `--remove-on-error`: Remove a partial output file when a transfer fails.
+- `-X METHOD`, `--request METHOD`: Change the method token sent without changing all related request behavior; prefer method-implying data/upload options when possible.
+- `-H HEADER`, `--header HEADER`: Add, replace, or remove a request header; command-line secrets can be exposed to logs and process inspection.
+- `-d DATA`, `--data DATA`: Send form-style request data and imply POST unless another method is selected.
+- `--data-binary DATA`: Send request bytes without `--data` newline conversion.
+- `--json DATA`: Send JSON data and set JSON request/accept headers; availability depends on curl version.
+- `-F FORM`, `--form FORM`: Build a multipart form, including file uploads when requested by the value syntax.
+- `-T FILE`, `--upload-file FILE`: Upload one local file or standard input when the file is `-`.
+- `-u USER:PASS`, `--user USER:PASS`: Supply server credentials; omit the password to prompt where supported instead of exposing it in history.
+- `--connect-timeout SECONDS`: Bound only the connection phase.
+- `-m SECONDS`, `--max-time SECONDS`: Bound the total operation time.
+- `--retry COUNT`: Retry selected transient failures; combine only with deliberate retry timing and idempotency policy.
+- `-s`, `--silent`: Hide progress and error text; combine with `--show-error` when errors must remain visible.
+- `-S`, `--show-error`: Show an error message when `--silent` is active.
+- `-w FORMAT`, `--write-out FORMAT`: Emit selected transfer metadata after completion; keep it separate from response bytes.
+- `-k`, `--insecure`: Disable TLS peer verification; avoid it outside isolated diagnostics.
+
+A standalone `--` ends option parsing so remaining tokens are treated as
+URLs, including a URL whose first character is `-`.
+
 ## Make failure visible
 
 HTTP error responses can otherwise produce a successful curl process. Use
@@ -55,6 +85,39 @@ credential mechanism appropriate to the platform and service.
 Curl options and supported protocols depend on the installed version and its
 TLS, proxy, HTTP/2/3, and authentication builds. Record `curl --version` in a
 reproducible automation report rather than assuming a feature is universal.
+
+## PowerShell boundaries
+
+Use `Get-Command curl -All` before assuming whether bare `curl` is the native
+application. Pass each argument separately, quote URLs containing PowerShell
+metacharacters, and check `$LASTEXITCODE`; native response text is not a
+PowerShell object until parsed deliberately.
+
+## Version and platform differences
+
+The option list follows the current upstream curl manual and was runtime-
+checked with curl 8.21.0 on Linux. Older OS-bundled builds may lack newer
+options, protocols, TLS backends, or features. Windows PowerShell 5.1 can
+resolve bare `curl` to an alias, so use `curl.exe` when that executable is the
+required contract.
+
+## Common mistakes
+
+### Using `--location` without a redirect trust policy
+
+Redirects can change host and scheme. Limit their count, inspect the final URL
+when it matters, and do not broaden credential forwarding casually.
+
+### Treating HTTP output as success or trusted content
+
+Use an appropriate fail option, check `$LASTEXITCODE`, and independently
+verify downloaded artifacts. An HTTP 200 response is not a signature.
+
+### Mixing response bytes with metadata
+
+Use `--output` for the body and a deliberate `--write-out` destination or
+format for metadata. Do not parse a progress meter or diagnostic stream as the
+payload.
 
 ## Related documents
 

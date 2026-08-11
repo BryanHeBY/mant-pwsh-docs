@@ -31,6 +31,39 @@ The `dotnet` driver exposes .NET SDK commands and runs .NET applications. It
 is a native executable whose chosen SDK can depend on the current directory,
 `global.json`, architecture, environment, and installed SDKs.
 
+## Environment and driver options
+
+<!-- mant:entries role=option case=sensitive -->
+- `--info`: Print detailed SDK, runtime, workload, operating-system, architecture, and environment information.
+- `--version`: Print the SDK selected for the current directory; selection can be affected by `global.json`.
+- `--list-sdks`: List SDKs visible to the selected `dotnet` architecture.
+- `--list-runtimes`: List runtimes visible to the selected `dotnet` architecture.
+- `--arch ARCH`: With supported .NET 10-or-later listing operations, inspect another installed architecture.
+- `-d`, `--diagnostics`: Enable driver diagnostic output for a command.
+- `-v LEVEL`, `--verbosity LEVEL`: Select supported command verbosity; availability and accepted values belong to the subcommand.
+- `-h`, `--help`: Show driver or selected-command help for the installed SDK.
+- `--roll-forward SETTING`: When running an application DLL, control compatible runtime roll-forward policy.
+- `--fx-version VERSION`: Override the first framework reference used to run an application; unsafe as a general multi-framework override.
+
+## Common SDK commands
+
+<!-- mant:entries role=command case=sensitive -->
+- `new`: Create a project, solution, or other artifact from an installed template.
+- `restore`: Resolve and download project dependencies without performing a later build target intentionally.
+- `build`: Restore when needed and compile a project or solution.
+- `test`: Build when needed and run tests through the selected SDK and test infrastructure.
+- `run`: Build and run a source project; arguments after `--` belong to the application.
+- `publish`: Produce deployable output for a selected configuration, runtime, and deployment mode.
+- `pack`: Build a NuGet package from a packable project.
+- `clean`: Remove outputs created by earlier builds for the selected configuration.
+- `sln`: Inspect or modify projects in a solution file.
+- `add`: Add a package, project reference, or other supported item to a project.
+- `remove`: Remove a package or project reference from a project.
+- `tool`: Install, update, restore, list, run, or uninstall .NET tools.
+- `workload`: Inspect, install, update, repair, or remove optional SDK workloads.
+- `nuget`: Run supported NuGet client operations through the SDK.
+- `exec`: Run an application with explicit runtime configuration and dependency files.
+
 ## Establish the selected environment
 
 Capture `dotnet --info` and `dotnet --list-sdks` when diagnosing or reproducing
@@ -62,7 +95,7 @@ Package sources and caches can affect repeatability. Use approved feeds,
 locked dependency policies where appropriate, and explicit output paths for
 release automation. Record the SDK/runtime version together with build logs.
 
-## PowerShell use
+## PowerShell usage
 
 Pass project paths and arguments separately, check `$LASTEXITCODE`, and avoid
 parsing human-formatted output as a stable API. Use `dotnet --help` and a
@@ -72,6 +105,33 @@ SDK supports the same switches.
 The currently available PowerShell 7 test environment for this repository does
 not include `dotnet`; this document remains draft until runtime verification
 covers the intended Windows, macOS, and Linux SDK environments.
+
+## Version and platform differences
+
+The baseline covers .NET 6 SDK and later, while individual commands and
+options evolve with the selected SDK. `--arch` on SDK/runtime listing is a
+.NET 10-or-later behavior. Workload availability, paths, native assets, and
+code-signing or publishing requirements vary by operating system and
+architecture.
+
+## Common mistakes
+
+### Reading `--version` as the newest installed SDK
+
+It reports the SDK selected in the current directory, not necessarily the
+highest installed version. Inspect `--list-sdks` and the governing
+`global.json`.
+
+### Passing application arguments to `dotnet run` as CLI options
+
+Use `--` to separate arguments intended for the application from arguments
+consumed by `dotnet run`.
+
+### Assuming restore and build are inert
+
+Project targets, analyzers, packages, workloads, and NuGet configuration can
+execute code or access networks. Review the repository and feeds before using
+credentials or elevated privileges.
 
 ## Related documents
 

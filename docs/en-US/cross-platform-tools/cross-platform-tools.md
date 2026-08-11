@@ -62,6 +62,13 @@ mant reg --source windows-tools
 This separation lets macOS and Linux users install the cross-platform source
 without also installing hundreds of Windows-only pages.
 
+## Version and availability
+
+This source documents command families, not a bundled toolchain. Installing it
+does not install any executable. Resolve each command, record its version and
+build features, and consult that installed version's help before relying on an
+option introduced later than the documented baseline.
+
 ## Query with ManT
 
 After adding this repository to `sources.toml` and running
@@ -73,6 +80,14 @@ mant ssh --source cross-platform-tools --outline
 mant curl --source cross-platform-tools --search=--fail
 mant dotnet --source cross-platform-tools --search=LASTEXITCODE
 ```
+
+## Related documents
+
+- [curl](curl.md)
+- [dotnet](dotnet.md)
+- [git](git.md)
+- [ssh](ssh.md)
+- [tar](tar.md)
 
 ## Sources and license
 
