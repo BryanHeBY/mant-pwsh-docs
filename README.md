@@ -45,8 +45,8 @@ boundary and `mant curl --source pwsh-cli` for the native executable guide.
 
 ## Project status
 
-The first English v1 inventory now contains 282 reviewed pages: 30 for
-PowerShell 7, 30 for Windows PowerShell 5.1, and 222 PowerShell-facing CLI
+The first English v1 inventory now contains 286 reviewed pages: 30 for
+PowerShell 7, 30 for Windows PowerShell 5.1, and 226 PowerShell-facing CLI
 pages. The normative inventory lives in [release/v1.json](release/v1.json).
 
 Portable ManT parsing, provenance validation, and locked-upstream

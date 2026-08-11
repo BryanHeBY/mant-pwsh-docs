@@ -2,7 +2,7 @@
   "$schema": "release-manifest/v1",
   "release": "v1",
   "locale": "en-US",
-  "requiredDocumentCount": 282,
+  "requiredDocumentCount": 286,
   "sources": {
     "pwsh7": {
       "runtimePlatforms": ["windows", "linux", "macos"],
@@ -266,6 +266,10 @@
         "dcpromo.md",
         "dcgpofix.md",
         "gpfixup.md",
+        "dnscmd.md",
+        "dfsdiag.md",
+        "dfsrmig.md",
+        "ntfrsutl.md",
         "cmdkey.md",
         "gpupdate.md",
         "secedit.md",

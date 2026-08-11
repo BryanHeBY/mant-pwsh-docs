@@ -247,6 +247,21 @@ gpfixup.exe /?
 Get-Command -Module ADDSDeployment -Name 'Install-ADDS*','Uninstall-ADDS*','Test-ADDS*' -ErrorAction SilentlyContinue
 Get-Command Get-ADRootDSE, Get-ADObject, Get-ADDomain, Get-ADDomainController -ErrorAction SilentlyContinue
 Get-Command Get-GPO, Get-GPOReport, Backup-GPO -ErrorAction SilentlyContinue
+Get-Command dnscmd.exe, dfsdiag.exe, dfsrmig.exe, ntfrsutl.exe -All -ErrorAction SilentlyContinue
+dnscmd.exe "dns01.example.com" /enumzones
+dnscmd.exe "dns01.example.com" /zoneinfo "example.com"
+dnscmd.exe "dns01.example.com" /enumrecords "example.com" "www" /detail
+dnscmd.exe "dns01.example.com" /enumdirectorypartitions
+dfsdiag.exe /testsites /machine:"fileserver01.example.com"
+dfsdiag.exe /testdfsconfig /DFSRoot:"\\example.com\shares"
+dfsdiag.exe /testdfsintegrity /DFSRoot:"\\example.com\shares"
+dfsdiag.exe /testreferral /DFSPath:"\\example.com\shares\team" /full
+$pdc = (Get-ADDomain -Identity "example.com").PDCEmulator
+Invoke-Command -ComputerName $pdc -ScriptBlock { dfsrmig.exe /getglobalstate }
+Invoke-Command -ComputerName $pdc -ScriptBlock { dfsrmig.exe /getmigrationstate }
+ntfrsutl.exe version "dc01.example.com"
+ntfrsutl.exe sets "dc01.example.com"
+ntfrsutl.exe poll "dc01.example.com"
 Get-Command echo, cls, prompt -All -ErrorAction SilentlyContinue
 reg.exe query HKCU\Environment
 Get-Command explorer.exe, control.exe, mmc.exe, rundll32.exe -All
@@ -317,6 +332,16 @@ an Adprep binary only from approved target-version installation media, and do
 not copy secrets from Dcpromo examples into a command, answer file, transcript,
 or repository. GPO backup creation requires an approved protected directory and
 data-handling plan; it is not performed by this generic checklist.
+
+Replace DNS/DFS/DC placeholders only with approved exact targets. Do not add,
+delete, age, scavenge, sign, pause, reload, move, export/import, clear, or
+configure any DNS server/zone/record/partition merely for evidence; Dnscmd
+inventory can expose sensitive names and topology. Do not recurse across a DFS
+namespace until the target count and load are approved, and do not confuse a
+successful referral with DFSR or file-access health. For SYSVOL, run the global
+query on the confirmed PDC Emulator and do not set a migration state, create or
+delete migration objects, force AD/DFSR/FRS polling, start legacy FRS, or use
+authoritative/non-authoritative recovery recipes. State 3 is irreversible.
 
 Keep Cmd builtin verification to `help` and PowerShell resolution in the shared
 evidence session. Do not pause for input, change a persistent/current prompt or

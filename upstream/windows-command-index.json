@@ -398,12 +398,14 @@
     {
       "name": "dfsdiag",
       "source": "dfsdiag.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/dfsdiag.md"
     },
     {
       "name": "dfsrmig",
       "source": "dfsrmig.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/dfsrmig.md"
     },
     {
       "name": "diantz",
@@ -457,7 +459,8 @@
     {
       "name": "dnscmd",
       "source": "dnscmd.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/dnscmd.md"
     },
     {
       "name": "doskey",
@@ -1035,7 +1038,8 @@
     {
       "name": "ntfrsutl",
       "source": "ntfrsutl.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/ntfrsutl.md"
     },
     {
       "name": "offline",

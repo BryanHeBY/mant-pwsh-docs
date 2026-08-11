@@ -2109,6 +2109,48 @@
       ],
       "notes": ["Microsoft defines paired old/new DNS/NetBIOS mappings, writable-DC targeting, software-installation-only mutation and credential behavior; community failures demonstrate that successful Gpfixup output does not prove DNS, SPN, RDP, SYSVOL, replication or client health after rename. The TLDR performs help, exact-domain identity/GPO inventory and protected backup only.", "Windows runtime verification remains help and explicitly approved read-only domain/GPO inventory only; backup requires a protected path and no GPO/link/SYSVOL/software reference, credential, DC selection, or domain-rename state may be changed merely for evidence."]
     },
+    "dnscmd.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["supported Windows DNS Server and applicable RSAT releases; command families, DNS features and module equivalents vary by build"], "platforms": ["windows"],
+      "sources": [
+        {"type": "web", "url": "https://learn.microsoft.com/windows-server/administration/windows-commands/dnscmd", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/powershell/module/dnsserver/get-dnsserverzone?view=windowsserver2025-ps", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/powershell/module/dnsserver/get-dnsserverresourcerecord?view=windowsserver2025-ps", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=732528&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=535438&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Microsoft documents the broad server/zone/record/partition/DNSSEC/configuration surface and the typed DnsServer inventory alternatives; practitioner demand reveals persistent zoneinfo versus zoneprint/export and server-local export-location confusion. The TLDR is exact-server zone/node/partition inventory only.", "Windows runtime verification remains approved exact-server enumzones/zoneinfo/enumrecords/enumdirectorypartitions only; no record/node, aging/scavenging, zone, server/config, cache, forwarding, partition, export/import, logging, plug-in, policy/scope or DNSSEC mutation is permitted merely for evidence."]
+    },
+    "dfsdiag.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["supported Windows releases with DFS Namespaces management tools; namespace mode, topology and test output vary by environment"], "platforms": ["windows"],
+      "sources": [
+        {"type": "web", "url": "https://learn.microsoft.com/windows-server/administration/windows-commands/dfsdiag", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=50789&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Microsoft defines DC, site, namespace configuration/integrity and referral tests for DFS Namespaces; community delay reports demonstrate client referral-cache and namespace-versus-DFSR confusion. The TLDR uses exact nonrecursive machine/root/path tests only.", "Windows runtime verification remains exact machine/root/path DFSN tests only; broad domain testdcs and recurse/full expansion require separate target-count/load approval, and no cache flush, target, priority, namespace, share or replication mutation is permitted merely for evidence."]
+    },
+    "dfsrmig.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["Windows Server AD DS domains eligible for SYSVOL migration from FRS to DFSR; availability and eligibility depend on DC versions, functional level and migration history"], "platforms": ["windows"],
+      "sources": [
+        {"type": "web", "url": "https://learn.microsoft.com/windows-server/administration/windows-commands/dfsrmig", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=876823&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=925917&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Microsoft defines the PDC-authoritative global state, per-DC local convergence, stable states 0-3, irreversible Eliminated state and narrowly scoped RODC object repair; practitioner questions show frequent service/object inference and premature-transition mistakes. The TLDR runs only PDC/global/local/share/service inventory.", "Windows runtime verification remains PDC identity and approved global/local state plus share/service inventory only; no state transition, global-object/member deletion/creation, AD/DFSR/FRS polling, service, registry, authoritative/non-authoritative restore or metadata cleanup is permitted merely for evidence."]
+    },
+    "ntfrsutl.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["legacy Windows Server FRS environments and incomplete SYSVOL migrations where the exact target still participates in an FRS replica set"], "platforms": ["windows"],
+      "sources": [
+        {"type": "web", "url": "https://learn.microsoft.com/windows-server/administration/windows-commands/ntfrsutl", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/windows-server/administration/windows-commands/dfsrmig", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=616329&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=769771&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official references define internal FRS table/log/runtime/directory/sets/version/poll surfaces and the FRS-to-DFSR state boundary; practitioner evidence exposes stale directory member references and destructive D2/D4/journal-wrap recovery shortcuts. The TLDR is exact-server help/version/sets/poll display only.", "Windows runtime verification remains exact approved legacy-FRS server help/version/sets/poll display only after mechanism/membership proof; no forced/fast/slow poll, service, registry, AD/replica-set object, D2/D4, journal-wrap, staging/log or recovery mutation is permitted merely for evidence."]
+    },
     "cmdkey.md": {
       "kind": "native-cli", "status": "reviewed",
       "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],

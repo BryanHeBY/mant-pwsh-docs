@@ -331,6 +331,10 @@ license in the document's provenance catalog before adapting material.
 - [dcpromo](dcpromo.md): legacy DC promotion/demotion syntax with modern ADDSDeployment discovery and secret-safe migration guidance.
 - [dcgpofix](dcgpofix.md): disaster-only recovery of the two default GPOs after inventory and protected backup.
 - [gpfixup](gpfixup.md): GPO dependency rewriting only inside a complete supported domain-rename workflow.
+- [dnscmd](dnscmd.md): exact-server/zone/node DNS inventory before record, zone, server, DNSSEC, or partition changes.
+- [dfsdiag](dfsdiag.md): DFS Namespace site/configuration/integrity/referral diagnosis distinct from DFS Replication.
+- [dfsrmig](dfsrmig.md): PDC-governed FRS-to-DFSR SYSVOL migration state and irreversible elimination boundary.
+- [ntfrsutl](ntfrsutl.md): legacy FRS internal inventory only after proving exact replica-set participation.
 
 ## Windows storage, boot, and recovery
 

@@ -10,7 +10,7 @@ bundles.
 
 ### Added
 
-- First English release inventory: 282 reviewed ManT pages across `pwsh7`,
+- First English release inventory: 286 reviewed ManT pages across `pwsh7`,
   `pwsh51`, and `pwsh-cli`.
 - Broad `pwsh7` and `pwsh51` shell manuals, focused language/command pages,
   compatibility guides, and custom `irx` shorthand resolution guidance.
@@ -142,6 +142,11 @@ bundles.
   rewrite guides for `adprep`, `dcpromo`, `dcgpofix`, and `gpfixup`, with
   inventory/backup-only TLDRs and explicit media, FSMO, convergence, secret,
   replication, rollback, and workload-compatibility gates.
+- Windows DNS Server, DFS Namespace, SYSVOL FRS-to-DFSR migration, and legacy
+  FRS diagnostic guides for `dnscmd`, `dfsdiag`, `dfsrmig`, and `ntfrsutl`,
+  with exact-target query TLDRs and explicit export-versus-backup, namespace-
+  versus-replication, convergence, irreversible-state, stale-member, and
+  recovery-authority boundaries.
 - Stored credential target, scoped Group Policy refresh, and security-template
   validation/export/analysis guides for `cmdkey`, `gpupdate`, and `secedit`.
 - Windows DACL/inheritance, ownership recovery, and EFS encryption/recovery
