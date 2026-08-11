@@ -126,7 +126,8 @@
     {
       "name": "bdehdcfg",
       "source": "bdehdcfg.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/bdehdcfg.md"
     },
     {
       "name": "begin backup",
@@ -1183,7 +1184,8 @@
     {
       "name": "refsutil",
       "source": "refsutil.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/refsutil.md"
     },
     {
       "name": "reg",

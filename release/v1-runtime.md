@@ -217,6 +217,9 @@ diskshadow.exe /?
 wbadmin.exe get status
 wbadmin.exe get disks
 wbadmin.exe get versions
+bdehdcfg.exe /?
+bdehdcfg.exe -driveinfo C:
+refsutil.exe
 ```
 
 Keep VSS and backup validation query-only. Do not create, expose, import,
@@ -224,6 +227,11 @@ break, mask, revert, resize, or delete shadows, and do not start/stop a backup,
 recovery, schedule, or catalog mutation merely to satisfy this checklist.
 Record the installed DiskShadow platform/help discrepancy when the executable
 is absent on a Microsoft page's nominally listed client release.
+Keep BdeHdCfg validation to help and drive information; do not target, shrink,
+merge, activate, letter, or restart a partition. Record RefsUtil family/help
+availability on the build. Run its query and diagnosis modes only against a
+disposable representative ReFS fixture with separate disposable work/target
+storage; never create corruption or mutate unique data for validation.
 
 Start a disposable process, record its PID/path/start time, preview
 `Stop-Process -WhatIf`, terminate it without `/f` or `/t`, and verify it exited.

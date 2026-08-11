@@ -221,6 +221,8 @@ license in the document's provenance catalog before adapting material.
 - [vssadmin](vssadmin.md): VSS writer, provider, shadow, and diff-area evidence.
 - [diskshadow](diskshadow.md): scripted VSS backup, restore, and transport boundaries.
 - [wbadmin](wbadmin.md): Windows Backup catalog, version, target, and recovery identity.
+- [bdehdcfg](bdehdcfg.md): legacy BitLocker boot-partition preparation boundaries.
+- [refsutil](refsutil.md): ReFS query, diagnosis, repair, and salvage family safety.
 
 ## Cross-platform developer tools
 

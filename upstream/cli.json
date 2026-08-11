@@ -1400,6 +1400,38 @@
       ],
       "notes": ["The TLDR is discovery-only and binds version, target, and machine identity; the page maps backup/schedule/recovery/catalog families and contains unavailable-catalog, locale/time, UNC overwrite, credential, quiet, VSS full/copy, critical/system-state, ACL/overwrite, catalog, and stopped-job risks.", "Windows runtime verification remains required."]
     },
+    "bdehdcfg.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["legacy BitLocker preparation tool; applicability varies by Windows build/edition, firmware, partition style, policy, and deployment workflow"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/bdehdcfg.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/bdehdcfg-driveinfo.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/bdehdcfg-target.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/bdehdcfg-newdriveletter.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/bdehdcfg-size.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/bdehdcfg-quiet.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/bdehdcfg-restart.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=255772&service=superuser&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR is inventory-only; the page treats the tool as legacy, distinguishes boot/system/OS/recovery roles and BIOS/MBR from UEFI/GPT, and contains target, shrink/merge, active-role, quiet, Group Policy, drive-letter, restart, and recovery risks.", "Windows runtime verification remains required only where the executable is present and the deployment workflow supports it."]
+    },
+    "refsutil.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["subcommands vary by Windows build/edition, ReFS on-disk version, installed feature, and volume state"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/refsutil.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/refsutil-compression.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/refsutil-dedup.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/refsutil-fixboot.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/refsutil-iometrics.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/refsutil-leak.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/refsutil-salvage.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/refsutil-streamsnapshot.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/refsutil-triage.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=968966&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR identifies ReFS and uses query/estimate/diagnose forms only; the page maps compression, cluster dedup, fixboot, iometrics, leak, salvage, streamsnapshot, and triage, records upstream inconsistencies, and contains source identity, automatic recovery, separate work/target, read-only copy, version override, deleted-data, dismount, diagnosis/repair, resource, and boot-metadata risks.", "Windows/ReFS runtime verification remains required on representative supported builds and disposable volumes."]
+    },
     "git.md": {
       "kind": "native-cli",
       "status": "reviewed",

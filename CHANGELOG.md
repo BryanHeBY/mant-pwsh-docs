@@ -10,7 +10,7 @@ bundles.
 
 ### Added
 
-- First English release inventory: 178 reviewed ManT pages across `pwsh7`,
+- First English release inventory: 180 reviewed ManT pages across `pwsh7`,
   `pwsh51`, and `pwsh-cli`.
 - Broad `pwsh7` and `pwsh51` shell manuals, focused language/command pages,
   compatibility guides, and custom `irx` shorthand resolution guidance.
@@ -68,6 +68,8 @@ bundles.
 - Windows VSS writer/provider/shadow, DiskShadow transaction/transport, and
   Windows Backup version/catalog/recovery guides for VssAdmin, DiskShadow, and
   WBAdmin.
+- Legacy BitLocker system-partition preparation and advanced ReFS query,
+  diagnosis, repair, and salvage family guides for BdeHdCfg and RefsUtil.
 - Per-page locked provenance catalogs, reader-facing source/license sections,
   and an optional upstream accessibility audit.
 - Portable Node.js validation with ManT JSON diagnostics and a v1 release gate.
