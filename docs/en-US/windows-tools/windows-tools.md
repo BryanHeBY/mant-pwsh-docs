@@ -12,9 +12,9 @@
 
 `mant {{tool}} --source windows-tools --outline`
 
-- Explain a command-line option:
+- Read one section selected from the outline:
 
-`mant {{tool}} --source windows-tools --explain={{option}}`
+`mant {{tool}} --source windows-tools --node={{section-id}}`
 
 - Search within one Windows tool document:
 
@@ -446,7 +446,7 @@ After adding this repository to `sources.toml` and running
 ```text
 mant winget --source windows-tools
 mant winget-install --source windows-tools --outline
-mant winget-install --source windows-tools --explain=--id
+mant winget-install --source windows-tools --search=--id
 mant reg --source windows-tools --search=registry
 ```
 

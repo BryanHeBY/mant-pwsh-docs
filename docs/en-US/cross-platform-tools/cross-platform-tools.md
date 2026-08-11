@@ -12,9 +12,9 @@
 
 `mant {{tool}} --source cross-platform-tools --outline`
 
-- Explain an option:
+- Read one section selected from the outline:
 
-`mant {{tool}} --source cross-platform-tools --explain={{option}}`
+`mant {{tool}} --source cross-platform-tools --node={{section-id}}`
 
 - Search within one tool document:
 
@@ -70,7 +70,7 @@ After adding this repository to `sources.toml` and running
 ```text
 mant git --source cross-platform-tools
 mant ssh --source cross-platform-tools --outline
-mant curl --source cross-platform-tools --explain=--fail
+mant curl --source cross-platform-tools --search=--fail
 mant dotnet --source cross-platform-tools --search=LASTEXITCODE
 ```
 
