@@ -98,6 +98,10 @@ quser.exe
 qwinsta.exe
 qprocess.exe *
 qappsrv.exe /continue
+msg.exe /?
+tsdiscon.exe /?
+logoff.exe /?
+rwinsta.exe /?
 cmd.exe /d /c ver
 reg.exe query HKCU\Environment
 Get-Command explorer.exe, control.exe, mmc.exe, rundll32.exe -All
@@ -349,7 +353,11 @@ for the current session, blank/listener rows, session versus process IDs, caller
 native exit status, locale, and collection time; do not parse a zero-row result
 from failed text, or log off, disconnect, reset, connect, shadow, message, or
 terminate anything for validation. Use an approved disposable fixture for
-mutations.
+mutations. For `msg`, `tsdiscon`, `logoff`, and `rwinsta`, runtime release
+verification is help/discovery-only unless a separately approved disposable
+RDS test session, test user, saved-work confirmation, and rollback/recovery
+record exist; never message real users or disconnect/delete a real session just
+to satisfy the checklist.
 
 On Windows, macOS, and Linux where declared by the document, record:
 

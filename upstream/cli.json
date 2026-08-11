@@ -438,6 +438,39 @@
       ],
       "notes": ["This concise lookup page maps qappsrv.exe to query.exe termserver and treats legacy discovery as non-authoritative.", "Windows runtime verification remains required where the executable and discovery mechanism are available."]
     },
+    "msg.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows client and server releases; useful behavior depends on active sessions, RDS facilities, policy, and Message permission"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/msg.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-server/remote/terminal-server-commands-msg", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR targets one freshly verified session with a bounded display/wait time; the page contains wildcard/recipient, nonqueued delivery, acknowledgment, blocking, secret/text, credential, permission, and native-output risks.", "Windows runtime verification remains help-only unless an approved disposable active session and user are available."]
+    },
+    "tsdiscon.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows client and server releases; behavior depends on RDS role, session type, policy, and delegated rights"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/tsdiscon.md"}],
+      "notes": ["The TLDR requires inventory and re-query before explicit non-console disconnect and verifies retained state; the page contains lifecycle, omitted-target, stale-ID, application-health, and delegated-rights risks.", "Windows runtime verification remains help-only unless an approved disposable session exists."]
+    },
+    "logoff.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows client and server releases; behavior depends on RDS role, session type, policy, and Full Control rights"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/logoff.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=650816&service=superuser&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR inventories processes and warns one exact session before explicit approved logoff; the page contains no-operand, disconnected/idle, lifecycle, stale-ID, notification, Full Control, parsing, and data-loss risks.", "Windows runtime verification remains help-only unless an approved disposable session with saved-work confirmation exists."]
+    },
+    "rwinsta.md": {
+      "kind": "alias", "status": "reviewed",
+      "versions": ["supported Windows client and server releases; same target behavior as reset session"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/rwinsta.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/reset-session.md"}
+      ],
+      "notes": ["The TLDR places warning and process/identity revalidation before force reset; the page maps rwinsta to reset session and contains lifecycle, idle/disconnected, stale-ID, root-cause, broad-permission, automation, and data-loss risks.", "Windows runtime verification remains help-only unless an approved disposable malfunctioning-session fixture and recovery evidence exist."]
+    },
     "cmd.md": {
       "kind": "windows-shell",
       "status": "reviewed",

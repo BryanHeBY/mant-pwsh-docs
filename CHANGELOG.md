@@ -10,7 +10,7 @@ bundles.
 
 ### Added
 
-- First English release inventory: 186 reviewed ManT pages across `pwsh7`,
+- First English release inventory: 190 reviewed ManT pages across `pwsh7`,
   `pwsh51`, and `pwsh-cli`.
 - Broad `pwsh7` and `pwsh51` shell manuals, focused language/command pages,
   compatibility guides, and custom `irx` shorthand resolution guidance.
@@ -46,6 +46,9 @@ bundles.
 - Windows Remote Desktop query-family coverage for user sessions, all session
   objects/listeners, session-owned processes, legacy Session Host discovery,
   and the `quser`, `qwinsta`, `qprocess`, and `qappsrv` lookup aliases.
+- Remote Desktop session notification and lifecycle guides for `msg`,
+  `tsdiscon`, `logoff`, and `rwinsta`, with explicit owner warning, session-ID
+  revalidation, privilege, persistence, and data-loss boundaries.
 - Windows adapter/DHCP/DNS inspection, bounded ICMP reachability, path tracing,
   path sampling, host identity, and direct DNS-query guides for `ipconfig`,
   `ping`, `tracert`, `pathping`, `hostname`, and `nslookup`.

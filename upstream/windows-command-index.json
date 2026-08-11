@@ -762,7 +762,8 @@
     {
       "name": "logoff",
       "source": "logoff.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/logoff.md"
     },
     {
       "name": "lpq",
@@ -874,7 +875,8 @@
     {
       "name": "msg",
       "source": "msg.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/msg.md"
     },
     {
       "name": "msiexec",
@@ -1331,7 +1333,8 @@
     {
       "name": "rwinsta",
       "source": "rwinsta.md",
-      "status": "unclassified"
+      "status": "alias",
+      "target": "pwsh-cli/rwinsta.md"
     },
     {
       "name": "san",
@@ -1669,7 +1672,8 @@
     {
       "name": "tsdiscon",
       "source": "tsdiscon.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/tsdiscon.md"
     },
     {
       "name": "tsecimp",

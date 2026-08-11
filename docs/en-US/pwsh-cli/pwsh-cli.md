@@ -108,6 +108,10 @@ license in the document's provenance catalog before adapting material.
 - [qwinsta](qwinsta.md): searchable `query session` executable alias.
 - [qprocess](qprocess.md): searchable `query process` executable alias.
 - [qappsrv](qappsrv.md): searchable `query termserver` executable alias.
+- [msg.exe](msg.md): bounded notification to one verified active session.
+- [tsdiscon](tsdiscon.md): disconnect while preserving session processes/state.
+- [logoff](logoff.md): normal session termination and data-loss boundary.
+- [rwinsta](rwinsta.md): force-reset escalation for a malfunctioning session.
 
 ## Windows shell, GUI, and settings
 
