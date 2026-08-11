@@ -30,6 +30,23 @@ path and can copy RDS user-configuration information between two users. It
 modifies fields exposed by RDS extensions in Local Users and Groups or Active
 Directory Users and Computers; it does not copy profile files.
 
+## Commands and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `tsprof.exe`: Query, update, or copy legacy RDS user-profile configuration fields.
+
+All accounts are local to the executing host or in the explicitly named domain;
+the command has no remote-server operand.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/q`: Query the stored RDS profile-path field for one user.
+- `/update`: Update one user's stored RDS profile path.
+- `/copy`: Copy RDS configuration fields from one user to another.
+- `/local`: Select an account in the executing computer's local SAM.
+- `/domain`: Select the exact domain containing the account(s).
+- `/profile`: Set the destination RDS profile-path field.
+- `/?`: Display installed legacy syntax.
+
 ## Command forms
 
 - `/q {/local | /domain:<domain>} <user>` queries the stored RDS profile path.
@@ -71,7 +88,7 @@ A path such as `C:\Profiles` is local to each Session Host and may not roam.
 For UNC paths, verify share/NTFS permissions, availability, capacity, version
 layout, backup and access from every host under the user's token.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Call `tsprof.exe` explicitly, quote domain/profile/user arguments, and inspect
 `$LASTEXITCODE`. Output is legacy human text. Prefer typed AD/local-account and

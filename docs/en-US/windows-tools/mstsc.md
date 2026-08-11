@@ -31,6 +31,33 @@ credential-protection modes, or shadow an existing session. A connection spans
 identity, certificate, authentication, device/resource redirection and remote
 session policy; it is not just a hostname and password.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `mstsc.exe`: Open, edit, or shadow through the classic Remote Desktop client.
+
+An `.rdp` file is executable connection configuration and must be reviewed as
+carefully as explicit command-line switches.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/v`: Select the remote server and optional port.
+- `/g`: Select the Remote Desktop Gateway server.
+- `/prompt`: Prompt for credentials before connecting.
+- `/admin`: Select the server administration-session mode without granting rights.
+- `/restrictedadmin`: Use Restricted Admin credential behavior where supported.
+- `/remoteguard`: Use Remote Credential Guard where supported and configured.
+- `/f`: Open the connection full screen.
+- `/w`: Set the remote desktop width.
+- `/h`: Set the remote desktop height.
+- `/multimon`: Span the remote desktop across eligible local monitors.
+- `/l`: List local monitor IDs without connecting.
+- `/public`: Use public-computer caching behavior for this launch.
+- `/edit`: Open one RDP file for editing.
+- `/shadow`: Select an existing session ID for shadowing.
+- `/control`: Request interactive control during MSTSC shadowing.
+- `/noconsentprompt`: Suppress consent only where explicitly authorized by policy.
+- `/?`: Display installed client syntax.
+
 ## Important options
 
 ```text
@@ -67,7 +94,7 @@ it is not a complete cleanup or privacy guarantee.
 - Treating a visible desktop as proof that DNS, certificate, gateway, NLA,
   licensing, profile, redirection and audit requirements are healthy.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use `Start-Process mstsc.exe -ArgumentList ...` for interactive launch, but do
 not expect structured session results or a reliable remote-workload exit code.

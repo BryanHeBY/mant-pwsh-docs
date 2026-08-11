@@ -32,6 +32,19 @@ host; `/v` reports actions. With no session operand it disconnects the current
 session, so omission is unsafe in reusable automation. The console session
 cannot be disconnected by this command.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `tsdiscon.exe`: Disconnect one RDS session while leaving its processes running.
+
+The positional name/ID is optional in native syntax but mandatory for safe
+automation because omission disconnects the caller's current session.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/server`: Select one exact Session Host; it does not supply credentials.
+- `/v`: Display extended action information.
+- `/?`: Display installed syntax.
+
 ## Common mistakes
 
 ### Confusing disconnect with logoff or reset
@@ -67,7 +80,7 @@ special access permission. `/server:` does not provide credentials. Validate
 caller token, delegated RDS rights, policy, target state, and network path; do
 not grant broad administrative access for convenience.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use `tsdiscon.exe` explicitly with scalar ID/server arguments. Capture native
 streams and `$LASTEXITCODE`, then re-query. A successful process exit does not

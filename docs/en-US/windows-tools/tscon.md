@@ -37,6 +37,20 @@ can disconnect a user, and can expose an interactive desktop to physical or
 virtual-console access. Treat it as an identity and workstation-security change,
 not merely an RDP connectivity trick.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `tscon.exe`: Connect one local Session Host session to another session/transport.
+
+The positional source session is connected; `/dest` identifies the session that
+will be disconnected. There is no documented remote-server switch.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/dest`: Select the current/destination session that will be disconnected.
+- `/password`: Supply or prompt for the source session owner's password; use `*`.
+- `/v`: Display extended action information.
+- `/?`: Display installed syntax.
+
 ## Common mistakes
 
 ### Reversing source and `/dest:`
@@ -74,7 +88,7 @@ a different owner also requires the password. Do not disable UAC, consent,
 firewalls, or session security, and do not grant blanket RDS control to service
 accounts just to make a workaround succeed.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use `tscon.exe` explicitly with scalar session values and `/password:*`, never a
 literal secret. Capture native streams and `$LASTEXITCODE`, then re-query both

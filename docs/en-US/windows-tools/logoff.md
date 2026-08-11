@@ -35,6 +35,19 @@ This is not cleanup-only: unsaved documents, in-flight transfers, interactive
 installers, shells, jobs, application transactions, and per-user services can
 be terminated. Treat it as an approved user-impacting change.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `logoff.exe`: End all processes and delete one normal Windows/RDS user session.
+
+The positional session name or ID is optional in native syntax but mandatory in
+safe automation; omission targets the caller's current session.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/server`: Select the exact Session Host; it does not provide credentials.
+- `/v`: Display actions performed by the command.
+- `/?`: Display installed syntax.
+
 ## Safe workflow
 
 1. Bind host/session ID to owner, name, state, idle/logon time, processes, open
@@ -86,7 +99,7 @@ Control permission. Use narrowly delegated, audited administration and an RDS
 policy/workflow. `/server:` supplies no credential and access denial is not a
 reason to expose a password or broaden permissions blindly.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Call `logoff.exe` explicitly, pass scalar target arguments, and never rely on
 the no-operand default in automation. Capture stdout/stderr and `$LASTEXITCODE`

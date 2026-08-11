@@ -35,6 +35,21 @@ Prefer application-specific graceful close/recovery and modern structured
 process tools. Use `tskill` only when its session-aware legacy behavior is
 required and one exact process identity is verified.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `tskill.exe`: Force-end a selected process in one or more Windows sessions.
+
+The positional operand is a PID or wildcard-capable process name. Prefer one
+freshly corroborated PID and never infer it from localized text alone.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/server`: Select one exact Session Host using the caller's rights.
+- `/id`: Restrict a name-based match to one verified session ID.
+- `/a`: Apply a name-based match across all sessions and sharply broaden impact.
+- `/v`: Display extended action information.
+- `/?`: Display installed syntax.
+
 ## Common mistakes
 
 ### Using a process name or wildcard instead of one PID
@@ -70,7 +85,7 @@ wrong number. Capture `$LASTEXITCODE`, validate structured identity and an
 allowlisted host/session/process, then require a fresh check immediately before
 one action. Never fleet-loop a wildcard from text output.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use `tskill.exe` explicitly with an exact PID. Capture stdout/stderr and
 `$LASTEXITCODE`, then verify the original process creation identity is gone and

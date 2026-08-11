@@ -30,6 +30,28 @@ client-session admission, `change port` manages current-session COM mappings
 for MS-DOS applications, and `change user` controls legacy application install
 versus execute mode and `.ini`/registry shadowing.
 
+## Commands and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `change.exe`: Query or change RD Session Host logon, COM-port, or application mode.
+- `logon`: Query or change admission of new/reconnecting client sessions.
+- `port`: Query, create, or delete current-session legacy COM mappings.
+- `user`: Query or change application install/execute mode.
+
+Slash options apply only to the family that documents them; similarly named
+state changes have materially different session behavior.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/query`: Display current state for `logon`, `port`, or `user`.
+- `/enable`: Permit new client logons in the `logon` family.
+- `/disable`: Block later client logons without ending current sessions.
+- `/drain`: Block new sessions while allowing reconnects.
+- `/drainuntilrestart`: Drain until the next computer restart.
+- `/d`: Delete one current-session COM-port mapping.
+- `/install`: Enter legacy application installation/shadowing mode.
+- `/execute`: Return to normal application execution mode.
+- `/?`: Display installed family help.
+
 ## Logon admission
 
 `change logon /query` is read-only. The mutation choices differ materially:
@@ -104,7 +126,7 @@ Microsoft replaced those commands with `change logon`, `change port`, and
 `change user`. Keep shorthand lookup pages for discovery, but build new
 automation against the replacement and installed help.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Call `change.exe` explicitly and capture `$LASTEXITCODE`. `change` can be
 shadowed by another command in mixed toolchains. Native `/` options are not

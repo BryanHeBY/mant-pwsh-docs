@@ -63,6 +63,30 @@ as operational and identity data.
 The aliases are separate lookup pages in this source, but they do not provide
 different safety or output semantics.
 
+The dispatcher and its four families are semantic command entries so ManT can
+distinguish a session query from a process or legacy server-discovery query.
+
+<!-- mant:entries role=command case=insensitive -->
+- `query.exe`: Dispatch one read-only Remote Desktop Services query family.
+- `user`: Display user-session owner, ID, state, idle, and logon time.
+- `session`: Display sessions/listeners and optional line/counter details.
+- `process`: Display process IDs, executable names, owners, and session IDs.
+- `termserver`: Perform legacy Session Host server discovery.
+
+Options are family-specific and output remains localized fixed-column text.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/server`: Select one exact remote Session Host using the caller's identity.
+- `/id`: Filter a process query by verified session ID, not process ID.
+- `/counter`: Display cumulative create/disconnect/reconnect session counters.
+- `/mode`: Display current session line settings where applicable.
+- `/flow`: Display current session flow-control settings where applicable.
+- `/connect`: Display current session connection settings where applicable.
+- `/domain`: Select the domain for legacy termserver discovery.
+- `/address`: Include network addresses in termserver discovery output.
+- `/continue`: Continue legacy discovery after errors.
+- `/?`: Display top-level or family-specific installed help.
+
 ## Session identity workflow
 
 1. Record source and target hosts, Windows edition/build, RDS role, caller
@@ -198,7 +222,7 @@ session counters lack time/rate/error context. Correlate broker/collection/
 host configuration, event logs, performance counters, licensing, network path,
 and application-level tests before diagnosing capacity or availability.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use `query.exe` explicitly. The first token after it selects a subcommand; pass
 `/server:...`, `/id:...`, and other native arguments as scalar strings. Capture

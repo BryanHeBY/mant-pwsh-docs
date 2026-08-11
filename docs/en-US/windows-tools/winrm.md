@@ -50,6 +50,38 @@ configuration/plugin, language mode, startup process, authorization descriptor,
 serialization model, quotas, and PowerShell edition. `winrs.exe` creates a
 remote command shell with its own semantics.
 
+## Commands and common parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `winrm.exe`: Inspect or administer WS-Management resources and WinRM configuration.
+- `identify`: Ask one endpoint to return its WS-Management identity.
+- `get`: Retrieve one configuration or resource instance.
+- `enumerate`: Enumerate instances of one configuration/resource URI.
+- `create`: Create one resource/configuration instance.
+- `set`: Change one resource/configuration instance.
+- `delete`: Delete one resource/configuration instance.
+- `invoke`: Invoke one WS-Management action/method on a resource.
+- `quickconfig`: Start/configure WinRM service, listener, and firewall as a change bundle.
+- `help`: Display command/resource-specific installed help.
+
+Aliases, resource URIs, selectors, and values are parsed by WinRM rather than
+PowerShell. Common connection parameters still need an exact command context.
+
+<!-- mant:entries role=option case=insensitive -->
+- `-r`: Select the remote WS-Management endpoint URI/host.
+- `-u`: Select an alternate username.
+- `-p`: Supply its password on the command line, exposing the secret.
+- `-a`: Select an authentication mechanism supported by client and service.
+- `-encoding`: Select request encoding where the command supports it.
+- `-format`: Select output formatting such as pretty XML.
+- `-file`: Read input XML from a reviewed file.
+- `-skipcachecheck`: Skip certificate-cache validation under a narrowly reviewed need.
+- `-skipcncheck`: Skip TLS certificate name validation and weaken endpoint identity.
+- `-skiprevocationcheck`: Skip certificate revocation validation.
+- `-transport`: Select HTTP or HTTPS where the command form supports it.
+- `-quiet`: Suppress selected prompts/output without changing operation impact.
+- `-?`: Display installed syntax.
+
 ## Layers to inventory
 
 | Layer | Evidence | Typical failure boundary |
@@ -165,7 +197,7 @@ certificate, identity, and policy data. Preserve raw output with host/build/
 locale/time and native status. Prefer WSMan cmdlets/APIs for structured work,
 but account for PowerShell edition/platform availability.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Call `winrm.exe` explicitly. Its resource URIs, selectors, and `@{key="value"}`
 write syntax pass through PowerShell and WinRM parsing layers; examples copied

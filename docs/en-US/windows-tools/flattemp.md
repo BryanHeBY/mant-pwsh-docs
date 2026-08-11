@@ -30,6 +30,19 @@ Session Host. With flat folders enabled, users can share the pointed-to folder
 unless each user's TEMP/TMP is already isolated in a home directory. With them
 disabled, RDS normally adds a session-ID subfolder.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `flattemp.exe`: Query or change RD Session Host temporary-folder flattening.
+
+This is a host setting, not a report of every process's effective TEMP/TMP path.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/query`: Display the current flattening setting.
+- `/enable`: Enable flat folders and remove automatic session-ID separation.
+- `/disable`: Disable flat folders so RDS can add per-session subdirectories.
+- `/?`: Display installed syntax.
+
 ## Common mistakes
 
 ### Enabling flat folders while users point to one shared local path
@@ -63,7 +76,7 @@ Microsoft notes that FlatTemp is ignored when separate per-session temporary
 folders are disabled elsewhere. Collect resultant policy and actual paths
 instead of repeatedly toggling this command.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Call `flattemp.exe` explicitly and capture `$LASTEXITCODE`. `$env:TEMP` and
 `$env:TMP` are process-inherited current-session evidence only. Do not remotely

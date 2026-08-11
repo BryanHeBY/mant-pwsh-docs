@@ -40,6 +40,19 @@ disables it. Ability to suppress consent is not permission to do so. Do not
 change Group Policy or use no-consent behavior from a generic troubleshooting
 snippet; require explicit legal/security/HR policy and auditable approval.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `shadow.exe`: View or control one active RDS session under the host's consent policy.
+
+The positional session name/ID is host-local and reusable; re-query it
+immediately. MSTSC shadow options do not belong to this executable.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/server`: Select one exact Session Host; it does not supply credentials.
+- `/v`: Display extended shadow operation information.
+- `/?`: Display installed syntax.
+
 ## Common mistakes
 
 ### Confusing `shadow.exe` with `mstsc /shadow`
@@ -82,7 +95,7 @@ Microsoft specifies Control plus the asterisk on the numeric keypad. Confirm the
 operator keyboard/input path and a secondary termination method before starting;
 record start/end and verify the target session remains with its owner.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use `shadow.exe` explicitly with scalar ID/server arguments. Do not launch it
 from unattended automation or pipe parsed localized output into it. Capture

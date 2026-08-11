@@ -37,6 +37,22 @@ authenticated business event, success record, retry protocol, or exactly-once
 guarantee. Use a real orchestrator, service, queue, event, or process primitive
 when those properties matter.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `waitfor.exe`: Wait for or send one named best-effort Windows-domain signal.
+
+The positional signal name carries no payload or durable state. Always use a
+unique name, finite wait timeout, and exact send target.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/t`: Set a finite wait timeout in seconds.
+- `/si`: Enter send mode instead of listener mode.
+- `/s`: Select one exact destination computer and avoid implicit domain broadcast.
+- `/u`: Select an alternate remote account for send mode.
+- `/p`: Supply its password on the command line, exposing the secret.
+- `/?`: Display installed syntax.
+
 ## Common mistakes
 
 ### Omitting `/T` in unattended work
@@ -83,7 +99,7 @@ The sender does not receive a business result. The waiter should validate the
 actual artifact/state after release and publish a separate trustworthy result;
 otherwise stale or malicious signals can advance the workflow incorrectly.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Invoke `waitfor.exe` explicitly, pass target and signal as separate arguments,
 and capture `$LASTEXITCODE` immediately. Do not use `Start-Process -Wait` for a

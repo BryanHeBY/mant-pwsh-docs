@@ -34,6 +34,21 @@ Use an exact, freshly verified session ID for operational notices. Usernames can
 own multiple sessions, session names/IDs change, and `*` broadcasts much more
 widely than a troubleshooting operator may intend.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `msg.exe`: Send one message to a selected Windows/RDS user or session target.
+
+The positional target can be a user, session, ID, `@file`, or `*`; only a
+freshly verified numeric session ID provides narrow routine targeting.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/server`: Select the exact Session Host; it does not carry credentials.
+- `/time`: Bound message display/wait time in seconds.
+- `/w`: Wait for a response and potentially block the caller.
+- `/v`: Display extended information about performed actions.
+- `/?`: Display installed syntax.
+
 ## Safe workflow
 
 1. Record source/target host, caller identity, change/ticket, audience, message,
@@ -80,7 +95,7 @@ remote failure can also involve session state, service, transport, firewall, or
 name resolution. Do not embed credentials or broaden rights/firewalls just to
 make a pop-up work.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Call `msg.exe` explicitly, quote the complete message as one scalar argument,
 and capture stdout/stderr plus `$LASTEXITCODE` immediately. Avoid `*`, `@file`,

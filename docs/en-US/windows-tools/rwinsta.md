@@ -31,6 +31,19 @@ use reset only when a session malfunctions or appears to have stopped responding
 Resetting ends its processes and can lose data; it is not a harmless disconnect
 or a generic stale-session cleanup primitive.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `rwinsta.exe`: Force-reset and delete one malfunctioning RDS session; exact
+  alias of `reset session`.
+
+The positional name/ID must be freshly bound to host and owner before use.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/server`: Select one exact Session Host; it does not carry credentials.
+- `/v`: Display extended action information.
+- `/?`: Display installed reset-session syntax.
+
 ## Safe escalation
 
 First identify host, owner, session ID/name/state, processes, open work, and
@@ -74,7 +87,7 @@ localized output, every disconnected row, or a fleet without per-session
 authorization and concurrency/race protection. `/server:` does not supply
 credentials.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use `rwinsta.exe` explicitly with scalar session ID and server arguments.
 Capture stdout/stderr and `$LASTEXITCODE`, then re-query and validate application

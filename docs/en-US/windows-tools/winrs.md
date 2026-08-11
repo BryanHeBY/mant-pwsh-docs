@@ -41,6 +41,32 @@ automatically PowerShell Remoting. Paths, environment, account, filesystem,
 registry, network access, profiles, child processes, and side effects belong to
 the remote host and token.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `winrs.exe`: Execute one command through an authorized WinRM remote shell.
+
+Everything after WinRS options is parsed again by the remote executable or
+shell. Prefer a direct executable and reviewed scalar arguments.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/remote`: Select the remote WS-Management endpoint; short alias `/r`.
+- `/username`: Select an alternate username; short alias `/u`.
+- `/password`: Supply an alternate password; short alias `/p` exposes it.
+- `/directory`: Set the remote process working directory; short alias `/d`.
+- `/environment`: Set one remote environment variable; repeat as needed.
+- `/noprofile`: Skip loading the remote user profile.
+- `/noecho`: Suppress echo of interactive input.
+- `/unencrypted`: Disable WSMan message encryption unless HTTPS makes it inapplicable.
+- `/allowdelegate`: Permit credential delegation to a second remote resource.
+- `/compress`: Enable transport compression where supported.
+- `/usessl`: Select HTTPS/TLS transport.
+- `/skipcachecheck`: Skip selected certificate cache checks.
+- `/skipcncheck`: Skip TLS certificate name validation and weaken endpoint identity.
+- `/skiprevocationcheck`: Skip TLS certificate revocation validation.
+- `/timeout`: Use a deprecated remote operation timeout form on builds that retain it.
+- `/?`: Display installed syntax.
+
 ## Safe workflow
 
 1. Establish target identity/name, transport, authentication, authorization,
@@ -124,7 +150,7 @@ privileges. Allowlist executable, target, working directory, and typed arguments
 avoid `Invoke-Expression`, compound `cmd /c` strings, wildcards, and redirects.
 Use a purpose-built constrained endpoint/API for repeatable automation.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use `winrs.exe` explicitly and pass options/arguments as scalar strings. Capture
 stdout/stderr and `$LASTEXITCODE` immediately, preserving raw output with source/
