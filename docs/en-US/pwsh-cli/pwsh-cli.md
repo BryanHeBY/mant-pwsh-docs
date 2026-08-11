@@ -298,6 +298,9 @@ license in the document's provenance catalog before adapting material.
 
 ## Windows optional and legacy network clients
 
+- [atmadm](atmadm.md): legacy ATM connection, NSAP, call, and ILMI counter inventory.
+- [ipxroute](ipxroute.md): obsolete NWLink IPX binding/SAP discovery and TCP/IP migration boundaries.
+- [irftp](irftp.md): legacy infrared transfer identity, integrity, UI, and supported-channel migration.
 - [ftp](ftp.md): plaintext legacy FTP, interpreter/script boundaries, active data channels, and artifact verification.
 - [tftp](tftp.md): unauthenticated/unencrypted optional provisioning transfer with explicit octet-mode and trust boundaries.
 - [telnet](telnet.md): optional plaintext terminal client separated from safe TCP reachability and SSH.
@@ -307,6 +310,7 @@ license in the document's provenance catalog before adapting material.
 
 ## Windows NFS and RPC interoperability
 
+- [mapadmin](mapadmin.md): legacy User Name Mapping inventory, backup, identity, credential, and current-store migration.
 - [nfsadmin](nfsadmin.md): Server/Client for NFS configuration and lock inventory before global changes.
 - [nfsshare](nfsshare.md): NFS export, client, root/anonymous mapping, and NTFS authorization boundaries.
 - [nfsstat](nfsstat.md): cumulative NFS/ONC RPC counters and mounts without destroying the baseline.
@@ -379,6 +383,11 @@ license in the document's provenance catalog before adapting material.
 
 ## Windows legacy server roles
 
+- [append](append.md): unsupported DOS data-search-path recognition and explicit-path migration.
+- [edit](edit.md): legacy interactive MS-DOS Editor recognition, encoding preservation, and supported-editor migration.
+- [gettype](gettype.md): deliberately evidence-only treatment of a deprecated Server 2003 command with no current syntax contract.
+- [graftabl](graftabl.md): legacy graphics character set distinguished from console and file encodings.
+- [macfile](macfile.md): File Server for Macintosh volume, fork, permission, credential, and preservation boundaries.
 - [winnt](winnt.md): Windows Server 2003 Winnt/Winnt32/RIS Setup/SysOcMgr artifact interpretation and current deployment migration.
 - [ntbackup](ntbackup.md): preserved BKF recovery with the required legacy restore utility, explicitly separate from WbAdmin.
 - [servermanagercmd](servermanagercmd.md): deprecated role/feature automation migration to typed Server Manager cmdlets.
@@ -407,6 +416,7 @@ license in the document's provenance catalog before adapting material.
 - [defrag](defrag.md): media-aware optimization, retrim, tiers, and scope.
 - [diskcomp](diskcomp.md) / [diskcopy](diskcopy.md): floppy-only track comparison and destructive same-type media copying.
 - [diskperf](diskperf.md): physical/logical disk-counter configuration, restart, localization, and sampling boundaries.
+- [diskraid](diskraid.md): focus-driven VDS hardware RAID, HBA, iSCSI, LUN, path, cache, and destructive lifecycle boundaries.
 - [freedisk](freedisk.md): explicit-unit installation-space gates and the 0-enough/1-insufficient exit contract.
 - [compact](compact.md): NTFS, executable, and CompactOS compression boundaries.
 - [label](label.md) / [vol](vol.md): mutable labels and filesystem serial display correlated with durable volume/disk identity.
@@ -414,6 +424,7 @@ license in the document's provenance catalog before adapting material.
 - [recover](recover.md): single-file readable-sector salvage on an imaged/clone copy, distinct from filesystem and disk recovery.
 - [makecab](makecab.md) / [diantz](diantz.md): explicit Cabinet builds, directive-file review, artifact verification, and searchable compatibility naming.
 - [expand](expand.md): list-first, isolated Cabinet extraction with path, collision, signature, and format boundaries.
+- [extract](extract.md): modern `extrac32.exe` replacement, silent-output handling, and non-executing Cabinet inspection/extraction.
 - [manage-bde](manage-bde.md): BitLocker state, protectors, escrow, and access.
 - [fveupdate](fveupdate.md): Windows Setup-owned internal BitLocker metadata updater recognition.
 - [mountvol](mountvol.md): volume GUID, mount-point, automount, and ESP safety.

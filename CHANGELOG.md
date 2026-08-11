@@ -10,7 +10,7 @@ bundles.
 
 ### Added
 
-- First English release inventory: 355 reviewed ManT pages across `pwsh7`,
+- First English release inventory: 366 reviewed ManT pages across `pwsh7`,
   `pwsh51`, and `pwsh-cli`.
 - Broad `pwsh7` and `pwsh51` shell manuals, focused language/command pages,
   compatibility guides, and custom `irx` shorthand resolution guidance.
@@ -29,6 +29,11 @@ bundles.
 - Windows Server 2003 Winnt/Winnt32/RIS/SysOcMgr migration, incompatible
   NTBackup recovery, deprecated ServerManagerCmd, legacy Server CEIP/WER,
   HelpCtr, and NTVDM command-interpreter compatibility guides.
+- Windows VDS hardware RAID and Extrac32 Cabinet operations plus legacy DOS
+  Append/Edit/Graftabl/GetType, ATM/IPX/infrared, File Server for Macintosh,
+  and NFS User Name Mapping guides, with task-first TLDRs and explicit focus,
+  data-loss, encoding, credential, identity, protocol, lifecycle, and modern-
+  migration boundaries informed by official references and practitioner Q&A.
 - Windows shell, GUI, Settings, Control Panel, MMC, Registry, and Rundll32
   entry-point guides, plus matching `Start-Process`, `start`, `Invoke-Item`,
   and `ii` pages for PowerShell 7 and Windows PowerShell 5.1.

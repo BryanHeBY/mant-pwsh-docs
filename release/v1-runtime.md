@@ -804,6 +804,23 @@ inventory; never install/launch a legacy restore utility on a production host.
 Keep ServerManagerCmd to version/query/XML review and current typed feature
 inventory/WhatIf. Query Server CEIP/WER only. Do not launch HelpCtr or alter
 NTVDM, Config.nt, PIF, TSR, telemetry, role/feature, backup or restart state.
+Keep Append to resolution/list/environment reads, ATMADM to adapter and `/c`/
+`/a`/`/s` reads, and Graftabl to `/status` plus encoding reads. Do not alter
+data/executable search paths, ATM state, graphics/console/file encodings or
+fonts. Keep Edit/GetType to resolution and copied artifact/script inspection;
+do not acquire or execute unknown legacy binaries or rewrite production files.
+Keep IPXRoute to binding/config/SAP/resolve inventory and IrFTP to resolution/
+source hashing; do not alter IPX routes/broadcasts/bindings/drivers or enable a
+device/link, launch transfer UI, or send files merely for evidence. Keep
+Macfile to copied tree/ACL/fork/hash inventory and MapAdmin to settings/list/
+domain-list/current-store reads; do not expose credentials or mutate service,
+mapping, identity, permission, fork, server, volume, guest or access state.
+Keep DiskRaid to help/list/select/detail/exit on an explicitly approved
+nonproduction VDS provider: never change LUN/plex/drive, host access, HBA/iSCSI
+path/session/authentication, cache/controller/provider, capacity, redundancy or
+online state merely for evidence. Keep Extrac32 to resolution/help and `/D`
+listing of an approved inert CAB; extraction requires a separately approved new
+empty disposable directory, path review and independent manifest/hash checks.
 Keep MSTSC to help/local-monitor inventory: do not connect, authenticate, open an
 untrusted RDP file, redirect resources or shadow/control a session for evidence.
 Keep SxSTrace to help-only unless a disposable failing application and new protected

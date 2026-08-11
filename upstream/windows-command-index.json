@@ -42,7 +42,8 @@
     {
       "name": "append",
       "source": "append.md",
-      "status": "unclassified"
+      "status": "legacy",
+      "target": "pwsh-cli/append.md"
     },
     {
       "name": "arp",
@@ -71,7 +72,8 @@
     {
       "name": "atmadm",
       "source": "atmadm.md",
-      "status": "unclassified"
+      "status": "legacy",
+      "target": "pwsh-cli/atmadm.md"
     },
     {
       "name": "attach-vdisk",
@@ -454,7 +456,8 @@
     {
       "name": "diskraid",
       "source": "diskraid.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/diskraid.md"
     },
     {
       "name": "diskshadow",
@@ -501,7 +504,8 @@
     {
       "name": "edit",
       "source": "edit.md",
-      "status": "unclassified"
+      "status": "legacy",
+      "target": "pwsh-cli/edit.md"
     },
     {
       "name": "endlocal",
@@ -536,7 +540,8 @@
     {
       "name": "exec",
       "source": "exec.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/diskshadow.md"
     },
     {
       "name": "exit",
@@ -571,7 +576,8 @@
     {
       "name": "extract",
       "source": "extract.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/extract.md"
     },
     {
       "name": "fc",
@@ -672,7 +678,8 @@
     {
       "name": "gettype",
       "source": "gettype.md",
-      "status": "unclassified"
+      "status": "legacy",
+      "target": "pwsh-cli/gettype.md"
     },
     {
       "name": "goto",
@@ -707,7 +714,8 @@
     {
       "name": "graftabl",
       "source": "graftabl.md",
-      "status": "unclassified"
+      "status": "legacy",
+      "target": "pwsh-cli/graftabl.md"
     },
     {
       "name": "help",
@@ -765,12 +773,14 @@
     {
       "name": "ipxroute",
       "source": "ipxroute.md",
-      "status": "unclassified"
+      "status": "legacy",
+      "target": "pwsh-cli/ipxroute.md"
     },
     {
       "name": "irftp",
       "source": "irftp.md",
-      "status": "unclassified"
+      "status": "legacy",
+      "target": "pwsh-cli/irftp.md"
     },
     {
       "name": "jetpack",
@@ -853,7 +863,8 @@
     {
       "name": "macfile",
       "source": "macfile.md",
-      "status": "unclassified"
+      "status": "legacy",
+      "target": "pwsh-cli/macfile.md"
     },
     {
       "name": "makecab",
@@ -870,7 +881,8 @@
     {
       "name": "mapadmin",
       "source": "mapadmin.md",
-      "status": "unclassified"
+      "status": "legacy",
+      "target": "pwsh-cli/mapadmin.md"
     },
     {
       "name": "md",
