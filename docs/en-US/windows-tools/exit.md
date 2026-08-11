@@ -34,6 +34,27 @@ exit [/b] [EXIT-CODE]
 Outside a batch file, `/b` also exits `cmd.exe`. In PowerShell, `exit` is a
 PowerShell language keyword with a different runtime boundary.
 
+## Command and option
+
+<!-- mant:entries role=command case=insensitive -->
+- `exit`: Terminate the current Cmd process, or return only from the current
+  batch/subroutine when `/b` is present.
+
+An optional integer becomes the batch ERRORLEVEL or child process exit code at
+the boundary selected by `/b`.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/b`: Exit the current batch script or called label without terminating its
+  parent Cmd process; outside a batch file it exits the Cmd process.
+- `/?`: Display installed builtin help through `cmd.exe`.
+
+## PowerShell boundaries
+
+PowerShell parses bare `exit` as its own language keyword. Keep Cmd's `/b`
+form inside a batch file or child `cmd.exe`; after that process returns, save
+`$LASTEXITCODE` immediately. Do not use `exit` merely to return from a
+PowerShell function—use `return` for that scope.
+
 ## Common mistakes
 
 ### Omitting `/b` in a called batch file

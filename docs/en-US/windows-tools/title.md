@@ -34,6 +34,19 @@ title [TEXT]
 Run it inside the cmd process whose visible title should change. A short-lived
 `cmd /c title ...` normally exits before the title is useful.
 
+## Command interface
+
+<!-- mant:entries role=command case=insensitive -->
+- `title`: Set the console-title text requested by the current interactive Cmd
+  process; the terminal host may override what is displayed.
+
+## PowerShell boundaries
+
+Bare `title` has no Cmd-builtin meaning in PowerShell. Use
+`$Host.UI.RawUI.WindowTitle` when that host supports it, or retain the same
+`cmd.exe /k` whose title is being changed. Never concatenate untrusted text
+into a child Cmd command; title text is parsed syntax, not a structured API.
+
 ## Common mistakes
 
 ### Expecting it to rename another terminal tab or process

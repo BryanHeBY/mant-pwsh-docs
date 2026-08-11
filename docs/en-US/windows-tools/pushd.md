@@ -34,6 +34,20 @@ pushd [PATH]
 Use `popd` in the same cmd process to restore the saved directory and remove a
 temporary UNC mapping.
 
+## Command interface
+
+<!-- mant:entries role=command case=insensitive -->
+- `pushd`: Push the current Cmd directory and change to the supplied local or
+  UNC path, creating a temporary drive mapping for UNC when extensions allow.
+
+## PowerShell boundaries
+
+PowerShell's `Push-Location`/`Pop-Location` stack is separate and can use UNC
+filesystem locations directly. Cmd's stack and temporary mapping exist only
+inside one `cmd.exe`, so do not split `pushd`, the dependent operation, and
+`popd` across child invocations. Return an explicit exit code to PowerShell and
+ensure cleanup executes on every batch path.
+
 ## Common mistakes
 
 ### Using `cd` for a UNC current directory

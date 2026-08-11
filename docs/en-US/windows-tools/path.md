@@ -36,6 +36,23 @@ path ;
 directory search behavior. Prefer `set "PATH=NEW;%PATH%"` for visibly scoped
 batch edits.
 
+## Command interface
+
+<!-- mant:entries role=command case=insensitive -->
+- `path`: Display or replace the `PATH` environment variable in the current
+  Cmd process; `path ;` clears it for that process.
+
+The builtin accepts path-list operands rather than named switches. A literal
+`;%PATH%` preserves the prior list when the replacement is parsed by Cmd.
+
+## PowerShell boundaries
+
+PowerShell has no `path` builtin: inspect or change `$env:PATH` in the current
+process and split/join with `[IO.Path]::PathSeparator`. A child
+`cmd.exe /c path ...` cannot mutate its parent. For executable identity use
+`Get-Command -All` as well as `where.exe`, because PowerShell resolution occurs
+before the Windows PATH search for native executables.
+
 ## Common mistakes
 
 ### Replacing PATH when intending to append

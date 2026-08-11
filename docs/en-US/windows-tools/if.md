@@ -38,6 +38,34 @@ if cmdextversion NUMBER COMMAND [else EXPRESSION]
 Comparison operators are `EQU`, `NEQ`, `LSS`, `LEQ`, `GTR`, and `GEQ`.
 `else` must be on the same physical line as the closing command/parenthesis.
 
+## Conditions and option
+
+<!-- mant:entries role=command case=insensitive -->
+- `if`: Conditionally execute a Cmd command using the following comparison or
+  test grammar.
+- `errorlevel`: Test whether the current Cmd status is greater than or equal to
+  the supplied integer, optionally preceded by `not`.
+- `exist`: Test whether the following path pattern resolves to an entry.
+- `defined`: Test whether an environment variable exists; this form requires
+  command extensions.
+- `cmdextversion`: Test whether Cmd command-extension version is at least the
+  supplied integer.
+
+Only the string-compare switch is prefix-shaped; the comparison operators and
+condition keywords are operands in Cmd grammar.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/i`: Compare string operands without regard to case; it does not affect
+  numeric `EQU`/`NEQ`/`LSS`/`LEQ`/`GTR`/`GEQ` comparisons.
+
+## PowerShell boundaries
+
+PowerShell's `if` is parsed by PowerShell and does not implement `errorlevel`,
+`exist`, or `/i` syntax. Keep these conditions inside a batch file or one
+explicit `cmd.exe /d /c` command. When PowerShell launches that boundary,
+capture `$LASTEXITCODE` immediately and avoid interpolating untrusted text into
+the child command string.
+
 ## Common mistakes
 
 ### Treating `if errorlevel N` as equality

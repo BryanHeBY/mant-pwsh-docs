@@ -35,6 +35,18 @@ setlocal [EnableExtensions | DisableExtensions]
 
 Scopes can be nested and must be reasoned about as a stack.
 
+## Commands and modes
+
+<!-- mant:entries role=command case=insensitive -->
+- `setlocal`: Save the current batch environment, extension state, and delayed
+  expansion state on a nested localization stack.
+- `EnableExtensions`: Enable Cmd command extensions in the new local scope.
+- `DisableExtensions`: Disable Cmd command extensions in the new local scope.
+- `EnableDelayedExpansion`: Enable execution-time `!NAME!` expansion in the
+  new local scope.
+- `DisableDelayedExpansion`: Disable execution-time exclamation-mark expansion
+  in the new local scope.
+
 ## Delayed expansion
 
 Percent references such as `%COUNT%` are expanded when cmd parses a complete
@@ -51,6 +63,14 @@ for %%F in (*.txt) do (
 )
 endlocal
 ```
+
+## PowerShell boundaries
+
+`setlocal` is valid only while a batch file is executing; it is not a
+PowerShell scoping primitive and has no durable effect on its parent process.
+Use PowerShell functions/script blocks and explicit child-process environment
+values for PowerShell code. When invoking a batch file, rely on its explicit
+process exit code rather than attempting to import its localized variables.
 
 ## Common mistakes
 

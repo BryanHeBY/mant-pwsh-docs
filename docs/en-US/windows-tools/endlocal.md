@@ -26,6 +26,12 @@ command extensions, and delayed-expansion state saved by the innermost
 `setlocal`. It has no effect outside a batch file; reaching end-of-file performs
 an implicit `endlocal` for every remaining scope.
 
+## Command interface
+
+<!-- mant:entries role=command case=insensitive -->
+- `endlocal`: Pop the innermost `setlocal` scope and restore its saved Cmd
+  environment, command-extension state, and delayed-expansion state.
+
 ## Returning a value
 
 Cmd expands a complete line before executing it, which permits a simple value
@@ -40,6 +46,14 @@ endlocal & set "RESULT=%LOCAL_RESULT%"
 This technique is parser-sensitive, not a general safe serialization format.
 Values containing `%`, `!`, `^`, `&`, `|`, parentheses, quotes, or newlines
 require a deliberately tested encoding/transfer design.
+
+## PowerShell boundaries
+
+`endlocal` is batch control syntax and cannot close a PowerShell scope. Keep
+the scope transition and any parser-sensitive value transfer inside the batch
+file. Return only a deliberate numeric exit code and structured output across
+the child-process boundary; PowerShell then reads `$LASTEXITCODE` and output
+without inheriting the child's environment mutations.
 
 ## Common mistakes
 

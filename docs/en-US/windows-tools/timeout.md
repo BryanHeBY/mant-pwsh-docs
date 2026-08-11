@@ -35,6 +35,29 @@ timeout.exe /t SECONDS [/nobreak]
 `-1` waits indefinitely for a key. `/nobreak` is unsuitable with `-1` when no
 external cancellation mechanism exists.
 
+## Command and options
+
+<!-- mant:entries role=command case=insensitive -->
+- `timeout.exe`: Pause a Windows console command processor for a bounded number
+  of seconds or until a permitted key press.
+
+This utility delays only its own command flow; it does not apply a deadline to
+another process.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/t`: Set the delay to `-1` (wait for a key) or 0 through 99999 seconds.
+- `/nobreak`: Ignore ordinary key presses during a finite delay; Ctrl+C can
+  still interrupt the process.
+- `/?`: Display installed command help.
+
+## PowerShell boundaries
+
+Use `timeout.exe` explicitly because Unix-like systems assign a different
+meaning to `timeout`. Prefer `Start-Sleep` for PowerShell delays, especially in
+redirected/headless hosts. If the native utility is required, check
+`$LASTEXITCODE`; do not interpret a sleep completing as readiness of another
+resource.
+
 ## Common mistakes
 
 ### Using timeout as a process deadline

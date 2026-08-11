@@ -34,9 +34,32 @@ for /l %V in (START,STEP,END) do COMMAND
 for /f ["OPTIONS"] %V in (SOURCE) do COMMAND
 ```
 
+<!-- mant:entries role=command case=insensitive -->
+- `for`: Iterate a Cmd set using one replaceable variable and execute the
+  following Cmd command for each selected value.
+
+The slash forms select distinct iteration grammars. Inside a batch file the
+replaceable variable starts with `%%`, not the interactive prompt's single `%`.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/d`: Match directory names rather than files in the supplied set.
+- `/r`: Walk a directory tree from the optional root and match the supplied
+  file set in each directory.
+- `/l`: Iterate an inclusive numeric `(START,STEP,END)` sequence.
+- `/f`: Parse named files, a literal string, or output captured from a child
+  `cmd.exe` according to the quoted parsing options.
+
 `/f` options include `eol=C`, `skip=N`, `delims=CHARS`, `tokens=SPEC`, and
 `usebackq`. Modifiers such as `%%~fF`, `%%~dpF`, `%%~nxF`, and `%%~zF` return a
 full path, directory, name/extension, or size.
+
+## PowerShell boundaries
+
+PowerShell's `for`/`foreach` language syntax is unrelated. Run this form only
+inside Cmd or a batch file; a `for /f ('COMMAND')` source adds another child
+Cmd parser, text encoding boundary, and separate exit status. Prefer typed
+PowerShell enumeration for objects and files, and return an explicit batch
+exit code when a Cmd loop is invoked from PowerShell.
 
 ## Common mistakes
 

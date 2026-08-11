@@ -31,11 +31,22 @@ it does not return the chosen character on stdout.
 choice [/c CHOICES] [/n] [/cs] [/t SECONDS /d DEFAULT] [/m TEXT]
 ```
 
-- `/c`: valid characters in result order; default is `YN`.
-- `/n`: hide the displayed choice list.
-- `/cs`: make matching case-sensitive.
-- `/t` with `/d`: select a declared default after 0 through 9999 seconds.
-- `/m`: display prompt text.
+<!-- mant:entries role=command case=insensitive -->
+- `choice.exe`: Read one declared console character and return its one-based
+  position as the process status.
+
+The default character must be present in `/c`; `/d` is valid only with a
+finite `/t` timeout.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/c`: Declare valid characters in result order; the default list is `YN` and
+  duplicate characters are not a useful unambiguous contract.
+- `/n`: Hide the displayed bracketed choice list while retaining prompt text.
+- `/cs`: Make character matching case-sensitive.
+- `/t`: Set 0 through 9999 seconds before the `/d` character is selected.
+- `/d`: Select the following declared default character when `/t` expires.
+- `/m`: Display the following prompt text before waiting for input.
+- `/?`: Display installed command help.
 
 ## Result contract
 
@@ -51,6 +62,13 @@ if errorlevel 2 goto no
 if errorlevel 1 goto yes
 exit /b 130
 ```
+
+## PowerShell boundaries
+
+`choice.exe` writes a prompt but returns the selection index through the native
+exit status, not stdout. Capture `$LASTEXITCODE` immediately after direct
+PowerShell invocation and map it against the exact `/c` order. Do not use this
+interactive contract in redirected, scheduled, service, or CI contexts.
 
 ## Common mistakes
 

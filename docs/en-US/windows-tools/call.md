@@ -36,12 +36,24 @@ call :LABEL [ARGUMENTS]
 Command extensions must be enabled for label subroutines. `exit /b CODE` or
 the end of the subroutine returns to the caller.
 
+<!-- mant:entries role=command case=insensitive -->
+- `call`: Invoke another batch file or a `:LABEL` subroutine and resume at the
+  following line when that called context returns.
+
 ## Arguments and modifiers
 
 Inside the called context, `%0` is its name and `%1` through `%9` are arguments;
 `%*` represents all arguments. Modifiers include `%~1` (remove outer quotes),
 `%~f1` (full path), `%~dp1` (drive and directory), `%~nx1` (name and extension),
 and `%~$PATH:1` (resolve through PATH). `%~` modifiers do not apply to `%*`.
+
+## PowerShell boundaries
+
+`call` is batch control syntax, not a PowerShell command and not a required
+prefix for launching `.cmd`/`.bat` from PowerShell. Keep it inside a reviewed
+batch file. At a PowerShell process boundary invoke the batch file explicitly,
+pass an argument array rather than concatenated syntax where possible, and
+capture `$LASTEXITCODE` after the child `cmd.exe` returns.
 
 ## Common mistakes
 

@@ -44,6 +44,22 @@ cmd.exe /d /c 'set PATH'
 `set NAME=value` changes only the current cmd process and children created
 afterward. A child `cmd.exe` cannot modify its parent PowerShell environment.
 
+## Commands and options
+
+<!-- mant:entries role=command case=insensitive -->
+- `set`: Display, assign, or remove variables in the current Cmd process; a
+  prefix operand displays every variable whose name begins with that prefix.
+
+Use the quoted assignment form `set "NAME=value"` to keep accidental outer
+spaces out of the stored value. An empty value removes the variable.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/p`: Read one input line into the named variable after displaying an
+  optional prompt; initialize and validate the variable for EOF/failure cases.
+- `/a`: Evaluate a signed 32-bit integer expression using Cmd's operators and
+  number-prefix rules, then assign or display the result.
+- `/?`: Display installed builtin help through `cmd.exe`.
+
 ## Important forms
 
 - `set`: display the complete cmd environment.
@@ -53,6 +69,14 @@ afterward. A child `cmd.exe` cannot modify its parent PowerShell environment.
 - `set /p NAME=Prompt`: read one console/input line.
 - `set /a NAME=EXPRESSION`: evaluate 32-bit signed integer arithmetic. A leading
   `0` selects octal and `0x` selects hexadecimal.
+
+## PowerShell boundaries
+
+Bare `set` normally resolves to the `Set-Variable` alias. Use `$env:NAME` for
+the current PowerShell process environment and `[Environment]` APIs only when
+a persistent user/machine change is explicitly intended. Cmd assignments stay
+inside that child process; capture output/exit status deliberately and never
+expect `cmd.exe /c set ...` to mutate its parent PowerShell session.
 
 ## Common mistakes
 
