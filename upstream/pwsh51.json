@@ -99,6 +99,90 @@
         "This document is the navigation index; pwsh51.md is the primary shell and language manual.",
         "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
       ]
+    },
+    "powershell.md": {
+      "kind": "powershell-launcher",
+      "status": "draft",
+      "versions": [
+        "5.1"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/5.1/Microsoft.PowerShell.Core/About/about_PowerShell_exe.md"
+        }
+      ],
+      "notes": [
+        "This is an original launcher guide, not a copy of the upstream reference.",
+        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+      ]
+    },
+    "about_Parsing.md": {
+      "kind": "about-topic",
+      "status": "draft",
+      "versions": [
+        "5.1"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/5.1/Microsoft.PowerShell.Core/About/about_Parsing.md"
+        }
+      ],
+      "notes": [
+        "This is an original ManT-oriented topic guide, not a copy of the upstream reference.",
+        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+      ]
+    },
+    "about_Quoting_Rules.md": {
+      "kind": "about-topic",
+      "status": "draft",
+      "versions": [
+        "5.1"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/5.1/Microsoft.PowerShell.Core/About/about_Quoting_Rules.md"
+        }
+      ],
+      "notes": [
+        "This is an original ManT-oriented topic guide, not a copy of the upstream reference.",
+        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+      ]
+    },
+    "native-commands.md": {
+      "kind": "guide",
+      "status": "draft",
+      "versions": [
+        "5.1"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/5.1/Microsoft.PowerShell.Core/About/about_Parsing.md"
+        }
+      ],
+      "notes": [
+        "No official about_Native_Commands topic exists in the locked 5.1 PowerShell-Docs baseline; this original guide is a project topic name informed by about_Parsing.",
+        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+      ]
     }
   }
 }

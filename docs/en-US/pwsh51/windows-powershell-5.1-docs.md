@@ -39,9 +39,17 @@ applies to the older edition.
 
 - [pwsh51](pwsh51.md): shell invocation, language, object pipelines, streams,
   errors, native commands, modules, profiles, and Windows-specific behavior.
+- [powershell](powershell.md): `powershell.exe` launcher options for
+  interactive sessions, scripts, and automation.
+- [about_Parsing](about_Parsing.md): expression mode, argument mode, literal
+  input, and Windows native-command boundaries.
+- [about_Quoting_Rules](about_Quoting_Rules.md): literal, expandable, and
+  multi-line strings.
+- [native-commands](native-commands.md): executable resolution, argument
+  conversion, text streams, exit codes, and safety.
 
-Future introductory pages will cover the `powershell.exe` launcher,
-discovering commands, using the help system, and migrating to PowerShell 7.
+Further introductory pages will cover discovering commands, using the help
+system, and migrating to PowerShell 7.
 
 ## Planned command reference
 
