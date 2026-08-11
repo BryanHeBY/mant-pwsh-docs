@@ -31,6 +31,40 @@ list an account, query an SPN, and search duplicates. `-S` adds after a
 duplicate check; `-D` deletes; `-R` resets default computer SPNs. `-F` extends
 query scope from a domain to the forest.
 
+## Command and options
+
+<!-- mant:entries role=command case=insensitive -->
+- `setspn.exe`: Query or deliberately change Active Directory
+  `servicePrincipalName` values on exact user/computer accounts.
+
+Query exact ownership and duplicates before a write, then account for
+replication before concluding that a second change is needed.
+
+<!-- mant:entries role=option case=insensitive -->
+- `-L`: List every SPN registered on the following exact account.
+- `-Q`: Query for owners of the following SPN; wildcards broaden scope.
+- `-X`: Search for duplicate SPNs.
+- `-S`: Add the following SPN to an account after checking for duplicates;
+  prefer this over legacy `-A`.
+- `-A`: Add an SPN without the recommended duplicate-check safeguard.
+- `-D`: Delete the following exact SPN from the following exact account.
+- `-R`: Reset the default SPN registrations for the following computer account.
+- `-F`: Use forest scope instead of the current domain for `-Q` or `-X`.
+- `-T`: Use the following domain/forest scope instead of the current context.
+- `-U`: Interpret the supplied account as a user account.
+- `-C`: Interpret the supplied account as a computer account.
+- `-P`: Suppress progress to the console (quiet mode); it does not make a
+  directory mutation safer.
+- `/?`: Display installed command help.
+
+## PowerShell boundaries
+
+`setspn.exe` returns directory query/mutation results as text. Pass the SPN and
+account as separate native arguments, capture `$LASTEXITCODE`, and preserve
+pre-change account values. For typed automation use Active Directory APIs or
+cmdlets with an explicit server/domain and stable distinguished identity; still
+verify forest uniqueness, replication, tickets, and the actual service protocol.
+
 ## Common mistakes
 
 ### Adding with legacy `-A`

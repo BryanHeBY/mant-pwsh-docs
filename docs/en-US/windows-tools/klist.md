@@ -30,6 +30,39 @@ constrained-delegation cache, and preferred KDC bindings. It can also request a
 ticket, purge tickets, and add or purge bindings. Without `-lh`/`-li`, ticket
 operations use the current logon session's LUID.
 
+## Commands and options
+
+<!-- mant:entries role=command case=insensitive -->
+- `klist.exe`: Inspect or deliberately change Windows Kerberos ticket/binding
+  state for the current or explicitly selected logon session.
+- `tickets`: List cached ticket-granting and service tickets.
+- `tgt`: Display the initial ticket-granting ticket for the selected session.
+- `sessions`: List logon sessions and LUIDs visible to the caller.
+- `kcd_cache`: Display constrained-delegation cache information.
+- `get`: Request a service ticket for the following SPN and add it to the cache.
+- `purge`: Delete tickets from the selected logon session cache.
+- `add_bind`: Add a preferred domain-controller binding for the specified domain.
+- `query_bind`: Display cached preferred domain-controller bindings.
+- `purge_bind`: Remove preferred domain-controller bindings.
+- `kdcoptions`: Display or supply Kerberos KDC option flags used by a ticket
+  request, following the installed command and RFC contract.
+
+The LUID selectors use hexadecimal high/low parts and change which logon
+session a ticket operation observes or mutates.
+
+<!-- mant:entries role=option case=insensitive -->
+- `-lh`: Select the high part of a target logon session LUID.
+- `-li`: Select the low part of a target logon session LUID.
+- `/?`: Display installed command help.
+
+## PowerShell boundaries
+
+`klist.exe` emits authentication-sensitive text and some subcommands mutate
+cache/binding state. Pass LUID and SPN as separate native arguments, capture
+`$LASTEXITCODE`, and preserve the failing session's tickets/events before
+`get` or `purge`. Do not parse principals or times as a stable object schema;
+correlate them with the actual process/session and protocol failure.
+
 ## Common mistakes
 
 ### Purging before capturing the failing ticket

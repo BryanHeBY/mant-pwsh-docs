@@ -31,6 +31,36 @@ computer. `/scope user|computer` narrows the half of policy, `/r` summarizes,
 HTML or XML. Remote reporting uses `/s` and optionally alternate run-as
 credentials; it does not itself refresh Group Policy.
 
+## Command and options
+
+<!-- mant:entries role=command case=insensitive -->
+- `gpresult.exe`: Report recorded Resultant Set of Policy for an explicit
+  computer and user context without refreshing policy.
+
+Run-as identity (`/u`) and reported target identity (`/user`) are distinct.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/s`: Query the following remote computer instead of the local computer.
+- `/u`: Use the following account to run the remote query.
+- `/p`: Supply the `/u` password; omit the entire switch to receive a prompt.
+- `/user`: Report RSoP for the following target user on the selected computer.
+- `/scope`: Restrict the report to `USER` or `COMPUTER` policy.
+- `/r`: Display summary RSoP data.
+- `/v`: Display verbose policy information.
+- `/z`: Display all available detailed policy information.
+- `/x`: Write XML report output to the following file.
+- `/h`: Write HTML report output to the following file.
+- `/f`: Force overwrite of an existing `/x` or `/h` report file.
+- `/?`: Display installed command help.
+
+## PowerShell boundaries
+
+Invoke `gpresult.exe` with separate native arguments, never inline `/p`, and
+capture `$LASTEXITCODE`. Reports contain sensitive policy/security topology;
+write to a protected new path and import XML only after validating its schema
+and target identity. A successful text/HTML report is not a refresh operation
+or proof that every effective setting currently matches RSoP.
+
 ## Common mistakes
 
 ### Expecting computer settings from a non-elevated shell

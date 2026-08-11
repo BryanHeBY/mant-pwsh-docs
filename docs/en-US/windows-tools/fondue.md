@@ -31,6 +31,29 @@ image; payload files can come from Windows Update or a source selected by
 Group Policy. `/caller-name:` labels the caller for error reporting, and
 `/hide-ux:` suppresses selected UI.
 
+## Command and options
+
+<!-- mant:entries role=command case=insensitive -->
+- `fondue.exe`: Enable one Windows optional feature whose manifest exists in
+  the current image, using configured servicing content sources.
+
+All documented values use a colon in the same native argument.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/enable-feature`: Enable the following colon-delimited internal feature name.
+- `/caller-name`: Attach the following caller label to error reporting.
+- `/hide-ux`: Hide the selected user experience (`all`, restart request, or
+  progress) without supplying missing content, permission, or restart handling.
+- `/?`: Display installed command help.
+
+## PowerShell boundaries
+
+Pass each colon-bound option as one native argument and capture
+`$LASTEXITCODE`. For managed automation prefer DISM or Windows optional-feature
+cmdlets because they expose explicit online image, source, logging, and restart
+behavior. Regardless of launcher, re-query the exact feature state and pending
+restart; process completion alone is insufficient.
+
 ## Common mistakes
 
 ### Guessing a friendly feature name

@@ -25,6 +25,33 @@
 requests verbose properties, `/si` signed-driver information, and `/fo`
 selects table, list, or CSV. `/v` and `/si` are mutually exclusive.
 
+## Command and options
+
+<!-- mant:entries role=command case=insensitive -->
+- `driverquery.exe`: Inventory installed Windows device drivers on the local or
+  one remote computer using the selected display view.
+
+Remote credentials affect query access, not the target driver trust decision.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/s`: Query the following remote computer name or IP address.
+- `/u`: Run the remote query using the following account.
+- `/p`: Supply the `/u` password; omit the entire switch to receive a prompt
+  instead of exposing a secret in command arguments.
+- `/fo`: Select `TABLE`, `LIST`, or `CSV` output.
+- `/nh`: Suppress headers in `TABLE` or `CSV` output.
+- `/v`: Include verbose driver properties; it cannot be combined with `/si`.
+- `/si`: Display signed-driver information; it cannot be combined with `/v`.
+- `/?`: Display installed command help.
+
+## PowerShell boundaries
+
+`driverquery.exe` emits localized text. Use `/fo csv` with headers retained for
+bounded interchange, or query typed CIM/PnP/Driver Store interfaces for the
+specific inventory question. Capture `$LASTEXITCODE`; a signed row is not a
+typed chain/revocation/vulnerability assessment, and a failed remote query is
+not an empty driver inventory.
+
 ## Common mistakes
 
 ### Treating the list as Driver Store package inventory

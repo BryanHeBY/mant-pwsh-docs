@@ -32,6 +32,35 @@ setting, `/wait:seconds` bounds the foreground wait, `/logoff` and `/boot` may
 end the session or restart, and `/sync` makes the next foreground application
 synchronous.
 
+## Command and options
+
+<!-- mant:entries role=command case=insensitive -->
+- `gpupdate.exe`: Refresh changed local/domain Group Policy for the current
+  computer and/or user, with explicit wait and foreground-action behavior.
+
+Colon-bound values remain one native argument, for example `/wait:600`.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/target`: Restrict refresh to `COMPUTER` or `USER`; default processes both.
+- `/force`: Reapply every setting instead of only settings considered changed.
+- `/wait`: Wait the following number of seconds for policy processing; `0`
+  returns immediately and `-1` waits indefinitely.
+- `/logoff`: Sign out when a client-side extension requires foreground user
+  policy processing.
+- `/boot`: Restart when a client-side extension requires foreground computer
+  policy processing.
+- `/sync`: Make the next foreground boot/logon policy application synchronous;
+  `/force` and `/wait` are ignored in this mode.
+- `/?`: Display installed command help.
+
+## PowerShell boundaries
+
+`gpupdate.exe` changes diagnostic state and may outlive the native process when
+`/wait:0` or a timeout is used. Capture pre-refresh RSoP/events, pass colon
+arguments intact, and read `$LASTEXITCODE`; then verify completion, RSoP, events,
+effective configuration, and any pending sign-out/restart. Do not add `/boot`
+or `/logoff` to unattended PowerShell merely to silence incomplete processing.
+
 ## Common mistakes
 
 ### Running refresh before collecting evidence

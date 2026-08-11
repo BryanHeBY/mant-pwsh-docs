@@ -39,6 +39,52 @@ wmic /node:COMPUTER ...
 Use `wmic /?`, `wmic alias /?` and `wmic path /?` on a target where legacy
 compatibility is required. Do not infer class/property identity from an alias.
 
+## Commands and global switches
+
+<!-- mant:entries role=command case=insensitive -->
+- `wmic.exe`: Run the deprecated WMIC compatibility client when the optional
+  executable is present; prefer CIM cmdlets for new typed automation.
+- `path`: Address an explicit WMI class rather than a WMIC alias.
+- `where`: Filter instances using WMIC/WQL-compatible conditions.
+- `get`: Display selected instance properties.
+- `list`: Display instances using a selected WMIC list format.
+- `call`: Invoke a WMI method after reviewing arguments and side effects.
+- `set`: Change writable instance properties.
+- `delete`: Delete selected provider instances; this is not a generic file delete.
+
+Global slash switches precede the alias/class and use colon-bound values.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/namespace`: Select the following WMI namespace instead of the default.
+- `/role`: Select the following endpoint role/path context.
+- `/node`: Select one or more target computers.
+- `/implevel`: Select COM impersonation level for the connection.
+- `/authlevel`: Select COM authentication level.
+- `/locale`: Select the client locale identifier.
+- `/privileges`: Enable or disable required privileges for the WMIC operation.
+- `/trace`: Enable or disable WMIC command tracing.
+- `/record`: Record interactive commands and output to the following file.
+- `/interactive`: Enable or disable interactive prompting.
+- `/failfast`: Control node-reachability ping behavior before remote commands.
+- `/user`: Select the remote connection account.
+- `/password`: Supply its password; avoid inline secrets and prefer CIM session
+  credentials through an approved secure channel.
+- `/output`: Write output to the following file instead of stdout.
+- `/append`: Append output to the following file.
+- `/aggregate`: Control aggregate display across multiple nodes.
+- `/authority`: Select the connection authentication authority.
+- `/format`: Select a WMIC output format; formatted text is not a stable schema.
+- `/?`: Display installed WMIC help when the optional executable is present.
+
+## PowerShell boundaries
+
+Detect `wmic.exe` capability before invocation and do not install it as a new
+dependency merely to preserve text parsing. Colon-bound switches are one native
+argument and WMIC output is locale/provider-sensitive. Capture
+`$LASTEXITCODE`; for migration, resolve namespace/class/property identity and
+use `Get-CimClass`, `Get-CimInstance`, or a reviewed `Invoke-CimMethod` with a
+typed `CimSession` and explicit target/authentication policy.
+
 ## Common mistakes
 
 - Interpreting “deprecated” as “WMI is removed,” or assuming `wmic.exe` exists

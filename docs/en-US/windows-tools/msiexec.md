@@ -31,6 +31,48 @@
 `/L*V` produces verbose logging. Product properties are case-sensitive public
 property names supplied as `NAME=value` after the package operation.
 
+## Operations and options
+
+<!-- mant:entries role=command case=insensitive -->
+- `msiexec.exe`: Run one Windows Installer installation, administrative image,
+  repair, patch, advertise, uninstall, or service-registration operation.
+
+Package public properties use bare case-sensitive `NAME=value` operands and
+are package-specific; they are not generic PowerShell named parameters.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/i`: Install or configure the following MSI package path or product code.
+- `/x`: Uninstall the following package path or verified product-code GUID;
+  `/uninstall` is the long spelling.
+- `/a`: Create or update an administrative installation image from a package.
+- `/j`: Advertise a product to the current user (`u`) or all users (`m`), with
+  optional transform/language selectors.
+- `/f`: Repair a product using following repair-mode letters and product identity.
+- `/p`: Apply the following MSP patch to an installed product.
+- `/update`: Apply one or more semicolon-delimited patches.
+- `/q`: Select UI level through its attached mode letters such as `n`, `b`,
+  `r`, or `f`; `/quiet` is equivalent to no UI and `/passive` shows progress.
+- `/quiet`: Run with no user interface; choose logging and restart behavior too.
+- `/passive`: Show only an unattended progress display; specify restart policy
+  separately instead of assuming this UI option prevents a restart.
+- `/norestart`: Do not automatically restart after the operation.
+- `/promptrestart`: Prompt before a restart when UI is available.
+- `/forcerestart`: Restart after the operation; this is disruptive and requires
+  explicit maintenance authorization.
+- `/l`: Write a Windows Installer log using attached detail letters and the
+  following protected log path; `/log` is the simpler long spelling.
+- `/t`: Apply the following transform in advertise/administrative contexts.
+- `/g`: Select language ID for an advertised product.
+- `/?`: Display Windows Installer command help; `/help` is the long spelling.
+
+## PowerShell boundaries
+
+Build a reviewed argument array, use `Start-Process -Wait -PassThru`, and read
+its `ExitCode`; direct invocation instead uses `$LASTEXITCODE`. Quote package
+and log paths once for the actual native boundary, never via
+`Invoke-Expression`. Treat 0, 1641, and 3010 distinctly, preserve the protected
+log, and verify product/version/context after completion.
+
 ## Common mistakes
 
 ### Assuming exit code zero is the only success

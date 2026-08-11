@@ -30,6 +30,33 @@ expand inside `/c`. Absolute dates use the machine's regional date format.
 `/d -30` means modified on or before today minus 30 days; it does not mean
 “within the last 30 days.”
 
+## Command and options
+
+<!-- mant:entries role=command case=insensitive -->
+- `forfiles.exe`: Select filesystem entries by root, mask, recursion, and
+  modification date, then execute one nested command per match.
+
+The `/c` value crosses both the `forfiles` parser and a nested command parser.
+Preview the identical selection before placing a mutation there.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/p`: Set the search root to the following path; default is the current directory.
+- `/m`: Select the following filename mask; default is `*`.
+- `/s`: Recurse into subdirectories beneath the selected root.
+- `/c`: Run the following quoted command for each match; default is a simple
+  `cmd /c echo @file` display.
+- `/d`: Select entries by last-modified date: an absolute regional date, a
+  negative age (on/before cutoff), or a positive offset (on/after cutoff).
+- `/?`: Display installed command help.
+
+## PowerShell boundaries
+
+Pass `/c` as one argument and account for the second Cmd parsing layer;
+`@path` is already the quoted full path substitution. Capture
+`$LASTEXITCODE`, but prefer `Get-ChildItem` plus typed `LastWriteTime` filtering
+for PowerShell automation, where file/directory identity and timezone/cutoff
+logic can be inspected before action.
+
 ## Common mistakes
 
 ### Deleting before previewing the identical selection
