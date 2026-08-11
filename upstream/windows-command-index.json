@@ -248,7 +248,8 @@
     {
       "name": "cleanmgr",
       "source": "cleanmgr.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/cleanmgr.md"
     },
     {
       "name": "clip",
@@ -890,7 +891,8 @@
     {
       "name": "msinfo32",
       "source": "msinfo32.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/msinfo32.md"
     },
     {
       "name": "mstsc",
@@ -1034,7 +1036,8 @@
     {
       "name": "perfmon",
       "source": "perfmon.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/perfmon.md"
     },
     {
       "name": "ping",
@@ -1465,7 +1468,8 @@
     {
       "name": "shutdown",
       "source": "shutdown.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/shutdown.md"
     },
     {
       "name": "simulate restore",
@@ -1713,7 +1717,8 @@
     {
       "name": "tzutil",
       "source": "tzutil.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/tzutil.md"
     },
     {
       "name": "unexpose",
@@ -1740,7 +1745,8 @@
     {
       "name": "verifier",
       "source": "verifier.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/verifier.md"
     },
     {
       "name": "verify",

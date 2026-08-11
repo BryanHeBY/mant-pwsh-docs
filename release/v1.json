@@ -2,7 +2,7 @@
   "$schema": "release-manifest/v1",
   "release": "v1",
   "locale": "en-US",
-  "requiredDocumentCount": 204,
+  "requiredDocumentCount": 210,
   "sources": {
     "pwsh7": {
       "runtimePlatforms": ["windows", "linux", "macos"],
@@ -115,6 +115,12 @@
         "tracerpt.md",
         "lodctr.md",
         "unlodctr.md",
+        "perfmon.md",
+        "msinfo32.md",
+        "cleanmgr.md",
+        "shutdown.md",
+        "tzutil.md",
+        "verifier.md",
         "cmd.md",
         "start.md",
         "explorer.md",

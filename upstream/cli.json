@@ -600,6 +600,65 @@
       ],
       "notes": ["The TLDR makes inventory and backup precede an explicitly lifecycle-scoped unregister example; the page contains wrong-provider, unregister-versus-disable, invocation-path, rollback, active-monitoring, native-status, and product-support risks.", "Windows runtime verification remains help/query-only; unregistration requires an approved disposable product lifecycle fixture and rollback validation."]
     },
+    "perfmon.md": {
+      "kind": "windows-gui-entrypoint", "status": "reviewed",
+      "versions": ["supported Windows client and server releases with the applicable interactive monitoring views and diagnostic collectors"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/perfmon.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=65693&service=superuser&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR opens one explicit GUI mode and labels /report as starting a bounded diagnostic collector; the page contains sample-window, formula/UI-comparison, structured-automation, session/desktop, missing-provider, native-launch, and evidence-provenance risks.", "Windows runtime verification remains manual GUI launch/close only; /report requires a separately approved collector fixture."]
+    },
+    "msinfo32.md": {
+      "kind": "windows-gui-entrypoint", "status": "reviewed",
+      "versions": ["supported Windows client and server releases; categories, fields, and remote collection depend on the exact target"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/msinfo32.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=38014700&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=52418822&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR discovers stable category IDs and uses Start-Process -Wait for scoped NFO/text exports; the page contains asynchronous/exit-status, quoting/directory/extension, NFO-versus-text, localization/category, sensitive-data, remote-identity/completeness, and artifact-verification risks.", "Windows runtime verification remains help/GUI-only unless a new protected local fixture path and content checks are approved."]
+    },
+    "cleanmgr.md": {
+      "kind": "windows-gui-entrypoint", "status": "reviewed",
+      "versions": ["legacy Disk Cleanup on supported Windows releases where the executable and requested handlers remain available"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/cleanmgr.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=131281&service=superuser&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=1720643&service=superuser&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR makes cleanup selection interactive and labels /sagerun as destructive/all-drive/no-dry-run; the page contains /d scope, nonportable registry profile, automatic-mode, estimate/concurrency, retention/rollback, copied-registry-script, native-status, and verification risks.", "Windows runtime verification remains executable/help discovery-only; no cleanup profile may be run merely for evidence."]
+    },
+    "shutdown.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows client and server releases; available actions and timeout limits vary by generation/build and policy"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/shutdown.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=652725&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=515427&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR leads with help/cancel and labels a planned timer's implicit forced close plus hibernation prerequisites; the page contains session/workload, /t-implies-/f, /l and /i combination, remote identity/right, /g-/sg, recovery/firmware/hybrid, abort-window, reason/audit, and asynchronous-completion risks.", "Windows runtime verification is help-only; no lifecycle or cancellation action may be performed on a real host merely for evidence."]
+    },
+    "tzutil.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows client and server releases; installed Windows IDs and DST rules vary with servicing and territory"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/tzutil.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=4235243&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=64467722&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR discovers target Windows IDs, preserves normal DST by default, and labels _dstoff; the page contains Windows-versus-IANA/display/abbreviation, territory mapping, Standard-Time naming, time-sync/automatic-zone separation, scheduling/security/cache, bulk-remoting, policy, and localization risks.", "Windows runtime verification remains /g and /l only; system time-zone mutation requires a disposable fixture and affected-workload plan."]
+    },
+    "verifier.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["supported Windows client and server releases where Driver Verifier is included; flags, rules, and known issues vary by build"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/verifier.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/windows-hardware/drivers/devtest/driver-verifier", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=1202944&service=superuser&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR is help/query-first, restricts operation to a dedicated test/debug computer, and scopes /reset to an intentional stop decision; the page contains production/all-driver, debugger/dump/recovery, next-boot-versus-current/volatile, versioned flags, fault injection, boot-loop, root-cause, native-status, and post-reboot risks.", "Windows runtime verification remains /querysettings and /query only; mutation/reset requires a dedicated crash-safe test fixture and recovery validation."]
+    },
     "cmd.md": {
       "kind": "windows-shell",
       "status": "reviewed",

@@ -126,6 +126,12 @@ relog.exe /?
 tracerpt.exe /?
 lodctr.exe /q
 unlodctr.exe /?
+Get-Command perfmon.exe, msinfo32.exe, cleanmgr.exe, shutdown.exe, tzutil.exe, verifier.exe -All
+shutdown.exe /?
+tzutil.exe /g
+tzutil.exe /l
+verifier.exe /querysettings
+verifier.exe /query
 cmd.exe /d /c ver
 reg.exe query HKCU\Environment
 Get-Command explorer.exe, control.exe, mmc.exe, rundll32.exe -All
@@ -414,6 +420,16 @@ or register, unregister, enable, or disable a provider merely for validation.
 Bounded sampling or conversion requires an approved fixture/host and a new
 explicit output. Record locale, exact counter formula and instances, interval,
 sample count, clock, provider identity/status, native status, and artifact hash.
+Keep system-diagnostics/maintenance verification nonmutating. GUI entry points
+may be opened and closed manually in an interactive session; do not start a
+diagnostic report collector or treat GUI text as structured evidence. A scoped
+`msinfo32` export is allowed only to a new protected fixture path, with process
+wait plus artifact/content verification. Do not execute a cleanup profile or
+automatic cleanup, schedule/cancel/sign out/hibernate/restart/shut down a real
+host, change its time zone/DST policy, or enable/reset/reconfigure Driver
+Verifier merely for release evidence. Driver Verifier mutation requires a
+dedicated test computer, debugger/dumps, exact driver/flags, console/recovery,
+stop criteria, rollback, reboot, and post-boot verification plan.
 
 On Windows, macOS, and Linux where declared by the document, record:
 

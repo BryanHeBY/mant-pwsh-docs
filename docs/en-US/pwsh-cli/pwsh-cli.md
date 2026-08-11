@@ -136,6 +136,15 @@ license in the document's provenance catalog before adapting material.
 - [lodctr](lodctr.md): performance-counter provider registration inventory and backup before repair.
 - [unlodctr](unlodctr.md): exact provider unregistration only in a supported uninstall or repair workflow.
 
+## Windows system diagnostics and maintenance
+
+- [perfmon](perfmon.md): explicit Performance, Resource, Reliability, and bounded System Diagnostics views.
+- [msinfo32](msinfo32.md): category-scoped System Information collection and verified NFO/text export.
+- [cleanmgr](cleanmgr.md): interactive Disk Cleanup profiles with all-drive and no-dry-run boundaries.
+- [shutdown](shutdown.md): sign-out, power, restart, recovery, remote-target, timeout, and forced-close safety.
+- [tzutil](tzutil.md): Windows time-zone ID discovery, DST semantics, and controlled system-zone changes.
+- [verifier](verifier.md): query/recovery-first Driver Verifier guidance restricted to test/debug computers.
+
 ## Windows shell, GUI, and settings
 
 - [cmd](cmd.md): cmd builtins, child-shell parsing, AutoRun, and exit status.
