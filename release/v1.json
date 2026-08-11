@@ -1,0 +1,100 @@
+{
+  "$schema": "release-manifest/v1",
+  "release": "v1",
+  "locale": "en-US",
+  "requiredDocumentCount": 69,
+  "sources": {
+    "pwsh7": {
+      "runtimePlatforms": ["windows", "linux", "macos"],
+      "documents": [
+        "pwsh7.md",
+        "powershell-7-docs.md",
+        "pwsh.md",
+        "about_Parsing.md",
+        "about_Quoting_Rules.md",
+        "about_Pipelines.md",
+        "about_Redirection.md",
+        "about_Automatic_Variables.md",
+        "about_Profiles.md",
+        "about_Functions.md",
+        "about_Native_Commands.md",
+        "Get-Command.md",
+        "Get-Help.md",
+        "Get-Member.md",
+        "Get-ChildItem.md",
+        "Where-Object.md",
+        "ForEach-Object.md",
+        "Select-Object.md",
+        "Sort-Object.md",
+        "Import-Module.md",
+        "irm.md",
+        "iwr.md",
+        "iex.md",
+        "curl.md",
+        "powershell-5.1-compatibility.md"
+      ]
+    },
+    "pwsh51": {
+      "runtimePlatforms": ["windows"],
+      "documents": [
+        "pwsh51.md",
+        "windows-powershell-5.1-docs.md",
+        "powershell.md",
+        "about_Parsing.md",
+        "about_Quoting_Rules.md",
+        "about_Pipelines.md",
+        "about_Redirection.md",
+        "about_Automatic_Variables.md",
+        "about_Profiles.md",
+        "about_Functions.md",
+        "about_Native_Commands.md",
+        "Get-Command.md",
+        "Get-Help.md",
+        "Get-Member.md",
+        "Get-ChildItem.md",
+        "Where-Object.md",
+        "ForEach-Object.md",
+        "Select-Object.md",
+        "Sort-Object.md",
+        "Import-Module.md",
+        "irm.md",
+        "iwr.md",
+        "iex.md",
+        "curl.md",
+        "powershell-7-compatibility.md"
+      ]
+    },
+    "pwsh-cli": {
+      "runtimePlatforms": ["windows", "linux", "macos"],
+      "documents": [
+        "pwsh-cli.md",
+        "microsoft-learn-mcp.md",
+        "winget.md",
+        "winget-search.md",
+        "winget-show.md",
+        "winget-install.md",
+        "winget-upgrade.md",
+        "winget-uninstall.md",
+        "winget-list.md",
+        "wsl.md",
+        "where.md",
+        "robocopy.md",
+        "schtasks.md",
+        "sc.md",
+        "git.md",
+        "ssh.md",
+        "curl.md",
+        "tar.md",
+        "dotnet.md"
+      ]
+    }
+  },
+  "releaseRequirements": {
+    "minimumDocumentStatus": "reviewed",
+    "portableValidation": true,
+    "manTDiagnostics": "none",
+    "readerFacingSources": true,
+    "pageLevelProvenance": true,
+    "mcpRuntimeDependency": false
+  }
+}

@@ -27,8 +27,11 @@ kept separate from the portable documentation checks.
 
 ## Project status
 
-The repository is being initialized. Document sources, authoring templates,
-and validation tools will be added incrementally.
+The repository foundation and primary shell manuals are in place. The first
+publishable English release is defined by [V1-SCOPE.md](V1-SCOPE.md); its
+required document inventory lives in [release/v1.json](release/v1.json).
+Portable validation, focused command pages, runtime verification, and release
+metadata are being added incrementally.
 
 ## License
 
