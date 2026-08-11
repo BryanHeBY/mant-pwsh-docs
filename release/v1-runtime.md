@@ -14,7 +14,8 @@ from [sources.example.toml](../sources.example.toml), and run:
 ```text
 mant --update-docs
 mant pwsh7 --source pwsh7 --outline
-mant pwsh-cli --source pwsh-cli --outline
+mant windows-tools --source windows-tools --outline
+mant cross-platform-tools --source cross-platform-tools --outline
 ```
 
 Record the host operating-system version, architecture, ManT version, shell
@@ -62,7 +63,7 @@ Confirm `PSEdition` is `Desktop`; validate legacy web-request behavior,
 Windows command precedence, UTF-16LE redirection defaults, native command
 exit-code handling, profiles, providers, and the PowerShell 7 migration guide.
 
-## CLI platforms
+## Tool platforms
 
 On Windows, run and record supported versions of:
 
@@ -850,8 +851,8 @@ Before tagging, attach or link a record with these outcomes:
 | --- | --- | --- | --- |
 | PowerShell 7 | required | required | required |
 | Windows PowerShell 5.1 | required | not applicable | not applicable |
-| Windows-only CLI pages | required | not applicable | not applicable |
-| Cross-platform CLI pages | required | required | required |
+| Windows-only tool pages | required | not applicable | not applicable |
+| Cross-platform tool pages | required | required | required |
 | ManT source update and representative queries | required | required | required |
 
 Once every required cell has recorded evidence, change only pages with direct

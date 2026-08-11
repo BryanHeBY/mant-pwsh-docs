@@ -1,0 +1,220 @@
+{
+  "$schema": "./schema.json",
+  "schemaVersion": 1,
+  "source": {
+    "id": "cross-platform-tools",
+    "title": "Cross-platform tools for PowerShell",
+    "locale": "en-US",
+    "root": "docs/en-US/cross-platform-tools",
+    "versionPolicy": "Each document identifies the installed tool and platform assumptions; availability and behavior depend on the selected executable and version."
+  },
+  "baselines": {
+    "git": {
+      "type": "git",
+      "repository": "https://github.com/git/git.git",
+      "branch": "master",
+      "revision": "010afd3166ddc64c9863b1506f12cbcdda0d4ea1",
+      "license": {
+        "spdx": "GPL-2.0-only",
+        "url": "https://github.com/git/git/blob/master/COPYING"
+      },
+      "retrievedAt": "2026-08-11"
+    },
+    "openssh-portable": {
+      "type": "git",
+      "repository": "https://github.com/openssh/openssh-portable.git",
+      "branch": "master",
+      "revision": "64ede7991d9e2021d84fb3eb89ed1dd1c2a1179e",
+      "license": {
+        "spdx": "LicenseRef-OpenSSH",
+        "url": "https://github.com/openssh/openssh-portable/blob/master/LICENCE"
+      },
+      "retrievedAt": "2026-08-11"
+    },
+    "curl": {
+      "type": "git",
+      "repository": "https://github.com/curl/curl.git",
+      "branch": "master",
+      "revision": "a833c83a872f00396d017cc83e368bdaf44fcfbd",
+      "license": {
+        "spdx": "curl",
+        "url": "https://github.com/curl/curl/blob/master/COPYING"
+      },
+      "retrievedAt": "2026-08-11"
+    },
+    "dotnet-docs": {
+      "type": "git",
+      "repository": "https://github.com/dotnet/docs.git",
+      "branch": "main",
+      "revision": "a9ec51e5b9252888111b270406961f41ce682b93",
+      "license": {
+        "spdx": "CC-BY-4.0",
+        "url": "https://github.com/dotnet/docs/blob/main/LICENSE"
+      },
+      "retrievedAt": "2026-08-11"
+    }
+  },
+  "documents": {
+    "cross-platform-tools.md": {
+      "kind": "source-index",
+      "status": "reviewed",
+      "versions": [
+        "varies by installed tool"
+      ],
+      "platforms": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "git",
+          "path": "Documentation/git.adoc"
+        },
+        {
+          "type": "git",
+          "baseline": "openssh-portable",
+          "path": "ssh.1"
+        },
+        {
+          "type": "git",
+          "baseline": "curl",
+          "path": "docs/cmdline-opts/MANPAGE.md"
+        },
+        {
+          "type": "web",
+          "url": "https://www.gnu.org/software/tar/manual/tar.html",
+          "license": {
+            "spdx": "GFDL-1.3-or-later",
+            "url": "https://www.gnu.org/licenses/fdl-1.3.html"
+          },
+          "checkedAt": "2026-08-11"
+        },
+        {
+          "type": "git",
+          "baseline": "dotnet-docs",
+          "path": "docs/core/tools/dotnet.md"
+        }
+      ],
+      "notes": [
+        "The source index is original project text; each tool page records its authoritative upstream material.",
+        "Installing this ManT source does not install any documented executable."
+      ]
+    },
+    "git.md": {
+      "kind": "native-cli",
+      "status": "reviewed",
+      "versions": [
+        "varies by installed Git"
+      ],
+      "platforms": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "git",
+          "path": "Documentation/git.adoc"
+        }
+      ],
+      "notes": [
+        "Runtime inspection used Git 2.55.0 on Linux; Windows and macOS behavior needs separate verification."
+      ]
+    },
+    "ssh.md": {
+      "kind": "native-cli",
+      "status": "reviewed",
+      "versions": [
+        "varies by installed OpenSSH"
+      ],
+      "platforms": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "openssh-portable",
+          "path": "ssh.1"
+        }
+      ],
+      "notes": [
+        "Runtime inspection used OpenSSH 10.4p1 on Linux; Windows and macOS configuration behavior needs separate verification."
+      ]
+    },
+    "curl.md": {
+      "kind": "native-cli",
+      "status": "reviewed",
+      "versions": [
+        "varies by installed curl"
+      ],
+      "platforms": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "curl",
+          "path": "docs/cmdline-opts/MANPAGE.md"
+        }
+      ],
+      "notes": [
+        "Runtime inspection used curl 8.21.0 on Linux; Windows curl.exe availability and feature set need separate verification."
+      ]
+    },
+    "tar.md": {
+      "kind": "native-cli",
+      "status": "reviewed",
+      "versions": [
+        "varies by installed tar implementation"
+      ],
+      "platforms": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "sources": [
+        {
+          "type": "web",
+          "url": "https://www.gnu.org/software/tar/manual/tar.html",
+          "license": {
+            "spdx": "GFDL-1.3-or-later",
+            "url": "https://www.gnu.org/licenses/fdl-1.3.html"
+          },
+          "checkedAt": "2026-08-11"
+        }
+      ],
+      "notes": [
+        "Runtime inspection used GNU tar 1.35 on Linux; the guide intentionally does not claim GNU options apply to Windows or macOS tar implementations."
+      ]
+    },
+    "dotnet.md": {
+      "kind": "native-cli",
+      "status": "reviewed",
+      "versions": [
+        ".NET 6 SDK and later"
+      ],
+      "platforms": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "dotnet-docs",
+          "path": "docs/core/tools/dotnet.md"
+        }
+      ],
+      "notes": [
+        "The current Linux authoring environment has no dotnet executable; runtime verification is required on each declared platform."
+      ]
+    }
+  }
+}

@@ -1,8 +1,8 @@
-# ManT PowerShell Documentation
+# ManT PowerShell and Tool Documentation
 
 This repository publishes concise, structured English documentation for
-Windows PowerShell 5.1, PowerShell 7, and command-line tools commonly used
-from PowerShell. The Markdown files are written for direct consumption by
+Windows PowerShell 5.1, PowerShell 7, and operating-system or cross-platform
+tools commonly used from PowerShell. The Markdown files are written for direct consumption by
 [ManT](https://github.com/BryanHeBY/ManT) and remain readable on ordinary
 CommonMark renderers.
 
@@ -10,7 +10,10 @@ CommonMark renderers.
 
 - `pwsh51`: Windows PowerShell 5.1 commands, aliases, and concepts.
 - `pwsh7`: PowerShell 7 commands, aliases, and concepts.
-- `pwsh-cli`: Native command-line tools and PowerShell interoperability.
+- `windows-tools`: Windows-native, optional, GUI, URI, builtin, and legacy
+  tools used from PowerShell.
+- `cross-platform-tools`: Separately installed tools used from PowerShell on
+  Windows, macOS, and Linux.
 
 The publishable Markdown under `docs/en-US/` is the repository's source of
 truth. Documentation is authored and reviewed directly; it is not generated
@@ -27,27 +30,32 @@ kept separate from the portable documentation checks.
 
 ## Install with ManT
 
-Copy or merge the three source entries from
+Copy or merge the desired source entries from
 [sources.example.toml](sources.example.toml) into ManT's `sources.toml`, then
-update the local cache:
+update the local cache. Each entry is independent: a Windows-only setup can
+omit `cross-platform-tools`, while a macOS or Linux setup can omit
+`windows-tools`.
 
 ```text
 mant --update-docs
 mant pwsh7 --source pwsh7
 mant pwsh51 --source pwsh51
-mant pwsh-cli --source pwsh-cli
+mant windows-tools --source windows-tools
+mant cross-platform-tools --source cross-platform-tools
 ```
 
 The source names keep shell manuals, Windows PowerShell 5.1 references, and
-native CLI documentation distinct even where a document name overlaps. For
+tool documentation distinct even where a document name overlaps. For
 example, use `mant curl --source pwsh51` for the Windows PowerShell alias
-boundary and `mant curl --source pwsh-cli` for the native executable guide.
+boundary and `mant curl --source cross-platform-tools` for the native
+executable guide.
 
 ## Project status
 
-The first English v1 inventory now contains 366 reviewed pages: 30 for
-PowerShell 7, 30 for Windows PowerShell 5.1, and 306 PowerShell-facing CLI
-pages. The normative inventory lives in [release/v1.json](release/v1.json).
+The first English v1 inventory now contains 367 reviewed pages: 30 for
+PowerShell 7, 30 for Windows PowerShell 5.1, 301 Windows tool pages, and 6
+cross-platform tool pages. The normative inventory lives in
+[release/v1.json](release/v1.json).
 
 Portable ManT parsing, provenance validation, and locked-upstream
 accessibility audit pass locally. The final v1 tag remains pending recorded

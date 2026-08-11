@@ -6,7 +6,12 @@ import { spawn } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
 const repositoryRoot = fileURLToPath(new URL("../", import.meta.url));
-const catalogPaths = ["upstream/pwsh7.json", "upstream/pwsh51.json", "upstream/cli.json"];
+const catalogPaths = [
+  "upstream/pwsh7.json",
+  "upstream/pwsh51.json",
+  "upstream/windows-tools.json",
+  "upstream/cross-platform-tools.json"
+];
 const concurrency = 8;
 const timeoutSeconds = 20;
 const errors = [];

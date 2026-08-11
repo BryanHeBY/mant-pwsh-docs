@@ -8,7 +8,8 @@ upstream prose or cached MCP responses.
 
 - `pwsh51.json` covers `docs/en-US/pwsh51/`.
 - `pwsh7.json` covers `docs/en-US/pwsh7/`.
-- `cli.json` covers `docs/en-US/pwsh-cli/`.
+- `windows-tools.json` covers `docs/en-US/windows-tools/`.
+- `cross-platform-tools.json` covers `docs/en-US/cross-platform-tools/`.
 - `windows-command-index.json` records every top-level entry in the locked
   Microsoft Windows Commands A-Z index and its current coverage classification.
 - `schema.json` defines the common catalog format.
@@ -51,8 +52,8 @@ must use dependency-free Node.js ESM and must not require a network request.
 ## Windows command coverage index
 
 `windows-command-index.json` is the audit ledger for broad Windows in-box
-command coverage. Its baseline revision must match `cli.json`. Entries begin as
-`unclassified` and are changed only after review:
+command coverage. Its baseline revision must match `windows-tools.json`.
+Entries begin as `unclassified` and are changed only after review:
 
 - `documented`: an independent ManT page covers the command.
 - `family`: a named command-family page or section covers the entry.
@@ -62,6 +63,6 @@ command coverage. Its baseline revision must match `cli.json`. Entries begin as
 - `excluded`: evidence shows the indexed entry is not a Windows in-box command
   applicable to the declared scope; the reason must be recorded separately.
 
-The Windows CLI coverage goal is not complete while any entry remains
+The Windows tool coverage goal is not complete while any entry remains
 `unclassified`. The index records upstream names and paths, not copied upstream
 prose.

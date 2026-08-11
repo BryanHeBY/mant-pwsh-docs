@@ -2,10 +2,14 @@
   "$schema": "release-manifest/v1",
   "release": "v1",
   "locale": "en-US",
-  "requiredDocumentCount": 366,
+  "requiredDocumentCount": 367,
   "sources": {
     "pwsh7": {
-      "runtimePlatforms": ["windows", "linux", "macos"],
+      "runtimePlatforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
       "documents": [
         "pwsh7.md",
         "powershell-7-docs.md",
@@ -40,7 +44,9 @@
       ]
     },
     "pwsh51": {
-      "runtimePlatforms": ["windows"],
+      "runtimePlatforms": [
+        "windows"
+      ],
       "documents": [
         "pwsh51.md",
         "windows-powershell-5.1-docs.md",
@@ -74,10 +80,12 @@
         "powershell-7-compatibility.md"
       ]
     },
-    "pwsh-cli": {
-      "runtimePlatforms": ["windows", "linux", "macos"],
+    "windows-tools": {
+      "runtimePlatforms": [
+        "windows"
+      ],
       "documents": [
-        "pwsh-cli.md",
+        "windows-tools.md",
         "powershell_ise.md",
         "microsoft-learn-mcp.md",
         "winget.md",
@@ -377,7 +385,17 @@
         "diskshadow.md",
         "wbadmin.md",
         "bdehdcfg.md",
-        "refsutil.md",
+        "refsutil.md"
+      ]
+    },
+    "cross-platform-tools": {
+      "runtimePlatforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "documents": [
+        "cross-platform-tools.md",
         "git.md",
         "ssh.md",
         "curl.md",

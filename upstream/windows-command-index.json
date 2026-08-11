@@ -1,7 +1,7 @@
 {
   "$schema": "windows-command-index/v1",
   "baseline": {
-    "catalog": "upstream/cli.json",
+    "catalog": "upstream/windows-tools.json",
     "baseline": "windowsserverdocs",
     "revision": "0e41dfc209353e4614a9527b938b6dcafec2c9ff",
     "indexPath": "WindowsServerDocs/administration/windows-commands/windows-commands.md",
@@ -13,1168 +13,1171 @@
       "name": "active",
       "source": "active.md",
       "status": "family",
-      "target": "pwsh-cli/diskpart.md"
+      "target": "windows-tools/diskpart.md"
     },
     {
       "name": "add",
       "source": "add.md",
       "status": "family",
-      "target": "pwsh-cli/diskshadow.md"
+      "target": "windows-tools/diskshadow.md"
     },
     {
       "name": "add alias",
       "source": "add-alias.md",
       "status": "family",
-      "target": "pwsh-cli/diskshadow.md"
+      "target": "windows-tools/diskshadow.md"
     },
     {
       "name": "add volume",
       "source": "add-volume.md",
       "status": "family",
-      "target": "pwsh-cli/diskshadow.md"
+      "target": "windows-tools/diskshadow.md"
     },
     {
       "name": "adprep",
       "source": "adprep.md",
       "status": "documented",
-      "target": "pwsh-cli/adprep.md"
+      "target": "windows-tools/adprep.md"
     },
     {
       "name": "append",
       "source": "append.md",
       "status": "legacy",
-      "target": "pwsh-cli/append.md"
+      "target": "windows-tools/append.md"
     },
     {
       "name": "arp",
       "source": "arp.md",
       "status": "documented",
-      "target": "pwsh-cli/arp.md"
+      "target": "windows-tools/arp.md"
     },
     {
       "name": "assign",
       "source": "assign.md",
       "status": "family",
-      "target": "pwsh-cli/diskpart.md"
+      "target": "windows-tools/diskpart.md"
     },
     {
       "name": "assoc",
       "source": "assoc.md",
       "status": "documented",
-      "target": "pwsh-cli/assoc.md"
+      "target": "windows-tools/assoc.md"
     },
     {
       "name": "at",
       "source": "at.md",
       "status": "legacy",
-      "target": "pwsh-cli/at.md"
+      "target": "windows-tools/at.md"
     },
     {
       "name": "atmadm",
       "source": "atmadm.md",
       "status": "legacy",
-      "target": "pwsh-cli/atmadm.md"
+      "target": "windows-tools/atmadm.md"
     },
     {
       "name": "attach-vdisk",
       "source": "attach-vdisk.md",
       "status": "family",
-      "target": "pwsh-cli/diskpart.md"
+      "target": "windows-tools/diskpart.md"
     },
     {
       "name": "attrib",
       "source": "attrib.md",
       "status": "documented",
-      "target": "pwsh-cli/attrib.md"
+      "target": "windows-tools/attrib.md"
     },
     {
       "name": "attributes",
       "source": "attributes.md",
       "status": "family",
-      "target": "pwsh-cli/diskpart.md"
+      "target": "windows-tools/diskpart.md"
     },
     {
       "name": "auditpol",
       "source": "auditpol.md",
       "status": "documented",
-      "target": "pwsh-cli/auditpol.md"
+      "target": "windows-tools/auditpol.md"
     },
     {
       "name": "autochk",
       "source": "autochk.md",
       "status": "documented",
-      "target": "pwsh-cli/autochk.md"
+      "target": "windows-tools/autochk.md"
     },
     {
       "name": "autoconv",
       "source": "autoconv.md",
       "status": "documented",
-      "target": "pwsh-cli/autoconv.md"
+      "target": "windows-tools/autoconv.md"
     },
     {
       "name": "autofmt",
       "source": "autofmt.md",
       "status": "documented",
-      "target": "pwsh-cli/autofmt.md"
+      "target": "windows-tools/autofmt.md"
     },
     {
       "name": "automount",
       "source": "automount.md",
       "status": "family",
-      "target": "pwsh-cli/diskpart.md"
+      "target": "windows-tools/diskpart.md"
     },
     {
       "name": "bcdboot",
       "source": "bcdboot.md",
       "status": "documented",
-      "target": "pwsh-cli/bcdboot.md"
+      "target": "windows-tools/bcdboot.md"
     },
     {
       "name": "bcdedit",
       "source": "bcdedit.md",
       "status": "documented",
-      "target": "pwsh-cli/bcdedit.md"
+      "target": "windows-tools/bcdedit.md"
     },
     {
       "name": "bdehdcfg",
       "source": "bdehdcfg.md",
       "status": "documented",
-      "target": "pwsh-cli/bdehdcfg.md"
+      "target": "windows-tools/bdehdcfg.md"
     },
     {
       "name": "begin backup",
       "source": "begin-backup.md",
       "status": "family",
-      "target": "pwsh-cli/diskshadow.md"
+      "target": "windows-tools/diskshadow.md"
     },
     {
       "name": "begin restore",
       "source": "begin-restore.md",
       "status": "family",
-      "target": "pwsh-cli/diskshadow.md"
+      "target": "windows-tools/diskshadow.md"
     },
     {
       "name": "bitsadmin",
       "source": "bitsadmin.md",
       "status": "documented",
-      "target": "pwsh-cli/bitsadmin.md"
+      "target": "windows-tools/bitsadmin.md"
     },
     {
       "name": "bootcfg",
       "source": "bootcfg.md",
       "status": "legacy",
-      "target": "pwsh-cli/bootcfg.md"
+      "target": "windows-tools/bootcfg.md"
     },
     {
       "name": "break",
       "source": "break.md",
       "status": "legacy",
-      "target": "pwsh-cli/break.md"
+      "target": "windows-tools/break.md"
     },
     {
       "name": "cacls",
       "source": "cacls.md",
       "status": "legacy",
-      "target": "pwsh-cli/cacls.md"
+      "target": "windows-tools/cacls.md"
     },
     {
       "name": "call",
       "source": "call.md",
       "status": "documented",
-      "target": "pwsh-cli/call.md"
+      "target": "windows-tools/call.md"
     },
     {
       "name": "cd",
       "source": "cd.md",
       "status": "documented",
-      "target": "pwsh-cli/cd.md"
+      "target": "windows-tools/cd.md"
     },
     {
       "name": "certreq",
       "source": "certreq_1.md",
       "status": "documented",
-      "target": "pwsh-cli/certreq.md"
+      "target": "windows-tools/certreq.md"
     },
     {
       "name": "certutil",
       "source": "certutil.md",
       "status": "documented",
-      "target": "pwsh-cli/certutil.md"
+      "target": "windows-tools/certutil.md"
     },
     {
       "name": "change",
       "source": "change.md",
       "status": "documented",
-      "target": "pwsh-cli/change.md"
+      "target": "windows-tools/change.md"
     },
     {
       "name": "chcp",
       "source": "chcp.md",
       "status": "documented",
-      "target": "pwsh-cli/chcp.md"
+      "target": "windows-tools/chcp.md"
     },
     {
       "name": "chdir",
       "source": "chdir.md",
       "status": "alias",
-      "target": "pwsh-cli/chdir.md"
+      "target": "windows-tools/chdir.md"
     },
     {
       "name": "chglogon",
       "source": "chglogon.md",
       "status": "alias",
-      "target": "pwsh-cli/chglogon.md"
+      "target": "windows-tools/chglogon.md"
     },
     {
       "name": "chgport",
       "source": "chgport.md",
       "status": "alias",
-      "target": "pwsh-cli/chgport.md"
+      "target": "windows-tools/chgport.md"
     },
     {
       "name": "chgusr",
       "source": "chgusr.md",
       "status": "alias",
-      "target": "pwsh-cli/chgusr.md"
+      "target": "windows-tools/chgusr.md"
     },
     {
       "name": "chkdsk",
       "source": "chkdsk.md",
       "status": "documented",
-      "target": "pwsh-cli/chkdsk.md"
+      "target": "windows-tools/chkdsk.md"
     },
     {
       "name": "chkntfs",
       "source": "chkntfs.md",
       "status": "documented",
-      "target": "pwsh-cli/chkntfs.md"
+      "target": "windows-tools/chkntfs.md"
     },
     {
       "name": "choice",
       "source": "choice.md",
       "status": "documented",
-      "target": "pwsh-cli/choice.md"
+      "target": "windows-tools/choice.md"
     },
     {
       "name": "cipher",
       "source": "cipher.md",
       "status": "documented",
-      "target": "pwsh-cli/cipher.md"
+      "target": "windows-tools/cipher.md"
     },
     {
       "name": "clean",
       "source": "clean.md",
       "status": "family",
-      "target": "pwsh-cli/diskpart.md"
+      "target": "windows-tools/diskpart.md"
     },
     {
       "name": "cleanmgr",
       "source": "cleanmgr.md",
       "status": "documented",
-      "target": "pwsh-cli/cleanmgr.md"
+      "target": "windows-tools/cleanmgr.md"
     },
     {
       "name": "clip",
       "source": "clip.md",
       "status": "documented",
-      "target": "pwsh-cli/clip.md"
+      "target": "windows-tools/clip.md"
     },
     {
       "name": "cls",
       "source": "cls.md",
       "status": "documented",
-      "target": "pwsh-cli/cls.md"
+      "target": "windows-tools/cls.md"
     },
     {
       "name": "cmd",
       "source": "Cmd.md",
       "status": "documented",
-      "target": "pwsh-cli/cmd.md"
+      "target": "windows-tools/cmd.md"
     },
     {
       "name": "cmdkey",
       "source": "cmdkey.md",
       "status": "documented",
-      "target": "pwsh-cli/cmdkey.md"
+      "target": "windows-tools/cmdkey.md"
     },
     {
       "name": "cmstp",
       "source": "cmstp.md",
       "status": "documented",
-      "target": "pwsh-cli/cmstp.md"
+      "target": "windows-tools/cmstp.md"
     },
     {
       "name": "color",
       "source": "color.md",
       "status": "documented",
-      "target": "pwsh-cli/color.md"
+      "target": "windows-tools/color.md"
     },
     {
       "name": "comp",
       "source": "comp.md",
       "status": "documented",
-      "target": "pwsh-cli/comp.md"
+      "target": "windows-tools/comp.md"
     },
     {
       "name": "compact",
       "source": "compact.md",
       "status": "documented",
-      "target": "pwsh-cli/compact.md"
+      "target": "windows-tools/compact.md"
     },
     {
       "name": "compact vdisk",
       "source": "compact-vdisk.md",
       "status": "family",
-      "target": "pwsh-cli/diskpart.md"
+      "target": "windows-tools/diskpart.md"
     },
     {
       "name": "convert",
       "source": "convert.md",
       "status": "family",
-      "target": "pwsh-cli/diskpart.md"
+      "target": "windows-tools/diskpart.md"
     },
     {
       "name": "copy",
       "source": "copy.md",
       "status": "documented",
-      "target": "pwsh-cli/copy.md"
+      "target": "windows-tools/copy.md"
     },
     {
       "name": "create",
       "source": "create.md",
       "status": "family",
-      "target": "pwsh-cli/diskpart.md"
+      "target": "windows-tools/diskpart.md"
     },
     {
       "name": "cscript",
       "source": "cscript.md",
       "status": "documented",
-      "target": "pwsh-cli/cscript.md"
+      "target": "windows-tools/cscript.md"
     },
     {
       "name": "date",
       "source": "date.md",
       "status": "documented",
-      "target": "pwsh-cli/date.md"
+      "target": "windows-tools/date.md"
     },
     {
       "name": "dcdiag",
       "source": "dcdiag.md",
       "status": "documented",
-      "target": "pwsh-cli/dcdiag.md"
+      "target": "windows-tools/dcdiag.md"
     },
     {
       "name": "dcgpofix",
       "source": "dcgpofix.md",
       "status": "documented",
-      "target": "pwsh-cli/dcgpofix.md"
+      "target": "windows-tools/dcgpofix.md"
     },
     {
       "name": "dcpromo",
       "source": "dcpromo.md",
       "status": "documented",
-      "target": "pwsh-cli/dcpromo.md"
+      "target": "windows-tools/dcpromo.md"
     },
     {
       "name": "defrag",
       "source": "defrag.md",
       "status": "documented",
-      "target": "pwsh-cli/defrag.md"
+      "target": "windows-tools/defrag.md"
     },
     {
       "name": "del",
       "source": "del.md",
       "status": "documented",
-      "target": "pwsh-cli/del.md"
+      "target": "windows-tools/del.md"
     },
     {
       "name": "delete",
       "source": "delete.md",
       "status": "family",
-      "target": "pwsh-cli/diskpart.md"
+      "target": "windows-tools/diskpart.md"
     },
     {
       "name": "detach vdisk",
       "source": "detach-vdisk.md",
       "status": "family",
-      "target": "pwsh-cli/diskpart.md"
+      "target": "windows-tools/diskpart.md"
     },
     {
       "name": "detail",
       "source": "detail.md",
       "status": "family",
-      "target": "pwsh-cli/diskpart.md"
+      "target": "windows-tools/diskpart.md"
     },
     {
       "name": "dfsdiag",
       "source": "dfsdiag.md",
       "status": "documented",
-      "target": "pwsh-cli/dfsdiag.md"
+      "target": "windows-tools/dfsdiag.md"
     },
     {
       "name": "dfsrmig",
       "source": "dfsrmig.md",
       "status": "documented",
-      "target": "pwsh-cli/dfsrmig.md"
+      "target": "windows-tools/dfsrmig.md"
     },
     {
       "name": "diantz",
       "source": "diantz.md",
       "status": "alias",
-      "target": "pwsh-cli/diantz.md"
+      "target": "windows-tools/diantz.md"
     },
     {
       "name": "dir",
       "source": "dir.md",
       "status": "documented",
-      "target": "pwsh-cli/dir.md"
+      "target": "windows-tools/dir.md"
     },
     {
       "name": "diskcomp",
       "source": "diskcomp.md",
       "status": "documented",
-      "target": "pwsh-cli/diskcomp.md"
+      "target": "windows-tools/diskcomp.md"
     },
     {
       "name": "diskcopy",
       "source": "diskcopy.md",
       "status": "documented",
-      "target": "pwsh-cli/diskcopy.md"
+      "target": "windows-tools/diskcopy.md"
     },
     {
       "name": "diskpart",
       "source": "diskpart.md",
       "status": "documented",
-      "target": "pwsh-cli/diskpart.md"
+      "target": "windows-tools/diskpart.md"
     },
     {
       "name": "diskperf",
       "source": "diskperf.md",
       "status": "documented",
-      "target": "pwsh-cli/diskperf.md"
+      "target": "windows-tools/diskperf.md"
     },
     {
       "name": "diskraid",
       "source": "diskraid.md",
       "status": "documented",
-      "target": "pwsh-cli/diskraid.md"
+      "target": "windows-tools/diskraid.md"
     },
     {
       "name": "diskshadow",
       "source": "diskshadow.md",
       "status": "documented",
-      "target": "pwsh-cli/diskshadow.md"
+      "target": "windows-tools/diskshadow.md"
     },
     {
       "name": "dispdiag",
       "source": "dispdiag.md",
       "status": "documented",
-      "target": "pwsh-cli/dispdiag.md"
+      "target": "windows-tools/dispdiag.md"
     },
     {
       "name": "dnscmd",
       "source": "dnscmd.md",
       "status": "documented",
-      "target": "pwsh-cli/dnscmd.md"
+      "target": "windows-tools/dnscmd.md"
     },
     {
       "name": "doskey",
       "source": "doskey.md",
       "status": "documented",
-      "target": "pwsh-cli/doskey.md"
+      "target": "windows-tools/doskey.md"
     },
     {
       "name": "driverquery",
       "source": "driverquery.md",
       "status": "documented",
-      "target": "pwsh-cli/driverquery.md"
+      "target": "windows-tools/driverquery.md"
     },
     {
       "name": "dtrace",
       "source": "dtrace.md",
       "status": "documented",
-      "target": "pwsh-cli/dtrace.md"
+      "target": "windows-tools/dtrace.md"
     },
     {
       "name": "echo",
       "source": "echo.md",
       "status": "documented",
-      "target": "pwsh-cli/echo.md"
+      "target": "windows-tools/echo.md"
     },
     {
       "name": "edit",
       "source": "edit.md",
       "status": "legacy",
-      "target": "pwsh-cli/edit.md"
+      "target": "windows-tools/edit.md"
     },
     {
       "name": "endlocal",
       "source": "endlocal.md",
       "status": "documented",
-      "target": "pwsh-cli/endlocal.md"
+      "target": "windows-tools/endlocal.md"
     },
     {
       "name": "end restore",
       "source": "end-restore.md",
       "status": "family",
-      "target": "pwsh-cli/diskshadow.md"
+      "target": "windows-tools/diskshadow.md"
     },
     {
       "name": "erase",
       "source": "erase.md",
       "status": "alias",
-      "target": "pwsh-cli/erase.md"
+      "target": "windows-tools/erase.md"
     },
     {
       "name": "eventcreate",
       "source": "eventcreate.md",
       "status": "documented",
-      "target": "pwsh-cli/eventcreate.md"
+      "target": "windows-tools/eventcreate.md"
     },
     {
       "name": "Evntcmd",
       "source": "evntcmd.md",
       "status": "documented",
-      "target": "pwsh-cli/evntcmd.md"
+      "target": "windows-tools/evntcmd.md"
     },
     {
       "name": "exec",
       "source": "exec.md",
       "status": "family",
-      "target": "pwsh-cli/diskshadow.md"
+      "target": "windows-tools/diskshadow.md"
     },
     {
       "name": "exit",
       "source": "exit.md",
       "status": "documented",
-      "target": "pwsh-cli/exit.md"
+      "target": "windows-tools/exit.md"
     },
     {
       "name": "expand",
       "source": "expand.md",
       "status": "documented",
-      "target": "pwsh-cli/expand.md"
+      "target": "windows-tools/expand.md"
     },
     {
       "name": "expand vdisk",
       "source": "expand-vdisk.md",
       "status": "family",
-      "target": "pwsh-cli/diskpart.md"
+      "target": "windows-tools/diskpart.md"
     },
     {
       "name": "expose",
       "source": "expose.md",
       "status": "family",
-      "target": "pwsh-cli/diskshadow.md"
+      "target": "windows-tools/diskshadow.md"
     },
     {
       "name": "extend",
       "source": "extend.md",
       "status": "family",
-      "target": "pwsh-cli/diskpart.md"
+      "target": "windows-tools/diskpart.md"
     },
     {
       "name": "extract",
       "source": "extract.md",
       "status": "documented",
-      "target": "pwsh-cli/extract.md"
+      "target": "windows-tools/extract.md"
     },
     {
       "name": "fc",
       "source": "fc.md",
       "status": "documented",
-      "target": "pwsh-cli/fc.md"
+      "target": "windows-tools/fc.md"
     },
     {
       "name": "filesystems",
       "source": "filesystems.md",
       "status": "family",
-      "target": "pwsh-cli/diskpart.md"
+      "target": "windows-tools/diskpart.md"
     },
     {
       "name": "find",
       "source": "find.md",
       "status": "documented",
-      "target": "pwsh-cli/find.md"
+      "target": "windows-tools/find.md"
     },
     {
       "name": "findstr",
       "source": "findstr.md",
       "status": "documented",
-      "target": "pwsh-cli/findstr.md"
+      "target": "windows-tools/findstr.md"
     },
     {
       "name": "finger",
       "source": "finger.md",
       "status": "documented",
-      "target": "pwsh-cli/finger.md"
+      "target": "windows-tools/finger.md"
     },
     {
       "name": "flattemp",
       "source": "flattemp.md",
       "status": "documented",
-      "target": "pwsh-cli/flattemp.md"
+      "target": "windows-tools/flattemp.md"
     },
     {
       "name": "fondue",
       "source": "fondue.md",
       "status": "documented",
-      "target": "pwsh-cli/fondue.md"
+      "target": "windows-tools/fondue.md"
     },
     {
       "name": "for",
       "source": "for.md",
       "status": "documented",
-      "target": "pwsh-cli/for.md"
+      "target": "windows-tools/for.md"
     },
     {
       "name": "forfiles",
       "source": "forfiles.md",
       "status": "documented",
-      "target": "pwsh-cli/forfiles.md"
+      "target": "windows-tools/forfiles.md"
     },
     {
       "name": "format",
       "source": "format.md",
       "status": "documented",
-      "target": "pwsh-cli/format.md"
+      "target": "windows-tools/format.md"
     },
     {
       "name": "freedisk",
       "source": "freedisk.md",
       "status": "documented",
-      "target": "pwsh-cli/freedisk.md"
+      "target": "windows-tools/freedisk.md"
     },
     {
       "name": "fsutil",
       "source": "fsutil.md",
       "status": "documented",
-      "target": "pwsh-cli/fsutil.md"
+      "target": "windows-tools/fsutil.md"
     },
     {
       "name": "ftp",
       "source": "ftp.md",
       "status": "documented",
-      "target": "pwsh-cli/ftp.md"
+      "target": "windows-tools/ftp.md"
     },
     {
       "name": "ftype",
       "source": "ftype.md",
       "status": "documented",
-      "target": "pwsh-cli/ftype.md"
+      "target": "windows-tools/ftype.md"
     },
     {
       "name": "fveupdate",
       "source": "fveupdate.md",
       "status": "documented",
-      "target": "pwsh-cli/fveupdate.md"
+      "target": "windows-tools/fveupdate.md"
     },
     {
       "name": "getmac",
       "source": "getmac.md",
       "status": "documented",
-      "target": "pwsh-cli/getmac.md"
+      "target": "windows-tools/getmac.md"
     },
     {
       "name": "gettype",
       "source": "gettype.md",
       "status": "legacy",
-      "target": "pwsh-cli/gettype.md"
+      "target": "windows-tools/gettype.md"
     },
     {
       "name": "goto",
       "source": "goto.md",
       "status": "documented",
-      "target": "pwsh-cli/goto.md"
+      "target": "windows-tools/goto.md"
     },
     {
       "name": "gpfixup",
       "source": "gpfixup.md",
       "status": "documented",
-      "target": "pwsh-cli/gpfixup.md"
+      "target": "windows-tools/gpfixup.md"
     },
     {
       "name": "gpresult",
       "source": "gpresult.md",
       "status": "documented",
-      "target": "pwsh-cli/gpresult.md"
+      "target": "windows-tools/gpresult.md"
     },
     {
       "name": "gpt",
       "source": "gpt.md",
       "status": "family",
-      "target": "pwsh-cli/diskpart.md"
+      "target": "windows-tools/diskpart.md"
     },
     {
       "name": "gpupdate",
       "source": "gpupdate.md",
       "status": "documented",
-      "target": "pwsh-cli/gpupdate.md"
+      "target": "windows-tools/gpupdate.md"
     },
     {
       "name": "graftabl",
       "source": "graftabl.md",
       "status": "legacy",
-      "target": "pwsh-cli/graftabl.md"
+      "target": "windows-tools/graftabl.md"
     },
     {
       "name": "help",
       "source": "help.md",
       "status": "documented",
-      "target": "pwsh-cli/help.md"
+      "target": "windows-tools/help.md"
     },
     {
       "name": "helpctr",
       "source": "helpctr.md",
-      "status": "documented", "target": "pwsh-cli/helpctr.md"
+      "status": "documented",
+      "target": "windows-tools/helpctr.md"
     },
     {
       "name": "hostname",
       "source": "hostname.md",
       "status": "documented",
-      "target": "pwsh-cli/hostname.md"
+      "target": "windows-tools/hostname.md"
     },
     {
       "name": "icacls",
       "source": "icacls.md",
       "status": "documented",
-      "target": "pwsh-cli/icacls.md"
+      "target": "windows-tools/icacls.md"
     },
     {
       "name": "if",
       "source": "if.md",
       "status": "documented",
-      "target": "pwsh-cli/if.md"
+      "target": "windows-tools/if.md"
     },
     {
       "name": "import (shadowdisk)",
       "source": "import.md",
       "status": "family",
-      "target": "pwsh-cli/diskshadow.md"
+      "target": "windows-tools/diskshadow.md"
     },
     {
       "name": "import (diskpart)",
       "source": "import_1.md",
       "status": "family",
-      "target": "pwsh-cli/diskpart.md"
+      "target": "windows-tools/diskpart.md"
     },
     {
       "name": "inactive",
       "source": "inactive.md",
       "status": "family",
-      "target": "pwsh-cli/diskpart.md"
+      "target": "windows-tools/diskpart.md"
     },
     {
       "name": "ipconfig",
       "source": "ipconfig.md",
       "status": "documented",
-      "target": "pwsh-cli/ipconfig.md"
+      "target": "windows-tools/ipconfig.md"
     },
     {
       "name": "ipxroute",
       "source": "ipxroute.md",
       "status": "legacy",
-      "target": "pwsh-cli/ipxroute.md"
+      "target": "windows-tools/ipxroute.md"
     },
     {
       "name": "irftp",
       "source": "irftp.md",
       "status": "legacy",
-      "target": "pwsh-cli/irftp.md"
+      "target": "windows-tools/irftp.md"
     },
     {
       "name": "jetpack",
       "source": "jetpack.md",
       "status": "documented",
-      "target": "pwsh-cli/jetpack.md"
+      "target": "windows-tools/jetpack.md"
     },
     {
       "name": "klist",
       "source": "klist.md",
       "status": "documented",
-      "target": "pwsh-cli/klist.md"
+      "target": "windows-tools/klist.md"
     },
     {
       "name": "ksetup",
       "source": "ksetup.md",
       "status": "documented",
-      "target": "pwsh-cli/ksetup.md"
+      "target": "windows-tools/ksetup.md"
     },
     {
       "name": "ktmutil",
       "source": "ktmutil.md",
       "status": "documented",
-      "target": "pwsh-cli/ktmutil.md"
+      "target": "windows-tools/ktmutil.md"
     },
     {
       "name": "ktpass",
       "source": "ktpass.md",
       "status": "documented",
-      "target": "pwsh-cli/ktpass.md"
+      "target": "windows-tools/ktpass.md"
     },
     {
       "name": "label",
       "source": "label.md",
       "status": "documented",
-      "target": "pwsh-cli/label.md"
+      "target": "windows-tools/label.md"
     },
     {
       "name": "list",
       "source": "list.md",
       "status": "family",
-      "target": "pwsh-cli/diskpart.md"
+      "target": "windows-tools/diskpart.md"
     },
     {
       "name": "load metadata",
       "source": "load-metadata.md",
       "status": "family",
-      "target": "pwsh-cli/diskshadow.md"
+      "target": "windows-tools/diskshadow.md"
     },
     {
       "name": "lodctr",
       "source": "lodctr.md",
       "status": "documented",
-      "target": "pwsh-cli/lodctr.md"
+      "target": "windows-tools/lodctr.md"
     },
     {
       "name": "logman",
       "source": "logman.md",
       "status": "documented",
-      "target": "pwsh-cli/logman.md"
+      "target": "windows-tools/logman.md"
     },
     {
       "name": "logoff",
       "source": "logoff.md",
       "status": "documented",
-      "target": "pwsh-cli/logoff.md"
+      "target": "windows-tools/logoff.md"
     },
     {
       "name": "lpq",
       "source": "lpq.md",
       "status": "documented",
-      "target": "pwsh-cli/lpq.md"
+      "target": "windows-tools/lpq.md"
     },
     {
       "name": "lpr",
       "source": "lpr.md",
       "status": "documented",
-      "target": "pwsh-cli/lpr.md"
+      "target": "windows-tools/lpr.md"
     },
     {
       "name": "macfile",
       "source": "macfile.md",
       "status": "legacy",
-      "target": "pwsh-cli/macfile.md"
+      "target": "windows-tools/macfile.md"
     },
     {
       "name": "makecab",
       "source": "makecab.md",
       "status": "documented",
-      "target": "pwsh-cli/makecab.md"
+      "target": "windows-tools/makecab.md"
     },
     {
       "name": "manage bde",
       "source": "manage-bde.md",
       "status": "documented",
-      "target": "pwsh-cli/manage-bde.md"
+      "target": "windows-tools/manage-bde.md"
     },
     {
       "name": "mapadmin",
       "source": "mapadmin.md",
       "status": "legacy",
-      "target": "pwsh-cli/mapadmin.md"
+      "target": "windows-tools/mapadmin.md"
     },
     {
       "name": "md",
       "source": "md.md",
       "status": "documented",
-      "target": "pwsh-cli/md.md"
+      "target": "windows-tools/md.md"
     },
     {
       "name": "merge vdisk",
       "source": "merge-vdisk.md",
       "status": "family",
-      "target": "pwsh-cli/diskpart.md"
+      "target": "windows-tools/diskpart.md"
     },
     {
       "name": "mkdir",
       "source": "mkdir.md",
       "status": "alias",
-      "target": "pwsh-cli/mkdir.md"
+      "target": "windows-tools/mkdir.md"
     },
     {
       "name": "mklink",
       "source": "mklink.md",
       "status": "documented",
-      "target": "pwsh-cli/mklink.md"
+      "target": "windows-tools/mklink.md"
     },
     {
       "name": "mmc",
       "source": "mmc.md",
       "status": "documented",
-      "target": "pwsh-cli/mmc.md"
+      "target": "windows-tools/mmc.md"
     },
     {
       "name": "mode",
       "source": "mode.md",
       "status": "documented",
-      "target": "pwsh-cli/mode.md"
+      "target": "windows-tools/mode.md"
     },
     {
       "name": "more",
       "source": "more.md",
       "status": "documented",
-      "target": "pwsh-cli/more.md"
+      "target": "windows-tools/more.md"
     },
     {
       "name": "mount",
       "source": "mount.md",
       "status": "documented",
-      "target": "pwsh-cli/mount.md"
+      "target": "windows-tools/mount.md"
     },
     {
       "name": "mountvol",
       "source": "mountvol.md",
       "status": "documented",
-      "target": "pwsh-cli/mountvol.md"
+      "target": "windows-tools/mountvol.md"
     },
     {
       "name": "move",
       "source": "move.md",
       "status": "documented",
-      "target": "pwsh-cli/move.md"
+      "target": "windows-tools/move.md"
     },
     {
       "name": "mqbkup",
       "source": "mqbkup.md",
       "status": "family",
-      "target": "pwsh-cli/msmq.md"
+      "target": "windows-tools/msmq.md"
     },
     {
       "name": "mqsvc",
       "source": "mqsvc.md",
       "status": "family",
-      "target": "pwsh-cli/msmq.md"
+      "target": "windows-tools/msmq.md"
     },
     {
       "name": "mqtgsvc",
       "source": "mqtgsvc.md",
       "status": "family",
-      "target": "pwsh-cli/msmq.md"
+      "target": "windows-tools/msmq.md"
     },
     {
       "name": "msdt",
       "source": "msdt.md",
       "status": "documented",
-      "target": "pwsh-cli/msdt.md"
+      "target": "windows-tools/msdt.md"
     },
     {
       "name": "msg",
       "source": "msg.md",
       "status": "documented",
-      "target": "pwsh-cli/msg.md"
+      "target": "windows-tools/msg.md"
     },
     {
       "name": "msiexec",
       "source": "msiexec.md",
       "status": "documented",
-      "target": "pwsh-cli/msiexec.md"
+      "target": "windows-tools/msiexec.md"
     },
     {
       "name": "msinfo32",
       "source": "msinfo32.md",
       "status": "documented",
-      "target": "pwsh-cli/msinfo32.md"
+      "target": "windows-tools/msinfo32.md"
     },
     {
       "name": "mstsc",
       "source": "mstsc.md",
       "status": "documented",
-      "target": "pwsh-cli/mstsc.md"
+      "target": "windows-tools/mstsc.md"
     },
     {
       "name": "nbtstat",
       "source": "nbtstat.md",
       "status": "documented",
-      "target": "pwsh-cli/nbtstat.md"
+      "target": "windows-tools/nbtstat.md"
     },
     {
       "name": "netcfg",
       "source": "netcfg.md",
       "status": "documented",
-      "target": "pwsh-cli/netcfg.md"
+      "target": "windows-tools/netcfg.md"
     },
     {
       "name": "netdom",
       "source": "netdom.md",
       "status": "documented",
-      "target": "pwsh-cli/netdom.md"
+      "target": "windows-tools/netdom.md"
     },
     {
       "name": "net print",
       "source": "net-print.md",
       "status": "family",
-      "target": "pwsh-cli/net.md"
+      "target": "windows-tools/net.md"
     },
     {
       "name": "net user",
       "source": "net-user.md",
       "status": "family",
-      "target": "pwsh-cli/net.md"
+      "target": "windows-tools/net.md"
     },
     {
       "name": "netsh",
       "source": "netsh.md",
       "status": "documented",
-      "target": "pwsh-cli/netsh.md"
+      "target": "windows-tools/netsh.md"
     },
     {
       "name": "netstat",
       "source": "netstat.md",
       "status": "documented",
-      "target": "pwsh-cli/netstat.md"
+      "target": "windows-tools/netstat.md"
     },
     {
       "name": "nfsadmin",
       "source": "nfsadmin.md",
       "status": "documented",
-      "target": "pwsh-cli/nfsadmin.md"
+      "target": "windows-tools/nfsadmin.md"
     },
     {
       "name": "nfsshare",
       "source": "nfsshare.md",
       "status": "documented",
-      "target": "pwsh-cli/nfsshare.md"
+      "target": "windows-tools/nfsshare.md"
     },
     {
       "name": "nfsstat",
       "source": "nfsstat.md",
       "status": "documented",
-      "target": "pwsh-cli/nfsstat.md"
+      "target": "windows-tools/nfsstat.md"
     },
     {
       "name": "nlbmgr",
       "source": "nlbmgr.md",
       "status": "documented",
-      "target": "pwsh-cli/nlbmgr.md"
+      "target": "windows-tools/nlbmgr.md"
     },
     {
       "name": "nltest",
       "source": "/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc731935(v=ws.11)",
       "status": "documented",
-      "target": "pwsh-cli/nltest.md"
+      "target": "windows-tools/nltest.md"
     },
     {
       "name": "nslookup",
       "source": "nslookup.md",
       "status": "documented",
-      "target": "pwsh-cli/nslookup.md"
+      "target": "windows-tools/nslookup.md"
     },
     {
       "name": "ntbackup",
       "source": "ntbackup.md",
-      "status": "documented", "target": "pwsh-cli/ntbackup.md"
+      "status": "documented",
+      "target": "windows-tools/ntbackup.md"
     },
     {
       "name": "ntcmdprompt",
       "source": "ntcmdprompt.md",
-      "status": "documented", "target": "pwsh-cli/ntcmdprompt.md"
+      "status": "documented",
+      "target": "windows-tools/ntcmdprompt.md"
     },
     {
       "name": "ntfrsutl",
       "source": "ntfrsutl.md",
       "status": "documented",
-      "target": "pwsh-cli/ntfrsutl.md"
+      "target": "windows-tools/ntfrsutl.md"
     },
     {
       "name": "offline",
       "source": "offline.md",
       "status": "family",
-      "target": "pwsh-cli/diskpart.md"
+      "target": "windows-tools/diskpart.md"
     },
     {
       "name": "online",
       "source": "online.md",
       "status": "family",
-      "target": "pwsh-cli/diskpart.md"
+      "target": "windows-tools/diskpart.md"
     },
     {
       "name": "openfiles",
       "source": "openfiles.md",
       "status": "documented",
-      "target": "pwsh-cli/openfiles.md"
+      "target": "windows-tools/openfiles.md"
     },
     {
       "name": "pagefileconfig",
       "source": "pagefileconfig.md",
       "status": "documented",
-      "target": "pwsh-cli/pagefileconfig.md"
+      "target": "windows-tools/pagefileconfig.md"
     },
     {
       "name": "path",
       "source": "path.md",
       "status": "documented",
-      "target": "pwsh-cli/path.md"
+      "target": "windows-tools/path.md"
     },
     {
       "name": "pathping",
       "source": "pathping.md",
       "status": "documented",
-      "target": "pwsh-cli/pathping.md"
+      "target": "windows-tools/pathping.md"
     },
     {
       "name": "pause",
       "source": "pause.md",
       "status": "documented",
-      "target": "pwsh-cli/pause.md"
+      "target": "windows-tools/pause.md"
     },
     {
       "name": "pbadmin",
       "source": "pbadmin.md",
       "status": "documented",
-      "target": "pwsh-cli/pbadmin.md"
+      "target": "windows-tools/pbadmin.md"
     },
     {
       "name": "pentnt",
       "source": "pentnt.md",
       "status": "documented",
-      "target": "pwsh-cli/pentnt.md"
+      "target": "windows-tools/pentnt.md"
     },
     {
       "name": "perfmon",
       "source": "perfmon.md",
       "status": "documented",
-      "target": "pwsh-cli/perfmon.md"
+      "target": "windows-tools/perfmon.md"
     },
     {
       "name": "ping",
       "source": "ping.md",
       "status": "documented",
-      "target": "pwsh-cli/ping.md"
+      "target": "windows-tools/ping.md"
     },
     {
       "name": "pktmon",
       "source": "pktmon.md",
       "status": "documented",
-      "target": "pwsh-cli/pktmon.md"
+      "target": "windows-tools/pktmon.md"
     },
     {
       "name": "pnpunattend",
       "source": "pnpunattend.md",
       "status": "documented",
-      "target": "pwsh-cli/pnpunattend.md"
+      "target": "windows-tools/pnpunattend.md"
     },
     {
       "name": "pnputil",
       "source": "pnputil.md",
       "status": "documented",
-      "target": "pwsh-cli/pnputil.md"
+      "target": "windows-tools/pnputil.md"
     },
     {
       "name": "popd",
       "source": "popd.md",
       "status": "documented",
-      "target": "pwsh-cli/popd.md"
+      "target": "windows-tools/popd.md"
     },
     {
       "name": "powershell",
@@ -1186,79 +1189,79 @@
       "name": "powershell ise",
       "source": "powershell_ise.md",
       "status": "documented",
-      "target": "pwsh-cli/powershell_ise.md"
+      "target": "windows-tools/powershell_ise.md"
     },
     {
       "name": "print",
       "source": "print.md",
       "status": "documented",
-      "target": "pwsh-cli/print.md"
+      "target": "windows-tools/print.md"
     },
     {
       "name": "prncnfg",
       "source": "prncnfg.md",
       "status": "documented",
-      "target": "pwsh-cli/prncnfg.md"
+      "target": "windows-tools/prncnfg.md"
     },
     {
       "name": "prndrvr",
       "source": "prndrvr.md",
       "status": "documented",
-      "target": "pwsh-cli/prndrvr.md"
+      "target": "windows-tools/prndrvr.md"
     },
     {
       "name": "prnjobs",
       "source": "prnjobs.md",
       "status": "documented",
-      "target": "pwsh-cli/prnjobs.md"
+      "target": "windows-tools/prnjobs.md"
     },
     {
       "name": "prnmngr",
       "source": "prnmngr.md",
       "status": "documented",
-      "target": "pwsh-cli/prnmngr.md"
+      "target": "windows-tools/prnmngr.md"
     },
     {
       "name": "prnport",
       "source": "prnport.md",
       "status": "documented",
-      "target": "pwsh-cli/prnport.md"
+      "target": "windows-tools/prnport.md"
     },
     {
       "name": "prnqctl",
       "source": "prnqctl.md",
       "status": "documented",
-      "target": "pwsh-cli/prnqctl.md"
+      "target": "windows-tools/prnqctl.md"
     },
     {
       "name": "prompt",
       "source": "prompt.md",
       "status": "documented",
-      "target": "pwsh-cli/prompt.md"
+      "target": "windows-tools/prompt.md"
     },
     {
       "name": "pubprn",
       "source": "pubprn.md",
       "status": "documented",
-      "target": "pwsh-cli/pubprn.md"
+      "target": "windows-tools/pubprn.md"
     },
     {
       "name": "pushd",
       "source": "pushd.md",
       "status": "documented",
-      "target": "pwsh-cli/pushd.md"
+      "target": "windows-tools/pushd.md"
     },
     {
       "name": "pushprinterconnections",
       "source": "pushprinterconnections.md",
       "status": "documented",
-      "target": "pwsh-cli/pushprinterconnections.md"
+      "target": "windows-tools/pushprinterconnections.md"
     },
     {
       "name": "pwlauncher",
       "source": "pwlauncher.md",
       "status": "documented",
-      "target": "pwsh-cli/pwlauncher.md"
+      "target": "windows-tools/pwlauncher.md"
     },
     {
       "name": "pwsh",
@@ -1270,775 +1273,775 @@
       "name": "qappsrv",
       "source": "qappsrv.md",
       "status": "alias",
-      "target": "pwsh-cli/qappsrv.md"
+      "target": "windows-tools/qappsrv.md"
     },
     {
       "name": "qprocess",
       "source": "qprocess.md",
       "status": "alias",
-      "target": "pwsh-cli/qprocess.md"
+      "target": "windows-tools/qprocess.md"
     },
     {
       "name": "query",
       "source": "query.md",
       "status": "documented",
-      "target": "pwsh-cli/query.md"
+      "target": "windows-tools/query.md"
     },
     {
       "name": "quser",
       "source": "quser.md",
       "status": "alias",
-      "target": "pwsh-cli/quser.md"
+      "target": "windows-tools/quser.md"
     },
     {
       "name": "qwinsta",
       "source": "qwinsta.md",
       "status": "alias",
-      "target": "pwsh-cli/qwinsta.md"
+      "target": "windows-tools/qwinsta.md"
     },
     {
       "name": "rd",
       "source": "rd.md",
       "status": "documented",
-      "target": "pwsh-cli/rd.md"
+      "target": "windows-tools/rd.md"
     },
     {
       "name": "rdpsign",
       "source": "rdpsign.md",
       "status": "documented",
-      "target": "pwsh-cli/rdpsign.md"
+      "target": "windows-tools/rdpsign.md"
     },
     {
       "name": "recover",
       "source": "recover.md",
       "status": "documented",
-      "target": "pwsh-cli/recover.md"
+      "target": "windows-tools/recover.md"
     },
     {
       "name": "recover disk group",
       "source": "recover_1.md",
       "status": "family",
-      "target": "pwsh-cli/diskpart.md"
+      "target": "windows-tools/diskpart.md"
     },
     {
       "name": "refsutil",
       "source": "refsutil.md",
       "status": "documented",
-      "target": "pwsh-cli/refsutil.md"
+      "target": "windows-tools/refsutil.md"
     },
     {
       "name": "reg",
       "source": "reg.md",
       "status": "documented",
-      "target": "pwsh-cli/reg.md"
+      "target": "windows-tools/reg.md"
     },
     {
       "name": "regini",
       "source": "regini.md",
       "status": "documented",
-      "target": "pwsh-cli/regini.md"
+      "target": "windows-tools/regini.md"
     },
     {
       "name": "regsvr32",
       "source": "regsvr32.md",
       "status": "documented",
-      "target": "pwsh-cli/regsvr32.md"
+      "target": "windows-tools/regsvr32.md"
     },
     {
       "name": "relog",
       "source": "relog.md",
       "status": "documented",
-      "target": "pwsh-cli/relog.md"
+      "target": "windows-tools/relog.md"
     },
     {
       "name": "rem",
       "source": "rem.md",
       "status": "documented",
-      "target": "pwsh-cli/rem.md"
+      "target": "windows-tools/rem.md"
     },
     {
       "name": "remove",
       "source": "remove.md",
       "status": "family",
-      "target": "pwsh-cli/diskpart.md"
+      "target": "windows-tools/diskpart.md"
     },
     {
       "name": "ren",
       "source": "ren.md",
       "status": "documented",
-      "target": "pwsh-cli/ren.md"
+      "target": "windows-tools/ren.md"
     },
     {
       "name": "rename",
       "source": "rename.md",
       "status": "alias",
-      "target": "pwsh-cli/rename.md"
+      "target": "windows-tools/rename.md"
     },
     {
       "name": "repadmin",
       "source": "/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc770963(v=ws.11)",
       "status": "documented",
-      "target": "pwsh-cli/repadmin.md"
+      "target": "windows-tools/repadmin.md"
     },
     {
       "name": "repair",
       "source": "repair.md",
       "status": "family",
-      "target": "pwsh-cli/diskpart.md"
+      "target": "windows-tools/diskpart.md"
     },
     {
       "name": "replace",
       "source": "replace.md",
       "status": "documented",
-      "target": "pwsh-cli/replace.md"
+      "target": "windows-tools/replace.md"
     },
     {
       "name": "rescan",
       "source": "rescan.md",
       "status": "family",
-      "target": "pwsh-cli/diskpart.md"
+      "target": "windows-tools/diskpart.md"
     },
     {
       "name": "reset",
       "source": "reset.md",
       "status": "family",
-      "target": "pwsh-cli/diskshadow.md"
+      "target": "windows-tools/diskshadow.md"
     },
     {
       "name": "retain",
       "source": "retain.md",
       "status": "family",
-      "target": "pwsh-cli/diskpart.md"
+      "target": "windows-tools/diskpart.md"
     },
     {
       "name": "revert",
       "source": "revert.md",
       "status": "family",
-      "target": "pwsh-cli/diskshadow.md"
+      "target": "windows-tools/diskshadow.md"
     },
     {
       "name": "rexec",
       "source": "rexec.md",
       "status": "documented",
-      "target": "pwsh-cli/rexec.md"
+      "target": "windows-tools/rexec.md"
     },
     {
       "name": "risetup",
       "source": "risetup.md",
       "status": "family",
-      "target": "pwsh-cli/winnt.md"
+      "target": "windows-tools/winnt.md"
     },
     {
       "name": "rmdir",
       "source": "rmdir.md",
       "status": "alias",
-      "target": "pwsh-cli/rmdir.md"
+      "target": "windows-tools/rmdir.md"
     },
     {
       "name": "robocopy",
       "source": "robocopy.md",
       "status": "documented",
-      "target": "pwsh-cli/robocopy.md"
+      "target": "windows-tools/robocopy.md"
     },
     {
       "name": "route ws2008",
       "source": "route_ws2008.md",
       "status": "documented",
-      "target": "pwsh-cli/route.md"
+      "target": "windows-tools/route.md"
     },
     {
       "name": "rpcinfo",
       "source": "rpcinfo.md",
       "status": "documented",
-      "target": "pwsh-cli/rpcinfo.md"
+      "target": "windows-tools/rpcinfo.md"
     },
     {
       "name": "rpcping",
       "source": "rpcping.md",
       "status": "documented",
-      "target": "pwsh-cli/rpcping.md"
+      "target": "windows-tools/rpcping.md"
     },
     {
       "name": "rsh",
       "source": "rsh.md",
       "status": "documented",
-      "target": "pwsh-cli/rsh.md"
+      "target": "windows-tools/rsh.md"
     },
     {
       "name": "rundll32",
       "source": "rundll32.md",
       "status": "documented",
-      "target": "pwsh-cli/rundll32.md"
+      "target": "windows-tools/rundll32.md"
     },
     {
       "name": "rundll32 printui",
       "source": "rundll32-printui.md",
       "status": "documented",
-      "target": "pwsh-cli/rundll32-printui.md"
+      "target": "windows-tools/rundll32-printui.md"
     },
     {
       "name": "rwinsta",
       "source": "rwinsta.md",
       "status": "alias",
-      "target": "pwsh-cli/rwinsta.md"
+      "target": "windows-tools/rwinsta.md"
     },
     {
       "name": "san",
       "source": "san.md",
       "status": "family",
-      "target": "pwsh-cli/diskpart.md"
+      "target": "windows-tools/diskpart.md"
     },
     {
       "name": "sc config",
       "source": "sc-config.md",
       "status": "family",
-      "target": "pwsh-cli/sc.md"
+      "target": "windows-tools/sc.md"
     },
     {
       "name": "sc create",
       "source": "sc-create.md",
       "status": "family",
-      "target": "pwsh-cli/sc.md"
+      "target": "windows-tools/sc.md"
     },
     {
       "name": "sc delete",
       "source": "sc-delete.md",
       "status": "family",
-      "target": "pwsh-cli/sc.md"
+      "target": "windows-tools/sc.md"
     },
     {
       "name": "sc query",
       "source": "sc-query.md",
       "status": "family",
-      "target": "pwsh-cli/sc.md"
+      "target": "windows-tools/sc.md"
     },
     {
       "name": "schtasks",
       "source": "schtasks.md",
       "status": "documented",
-      "target": "pwsh-cli/schtasks.md"
+      "target": "windows-tools/schtasks.md"
     },
     {
       "name": "scwcmd",
       "source": "scwcmd.md",
       "status": "documented",
-      "target": "pwsh-cli/scwcmd.md"
+      "target": "windows-tools/scwcmd.md"
     },
     {
       "name": "secedit",
       "source": "secedit.md",
       "status": "documented",
-      "target": "pwsh-cli/secedit.md"
+      "target": "windows-tools/secedit.md"
     },
     {
       "name": "select",
       "source": "select.md",
       "status": "family",
-      "target": "pwsh-cli/diskpart.md"
+      "target": "windows-tools/diskpart.md"
     },
     {
       "name": "serverceipoptin",
       "source": "serverceipoptin.md",
       "status": "family",
-      "target": "pwsh-cli/server-telemetry.md"
+      "target": "windows-tools/server-telemetry.md"
     },
     {
       "name": "servermanagercmd",
       "source": "servermanagercmd.md",
       "status": "documented",
-      "target": "pwsh-cli/servermanagercmd.md"
+      "target": "windows-tools/servermanagercmd.md"
     },
     {
       "name": "serverweroptin",
       "source": "serverweroptin.md",
       "status": "family",
-      "target": "pwsh-cli/server-telemetry.md"
+      "target": "windows-tools/server-telemetry.md"
     },
     {
       "name": "set environmental variables",
       "source": "set_1.md",
       "status": "documented",
-      "target": "pwsh-cli/set.md"
+      "target": "windows-tools/set.md"
     },
     {
       "name": "set shadow copy",
       "source": "set.md",
       "status": "family",
-      "target": "pwsh-cli/diskshadow.md"
+      "target": "windows-tools/diskshadow.md"
     },
     {
       "name": "setlocal",
       "source": "setlocal.md",
       "status": "documented",
-      "target": "pwsh-cli/setlocal.md"
+      "target": "windows-tools/setlocal.md"
     },
     {
       "name": "setspn",
       "source": "setspn.md",
       "status": "documented",
-      "target": "pwsh-cli/setspn.md"
+      "target": "windows-tools/setspn.md"
     },
     {
       "name": "setx",
       "source": "setx.md",
       "status": "documented",
-      "target": "pwsh-cli/setx.md"
+      "target": "windows-tools/setx.md"
     },
     {
       "name": "sfc",
       "source": "sfc.md",
       "status": "documented",
-      "target": "pwsh-cli/sfc.md"
+      "target": "windows-tools/sfc.md"
     },
     {
       "name": "shadow",
       "source": "shadow.md",
       "status": "documented",
-      "target": "pwsh-cli/shadow.md"
+      "target": "windows-tools/shadow.md"
     },
     {
       "name": "shift",
       "source": "shift.md",
       "status": "documented",
-      "target": "pwsh-cli/shift.md"
+      "target": "windows-tools/shift.md"
     },
     {
       "name": "showmount",
       "source": "showmount.md",
       "status": "documented",
-      "target": "pwsh-cli/showmount.md"
+      "target": "windows-tools/showmount.md"
     },
     {
       "name": "shrink",
       "source": "shrink.md",
       "status": "family",
-      "target": "pwsh-cli/diskpart.md"
+      "target": "windows-tools/diskpart.md"
     },
     {
       "name": "shutdown",
       "source": "shutdown.md",
       "status": "documented",
-      "target": "pwsh-cli/shutdown.md"
+      "target": "windows-tools/shutdown.md"
     },
     {
       "name": "simulate restore",
       "source": "simulate-restore.md",
       "status": "family",
-      "target": "pwsh-cli/diskshadow.md"
+      "target": "windows-tools/diskshadow.md"
     },
     {
       "name": "sort",
       "source": "sort.md",
       "status": "documented",
-      "target": "pwsh-cli/sort.md"
+      "target": "windows-tools/sort.md"
     },
     {
       "name": "start",
       "source": "start.md",
       "status": "documented",
-      "target": "pwsh-cli/start.md"
+      "target": "windows-tools/start.md"
     },
     {
       "name": "subcommand set device",
       "source": "wdsutil-set-device.md",
       "status": "family",
-      "target": "pwsh-cli/wdsutil.md"
+      "target": "windows-tools/wdsutil.md"
     },
     {
       "name": "subcommand set drivergroup",
       "source": "wdsutil-set-drivergroup.md",
       "status": "family",
-      "target": "pwsh-cli/wdsutil.md"
+      "target": "windows-tools/wdsutil.md"
     },
     {
       "name": "subcommand set drivergroupfilter",
       "source": "wdsutil-set-drivergroupfilter.md",
       "status": "family",
-      "target": "pwsh-cli/wdsutil.md"
+      "target": "windows-tools/wdsutil.md"
     },
     {
       "name": "subcommand set driverpackage",
       "source": "wdsutil-set-driverpackage.md",
       "status": "family",
-      "target": "pwsh-cli/wdsutil.md"
+      "target": "windows-tools/wdsutil.md"
     },
     {
       "name": "subcommand set image",
       "source": "wdsutil-set-image.md",
       "status": "family",
-      "target": "pwsh-cli/wdsutil.md"
+      "target": "windows-tools/wdsutil.md"
     },
     {
       "name": "subcommand set imagegroup",
       "source": "wdsutil-set-imagegroup.md",
       "status": "family",
-      "target": "pwsh-cli/wdsutil.md"
+      "target": "windows-tools/wdsutil.md"
     },
     {
       "name": "subcommand set server",
       "source": "wdsutil-set-server.md",
       "status": "family",
-      "target": "pwsh-cli/wdsutil.md"
+      "target": "windows-tools/wdsutil.md"
     },
     {
       "name": "subcommand set transportserver",
       "source": "wdsutil-set-transportserver.md",
       "status": "family",
-      "target": "pwsh-cli/wdsutil.md"
+      "target": "windows-tools/wdsutil.md"
     },
     {
       "name": "subcommand set multicasttransmission",
       "source": "wdsutil-start-multicasttransmission.md",
       "status": "family",
-      "target": "pwsh-cli/wdsutil.md"
+      "target": "windows-tools/wdsutil.md"
     },
     {
       "name": "subcommand start namespace",
       "source": "wdsutil-start-namespace.md",
       "status": "family",
-      "target": "pwsh-cli/wdsutil.md"
+      "target": "windows-tools/wdsutil.md"
     },
     {
       "name": "subcommand start server",
       "source": "wdsutil-start-server.md",
       "status": "family",
-      "target": "pwsh-cli/wdsutil.md"
+      "target": "windows-tools/wdsutil.md"
     },
     {
       "name": "subcommand start transportserver",
       "source": "wdsutil-start-transportserver.md",
       "status": "family",
-      "target": "pwsh-cli/wdsutil.md"
+      "target": "windows-tools/wdsutil.md"
     },
     {
       "name": "subcommand stop server",
       "source": "wdsutil-stop-server.md",
       "status": "family",
-      "target": "pwsh-cli/wdsutil.md"
+      "target": "windows-tools/wdsutil.md"
     },
     {
       "name": "subcommand stop transportserver",
       "source": "wdsutil-stop-transportserver.md",
       "status": "family",
-      "target": "pwsh-cli/wdsutil.md"
+      "target": "windows-tools/wdsutil.md"
     },
     {
       "name": "subst",
       "source": "subst.md",
       "status": "documented",
-      "target": "pwsh-cli/subst.md"
+      "target": "windows-tools/subst.md"
     },
     {
       "name": "sxstrace",
       "source": "sxstrace.md",
       "status": "documented",
-      "target": "pwsh-cli/sxstrace.md"
+      "target": "windows-tools/sxstrace.md"
     },
     {
       "name": "sysmon",
       "source": "sysmon.md",
       "status": "documented",
-      "target": "pwsh-cli/sysmon.md"
+      "target": "windows-tools/sysmon.md"
     },
     {
       "name": "sysocmgr",
       "source": "sysocmgr.md",
       "status": "family",
-      "target": "pwsh-cli/winnt.md"
+      "target": "windows-tools/winnt.md"
     },
     {
       "name": "systeminfo",
       "source": "systeminfo.md",
       "status": "documented",
-      "target": "pwsh-cli/systeminfo.md"
+      "target": "windows-tools/systeminfo.md"
     },
     {
       "name": "takeown",
       "source": "takeown.md",
       "status": "documented",
-      "target": "pwsh-cli/takeown.md"
+      "target": "windows-tools/takeown.md"
     },
     {
       "name": "tapicfg",
       "source": "tapicfg.md",
       "status": "documented",
-      "target": "pwsh-cli/tapicfg.md"
+      "target": "windows-tools/tapicfg.md"
     },
     {
       "name": "taskkill",
       "source": "taskkill.md",
       "status": "documented",
-      "target": "pwsh-cli/taskkill.md"
+      "target": "windows-tools/taskkill.md"
     },
     {
       "name": "tasklist",
       "source": "tasklist.md",
       "status": "documented",
-      "target": "pwsh-cli/tasklist.md"
+      "target": "windows-tools/tasklist.md"
     },
     {
       "name": "tcmsetup",
       "source": "tcmsetup.md",
       "status": "documented",
-      "target": "pwsh-cli/tcmsetup.md"
+      "target": "windows-tools/tcmsetup.md"
     },
     {
       "name": "telnet",
       "source": "telnet.md",
       "status": "documented",
-      "target": "pwsh-cli/telnet.md"
+      "target": "windows-tools/telnet.md"
     },
     {
       "name": "tftp",
       "source": "tftp.md",
       "status": "documented",
-      "target": "pwsh-cli/tftp.md"
+      "target": "windows-tools/tftp.md"
     },
     {
       "name": "time",
       "source": "time.md",
       "status": "documented",
-      "target": "pwsh-cli/time.md"
+      "target": "windows-tools/time.md"
     },
     {
       "name": "timeout",
       "source": "timeout.md",
       "status": "documented",
-      "target": "pwsh-cli/timeout.md"
+      "target": "windows-tools/timeout.md"
     },
     {
       "name": "title",
       "source": "title.md",
       "status": "documented",
-      "target": "pwsh-cli/title.md"
+      "target": "windows-tools/title.md"
     },
     {
       "name": "tlntadmn",
       "source": "tlntadmn.md",
       "status": "documented",
-      "target": "pwsh-cli/tlntadmn.md"
+      "target": "windows-tools/tlntadmn.md"
     },
     {
       "name": "tpmtool",
       "source": "tpmtool.md",
       "status": "documented",
-      "target": "pwsh-cli/tpmtool.md"
+      "target": "windows-tools/tpmtool.md"
     },
     {
       "name": "tpmvscmgr",
       "source": "tpmvscmgr.md",
       "status": "documented",
-      "target": "pwsh-cli/tpmvscmgr.md"
+      "target": "windows-tools/tpmvscmgr.md"
     },
     {
       "name": "tracerpt",
       "source": "tracerpt.md",
       "status": "documented",
-      "target": "pwsh-cli/tracerpt.md"
+      "target": "windows-tools/tracerpt.md"
     },
     {
       "name": "tracert",
       "source": "tracert.md",
       "status": "documented",
-      "target": "pwsh-cli/tracert.md"
+      "target": "windows-tools/tracert.md"
     },
     {
       "name": "tree",
       "source": "tree.md",
       "status": "documented",
-      "target": "pwsh-cli/tree.md"
+      "target": "windows-tools/tree.md"
     },
     {
       "name": "tscon",
       "source": "tscon.md",
       "status": "documented",
-      "target": "pwsh-cli/tscon.md"
+      "target": "windows-tools/tscon.md"
     },
     {
       "name": "tsdiscon",
       "source": "tsdiscon.md",
       "status": "documented",
-      "target": "pwsh-cli/tsdiscon.md"
+      "target": "windows-tools/tsdiscon.md"
     },
     {
       "name": "tsecimp",
       "source": "tsecimp.md",
       "status": "documented",
-      "target": "pwsh-cli/tsecimp.md"
+      "target": "windows-tools/tsecimp.md"
     },
     {
       "name": "tskill",
       "source": "tskill.md",
       "status": "documented",
-      "target": "pwsh-cli/tskill.md"
+      "target": "windows-tools/tskill.md"
     },
     {
       "name": "tsprof",
       "source": "tsprof.md",
       "status": "documented",
-      "target": "pwsh-cli/tsprof.md"
+      "target": "windows-tools/tsprof.md"
     },
     {
       "name": "type",
       "source": "type.md",
       "status": "documented",
-      "target": "pwsh-cli/type.md"
+      "target": "windows-tools/type.md"
     },
     {
       "name": "typeperf",
       "source": "typeperf.md",
       "status": "documented",
-      "target": "pwsh-cli/typeperf.md"
+      "target": "windows-tools/typeperf.md"
     },
     {
       "name": "tzutil",
       "source": "tzutil.md",
       "status": "documented",
-      "target": "pwsh-cli/tzutil.md"
+      "target": "windows-tools/tzutil.md"
     },
     {
       "name": "unexpose",
       "source": "unexpose.md",
       "status": "family",
-      "target": "pwsh-cli/diskshadow.md"
+      "target": "windows-tools/diskshadow.md"
     },
     {
       "name": "uniqueid",
       "source": "uniqueid.md",
       "status": "family",
-      "target": "pwsh-cli/diskpart.md"
+      "target": "windows-tools/diskpart.md"
     },
     {
       "name": "unlodctr",
       "source": "unlodctr.md",
       "status": "documented",
-      "target": "pwsh-cli/unlodctr.md"
+      "target": "windows-tools/unlodctr.md"
     },
     {
       "name": "ver",
       "source": "ver.md",
       "status": "documented",
-      "target": "pwsh-cli/ver.md"
+      "target": "windows-tools/ver.md"
     },
     {
       "name": "verifier",
       "source": "verifier.md",
       "status": "documented",
-      "target": "pwsh-cli/verifier.md"
+      "target": "windows-tools/verifier.md"
     },
     {
       "name": "verify",
       "source": "verify.md",
       "status": "documented",
-      "target": "pwsh-cli/verify.md"
+      "target": "windows-tools/verify.md"
     },
     {
       "name": "vol",
       "source": "vol.md",
       "status": "documented",
-      "target": "pwsh-cli/vol.md"
+      "target": "windows-tools/vol.md"
     },
     {
       "name": "vssadmin",
       "source": "vssadmin.md",
       "status": "documented",
-      "target": "pwsh-cli/vssadmin.md"
+      "target": "windows-tools/vssadmin.md"
     },
     {
       "name": "waitfor",
       "source": "waitfor.md",
       "status": "documented",
-      "target": "pwsh-cli/waitfor.md"
+      "target": "windows-tools/waitfor.md"
     },
     {
       "name": "wbadmin",
       "source": "wbadmin.md",
       "status": "documented",
-      "target": "pwsh-cli/wbadmin.md"
+      "target": "windows-tools/wbadmin.md"
     },
     {
       "name": "wdsutil",
       "source": "wdsutil.md",
       "status": "documented",
-      "target": "pwsh-cli/wdsutil.md"
+      "target": "windows-tools/wdsutil.md"
     },
     {
       "name": "wecutil",
       "source": "wecutil.md",
       "status": "documented",
-      "target": "pwsh-cli/wecutil.md"
+      "target": "windows-tools/wecutil.md"
     },
     {
       "name": "wevtutil",
       "source": "wevtutil.md",
       "status": "documented",
-      "target": "pwsh-cli/wevtutil.md"
+      "target": "windows-tools/wevtutil.md"
     },
     {
       "name": "where",
       "source": "where.md",
       "status": "documented",
-      "target": "pwsh-cli/where.md"
+      "target": "windows-tools/where.md"
     },
     {
       "name": "whoami",
       "source": "whoami.md",
       "status": "documented",
-      "target": "pwsh-cli/whoami.md"
+      "target": "windows-tools/whoami.md"
     },
     {
       "name": "winnt",
       "source": "winnt.md",
       "status": "documented",
-      "target": "pwsh-cli/winnt.md"
+      "target": "windows-tools/winnt.md"
     },
     {
       "name": "winnt32",
       "source": "winnt32.md",
       "status": "family",
-      "target": "pwsh-cli/winnt.md"
+      "target": "windows-tools/winnt.md"
     },
     {
       "name": "winrs",
       "source": "winrs.md",
       "status": "documented",
-      "target": "pwsh-cli/winrs.md"
+      "target": "windows-tools/winrs.md"
     },
     {
       "name": "winsat mem",
       "source": "winsat-mem.md",
       "status": "family",
-      "target": "pwsh-cli/winsat.md"
+      "target": "windows-tools/winsat.md"
     },
     {
       "name": "winsat mfmedia",
       "source": "winsat-mfmedia.md",
       "status": "family",
-      "target": "pwsh-cli/winsat.md"
+      "target": "windows-tools/winsat.md"
     },
     {
       "name": "wmic",
       "source": "wmic.md",
       "status": "documented",
-      "target": "pwsh-cli/wmic.md"
+      "target": "windows-tools/wmic.md"
     },
     {
       "name": "writer",
       "source": "writer.md",
       "status": "family",
-      "target": "pwsh-cli/diskshadow.md"
+      "target": "windows-tools/diskshadow.md"
     },
     {
       "name": "wscript",
       "source": "wscript.md",
       "status": "documented",
-      "target": "pwsh-cli/wscript.md"
+      "target": "windows-tools/wscript.md"
     },
     {
       "name": "xcopy",
       "source": "xcopy.md",
       "status": "documented",
-      "target": "pwsh-cli/xcopy.md"
+      "target": "windows-tools/xcopy.md"
     }
   ]
 }

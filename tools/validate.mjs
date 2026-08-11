@@ -10,7 +10,8 @@ const docsRoot = path.join(repositoryRoot, "docs", "en-US");
 const catalogs = new Map([
   ["pwsh7", "upstream/pwsh7.json"],
   ["pwsh51", "upstream/pwsh51.json"],
-  ["pwsh-cli", "upstream/cli.json"]
+  ["windows-tools", "upstream/windows-tools.json"],
+  ["cross-platform-tools", "upstream/cross-platform-tools.json"]
 ]);
 const statuses = new Map([
   ["planned", 0],
@@ -369,11 +370,11 @@ function validateWindowsCommandIndex(sourceData) {
   if (index.$schema !== "windows-command-index/v1") {
     reportError(`${indexPath}: unsupported schema identifier.`);
   }
-  const cliBaseline = sourceData.get("pwsh-cli")?.catalog?.baselines?.windowsserverdocs;
-  if (index.baseline?.catalog !== "upstream/cli.json" || index.baseline?.baseline !== "windowsserverdocs") {
-    reportError(`${indexPath}: baseline must reference the windowsserverdocs entry in upstream/cli.json.`);
+  const windowsBaseline = sourceData.get("windows-tools")?.catalog?.baselines?.windowsserverdocs;
+  if (index.baseline?.catalog !== "upstream/windows-tools.json" || index.baseline?.baseline !== "windowsserverdocs") {
+    reportError(`${indexPath}: baseline must reference the windowsserverdocs entry in upstream/windows-tools.json.`);
   }
-  if (index.baseline?.revision !== cliBaseline?.revision) {
+  if (index.baseline?.revision !== windowsBaseline?.revision) {
     reportError(`${indexPath}: revision must match the windowsserverdocs catalog baseline.`);
   }
   if (!Array.isArray(index.entries)) {

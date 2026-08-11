@@ -1,0 +1,81 @@
+<!-- mant:tldr:start -->
+# shutdown
+
+> Inspect Windows shutdown syntax, cancel a pending timer when safe, and only schedule restart/shutdown after checking every user, workload, target, recovery path, reason, and the implicit forced-close behavior of nonzero timeouts.
+> More information: https://learn.microsoft.com/windows-server/administration/windows-commands/shutdown.
+
+- Display target-build actions, combinations, reason codes, timeout range, and warnings:
+
+`shutdown.exe /?`
+
+- Cancel a pending shutdown during its timeout window from a separate process:
+
+`shutdown.exe /a`
+
+- After explicit user/workload approval, schedule a planned local restart in ten minutes with a reason and auditable comment:
+
+`shutdown.exe /r /t {{600}} /d p:4:1 /c "{{Approved maintenance change CHG-1234}}"`
+
+- After preserving work and confirming hibernation support/policy, hibernate the local computer:
+
+`shutdown.exe /h`
+<!-- mant:tldr:end -->
+
+# shutdown
+
+## Overview
+
+`shutdown.exe` signs out, shuts down, restarts, hibernates, enters recovery or
+firmware flows, annotates unexpected shutdowns, and targets local or remote
+computers. Scheduling acceptance means the request was registered—not that
+applications, sessions, clustering, replication, updates, or recovery are safe.
+
+## Common mistakes
+
+- Missing that `/t` greater than zero implies `/f`: applications can be forced
+  closed with unsaved data loss even when `/f` is absent from the command line.
+- Using `/p`, `/f`, `/t 0`, or remote `/m` before checking active/disconnected
+  sessions, jobs, services, transactions, cluster/drain state, and console access.
+- Combining `/l` with other options; sign-out works independently and ignores
+  combinations. `/i` must be first and causes other command options to be ignored.
+- Treating `/m` as a credential option. Remote rights, identity/token, firewall,
+  RPC/service/policy, target resolution, and audit must be established separately.
+- Confusing `/r` with `/g`, or `/s` with `/sg`: `/g`/`/sg` can use Automatic
+  Restart Sign-On and restart registered apps under the last interactive user.
+- Using `/o`, `/fw`, or `/hybrid` without firmware/recovery/Fast Startup context;
+  these change the next boot path and have strict valid combinations.
+- Assuming `/a` can cancel after timeout/commit, or that a zero exit code proves
+  restart completion. Verify target, notification, events, uptime, and health.
+
+## PowerShell behavior
+
+Call `shutdown.exe` explicitly and capture `$LASTEXITCODE`; the command returns
+before a delayed lifecycle operation completes. PowerShell `Restart-Computer`,
+`Stop-Computer`, and `Stop-Computer -Force` have different remoting and force
+semantics. Never interpolate an untrusted hostname, timeout, reason, or comment.
+
+## Version and platform differences
+
+`shutdown.exe` is Windows-only. Options, timeout limits, Fast Startup, firmware/
+recovery flows, Automatic Restart Sign-On, reason policy, remote administration,
+privileges, and application restart behavior vary by Windows generation/build.
+
+## Related documents
+
+- [query.exe](query.md)
+- [msg](msg.md)
+- [logoff](logoff.md)
+- [schtasks](schtasks.md)
+- [wevtutil](wevtutil.md)
+
+## Sources and license
+
+This original guide was adapted from Microsoft's official
+[shutdown reference](https://learn.microsoft.com/windows-server/administration/windows-commands/shutdown).
+The timeout/force and cancellation risks were cross-checked against practitioner
+questions about [canceling a delayed UPS shutdown](https://serverfault.com/questions/652725/cancel-block-a-task-triggered-with-delay-by-windows-task-scheduler)
+and [scheduling a server restart](https://serverfault.com/questions/515427/how-can-i-schedule-a-server-restart-from-command-line-on-windows-2012).
+Exact sources and licenses are recorded in `upstream/windows-tools.json`.
+
+Microsoft documentation and this adaptation are licensed under CC BY 4.0.
+Server Fault contributions are licensed under CC BY-SA 4.0.

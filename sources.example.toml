@@ -10,8 +10,14 @@ branch = "main"
 path = "docs/en-US/pwsh51"
 priority = 10
 
-[pwsh-cli]
+[windows-tools]
 repo = "https://github.com/BryanHeBY/mant-pwsh-docs.git"
 branch = "main"
-path = "docs/en-US/pwsh-cli"
+path = "docs/en-US/windows-tools"
+priority = 5
+
+[cross-platform-tools]
+repo = "https://github.com/BryanHeBY/mant-pwsh-docs.git"
+branch = "main"
+path = "docs/en-US/cross-platform-tools"
 priority = 5

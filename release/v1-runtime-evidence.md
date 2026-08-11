@@ -11,9 +11,12 @@ source cache at repository revision `e6e7c9f54a2944ddff86181e038395949581db41`.
 
 `mant --update-docs` reported these installed document counts:
 
-These are historical counts for the recorded repository revision. Pages added
-after that revision still require fresh platform evidence even though this
-earlier run remains valid for the documents it exercised.
+These are historical counts for the recorded repository revision. The source
+then named `pwsh-cli` was later replaced by `windows-tools` and
+`cross-platform-tools`; the names and queries below are preserved as evidence
+of what was actually tested. Pages added or moved after that revision still
+require fresh platform evidence even though this earlier run remains valid for
+the documents it exercised.
 
 | Source | Documents |
 | --- | ---: |
@@ -68,9 +71,9 @@ Installed native-tool versions were:
 | PowerShell 7 on Windows | pending |
 | PowerShell 7 on macOS | pending |
 | Windows PowerShell 5.1 | pending Windows host |
-| Windows-only CLI pages | pending Windows host |
-| Cross-platform CLI pages on Windows | pending Windows host |
-| Cross-platform CLI pages on macOS | pending macOS host |
+| Windows-only tool pages | pending Windows host |
+| Cross-platform tool pages on Windows | pending Windows host |
+| Cross-platform tool pages on macOS | pending macOS host |
 | dotnet CLI on all declared platforms | pending compatible SDK hosts |
 
 The repository's portable release checks and upstream audit pass, but this

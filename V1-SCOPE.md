@@ -11,8 +11,9 @@ is [`release/v1.json`](release/v1.json).
 | --- | ---: | --- |
 | `pwsh7` | 30 | PowerShell 7 shell, language, common commands, aliases, process/item actions, custom-shorthand guidance, and compatibility guidance. |
 | `pwsh51` | 30 | Windows PowerShell 5.1 equivalents, process/item actions, custom-shorthand guidance, and edition-specific behavior. |
-| `pwsh-cli` | 306 | Native tools frequently called from PowerShell, including Windows shell/GUI/registry, device/disk/service/feature, management-console/startup/policy/advanced-system/accessibility entry points, batch/file/control-flow/comment/display/help/version/legacy verification/date/time, DOS data-path/editor/graphics-code-page compatibility, legacy scheduler/ACL/Boot.ini migration, BITS background transfer, serial/console/legacy printing, LPR/LPD clients, localized print-administration scripts, and PrintUI/policy deployment, optional NFS client/server mount and ONC/Microsoft RPC diagnostics, legacy NFS User Name Mapping and File Server for Macintosh migration, optional and legacy ATM/IPX/infrared/FTP/TFTP/Telnet/Finger/Rexec/RSH clients and administration, directory, link, text/paging/comparison, console encoding/history/macros, named synchronization, scripting/compatibility hosts, process, host, network/component/binding and packet capture, TPM diagnosis and virtual-smart-card migration, DTrace, Sysmon, WinSAT, display/support diagnostics and retired MSDT migration, account/SMB/service compatibility, Remote Desktop client/session inventory/notification/lifecycle/control, logon admission, COM/install mode, temp/profile and TAPI assignment administration, and RDP-file signing, WinRM/WinRS remote management, Event Log/forwarding/SNMP traps, performance-counter and ETW diagnostics, legacy WINS/DHCP/MSMQ/NLB/TAPI/phone-book administration, Server 2003 setup/RIS/component/help/NTVDM compatibility, NTBackup recovery, Server Manager and diagnostic-data migration, system-information/GUI diagnostics, cleanup, shutdown, time-zone/time-service, power/sleep, Driver Verifier, DirectX/SxS diagnostics, Connection Manager profiles, installation, image-servicing, unattended/device driver and Windows Deployment Services lifecycle/security, security-policy and SCW analysis, Kerberos realm/keytab interoperability and authentication, Active Directory DC/replication/site/secure-channel/trust diagnosis, forest/domain/schema/GPO migration/recovery, DNS Server, DFS Namespace, and FRS-to-DFSR SYSVOL migration operations, ACL, EFS, certificate, advanced filesystem and disk management including VDS hardware RAID, startup-only checking/conversion/recovery workers, floppy comparison/copy, disk counter and capacity gates, KTM recovery inspection, PowerShell ISE, RegIni, retired Windows To Go startup, deprecated page-file and CPU compatibility tooling, VSS and backup, Windows RE/ReFS diagnosis/recovery, formatting, file replacement/salvage, CAB packaging/extraction through both Expand and Extrac32, compression, volume label/serial display, BitLocker, volume mounting, and boot-recovery operations, file associations, winget, and optional Microsoft Learn MCP discovery. |
-| **Total** | **366** | Current first-release document inventory. |
+| `windows-tools` | 301 | Windows-native and optional executables, Cmd builtins and interactive families, shell/GUI/URI entry points, package and system management, diagnostics, server roles, compatibility and recovery utilities, and optional Microsoft Learn MCP discovery. |
+| `cross-platform-tools` | 6 | A dedicated index plus Git, OpenSSH, curl, tar, and .NET CLI guidance for Windows, macOS, and Linux. |
+| **Total** | **367** | Current first-release document inventory. |
 
 The two shell manuals, `pwsh7` and `pwsh51`, remain the broad equivalent of a
 traditional `sh` manual. The `*-docs` pages are deliberately separate
@@ -34,13 +35,15 @@ that affect script migration: executable and edition, language syntax,
 modules, providers, native command argument and encoding behavior, remoting,
 and platform availability.
 
-### Native CLI source
+### Tool sources
 
-The CLI source starts with Windows management tools, winget, and a small set
-of cross-platform developer tools. Each page must explain native exit status,
-PowerShell quoting and stream handling, and platform constraints. The
-`curl` page must distinguish the executable from the Windows PowerShell alias
-when both are available.
+The `windows-tools` source contains Windows-specific command-line tools,
+builtins, interactive families, GUI and URI entry points, and optional or
+legacy utilities. The `cross-platform-tools` source contains separately
+installed tools intended for use across Windows, macOS, and Linux. Native-tool
+pages must explain exit status, PowerShell quoting and stream handling, and
+platform constraints. The `curl` page must distinguish the executable from
+the Windows PowerShell alias when both are available.
 
 The Microsoft Learn MCP page is a guide to optional discovery. It must not
 make the MCP server a prerequisite for reading, validating, or using any
@@ -66,11 +69,11 @@ Every required page must:
 
 The v1 tag may be created only when:
 
-- all 366 manifest documents exist and pass portable validation;
+- all 367 manifest documents exist and pass portable validation;
 - every document is at least `reviewed` in its provenance catalog;
 - PowerShell 7 runtime checks pass on Windows, Linux, and macOS;
 - Windows PowerShell 5.1 runtime checks pass on Windows;
-- Windows-only CLI checks pass on Windows and cross-platform CLI checks pass
+- Windows-only tool checks pass on Windows and cross-platform tool checks pass
   on their declared operating systems;
 - the optional MCP guide has no runtime dependency on an MCP server;
 - README, changelog, licenses, notices, and the source installation example
@@ -78,7 +81,7 @@ The v1 tag may be created only when:
 
 ## Deferred from version 1
 
-Version 1 does not duplicate upstream pages one-for-one. The Windows CLI
+Version 1 does not duplicate upstream pages one-for-one. The Windows tool
 catalog aims for comprehensive supported inbox-command coverage, delivered in
 reviewable batches; related subcommands can share a family page. PowerShell
 cmdlets, `about_*` topics, and third-party CLI ecosystems remain selective.

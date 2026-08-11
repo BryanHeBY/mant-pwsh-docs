@@ -10,11 +10,14 @@ bundles.
 
 ### Added
 
-- First English release inventory: 366 reviewed ManT pages across `pwsh7`,
-  `pwsh51`, and `pwsh-cli`.
+- First English release inventory: 367 reviewed ManT pages across `pwsh7`,
+  `pwsh51`, `windows-tools`, and `cross-platform-tools`.
+- Separate Windows and cross-platform tool sources with semantic entry pages,
+  independent installation, provenance catalogs, and explicit cross-source
+  ManT queries.
 - Broad `pwsh7` and `pwsh51` shell manuals, focused language/command pages,
   compatibility guides, and custom `irx` shorthand resolution guidance.
-- Native CLI coverage for Microsoft Learn MCP discovery, winget, Windows system
+- Tool coverage for Microsoft Learn MCP discovery, winget, Windows system
   tools, Git, OpenSSH, curl, tar, and .NET.
 - Windows startup-only Autochk/AutoConv/AutoFmt and Setup-owned FveUpdate
   recognition, floppy DiskComp/DiskCopy, disk-counter and free-space gates,
