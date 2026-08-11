@@ -333,6 +333,81 @@
         "This is an original ManT-oriented cmdlet guide, not a copy of the upstream reference.",
         "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
       ]
+    },
+    "Get-ChildItem.md": {
+      "kind": "cmdlet",
+      "status": "draft",
+      "versions": ["5.1"],
+      "platforms": ["windows"],
+      "sources": [{
+        "type": "git",
+        "baseline": "powershell-docs",
+        "path": "reference/5.1/Microsoft.PowerShell.Management/Get-ChildItem.md"
+      }],
+      "notes": [
+        "This is an original ManT-oriented cmdlet guide, not a copy of the upstream reference.",
+        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+      ]
+    },
+    "Where-Object.md": {
+      "kind": "cmdlet",
+      "status": "draft",
+      "versions": ["5.1"],
+      "platforms": ["windows"],
+      "sources": [{
+        "type": "git",
+        "baseline": "powershell-docs",
+        "path": "reference/5.1/Microsoft.PowerShell.Core/Where-Object.md"
+      }],
+      "notes": [
+        "This is an original ManT-oriented cmdlet guide, not a copy of the upstream reference.",
+        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+      ]
+    },
+    "ForEach-Object.md": {
+      "kind": "cmdlet",
+      "status": "draft",
+      "versions": ["5.1"],
+      "platforms": ["windows"],
+      "sources": [{
+        "type": "git",
+        "baseline": "powershell-docs",
+        "path": "reference/5.1/Microsoft.PowerShell.Core/ForEach-Object.md"
+      }],
+      "notes": [
+        "This is an original ManT-oriented cmdlet guide, not a copy of the upstream reference.",
+        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+      ]
+    },
+    "Select-Object.md": {
+      "kind": "cmdlet",
+      "status": "draft",
+      "versions": ["5.1"],
+      "platforms": ["windows"],
+      "sources": [{
+        "type": "git",
+        "baseline": "powershell-docs",
+        "path": "reference/5.1/Microsoft.PowerShell.Utility/Select-Object.md"
+      }],
+      "notes": [
+        "This is an original ManT-oriented cmdlet guide, not a copy of the upstream reference.",
+        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+      ]
+    },
+    "Sort-Object.md": {
+      "kind": "cmdlet",
+      "status": "draft",
+      "versions": ["5.1"],
+      "platforms": ["windows"],
+      "sources": [{
+        "type": "git",
+        "baseline": "powershell-docs",
+        "path": "reference/5.1/Microsoft.PowerShell.Utility/Sort-Object.md"
+      }],
+      "notes": [
+        "This is an original ManT-oriented cmdlet guide, not a copy of the upstream reference.",
+        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+      ]
     }
   }
 }

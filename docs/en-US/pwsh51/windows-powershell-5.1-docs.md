@@ -68,6 +68,19 @@ Further introductory pages will cover migrating to PowerShell 7.
 - [Get-Member](Get-Member.md): inspect object types and members before selecting
   properties or calling methods.
 
+## Object pipeline
+
+- [Where-Object](Where-Object.md): filter objects with property comparisons or
+  explicit predicates.
+- [ForEach-Object](ForEach-Object.md): transform or act on one pipeline object
+  at a time.
+- [Select-Object](Select-Object.md): select, calculate, expand, or bound object
+  output before display or export.
+- [Get-ChildItem](Get-ChildItem.md): enumerate filesystem and provider items
+  with safe literal paths and bounded recursion.
+- [Sort-Object](Sort-Object.md): order objects by properties or calculated
+  values before selecting or exporting them.
+
 ## Planned command reference
 
 The first release will cover:
