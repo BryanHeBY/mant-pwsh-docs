@@ -659,6 +659,45 @@
       ],
       "notes": ["The TLDR is help/query-first, restricts operation to a dedicated test/debug computer, and scopes /reset to an intentional stop decision; the page contains production/all-driver, debugger/dump/recovery, next-boot-versus-current/volatile, versioned flags, fault injection, boot-loop, root-cause, native-status, and post-reboot risks.", "Windows runtime verification remains /querysettings and /query only; mutation/reset requires a dedicated crash-safe test fixture and recovery validation."]
     },
+    "w32tm.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["supported Windows client and server releases; algorithms, defaults, policy, precision, and domain/virtualization roles vary by build"], "platforms": ["windows"],
+      "sources": [
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/windows-server/networking/windows-time-service/windows-time-service-tools-and-settings", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-server/active-directory/error-message-run-w32tm-resync-no-time-data-available", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=704219&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR inventories effective source/configuration/status and bounds stripchart samples without mutation; the page contains reachability-versus-effective-source, resync/config, domain/PDC/virtualization, peer-mode/count, time-step/security/workload, unit/policy/registry, unregister, parsing, and remote-right risks.", "Windows runtime verification remains local query-only; offset sampling requires an approved endpoint and any configuration/resync requires an identity/topology/rollback plan."]
+    },
+    "powercfg.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["supported Windows client releases and applicable server releases; options depend on build, hardware, firmware, drivers, OEM configuration, power source, and policy"], "platforms": ["windows"],
+      "sources": [
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/windows-hardware/design/device-experiences/powercfg-command-line-options", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=1472017&service=superuser&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR inventories active/list/query/requests/sleep states and writes a battery report to a new path; the page contains target GUID/alias/policy, AC/DC/unit/activation, request override, idle-energy, stale/existing report, report privacy, hibernation/Fast Startup, wake/device, native-status, and hardware-verification risks.", "Windows runtime verification remains query-only; reports require a protected new fixture path and all scheme/sleep/wake mutations require representative hardware and rollback."]
+    },
+    "reagentc.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["supported Windows releases; online/offline commands, Audit Mode, reset images, partition requirements, and WinRE servicing vary by version and deployment phase"], "platforms": ["windows"],
+      "sources": [
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/reagentc-command-line-options", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=1534341&service=superuser&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=1101816&service=superuser&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR is /info-only for explicit online/offline targets; the page contains prechange evidence, directory/image trust/version, wrong offline target/drive letters, copied partition recipes, false success/boot verification, /boottore, obsolete /setosimage, native-status, encryption and rollback risks.", "Windows runtime verification remains /info-only; mutation requires a disposable boot/recovery fixture, exact BCD/disk/image identity, recovery keys/media, and tested rollback."]
+    },
+    "dxdiag.md": {
+      "kind": "windows-gui-entrypoint", "status": "reviewed",
+      "versions": ["supported Windows releases where DirectX Diagnostic Tool is included; switches and collected fields vary by build, architecture, DirectX and drivers"], "platforms": ["windows"],
+      "sources": [
+        {"type": "web", "url": "https://support.microsoft.com/en-us/windows/open-and-run-dxdiag-exe-dad7792c-2ad5-f6cd-5a37-bf92228dfd85", "license": {"spdx": "LicenseRef-Microsoft-Web-Terms", "url": "https://www.microsoft.com/en-us/legal/terms-of-use"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=30824928&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/answers/questions/2470635/dxdiag-from-command-line-has-no-output", "license": {"spdx": "LicenseRef-Microsoft-Web-Terms", "url": "https://www.microsoft.com/en-us/legal/terms-of-use"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR opens the GUI, requires target help for switches, and uses Start-Process -Wait plus a new report path; the page contains runtime-version-versus-feature/driver, async/stale output, quoting/directory/error-contract, versioned switch/order, WHQL/privacy/network, report disclosure, native-status, and structured-inventory risks.", "Windows runtime verification remains executable/help discovery-only; report collection requires a new protected fixture path, process/content verification, and privacy review."]
+    },
     "cmd.md": {
       "kind": "windows-shell",
       "status": "reviewed",

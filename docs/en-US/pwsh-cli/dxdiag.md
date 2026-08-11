@@ -1,0 +1,74 @@
+<!-- mant:tldr:start -->
+# dxdiag
+
+> Open DirectX Diagnostic Tool or export a new access-controlled report while waiting for collection to finish; preserve driver, feature-level, architecture, WHQL, host, and artifact context.
+> More information: https://support.microsoft.com/windows/open-and-run-dxdiag-exe-dad7792c-2ad5-f6cd-5a37-bf92228dfd85.
+
+- Open the interactive DirectX Diagnostic Tool:
+
+`dxdiag.exe`
+
+- Display the target build's command-line help before automating undocumented or version-specific switches:
+
+`dxdiag.exe /?`
+
+- Export a new text report and wait for the GUI process to finish before verifying it:
+
+`Start-Process dxdiag.exe -ArgumentList @('/t', '"{{C:\Evidence\dxdiag.txt}}"') -Wait`
+<!-- mant:tldr:end -->
+
+# dxdiag
+
+## Overview
+
+`dxdiag.exe` collects DirectX, display, sound, input, driver, and system diagnostic
+information through an interactive GUI and can export support reports on builds
+that expose the corresponding command-line switches. It diagnoses and reports;
+it does not install DirectX, update drivers, or prove an application will work.
+
+## Common mistakes
+
+- Treating the displayed DirectX version as the GPU's supported feature level,
+  driver model/version, application API path, codec, or hardware capability.
+- Launching export and reading the file immediately. Wait for `dxdiag.exe`, then
+  verify a new file, size, timestamps, expected sections, host, encoding and hash.
+- Omitting quotes or using a missing/unwritable directory; GUI-style tools may
+  return before useful output or fail without a script-friendly error contract.
+- Copying `/whql`, `/64bit`, `/dontskip`, `/t`, or `/x` order from old posts
+  without checking `/?` on the target. Behavior has varied by Windows generation.
+- Enabling signature/WHQL checks without considering network/privacy/time or
+  interpreting “signed” as safe, current, correct, or compatible.
+- Publishing full reports without redaction; they can expose machine, firmware,
+  device IDs, drivers, paths, display/audio/input and troubleshooting details.
+
+## PowerShell behavior
+
+Use `Start-Process -Wait` with an argument array and a new explicit output path.
+Do not trust process start or an old file as success; validate content and record
+`dxdiag.exe` version/architecture plus `$LASTEXITCODE` where available. For narrow
+structured inventory, prefer supported CIM/DirectX/driver APIs over text parsing.
+
+## Version and platform differences
+
+`dxdiag.exe` is Windows-only. Switches, 32/64-bit collection, tabs/fields, WHQL
+behavior, output formats and driver/feature reporting vary by Windows, DirectX,
+GPU/audio drivers, hardware, architecture, language and session environment.
+
+## Related documents
+
+- [msinfo32](msinfo32.md)
+- [driverquery](driverquery.md)
+- [pnputil](pnputil.md)
+- [systeminfo](systeminfo.md)
+
+## Sources and license
+
+This original guide was adapted from Microsoft's official support guide for
+[opening and sharing DxDiag results](https://support.microsoft.com/windows/open-and-run-dxdiag-exe-dad7792c-2ad5-f6cd-5a37-bf92228dfd85).
+Automation failure modes were cross-checked against practitioner questions about
+[waiting for report export](https://stackoverflow.com/questions/30824928/opening-command-prompt-and-performing-commands)
+and [missing DxDiag output](https://learn.microsoft.com/answers/questions/2470635/dxdiag-from-command-line-has-no-output).
+Exact sources and licenses are recorded in `upstream/cli.json`.
+
+Microsoft material and this adaptation are licensed under their recorded terms.
+Stack Overflow contributions are licensed under CC BY-SA 4.0.

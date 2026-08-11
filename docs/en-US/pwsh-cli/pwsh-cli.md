@@ -144,6 +144,10 @@ license in the document's provenance catalog before adapting material.
 - [shutdown](shutdown.md): sign-out, power, restart, recovery, remote-target, timeout, and forced-close safety.
 - [tzutil](tzutil.md): Windows time-zone ID discovery, DST semantics, and controlled system-zone changes.
 - [verifier](verifier.md): query/recovery-first Driver Verifier guidance restricted to test/debug computers.
+- [w32tm](w32tm.md): effective Windows Time source, configuration, health, and bounded offset diagnosis.
+- [powercfg](powercfg.md): power scheme, sleep-state, blocker, wake, hibernation, and report boundaries.
+- [reagentc](reagentc.md): online/offline Windows RE identity and recovery-configuration safeguards.
+- [dxdiag](dxdiag.md): DirectX/device diagnostic GUI and waited, verified support-report export.
 
 ## Windows shell, GUI, and settings
 

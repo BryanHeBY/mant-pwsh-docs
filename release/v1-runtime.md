@@ -132,6 +132,15 @@ tzutil.exe /g
 tzutil.exe /l
 verifier.exe /querysettings
 verifier.exe /query
+w32tm.exe /query /status /verbose
+w32tm.exe /query /source
+w32tm.exe /query /configuration
+powercfg.exe /getactivescheme
+powercfg.exe /list
+powercfg.exe /requests
+powercfg.exe /availablesleepstates
+reagentc.exe /info
+Get-Command dxdiag.exe -All
 cmd.exe /d /c ver
 reg.exe query HKCU\Environment
 Get-Command explorer.exe, control.exe, mmc.exe, rundll32.exe -All
@@ -430,6 +439,14 @@ host, change its time zone/DST policy, or enable/reset/reconfigure Driver
 Verifier merely for release evidence. Driver Verifier mutation requires a
 dedicated test computer, debugger/dumps, exact driver/flags, console/recovery,
 stop criteria, rollback, reboot, and post-boot verification plan.
+Keep time/power/recovery/DirectX verification query-only. Do not resync or
+reconfigure W32Time, alter peers/hierarchy/reliability/service registration,
+change schemes/settings/requests/overrides/wake/hibernation, enable/disable/
+relocate/customize WinRE or set its next boot, or run DxDiag signature/report
+collection merely for evidence. Bounded offset/report tests require an approved
+endpoint or new protected path, exact target identity, wait/content checks, and
+privacy/retention review. Recovery mutation additionally requires offline target,
+disk/BCD/image/encryption evidence, console/media, rollback and boot testing.
 
 On Windows, macOS, and Linux where declared by the document, record:
 
