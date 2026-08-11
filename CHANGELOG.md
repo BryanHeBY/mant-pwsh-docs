@@ -10,7 +10,7 @@ bundles.
 
 ### Added
 
-- First English release inventory: 311 reviewed ManT pages across `pwsh7`,
+- First English release inventory: 317 reviewed ManT pages across `pwsh7`,
   `pwsh51`, and `pwsh-cli`.
 - Broad `pwsh7` and `pwsh51` shell manuals, focused language/command pages,
   compatibility guides, and custom `irx` shorthand resolution guidance.
@@ -68,6 +68,11 @@ bundles.
   `cleanmgr`, `shutdown`, `tzutil`, and `verifier`, including verified report
   export, cleanup profile scope, implicit forced close, Windows/IANA time-zone
   distinctions, and test-only Driver Verifier recovery requirements.
+- Windows Connection Manager profile, display capture, DTrace, deprecated MSDT,
+  network-component/binding, and unattended-driver guides for `cmstp`,
+  `dispdiag`, `dtrace`, `msdt`, `netcfg`, and `pnpunattend`, with inspect/compile/
+  search-first TLDRs and explicit active-INF, binary-artifact, destructive-
+  probe, retired-pack, all-adapter cleanup, and accidental-driver-install traps.
 - Windows time-service, power/sleep, recovery-environment, and DirectX diagnostic
   guides for `w32tm`, `powercfg`, `reagentc`, and `dxdiag`, including bounded
   offset sampling, effective policy, protected report export, and boot/recovery

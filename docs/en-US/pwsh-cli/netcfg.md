@@ -1,0 +1,108 @@
+<!-- mant:tldr:start -->
+# netcfg
+
+> Inventory Windows network components and bindings before any install, uninstall, or all-adapter cleanup.
+> More information: https://learn.microsoft.com/windows-server/administration/windows-commands/netcfg.
+
+- Resolve the exact native executable and show installed syntax:
+
+`Get-Command netcfg.exe -All -ErrorAction SilentlyContinue | Select-Object Source,@{Name='FileVersion';Expression={$_.FileVersionInfo.FileVersion}}; netcfg.exe /?`
+
+- List installed network components without changing them:
+
+`netcfg.exe /s n`
+
+- Query whether one exact component ID is installed:
+
+`netcfg.exe /q "{{MS_Server}}"; $LASTEXITCODE`
+
+- Export a binding map to a new protected working directory and inspect the artifact:
+
+`Push-Location -LiteralPath "{{C:\Diagnostics\NetCfg}}"; try { if (Test-Path -LiteralPath '.\NetworkBindingMap.txt') { throw 'Refusing to overwrite NetworkBindingMap.txt' }; netcfg.exe /m; $code = $LASTEXITCODE; Get-Item -LiteralPath '.\NetworkBindingMap.txt' | Select-Object FullName,Length,LastWriteTime; $code } finally { Pop-Location }`
+<!-- mant:tldr:end -->
+
+# netcfg
+
+## Overview
+
+`netcfg.exe` manages Windows network components and bindings. Query/list/map
+forms can inventory state; `/i`, `/u`, `/winpe`, `/d`, and `/x` install,
+uninstall, provision, or broadly clean network devices. `/d` and `/x` require
+a reboot and can disrupt every adapter, including the management path.
+
+## Command families
+
+- `/s <type>`, `/q <component-ID>`, `/b <path>`: show components, query one
+  component and display binding paths.
+- `/m` and `/v`: write `NetworkBindingMap.txt` in the current directory and
+  optionally add verbose console detail.
+- `/l <INF> /c <class> /i <component-ID>`: install a protocol, service or
+  client from an optional INF location.
+- `/u <component-ID>`: uninstall one component.
+- `/winpe`: install the WinPE TCP/IP, NetBIOS and Microsoft Client set.
+- `/d`, `/x`: clean all network devices, with `/x` skipping devices lacking
+  physical object names; both are broad, disruptive and reboot-dependent.
+
+## Common mistakes
+
+### Recommending `/d` as a generic network reset
+
+It is not equivalent to flushing DNS or renewing DHCP. It cleans all network
+devices, can remove virtual/VPN/filter bindings, requires reboot, and may sever
+remote management. Diagnose name, route, address, firewall, proxy, Winsock,
+adapter and component layers before choosing the narrow supported repair.
+
+### Using a display name where a component ID is required
+
+Bind `/q`, `/i`, or `/u` to the published/install-time component ID and record
+class (`p`, `s`, or `c` where applicable), INF/provider/version and current
+binding paths. A friendly adapter or product name is not interchangeable.
+
+### Trusting an INF because installation returned zero
+
+Verify publisher/signature/catalog, architecture, OS compatibility and package
+source before installation. Re-query the exact ID and inspect bindings, device
+state, events, connectivity and reboot requirements afterward.
+
+### Running cleanup remotely without an out-of-band recovery path
+
+Assume the management NIC, virtual switch, VPN, cluster/storage network and
+security filters can be affected. Require console/OOB access, configuration
+backup, maintenance window and tested restore/re-enrollment procedures.
+
+### Forgetting that `/m` writes into the current directory
+
+Use a dedicated protected directory, ensure the fixed filename does not exist,
+and retain a hash/timestamp. A binding map exposes product and network-stack
+details and should not be posted publicly without review.
+
+## PowerShell behavior
+
+Call `netcfg.exe` explicitly and capture `$LASTEXITCODE` before other commands.
+PowerShell's current directory determines `/m` output location. Do not assemble
+component IDs or INF paths from untrusted discovery text, and do not mistake
+`/q` (query) for PowerShell quiet behavior.
+
+## Version and platform differences
+
+Windows-only. Component IDs, installed filters/protocols, WinPE context and
+cleanup behavior vary by build, hardware, hypervisor, VPN/security product and
+OEM image. Validate on an equivalent disposable host before mutation.
+
+## Related documents
+
+- [netsh](netsh.md)
+- [ipconfig](ipconfig.md)
+- [pnputil](pnputil.md)
+- [getmac](getmac.md)
+
+## Sources and license
+
+This original guide was adapted from Microsoft's official
+[netcfg reference](https://learn.microsoft.com/windows-server/administration/windows-commands/netcfg).
+The high demand for overly broad “full reset” recipes was cross-checked against
+a [Server Fault network-adapter reset discussion](https://serverfault.com/questions/770396/how-to-fully-reset-network-adapter).
+Exact sources and licenses are recorded in `upstream/cli.json`.
+
+The Microsoft documentation and this adaptation are licensed under CC BY
+4.0. Server Fault contributions are licensed under CC BY-SA 4.0.

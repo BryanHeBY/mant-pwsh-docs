@@ -135,6 +135,7 @@ license in the document's provenance catalog before adapting material.
 - [typeperf](typeperf.md): target-localized counter discovery and bounded live sampling.
 - [relog](relog.md): inspect, select, convert, and resample copied performance logs.
 - [tracerpt](tracerpt.md): parse copied ETL/performance traces while preserving source evidence.
+- [dtrace](dtrace.md): case-sensitive probe discovery and compile-only review before bounded dynamic tracing.
 - [lodctr](lodctr.md): performance-counter provider registration inventory and backup before repair.
 - [unlodctr](unlodctr.md): exact provider unregistration only in a supported uninstall or repair workflow.
 
@@ -147,6 +148,8 @@ license in the document's provenance catalog before adapting material.
 
 - [perfmon](perfmon.md): explicit Performance, Resource, Reliability, and bounded System Diagnostics views.
 - [msinfo32](msinfo32.md): category-scoped System Information collection and verified NFO/text export.
+- [dispdiag](dispdiag.md): display diagnostics captured to a new protected non-text artifact.
+- [msdt](msdt.md): deprecated troubleshooting-pack migration to current Settings and Get Help workflows.
 - [cleanmgr](cleanmgr.md): interactive Disk Cleanup profiles with all-drive and no-dry-run boundaries.
 - [shutdown](shutdown.md): sign-out, power, restart, recovery, remote-target, timeout, and forced-close safety.
 - [tzutil](tzutil.md): Windows time-zone ID discovery, DST semantics, and controlled system-zone changes.
@@ -280,6 +283,8 @@ license in the document's provenance catalog before adapting material.
 - [netsh-interface](netsh-interface.md): IP, interface, tunnel, and proxy state.
 - [netsh-wlan](netsh-wlan.md): Wi-Fi interfaces, networks, and profile safety.
 - [netsh-winsock](netsh-winsock.md): provider catalog and autotuning evidence.
+- [netcfg](netcfg.md): network component and binding inventory before install, uninstall, or all-device cleanup.
+- [cmstp](cmstp.md): reviewed Connection Manager INF deployment with scope, trust, and rollback boundaries.
 
 ## Windows optional and legacy network clients
 
@@ -323,6 +328,7 @@ license in the document's provenance catalog before adapting material.
 - [dism](dism.md): explicit online/offline Windows image inventory and servicing.
 - [sfc](sfc.md): protected-system-file verification and scoped repair.
 - [pnputil](pnputil.md): Driver Store, device, and interface identity safety.
+- [pnpunattend](pnpunattend.md): search-only unattended driver audit that avoids implicit online installation.
 - [fondue](fondue.md): single-feature enablement and source-policy boundaries.
 
 ## Windows security policy and authentication diagnosis

@@ -476,12 +476,20 @@ netsh.exe help
 netsh.exe interface ipv4 show config
 netsh.exe wlan show interfaces
 netsh.exe winsock show catalog
+netcfg.exe /s n
+netcfg.exe /q MS_Server
+cmstp.exe /?
 msiexec.exe /?
 dism.exe /Online /Get-Features /Format:Table
 dism.exe /Online /Cleanup-Image /CheckHealth
 sfc.exe /verifyonly
 pnputil.exe /enum-drivers
 pnputil.exe /enum-devices /connected /problem
+pnpunattend.exe auditsystem /s /l
+dispdiag.exe -?
+msdt.exe /?
+dtrace.exe -V
+dtrace.exe -l -P syscall
 auditpol.exe /get /category:* /r
 gpresult.exe /scope user /r
 klist.exe tickets
@@ -571,6 +579,12 @@ merely to satisfy this checklist. Confirm current `pnputil /?` verbs on the
 host, preserve DISM/SFC output and elevation context, and separately validate
 the documented MSI argument/exit-code handling with an approved disposable
 test package in an isolated Windows test environment.
+Keep CMSTP to executable/help discovery; do not run any INF/package, install or
+uninstall a profile, or use silent mode merely for evidence. Keep NetCfg to
+component query/list and a new protected binding-map artifact; never run `/i`,
+`/u`, `/winpe`, `/d`, or `/x`. Run PnPUnattend only with `/s` and `/l` so it
+searches without installation; do not add driver paths, alter PATH/registry,
+stage/install a driver, reboot, or change a device merely for validation.
 Keep security/authentication checks read-only except for `auditpol /backup` to
 a protected temporary path. Do not clear/restore policy, refresh Group Policy,
 purge/request Kerberos tickets, change KDC bindings, or add/delete/reset SPNs
@@ -685,6 +699,11 @@ or register, unregister, enable, or disable a provider merely for validation.
 Bounded sampling or conversion requires an approved fixture/host and a new
 explicit output. Record locale, exact counter formula and instances, interval,
 sample count, clock, provider identity/status, native status, and artifact hash.
+For DTrace, record absence/version differences, list an exact provider and use
+`-e` for any script compilation. Do not change BCD/BitLocker/Secure Boot/VBS,
+reboot, enable probes, run a target command, trace a real PID, add `-w`, permit
+destructive actions, capture memory/live dumps, or collect sensitive output
+merely for release evidence.
 Keep system-diagnostics/maintenance verification nonmutating. GUI entry points
 may be opened and closed manually in an interactive session; do not start a
 diagnostic report collector or treat GUI text as structured evidence. A scoped
@@ -695,6 +714,11 @@ host, change its time zone/DST policy, or enable/reset/reconfigure Driver
 Verifier merely for release evidence. Driver Verifier mutation requires a
 dedicated test computer, debugger/dumps, exact driver/flags, console/recovery,
 stop criteria, rollback, reboot, and post-boot verification plan.
+Keep DispDiag to help unless a new protected output path and data-handling plan
+are approved; do not add `-d` or run the interactive ACPI key test merely for
+evidence. Keep MSDT to resolution/help and current Settings/Get Help inventory;
+do not run a built-in or external package/CAB, supply a passkey/parameters, or
+accept a resolution merely for validation.
 Keep time/power/recovery/DirectX verification query-only. Do not resync or
 reconfigure W32Time, alter peers/hierarchy/reliability/service registration,
 change schemes/settings/requests/overrides/wake/hibernation, enable/disable/

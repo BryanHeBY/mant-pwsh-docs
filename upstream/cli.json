@@ -2552,6 +2552,51 @@
       ],
       "notes": ["Official sources establish interface/endpoint/auth/proxy syntax and endpoint-mapper-to-dynamic-port behavior; practitioner demand exposes port-135-only confusion. The TLDR uses help, DNS, TCP 135 and one bounded unauthenticated exact-server Endpoint Mapper call, while explicitly distinguishing ICMP and ONC RPC.", "Windows runtime verification remains help/DNS/TCP 135 and one approved exact-server single-iteration verbose Endpoint Mapper call; no credential/proxy/Basic/smart-card/UI/quiet/high-iteration, interface guessing, firewall/dynamic-port, registry, SPN, certificate or service mutation is permitted merely for evidence."]
     },
+    "cmstp.md": {
+      "kind": "native-cli", "status": "reviewed", "versions": ["Windows Connection Manager service-profile tooling; profile/package scope and support vary by build and enterprise policy"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/cmstp.md"}],
+      "notes": ["Microsoft defines direct-INF and self-extracting-package parser layers plus /nf, silent and uninstall semantics. The TLDR resolves/help-checks and hashes/reviews the active INF before one explicitly approved attended installation example.", "Windows runtime verification remains executable/help discovery only; no INF/package, profile install/uninstall, silent mode, support file, connection, credential, route, service or policy mutation is permitted merely for evidence."]
+    },
+    "dispdiag.md": {
+      "kind": "native-cli", "status": "reviewed", "versions": ["supported Windows releases with DispDiag; output schema, display stack and driver behavior vary by build"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/dispdiag.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/answers/questions/2511147/i-need-to-look-at-the-output-file-fromdispdiag-dat", "license": {"spdx": "LicenseRef-Microsoft-Web-Terms", "url": "https://www.microsoft.com/en-us/legal/terms-of-use"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official syntax establishes delayed collection, last-position -out, interactive ACPI key testing and optional dump output; Microsoft Q&A demand exposes the recurring mistake of treating DAT as a readable text contract. The TLDR writes a new explicit artifact and preserves native status.", "Windows runtime verification is help-only unless a new protected base DAT artifact is approved; no overwrite, dump, interactive key test, driver/display change or public disclosure is permitted merely for evidence."]
+    },
+    "dtrace.md": {
+      "kind": "native-cli-family", "status": "reviewed", "versions": ["built into Windows Server 2025; older Windows may have no DTrace or a distinct MSI/preview port"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/dtrace.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/windows-hardware/drivers/devtest/dtrace", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/windows-hardware/drivers/devtest/dtrace-live-dump", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Microsoft defines case-sensitive list/select/compile/target/output/runtime/destructive families, boot enablement and the built-in-versus-MSI split; live-dump guidance proves the privacy, space and destructive-action boundary. The TLDR is resolution/version, probe listing and compile-only review.", "Windows runtime verification remains version/exact-provider listing and -e compilation only; no BCD/security/reboot, enabled trace/target, -w/destructive action, output capture, live dump, registry or protection mutation is permitted merely for evidence."]
+    },
+    "msdt.md": {
+      "kind": "legacy-native-cli-family", "status": "reviewed", "versions": ["deprecated/retiring Windows troubleshooting platform; pack and Get Help availability vary by build"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/msdt.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/windows/whats-new/deprecated-features-resources", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/troubleshoot/windows-client/windows-troubleshooters/active-and-retired-troubleshooters-windows-10", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/answers/questions/5821467/i-request-a-passkey-for-msdt-exe", "license": {"spdx": "LicenseRef-Microsoft-Web-Terms", "url": "https://www.microsoft.com/en-us/legal/terms-of-use"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official sources establish /id, /path, /cab, /param, /custom and result semantics plus the MSDT-to-Get Help transition; recent Q&A shows ongoing no-argument passkey confusion. The TLDR is resolution/help/current Settings/Get Help discovery and avoids running a pack.", "Windows runtime verification remains executable/help and current troubleshooting-platform inventory only; no pack/CAB/directory, passkey, parameter, collector, fix or external artifact may be run merely for evidence."]
+    },
+    "netcfg.md": {
+      "kind": "native-cli-family", "status": "reviewed", "versions": ["supported Windows and WinPE releases; component IDs/bindings depend on build, hardware and installed network products"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/netcfg.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=770396&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Microsoft defines component list/query/binding-map, install/uninstall, WinPE and rebooting all-device cleanup families; community reset demand demonstrates how agents conflate narrow layer diagnosis with broad state destruction. The TLDR is query/list plus a protected new binding map.", "Windows runtime verification remains /s, exact /q and one new protected /m artifact only; no INF/component, WinPE, all-device cleanup, reboot, binding, adapter or management-path mutation is permitted merely for evidence."]
+    },
+    "pnpunattend.md": {
+      "kind": "native-cli", "status": "reviewed", "versions": ["Windows unattended driver workflow; search paths, ranking, signing and legacy prerequisites vary by build/deployment phase"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/pnpunattend.md"}],
+      "notes": ["Microsoft's counterintuitive syntax makes auditsystem an online install unless /s requests search-only, and mixes Windows 7 prerequisites with current applicability. The TLDR preserves /s /l and correlates Driver Store inventory.", "Windows runtime verification remains help and auditsystem /s /l only; no driver-path/PATH/registry, staging/install, device, policy, reboot or removal mutation is permitted merely for evidence."]
+    },
     "mount.md": {
       "kind": "native-cli", "status": "reviewed", "versions": ["optional Windows Client for NFS; protocol, authentication, mapping and locking behavior vary by Windows build and server"], "platforms": ["windows"],
       "sources": [

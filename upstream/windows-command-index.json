@@ -291,7 +291,8 @@
     {
       "name": "cmstp",
       "source": "cmstp.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/cmstp.md"
     },
     {
       "name": "color",
@@ -454,7 +455,8 @@
     {
       "name": "dispdiag",
       "source": "dispdiag.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/dispdiag.md"
     },
     {
       "name": "dnscmd",
@@ -477,7 +479,8 @@
     {
       "name": "dtrace",
       "source": "dtrace.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/dtrace.md"
     },
     {
       "name": "echo",
@@ -931,7 +934,8 @@
     {
       "name": "msdt",
       "source": "msdt.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/msdt.md"
     },
     {
       "name": "msg",
@@ -966,7 +970,8 @@
     {
       "name": "netcfg",
       "source": "netcfg.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/netcfg.md"
     },
     {
       "name": "netdom",
@@ -1121,7 +1126,8 @@
     {
       "name": "pnpunattend",
       "source": "pnpunattend.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/pnpunattend.md"
     },
     {
       "name": "pnputil",
