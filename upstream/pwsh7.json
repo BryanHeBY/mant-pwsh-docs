@@ -517,6 +517,118 @@
         "The page emphasizes command conflicts, trusted sources, and reproducible module selection.",
         "Module availability and compatibility require verification on all declared platforms."
       ]
+    },
+    "irm.md": {
+      "kind": "alias",
+      "status": "draft",
+      "versions": [
+        "7.6"
+      ],
+      "platforms": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Utility/Invoke-RestMethod.md"
+        },
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Core/About/about_Aliases.md"
+        }
+      ],
+      "notes": [
+        "The page explicitly warns against downloading remote content into Invoke-Expression.",
+        "Alias availability requires verification on all declared platforms."
+      ]
+    },
+    "iwr.md": {
+      "kind": "alias",
+      "status": "draft",
+      "versions": [
+        "7.6"
+      ],
+      "platforms": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Utility/Invoke-WebRequest.md"
+        },
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Core/About/about_Aliases.md"
+        }
+      ],
+      "notes": [
+        "The page adds explicit artifact-verification guidance for downloads.",
+        "Alias availability requires verification on all declared platforms."
+      ]
+    },
+    "iex.md": {
+      "kind": "alias",
+      "status": "draft",
+      "versions": [
+        "7.6"
+      ],
+      "platforms": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Utility/Invoke-Expression.md"
+        },
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Core/About/about_Aliases.md"
+        }
+      ],
+      "notes": [
+        "The page treats parsing data as code as a security risk and documents safer alternatives.",
+        "Alias availability requires verification on all declared platforms."
+      ]
+    },
+    "curl.md": {
+      "kind": "alias",
+      "status": "draft",
+      "versions": [
+        "7.6"
+      ],
+      "platforms": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Core/About/about_Aliases.md"
+        },
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Utility/Invoke-WebRequest.md"
+        }
+      ],
+      "notes": [
+        "The page is a platform-specific command-resolution guide rather than a claim that curl is a universal built-in alias.",
+        "Windows alias behavior and native executable availability require verification on all declared platforms."
+      ]
     }
   }
 }

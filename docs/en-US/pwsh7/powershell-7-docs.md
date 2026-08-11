@@ -86,6 +86,13 @@ Future introductory pages will cover moving scripts from Windows PowerShell
 - [Import-Module](Import-Module.md): explicitly load trusted module commands
   while managing conflicts and compatibility.
 
+## Aliases and web commands
+
+- [irm](irm.md): alias for `Invoke-RestMethod`, with safe API and remote-content guidance.
+- [iwr](iwr.md): alias for `Invoke-WebRequest`, with explicit download verification.
+- [iex](iex.md): alias for `Invoke-Expression`; use safer direct invocation instead.
+- [curl](curl.md): resolve the Windows alias versus the native executable before using it.
+
 ## Planned command reference
 
 The first release will cover:
