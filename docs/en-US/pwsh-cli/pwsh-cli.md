@@ -211,6 +211,11 @@ license in the document's provenance catalog before adapting material.
 - [prompt](prompt.md): session-local Cmd prompt templates distinct from PowerShell and trustworthy context.
 - [cls](cls.md): visible-screen clearing distinct from scrollback, logs, history, and secret deletion.
 - [color](color.md): session-local accessible presentation with explicit upstream digit-order inconsistency.
+- [help](help.md): interpreter-aware Cmd, PowerShell, native-tool, and ManT help discovery.
+- [ver](ver.md): compact Cmd version display versus typed product/build/servicing inventory.
+- [verify](verify.md): legacy Cmd write setting versus hashes, signatures, comparison, and storage health.
+- [break](break.md): no-effect MS-DOS compatibility builtin versus PowerShell control flow and redirection risk.
+- [date](date.md) / [time](time.md): prompt-free display, invariant single-instant formatting, and managed-clock safeguards.
 - [exit](exit.md): distinguish batch return codes from terminating `cmd.exe`.
 - [path](path.md): process search path, resolution order, and safe scoping.
 - [pushd](pushd.md) / [popd](popd.md): balanced local/UNC directory stacks.

@@ -188,8 +188,16 @@ cmd.exe /d /c "help pause"
 cmd.exe /d /c "help prompt"
 cmd.exe /d /c "help cls"
 cmd.exe /d /c "color /?"
-Get-Command echo, cls, prompt -All -ErrorAction SilentlyContinue
+cmd.exe /d /c help
+cmd.exe /d /c "help help"
 cmd.exe /d /c ver
+cmd.exe /d /c verify
+cmd.exe /d /c "help break"
+cmd.exe /d /c "date /t"
+cmd.exe /d /c "time /t"
+Get-CimInstance Win32_OperatingSystem | Select-Object Caption, Version, BuildNumber, OSArchitecture
+Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion' | Select-Object ProductName, DisplayVersion, CurrentBuildNumber, UBR
+Get-Command echo, cls, prompt -All -ErrorAction SilentlyContinue
 reg.exe query HKCU\Environment
 Get-Command explorer.exe, control.exe, mmc.exe, rundll32.exe -All
 cmd.exe /d /v:on /c "set MANT_TEST=value & if not !MANT_TEST!==value exit /b 1"
@@ -217,6 +225,11 @@ or comparator against real data, replace files, modify a volume label, or start/
 send a WAITFOR signal merely for evidence. Any fixture test must use an isolated
 child console, disposable files/volume, collision-resistant signal with finite
 timeout, explicit host, and before/after verification.
+
+Do not change VERIFY state, system date/time, time zone, Windows Time service,
+source, policy, or synchronization merely for evidence; do not run BREAK with
+output redirection. Record localized display and missing inventory fields as
+observations rather than changing the host to match an example.
 
 Keep Cmd builtin verification to `help` and PowerShell resolution in the shared
 evidence session. Do not pause for input, change a persistent/current prompt or

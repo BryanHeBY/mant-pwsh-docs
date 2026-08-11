@@ -1059,6 +1059,54 @@
       "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/color.md"}],
       "notes": ["The current official page contradicts itself about digit order: parameter prose versus the 84 example. The TLDR requires target-local help and an isolated visual test; the page records rather than guesses through the conflict and covers accessibility, nonpersistent scope, noninteractive output and result handling.", "Runtime verification remains help-only; no shared-session color change is required merely for evidence."]
     },
+    "help.md": {
+      "kind": "cmd-builtin", "status": "reviewed", "versions": ["supported Windows client and server releases; topics depend on interpreter context and installed components"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/help.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=64507081&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official documentation establishes list/topic behavior and contextual DiskPart help; the community source records PowerShell's help function versus Get-Help object/paging confusion. The TLDR selects Cmd, PowerShell and ManT explicitly; the page covers interpreter context, resolution, incomplete inventory, localization, paging and stale help.", "Windows runtime verification remains help/list/resolution-only; no Update-Help download or command example execution is required merely for evidence."]
+    },
+    "ver.md": {
+      "kind": "cmd-builtin", "status": "reviewed", "versions": ["supported Windows client and server releases; product, build, release and servicing fields vary by build and inventory provider"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/ver.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=1287950&service=superuser&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=1890128&service=superuser&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Microsoft establishes that VER is a parameterless Cmd-only compact OS version display; community questions expose high-demand build/UBR distinctions and a concrete AI-generated Windows 11 misclassification caused by assuming 11.0. The TLDR pairs VER with typed CIM, registry servicing fields and separate PowerShell engine identity.", "Windows runtime verification remains read-only local version/inventory queries; record field absence and exact host context rather than hard-coding marketing-name thresholds."]
+    },
+    "verify.md": {
+      "kind": "cmd-builtin", "status": "reviewed", "versions": ["supported Windows client and server releases; legacy Cmd session setting with no documented end-to-end durability contract"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/verify.md"}],
+      "notes": ["Official documentation defines only a Cmd on/off setting and bare query. The TLDR is query-first and redirects concrete claims to hashes, signatures and byte comparison; the page separates write setting, authenticity, equality, storage durability, filesystem health and Driver Verifier.", "Windows runtime verification remains bare query and help-only; do not change inherited VERIFY state merely for evidence."]
+    },
+    "break.md": {
+      "kind": "cmd-builtin", "status": "reviewed", "versions": ["supported Windows client and server releases only as an MS-DOS compatibility builtin; debugger behavior depends on command extensions and debug context"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/break.md"}],
+      "notes": ["Microsoft explicitly marks BREAK no longer in use, documents the debugger-only batch breakpoint and shows a historically common redirection truncation idiom. The page classifies it as legacy, rejects Cmd loop-exit and PowerShell-keyword confusion, and makes shell redirection data loss explicit.", "Windows runtime verification remains help-only; do not trigger debugger behavior or create/truncate a file merely for evidence."]
+    },
+    "date.md": {
+      "kind": "cmd-builtin", "status": "reviewed", "versions": ["supported Windows client and server releases; display/input depend on regional settings and clock changes depend on privilege, policy and time topology"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/date.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/get-date", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/windows-server/networking/windows-time-service/windows-time-service", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=7727114&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official sources establish /T versus prompting/set behavior, privilege, locale-sensitive input, typed formatting and managed time synchronization; the high-volume community source records locale slicing and separate-read rollover failures. The TLDR is query-only, captures once and uses invariant local/UTC formats.", "Windows runtime verification remains date /T, typed Get-Date and W32Time queries only; no system date, time zone, service, source, policy or synchronization change is permitted merely for evidence."]
+    },
+    "time.md": {
+      "kind": "cmd-builtin", "status": "reviewed", "versions": ["supported Windows client and server releases; display/input depend on regional settings and clock changes depend on privilege, policy and time topology"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/time.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/get-date", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/windows-server/networking/windows-time-service/windows-time-service", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-server/windows-security/kerberos-authentication-troubleshooting-guidance", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=203090&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official sources establish /T versus prompting/set behavior, syntax/privilege, typed formatting, synchronization and Kerberos skew impact; the high-volume community source records locale parsing demand. The TLDR is query-only, captures one instant, converts rather than relabels UTC and inspects W32Time.", "Windows runtime verification remains time /T, typed Get-Date and W32Time queries only; no system clock, timezone, service, source, policy or synchronization change is permitted merely for evidence."]
+    },
     "cmd.md": {
       "kind": "windows-shell",
       "status": "reviewed",

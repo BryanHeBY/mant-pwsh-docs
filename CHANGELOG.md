@@ -103,6 +103,10 @@ bundles.
   `goto`, `shift`, `pause`, `prompt`, `cls`, and `color`, including empty-
   expansion, parse-layer, subroutine, unattended-hang, trust/accessibility, and
   upstream-documentation inconsistency traps.
+- Cmd help-context, compact Windows version, legacy write-verification and
+  MS-DOS BREAK compatibility guides plus query-first system date/time guides,
+  with explicit PowerShell/native resolution, Windows 11 detection, invariant
+  timestamp, rollover, redirection, synchronization, and Kerberos safeguards.
 - Windows adapter/DHCP/DNS inspection, bounded ICMP reachability, path tracing,
   path sampling, host identity, and direct DNS-query guides for `ipconfig`,
   `ping`, `tracert`, `pathping`, `hostname`, and `nslookup`.

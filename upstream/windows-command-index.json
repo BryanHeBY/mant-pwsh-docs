@@ -159,7 +159,8 @@
     {
       "name": "break",
       "source": "break.md",
-      "status": "unclassified"
+      "status": "legacy",
+      "target": "pwsh-cli/break.md"
     },
     {
       "name": "cacls",
@@ -338,7 +339,8 @@
     {
       "name": "date",
       "source": "date.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/date.md"
     },
     {
       "name": "dcdiag",
@@ -679,7 +681,8 @@
     {
       "name": "help",
       "source": "help.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/help.md"
     },
     {
       "name": "helpctr",
@@ -1682,7 +1685,8 @@
     {
       "name": "time",
       "source": "time.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/time.md"
     },
     {
       "name": "timeout",
@@ -1797,7 +1801,8 @@
     {
       "name": "ver",
       "source": "ver.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/ver.md"
     },
     {
       "name": "verifier",
@@ -1808,7 +1813,8 @@
     {
       "name": "verify",
       "source": "verify.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/verify.md"
     },
     {
       "name": "vol",
