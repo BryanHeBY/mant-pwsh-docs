@@ -1736,6 +1736,332 @@
         "Windows runtime verification remains manual launch-and-close only."
       ]
     },
+    "taskschd.msc.md": {
+      "kind": "windows-gui-entrypoint",
+      "status": "reviewed",
+      "versions": [
+        "supported Windows client and server releases; schema, remote management, principals, and UI vary by build and policy"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows/win32/taskschd/task-scheduler-1-0-examples",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows/win32/taskschd/schtasks",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/troubleshoot/windows-server/system-management-components/troubleshooting-task-scheduler-access-denied-error",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
+        }
+      ],
+      "notes": [
+        "The page makes the exact task path, principal, XML, ACL, runtime context, history, result, and external action dependencies explicit while redirecting automation to ScheduledTasks, SchTasks, or the API.",
+        "Windows runtime verification remains file discovery or manual launch-and-close only; no task is created, changed, run, stopped, or deleted for evidence."
+      ]
+    },
+    "wf.msc.md": {
+      "kind": "windows-gui-entrypoint",
+      "status": "reviewed",
+      "versions": [
+        "supported Windows client and server releases; rule properties, policy stores, IPsec, and UI vary by build and management authority"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows/security/operating-system-security/network-security/windows-firewall/tools",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows/security/operating-system-security/network-security/windows-firewall/best-practices-configuring",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows-server/administration/server-core/server-core-manage",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
+        }
+      ],
+      "notes": [
+        "The page distinguishes local configuration from ActiveStore/effective policy and records rule/filter identity, traffic direction, profile, store, logging, narrow diagnosis, remote-recovery, and real-flow verification boundaries.",
+        "Windows runtime verification remains file discovery or manual launch-and-close only; no firewall or IPsec state is changed for evidence."
+      ]
+    },
+    "secpol.msc.md": {
+      "kind": "windows-gui-entrypoint",
+      "status": "reviewed",
+      "versions": [
+        "supported Windows releases where Local Security Policy is available; nodes and authority vary by edition, role, and management"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/previous-versions/windows/it-pro/windows-10/security/threat-protection/security-policy-settings/how-to-configure-security-policy-settings",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/troubleshoot/windows-server/active-directory/auditpol-local-security-policy-results-differ",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
+        }
+      ],
+      "notes": [
+        "The page separates configured local policy from effective domain/MDM/runtime state and records SID, user-right, legacy-versus-advanced audit, refresh/token/restart, baseline, recovery, and supported-policy-interface boundaries.",
+        "Windows runtime verification remains file discovery or manual launch-and-close plus read-only auditpol/gpresult queries; no policy is changed for evidence."
+      ]
+    },
+    "certmgr.msc.md": {
+      "kind": "windows-gui-entrypoint",
+      "status": "reviewed",
+      "versions": [
+        "supported Windows releases; Current User stores, providers, algorithms, trust, and UI vary by build, identity, and policy"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows-hardware/drivers/install/certificate-stores",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/dotnet/framework/tools/certmgr-exe-certificate-manager-tool",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
+        }
+      ],
+      "notes": [
+        "The page distinguishes Current User from Local Computer stores and the inbox MSC from the SDK certmgr.exe, and records certificate/store/key/trust identity, private-key handling, chain-purpose, duplicate, import, export, and deletion boundaries.",
+        "Windows runtime verification remains file discovery, manual launch-and-close, or read-only Current User store inventory; no certificate or key is changed for evidence."
+      ]
+    },
+    "certlm.msc.md": {
+      "kind": "windows-gui-entrypoint",
+      "status": "reviewed",
+      "versions": [
+        "supported Windows releases; Local Computer stores, providers, algorithms, trust, and UI vary by build, role, and policy"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows-hardware/drivers/install/certificate-stores",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows-hardware/drivers/install/viewing-test-certificates",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
+        }
+      ],
+      "notes": [
+        "The page distinguishes Local Computer from Current User stores and records machine-wide trust, certificate/key/store/service identity, private-key ACL, bindings, duplicate/renewal, import/export/deletion, and real-consumer verification boundaries.",
+        "Windows runtime verification remains file discovery, manual launch-and-close, or read-only Local Computer store inventory; no certificate or key is changed for evidence."
+      ]
+    },
+    "lusrmgr.msc.md": {
+      "kind": "windows-gui-entrypoint",
+      "status": "reviewed",
+      "versions": [
+        "supported Windows releases where Local Users and Groups is available; availability and behavior vary by edition, role, tools, and policy"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows/security/identity-protection/access-control/local-accounts",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows/client-management/mdm/policy-csp-localusersandgroups",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
+        }
+      ],
+      "notes": [
+        "The page separates local SAM principals from domain/cloud and same-named accounts and records SID/authority/computer, token refresh, profile/key/service/task dependencies, last-admin recovery, edition and domain-controller boundaries.",
+        "Windows runtime verification remains file discovery, manual launch-and-close, or read-only local-principal inventory; no account or membership is changed for evidence."
+      ]
+    },
+    "fsmgmt.msc.md": {
+      "kind": "windows-gui-entrypoint",
+      "status": "reviewed",
+      "versions": [
+        "supported Windows releases where Shared Folders management tools are installed; SMB and remote behavior vary by build, edition, role, and policy"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/powershell/module/smbshare/",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/previous-versions/windows/desktop/mmc/extending-the-shared-folders-extension",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows-server/administration/server-core/server-core-manage",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
+        }
+      ],
+      "notes": [
+        "The page separates shares, sessions, and open files and records exact IDs, server/scope/cluster, share-versus-NTFS ACLs, client/user/file impact, administrative-share dependencies, name-resolution delays, and typed SMB automation boundaries.",
+        "Windows runtime verification remains file discovery, manual launch-and-close, or read-only SMB inventory; no share, session, open file, or permission is changed for evidence."
+      ]
+    },
+    "regedit.exe.md": {
+      "kind": "windows-gui-entrypoint",
+      "status": "reviewed",
+      "versions": [
+        "supported Windows releases; hives, views, protected keys, remote access, and UI vary by build, role, identity, and architecture"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows-server/administration/windows-commands/reg",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/troubleshoot/windows-server/system-management-components/remotely-edit-the-registry",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/troubleshoot/windows-client/installing-updates-features-roles/system-registry-no-backed-up-regback-folder",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
+        }
+      ],
+      "notes": [
+        "The page intentionally makes no undocumented switch promise and records product/policy ownership, exact hive/user/view/type identity, narrow backup and nontransactional import limits, remote/offline/elevation boundaries, RegBack behavior, and consumer verification.",
+        "Windows runtime verification remains executable discovery or manual launch-and-close plus read-only registry queries; no registry state is changed for evidence."
+      ]
+    },
     "compmgmt.msc.md": {
       "kind": "windows-gui-entrypoint",
       "status": "reviewed",

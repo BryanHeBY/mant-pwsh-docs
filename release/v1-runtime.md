@@ -151,6 +151,18 @@ Get-Command dxdiag.exe -All
 Get-Command taskmgr.exe, resmon.exe, eventvwr.exe, mmc.exe -All
 Get-Item "$env:SystemRoot\System32\eventvwr.msc", "$env:SystemRoot\System32\compmgmt.msc"
 Get-Item "$env:SystemRoot\System32\devmgmt.msc", "$env:SystemRoot\System32\diskmgmt.msc", "$env:SystemRoot\System32\services.msc"
+Get-Command regedit.exe -All
+Get-Item "$env:SystemRoot\System32\taskschd.msc", "$env:SystemRoot\System32\wf.msc", "$env:SystemRoot\System32\secpol.msc" -ErrorAction SilentlyContinue
+Get-Item "$env:SystemRoot\System32\certmgr.msc", "$env:SystemRoot\System32\certlm.msc", "$env:SystemRoot\System32\lusrmgr.msc", "$env:SystemRoot\System32\fsmgmt.msc" -ErrorAction SilentlyContinue
+Get-ScheduledTask -ErrorAction SilentlyContinue | Select-Object -First 5 TaskPath, TaskName, State
+Get-NetFirewallProfile -PolicyStore ActiveStore -ErrorAction SilentlyContinue
+auditpol.exe /get '/category:*'
+Get-ChildItem Cert:\CurrentUser -ErrorAction SilentlyContinue
+Get-ChildItem Cert:\LocalMachine -ErrorAction SilentlyContinue
+Get-LocalUser -ErrorAction SilentlyContinue
+Get-SmbShare -ErrorAction SilentlyContinue
+Get-SmbSession -ErrorAction SilentlyContinue
+Get-SmbOpenFile -ErrorAction SilentlyContinue
 Get-Command optionalfeatures.exe -All
 Get-Command msconfig.exe, SystemPropertiesAdvanced.exe, magnify.exe, narrator.exe, osk.exe -All
 Get-Item "$env:SystemRoot\System32\gpedit.msc" -ErrorAction SilentlyContinue

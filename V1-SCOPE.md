@@ -11,9 +11,9 @@ is [`release/v1.json`](release/v1.json).
 | --- | ---: | --- |
 | `pwsh7` | 30 | PowerShell 7 shell, language, common commands, aliases, process/item actions, custom-shorthand guidance, and compatibility guidance. |
 | `pwsh51` | 30 | Windows PowerShell 5.1 equivalents, process/item actions, custom-shorthand guidance, and edition-specific behavior. |
-| `windows-tools` | 301 | Windows-native and optional executables, Cmd builtins and interactive families, shell/GUI/URI entry points, package and system management, diagnostics, server roles, compatibility and recovery utilities, and optional Microsoft Learn MCP discovery. |
+| `windows-tools` | 309 | Windows-native and optional executables, Cmd builtins and interactive families, shell/GUI/URI entry points, package and system management, diagnostics, server roles, compatibility and recovery utilities, and optional Microsoft Learn MCP discovery. |
 | `cross-platform-tools` | 6 | A dedicated index plus Git, OpenSSH, curl, tar, and .NET CLI guidance for Windows, macOS, and Linux. |
-| **Total** | **367** | Current first-release document inventory. |
+| **Total** | **375** | Current first-release document inventory. |
 
 The two shell manuals, `pwsh7` and `pwsh51`, remain the broad equivalent of a
 traditional `sh` manual. The `*-docs` pages are deliberately separate
@@ -69,7 +69,7 @@ Every required page must:
 
 The v1 tag may be created only when:
 
-- all 367 manifest documents exist and pass portable validation;
+- all 375 manifest documents exist and pass portable validation;
 - every document is at least `reviewed` in its provenance catalog;
 - PowerShell 7 runtime checks pass on Windows, Linux, and macOS;
 - Windows PowerShell 5.1 runtime checks pass on Windows;

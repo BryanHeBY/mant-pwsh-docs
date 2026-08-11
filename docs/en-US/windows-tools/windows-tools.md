@@ -179,6 +179,13 @@ license in the document's provenance catalog before adapting material.
 - [taskmgr.exe](taskmgr.exe.md): live process/performance/startup/session inspection before controlled actions.
 - [resmon.exe](resmon.exe.md): direct searchable Resource Monitor entry with sampling and automation boundaries.
 - [eventvwr.msc](eventvwr.msc.md): interactive event exploration while preserving raw XML/EVTX provenance.
+- [taskschd.msc](taskschd.msc.md): interactive Task Scheduler entry with full-path, principal, XML, ACL, runtime-context, and result boundaries.
+- [wf.msc](wf.msc.md): advanced firewall console entry with effective policy-store, rule/filter identity, and traffic-verification boundaries.
+- [secpol.msc](secpol.msc.md): Local Security Policy entry distinct from effective domain/MDM policy and runtime enforcement.
+- [certmgr.msc](certmgr.msc.md): Current User certificate-store entry distinct from Local Computer stores and the SDK `certmgr.exe`.
+- [certlm.msc](certlm.msc.md): Local Computer certificate-store entry with machine-wide trust, private-key ACL, binding, and service-impact safeguards.
+- [lusrmgr.msc](lusrmgr.msc.md): Local Users and Groups entry with SID, authority, token, edition, and domain-controller boundaries.
+- [fsmgmt.msc](fsmgmt.msc.md): Shared Folders entry separating SMB shares, sessions, open files, scopes, and share/file-system permissions.
 - [compmgmt.msc](compmgmt.msc.md): Computer Management console entry with per-snap-in target/change boundaries.
 - [devmgmt.msc](devmgmt.msc.md): Device Manager entry with exact instance/package/stack identity safeguards.
 - [diskmgmt.msc](diskmgmt.msc.md): Disk Management entry with unique disk/volume/boot/recovery identity safeguards.
@@ -212,6 +219,7 @@ license in the document's provenance catalog before adapting material.
 
 ## Windows registry and compatibility hosts
 
+- [regedit.exe](regedit.exe.md): interactive Registry Editor with exact hive/user/view/type identity and no undocumented switch promise.
 - [reg.exe](reg.exe.md): query, views, types, backup, modification, and verification.
 - [regini.exe](regini.exe.md): reviewed registry scripts with kernel-path, no-dry-run, backup, and ACL-replacement safeguards.
 - [rundll32.exe](rundll32.exe.md): documented entry points and arbitrary-export hazards.
