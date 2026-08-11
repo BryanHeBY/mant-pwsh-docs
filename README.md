@@ -69,17 +69,33 @@ ManT does not omit Windows suffixes on macOS or Linux. Cmd builtins such as
 `dir`, PowerShell cmdlets and aliases, URI entries, and conceptual family or
 subcommand pages remain unsuffixed.
 
+## Source maintenance
+
+ManT 0.6 reports source updates as `mant.sources-update/v2`. Removing an entry
+from `sources.toml` makes its cached document source orphaned, but an ordinary
+`mant --update-docs` does not delete it. Preview the exact cache directories
+first, then prune only when those sources are no longer needed:
+
+```text
+mant --prune-docs --dry-run
+mant --prune-docs
+```
+
+The prune report uses `mant.sources-prune/v1`. Treat these report identifiers
+as CLI data-format versions, independently of this repository's 0.6.0 release
+number.
+
 ## Project status
 
-The first English v1 inventory now contains 390 reviewed pages: 30 for
+The planned English 0.6.0 inventory contains 390 reviewed pages: 30 for
 PowerShell 7, 30 for Windows PowerShell 5.1, 324 Windows tool pages, and 6
 cross-platform tool pages. The normative inventory lives in
-[release/v1.json](release/v1.json).
+[release/v0.6.0.json](release/v0.6.0.json).
 
 Portable ManT parsing, provenance validation, and locked-upstream
-accessibility audit pass locally. The final v1 tag remains pending recorded
+accessibility audit pass locally. The final `v0.6.0` tag remains pending recorded
 runtime verification on all platforms required by
-[V1-SCOPE.md](V1-SCOPE.md), including Windows PowerShell 5.1 on Windows. CI
+[V0.6.0-SCOPE.md](V0.6.0-SCOPE.md), including Windows PowerShell 5.1 on Windows. CI
 is manual-only while ManT 0.6.0 is not publicly installable.
 
 ## License

@@ -10,6 +10,9 @@ bundles.
 
 ### Added
 
+- ManT protocol v6 semantic entries for PowerShell variables, including
+  automatic-variable lookup in both shell editions, and fixed attached native
+  options such as `/F:Y` and `perf=default`.
 - First English release inventory: 390 reviewed ManT pages across `pwsh7`,
   `pwsh51`, `windows-tools`, and `cross-platform-tools`.
 - Separate Windows and cross-platform tool sources with semantic entry pages,
@@ -233,7 +236,7 @@ bundles.
   diagnosis, repair, and salvage family guides for BdeHdCfg and RefsUtil.
 - Per-page locked provenance catalogs, reader-facing source/license sections,
   and an optional upstream accessibility audit.
-- Portable Node.js validation with ManT JSON diagnostics and a v1 release gate.
+- Portable Node.js validation with ManT JSON diagnostics and a 0.6.0 release gate.
 
 ### Changed
 
@@ -241,9 +244,12 @@ bundles.
   or `.vbs` suffixes for ManT's Windows `PATHEXT` lookup model; Cmd builtins,
   PowerShell commands, URI entries, and conceptual family pages remain
   unsuffixed.
+- The initial documentation bundle version is 0.6.0, aligned with the ManT
+  protocol and runtime baseline it targets.
 - CI is manual-only until ManT 0.6.0 is publicly installable.
 
 ### Pending release verification
 
 - Runtime verification on Windows, macOS, and Linux remains required before
-  creating the final v1 tag; see [release/v1-runtime.md](release/v1-runtime.md).
+  creating the final `v0.6.0` tag; see
+  [release/v0.6.0-runtime.md](release/v0.6.0-runtime.md).

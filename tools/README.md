@@ -8,7 +8,7 @@ repository level. `tools/validate.mjs` runs on Node.js 20 or newer and checks:
 - optional embedded tldr structure when present;
 - one document H1 and a reader-facing `Sources and license` section;
 - provenance catalogs, baseline revisions, licenses, and source references;
-- ManT v5 JSON diagnostics for every currently published document.
+- ManT v6 JSON diagnostics for every currently published document.
 
 Role-aware interface lists use the explicit `mant:entries` declarations in
 `AUTHORING.md`. The validator checks their ManT diagnostics; repository-wide
@@ -25,8 +25,8 @@ npm run validate
 Use `npm run validate:structure` only when ManT is intentionally unavailable;
 release work must run the normal command. The GitHub Actions workflow is
 manual-only until ManT 0.6.0 is publicly installable in CI. Use
-`npm run validate:release` before creating v1 to enforce the full release
-manifest in `release/v1.json`.
+`npm run validate:release` before creating `v0.6.0` to enforce the full
+release manifest in `release/v0.6.0.json`.
 
 `npm run validate:upstream` is a separate networked editorial audit. It checks
 that every locked Git source path and every web source URL in the provenance
