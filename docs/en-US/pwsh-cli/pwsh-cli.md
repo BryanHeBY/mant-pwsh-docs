@@ -99,6 +99,14 @@ license in the document's provenance catalog before adapting material.
 - [schtasks](schtasks.md): scheduled-task inspection and change safety.
 - [sc](sc.md): Windows service query and configuration safety.
 
+## Cross-platform developer tools
+
+- [git](git.md): repository context, configuration, and native exit codes.
+- [ssh](ssh.md): host identity, remote-command parsing, and key safety.
+- [curl](curl.md): native executable resolution, HTTP failure handling, and downloads.
+- [tar](tar.md): implementation-aware archive inspection and safe extraction.
+- [dotnet](dotnet.md): SDK selection, project context, and build process handling.
+
 ## Query with ManT
 
 After adding this repository to `sources.toml` and running
