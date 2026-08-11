@@ -30,6 +30,24 @@ a small display command, not a rename or DNS-validation tool. In cluster-aware
 contexts, the `_CLUSTER_NETWORK_NAME_` environment variable can cause it to
 report a cluster network name rather than the physical node name.
 
+## Command interface
+
+<!-- mant:entries role=command case=insensitive -->
+- `hostname.exe`: Print the host-name portion selected for the current Windows
+  process context; it accepts no name-setting operand.
+
+The only documented switch exposes installed help; there is no rename mode.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/?`: Display the syntax installed with this executable.
+
+## PowerShell boundaries
+
+PowerShell captures the executable's single text line as a string. Check
+`$LASTEXITCODE` and trim only line-ending whitespace; do not reinterpret the
+result as a DNS FQDN, directory identity, or immutable node ID. Use CIM, DNS,
+or cluster APIs when one of those identities is actually required.
+
 ## Common mistakes
 
 ### Treating a short name as a DNS FQDN

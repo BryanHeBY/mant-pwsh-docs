@@ -30,6 +30,44 @@ protocol statistics, Ethernet statistics, and the route table. `-a` includes
 listeners, `-n` prevents name and service lookups, `-o` adds a PID, and `-p`
 limits a protocol. A trailing interval repeats output until Ctrl+C.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `netstat.exe`: Display Windows network endpoints, connections, statistics,
+  routing information, and selected ownership details.
+
+Single-letter switches can be combined, as in `-ano`. A final integer operand
+repeats the selected display at that interval in seconds until interrupted.
+
+<!-- mant:entries role=option case=insensitive -->
+- `-a`: Include active TCP connections plus listening TCP and UDP ports.
+- `-b`: Show the executable involved in creating each connection or listener;
+  this can be slow and requires sufficient access.
+- `-e`: Display Ethernet statistics such as bytes and packets sent/received;
+  combine with `-s` for per-protocol statistics.
+- `-f`: Show fully qualified domain names for foreign endpoints when name
+  resolution succeeds.
+- `-n`: Keep addresses and ports numeric instead of resolving host/service names.
+- `-o`: Include the owning process ID for each connection or listener.
+- `-p`: Limit a connection display or statistics report to the following
+  protocol supported by that mode.
+- `-q`: Include bound non-listening TCP ports in addition to listening and
+  active endpoints.
+- `-r`: Display the IP routing table.
+- `-s`: Display per-protocol statistics; narrow them with `-p` when needed.
+- `-t`: Display the current TCP connection offload state.
+- `-x`: Display NetworkDirect connections, listeners, and shared endpoints.
+- `-y`: Display the TCP connection template for all connections; it cannot be
+  combined with the other documented switches.
+- `/?`: Display installed command help.
+
+## PowerShell boundaries
+
+`netstat.exe` emits snapshots as localized text. Prefer `Get-NetTCPConnection`,
+`Get-NetUDPEndpoint`, and `Get-NetRoute` for typed selection, then revalidate
+the owning PID because endpoints and process IDs are race-prone. Bound repeat
+mode and check `$LASTEXITCODE` when collecting evidence in a script.
+
 ## Common mistakes
 
 ### Filtering a port with an unanchored text search

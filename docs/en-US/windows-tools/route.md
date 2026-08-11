@@ -30,6 +30,35 @@ read-only; `add`, `change`, and `delete` alter routes. `/p add` persists a
 route in the registry. Route selection first favors the most specific matching
 prefix and then considers route and interface metrics.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `route.exe`: Display or modify the classic Windows IPv4 routing table.
+- `print`: Display interfaces plus active and persistent routes, optionally
+  restricted by an IPv4 destination pattern.
+- `add`: Add one route using an explicit destination and gateway.
+- `change`: Change an existing route's gateway, metric, or interface selection.
+- `delete`: Delete routes matching the supplied destination and optional mask.
+
+Mutation syntax can also include the bare keywords `mask`, `metric`, and `if`
+followed by their values. They are operands in `route.exe` grammar, not
+PowerShell named parameters.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/f`: Flush all gateway routes before running any accompanying command; this
+  is a broad destructive network change, not a force/confirmation switch.
+- `/p`: With `add`, make the route persistent across TCP/IP restarts; with
+  `print`, show only persistent routes. It is ignored by other verbs.
+- `/?`: Display installed command help.
+
+## PowerShell boundaries
+
+Call `route.exe` explicitly and pass each destination, mask, gateway, metric,
+and interface token separately. Its tables are localized text; prefer
+`Get-NetRoute`, `Find-NetRoute`, and the corresponding NetTCPIP mutation
+cmdlets for typed policy-store control. Preserve a recovery path, check
+`$LASTEXITCODE`, and verify the winning route after every change.
+
 ## Common mistakes
 
 ### Reading `/f` as “force”

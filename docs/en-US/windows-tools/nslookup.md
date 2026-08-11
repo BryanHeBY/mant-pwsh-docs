@@ -31,6 +31,44 @@ server. Options such as `-type=A`, `-type=AAAA`, `-debug`, and `-nosearch`
 control the query. It does not reproduce every source and policy used by a
 Windows application resolver.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `nslookup.exe`: Query DNS interactively or perform one non-interactive query
+  against the default or an explicitly named DNS server.
+
+Use `nslookup [options] NAME [SERVER]` for automation. Starting it without a
+name enters a stateful interactive command interpreter whose `set` commands
+are outside this non-interactive option summary.
+
+<!-- mant:entries role=option case=insensitive -->
+- `-type`: Select the record type, for example `-type=A`, `-type=AAAA`,
+  `-type=MX`, or `-type=ANY`; `-querytype` is the equivalent long name.
+- `-querytype`: Select the DNS record type; it is equivalent to `-type`.
+- `-class`: Select the DNS query class; the normal default is `IN`.
+- `-port`: Select a DNS server port instead of the normal DNS port.
+- `-timeout`: Set the initial response timeout in seconds.
+- `-retry`: Set how many times a request is retried.
+- `-debug`: Enable debugging output for the query and response packets.
+- `-d2`: Enable exhaustive debugging output.
+- `-domain`: Set the default DNS domain used by lookup policy.
+- `-search`: Use the DNS suffix search list for a name that is not absolute.
+- `-nosearch`: Do not append suffixes from the DNS search list.
+- `-recurse`: Ask the selected DNS server to recurse when it supports recursion.
+- `-norecurse`: Request a non-recursive answer, commonly for authoritative
+  server diagnosis.
+- `-vc`: Use a virtual circuit (TCP) for the DNS request.
+- `-novc`: Use the normal datagram behavior unless truncation/retry requires
+  otherwise.
+
+## PowerShell boundaries
+
+Arguments beginning with `-` go to the native executable when it is invoked
+as `nslookup.exe`; they are not PowerShell parameters. Output and diagnostic
+labels are text. For typed scripts prefer `Resolve-DnsName`, or otherwise
+check `$LASTEXITCODE`, the requested record, response status, and selected
+server instead of matching one success-looking line.
+
 ## Common mistakes
 
 ### Expecting nslookup and an application to return the same address

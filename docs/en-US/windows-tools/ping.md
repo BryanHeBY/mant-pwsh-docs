@@ -31,6 +31,43 @@ but it does not exercise an application's TCP or UDP protocol. `/n` bounds
 the count, `/w` sets the per-reply timeout in milliseconds, and `/4` or `/6`
 removes address-family ambiguity.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `ping.exe`: Send Windows ICMP echo probes to one host name or IP address.
+
+Several uppercase/lowercase pairs have different meanings, so this option
+index preserves the spelling in Microsoft's Windows syntax.
+
+<!-- mant:entries role=option case=sensitive -->
+- `/t`: Continue sending probes until interrupted; Ctrl+Break shows statistics
+  without stopping, while Ctrl+C terminates the command.
+- `/a`: Attempt reverse name resolution for a destination IP address.
+- `/n`: Send the following number of echo requests instead of the default four.
+- `/l`: Set the ICMP echo-request data payload size in bytes.
+- `/f`: Set IPv4 Don't Fragment on the echo request for path-MTU diagnosis.
+- `/I`: Set the IPv4 time-to-live value.
+- `/v`: Set the IPv4 type-of-service field; modern networks may ignore it.
+- `/r`: Record the IPv4 route for the following number of hops, up to the
+  command's documented limit.
+- `/s`: Add a timestamp for the following number of IPv4 hops.
+- `/j`: Use the following loose IPv4 source-route host list.
+- `/k`: Use the following strict IPv4 source-route host list.
+- `/w`: Wait the following number of milliseconds for each reply.
+- `/R`: Use the IPv6 routing-header test to trace the reverse route where the
+  target and path support it; this is not lowercase `/r`.
+- `/S`: Use the following IPv6 source address.
+- `/4`: Force IPv4.
+- `/6`: Force IPv6.
+- `/?`: Display installed command help.
+
+## PowerShell boundaries
+
+PowerShell receives formatted text from `ping.exe`; a reply line is not a
+typed reachability object. Always bound `/n` and `/w` in automation, check
+`$LASTEXITCODE`, and use `Test-NetConnection` or an application-specific probe
+when the actual requirement is a TCP service rather than ICMP.
+
 ## Common mistakes
 
 ### Equating ping with application health

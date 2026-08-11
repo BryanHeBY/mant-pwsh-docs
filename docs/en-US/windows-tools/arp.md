@@ -30,6 +30,35 @@ on-link IPv4 addresses to link-layer addresses. Windows maintains a table per
 applicable interface. `-a` and `-g` display; `-d` deletes; `-s` adds a static
 entry that remains until the TCP/IP stack restarts.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `arp.exe`: Display or change the Windows IPv4 ARP cache.
+
+The display and mutation modes use switches rather than subcommands. Address
+operands are IPv4 addresses; an interface operand is one local IPv4 address,
+not an adapter alias or index.
+
+<!-- mant:entries role=option case=insensitive -->
+- `-a`: Display current ARP entries; optionally limit the result to one cached
+  IPv4 address. With multiple interfaces, show a separate table for each one.
+- `-g`: Display entries using the legacy option name equivalent to `-a`.
+- `-v`: Include invalid entries and entries on the loopback interface in a
+  verbose display; combine it with a display operation.
+- `-N`: Limit a display to the interface owning the following local IPv4
+  address. This switch is uppercase in Microsoft's documented syntax.
+- `-d`: Delete the following IPv4 entry; `*` selects every entry, so avoid it
+  unless that complete mutation was explicitly intended and reviewed.
+- `-s`: Add a static IPv4-to-link-layer mapping, optionally on the interface
+  identified by a following local IPv4 address.
+
+## PowerShell boundaries
+
+Call `arp.exe` explicitly because other operating systems expose a different
+`arp` syntax. Its output is localized text, not neighbor objects; use
+`Get-NetNeighbor` for typed selection. Check `$LASTEXITCODE` after a mutation
+and query the exact interface/address again to verify the resulting state.
+
 ## Common mistakes
 
 ### Treating the cache as a network inventory

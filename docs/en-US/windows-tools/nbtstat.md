@@ -31,6 +31,37 @@ NetBIOS sessions. Its option letters are case-sensitive: `/a` queries by
 remote NetBIOS name, while `/A` queries by IPv4 address; `/s` resolves session
 names, while `/S` keeps numeric addresses.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `nbtstat.exe`: Inspect NetBIOS-over-TCP/IP name tables, cache statistics, and
+  sessions, or request a documented cache/name refresh.
+
+The following option role is case-sensitive because Windows assigns different
+behavior to several lowercase and uppercase spellings.
+
+<!-- mant:entries role=option case=sensitive -->
+- `/a`: Query the NetBIOS name table of the following remote NetBIOS name.
+- `/A`: Query the NetBIOS name table of the following remote IPv4 address.
+- `/c`: Display the local NetBIOS name cache and resolved addresses.
+- `/n`: Display names registered locally by NetBIOS applications.
+- `/r`: Display name-resolution statistics for broadcast and WINS resolution.
+- `/R`: Purge the NetBIOS name cache and reload the preloaded `Lmhosts` entries.
+- `/RR`: Release and then refresh locally registered NetBIOS names through
+  configured WINS servers.
+- `/s`: Display NetBIOS client/server sessions and try to resolve remote IP
+  addresses to names.
+- `/S`: Display NetBIOS sessions using numeric remote IP addresses.
+- `/?`: Display installed help. A trailing numeric interval is an operand that
+  repeats selected output until interrupted, not another switch.
+
+## PowerShell boundaries
+
+Call `nbtstat.exe` with the exact option case; do not normalize arguments in a
+wrapper. Output is legacy localized text. Bound or externally cancel interval
+mode, check `$LASTEXITCODE`, and use DNS, SMB, or NetTCPIP interfaces for
+automation outside the specific NetBT question.
+
 ## Common mistakes
 
 ### Changing the case of an option

@@ -29,6 +29,37 @@
 or remote Windows computers. `/v` adds adapter details and `/fo table|list|csv`
 selects presentation. `/s`, `/u`, and `/p` control legacy remote access.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `getmac.exe`: Report MAC addresses and associated transport names for the
+  local computer or one Windows remote computer.
+
+Remote switches affect authentication and transport only; they do not change
+which adapters exist or turn the formatted output into a durable identity API.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/s`: Query the following remote computer name or IP address instead of the
+  local computer.
+- `/u`: Run the remote query in the context of the following `DOMAIN\User` or
+  `User` account; it is valid with `/s`.
+- `/p`: Supply the password for the account selected by `/u`; do not place a
+  secret in a reusable command line, history, log, or agent transcript.
+- `/fo`: Select `TABLE`, `LIST`, or `CSV` output. This changes presentation,
+  not the fields gathered.
+- `/nh`: Suppress the column header in `TABLE` or `CSV` output; retaining the
+  header is normally safer for interchange and diagnostics.
+- `/v`: Include verbose adapter details such as connection name and network
+  adapter description.
+- `/?`: Display the syntax installed with this executable.
+
+## PowerShell boundaries
+
+Native CSV is text. Pipe `/fo csv` output through `ConvertFrom-Csv` only when
+the localized headers and target version are acceptable, or prefer
+`Get-NetAdapter` objects for local automation. Check `$LASTEXITCODE`; an empty
+or failed remote query is not proof that the target has no adapters.
+
 ## Common mistakes
 
 ### Selecting the first MAC address

@@ -31,6 +31,35 @@ lookups, `/q` controls queries per hop, `/p` controls milliseconds between
 probes, and `/4` or `/6` fixes the address family. Its sampling phase is
 intentionally slower than `tracert`.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `pathping.exe`: Discover an ICMP-visible path and then sample hop/link loss
+  and latency statistics to one destination.
+
+The final destination is required. Sampling duration grows with the hop count,
+query count, per-hop period, and response timeout.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/n`: Keep hop addresses numeric and skip reverse-DNS name resolution.
+- `/h`: Set the maximum number of hops to search for the destination.
+- `/g`: Use the following loose source route host list where the network still
+  permits this legacy IPv4 diagnostic option.
+- `/p`: Set the wait in milliseconds between successive probes sent to a hop.
+- `/q`: Set the number of echo requests sent to each hop during sampling.
+- `/w`: Set the timeout in milliseconds for each reply.
+- `/i`: Use the following source IPv4 address.
+- `/4`: Force IPv4 name resolution and probes.
+- `/6`: Force IPv6 name resolution and probes.
+- `/?`: Display installed command help.
+
+## PowerShell boundaries
+
+`pathping.exe` is a long-running native text producer, not a stream of
+PowerShell measurement objects. Set explicit sampling parameters, arrange
+cancellation/timeout in the caller, preserve the complete output and command,
+and check `$LASTEXITCODE` only after the process has completed.
+
 ## Common mistakes
 
 ### Closing the command before statistics arrive

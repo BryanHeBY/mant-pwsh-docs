@@ -31,6 +31,33 @@ ends the trace when it responds. `/d` skips reverse lookups, `/h` limits hops,
 `/w` sets a per-probe timeout in milliseconds, and `/4` or `/6` fixes the
 address family.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `tracert.exe`: Trace the ICMP-visible Windows hop path to one destination.
+
+Uppercase `/R` and `/S` are IPv6-specific and are not interchangeable with
+lowercase options used by other Windows networking tools.
+
+<!-- mant:entries role=option case=sensitive -->
+- `/d`: Keep hop addresses numeric and skip reverse-DNS name resolution.
+- `/h`: Set the maximum hop count searched for the destination.
+- `/j`: Use the following loose IPv4 source-route host list.
+- `/w`: Set the wait in milliseconds for each probe reply.
+- `/R`: Trace the IPv6 round-trip path where routing headers and the target
+  support that diagnostic behavior.
+- `/S`: Use the following IPv6 source address.
+- `/4`: Force IPv4.
+- `/6`: Force IPv6.
+- `/?`: Display installed command help.
+
+## PowerShell boundaries
+
+`tracert.exe` emits localized incremental text rather than hop objects. Set
+explicit `/h` and `/w` bounds for automation, preserve a timestamp and source
+context, and check `$LASTEXITCODE` after completion. An asterisk is missing
+diagnostic response data, not a typed assertion that forwarding failed.
+
 ## Common mistakes
 
 ### Treating an asterisk as a broken forwarding path
