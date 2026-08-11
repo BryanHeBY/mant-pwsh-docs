@@ -204,6 +204,11 @@ manage-bde.exe -status C: -protectionaserrorlevel
 manage-bde.exe -protectors -get C:
 mountvol.exe
 mountvol.exe C:\ /L
+diskpart.exe /?
+fsutil.exe fsinfo drives
+fsutil.exe fsinfo volumeinfo C:
+fsutil.exe dirty query C:
+fsutil.exe behavior query DisableDeleteNotify
 ```
 
 Start a disposable process, record its PID/path/start time, preview
@@ -267,6 +272,14 @@ change protectors or auto-unlock, expose the ESP, create/delete mount points,
 take volumes offline, clean stale mappings, or change automount merely for
 verification. Interpret `-protectionaserrorlevel` 0/1 as protected/unprotected
 status rather than generic command success/failure.
+Keep DiskPart and FSUtil verification query-only. In an elevated DiskPart
+session run `list disk`, `list volume`, select only a lab-approved object,
+`detail` it, then `exit`; do not clean, format, convert, resize, change IDs,
+attach/merge VHDs, or alter online/SAN/automount state. For FSUtil, do not set
+global/filesystem behavior, dirty state, ranges, VDL/EOF, links/reparse data,
+quotas, repair policy, journals, tiers, resources, or volume state. Record
+filesystem/build-specific help and interpret `DisableDeleteNotify = 0` as
+notifications enabled, not proof that a particular device honored TRIM.
 Use a disposable NTFS test tree to display, verify, and save ACLs; do not reset,
 grant, deny, remove, restore, recurse ownership, encrypt/decrypt, rekey, or wipe
 free space merely for validation. Run the EFS check only when an approved

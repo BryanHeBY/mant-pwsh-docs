@@ -395,7 +395,8 @@
     {
       "name": "diskpart",
       "source": "diskpart.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/diskpart.md"
     },
     {
       "name": "diskperf",
@@ -575,7 +576,8 @@
     {
       "name": "fsutil",
       "source": "fsutil.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/fsutil.md"
     },
     {
       "name": "ftp",

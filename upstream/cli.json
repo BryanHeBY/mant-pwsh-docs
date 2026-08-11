@@ -1313,6 +1313,34 @@
       ],
       "notes": ["The TLDR inventories and verifies a full volume GUID before creating or deleting one access path; the page requires scalar DeviceID values, trailing-slash syntax, dedicated empty NTFS directories, and distinguishes /D from offline /P plus stale cleanup, automount, and ESP exposure.", "Windows runtime verification remains required."]
     },
+    "diskpart.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, Windows Server, and corresponding Windows PE releases; commands vary by storage type"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/diskpart.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/diskpart-scripts-and-examples.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=1164515&service=superuser&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR is query-only and makes interpreter context explicit; the page maps all command families, repeats list/select/detail identity gates, distinguishes clean/clean all and quick/full format, and contains focus, scripting/noerr, firmware/layout, sizing, resize, VHD, ID, SAN, and automount risks.", "Windows runtime verification remains required."]
+    },
+    "fsutil.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["subcommands and flags vary by supported Windows release, filesystem, and installed storage features"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/fsutil.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/fsutil-behavior.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/fsutil-file.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/fsutil-dirty.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/fsutil-fsinfo.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/fsutil-hardlink.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/fsutil-reparsepoint.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/fsutil-sparse.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/fsutil-usn.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/fsutil-volume.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=1741273&service=superuser&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR is query-only and corrects negative DisableDeleteNotify semantics; the page maps the supported family and contains global behavior/reboot, dirty-bit, hard-link/reparse, sparse/range, valid-data, USN, 8.3-name, dismount, and unstable-text risks.", "Windows runtime verification remains required."]
+    },
     "git.md": {
       "kind": "native-cli",
       "status": "reviewed",

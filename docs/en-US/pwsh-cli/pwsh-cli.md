@@ -216,6 +216,8 @@ license in the document's provenance catalog before adapting material.
 - [compact](compact.md): NTFS, executable, and CompactOS compression boundaries.
 - [manage-bde](manage-bde.md): BitLocker state, protectors, escrow, and access.
 - [mountvol](mountvol.md): volume GUID, mount-point, automount, and ESP safety.
+- [diskpart](diskpart.md): focus-driven disk, partition, volume, and VHD safety.
+- [fsutil](fsutil.md): advanced filesystem, journal, link, and behavior state.
 
 ## Cross-platform developer tools
 
