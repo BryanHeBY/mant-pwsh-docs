@@ -30,6 +30,27 @@ network applications. It can show or dump providers, show audit history and
 autotuning, remove one provider, reset the catalog, or change send autotuning.
 The TLDR stays read-only because catalog changes can affect many applications.
 
+## Context commands
+
+<!-- mant:entries role=command case=insensitive -->
+- `netsh.exe`: Run one fully qualified Windows Netsh command.
+- `winsock`: Enter or address the Winsock catalog context.
+- `show`: Display the catalog or Winsock send-autotuning state.
+- `audit`: Display the provider installation/removal audit trail.
+- `dump`: Emit a Winsock configuration script for review.
+- `reset`: Reset the Winsock catalog to a clean state, removing custom layered
+  providers without resetting every namespace/network component.
+- `remove`: Remove one exact verified provider by the context's identifier.
+- `set`: Change supported Winsock send-autotuning state.
+
+## PowerShell boundaries
+
+Run fully qualified `netsh.exe winsock ...` commands instead of interactive
+context state. Netsh output is native/localized text; preserve inventory and
+dump output, capture `$LASTEXITCODE`, and independently verify applications and
+provider catalog after a change. A catalog reset is not a PowerShell network
+stack reset and should never be an unconditional repair step.
+
 ## Common mistakes
 
 ### Using reset as a universal network repair

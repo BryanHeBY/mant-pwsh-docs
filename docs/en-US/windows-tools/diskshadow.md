@@ -63,6 +63,41 @@ recovery verification.
 | Hardware transport | `import`, `mask`, `break` | Requires compatible provider/array and metadata; writable break changes snapshot semantics. |
 | Destructive lifecycle | `delete shadows`, `revert` | Delete removes snapshots; revert rolls an entire source volume back to one eligible shadow. |
 
+## Indexed interpreter commands
+
+<!-- mant:entries role=command case=insensitive -->
+- `diskshadow.exe`: Start the elevated VSS requester interpreter or run one
+  reviewed `.dsh` script with `/s`.
+- `list`: Display writers, providers, shadows, volumes, or other supported VSS state.
+- `set`: Display or change snapshot context, metadata path, verbosity, and
+  provider/writer policy.
+- `add`: Display or add source volumes/aliases to the pending shadow set.
+- `writer`: Verify, include, or exclude exact VSS writers/components.
+- `begin`: Begin a backup or restore transaction.
+- `create`: Create the configured shadow-copy set; this is not a complete backup.
+- `exec`: Run a local program from the privileged interpreter/script context.
+- `end`: Complete a backup or restore transaction and send relevant writer events.
+- `load`: Load trusted matching DiskShadow metadata for restore/import workflows.
+- `expose`: Make one persistent shadow reachable by a drive letter, mount point,
+  or share without making an independent copy.
+- `unexpose`: Remove an exposure path without deleting the underlying shadow.
+- `import`: Import a transportable hardware shadow set using matching metadata.
+- `mask`: Mask imported hardware shadow LUNs under provider/vendor coordination.
+- `break`: Break a hardware shadow relationship; writable forms alter lifecycle.
+- `delete`: Delete selected shadow copies or sets permanently.
+- `revert`: Roll an entire eligible source volume back to one persistent
+  client-accessible shadow.
+- `reset`: Clear interpreter configuration/interfaces and delete nonpersistent
+  shadows; it is not a read-only display reset.
+- `exit`: Leave the interpreter.
+
+Only the launcher switch below is a PowerShell/native argument. The other
+commands must remain inside DiskShadow's prompt or script grammar.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/s`: Run the following reviewed DiskShadow script file instead of using the
+  interactive prompt.
+
 ## Context and metadata
 
 `set context clientaccessible` creates a persistent, client-accessible context.
@@ -145,7 +180,7 @@ resolve to pages whose prose describes DiskPart disks, partitions, volumes, or
 VHDs. Use the family description and installed `DISKSHADOW>` help for
 DiskShadow syntax, and do not transfer DiskPart grammar into a VSS script.
 
-## PowerShell and script behavior
+## PowerShell boundaries
 
 Keep scripts as reviewable files with explicit absolute paths and no embedded
 secrets. DiskShadow scripts can invoke local executables through `exec`; treat

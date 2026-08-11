@@ -38,6 +38,47 @@ volume GUID, drive letter, workload owner, encryption state, and verified
 restore path before invoking it. Prefer an isolated maintenance console so a
 mistake does not also destroy remote access.
 
+## Command and options
+
+<!-- mant:entries role=command case=insensitive -->
+- `format.exe`: Destructively create a new filesystem on one explicitly
+  identified Windows volume, mount point, or drive-letter target.
+
+Every successful formatting mode destroys the prior filesystem namespace.
+There is no dry-run switch; installed help and the target workload matrix are
+part of the change review.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/fs`: Select the following filesystem supported by this Windows build and
+  target media, such as NTFS, ReFS, FAT/FAT32, exFAT, or UDF.
+- `/v`: Assign the following volume label; `/v:` requests an empty label and
+  avoids the post-format label prompt.
+- `/q`: Perform a quick format, skipping the sector scan and overriding `/p`.
+- `/l`: Select large/small NTFS file-record behavior using optional
+  `enable`/`disable` state.
+- `/a`: Select allocation-unit size; supported values depend on filesystem,
+  sector size, and volume size.
+- `/c`: Make new files compressed by default on NTFS where cluster size permits.
+- `/x`: Force dismount before formatting and invalidate open handles.
+- `/p`: Zero every sector, then perform the following number of additional
+  random overwrites; `/q` disables this behavior.
+- `/s`: Enable or disable short 8.3 filename support on the new filesystem.
+- `/txf`: Enable or disable TxF behavior where the target Windows/filesystem
+  supports the option.
+- `/i`: Enable or disable ReFS integrity on the new volume.
+- `/dax`: Enable or disable NTFS DAX on DAX-capable hardware.
+- `/logsize`: Set NTFS log size in kilobytes subject to the documented minimum.
+- `/norepairlogs`: Disable NTFS repair logs, with consequences for spot repair.
+- `/notrim`: Skip trim/delete notification during formatting.
+- `/devdrv`: Format a supported ReFS volume as a Dev Drive.
+- `/sha256checksums`: Use SHA-256 for ReFS checksum operations where supported.
+- `/f`: Select a legacy floppy-disk size.
+- `/t`: Select legacy track count; pair it with `/n`; it conflicts with `/f`.
+- `/n`: Select legacy sectors per track; pair it with `/t`.
+- `/y`: Suppress the force-dismount prompt and assume an empty label; it is not
+  a general confirmation or safety bypass.
+- `/?`: Display the syntax installed with the target Windows build.
+
 ## Quick, full, and overwrite modes
 
 - `/Q` deletes filesystem tables and skips the sector-by-sector bad-area scan.
@@ -106,7 +147,7 @@ Formatting an unlocked BitLocker volume does not manage every key or copy.
 EFS recovery depends on certificates, while VSS, backup, replication, cloud,
 and application copies can retain data. Inventory each layer independently.
 
-## Exit status and PowerShell behavior
+## PowerShell boundaries
 
 Microsoft documents `0` for success, `1` for invalid parameters, `4` for a
 fatal error, and `5` when the operator declines the confirmation. Capture
@@ -117,6 +158,11 @@ nonzero value into the same failure message.
 PowerShell can resolve functions or aliases before an application. Invoke
 `format.exe` explicitly, quote mount-point paths, and never construct a target
 from unvalidated text or a first-match pipeline.
+
+Microsoft's current parameter table also contains an orphan `/R` row whose
+description duplicates NTFS compression even though `/R` is absent from the
+published syntax. This guide does not invent behavior for that inconsistency;
+use installed `format.exe /?` and the applicable filesystem guidance.
 
 ## Version and platform differences
 

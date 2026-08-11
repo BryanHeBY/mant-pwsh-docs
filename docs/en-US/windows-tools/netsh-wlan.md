@@ -31,6 +31,37 @@ are safest for first diagnosis. Connect/disconnect, add/delete, set, start,
 stop, export, and tracing operations can affect users, connectivity, secrets,
 files, or persistent policy.
 
+## Context commands
+
+<!-- mant:entries role=command case=insensitive -->
+- `netsh.exe`: Run one fully qualified Windows Netsh command.
+- `wlan`: Enter or address the Windows WLAN service context.
+- `show`: Display interfaces, networks, profiles, drivers, filters, settings,
+  wireless-capability/report state, or tracing state.
+- `connect`: Ask one interface to connect using an exact saved profile/name/SSID.
+- `disconnect`: Disconnect one selected Wi-Fi interface.
+- `add`: Add a reviewed profile or filter from explicit input.
+- `delete`: Delete exact profiles, filters, or tracing/report data according to
+  the selected object grammar; wildcards can broaden scope.
+- `set`: Change autoconfiguration, profile order/parameters, blocked-network
+  display, randomization, tracing, or other supported WLAN context state.
+- `export`: Export selected profiles to files; `key=clear` can expose secrets.
+- `start`: Start a supported hosted-network or tracing operation.
+- `stop`: Stop the corresponding hosted-network or tracing operation.
+- `report`: Generate the supported wireless diagnostic report.
+- `dump`: Emit a replay script for review rather than immediate execution.
+
+Parameters such as `name=`, `interface=`, `ssid=`, and `key=` are bare
+equals-bearing Netsh tokens, not PowerShell named parameters.
+
+## PowerShell boundaries
+
+Use fully qualified `netsh.exe wlan ...` commands and pass every
+`name=value` token as one native argument. Capture `$LASTEXITCODE`, then query
+the exact interface/profile and test DHCP, DNS, route, and application access.
+Treat exports/reports/traces as sensitive files; never pipe profile output or
+clear keys into logs, transcripts, repositories, or agent conversations.
+
 ## Common mistakes
 
 ### Exporting keys in clear text

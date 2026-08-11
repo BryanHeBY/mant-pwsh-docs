@@ -30,6 +30,36 @@ addresses, routes, DNS/WINS, neighbors, TCP/UDP settings, transition tunnels,
 HTTPS tunnels, and TCP port proxies. The full context path makes a command
 scriptable and prevents hidden interactive context state.
 
+## Context commands
+
+<!-- mant:entries role=command case=insensitive -->
+- `netsh.exe`: Run one fully qualified Windows Netsh context command.
+- `interface`: Enter or address the interface-management context.
+- `ipv4`: Address IPv4 interfaces, addresses, routes, neighbors, DNS, and stack state.
+- `ipv6`: Address IPv6 interfaces, addresses, routes, neighbors, DNS, and stack state.
+- `tcp`: Address interface-context TCP global, supplemental, heuristic, and
+  connection settings supported by the target build.
+- `udp`: Address interface-context UDP settings supported by the target build.
+- `portproxy`: Display or manage selected TCP v4/v6 listener-to-destination proxies.
+- `show`: Display the selected interface/context state without changing it.
+- `set`: Change one existing interface/context setting or policy-store value.
+- `add`: Add a supported address, route, neighbor, DNS/WINS entry, or proxy rule.
+- `delete`: Delete one exact supported interface-context object/rule.
+- `reset`: Reset the selected context family; this is a broad mutation, not a
+  generic troubleshooting query.
+- `dump`: Emit a Netsh replay script for review; do not execute it blindly.
+
+Parameters such as `name=`, `interface=`, `address=`, and `store=` are Netsh's
+bare equals-bearing grammar rather than PowerShell named parameters.
+
+## PowerShell boundaries
+
+Use a fully qualified noninteractive invocation such as
+`netsh.exe interface ipv4 show ...`; never rely on state left at a Netsh prompt.
+Pass each `name=value` token as one native argument, capture `$LASTEXITCODE`,
+and prefer typed NetTCPIP/DnsClient cmdlets where they expose the required
+policy store. Re-query both active and persistent state after a mutation.
+
 ## Common mistakes
 
 ### Disabling the interface carrying the session

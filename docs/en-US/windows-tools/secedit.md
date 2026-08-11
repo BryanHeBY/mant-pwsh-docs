@@ -32,6 +32,46 @@ Security areas include policy, restricted groups, user rights, registry/file
 ACLs, and service security. Analyze/import operations change their `.sdb`
 database even when they do not configure the operating system.
 
+## Modes and options
+
+<!-- mant:entries role=command case=insensitive -->
+- `secedit.exe`: Validate/import/export/analyze security templates and databases,
+  generate rollback material, or configure selected local security areas.
+
+The leading slash modes are mutually distinct. `/analyze` compares;
+`/configure` applies operating-system settings.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/validate`: Validate the syntax of the following security-template INF file
+  without proving target applicability or safety.
+- `/import`: Import the selected template into a security database for later
+  analysis/configuration.
+- `/export`: Export selected security settings from a database/system to an INF.
+- `/analyze`: Compare current system settings against the selected
+  database/template and store analysis results in the database/log.
+- `/configure`: Apply selected settings from the security database to the local
+  system; this is the state-changing mode.
+- `/generaterollback`: Generate a rollback template relative to a configuration
+  template; it is not a complete recovery plan.
+- `/db`: Select the required security database path.
+- `/cfg`: Select the security-template INF path to import/analyze/configure.
+- `/overwrite`: Replace the database's prior composite template state instead
+  of appending the supplied `/cfg` template.
+- `/areas`: Restrict work to named security areas such as `securitypolicy`,
+  `group_mgmt`, `user_rights`, `regkeys`, `filestore`, or `services`.
+- `/log`: Write operation details to the following explicit log path.
+- `/quiet`: Suppress screen/log output where supported; avoid it during review
+  because silence is not success.
+- `/?`: Display installed family help and mode-specific syntax.
+
+## PowerShell boundaries
+
+`secedit.exe` changes its `.sdb` database even in workflows that do not apply
+system settings. Use absolute protected paths, pass each file/value separately,
+capture stdout, stderr, and `$LASTEXITCODE`, and preserve exported baseline and
+logs. Do not infer safety from INF syntax validation; re-query effective policy,
+accounts, ACLs, services, and recovery access after an approved configuration.
+
 ## Common mistakes
 
 ### Running `/configure` instead of `/analyze`

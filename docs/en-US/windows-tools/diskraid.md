@@ -64,6 +64,61 @@ transcript easy to read but makes stale or misunderstood focus dangerous.
 | Provider/controller | `automagic`, `name`, `importtarget`, `flushcache`, `invalidatecache`, `maintenance`, `reset` | Can change provisioning hints, VSS target, cache integrity, hardware state, or availability. |
 | Scripting | `rem`, `/s`, `noerr` | `noerr` deliberately continues after supported runtime failures. |
 
+## Indexed interpreter commands
+
+<!-- mant:entries role=command case=insensitive -->
+- `diskraid.exe`: Start the VDS hardware-RAID interpreter or run one reviewed
+  script with `/s`.
+- `help`: Display installed interpreter syntax for a command family.
+- `initiator`: Display or change iSCSI initiator state in the selected context.
+- `list`: Enumerate providers, subsystems, controllers, drives, LUNs, targets,
+  paths, and other supported object families.
+- `detail`: Display detailed identity/state for the currently selected object.
+- `select`: Display or change stateful focus to one enumerated object.
+- `refresh`: Refresh provider/object state and potentially trigger provider work.
+- `reenumerate`: Request storage-bus/provider re-enumeration.
+- `create`: Create a supported LUN, target, portal group, or related object.
+- `delete`: Delete the selected supported object and potentially its data.
+- `add`: Add a plex, portal-group member, or other family-specific relationship;
+  some forms erase the added storage.
+- `break`: Break a LUN/plex relationship with destructive consistency effects.
+- `extend`: Increase a selected LUN's capacity; it does not grow host partitions
+  or filesystems.
+- `shrink`: Reduce supported selected LUN capacity after workload/data planning.
+- `recover`: Request provider recovery for a selected degraded LUN.
+- `replace`: Replace a selected failed/missing member using provider semantics.
+- `setflag`: Change provider-specific flags on selected storage.
+- `associate`: Associate a selected LUN and host/access object.
+- `dissociate`: Remove a selected LUN/access association.
+- `mask`: Remove host visibility/access to selected LUNs.
+- `unmask`: Expose selected LUNs, potentially replacing an access list unless
+  the documented add behavior is used.
+- `online`: Bring a selected supported storage/path object online.
+- `offline`: Take a selected supported storage/path object offline.
+- `standby`: Place a selected path/controller object into standby where supported.
+- `lbpolicy`: Display or change multipath load-balancing policy.
+- `login`: Establish an iSCSI target session.
+- `logout`: Remove an iSCSI target session.
+- `chap`: Configure iSCSI CHAP authentication material; never record secrets.
+- `automagic`: Display or change provider automatic-provisioning hints.
+- `name`: Set a selected object's friendly/provider name.
+- `importtarget`: Set or change provider VSS import-target behavior.
+- `flushcache`: Flush provider/controller cache under an approved storage runbook.
+- `invalidatecache`: Invalidate cache state with potential I/O/availability impact.
+- `maintenance`: Enter or leave provider-specific maintenance state.
+- `reset`: Reset selected controller/port/provider state; it is not screen cleanup.
+- `rem`: Add a script comment.
+- `noerr`: Continue a supported script after runtime errors; syntax errors still
+  stop parsing and later mutations can run after a failed prerequisite.
+- `exit`: Leave the interpreter.
+
+The launcher has one script-file switch; every other indexed word above belongs
+inside the DiskRaid interpreter or its script language.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/s`: Run the following reviewed DiskRaid script file instead of using the
+  interactive prompt.
+
 ## Safe discovery sequence
 
 Start with `list providers` and `list subsystems`. Record provider/vendor,
@@ -145,7 +200,7 @@ RAID rebuild completion, path redundancy, filesystem growth, application
 consistency, cluster health, backup validity, or recovery. Verify every layer
 with independent telemetry and a tested recovery plan.
 
-## PowerShell and script behavior
+## PowerShell boundaries
 
 Use an absolute reviewed script path and capture stdout, stderr, start/end time,
 host, executable hash/version, provider/array identity, and `$LASTEXITCODE`.

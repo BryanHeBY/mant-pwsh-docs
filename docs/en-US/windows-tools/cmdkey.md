@@ -31,6 +31,39 @@ Windows user context. `/add:target` creates a domain/computer credential,
 card, `/list[:target]` inventories, and `/delete:target` or `/delete /ras`
 removes an entry.
 
+## Command and options
+
+<!-- mant:entries role=command case=insensitive -->
+- `cmdkey.exe`: List, add, or delete credentials in the current Windows user's
+  credential store using exact application/protocol target names.
+
+Colon-bound target, user, and password values are part of one native argument.
+Omit the password switch/value so an approved interactive prompt can be used.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/add`: Add a domain/computer credential associated with the following exact
+  target name.
+- `/generic`: Add a generic credential associated with the following exact target.
+- `/smartcard`: Select a credential from an available smart card, prompting for
+  the specific card when multiple cards are present.
+- `/user`: Store the following account name with a new credential; if its value
+  is omitted, the command requests it.
+- `/pass`: Store the following password; omit the switch/value to be prompted
+  rather than exposing the secret in arguments.
+- `/delete`: Delete the following exact target credential, or combine the
+  parameterless form with `/ras` for the stored remote-access credential.
+- `/ras`: Select the stored remote-access credential for `/delete`.
+- `/list`: List all credential metadata, or only the following exact target.
+- `/?`: Display installed command help.
+
+## PowerShell boundaries
+
+`cmdkey.exe` is native and its colon forms must remain one argument. Never put
+a password in PowerShell source, history, transcripts, process arguments, or
+agent text. Capture `$LASTEXITCODE`, then re-run `/list:TARGET` in the exact
+consumer user/elevation/session context; entry presence does not prove a
+connection used it, and listing never reveals the stored secret.
+
 ## Common mistakes
 
 ### Putting the password after `/pass:`
