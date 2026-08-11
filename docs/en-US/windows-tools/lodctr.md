@@ -30,6 +30,24 @@ queries/enables/disables providers, saves settings, and can restore/rebuild
 counter registration. It is provider installation/repair tooling—not a generic
 performance sampler or harmless “refresh counters” command.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `lodctr.exe`: Register, query, save, restore, enable, or disable performance
+  counter provider registration according to installed syntax.
+
+A bare filename loads legacy initialization data. Query/enable/disable forms
+exist on many installed builds even though the current family page omits them.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/q`: Query all providers or one exact service/provider registration.
+- `/e`: Enable one registered counter provider where installed help supports it.
+- `/d`: Disable one registered counter provider where installed help supports it.
+- `/s`: Save current counter registry settings and explanation text to a file.
+- `/r`: Rebuild from system caches or replace settings from a named file.
+- `/t`: Mark the named service as trusted.
+- `/?`: Display installed syntax; a zero exit code proves syntax only.
+
 ## Common mistakes
 
 - Running `/r` globally for one invalid/localized/missing path. First verify
@@ -46,7 +64,7 @@ performance sampler or harmless “refresh counters” command.
 - Confusing localized display names with service/provider identity, or expecting
   successful registration to make every instance/data source valid immediately.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use `lodctr.exe` explicitly with exact service/path arguments. Capture native
 status, save/query before and after, then verify provider events, `typeperf -q`,

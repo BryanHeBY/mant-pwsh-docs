@@ -30,6 +30,21 @@ run an interactive ACPI hotkey test, and add a dump artifact. The normal data
 file is intended for display troubleshooting and is not a stable text or JSON
 automation interface.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `dispdiag.exe`: Capture Windows display diagnostic data to a file.
+
+The output path is an artifact destination, and Microsoft requires `-out` to
+be the final parameter in the invocation.
+
+<!-- mant:entries role=option case=insensitive -->
+- `-testacpi`: Run the interactive hotkey diagnostic and display key/scan codes.
+- `-d`: Generate an additional dump artifact with the test results.
+- `-delay`: Wait the specified number of seconds before collecting data.
+- `-out`: Select the output path and filename; this option must appear last.
+- `-?`: Display installed command help.
+
 ## Common mistakes
 
 ### Putting another option after `-out`
@@ -61,7 +76,7 @@ Correlate the artifact with exact display topology, driver/package version,
 firmware, event logs, reproduction time and physical tests. Collection success
 is not diagnosis.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Call `dispdiag.exe` explicitly, keep `-out` last, and save `$LASTEXITCODE`
 before running `Get-Item`. Pre-create only the parent directory, not the output

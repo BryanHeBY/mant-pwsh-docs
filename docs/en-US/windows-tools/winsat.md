@@ -35,6 +35,39 @@ catalog entries `winsat mem`, which measures memory-copy bandwidth, and
 real CPU, memory, storage, GPU/media, and scheduling load and require elevation
 according to their command references.
 
+## Commands and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `winsat.exe`: Run an installed Windows System Assessment Tool family.
+- `mem`: Measure memory-copy bandwidth under the selected thread/cache/timing policy.
+- `mfmedia`: Measure Media Foundation decoding for one required trusted input clip.
+
+The page covers parameters documented for `mem` and `mfmedia`; the same option
+name can produce different workload behavior in another assessment family.
+
+<!-- mant:entries role=option case=insensitive -->
+- `-up`: Force the memory assessment to use one thread.
+- `-rn`: Run memory assessment threads at normal rather than high priority.
+- `-nc`: Allocate uncached memory and bypass processor caches for copying.
+- `-do`: Set source-to-destination buffer offset in bytes for the memory test.
+- `-mint`: Set the minimum assessment duration from 1 through 30 seconds.
+- `-maxt`: Set the maximum assessment duration from 1 through 30 seconds.
+- `-buffersize`: Set the per-thread memory-copy buffer from 64 KB through 384 MB.
+- `-input`: Select the required trusted media file for `mfmedia`.
+- `-dumpgraph`: Save a GraphEdit-compatible media filter graph before assessment.
+- `-ns`: Run media decoding at normal presentation speed instead of as fast as possible.
+- `-play`: Play input audio through the default device during decode assessment.
+- `-nopmp`: Disable use of the Media Foundation Protected Media Pipeline.
+- `-pmp`: Force use of the Media Foundation Protected Media Pipeline.
+- `-v`: Emit verbose progress and error output.
+- `-xml`: Write XML results and overwrite an existing destination.
+- `-idiskinfo`: Include physical-volume and logical-disk data in XML results.
+- `-iguid`: Add a generated GUID to XML results.
+- `-note`: Add caller-supplied note text to XML results.
+- `-icn`: Include the local computer name in XML results.
+- `-eef`: Enumerate extra system information into XML results.
+- `/?`: Display installed assessment families and help.
+
 ## Memory assessment
 
 `mem` defaults to one thread per physical CPU/core at high priority. `-up`
@@ -82,7 +115,7 @@ Fast-as-possible versus presentation-timed decoding and protected versus
 unprotected pipelines are different tests. Record every switch and effective
 codec/hardware acceleration.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 WinSAT is native and emits localized progress/text. Capture `$LASTEXITCODE`
 immediately and prefer a protected XML artifact for structured retention. XML

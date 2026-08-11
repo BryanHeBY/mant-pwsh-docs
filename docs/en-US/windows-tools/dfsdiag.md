@@ -33,6 +33,28 @@ not measure DFS Replication (DFSR) file convergence, backlog, conflicts, or
 SYSVOL migration. Install the applicable DFS Namespaces management tools and
 run from an identity allowed to query every explicit target.
 
+## Tests and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `dfsdiag.exe`: Run one DFS Namespaces diagnostic test against an explicit scope.
+
+The primary test is expressed as a slash option. Other parameters are valid
+only with tests whose official syntax includes them.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/testdcs`: Check domain-controller configuration for DFS Namespaces.
+- `/testsites`: Check server or DFS target site associations.
+- `/testdfsconfig`: Check configuration for one domain-based namespace root.
+- `/testdfsintegrity`: Check metadata integrity for one namespace root.
+- `/testreferral`: Request and validate referrals for one exact DFS path.
+- `/domain`: Select the AD domain used by `/testdcs`.
+- `/machine`: Select one server for the site-association test.
+- `/dfspath`: Select a namespace root or DFS folder path.
+- `/dfsroot`: Select the namespace root used by configuration/integrity tests.
+- `/recurse`: Expand a supported test through child namespace folders.
+- `/full`: Request extended result detail for a supported test.
+- `/?`: Display the installed DFS diagnostic syntax.
+
 ## Test map
 
 - `/testdcs /domain:<domain>` checks DC configuration and can contact multiple
@@ -86,7 +108,7 @@ Verify exact SMB target resolution, TCP/authentication, share and NTFS effective
 access, file/path existence, storage health, and expected data version. Do not
 change namespace targets to mask an authorization or replication problem.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Invoke `dfsdiag.exe` explicitly and capture `$LASTEXITCODE` with the full
 localized output. Avoid success/failure parsing by English phrase alone. Use

@@ -35,6 +35,25 @@ marker. A product should use a registered manifest/provider or supported logging
 telemetry API so schema, message resources, identity, versioning, ACL, retention,
 and observability are managed correctly.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `eventcreate.exe`: Create one custom Application or System event locally or remotely.
+
+The type, ID, and description are required. Supplying a source does not prove
+publisher identity, and no form can write a custom event to Security.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/s`: Select a remote computer by name or IP address without leading backslashes.
+- `/u`: Select an alternate account for the remote operation.
+- `/p`: Supply its password on the command line, exposing the secret.
+- `/l`: Select only `APPLICATION` or `SYSTEM` as the destination log.
+- `/so`: Set an arbitrary source string for the event.
+- `/t`: Select `ERROR`, `WARNING`, `INFORMATION`, `SUCCESSAUDIT`, or `FAILUREAUDIT`.
+- `/id`: Set a numeric event ID from 1 through 1000.
+- `/d`: Supply the event description as one argument.
+- `/?`: Display installed syntax.
+
 ## Common mistakes
 
 ### Treating a created event as trustworthy audit evidence
@@ -88,7 +107,7 @@ to every modern Event Log level/keyword schema. Query the resulting XML and test
 rendering/forwarding on representative builds/locales rather than assuming the
 command line becomes a stable provider contract.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Call `eventcreate.exe` explicitly, pass the complete description as one scalar
 argument, and capture stdout/stderr plus `$LASTEXITCODE`. Re-query exact host,

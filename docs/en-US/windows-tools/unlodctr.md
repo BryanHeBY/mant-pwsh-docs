@@ -30,6 +30,18 @@ the registry; manifest-based forms apply to matching provider registration.
 This can break monitoring, alerts, dashboards, diagnostics, and product repair.
 Use the product's signed uninstaller/repair whenever possible.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `unlodctr.exe`: Remove legacy performance-counter names and explanation text
+  for one exact driver or service registration.
+
+The required positional value is a registry driver/service identity, not a
+localized counter object name. Quote identities containing spaces.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/?`: Display installed syntax; exit code zero proves command syntax only.
+
 ## Common mistakes
 
 - Removing a similarly named service/provider from a guessed error message.
@@ -45,7 +57,7 @@ Use the product's signed uninstaller/repair whenever possible.
 - Removing active counters during monitoring/incident collection, producing
   gaps and misleading zeros/absence without coordinating every consumer.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use `unlodctr.exe` explicitly with one exact service/provider. Capture output and
 `$LASTEXITCODE`, then verify registration, counter enumeration/sampling, product/

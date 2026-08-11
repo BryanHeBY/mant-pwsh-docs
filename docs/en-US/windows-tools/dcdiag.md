@@ -39,6 +39,44 @@ conditions that test observed from the calling host and identity at that time.
 It does not establish complete DNS, Kerberos, SYSVOL, replication, application,
 or client health.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `dcdiag.exe`: Run selected Active Directory domain-controller diagnostic tests.
+
+Main scope and reporting parameters apply to the framework. Test-specific
+parameters apply only to the named test and can change its network or AD impact.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/s`: Select one domain controller; some local-only tests ignore it.
+- `/n`: Select a naming context in NetBIOS, DNS, or distinguished-name form.
+- `/u`: Select alternate `DOMAIN\User` credentials for supported bindings.
+- `/p`: Supply a password; use `*` to prompt instead of exposing a literal secret.
+- `/a`: Test every domain controller in the current AD site.
+- `/e`: Test every domain controller in the enterprise and override `/a`.
+- `/q`: Emit only errors, omitting useful target and subtest context.
+- `/v`: Emit extended result and context information.
+- `/f`: Redirect text output to a named log file.
+- `/c`: Run comprehensive default and non-default tests except documented exclusions.
+- `/skip`: Omit one named test from comprehensive mode; Connectivity cannot be skipped.
+- `/test`: Run one named diagnostic test in addition to required Connectivity.
+- `/fix`: Repair MachineAccount SPNs instead of remaining diagnostic-only.
+- `/replsource`: Select a source DC for the CheckSecurityError test.
+- `/dnsbasic`: Run the basic DNS subtests.
+- `/dnsforwarders`: Add DNS forwarder validation to the basic subtests.
+- `/dnsdelegation`: Add DNS delegation validation to the basic subtests.
+- `/dnsdynamicupdate`: Test dynamic-update configuration and behavior.
+- `/dnsrecordregistration`: Check required A, CNAME, and SRV registrations.
+- `/dnsresolveextname`: Attempt external-name resolution in addition to basic tests.
+- `/dnsinternetname`: Replace the default external name used by that subtest.
+- `/dnsall`: Run all DNS subtests except external-name resolution.
+- `/x`: Write DNS results as XML to a protected file.
+- `/xsl`: Add an XSL/XSLT processing instruction to DNS XML output.
+- `/recreatemachineaccount`: Recreate a missing DC computer object without its
+  child relationships; Microsoft does not recommend this as ordinary repair.
+- `/fixmachineaccount`: Add documented DC UserAccountControl flags during repair.
+- `/?`: Display installed framework, test, and test-specific help.
+
 ## Scope and test map
 
 - `/s:<dc>` selects one DC. With no `/s`, DCDiag uses a local/home DC; do not
@@ -110,7 +148,7 @@ necessary, `/p:*` prompts; a literal password can leak through history, process
 inspection, transcripts, job logs, and monitoring. Confirm that the account has
 only the read/diagnostic rights required by the selected test.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Invoke `dcdiag.exe` explicitly to avoid command-name ambiguity. Its output is
 localized human text, not a stable object or line protocol; do not decide health

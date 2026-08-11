@@ -30,6 +30,29 @@ converts, time-bounds, or resamples data to CSV/TSV/BIN/SQL output. It transform
 existing samples; it does not recover events that were never collected, validate
 counter meaning, align unsynchronized clocks, or make sparse data representative.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `relog.exe`: Select, time-bound, resample, merge, or convert existing Windows
+  performance-counter logs.
+
+One or more input logs precede the options. Always write a new output unless an
+explicit append workflow has proved schema and time-range compatibility.
+
+<!-- mant:entries role=option case=insensitive -->
+- `-a`: Append to a non-SQL output instead of overwriting it.
+- `-c`: Select one or more exact counter paths from the inputs.
+- `-cf`: Read selected counter paths from a one-path-per-line file.
+- `-f`: Select `BIN`, `CSV`, `TSV`, or `SQL` output format.
+- `-t`: Keep every Nth input record; this is downsampling, not aggregation.
+- `-o`: Select an output file or `SQL:DSN!CounterLog` destination.
+- `-b`: Set the first included timestamp in the documented local date/time form.
+- `-e`: Set the last included timestamp in the documented local date/time form.
+- `-config`: Read parameters from a settings file; `-i` can stand for CLI inputs.
+- `-q`: Display input counter paths and time ranges without converting them.
+- `-y`: Answer Yes to overwrite and other prompts.
+- `/?`: Display installed syntax.
+
 ## Common mistakes
 
 - Using `-y`/an existing output and overwriting source or prior analysis. Work on
@@ -46,7 +69,7 @@ counter meaning, align unsynchronized clocks, or make sparse data representative
   identity, or counter metadata. Preserve original BLG as evidence.
 - Writing SQL with unreviewed DSN/table/credential/overwrite semantics.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use `relog.exe` explicitly with scalar paths. Resolve and protect output before
 execution; do not use wildcards that absorb unrelated logs. Capture streams and

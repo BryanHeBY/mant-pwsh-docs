@@ -67,6 +67,31 @@ Windows build; do not generalize one subcommand's syntax or units to another.
 | `devdrv` | Dev Drive and minifilter management | Security/performance policy and build availability matter. |
 | `wim` | Discover/manage WIM-backed files | Servicing/backing-image dependencies constrain changes. |
 
+These families are resolvable semantic command entries. Each has its own
+verbs, units, filesystem requirements, privileges, and target-local help.
+
+<!-- mant:entries role=command case=insensitive -->
+- `fsutil.exe`: Display installed FSUtil families or run one advanced filesystem task.
+- `8dot3name`: Query/change short-name policy, scan dependencies, or strip names.
+- `behavior`: Query or change global and filesystem behavior settings.
+- `clfs`: Create or correct authentication codes for CLFS log files.
+- `devdrv`: Manage Dev Drive state and allowed minifilters where supported.
+- `dirty`: Query or set a volume dirty bit.
+- `file`: Query or change file IDs, ranges, EOF, valid data, allocation, or names.
+- `fsinfo`: List drives or query volume/filesystem information and statistics.
+- `hardlink`: List or create hard-link names for a file.
+- `objectid`: Query, create, delete, or set file object identifiers.
+- `quota`: Query or configure NTFS quota tracking, enforcement, and thresholds.
+- `repair`: Query/change self-healing or start and monitor supported verification.
+- `reparsepoint`: Query or delete reparse-point metadata.
+- `resource`: Inspect or administer a Transactional NTFS resource manager.
+- `sparse`: Query/set sparse state or change allocated ranges.
+- `tiering`: Inspect or administer supported storage-tier functions.
+- `transaction`: List, inspect, commit, or roll back filesystem transactions.
+- `usn`: Inspect, create, configure, or delete an NTFS USN change journal.
+- `volume`: Query free/cluster state, locate cluster users, or dismount a volume.
+- `wim`: Discover or administer WIM-backed file state.
+
 ## Common mistakes
 
 ### Reading `DisableDeleteNotify = 0` as “TRIM disabled”
@@ -146,7 +171,7 @@ FSUtil output is native and can vary by build, locale, filesystem, and
 subcommand. Prefer supported PowerShell/storage APIs for structured automation,
 while retaining exact FSUtil output as diagnostic evidence when necessary.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Quote paths and volume GUIDs, pass scalar properties rather than formatted
 objects, and capture `$LASTEXITCODE` immediately. Braces in volume/object IDs

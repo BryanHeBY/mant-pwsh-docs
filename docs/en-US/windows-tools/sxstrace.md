@@ -30,6 +30,24 @@ events. It helps identify manifest, architecture, version, policy, culture,
 publisher and dependent-assembly resolution failures. It diagnoses evidence;
 it does not install runtimes, repair manifests or choose a safe replacement.
 
+## Commands and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `sxstrace.exe`: Capture or parse Windows side-by-side activation diagnostics.
+- `trace`: Start the shared SxS trace session and write raw ETL.
+- `parse`: Translate a copied raw ETL to a human-readable text file.
+- `stoptrace`: Stop an SxS trace that was not stopped interactively.
+
+Trace and parse accept different colon-form arguments. Pass each complete token
+as one native argument and use new protected paths.
+
+<!-- mant:entries role=option case=insensitive -->
+- `-logfile`: Select the raw ETL input or output path for trace/parse.
+- `-nostop`: Start tracing without the interactive prompt that otherwise stops it.
+- `-outfile`: Select the parsed text destination.
+- `-filter`: Restrict parsed output to one application name.
+- `-?`: Display installed syntax.
+
 ## Capture lifecycle
 
 ```text
@@ -61,7 +79,7 @@ support or incident evidence.
 - Publishing parsed traces without reviewing paths, user/application names,
   versions and other environment information.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Pass each `-logfile:`/`-outfile:` token as one quoted native argument. Check
 `$LASTEXITCODE`, file existence, timestamps and content. Wrap start/reproduce in

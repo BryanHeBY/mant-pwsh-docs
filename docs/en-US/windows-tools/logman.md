@@ -33,6 +33,44 @@ buffers, output, symbols, workload window, and analysis answer the question.
 Use `typeperf -q` or `-qx`, not an invented `logman query counters` form, to
 discover performance-counter paths.
 
+## Commands and shared parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `logman.exe`: Create or manage Windows Data Collector Sets and ETW sessions.
+- `create`: Create a counter, trace, alert, configuration, or API collector.
+- `query`: List collectors, inspect one collector, or enumerate ETW providers.
+- `start`: Start one existing collector or ETW session.
+- `stop`: Stop one existing collector or ETW session.
+- `delete`: Delete one collector definition after preserving ownership/evidence.
+- `update`: Change one existing collector definition.
+- `import`: Create/update a collector from reviewed XML.
+- `export`: Write one collector definition to XML.
+
+Options vary by family and collector type. The following high-value locators
+must be interpreted within the exact subcommand's installed help.
+
+<!-- mant:entries role=option case=insensitive -->
+- `-s`: Select a remote computer for a family that supports it.
+- `-config`: Read command options from a settings file.
+- `-n`: Set or select the collector name where that form requires it.
+- `-f`: Select counter-log output format such as BIN, CSV, TSV, or SQL.
+- `-o`: Select a base output path or SQL destination.
+- `-c`: Supply one or more exact performance-counter paths.
+- `-cf`: Read performance-counter paths from a file.
+- `-si`: Set the performance-counter sampling interval.
+- `-p`: Select an ETW provider with optional keyword mask and level.
+- `-pf`: Read ETW provider selections from a file.
+- `-xml`: Select the XML path for import/export operations.
+- `-b`: Set a begin time for a scheduled collector.
+- `-e`: Set an end time for a scheduled collector.
+- `-rf`: Set a maximum run duration.
+- `-max`: Set a maximum log size.
+- `-cnf`: Create a new output filename at the specified interval or size behavior.
+- `-u`: Select a run-as or remote identity; avoid inline passwords.
+- `-ets`: Send a supported command directly to an ETW session without scheduling.
+- `-y`: Suppress confirmation by answering Yes.
+- `/?`: Display top-level or family-specific installed help.
+
 ## Common mistakes
 
 - Starting a generic “all providers/counters” trace: overhead, disk growth,
@@ -50,7 +88,7 @@ discover performance-counter paths.
 - Importing unreviewed XML: it can change paths, commands, credentials, schedules,
   providers, resource use, and ACLs. Diff normalized definitions and use a fixture.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use `logman.exe` explicitly and pass names/paths as scalar strings. Capture
 stdout/stderr and `$LASTEXITCODE`, then verify collector status, file growth,

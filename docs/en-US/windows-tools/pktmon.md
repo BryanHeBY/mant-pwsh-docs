@@ -41,6 +41,60 @@ tenant data, and network topology. Obtain authorization, minimize scope and
 packet length, use a protected output directory, bound time and size, and
 define retention/deletion before capture.
 
+## Commands and shared parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `pktmon.exe`: Inspect or control Windows Packet Monitor.
+- `filter`: List, add, or remove packet filters.
+- `list`: List current packet-processing components.
+- `start`: Start packet capture, counters, and/or ETW event collection.
+- `stop`: Stop the shared Packet Monitor collection session.
+- `status`: Display current collection and logging state.
+- `unload`: Unload the Packet Monitor driver after an approved recovery decision.
+- `counters`: Display current flow and drop counters.
+- `reset`: Reset packet counters to zero.
+- `etl2txt`: Convert a copied Packet Monitor ETL to text.
+- `etl2pcap`: Convert a copied Packet Monitor ETL to PCAPNG.
+- `hex2pkt`: Decode packet bytes supplied in hexadecimal form.
+- `help`: Display top-level or subcommand-specific installed help.
+
+Long-option support varies substantially by Windows build and subcommand.
+These entries expose the options used in the bounded workflow above.
+
+<!-- mant:entries role=option case=insensitive -->
+- `--json`: Emit documented structured output for supported inventory/counter commands.
+- `--capture`: Enable packet capture rather than only event collection.
+- `--counters-only`: Collect counters without logging packet bytes.
+- `--trace`: Enable ETW provider event collection.
+- `--pkt-size`: Set captured bytes per packet; zero requests full packets.
+- `--file-name`: Select an explicit protected ETL destination.
+- `--file-size`: Set the per-file size limit for supported log modes.
+- `--log-mode`: Select circular, multi-file, real-time, or memory logging behavior.
+- `--comp`: Select packet-monitor component IDs after fresh discovery.
+- `--type`: Select packet/counter category or component type as documented by
+  the exact subcommand.
+- `--flags`: Select the packet-capture metadata/raw-packet bitmask.
+- `--provider`: Select an ETW provider name or GUID; repeat it for more providers.
+- `--keywords`: Select an ETW provider keyword mask.
+- `--level`: Select ETW event level where documented.
+- `--drop-only`: Restrict supported output/conversion to dropped packets.
+- `--component-id`: Restrict PCAPNG conversion to one component ID.
+- `--out`: Select a new text or PCAPNG conversion destination.
+- `--stats-only`: Display only ETL statistics during text conversion.
+- `--timestamp-only`: Use only a timestamp as the converted text event prefix.
+- `--metadata`: Include ETW event level and keyword metadata in converted text.
+- `--tmfpath`: Select trusted TMF search paths for WPP decoding.
+- `--brief`: Use compact supported text rendering.
+- `--verbose`: Include extended supported text fields.
+- `--hex`: Include packet bytes in supported text output.
+- `--no-ethernet`: Omit Ethernet headers from converted text packet rendering.
+- `--vxlan`: Select a custom VXLAN port for converted text decoding.
+- `--zero`: Include counters that are zero in both directions.
+- `--include-hidden`: Include counters from normally hidden components.
+- `--drop-reason`: Include the most recent reason for each drop counter.
+- `--live`: Continuously refresh counter output until interrupted.
+- `--refresh-rate`: Set live counter refreshes per second from 1 through 30.
+
 ## A bounded capture lifecycle
 
 Use separate, reviewed commands so each state transition can be verified:
@@ -134,7 +188,7 @@ Subcommands such as PCAPNG conversion and option spellings have varied. Query
 `pktmon help` and subcommand help on the target; an “unknown command” can be a
 version mismatch rather than corrupt capture data.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 `pktmon` is a native application. Invoke `pktmon.exe`, parse only documented
 JSON modes with `ConvertFrom-Json`, preserve raw output and `$LASTEXITCODE`,

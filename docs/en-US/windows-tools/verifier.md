@@ -30,6 +30,40 @@ kernel-mode and graphics drivers. It is a driver development/debugging tool,
 not a general production health scan. Microsoft warns that it can intentionally
 bug-check Windows and recommends only dedicated test/debug computers.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `verifier.exe`: Query or configure Driver Verifier on a dedicated Windows test host.
+
+Most configuration changes are effective after restart; volatile operations
+take effect immediately. Numeric flags and rule support are build-specific.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/standard`: Select Microsoft's standard verifier tests for the target build.
+- `/flags`: Select a build-specific numeric combination of verifier tests.
+- `/all`: Select all installed drivers for verification after restart; the
+  legal `/driver.exclude` modifier can omit exact binary names but currently
+  cannot be represented as a ManT option entry because its name contains a dot.
+- `/driver`: Select exact driver binary names; wildcards are not supported.
+- `/bootmode`: Select persistent, disable-after-fail, one-boot, or unusual-shutdown behavior.
+- `/query`: Display current Driver Verifier activity and counters.
+- `/querysettings`: Display next-boot settings, excluding volatile additions.
+- `/reset`: Clear configured settings so no drivers are verified after next restart.
+- `/rules`: Query, reset, default, or disable supported verifier rule IDs.
+- `/faults`: Configure low-resource allocation fault injection.
+- `/faultssystematic`: Control and inspect systematic low-resource simulation.
+- `/log`: Continuously write verifier statistics until interrupted.
+- `/interval`: Set the statistics-log interval in seconds.
+- `/volatile`: Apply supported flag/driver/fault changes immediately.
+- `/adddriver`: Add exact driver binary names to volatile verification.
+- `/removedriver`: Remove exact driver binary names from volatile verification.
+- `/iolevel`: Select supported I/O Verification level 1 or 2.
+- `/domain`: Configure verifier extensions for WDM, NDIS, KS, or audio drivers.
+- `/logging`: Enable extension rule-violation logging.
+- `/livedump`: Enable extension live-dump collection for violations.
+- `/help`: Display command-line help.
+- `/?`: Display command-line help.
+
 ## Common mistakes
 
 - Enabling `/standard /all` on a workstation/server/VM without a reproducer,
@@ -48,7 +82,7 @@ bug-check Windows and recommends only dedicated test/debug computers.
 - Treating a bug check as proof the named driver is the root cause without dump,
   stack, verifier settings, workload, driver build/signature, and reproduction.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use `verifier.exe` explicitly from an elevated test-host session and preserve
 stdout, native status (including reboot-needed), settings, driver inventory,

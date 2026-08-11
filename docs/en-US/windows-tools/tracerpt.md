@@ -26,6 +26,37 @@ summary, and report files; it can combine inputs and use provider/symbol metadat
 Decoded output depends on provider manifests/TMF/PDB/version and collection flags.
 An empty or partially rendered report does not prove the trace contained nothing.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `tracerpt.exe`: Parse copied ETL/performance logs or a named real-time ETW session.
+
+Positional inputs select one or more files. Real-time mode attaches to active
+sessions and therefore has a different lifecycle and disclosure boundary.
+
+<!-- mant:entries role=option case=insensitive -->
+- `-l`: Explicitly introduce one or more trace-log input paths.
+- `-rt`: Read one or more named real-time Event Trace sessions.
+- `-config`: Load command options from a settings file.
+- `-y`: Answer Yes to prompts, including overwrite confirmation.
+- `-f`: Select XML or HTML report format.
+- `-of`: Select CSV, EVTX, or XML event-dump format.
+- `-df`: Write a Microsoft-specific counting/reporting schema file.
+- `-int`: Dump interpreted event structure to a file.
+- `-rts`: Include the raw timestamp in trace headers for dump output only.
+- `-tmf`: Select one Trace Message Format definition file.
+- `-tp`: Select one or more trusted TMF search paths.
+- `-i`: Select provider image paths used to locate matching symbols.
+- `-pdb`: Select trusted symbol-server/search paths.
+- `-gmt`: Convert WPP payload timestamps to GMT.
+- `-rl`: Select system report level 1 through 5.
+- `-summary`: Write a summary artifact, using a default name if omitted.
+- `-o`: Write the event dump, using a default name if omitted.
+- `-report`: Write the workload report, using a default name if omitted.
+- `-lr`: Use best-effort decoding for events not matching available schema.
+- `-export`: Export an event-schema manifest.
+- `-?`: Display installed syntax.
+
 ## Common mistakes
 
 - Parsing the only ETL in place or using overwrite: preserve a read-only original,
@@ -41,7 +72,7 @@ An empty or partially rendered report does not prove the trace contained nothing
 - Generating huge reports from unbounded/multi-provider traces without capacity,
   sensitive-data, retention, and access-control review.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use `tracerpt.exe` explicitly with exact copied input and new output paths.
 Capture stdout/stderr and `$LASTEXITCODE`; verify outputs exist, parse correctly,
