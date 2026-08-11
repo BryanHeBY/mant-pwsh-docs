@@ -73,7 +73,8 @@
     {
       "name": "attrib",
       "source": "attrib.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/attrib.md"
     },
     {
       "name": "attributes",
@@ -544,7 +545,8 @@
     {
       "name": "forfiles",
       "source": "forfiles.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/forfiles.md"
     },
     {
       "name": "format",
@@ -778,7 +780,8 @@
     {
       "name": "mklink",
       "source": "mklink.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/mklink.md"
     },
     {
       "name": "mmc",
@@ -1486,7 +1489,8 @@
     {
       "name": "subst",
       "source": "subst.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/subst.md"
     },
     {
       "name": "sxstrace",
@@ -1588,7 +1592,8 @@
     {
       "name": "tree",
       "source": "tree.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/tree.md"
     },
     {
       "name": "tscon",
@@ -1750,7 +1755,8 @@
     {
       "name": "xcopy",
       "source": "xcopy.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/xcopy.md"
     }
   ]
 }

@@ -121,6 +121,23 @@ Verify match/no-match/error and identical/different/error separately, compare
 non-ASCII and long-line results with `Select-String`, and do not paste secrets
 or production data through the clipboard test.
 
+In another isolated temporary tree, exercise filesystem metadata and link
+scope before and after each operation:
+
+```powershell
+attrib.exe $fixture
+forfiles.exe /p $testRoot /s /m "*" /d -1 /c "cmd.exe /d /c echo @isdir @path"
+tree.com $testRoot /a /f
+subst.exe
+xcopy.exe "$testRoot\source\*" "$testRoot\copy\" /s /e /h /i /l
+```
+
+Use a currently unused drive letter for a `subst` create/query/remove cycle in
+both normal and elevated shells. On a non-production NTFS test volume, create
+and inspect each supported `mklink` type, then test whether `xcopy /b` copies
+the link or the target as documented. Never infer recursive scope from the
+rendered `tree` diagram alone.
+
 Review Windows-only commands on a non-production target. In particular, use
 `robocopy /L` before any real copy, query an existing known task before task
 changes, and query a known service before `sc.exe` configuration work.

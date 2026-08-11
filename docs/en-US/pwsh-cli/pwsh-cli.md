@@ -141,6 +141,12 @@ license in the document's provenance catalog before adapting material.
 - [ren](ren.md) / [rename](rename.md): in-place renames and wildcard-mask risks.
 - [del](del.md) / [erase](erase.md): permanent file deletion with exact previews.
 - [rd](rd.md) / [rmdir](rmdir.md): empty or recursive directory removal.
+- [attrib](attrib.md): inspect and change file/directory attributes safely.
+- [forfiles](forfiles.md): preview path/mask/date selections before actions.
+- [tree](tree.md): human-readable directory diagrams, not structured inventory.
+- [subst](subst.md): session-context virtual drive letters for local paths.
+- [mklink](mklink.md): symbolic links, hard links, and directory junctions.
+- [xcopy](xcopy.md): previewed legacy directory-tree copies and exit contracts.
 
 ## Windows text pipelines
 

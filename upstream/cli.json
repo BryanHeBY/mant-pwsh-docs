@@ -908,6 +908,58 @@
       ],
       "notes": ["The page treats the clipboard as shared interactive state and recommends Set-Clipboard for deliberate PowerShell text.", "Windows runtime verification remains required."]
     },
+    "attrib.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/attrib.md"}],
+      "notes": ["The page leads with attribute inspection and distinguishes links, ACLs, recursive file scope, and directory scope.", "Windows runtime verification remains required."]
+    },
+    "forfiles.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/forfiles.md"},
+        {"type": "web", "url": "https://stackoverflow.com/questions/39377372/use-forfiles-to-delete-a-folder-and-its-contents", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackoverflow.com/questions/71270665/why-does-windows-forfiles-with-option-d-10-not-find-files-last-modified-within", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The page makes preview, @isdir filtering, star mask, date sign/boundary, locale, and nested quoting explicit.", "Windows runtime verification remains required."]
+    },
+    "tree.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/tree.md"}],
+      "notes": ["The page treats tree output as human-readable presentation rather than a structured or link-aware inventory.", "Windows runtime verification remains required."]
+    },
+    "subst.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/subst.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/troubleshoot/windows-client/networking/mapped-drives-not-available-from-elevated-command", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackoverflow.com/questions/37182329/batch-file-working-differently-if-ran-in-administrator-mode", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The page distinguishes a path substitution from a volume and records persistence and UAC/logon-context visibility limits.", "Windows runtime verification remains required."]
+    },
+    "mklink.md": {
+      "kind": "cmd-builtin", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/mklink.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/windows/win32/fileio/creating-symbolic-links", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackoverflow.com/questions/185899/what-is-the-difference-between-a-symbolic-link-and-a-hard-link/185903", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The page verifies link and target ordering, refuses silent type substitution, and requires recursive-tool link policy.", "Windows runtime verification remains required."]
+    },
+    "xcopy.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/xcopy.md"},
+        {"type": "web", "url": "https://stackoverflow.com/questions/33752732/xcopy-still-asking-f-file-d-directory-confirmation", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackoverflow.com/questions/8219040/windows-copy-command-return-codes", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The page leads with /l, documents destination ambiguity, empty directories, links, partial copies, verification, and status edge cases.", "Windows runtime verification remains required."]
+    },
     "git.md": {
       "kind": "native-cli",
       "status": "reviewed",
