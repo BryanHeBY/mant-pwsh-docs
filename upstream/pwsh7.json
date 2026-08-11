@@ -448,6 +448,75 @@
         "The page emphasizes preserving object shape before formatting or serialization.",
         "Input-object examples require verification on all declared platforms."
       ]
+    },
+    "Get-ChildItem.md": {
+      "kind": "cmdlet",
+      "status": "draft",
+      "versions": [
+        "7.6"
+      ],
+      "platforms": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Management/Get-ChildItem.md"
+        }
+      ],
+      "notes": [
+        "The page emphasizes provider boundaries, literal paths, and bounded enumeration.",
+        "Provider and recursive examples require verification on all declared platforms."
+      ]
+    },
+    "Sort-Object.md": {
+      "kind": "cmdlet",
+      "status": "draft",
+      "versions": [
+        "7.6"
+      ],
+      "platforms": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Utility/Sort-Object.md"
+        }
+      ],
+      "notes": [
+        "The page emphasizes bounded, reproducible sort contracts.",
+        "Culture and input-object examples require verification on all declared platforms."
+      ]
+    },
+    "Import-Module.md": {
+      "kind": "cmdlet",
+      "status": "draft",
+      "versions": [
+        "7.6"
+      ],
+      "platforms": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Core/Import-Module.md"
+        }
+      ],
+      "notes": [
+        "The page emphasizes command conflicts, trusted sources, and reproducible module selection.",
+        "Module availability and compatibility require verification on all declared platforms."
+      ]
     }
   }
 }

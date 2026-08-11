@@ -76,6 +76,15 @@ Future introductory pages will cover moving scripts from Windows PowerShell
   at a time.
 - [Select-Object](Select-Object.md): select, calculate, expand, or bound
   object output before display or export.
+- [Get-ChildItem](Get-ChildItem.md): enumerate filesystem and provider items
+  with safe literal paths and bounded recursion.
+- [Sort-Object](Sort-Object.md): order objects by properties or calculated
+  values before selecting or exporting them.
+
+## Modules
+
+- [Import-Module](Import-Module.md): explicitly load trusted module commands
+  while managing conflicts and compatibility.
 
 ## Planned command reference
 
