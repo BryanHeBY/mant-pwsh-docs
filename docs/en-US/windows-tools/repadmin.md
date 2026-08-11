@@ -40,6 +40,38 @@ record the destination DC, inbound source partner, naming context, DSA object
 GUID, invocation ID, transport, last attempt, last success, consecutive failure
 count, status code, collection time, and selected DSA list.
 
+## Commands and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `repadmin.exe`: Inspect or administer AD replication on DCs selected by one
+  explicit DSA-list scope.
+
+Repadmin spells command families as slash tokens. Inventory and mutation
+families share selectors, so identify direction and naming context first.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/replsummary`: Summarize replication failures and largest deltas.
+- `/showrepl`: Display inbound partners and status by destination/naming context.
+- `/queue`: Display pending inbound replication tasks for one destination DC.
+- `/showconn`: Display connection objects for selected domain controllers.
+- `/showutdvec`: Display one DC's up-to-dateness vector for a naming context.
+- `/showobjmeta`: Display replication metadata for one AD object.
+- `/showattr`: Display selected object attributes from one DC.
+- `/showbridgeheads`: Display bridgehead-server selection for sites/transports.
+- `/replicate`: Initiate replication of one naming context from source to destination.
+- `/syncall`: Initiate broad replication using selected topology/flags.
+- `/kcc`: Trigger KCC topology recalculation on selected DCs.
+- `/options`: Query or change NTDS Settings options.
+- `/siteoptions`: Query or change site options.
+- `/regkey`: Query or change supported Repadmin-related DC registry settings.
+- `/removelingeringobjects`: Remove identified lingering objects under an
+  incident-specific source/partition procedure.
+- `/csv`: Request CSV rendering from a family that supports it.
+- `/all`: Expand supported output/operation to all naming contexts or partners.
+- `/verbose`: Emit extended result detail.
+- `/help`: Display top-level command help.
+- `/?`: Display command help.
+
 ## Command-family map
 
 - Health inventory: `/replsummary`, `/showrepl`, `/queue`, `/showconn`,
@@ -100,7 +132,7 @@ with a new invocation ID, or still authoritative for a partition. Correlate AD
 Sites and Services, DNS, computer/server/NTDS objects, backup/restore history,
 and every replica before metadata cleanup or lingering-object operations.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Repadmin writes localized text; `/showrepl /csv` is the most useful interchange
 form but should first be preserved as raw evidence. Encoding, a preamble, quoted

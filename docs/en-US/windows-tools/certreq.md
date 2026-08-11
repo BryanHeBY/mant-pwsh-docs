@@ -44,6 +44,34 @@ record the CA and request ID, then `-accept` on the same identity and machine
 that owns the pending private key. Each stage changes or discloses security-
 relevant state even when it only writes a request or certificate file.
 
+## Commands and common parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `certreq.exe`: Drive a Windows certificate request and enrollment lifecycle.
+
+The leading dash verb selects the operation; subsequent options change store,
+identity, CA, encoding, overwrite, and request-policy behavior.
+
+<!-- mant:entries role=option case=insensitive -->
+- `-new`: Create a private key and certificate request from an INF policy file.
+- `-submit`: Submit a request to an explicitly selected certification authority.
+- `-retrieve`: Retrieve a disposition/certificate by recorded CA request ID.
+- `-accept`: Install and link an issued response to its pending private key.
+- `-policy`: Create a policy request from an existing request and policy INF.
+- `-sign`: Sign a cross-certificate or qualified-subordination request.
+- `-enroll`: Enroll or renew from an enterprise certificate template.
+- `-machine`: Use the local-machine key/store context.
+- `-user`: Use the current-user key/store context.
+- `-config`: Select an exact `CAHost\CAName` configuration.
+- `-attrib`: Supply reviewed request attributes such as an enterprise template.
+- `-binary`: Use binary request/response handling where the selected verb supports it.
+- `-crl`: Include certificate-revocation-list handling for supported operations.
+- `-rpc`: Force RPC enrollment transport where documented.
+- `-f`: Permit replacement of an existing output artifact.
+- `-q`: Reduce console output without changing the operation.
+- `-v`: Emit verbose diagnostic output.
+- `-?`: Display verb-specific installed help.
+
 ## Request lifecycle
 
 | Stage | Primary artifact or state | Verification before continuing |
@@ -138,7 +166,7 @@ change who is represented and require CA support. Record requester and agent
 identities, constrain templates, protect signing keys, and audit the issued
 certificate rather than adding attributes until the CA accepts them.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 `certreq.exe` is a native program: it emits text rather than certificate
 objects. Quote every path and CA configuration, preserve stdout/stderr for the

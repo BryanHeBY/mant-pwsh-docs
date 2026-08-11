@@ -39,6 +39,33 @@ Promotion/demotion changes forest/domain topology, DNS, SYSVOL, replication,
 machine identity, services, credentials, FSMO/GC placement, and reboot state.
 Use a target-version, role-specific Microsoft deployment procedure.
 
+## Legacy modes and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `dcpromo.exe`: Run a legacy AD DS promotion, demotion, staged RODC, IFM, or
+  binary-removal workflow on Windows versions that support it.
+
+The historical property surface is extensive and topology-dependent. Prefer
+the matching `Test-ADDS*`, `Install-ADDS*`, or `Uninstall-ADDS*` cmdlet today.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/answer`: Read legacy promotion/demotion properties from an answer file.
+- `/unattend`: Run the selected legacy operation without the wizard.
+- `/adv`: Enable advanced install-from-media promotion options.
+- `/createdcaccount`: Precreate the AD account used by a staged RODC deployment.
+- `/useexistingaccount`: Attach to a precreated RODC account where supported.
+- `/uninstallbinaries`: Remove AD DS role binaries after a valid lifecycle decision.
+- `/forceremoval`: Force demotion when ordinary communication fails, leaving
+  cleanup and credential consequences for a separate recovery procedure.
+- `/forceremovalconfirm`: Confirm forced-removal behavior in supported legacy syntax.
+- `/replicationSourceDC`: Select an explicit source DC for promotion.
+- `/replicationSourcePath`: Select reviewed install-from-media content.
+- `/safemodeadminpassword`: Supply the DSRM password; never place it in CLI history.
+- `/administratorpassword`: Supply a post-demotion local password; avoid CLI exposure.
+- `/rebootonsuccess`: Control restart after a successful legacy operation.
+- `/rebootoncompletion`: Control restart after the selected legacy operation completes.
+- `/?`: Display top-level or operation-specific installed legacy help.
+
 ## Operation map
 
 - `/answer` and `/unattend` consume an answer file; command-line property forms
@@ -101,7 +128,7 @@ replication for every naming context, GC/RODC/FSMO expectations, event logs,
 time, backup, and client location/authentication. Do not declare success from a
 single exit code.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 For supported Server releases, use the explicit `Test-ADDS*`, `Install-ADDS*`,
 or `Uninstall-ADDSDomainController` command selected for the topology. Inspect

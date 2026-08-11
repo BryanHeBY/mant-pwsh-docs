@@ -37,6 +37,31 @@ First establish the domain's Dfsrmig global/local states and the target DC's
 actual replica-set membership. FRS objects and binaries can persist during or
 after transition; their existence alone is not proof that FRS is authoritative.
 
+## Commands and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `ntfrsutl.exe`: Inspect or alter legacy File Replication Service internals.
+- `idtable`: Dump FRS identity-table state for the selected server/set context.
+- `configtable`: Dump FRS configuration-table state.
+- `inlog`: Dump the inbound FRS change log.
+- `outlog`: Dump the outbound FRS change log.
+- `memory`: Display internal FRS memory state.
+- `threads`: Display internal FRS thread state.
+- `stage`: Display FRS staging state.
+- `ds`: Display FRS's directory-service configuration view.
+- `sets`: List active FRS replica sets known to one server.
+- `version`: Display FRS API and service versions.
+- `poll`: Display or change FRS directory polling behavior.
+
+Polling modifiers change when FRS reads directory configuration and therefore
+must not be mixed into an evidence-only session.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/quickly`: Select the documented fast polling interval.
+- `/slowly`: Select the documented slow polling interval.
+- `/now`: Trigger an immediate FRS configuration poll.
+- `/?`: Display installed legacy syntax.
+
 ## Command map
 
 - `idtable`, `configtable`, `inlog`, and `outlog` expose internal replication
@@ -91,7 +116,7 @@ Tables and logs can reveal topology, paths, filenames, accounts, partners,
 change history and operational failures. Bound the target and collection,
 protect evidence, and avoid parsing localized/unversioned structures as an API.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Invoke `ntfrsutl.exe` explicitly, pass the server as a separate argument, and
 capture `$LASTEXITCODE` plus raw output. Do not use string evaluation. There is

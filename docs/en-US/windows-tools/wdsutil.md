@@ -31,6 +31,53 @@ driver packages/groups/filters, pending clients, multicast transmissions,
 namespaces and Transport Server lifecycle. Most non-`Get` verbs change a live
 deployment control plane and can affect many machines on their next PXE boot.
 
+## Command families and global parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `wdsutil.exe`: Inspect or administer Windows Deployment Services and Transport Server.
+
+WDSUtil expresses its operations as slash options. The global `/Verbose` and
+`/Progress` options must immediately follow the executable.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/get-server`: Display one WDS server's configuration, images, or combined state.
+- `/get-device`: Display one prestaged device selected by stable identity.
+- `/get-alldevices`: Enumerate prestaged devices in the selected scope.
+- `/get-image`: Display one boot/install/capture/discover image.
+- `/get-allimages`: Enumerate images on one WDS server.
+- `/get-imagefile`: Inspect metadata and indexes in one image file.
+- `/get-imagegroup`: Display one image group's configuration and membership.
+- `/get-driverpackage`: Display one driver package by stable ID/name context.
+- `/get-alldriverpackages`: Enumerate driver packages on the server.
+- `/get-drivergroup`: Display one driver group and its filters/membership.
+- `/get-alldrivergroups`: Enumerate driver groups.
+- `/get-multicasttransmission`: Display one multicast transmission and clients.
+- `/get-allmulticasttransmissions`: Enumerate multicast transmissions.
+- `/get-namespace`: Display one Transport Server namespace.
+- `/get-allnamespaces`: Enumerate Transport Server namespaces.
+- `/get-transportserver`: Display Transport Server configuration.
+- `/set-device`: Change a prestaged device's identity or deployment assignments.
+- `/set-drivergroup`: Change one driver group's metadata/state.
+- `/set-drivergroupfilter`: Change one driver-group applicability filter.
+- `/set-driverpackage`: Change one driver package's metadata/state.
+- `/set-image`: Change one exact image's metadata, state, filter, or unattend mapping.
+- `/set-imagegroup`: Change one image group's metadata or access state.
+- `/set-server`: Change broad WDS server/PXE/deployment defaults.
+- `/set-transportserver`: Change Transport Server network/multicast settings.
+- `/set-multicasttransmission`: Change one transmission's scheduling/client policy.
+- `/start-namespace`: Start one exact Transport Server namespace.
+- `/start-server`: Start all Windows Deployment Services on the selected server.
+- `/start-transportserver`: Start the Transport Server service/surface.
+- `/stop-server`: Stop all WDS services and active deployment availability.
+- `/stop-transportserver`: Stop Transport Server and affect active namespaces/sessions.
+- `/server`: Select the exact WDS server; omission normally means local computer.
+- `/show`: Select `Config`, `Images`, or `All` for supported query families.
+- `/detailed`: Request extended query output.
+- `/verbose`: Enable global verbose output and place it immediately after WDSUtil.
+- `/progress`: Enable global progress output and place it immediately after WDSUtil.
+- `/skipverify`: Skip supported integrity verification and increase deployment risk.
+- `/?`: Display installed top-level or family help.
+
 ## Query before change
 
 Use the matching `Get-*` family and bind the exact server/object identity before
@@ -167,7 +214,7 @@ Microsoft requires global options directly after `wdsutil`. Preserve parser
 order, quote values containing spaces, and use installed help for the exact
 subcommand instead of normalizing WDS syntax like PowerShell parameters.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Call `wdsutil.exe` explicitly and capture `$LASTEXITCODE` immediately. Output
 is localized human text, not a stable object model; prefer the WDS PowerShell

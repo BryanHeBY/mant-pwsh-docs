@@ -38,6 +38,40 @@ Name the domain, computer, relationship, direction, calling identity, selected
 DC, and expected current state before invoking Netdom. A successful query is
 inventory, not proof that all DCs agree or replication has converged.
 
+## Command families and common parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `netdom.exe`: Inspect or administer AD computer membership, names, secure
+  channels, machine passwords, and trusts.
+- `query`: List selected workstation, server, DC, OU, trust, or FSMO objects.
+- `verify`: Verify a member workstation/server secure connection.
+- `add`: Add a workstation or server account to a domain.
+- `join`: Join a workstation or member server to a domain.
+- `move`: Move a workstation/member-server account to a different domain.
+- `remove`: Remove a workstation or member server from a domain.
+- `renamecomputer`: Rename a workstation or member server.
+- `computername`: Manage primary/alternate names for a computer, including DC workflow.
+- `reset`: Reset a member workstation/server secure channel.
+- `resetpwd`: Reset the local DC's machine-account password under a DC procedure.
+- `trust`: Create, verify, reset, remove, or configure a domain/forest trust.
+- `movent4bdc`: Perform the historical Windows NT 4.0 BDC migration operation.
+- `help`: Display top-level or family-specific help.
+
+Parameters vary by family. Never assume a same-named credential or target
+parameter has identical authority and side effects across member, DC, and trust use.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/domain`: Select the exact domain for a supported family.
+- `/server`: Select a domain controller used for the operation where supported.
+- `/userd`: Select an account for the target/destination domain.
+- `/passwordd`: Supply or prompt for the destination-domain password.
+- `/usero`: Select an account for the origin/trusted domain.
+- `/passwordo`: Supply or prompt for the origin-domain password.
+- `/securepasswordprompt`: Request the documented protected credential prompt.
+- `/verbose`: Emit extended diagnostic output.
+- `/reboot`: Restart the target after a supported operation, optionally after a delay.
+- `/?`: Display installed family syntax.
+
 ## Command-family map
 
 - Inventory: `query` supports domain objects such as workstations, servers,
@@ -103,7 +137,7 @@ selection, or a decommissioned host. Preserve DCDiag/Repadmin/NLTest evidence
 and identify the authoritative account state before any reset, join, remove,
 move, rename, password, or trust change.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Invoke `netdom.exe` explicitly, quote DNS names, capture `$LASTEXITCODE`, and
 preserve the full localized output. Avoid parsing success from one English

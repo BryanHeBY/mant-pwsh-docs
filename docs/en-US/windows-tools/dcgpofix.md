@@ -37,6 +37,20 @@ The well-known GUID identifies each default GPO even if someone renamed it.
 Inventory GUID, display name, AD object, SYSVOL content, ACLs, links, versions,
 WMI filters, and RSoP before interpreting what “default” means in that forest.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `dcgpofix.exe`: Recreate one or both well-known default domain GPOs as a
+  last-resort disaster-recovery operation.
+
+No option provides a preview or rollback. Help is the only routine read-only
+invocation of this executable.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/target`: Select `DOMAIN`, `DC`, or `BOTH` default policies for recreation.
+- `/ignoreschema`: Bypass the tool/schema compatibility check and increase risk.
+- `/?`: Display installed syntax without recreating a policy.
+
 ## Target map
 
 - `/target:domain` recreates the Default Domain Policy, including settings that
@@ -94,7 +108,7 @@ ACLs, links, effective policy, security logs, authentication, and business
 workloads. Do not force replication or delete conflict artifacts merely to make
 timestamps match.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use `dcgpofix.exe` explicitly and capture `$LASTEXITCODE` and all output in an
 approved recovery record. The GroupPolicy module provides typed inventory,

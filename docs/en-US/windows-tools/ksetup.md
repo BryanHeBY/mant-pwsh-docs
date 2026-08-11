@@ -34,6 +34,35 @@ Unlike a typical `krb5.conf`, Windows stores these mappings in the registry.
 `/setrealm`, `/addkdc`, `/addkpasswd`, `/mapuser`, realm/host mapping changes,
 flag changes, and password operations mutate local or trust-related state.
 
+## Commands and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `ksetup.exe`: Inspect or change Windows Kerberos realm interoperability state.
+
+Most operations modify the selected Windows computer, not the named KDC. Use
+`/server` only with commands whose local help documents remote targeting.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/dumpstate`: Display effective realm, KDC, password server, flags, and mappings.
+- `/listrealmflags`: List realm flags understood by this Windows build.
+- `/setrealm`: Set the computer's default Kerberos realm.
+- `/mapuser`: Map a Kerberos principal to a Windows account name.
+- `/addkdc`: Add a static KDC entry for one realm.
+- `/delkdc`: Delete one or all static KDC entries for a realm.
+- `/addkpasswd`: Add a Kerberos password-change server for one realm.
+- `/delkpasswd`: Delete one or all password-change servers for a realm.
+- `/addhosttorealmmap`: Add a host/domain suffix to realm mapping.
+- `/delhosttorealmmap`: Delete a host/domain suffix to realm mapping.
+- `/setrealmflags`: Replace the complete flag set for a realm.
+- `/addrealmflags`: Add selected flags to a realm.
+- `/delrealmflags`: Remove selected flags from a realm.
+- `/getenctypeattr`: Display configured encryption-type trust attributes.
+- `/setenctypeattr`: Set encryption-type trust attributes for a domain/realm.
+- `/setcomputerpassword`: Change the local computer account/realm password.
+- `/changepassword`: Change a mapped user's Kerberos password.
+- `/server`: Select a remote Windows computer for supported KSetup operations.
+- `/?`: Display installed syntax.
+
 ## Common mistakes
 
 ### Treating `ksetup` as an AD-domain configuration tool
@@ -78,7 +107,7 @@ invalidate an existing trust or session and expose secrets through process
 inspection, transcripts, logs, or shell history. Use an approved secret-safe
 workflow with rollback and recovery access.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Call `ksetup.exe` explicitly. PowerShell passes `/...` arguments as strings,
 but quoting still matters for names containing spaces. Check `$LASTEXITCODE`

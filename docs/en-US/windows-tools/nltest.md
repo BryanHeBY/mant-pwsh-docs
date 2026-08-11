@@ -39,6 +39,36 @@ domain, cached locator state, flags, credentials, and time all affect results.
 Record that context instead of treating a returned DC name as a forest-wide
 truth.
 
+## Commands and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `nltest.exe`: Query or change Netlogon locator, site, trust, secure-channel,
+  DNS-registration, and debug state according to installed syntax.
+
+These slash forms are top-level operation selectors, not interchangeable
+read-only flags. Query, verify, reset, and password-change semantics differ.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/dsgetsite`: Display the AD site selected for the current computer.
+- `/dsgetdc`: Ask DC Locator for a DC matching a domain and optional flags.
+- `/dclist`: List discovered domain controllers for one domain.
+- `/parentdomain`: Display the parent of one named domain.
+- `/domain_trusts`: Enumerate domain trust relationships and selected attributes.
+- `/trusted_domains`: Enumerate domains trusted by the selected computer/domain.
+- `/sc_query`: Display the last-used secure-channel state without live repair.
+- `/sc_verify`: Verify and potentially rebuild a broken secure channel.
+- `/sc_reset`: Reset the selected secure channel to an explicit DC where supplied.
+- `/sc_change_pwd`: Change the local member computer secure-channel password.
+- `/server`: Select a remote Windows computer's Netlogon service for supported forms.
+- `/user`: Select an alternate user for supported operations.
+- `/password`: Supply an alternate password; avoid literal secrets.
+- `/force`: Bypass cached DC Locator results and perform new discovery.
+- `/dsregdns`: Trigger Netlogon DNS registration.
+- `/dbflag`: Query or change Netlogon debug flags.
+- `/repl`: Invoke historical NT 4.0 BDC replication behavior, not AD replication.
+- `/sync`: Invoke historical NT 4.0 BDC synchronization behavior.
+- `/?`: Display exact target-build syntax.
+
 ## Command-family map
 
 - Site and locator discovery: `/dsgetsite`, `/dsgetdc:<domain>`,
@@ -100,7 +130,7 @@ domain relationships are security-sensitive. Bound collection, protect files,
 avoid literal passwords, and disable only logging that the approved procedure
 enabled after preserving required evidence.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Invoke `nltest.exe` explicitly and capture `$LASTEXITCODE`. Output is localized
 human text and is not a stable parser contract. Do not infer success from a DC

@@ -35,6 +35,33 @@ be reconstructed. A real `ktpass` run can change SPN/UPN attributes, account
 password/key material, encryption settings, and the output secret. For that
 reason the TLDR stops at prerequisite inventory.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `ktpass.exe`: Map an AD account to a Kerberos service principal and create
+  or transform MIT-compatible keytab key material.
+
+Many options change the directory account or secret as well as the output
+file. Principal case is significant even though option names are not.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/out`: Select the secret keytab output file.
+- `/princ`: Set the exact case-sensitive service principal stored in the keytab.
+- `/mapuser`: Select the AD account whose attributes/key material are affected.
+- `/mapop`: Select additive or replacing principal-to-account mapping behavior.
+- `/pass`: Set or prompt for the account/key password; literal values are exposed.
+- `/crypto`: Select the explicit Kerberos encryption type and avoid stale defaults.
+- `/ptype`: Select the principal type stored in the keytab.
+- `/kvno`: Set the key version number only when it matches the KDC/account state.
+- `/target`: Select the domain controller used for the directory operation.
+- `/in`: Read and modify an existing keytab rather than starting a new file.
+- `/setupn`: Control whether the selected account UPN is changed.
+- `/setpass`: Control whether the selected account password is changed.
+- `/rawsalt`: Supply an explicit salt only for a reviewed interoperability need.
+- `/dumpsalt`: Display the salt that the selected inputs would use.
+- `/answer`: Suppress prompts according to the documented Yes/No behavior.
+- `/?`: Display installed syntax and build-specific crypto choices.
+
 ## Common mistakes
 
 ### Assuming `/out` only writes a local file
@@ -88,7 +115,7 @@ KVNO, or crypto. Inspect it with the target platform's Kerberos tools, protect
 the artifact, request the exact SPN from a test client, and correlate AD/KDC
 and service logs. Do not infer success from exit code alone.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Call `ktpass.exe` explicitly and check `$LASTEXITCODE`. PowerShell interpolation
 can alter `$`, backticks, quotes, and other password characters, which is one

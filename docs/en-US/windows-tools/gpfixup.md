@@ -38,6 +38,27 @@ Gpfixup changes distributed AD and SYSVOL state. Record the domain-rename state,
 old/new DNS and NetBIOS names, exact writable target DC, GPO inventory/backups,
 replication health, and approved sequence before execution.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `gpfixup.exe`: Rewrite old domain-name dependencies in Group Policy after a
+  supported AD domain rename.
+
+There is no dry run. DNS and NetBIOS old/new options must be paired according
+to the exact rename that occurred.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/olddns`: Supply the pre-rename DNS domain name.
+- `/newdns`: Supply the post-rename DNS domain name.
+- `/oldnb`: Supply the pre-rename NetBIOS domain name.
+- `/newnb`: Supply the post-rename NetBIOS domain name.
+- `/dc`: Select one healthy writable DC in the renamed domain.
+- `/sionly`: Mutate only managed Software Installation references, not preview them.
+- `/v`: Emit verbose results.
+- `/user`: Select an alternate execution identity.
+- `/pwd`: Supply its password; use `*` to prompt instead of a literal secret.
+- `/?`: Display installed syntax.
+
 ## Parameter map
 
 - `/olddns` and `/newdns` must be paired when the DNS domain name changed.
@@ -96,7 +117,7 @@ verbose output, `$LASTEXITCODE`, timestamps, mappings, DC, GPO before/after
 reports and backup IDs. Microsoft's redirection example is Cmd syntax; in
 PowerShell use explicit stream capture and an encoding-aware protected file.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Invoke `gpfixup.exe` explicitly and pass each `/<name>:<value>` token as one
 argument. PowerShell's `2>&1` merges error output into the success stream, while

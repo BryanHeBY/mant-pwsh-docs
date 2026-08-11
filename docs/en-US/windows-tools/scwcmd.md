@@ -35,6 +35,35 @@ The TLDR uses only analysis and rendering. Even analysis touches remote hosts,
 writes results/logs, and can optionally log mismatch events, so its scope and
 output still require approval.
 
+## Commands and common parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `scwcmd.exe`: Run one Security Configuration Wizard automation family.
+- `analyze`: Compare one or more computers with a reviewed SCW policy.
+- `view`: Render an existing SCW XML result through a selected transform.
+- `configure`: Apply an SCW policy to one or more computers.
+- `rollback`: Apply and then consume the most recent rollback policy.
+- `register`: Register or unregister an SCW security-configuration database extension.
+- `transform`: Create a new Active Directory GPO from an SCW policy.
+
+Slash parameters are family-specific. `/m` is the narrowest remote target;
+`/ou` and `/i` can expand to many computers.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/m`: Select one exact target computer.
+- `/ou`: Select every eligible computer in an AD organizational unit.
+- `/i`: Read a list of target computers from a file.
+- `/p`: Select the reviewed SCW policy XML.
+- `/o`: Select a new analysis result directory.
+- `/l`: Log analysis mismatches in the application event log where documented.
+- `/x`: Select XML input for rendering.
+- `/t`: Select concurrency for multi-computer operations or a view transform,
+  according to the selected family.
+- `/u`: Select an alternate account for supported remote/domain operations.
+- `/pw`: Supply its password on the command line, exposing a secret.
+- `/g`: Set the new GPO display name for `transform`.
+- `/?`: Display top-level or family-specific installed help.
+
 ## Common mistakes
 
 ### Using `configure` when the intent was compliance analysis
@@ -84,7 +113,7 @@ Microsoft requires SCW to be installed on a remote server for analyze,
 configure, and rollback. A reachability or authorization failure is different
 from noncompliance; preserve the native status and per-machine log.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Call `scwcmd.exe` explicitly and quote `/name:value` as one argument when its
 value contains spaces. The command writes text plus XML/log artifacts rather

@@ -39,6 +39,24 @@ binary provenance, FSMO placement, and schema state rather than running a
 change. The DC deployment workflow can run required preparation automatically;
 manual Adprep should be an explicit design decision, not a ritual prerequisite.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `adprep.exe`: Prepare an existing AD forest/domain with the schema and
+  permissions required by the exact Windows Server installation media.
+
+Every operational mode changes Active Directory. `/wssg` only expands result
+codes, and `/silent` only suppresses output.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/forestprep`: Extend the schema and forest-wide configuration on the Schema Master.
+- `/domainprep`: Prepare the current domain on its Infrastructure Master.
+- `/gpprep`: With `/domainprep`, update permissions needed for RSoP planning.
+- `/rodcprep`: Prepare application-directory-partition permissions for RODCs.
+- `/wssg`: Return expanded status codes intended for scripted setup integration.
+- `/silent`: Suppress output and require `/wssg`; it does not suppress changes.
+- `/?`: Display syntax from the exact installation-media binary.
+
 ## Operation map
 
 - `/forestprep` updates the schema and forest; run it once on the Schema Master
@@ -97,7 +115,7 @@ replication, schema conflicts, missing privileges, or unavailable FSMO roles.
 Preserve logs and directory state, identify the exact completed update, correct
 the cause, and follow the target-version Microsoft deployment procedure.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Invoke the exact media path with `&`, not bare `adprep`. Capture all streams and
 `$LASTEXITCODE` without putting credentials in the command. Output/log text is

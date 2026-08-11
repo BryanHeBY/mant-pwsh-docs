@@ -39,6 +39,46 @@ typed objects and exposes parameter binding, confirmation, and help. Dnscmd
 remains important for compatibility and families not present on every module
 version.
 
+## Commands and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `dnscmd.exe`: Inspect or administer one explicit Microsoft DNS server.
+
+The optional first positional operand is the server. Always provide it in
+automation because omission silently targets the local computer.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/info`: Display server configuration without changing it.
+- `/enumzones`: List zones hosted by the selected server.
+- `/zoneinfo`: Display configuration for one exact zone.
+- `/enumrecords`: List records at one node or across a selected zone scope.
+- `/enumdirectorypartitions`: List AD-integrated DNS application partitions.
+- `/directorypartitioninfo`: Display one application partition's replica state.
+- `/zoneprint`: Print a textual representation of one zone.
+- `/zoneexport`: Write a server-local zone file for troubleshooting/export.
+- `/recordadd`: Add one exact resource record.
+- `/recorddelete`: Delete an exact record/RRset and potentially broaden when data is omitted.
+- `/nodedelete`: Delete one node, optionally including its descendants.
+- `/zoneadd`: Create a DNS zone with explicitly selected storage/type behavior.
+- `/zonedelete`: Delete one hosted zone.
+- `/zonepause`: Pause one zone.
+- `/zoneresume`: Resume one paused zone.
+- `/zonereload`: Reload one zone from its configured storage.
+- `/zonerefresh`: Initiate a secondary-zone refresh.
+- `/zoneresettype`: Change one zone's type and master/source configuration.
+- `/zoneresetmasters`: Replace a secondary/stub/forwarder master list.
+- `/zonechangedirectorypartition`: Move an AD-integrated zone between partitions.
+- `/config`: Change server- or zone-level DNS settings; it is not a query.
+- `/clearcache`: Clear the selected DNS server cache.
+- `/ageallrecords`: Add/update aging timestamps across selected records.
+- `/startscavenging`: Initiate server scavenging under current aging policy.
+- `/createdirectorypartition`: Create a DNS application directory partition.
+- `/deletedirectorypartition`: Delete a DNS application directory partition.
+- `/enlistdirectorypartition`: Add the selected DNS server as a partition replica.
+- `/unenlistdirectorypartition`: Remove the selected DNS server from a partition.
+- `/f`: Suppress confirmation for destructive families that document it.
+- `/?`: Display installed family help.
+
 ## Command-family map
 
 - Read-only inventory: `/info`, `/enumzones`, `/zoneinfo`, `/enumrecords`,
@@ -105,7 +145,7 @@ Pass an argument array directly to `dnscmd.exe`; zone, node, server, filename,
 and record data can otherwise become injected shell syntax. Use DnsServer
 cmdlets for typed bulk work and independently validate each exact object.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Invoke `dnscmd.exe`, preserve localized raw output, and capture
 `$LASTEXITCODE`. Do not parse columns as a stable schema. For typed automation,

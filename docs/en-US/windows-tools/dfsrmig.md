@@ -34,6 +34,23 @@ objects for migration and is not a general DFSR data-replication tool. Run globa
 state operations on the PDC Emulator; AD latency makes another DC's local copy
 non-authoritative for that decision.
 
+## Commands and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `dfsrmig.exe`: Query or change the domain-wide SYSVOL migration state.
+
+Global-state operations belong on the PDC Emulator. Object repair operations
+are narrow recovery tools, not generic cleanup.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/getglobalstate`: Display the global SYSVOL migration goal known on this DC.
+- `/setglobalstate`: Set goal 0 through 3 and initiate the corresponding phase.
+- `/getmigrationstate`: Compare every DC's local state with the global goal.
+- `/createglobalobjects`: Create missing migration objects under documented recovery conditions.
+- `/deleterontfrsmember`: Delete legacy FRS membership for one or all RODCs.
+- `/deleterodfsrmember`: Delete DFSR membership for one or all RODCs.
+- `/?`: Display installed migration syntax.
+
 ## State model
 
 - `0` Start: SYSVOL uses FRS.
@@ -92,7 +109,7 @@ temporarily unavailable or permanently removed, and complete supported DC
 recovery/demotion/metadata cleanup before continuing. Never delete a member
 object solely because its name appears in migration output.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Dfsrmig has no remote-target switch; use an approved interactive/logged session
 on the PDC or explicit PowerShell remoting as shown. Capture remote host,
