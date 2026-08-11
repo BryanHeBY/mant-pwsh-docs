@@ -408,6 +408,124 @@
         "This is an original ManT-oriented cmdlet guide, not a copy of the upstream reference.",
         "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
       ]
+    },
+    "Import-Module.md": {
+      "kind": "cmdlet",
+      "status": "draft",
+      "versions": ["5.1"],
+      "platforms": ["windows"],
+      "sources": [{
+        "type": "git",
+        "baseline": "powershell-docs",
+        "path": "reference/5.1/Microsoft.PowerShell.Core/Import-Module.md"
+      }],
+      "notes": [
+        "This is an original ManT-oriented cmdlet guide, not a copy of the upstream reference.",
+        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+      ]
+    },
+    "irm.md": {
+      "kind": "alias",
+      "status": "draft",
+      "versions": ["5.1"],
+      "platforms": ["windows"],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/5.1/Microsoft.PowerShell.Utility/Invoke-RestMethod.md"
+        },
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/5.1/Microsoft.PowerShell.Core/About/about_Aliases.md"
+        }
+      ],
+      "notes": [
+        "The page explicitly warns against downloading remote content into Invoke-Expression.",
+        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+      ]
+    },
+    "iwr.md": {
+      "kind": "alias",
+      "status": "draft",
+      "versions": ["5.1"],
+      "platforms": ["windows"],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/5.1/Microsoft.PowerShell.Utility/Invoke-WebRequest.md"
+        },
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/5.1/Microsoft.PowerShell.Core/About/about_Aliases.md"
+        }
+      ],
+      "notes": [
+        "The page adds explicit artifact-verification and legacy parser guidance.",
+        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+      ]
+    },
+    "iex.md": {
+      "kind": "alias",
+      "status": "draft",
+      "versions": ["5.1"],
+      "platforms": ["windows"],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/5.1/Microsoft.PowerShell.Utility/Invoke-Expression.md"
+        },
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/5.1/Microsoft.PowerShell.Core/About/about_Aliases.md"
+        }
+      ],
+      "notes": [
+        "The page treats parsing data as code as a security risk and documents safer alternatives.",
+        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+      ]
+    },
+    "curl.md": {
+      "kind": "alias",
+      "status": "draft",
+      "versions": ["5.1"],
+      "platforms": ["windows"],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/5.1/Microsoft.PowerShell.Core/About/about_Aliases.md"
+        },
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/5.1/Microsoft.PowerShell.Utility/Invoke-WebRequest.md"
+        }
+      ],
+      "notes": [
+        "The page is a Windows command-resolution guide rather than a claim that curl is a universal built-in alias.",
+        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+      ]
+    },
+    "powershell-7-compatibility.md": {
+      "kind": "guide",
+      "status": "draft",
+      "versions": ["5.1", "7.6"],
+      "platforms": ["windows"],
+      "sources": [{
+        "type": "git",
+        "baseline": "powershell-docs",
+        "path": "reference/docs-conceptual/whats-new/differences-from-windows-powershell.md"
+      }],
+      "notes": [
+        "The guide treats Windows PowerShell 5.1 and PowerShell 7 as separately verified runtimes.",
+        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+      ]
     }
   }
 }

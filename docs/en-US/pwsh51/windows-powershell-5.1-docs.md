@@ -58,8 +58,6 @@ applies to the older edition.
 - [native-commands](native-commands.md): executable resolution, argument
   conversion, text streams, exit codes, and safety.
 
-Further introductory pages will cover migrating to PowerShell 7.
-
 ## Command discovery
 
 - [Get-Command](Get-Command.md): resolve aliases, functions, cmdlets, scripts,
@@ -80,6 +78,22 @@ Further introductory pages will cover migrating to PowerShell 7.
   with safe literal paths and bounded recursion.
 - [Sort-Object](Sort-Object.md): order objects by properties or calculated
   values before selecting or exporting them.
+
+## Modules
+
+- [Import-Module](Import-Module.md): explicitly load trusted module commands
+  while managing conflicts and compatibility.
+
+## Aliases and web commands
+
+- [irm](irm.md): alias for `Invoke-RestMethod`, with safe API and remote-content guidance.
+- [iwr](iwr.md): alias for `Invoke-WebRequest`, including legacy 5.1 parser guidance.
+- [iex](iex.md): alias for `Invoke-Expression`; use direct invocation instead.
+- [curl](curl.md): distinguish the `Invoke-WebRequest` alias from `curl.exe`.
+
+## Migration
+
+- [Windows PowerShell 5.1 and PowerShell 7 compatibility](powershell-7-compatibility.md): test edition, language, module, native-command, profile, and remoting boundaries explicitly.
 
 ## Planned command reference
 
