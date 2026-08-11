@@ -1259,6 +1259,39 @@
       ],
       "notes": ["The TLDR is query/backup-only; the page quotes identifiers for PowerShell, distinguishes current/offline/firmware stores and current/default entries, contains high-risk set/import/security options, and requires encryption, firmware, and recovery planning.", "Windows runtime verification remains required."]
     },
+    "chkdsk.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases; options vary by filesystem and environment"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/chkdsk.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=315878&service=superuser&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR scans first, scopes repair to a backed-up lockable volume, and preserves the result code; the page distinguishes online, spot, logical, surface, and reduced checks and interprets exit codes 0 through 3.", "Windows runtime verification remains required."]
+    },
+    "chkntfs.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/chkntfs.md"}],
+      "notes": ["The TLDR queries before and after an exact schedule; the page distinguishes startup policy from repair, records cumulative /c versus replacing /x semantics, and contains exclusion, countdown, reset, and stable-volume identity risks.", "Windows runtime verification remains required."]
+    },
+    "defrag.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases; operations vary by filesystem and storage media"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/defrag.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=1150641&service=superuser&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR analyzes one volume and prefers media-appropriate /O; the page separates traditional defrag, retrim, tiers, slabs, and free-space consolidation and contains SSD folklore, all-volume concurrency, scheduled-task, dirty/free-space, and virtual-storage risks.", "Windows runtime verification remains required."]
+    },
+    "compact.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases; CompactOS and system compression vary by build"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/compact.md"},
+        {"type": "web", "url": "https://stackoverflow.com/questions/7928840/how-to-use-compact-exe-the-default-windows-compression-in-a-batch-file", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR inventories recursive and CompactOS state before exact file changes; the page distinguishes in-place NTFS/system compression from archives, directory defaults from existing descendants, and contains current-directory, partial-result, algorithm, CompactOS, and storage-accounting risks.", "Windows runtime verification remains required."]
+    },
     "git.md": {
       "kind": "native-cli",
       "status": "reviewed",

@@ -213,12 +213,14 @@
     {
       "name": "chkdsk",
       "source": "chkdsk.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/chkdsk.md"
     },
     {
       "name": "chkntfs",
       "source": "chkntfs.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/chkntfs.md"
     },
     {
       "name": "choice",
@@ -283,7 +285,8 @@
     {
       "name": "compact",
       "source": "compact.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/compact.md"
     },
     {
       "name": "compact vdisk",
@@ -334,7 +337,8 @@
     {
       "name": "defrag",
       "source": "defrag.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/defrag.md"
     },
     {
       "name": "del",

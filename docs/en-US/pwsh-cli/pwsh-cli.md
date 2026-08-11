@@ -206,10 +206,14 @@ license in the document's provenance catalog before adapting material.
 - [certreq](certreq.md): explicit certificate request and acceptance lifecycle.
 - [certutil](certutil.md): certificate, store, chain, and hash diagnostics.
 
-## Windows boot and recovery
+## Windows storage, boot, and recovery
 
 - [bcdboot](bcdboot.md): explicit Windows/system partition boot-file repair.
 - [bcdedit](bcdedit.md): BCD store, entry, firmware, and backup boundaries.
+- [chkdsk](chkdsk.md): filesystem scan, repair mode, and result-code handling.
+- [chkntfs](chkntfs.md): startup check scheduling and exclusion policy.
+- [defrag](defrag.md): media-aware optimization, retrim, tiers, and scope.
+- [compact](compact.md): NTFS, executable, and CompactOS compression boundaries.
 
 ## Cross-platform developer tools
 

@@ -193,6 +193,12 @@ bcdboot.exe /?
 bcdedit.exe /enum active /v
 bcdedit.exe /enum osloader /v
 bcdedit.exe /enum firmware /v
+chkdsk.exe C:
+chkntfs.exe C:
+chkntfs.exe /t
+defrag.exe C: /A /U /V
+compact.exe $testRoot
+compact.exe /CompactOS:query
 ```
 
 Start a disposable process, record its PID/path/start time, preview
@@ -242,6 +248,13 @@ BCDBoot, export/import a BCD store, or change boot entries/order merely to
 satisfy this checklist. Quote BCD identifiers in PowerShell, and record an
 unsupported `/enum firmware` as not applicable on BIOS systems rather than a
 documentation failure.
+Keep filesystem/storage maintenance read-only during release verification.
+Record exact volume identity, filesystem, media type, dirty state, free space,
+elevation, storage ownership, command, output, and `$LASTEXITCODE`. Do not
+repair or surface-scan a filesystem, schedule/exclude a startup check, optimize
+or retrim storage, or change NTFS/CompactOS compression merely to satisfy this
+checklist. Treat a read-only CHKDSK finding on an active volume as evidence to
+investigate, not authorization for automatic repair.
 Use a disposable NTFS test tree to display, verify, and save ACLs; do not reset,
 grant, deny, remove, restore, recurse ownership, encrypt/decrypt, rekey, or wipe
 free space merely for validation. Run the EFS check only when an approved

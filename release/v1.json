@@ -2,7 +2,7 @@
   "$schema": "release-manifest/v1",
   "release": "v1",
   "locale": "en-US",
-  "requiredDocumentCount": 167,
+  "requiredDocumentCount": 171,
   "sources": {
     "pwsh7": {
       "runtimePlatforms": ["windows", "linux", "macos"],
@@ -179,6 +179,10 @@
         "certutil.md",
         "bcdboot.md",
         "bcdedit.md",
+        "chkdsk.md",
+        "chkntfs.md",
+        "defrag.md",
+        "compact.md",
         "git.md",
         "ssh.md",
         "curl.md",
