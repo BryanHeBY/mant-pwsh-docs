@@ -70,6 +70,8 @@ reg.exe query KEY [/v VALUE | /ve] [/s] [/se SEPARATOR] [/f DATA]
 - `/v NAME`: Query a named value.
 - `/ve`: Query the unnamed default value.
 - `/s`: Recurse through all subkeys and values.
+- `/se SEPARATOR`: Set the single-character separator used when displaying
+  `REG_MULTI_SZ` data; the default separator is `\0`.
 - `/k`: Restrict a `/f` search to key names; the context-dependent `/d`
   selector restricts the same search to value data.
 - `/c`: Make search matching case-sensitive.

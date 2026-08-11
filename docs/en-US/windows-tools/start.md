@@ -55,6 +55,9 @@ is not automatically interpreted as the program path.
 - `/i`: Pass the original `cmd.exe` startup environment instead of the current
   environment.
 - `/min`, `/max`: Start the window minimized or maximized.
+- `/separate`, `/shared`: Start a 16-bit Windows program in separate or shared
+  memory space where the legacy subsystem supports it; these switches are not
+  supported on 64-bit platforms.
 - `/low`, `/normal`, `/high`, `/realtime`, `/abovenormal`, `/belownormal`:
   Select a process priority class. Avoid elevated priorities without a measured
   need.
@@ -65,9 +68,6 @@ is not automatically interpreted as the program path.
   does not enable Ctrl+C processing.
 - `/machine ARCHITECTURE`: Select `x86`, `amd64`, `arm`, or `arm64` where the
   installed Windows build supports this preview option.
-
-The `/separate` and `/shared` switches are for 16-bit programs and are not
-supported on 64-bit platforms.
 
 ## PowerShell boundaries
 

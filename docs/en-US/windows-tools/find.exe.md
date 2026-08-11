@@ -43,8 +43,8 @@ The search string is literal and required. When no filename follows it,
 - `/c`: Print only the count of selected lines for each input.
 - `/n`: Prefix selected lines with their source line numbers.
 - `/i`: Compare letters without regard to case.
-- `/off`: Include files with the offline attribute; `/offline` is the
-  documented full spelling.
+- `/off`, `/offline`: Include files with the offline attribute; `/offline` is
+  the documented full spelling and `/off` is its abbreviation.
 - `/?`: Display installed command help.
 
 The process exit status describes the search outcome separately from these

@@ -25,6 +25,8 @@ checkout:
 ```text
 npm run validate
 npm run validate:release
+npm run audit:content -- --strict
+npm run audit:syntax
 npm run validate:upstream
 ```
 
