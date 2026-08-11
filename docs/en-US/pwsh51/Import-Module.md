@@ -15,6 +15,10 @@
 - Import with a command prefix:
 
 `Import-Module {{module-name}} -Prefix {{prefix}}`
+
+- Select one discovered module object, then import that exact object through the pipeline:
+
+`Get-Module -ListAvailable {{module-name}} | Sort-Object Version -Descending | Select-Object -First 1 | Import-Module -PassThru`
 <!-- mant:tldr:end -->
 
 # Import-Module
@@ -48,6 +52,8 @@ from known sources.
 - `-Global`: Import commands into global scope.
 - `-PSSession SESSION`: Import commands from a module available through PowerShell remoting.
 - `-CimSession SESSION`: Import a CIM/CDXML module through the supplied CIM session.
+- `-ModuleInfo MODULE`: Import one or more discovered module objects; accepts pipeline input by value.
+- `-Assembly ASSEMBLY`: Import cmdlets and providers implemented by supplied assembly objects; accepts pipeline input by value and executes trusted code.
 
 ## Discovery and explicit imports
 
@@ -63,6 +69,25 @@ Import-Module Microsoft.PowerShell.Management
 Windows PowerShell can autoload a module when its command is invoked. An
 explicit import is still useful for an early prerequisite check or an exact
 version/path requirement.
+
+## Pipeline input
+
+`-Name`, `-FullyQualifiedName`, `-ModuleInfo`, and `-Assembly` have parameter
+sets that accept compatible values from the pipeline by value. Every incoming
+value can cause an import; `Get-Module -ListAvailable` can return multiple
+versions and paths, so filter and verify the exact object before piping it:
+
+```powershell
+Get-Module -ListAvailable Contoso.Tools |
+    Where-Object Version -eq '2.4.1' |
+    Where-Object Path -Like "$approvedRoot*" |
+    Select-Object -First 1 |
+    Import-Module -PassThru
+```
+
+An empty pipeline imports nothing, and `-PassThru` emits imported module objects
+for downstream inspection. Pipeline binding does not make an untrusted module
+safe; importing executes module or assembly code in the current session.
 
 ## Conflicts and scope
 

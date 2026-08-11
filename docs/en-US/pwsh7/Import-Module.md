@@ -15,6 +15,10 @@
 - Import with a command prefix:
 
 `Import-Module {{module-name}} -Prefix {{prefix}}`
+
+- Select one discovered module object, then import that exact object through the pipeline:
+
+`Get-Module -ListAvailable {{module-name}} | Sort-Object Version -Descending | Select-Object -First 1 | Import-Module -PassThru`
 <!-- mant:tldr:end -->
 
 # Import-Module
@@ -49,6 +53,8 @@ and formatting data. Import only trusted modules from known sources.
 - `-UseWindowsPowerShell`: On Windows, load a compatible Windows PowerShell module through the compatibility session.
 - `-PSSession SESSION`: Import commands from a module available in a PowerShell remoting session.
 - `-CimSession SESSION`: Import a CIM/CDXML module through the supplied CIM session.
+- `-ModuleInfo MODULE`: Import one or more discovered module objects; accepts pipeline input by value.
+- `-Assembly ASSEMBLY`: Import cmdlets and providers implemented by supplied assembly objects; accepts pipeline input by value and executes trusted code.
 
 ## Module discovery
 
@@ -65,6 +71,25 @@ Import-Module Microsoft.PowerShell.Management
 PowerShell can autoload a module when a command is invoked. Explicit import is
 still useful when a script needs an early, clear prerequisite check or must
 control which module version is used.
+
+## Pipeline input
+
+`-Name`, `-FullyQualifiedName`, `-ModuleInfo`, and `-Assembly` have parameter
+sets that accept compatible values from the pipeline by value. Every incoming
+value can cause an import; `Get-Module -ListAvailable` can return multiple
+versions and paths, so filter and verify the exact object before piping it:
+
+```powershell
+Get-Module -ListAvailable Contoso.Tools |
+    Where-Object Version -eq '2.4.1' |
+    Where-Object Path -Like "$approvedRoot*" |
+    Select-Object -First 1 |
+    Import-Module -PassThru
+```
+
+An empty pipeline imports nothing, and `-PassThru` emits imported module objects
+for downstream inspection. Pipeline binding does not make an untrusted module
+safe; importing executes module or assembly code in the current session.
 
 ## Command conflicts and prefixes
 
