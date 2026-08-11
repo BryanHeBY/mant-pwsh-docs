@@ -2,7 +2,7 @@
   "$schema": "release-manifest/v1",
   "release": "v1",
   "locale": "en-US",
-  "requiredDocumentCount": 133,
+  "requiredDocumentCount": 139,
   "sources": {
     "pwsh7": {
       "runtimePlatforms": ["windows", "linux", "macos"],
@@ -145,6 +145,12 @@
         "whoami.md",
         "openfiles.md",
         "driverquery.md",
+        "ipconfig.md",
+        "ping.md",
+        "tracert.md",
+        "pathping.md",
+        "hostname.md",
+        "nslookup.md",
         "git.md",
         "ssh.md",
         "curl.md",

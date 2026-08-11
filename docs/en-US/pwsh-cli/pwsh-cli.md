@@ -165,6 +165,15 @@ license in the document's provenance catalog before adapting material.
 - [openfiles](openfiles.md): shared-file queries and controlled disconnects.
 - [driverquery](driverquery.md): installed driver inventory boundaries.
 
+## Windows network diagnosis
+
+- [ipconfig](ipconfig.md): adapter, DHCP, DNS-server, and resolver-cache state.
+- [ping](ping.md): bounded ICMP reachability without service-health confusion.
+- [tracert](tracert.md): ICMP-visible paths, timeouts, and topology limits.
+- [pathping](pathping.md): sampled hop latency and loss with rate-limit caveats.
+- [hostname](hostname.md): short host identity versus DNS and cluster names.
+- [nslookup](nslookup.md): direct DNS queries versus application resolution.
+
 ## Cross-platform developer tools
 
 - [git](git.md): repository context, configuration, and native exit codes.

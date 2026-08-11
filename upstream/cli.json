@@ -1002,6 +1002,45 @@
       "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/driverquery.md"}],
       "notes": ["The page distinguishes drivers from devices and Driver Store packages and rejects signature presence as complete trust evidence.", "Windows runtime verification remains required."]
     },
+    "ipconfig.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/ipconfig.md"}],
+      "notes": ["The page leads with read-only configuration and cache evidence, scopes DHCP operations to one reviewed adapter, and treats output as localized presentation.", "Windows runtime verification remains required."]
+    },
+    "ping.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/ping.md"}],
+      "notes": ["The page bounds probe count and time, fixes address-family ambiguity, and separates ICMP reachability from application health.", "Windows runtime verification remains required."]
+    },
+    "tracert.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/tracert.md"}],
+      "notes": ["The page treats asterisks and near-side interfaces as partial ICMP evidence rather than complete physical topology.", "Windows runtime verification remains required."]
+    },
+    "pathping.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/pathping.md"}],
+      "notes": ["The page preserves sample parameters and distinguishes ICMP response rate-limiting from loss of forwarded traffic.", "Windows runtime verification remains required."]
+    },
+    "hostname.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/hostname.md"}],
+      "notes": ["The page distinguishes short host, DNS, environment, computer-system, and cluster identities.", "Windows runtime verification remains required."]
+    },
+    "nslookup.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/nslookup.md"},
+        {"type": "web", "url": "https://stackoverflow.com/questions/40865612/why-ip-of-nslookup-and-ping-is-not-the-same", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The page uses non-interactive typed queries and separates a direct DNS server answer from the Windows application resolver path.", "Windows runtime verification remains required."]
+    },
     "git.md": {
       "kind": "native-cli",
       "status": "reviewed",

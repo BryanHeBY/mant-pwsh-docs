@@ -149,6 +149,13 @@ systeminfo.exe /fo csv
 driverquery.exe /fo csv
 openfiles.exe /local
 openfiles.exe /query /fo csv /v
+ipconfig.exe /all
+ipconfig.exe /displaydns
+ping.exe /4 /n 4 /w 1000 127.0.0.1
+tracert.exe /d /4 /h 4 /w 1000 127.0.0.1
+pathping.exe /n /4 /q 2 /p 100 127.0.0.1
+hostname.exe
+nslookup.exe -type=A localhost
 ```
 
 Start a disposable process, record its PID/path/start time, preview
@@ -156,6 +163,11 @@ Start a disposable process, record its PID/path/start time, preview
 Test force/tree behavior only on an isolated process tree. Do not enable local
 open-file tracking merely for validation because it requires a restart and can
 affect performance; record the current setting and leave it unchanged.
+For network diagnostics, also test a reviewed reachable host and an expected
+unreachable target in the lab. Record the address family, DNS server, source
+network, complete command, and timestamp. Do not flush DNS or release/renew
+DHCP merely to satisfy verification, and do not interpret ICMP failure as
+proof that an application service is unavailable.
 
 Review Windows-only commands on a non-production target. In particular, use
 `robocopy /L` before any real copy, query an existing known task before task

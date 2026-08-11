@@ -633,7 +633,8 @@
     {
       "name": "hostname",
       "source": "hostname.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/hostname.md"
     },
     {
       "name": "icacls",
@@ -664,7 +665,8 @@
     {
       "name": "ipconfig",
       "source": "ipconfig.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/ipconfig.md"
     },
     {
       "name": "ipxroute",
@@ -919,7 +921,8 @@
     {
       "name": "nslookup",
       "source": "nslookup.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/nslookup.md"
     },
     {
       "name": "ntbackup",
@@ -966,7 +969,8 @@
     {
       "name": "pathping",
       "source": "pathping.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/pathping.md"
     },
     {
       "name": "pause",
@@ -991,7 +995,8 @@
     {
       "name": "ping",
       "source": "ping.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/ping.md"
     },
     {
       "name": "pktmon",
@@ -1592,7 +1597,8 @@
     {
       "name": "tracert",
       "source": "tracert.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/tracert.md"
     },
     {
       "name": "tree",
