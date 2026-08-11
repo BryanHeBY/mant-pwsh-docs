@@ -30,6 +30,34 @@ printer ports. It is a localized VBScript that must be run through
 `cscript.exe`. A port is spooler configuration; it is not the printer queue or
 proof that the network endpoint is the intended physical device.
 
+## Commands and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `prnport.vbs`: List, inspect, create, change, or delete Standard TCP/IP printer ports.
+
+Run the localized script through `cscript.exe`; a port is spooler configuration,
+not proof of physical device identity.
+
+<!-- mant:entries role=option case=insensitive -->
+- `-a`: Create a Standard TCP/IP printer port.
+- `-d`: Delete one exact port after checking every queue reference.
+- `-l`: List Standard TCP/IP ports on the selected server.
+- `-g`: Display configuration for one exact port.
+- `-t`: Change configuration for one exact port.
+- `-r`: Select the logical spooler port name.
+- `-s`: Select a remote print server; omission targets the local host.
+- `-u`: Select an alternate remote account.
+- `-w`: Supply its password inline and expose the secret.
+- `-o`: Select RAW or LPR transport.
+- `-h`: Set the printer or print-server network address.
+- `-q`: Set the LPR remote queue name.
+- `-n`: Set the RAW TCP port number, normally 9100.
+- `-m`: Enable or disable SNMP using the attached `e` or `d` value.
+- `-i`: Set the SNMP device index.
+- `-y`: Set the SNMP community string.
+- `-2`: Enable or disable LPR byte-count respooling.
+- `-?`: Display installed script syntax.
+
 ## Common mistakes
 
 ### Supplying the printer IP where a port name is required
@@ -63,7 +91,7 @@ Without `-s`, the local spooler is targeted. Never embed remote administrator
 passwords in command arguments; use the current approved identity and record
 the exact server.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Invoke the full `.vbs` path with `cscript.exe //NoLogo`; use `$env:WINDIR`
 instead of Cmd expansion. Output is localized text. Prefer `Get-PrinterPort`

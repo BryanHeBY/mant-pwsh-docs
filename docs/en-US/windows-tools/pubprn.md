@@ -30,6 +30,17 @@ printers on a server or for one UNC printer path. It is a localized VBScript
 invoked through `cscript.exe`. The operational form mutates the directory, so
 the TLDR stops at identity and prerequisite checks.
 
+## Invocation boundary
+
+<!-- mant:entries role=command case=insensitive -->
+- `pubprn.vbs`: Publish one shared printer or all server printers into AD DS.
+
+Both the server/UNC target and exact LDAP container are positional operands;
+the server form broadens publication to every qualifying shared printer.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/?`: Display installed script syntax.
+
 ## Common mistakes
 
 ### Passing a server when only one queue was intended
@@ -62,7 +73,7 @@ Names, locations, capabilities, and server topology become searchable. Review
 least disclosure and ACLs; do not publish an internal or sensitive device as a
 diagnostic test.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Invoke the selected `.vbs` with `cscript.exe //NoLogo`; use `$env:WINDIR`.
 Quote the full LDAP URI as one argument and check `$LASTEXITCODE`. Prefer typed

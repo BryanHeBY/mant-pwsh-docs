@@ -29,6 +29,25 @@
 job in a named Windows printer queue. It is a localized inbox VBScript invoked
 through `cscript.exe`.
 
+## Commands and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `prnjobs.vbs`: List, pause, resume, or cancel jobs in one Windows print queue.
+
+Re-list immediately before mutation because job IDs are runtime identities.
+
+<!-- mant:entries role=option case=insensitive -->
+- `-z`: Pause the exact job selected by `-j`.
+- `-m`: Resume the exact job selected by `-j`.
+- `-x`: Cancel the exact job selected by `-j`.
+- `-l`: List all jobs in the selected queue.
+- `-s`: Select a remote print server; omission targets the local host.
+- `-p`: Select the required logical printer queue.
+- `-j`: Select one freshly verified job ID.
+- `-u`: Select an alternate remote account.
+- `-w`: Supply its password inline and expose the secret.
+- `-?`: Display installed script syntax.
+
 ## Common mistakes
 
 ### Using a job ID without binding it to queue and server
@@ -60,7 +79,7 @@ Do not expose remote credentials in the process list. For automation use the
 current approved identity and prefer `Get-PrintJob`; VBScript output is localized
 and not a stable CSV/object contract.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Invoke the full `.vbs` path with `cscript.exe //NoLogo`; PowerShell does not
 expand `%WINDIR%`. Check `$LASTEXITCODE` immediately. `-x` is a script argument,

@@ -31,6 +31,18 @@ it is for startup/logon scripts and should not be run interactively. `-log`
 writes a per-user log under `%TEMP%` or a per-machine log under
 `%WINDIR%\Temp`.
 
+## Invocation boundary
+
+<!-- mant:entries role=command case=insensitive -->
+- `PushPrinterConnections.exe`: Apply deployed-printer Group Policy at startup/logon.
+
+Microsoft says not to run the utility interactively; its supported parameters
+serve policy-script diagnostics rather than ad hoc printer deployment.
+
+<!-- mant:entries role=option case=insensitive -->
+- `-log`: Write a per-user or per-machine debug log in the documented temp path.
+- `-?`: Display installed syntax.
+
 ## Common mistakes
 
 ### Running it manually as a repair command
@@ -64,7 +76,7 @@ Point and Print restrictions, package signatures, architecture, server trust,
 and spooler hardening can block connection realization after policy selection.
 Correlate the print and Group Policy event channels.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use `Get-Command` for nonexecuting discovery. PowerShell's current identity and
 session may differ from startup (`SYSTEM`) or the affected logon user. Invoke

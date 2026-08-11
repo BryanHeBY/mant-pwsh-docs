@@ -29,6 +29,28 @@
 unused/additional (`-x`) printer drivers. Run the language-specific VBScript
 through `cscript.exe`; it is not a native executable.
 
+## Commands and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `prndrvr.vbs`: List, install, or delete Windows printer drivers.
+
+This is a localized VBScript invoked through `cscript.exe`, not an executable.
+
+<!-- mant:entries role=option case=insensitive -->
+- `-a`: Install the exact driver model from approved package files.
+- `-d`: Delete one selected driver.
+- `-l`: List printer drivers on the selected server.
+- `-x`: Delete every unused/additional driver and potentially fax drivers.
+- `-m`: Select the exact driver model name defined by the INF.
+- `-v`: Select the historical driver version/type value.
+- `-e`: Select the driver environment/architecture.
+- `-s`: Select a remote print server; omission targets the local host.
+- `-u`: Select an alternate remote account.
+- `-w`: Supply its password inline and expose the secret.
+- `-h`: Select the directory containing driver files.
+- `-i`: Select the complete printer INF path.
+- `-?`: Display installed script syntax.
+
 ## Common mistakes
 
 ### Supplying a friendly queue name as the driver model
@@ -60,7 +82,7 @@ redirection can also change which script or system path a 32-bit host sees.
 Avoid `-u`/`-w` secrets in command lines. Use an approved current identity and
 record the exact server; omission of `-s` silently changes scope to local.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use `cscript.exe //NoLogo`, a full literal script path, and `$env:WINDIR` rather
 than `%WINDIR%`. Output is localized text. Check `$LASTEXITCODE`; for automation,

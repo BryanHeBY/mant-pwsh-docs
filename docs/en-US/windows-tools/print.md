@@ -38,6 +38,17 @@ or application-native documents. Select a supported application/driver workflow
 for the actual format and required media, duplex, orientation, color, finishing,
 copies, authentication and accounting behavior.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `print.exe`: Submit one or more text files to a legacy port or UNC print queue.
+
+The file operand is required; omission of destination silently selects LPT1.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/d`: Select LPT1-LPT3, COM1-COM4, or an exact UNC printer queue.
+- `/?`: Display installed syntax.
+
 ## Common mistakes
 
 ### Omitting `/d` and accidentally targeting LPT1
@@ -81,7 +92,7 @@ Scan and render in an isolated supported workflow, patch drivers/firmware, apply
 least privilege and queue authorization, and never print secrets merely as a
 diagnostic.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use `print.exe` explicitly because `print` can collide with language/tool names.
 `Out-Printer` uses Windows printing but still depends on host, renderer and queue

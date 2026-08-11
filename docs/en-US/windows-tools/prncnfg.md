@@ -30,6 +30,35 @@ printer queue. It is a VBScript under
 `%WINDIR%\System32\Printing_Admin_Scripts\<language>` and must be passed to
 `cscript.exe`; it is not a standalone executable.
 
+## Commands and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `prncnfg.vbs`: Display, configure, or rename one logical Windows printer queue.
+
+Run the localized script through `cscript.exe`; plus/minus state operands such
+as `+shared` remain in prose because ManT cannot yet index their token shape.
+
+<!-- mant:entries role=option case=insensitive -->
+- `-g`: Display configuration for the selected queue.
+- `-t`: Change queue configuration and behavioral flags.
+- `-x`: Rename the queue selected by `-P`.
+- `-S`: Select a remote print server; omission targets the local host.
+- `-P`: Select the required logical printer name.
+- `-z`: Set the new name used by rename mode.
+- `-u`: Select an alternate remote account.
+- `-w`: Supply its password inline and expose the secret.
+- `-r`: Set the spooler port name.
+- `-l`: Set printer location metadata.
+- `-h`: Set the share name.
+- `-m`: Set the printer comment.
+- `-f`: Set the separator-page filename.
+- `-y`: Set the accepted spool data type.
+- `-st`: Set the daily availability start time in 24-hour form.
+- `-ut`: Set the daily availability end time in 24-hour form.
+- `-i`: Set the default priority assigned to jobs.
+- `-o`: Set the queue routing priority.
+- `-?`: Display installed script syntax.
+
 ## Common mistakes
 
 ### Hard-coding the `en-US` directory
@@ -61,7 +90,7 @@ Inline passwords can leak through process inspection, transcripts, logs, and
 history. Use the current approved identity or a secret-safe remote-management
 channel rather than embedding `-u`/`-w`.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Call `cscript.exe //NoLogo` and pass the script's full path. PowerShell does not
 expand `%WINDIR%`; use `$env:WINDIR`. The result is text, not objects. Check

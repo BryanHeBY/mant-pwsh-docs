@@ -30,6 +30,24 @@ test page (`-e`), or cancels every job (`-x`). It has no status/list operation;
 use queue/job inventory before invoking this localized VBScript through
 `cscript.exe`.
 
+## Commands and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `prnqctl.vbs`: Pause/resume a queue, print a test page, or cancel every job.
+
+The script has no read-only status/list mode; inventory before calling it.
+
+<!-- mant:entries role=option case=insensitive -->
+- `-z`: Pause the entire selected queue.
+- `-m`: Resume the entire selected queue.
+- `-e`: Submit a printer test page.
+- `-x`: Cancel every job in the selected queue.
+- `-s`: Select a remote print server; omission targets the local host.
+- `-p`: Select the required logical printer queue.
+- `-u`: Select an alternate remote account.
+- `-w`: Supply its password inline and expose the secret.
+- `-?`: Display installed script syntax.
+
 ## Common mistakes
 
 ### Treating `-x` as one-job cancellation
@@ -59,7 +77,7 @@ queue, job, driver, port, event, and physical-device state before escalation.
 Without `-s`, the operation is local. Never put remote credentials in command
 arguments; use an approved current identity and re-read the exact target.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use `cscript.exe //NoLogo` plus the full `.vbs` path. PowerShell does not expand
 `%WINDIR%`. The script returns text/native status; inspect `$LASTEXITCODE`.

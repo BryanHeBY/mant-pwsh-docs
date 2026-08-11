@@ -29,6 +29,29 @@
 the default printer. It is a language-resource VBScript invoked by
 `cscript.exe`, not a standalone `prnmngr` executable.
 
+## Commands and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `prnmngr.vbs`: Add, delete, list, or select Windows printers and connections.
+
+The bare `c` modifier changes applicable operations to connection scope and is
+kept in prose rather than misrepresented as a hyphen option.
+
+<!-- mant:entries role=option case=insensitive -->
+- `-a`: Add one local printer or, with `c`, one printer connection.
+- `-d`: Delete one selected printer connection.
+- `-x`: Delete all printers or, with `c`, all connections in the selected scope.
+- `-g`: Display the current user's default printer.
+- `-t`: Set the selected printer as the current user's default.
+- `-l`: List printers on the selected server.
+- `-s`: Select a remote print server; omission targets the local host.
+- `-p`: Select the printer or connection name.
+- `-m`: Select the exact installed driver model.
+- `-r`: Select the existing spooler port name.
+- `-u`: Select an alternate remote account.
+- `-w`: Supply its password inline and expose the secret.
+- `-?`: Display installed script syntax.
+
 ## Common mistakes
 
 ### Confusing per-user connections with per-computer queues
@@ -61,7 +84,7 @@ signed driver, exact model, port address/protocol, and name collision first.
 Use `Get-Printer` for structured automation. Do not place a remote administrator
 password in command history/process arguments; use an approved current identity.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Invoke the full script path through `cscript.exe //NoLogo` and use
 `$env:WINDIR`, not `%WINDIR%`. Text output is localized. Check `$LASTEXITCODE`
