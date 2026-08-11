@@ -629,6 +629,30 @@
         "The page is a platform-specific command-resolution guide rather than a claim that curl is a universal built-in alias.",
         "Windows alias behavior and native executable availability require verification on all declared platforms."
       ]
+    },
+    "powershell-5.1-compatibility.md": {
+      "kind": "guide",
+      "status": "draft",
+      "versions": [
+        "5.1",
+        "7.6"
+      ],
+      "platforms": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/docs-conceptual/whats-new/differences-from-windows-powershell.md"
+        }
+      ],
+      "notes": [
+        "The guide treats PowerShell 7 and Windows PowerShell 5.1 as separately verified runtimes.",
+        "Module compatibility and Windows PowerShell remoting require Windows-specific verification."
+      ]
     }
   }
 }

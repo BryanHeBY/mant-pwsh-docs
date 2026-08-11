@@ -93,6 +93,10 @@ Future introductory pages will cover moving scripts from Windows PowerShell
 - [iex](iex.md): alias for `Invoke-Expression`; use safer direct invocation instead.
 - [curl](curl.md): resolve the Windows alias versus the native executable before using it.
 
+## Migration
+
+- [PowerShell 7 and Windows PowerShell 5.1 compatibility](powershell-5.1-compatibility.md): test edition, module, language, native-command, profile, and remoting boundaries explicitly.
+
 ## Planned command reference
 
 The first release will cover:
