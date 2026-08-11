@@ -172,6 +172,52 @@
         "The page is original guidance emphasizing literal data and native-command boundaries.",
         "Culture and target-native-parser examples require verification on all declared platforms."
       ]
+    },
+    "about_Pipelines.md": {
+      "kind": "about-topic",
+      "status": "draft",
+      "versions": [
+        "7.6"
+      ],
+      "platforms": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Core/About/about_Pipelines.md"
+        }
+      ],
+      "notes": [
+        "The page treats cmdlet object pipelines and native-command boundaries separately.",
+        "Native pipe and byte-stream behavior requires verification on all declared platforms."
+      ]
+    },
+    "about_Redirection.md": {
+      "kind": "about-topic",
+      "status": "draft",
+      "versions": [
+        "7.6"
+      ],
+      "platforms": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Core/About/about_Redirection.md"
+        }
+      ],
+      "notes": [
+        "The page separates stream routing from error and native exit-status policy.",
+        "Native redirection behavior requires verification on all declared platforms."
+      ]
     }
   }
 }

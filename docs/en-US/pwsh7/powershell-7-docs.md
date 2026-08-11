@@ -44,6 +44,10 @@ differences in newer stable releases.
   input, and native-command boundaries.
 - [about_Quoting_Rules](about_Quoting_Rules.md): literal, expandable, and
   multi-line strings.
+- [about_Pipelines](about_Pipelines.md): object flow, parameter binding, and
+  native-command boundaries.
+- [about_Redirection](about_Redirection.md): success, diagnostic, and
+  information stream routing.
 
 Future introductory pages will cover command discovery, using the help system,
 and moving scripts from Windows PowerShell 5.1.
