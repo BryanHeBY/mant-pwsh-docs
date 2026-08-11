@@ -76,6 +76,9 @@ sc.exe query
 cmd.exe /d /c ver
 reg.exe query HKCU\Environment
 Get-Command explorer.exe, control.exe, mmc.exe, rundll32.exe -All
+cmd.exe /d /v:on /c "set MANT_TEST=value & if not !MANT_TEST!==value exit /b 1"
+choice.exe /?
+timeout.exe /?
 ```
 
 Review Windows-only commands on a non-production target. In particular, use

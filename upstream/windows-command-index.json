@@ -152,7 +152,8 @@
     {
       "name": "call",
       "source": "call.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/call.md"
     },
     {
       "name": "cd",
@@ -212,7 +213,8 @@
     {
       "name": "choice",
       "source": "choice.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/choice.md"
     },
     {
       "name": "cipher",
@@ -428,7 +430,8 @@
     {
       "name": "endlocal",
       "source": "endlocal.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/endlocal.md"
     },
     {
       "name": "end restore",
@@ -458,7 +461,8 @@
     {
       "name": "exit",
       "source": "exit.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/exit.md"
     },
     {
       "name": "expand",
@@ -1314,7 +1318,8 @@
     {
       "name": "set environmental variables",
       "source": "set_1.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/set.md"
     },
     {
       "name": "set shadow copy",
@@ -1324,7 +1329,8 @@
     {
       "name": "setlocal",
       "source": "setlocal.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/setlocal.md"
     },
     {
       "name": "setspn",
@@ -1520,7 +1526,8 @@
     {
       "name": "timeout",
       "source": "timeout.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/timeout.md"
     },
     {
       "name": "title",

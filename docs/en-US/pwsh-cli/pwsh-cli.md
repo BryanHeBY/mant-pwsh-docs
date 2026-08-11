@@ -114,6 +114,16 @@ license in the document's provenance catalog before adapting material.
 - [reg](reg.md): query, views, types, backup, modification, and verification.
 - [rundll32](rundll32.md): documented entry points and arbitrary-export hazards.
 
+## Cmd batch state and interaction
+
+- [set](set.md): cmd environment variables versus PowerShell's `set` alias.
+- [setlocal](setlocal.md): localized batch state and delayed expansion.
+- [endlocal](endlocal.md): restore a batch scope and safely design returned values.
+- [call](call.md): invoke batch files and label subroutines without losing control flow.
+- [choice](choice.md): single-character prompts and one-based result handling.
+- [timeout](timeout.md): Windows delays, redirected input, and name conflicts.
+- [exit](exit.md): distinguish batch return codes from terminating `cmd.exe`.
+
 ## Cross-platform developer tools
 
 - [git](git.md): repository context, configuration, and native exit codes.

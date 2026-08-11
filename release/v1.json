@@ -2,7 +2,7 @@
   "$schema": "release-manifest/v1",
   "release": "v1",
   "locale": "en-US",
-  "requiredDocumentCount": 87,
+  "requiredDocumentCount": 94,
   "sources": {
     "pwsh7": {
       "runtimePlatforms": ["windows", "linux", "macos"],
@@ -99,6 +99,13 @@
         "mmc.md",
         "reg.md",
         "rundll32.md",
+        "set.md",
+        "setlocal.md",
+        "endlocal.md",
+        "call.md",
+        "choice.md",
+        "timeout.md",
+        "exit.md",
         "git.md",
         "ssh.md",
         "curl.md",

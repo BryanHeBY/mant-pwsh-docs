@@ -584,6 +584,111 @@
         "The community source illustrates the real failure mode without serving as a vendor support contract."
       ]
     },
+    "set.md": {
+      "kind": "cmd-builtin",
+      "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"],
+      "platforms": ["windows"],
+      "sources": [{
+        "type": "git",
+        "baseline": "windowsserverdocs",
+        "path": "WindowsServerDocs/administration/windows-commands/set_1.md"
+      }],
+      "notes": [
+        "The page distinguishes cmd environment variables from PowerShell's set alias and process environment scope.",
+        "Windows runtime verification remains required."
+      ]
+    },
+    "setlocal.md": {
+      "kind": "cmd-builtin",
+      "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"],
+      "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/setlocal.md"},
+        {
+          "type": "web",
+          "url": "https://stackoverflow.com/questions/13704223/how-do-you-use-setlocal-in-a-batch-file",
+          "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"},
+          "checkedAt": "2026-08-11"
+        }
+      ],
+      "notes": [
+        "The community source records the high-frequency parse-time versus delayed-expansion confusion.",
+        "Windows runtime verification remains required."
+      ]
+    },
+    "choice.md": {
+      "kind": "native-cli",
+      "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"],
+      "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/choice.md"},
+        {
+          "type": "web",
+          "url": "https://stackoverflow.com/questions/16902319/using-choice-with-cmd-script",
+          "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"},
+          "checkedAt": "2026-08-11"
+        }
+      ],
+      "notes": [
+        "The page explains one-based results, 0 and 255 exceptional results, and decreasing IF ERRORLEVEL tests.",
+        "Windows runtime verification remains required."
+      ]
+    },
+    "timeout.md": {
+      "kind": "native-cli",
+      "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"],
+      "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/timeout.md"},
+        {
+          "type": "web",
+          "url": "https://stackoverflow.com/questions/74842935/powershell-batch-script-timeout-error-input-redirection-is-not-supported-exiti",
+          "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"},
+          "checkedAt": "2026-08-11"
+        }
+      ],
+      "notes": [
+        "The page distinguishes a delay from a process deadline and records the redirected-input failure mode.",
+        "Windows runtime verification remains required."
+      ]
+    },
+    "call.md": {
+      "kind": "cmd-builtin",
+      "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"],
+      "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/call.md"},
+        {"type": "web", "url": "https://stackoverflow.com/questions/24176297/windows-batch-function-removing-special-character-from-arguments", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The page warns about CALL's extra expansion pass and control-flow boundary.", "Windows runtime verification remains required."]
+    },
+    "endlocal.md": {
+      "kind": "cmd-builtin",
+      "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"],
+      "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/endlocal.md"},
+        {"type": "web", "url": "https://stackoverflow.com/questions/15494688/batch-script-make-setlocal-variable-accessed-by-other-batch-files", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The page limits the one-line value-transfer idiom to parser-safe data.", "Windows runtime verification remains required."]
+    },
+    "exit.md": {
+      "kind": "cmd-builtin",
+      "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"],
+      "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/exit.md"},
+        {"type": "web", "url": "https://stackoverflow.com/questions/14905876/how-to-return-an-error-code-without-closing-the-command-prompt-window", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The page distinguishes batch /b return, cmd process termination, and PowerShell exit semantics.", "Windows runtime verification remains required."]
+    },
     "git.md": {
       "kind": "native-cli",
       "status": "reviewed",
