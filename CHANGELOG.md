@@ -10,7 +10,7 @@ bundles.
 
 ### Added
 
-- First English release inventory: 336 reviewed ManT pages across `pwsh7`,
+- First English release inventory: 342 reviewed ManT pages across `pwsh7`,
   `pwsh51`, and `pwsh-cli`.
 - Broad `pwsh7` and `pwsh51` shell manuals, focused language/command pages,
   compatibility guides, and custom `irx` shorthand resolution guidance.
@@ -20,6 +20,9 @@ bundles.
   recognition, floppy DiskComp/DiskCopy, disk-counter and free-space gates,
   Kernel Transaction Manager inspection, and deprecated PageFileConfig/PentNT
   migration guides with query-first TLDRs and explicit no-direct-run boundaries.
+- Windows PowerShell ISE edition-aware launching, built-in/standalone Sysmon,
+  TPM virtual smart-card migration, retired Windows To Go startup, RegIni ACL
+  replacement, and bounded WinSAT memory/media assessment guides.
 - Windows shell, GUI, Settings, Control Panel, MMC, Registry, and Rundll32
   entry-point guides, plus matching `Start-Process`, `start`, `Invoke-Item`,
   and `ii` pages for PowerShell 7 and Windows PowerShell 5.1.

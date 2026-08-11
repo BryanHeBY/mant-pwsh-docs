@@ -1166,7 +1166,8 @@
     {
       "name": "powershell ise",
       "source": "powershell_ise.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/powershell_ise.md"
     },
     {
       "name": "print",
@@ -1237,7 +1238,8 @@
     {
       "name": "pwlauncher",
       "source": "pwlauncher.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/pwlauncher.md"
     },
     {
       "name": "pwsh",
@@ -1314,7 +1316,8 @@
     {
       "name": "regini",
       "source": "regini.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/regini.md"
     },
     {
       "name": "regsvr32",
@@ -1711,7 +1714,8 @@
     {
       "name": "sysmon",
       "source": "sysmon.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/sysmon.md"
     },
     {
       "name": "sysocmgr",
@@ -1797,7 +1801,8 @@
     {
       "name": "tpmvscmgr",
       "source": "tpmvscmgr.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/tpmvscmgr.md"
     },
     {
       "name": "tracerpt",
@@ -1974,12 +1979,14 @@
     {
       "name": "winsat mem",
       "source": "winsat-mem.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/winsat.md"
     },
     {
       "name": "winsat mfmedia",
       "source": "winsat-mfmedia.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/winsat.md"
     },
     {
       "name": "wmic",

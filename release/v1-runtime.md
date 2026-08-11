@@ -782,6 +782,14 @@ transaction merely for evidence. Query page-file configuration, runtime usage an
 automatic management separately without changing settings or rebooting. Do not
 enable PentNT emulation. DiskPerf changes require a separately approved restart;
 FreeDisk checks must use an explicit unit and current credentials without `/p`.
+Keep PowerShell ISE verification to a no-profile Windows PowerShell 5.1 GUI
+session; never execute a script or selection merely for evidence. Inventory
+Sysmon implementation, service, configuration, schema and existing events only;
+do not install/reconfigure/uninstall either built-in or standalone delivery.
+Keep TpmVscMgr to help and read-only TPM/reader/certificate inventory; never
+create/destroy a card or expose PIN/PUK/admin keys. Do not change PwLauncher or
+reboot for evidence. Keep RegIni to help/export/ACL/input/hash review and WinSAT
+to help unless a disposable idle benchmark host and trusted media are approved.
 Keep MSTSC to help/local-monitor inventory: do not connect, authenticate, open an
 untrusted RDP file, redirect resources or shadow/control a session for evidence.
 Keep SxSTrace to help-only unless a disposable failing application and new protected

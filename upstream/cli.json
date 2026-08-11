@@ -2667,6 +2667,54 @@
       "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/pentnt.md"}],
       "notes": ["Microsoft marks PentNT deprecated and limits its purpose to the historical Pentium floating-point division defect. The TLDR inventories the legacy executable, CPU, OS and exact script references without enabling emulation.", "Windows runtime verification remains read-only resolution, processor/OS inventory and scoped text search only; no PentNT execution, emulation, startup, boot, firmware, hypervisor or script mutation is permitted merely for evidence."]
     },
+    "powershell_ise.md": {
+      "kind": "windows-gui-cli", "status": "reviewed", "versions": ["Windows PowerShell 5.1 graphical host; not a PowerShell 7 host and requires a GUI"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/powershell_ise.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_windows_powershell_ise?view=powershell-5.1", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/powershell/scripting/whats-new/migrating-from-windows-powershell-51-to-powershell-7", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-ie/answers/questions/306631/powershell-7-ise-not-visible-in-windows-10", "license": {"spdx": "LicenseRef-Microsoft-Web-Terms", "url": "https://www.microsoft.com/en-us/legal/terms-of-use"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official migration guidance and recurring Q&A establish that ISE hosts Windows PowerShell 5.1 only and VS Code with the PowerShell extension is the PowerShell 7 route. The TLDR proves resolution/edition and opens no-profile editing sessions.", "Windows runtime verification remains resolution/version and opening/closing a no-profile empty or reviewed-file session only; no script, selection, profile, module, debugger, remoting, policy or feature mutation is permitted merely for evidence."]
+    },
+    "sysmon.md": {
+      "kind": "security-diagnostic-cli", "status": "reviewed", "versions": ["built-in optional feature on supported Windows 11 builds from February 2026; standalone Sysinternals delivery has an independent version"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/sysmon.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/windows/security/operating-system-security/sysmon/how-to-enable-sysmon", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/sysinternals/downloads/", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Current Microsoft guidance establishes the 2026 built-in feature, no coexistence with standalone Sysmon, telemetry-not-prevention scope and configuration requirements. The TLDR identifies implementation/service/config/schema/channel before change.", "Windows runtime verification remains signature/version, service, current configuration/schema and bounded existing-event reads only; no optional feature, service/driver, manifest, EULA, configuration, event, forwarding, retention or uninstall mutation is permitted merely for evidence."]
+    },
+    "tpmvscmgr.md": {
+      "kind": "security-diagnostic-cli", "status": "reviewed", "versions": ["Windows TPM virtual smart-card lifecycle; Microsoft recommends Windows Hello for Business or FIDO2 for new deployments"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/tpmvscmgr.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/windows/security/hardware-security/tpm/how-windows-uses-the-tpm", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Microsoft defines create/destroy, public DEFAULT secrets, discarded RANDOM admin keys, /generate filesystem and irreversible instance deletion while recommending modern authentication for new deployments. The TLDR is help/TPM/reader/certificate inventory only.", "Windows runtime verification remains help and read-only TPM/PnP/certificate inventory only; no card, PIN/PUK/admin key, TPM, certificate, enrollment, authentication, DCOM or device mutation is permitted merely for evidence."]
+    },
+    "pwlauncher.md": {
+      "kind": "deprecated-native-cli", "status": "reviewed", "versions": ["legacy Windows To Go startup option; Windows To Go stopped development in Windows 10 version 1903"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/pwlauncher.md"}],
+      "notes": ["Microsoft defines only enable/disable and warns that enable tries any inserted USB device; the retired Windows To Go lifecycle makes this primarily diagnosis/retirement tooling. The TLDR inventories executable, firmware and USB disks before an approved disable.", "Windows runtime verification remains help/firmware/USB inventory only; no PwLauncher, firmware, boot, BCD, USB, encryption, recovery or reboot mutation is permitted merely for evidence."]
+    },
+    "regini.md": {
+      "kind": "destructive-native-cli", "status": "reviewed", "versions": ["Windows registry script utility; kernel paths, registry views, offline hives and historical ACL numbers vary by context"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/regini.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/troubleshoot/windows-client/application-management/change-registry-values-permissions", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Microsoft documents a file-only mutation interface and explicitly warns that permission lists replace rather than edit current ACLs. The TLDR backs up/query ACL/reviews and hashes the script before showing one approved application.", "Windows runtime verification remains help plus read-only export/ACL/script/hash inspection against an approved fixture; no RegIni execution, registry, ACL, hive, service, remote or startup mutation is permitted merely for evidence."]
+    },
+    "winsat.md": {
+      "kind": "native-cli-family", "status": "reviewed", "versions": ["Windows assessment tooling; results depend on build, hardware, drivers, topology, power, workload and codecs"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/winsat-mem.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/winsat-mfmedia.md"}
+      ],
+      "notes": ["Microsoft defines bounded memory-copy and Media Foundation decode workloads, default high priority/per-core allocation, XML overwrite and media timing/PMP/audio modes. The TLDR bounds load and uses a trusted fixture/new artifact.", "Windows runtime verification remains help only unless an idle disposable Windows performance host and trusted media fixture are approved; no production load, untrusted parsing, audio, existing artifact overwrite, power/driver/codec or system mutation is permitted merely for evidence."]
+    },
     "change.md": {
       "kind": "native-cli-family", "status": "reviewed", "versions": ["Windows RD Session Host role; logon/install-mode applicability and legacy COM behavior vary by role/build"], "platforms": ["windows"],
       "sources": [

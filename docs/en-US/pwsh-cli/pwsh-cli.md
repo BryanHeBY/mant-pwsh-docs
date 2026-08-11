@@ -136,6 +136,7 @@ license in the document's provenance catalog before adapting material.
 
 ## Windows performance counters and tracing
 
+- [winsat](winsat.md): bounded memory-bandwidth and Media Foundation decode assessments with workload/context controls.
 - [logman](logman.md): Data Collector Set and ETW provider inventory before lifecycle changes.
 - [typeperf](typeperf.md): target-localized counter discovery and bounded live sampling.
 - [relog](relog.md): inspect, select, convert, and resample copied performance logs.
@@ -146,8 +147,10 @@ license in the document's provenance catalog before adapting material.
 
 ## Windows packet and security diagnostics
 
+- [sysmon](sysmon.md): built-in-versus-standalone service/driver telemetry, configuration schema, filtering, and event-channel boundaries.
 - [pktmon](pktmon.md): filtered, bounded packet counters/capture with component, privacy, lifecycle, and lossy-conversion boundaries.
 - [tpmtool](tpmtool.md): TPM information, protected log gathering, and bounded driver tracing without clear/provision confusion.
+- [tpmvscmgr](tpmvscmgr.md): TPM virtual smart-card inventory, irreversible lifecycle, public-default-secret, and modern-authentication migration boundaries.
 
 ## Windows system diagnostics and maintenance
 
@@ -189,6 +192,7 @@ license in the document's provenance catalog before adapting material.
 
 ## Windows shell, GUI, and settings
 
+- [powershell_ise](powershell_ise.md): Windows PowerShell 5.1-only graphical editor/debugger and PowerShell 7 migration boundary.
 - [cmd](cmd.md): cmd builtins, child-shell parsing, AutoRun, and exit status.
 - [start](start.md): cmd launch semantics versus PowerShell `Start-Process`.
 - [explorer](explorer.md): supported folder opening and interactive-shell limits.
@@ -199,6 +203,7 @@ license in the document's provenance catalog before adapting material.
 ## Windows registry and compatibility hosts
 
 - [reg](reg.md): query, views, types, backup, modification, and verification.
+- [regini](regini.md): reviewed registry scripts with kernel-path, no-dry-run, backup, and ACL-replacement safeguards.
 - [rundll32](rundll32.md): documented entry points and arbitrary-export hazards.
 
 ## Cmd batch state and interaction
@@ -377,6 +382,7 @@ license in the document's provenance catalog before adapting material.
 - [bcdboot](bcdboot.md): explicit Windows/system partition boot-file repair.
 - [bcdedit](bcdedit.md): BCD store, entry, firmware, and backup boundaries.
 - [bootcfg](bootcfg.md): legacy Boot.ini families versus modern BCD identity and recovery.
+- [pwlauncher](pwlauncher.md): retired Windows To Go USB-first startup behavior and firmware/removable-media risk.
 - [chkdsk](chkdsk.md): filesystem scan, repair mode, and result-code handling.
 - [chkntfs](chkntfs.md): startup check scheduling and exclusion policy.
 - [autochk](autochk.md): startup-only NTFS checking through supported dirty-state, policy, and event inspection.
