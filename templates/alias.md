@@ -29,6 +29,12 @@ defined by default.
 alias -Parameter value
 ```
 
+## Common mistakes
+
+When useful, distinguish the alias from similarly named cmdlets, functions,
+executables, or custom profile definitions. Remove this section when it adds
+no meaningful correction.
+
 ## Full command
 
 See [Verb-Noun](Verb-Noun.md).

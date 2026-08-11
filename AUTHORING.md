@@ -35,9 +35,10 @@ it fits the subject:
 3. Description or behavior.
 4. Common parameters or options.
 5. Examples.
-6. Version and platform differences.
-7. Related documents.
-8. Sources and license.
+6. Common mistakes, when the subject has recurring high-impact traps.
+7. Version and platform differences.
+8. Related documents.
+9. Sources and license.
 
 Do not add YAML front matter or DocFX directives. Avoid raw HTML, block
 quotes outside an embedded tldr preface, task lists, images that carry
@@ -95,6 +96,31 @@ output. Examples should be safe by default, explain side effects, and avoid
 real credentials or organization-specific identifiers. Prefer examples that
 work without administrator privileges. Mark platform-specific examples next
 to the example rather than only in a distant note.
+
+## Common mistakes
+
+Add a `## Common mistakes` section when users or automation agents regularly
+produce a plausible command that is wrong, unsafe, or valid only in another
+shell or product version. This section is strongly recommended for command
+resolution conflicts, nested-shell quoting, unusual exit codes, destructive
+defaults, GUI launchers, URI handlers, and version-dependent behavior. It is
+not required when the page has no meaningful recurring trap.
+
+Use short mistake/correction pairs. Show the incorrect form only when readers
+can recognize it safely, explain why it fails, then give an unambiguous form
+and a way to verify the result. Prefer headings such as:
+
+```markdown
+## Common mistakes
+
+### Using the PowerShell alias instead of the executable
+
+`sc` can resolve to `Set-Content`. Use `sc.exe` for the Service Controller and
+check resolution with `Get-Command sc -All`.
+```
+
+Do not use the section as a generic warning dump. Keep destructive-operation
+guidance prominent even when it also appears in a common-mistake example.
 
 ## Versions, aliases, and command resolution
 

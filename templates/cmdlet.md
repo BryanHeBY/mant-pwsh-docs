@@ -48,6 +48,12 @@ Verb-Noun -Parameter value
 
 Explain the result.
 
+## Common mistakes
+
+When useful, show a plausible but incorrect invocation, explain the parameter,
+pipeline, scope, or version behavior involved, and provide a corrected form.
+Remove this section when there is no recurring trap.
+
 ## Version and platform differences
 
 State applicable PowerShell editions, versions, and operating systems.

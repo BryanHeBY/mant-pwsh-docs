@@ -598,7 +598,7 @@
         }
       ],
       "notes": [
-        "The page treats parsing data as code as a security risk and documents safer alternatives.",
+        "The page treats parsing data as code as a security risk, documents safer alternatives, and explains that -Command binds pipeline strings by value and evaluates each item separately.",
         "Alias availability requires verification on all declared platforms."
       ]
     },

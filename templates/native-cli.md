@@ -46,6 +46,12 @@ Explain quoting, object-versus-text output, streams, and `$LASTEXITCODE`.
 
 Provide safe, task-oriented PowerShell examples.
 
+## Common mistakes
+
+When useful, show recurring wrong forms, explain the shell or tool behavior
+that makes them wrong, and give an unambiguous correction plus verification.
+Remove this section when there is no meaningful recurring trap.
+
 ## Version and platform differences
 
 State relevant differences.

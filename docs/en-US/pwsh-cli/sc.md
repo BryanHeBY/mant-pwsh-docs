@@ -46,6 +46,25 @@ Confirm the exact service name, not only its display name. Review binary path,
 account, start type, dependencies, recovery policy, and organization policy
 before a configuration change.
 
+## Common mistakes
+
+### Calling `sc` instead of `sc.exe`
+
+In Windows PowerShell, `sc` is normally an alias for `Set-Content`. A command
+copied as `sc query w32time` can therefore invoke the wrong command. Use
+`sc.exe` and inspect ambiguity with `Get-Command sc -All`.
+
+### Removing the required space after `=`
+
+`sc.exe config w32time start=auto` is not the documented syntax. The native
+parser expects `start= auto`; this is unrelated to PowerShell named
+parameters.
+
+### Assuming process success proves the requested service state
+
+A successful control request does not prove that a service reached its target
+state or stayed there. Check `$LASTEXITCODE`, then query the service again.
+
 ## Syntax hazards and destructive operations
 
 The `sc.exe` syntax requires a space after an option name and before its value,

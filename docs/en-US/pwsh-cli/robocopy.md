@@ -56,6 +56,25 @@ Other switches such as `/E`, retry controls, copy flags, and logging alter the
 transfer contract. Read the official reference for the exact installed tool;
 do not assume a copied command line has suitable security and retention rules.
 
+## Common mistakes
+
+### Treating every nonzero exit code as failure
+
+Generic checks such as `if ($LASTEXITCODE -ne 0)` report normal copy or
+difference results as failures. For Robocopy, interpret the documented graded
+codes and treat values `8` and above as a failure threshold.
+
+### Running `/MIR` before `/L`
+
+`/MIR` can delete destination content. Preview the exact source, destination,
+filters, and options with `/L`, and verify that the destination is dedicated
+to the mirror operation.
+
+### Checking `$LASTEXITCODE` after another native command
+
+Another native executable overwrites `$LASTEXITCODE`. Save or test Robocopy's
+code immediately after it exits.
+
 ## Exit codes and PowerShell
 
 Robocopy uses bitmapped/graded exit codes. Values below `8` can mean files were

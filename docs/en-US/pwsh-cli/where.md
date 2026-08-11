@@ -42,6 +42,20 @@ prove that bare `curl` in PowerShell calls that executable. Use
 `Get-Command curl -All` to inspect PowerShell precedence, and use `curl.exe`
 or an explicit path when the native executable is required.
 
+## Common mistakes
+
+### Calling bare `where` in PowerShell
+
+Depending on the session, `where` can resolve as an alias for `Where-Object`
+instead of `where.exe`. Use `where.exe` for file lookup and run
+`Get-Command where -All` to inspect every match.
+
+### Treating PATH lookup as PowerShell resolution
+
+`where.exe tool` searches files using Windows path rules. It does not report
+PowerShell aliases, functions, cmdlets, modules, or all script resolution
+rules. Use `Get-Command tool -All` to answer what PowerShell will invoke.
+
 ## Search scope and output
 
 `/r DIR` recursively searches a specified directory. Recursive searches can be
