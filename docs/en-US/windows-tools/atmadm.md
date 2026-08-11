@@ -31,6 +31,20 @@ and media rates; `/a` lists registered ATM Network Service Access Point
 addresses; `/s` reports current, successful, failed, closed, signaling, and
 ILMI packet counters.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `atmadm.exe`: Display legacy ATM Call Manager connection, address, or counter data.
+
+All modes are read-only and meaningful only when a compatible ATM stack and
+adapter are present.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/c`: Display every current ATM connection and its VPI/VCI and media data.
+- `/a`: Display the registered ATM NSAP address for each installed adapter.
+- `/s`: Display cumulative ATM Call Manager and ILMI statistics.
+- `/?`: Display installed syntax.
+
 ## Common mistakes
 
 ### Reading an empty result as a network failure
@@ -51,7 +65,7 @@ modern Ethernet rather than interpreting ATM counters as generic TCP/IP data.
 samples and calculate a delta before claiming a failure rate; account for
 adapter reset, driver reload, or reboot.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 The output is localized text, not objects. Preserve the raw output with host,
 timestamp, adapter identity, and `$LASTEXITCODE`; do not build durable parsing

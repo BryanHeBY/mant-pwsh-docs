@@ -30,6 +30,21 @@ for NFS services. `/p` lists registrations; `/t` and `/u` call an exact program
 over TCP/UDP; `/b` broadcasts for a program/version. This is a different
 protocol and registry from Microsoft MSRPC/RPCSS tested by `rpcping.exe`.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `rpcinfo.exe`: Query ONC RPC portmapper registrations or call one RPC program.
+
+This is Windows Services for NFS/ONC RPC syntax, not Microsoft RPC Endpoint
+Mapper syntax and not a Unix implementation's hyphen-option grammar.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/p`: List portmapper registrations on an explicit node or, if omitted, locally.
+- `/b`: Broadcast for nodes registering one exact program and version.
+- `/t`: Call one program through TCP, optionally across all registered versions.
+- `/u`: Call one program through UDP, optionally across all registered versions.
+- `/?`: Display installed syntax.
+
 ## Common mistakes
 
 ### Using `rpcinfo` to diagnose Windows MSRPC/DCOM
@@ -60,7 +75,7 @@ by the application.
 A portmapper row or successful null call does not prove export authorization,
 identity mapping, filesystem access, locking, or workload semantics.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Call `rpcinfo.exe` explicitly. `/` switches differ from Unix `-` spellings.
 Check `$LASTEXITCODE`, retain raw text and record target resolution/address.

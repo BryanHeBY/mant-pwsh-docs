@@ -30,6 +30,33 @@ NFS components. Bare `server config`/`client config` display current settings;
 adding options changes defaults. Server mode also controls services, locks,
 auditing, protocols, client groups, mappings, filename behavior, and caches.
 
+## Commands and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `nfsadmin.exe`: Inspect or administer Microsoft Server/Client for NFS.
+- `server`: Select Server for NFS configuration and client-lock operations.
+- `client`: Select Client for NFS configuration.
+- `start`: Start the selected NFS service.
+- `stop`: Stop the selected NFS service.
+- `config`: Display or change the selected service's configuration fields.
+- `creategroup`: Create a Server for NFS client group.
+- `listgroups`: List Server for NFS client groups.
+- `deletegroup`: Delete one client group.
+- `renamegroup`: Rename one client group.
+- `addmembers`: Add hosts to a client group.
+- `listmembers`: List hosts in one client group.
+- `deletemembers`: Remove hosts from one client group.
+
+Configuration fields such as `timeout=`, `audit=`, and `fileaccess=` are real
+native operands but cannot yet be ManT semantic entries because they use a bare
+equals-bearing token shape.
+
+<!-- mant:entries role=option case=insensitive -->
+- `-u`: Select an alternate remote administrative identity.
+- `-p`: Supply that account's password inline; omit it to prompt instead.
+- `-l`: List all client locks held by Server for NFS.
+- `-r`: Release locks for one client or all clients and therefore mutate state.
+
 ## Common mistakes
 
 ### Mixing server and client state
@@ -67,7 +94,7 @@ release instead of copying Services for UNIX-era commands.
 Passwords can leak in process listings, transcripts and logs. Prefer the
 current authorized identity or omit `-p` for a protected prompt where supported.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Call `nfsadmin.exe` explicitly and check `$LASTEXITCODE`. Its output is
 localized text, not objects. Quote `DOMAIN\user` and paths; PowerShell can

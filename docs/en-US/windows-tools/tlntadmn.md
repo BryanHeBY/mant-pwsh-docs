@@ -30,6 +30,27 @@ arguments displays settings. It can start/stop/pause the service, list/end/
 message sessions, and change domain, timeout, connection, port, authentication
 and console/stream settings. Telnet does not provide modern transport security.
 
+## Commands and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `tlntadmn.exe`: Inspect or administer a legacy local or remote Telnet Server.
+- `start`: Start the Telnet Server service and accept configured connections.
+- `stop`: Stop the Telnet Server service.
+- `pause`: Stop accepting new Telnet connections until `continue` resumes them.
+- `continue`: Resume a paused Telnet Server service.
+- `config`: Change legacy domain, timeout, connection, port, auth, or mode settings.
+
+Equals-bearing config fields such as `timeout=` and `port=` remain in prose
+because ManT cannot yet index that native token shape.
+
+<!-- mant:entries role=option case=insensitive -->
+- `-u`: Select an alternate remote administrative username.
+- `-p`: Supply its password inline and expose the secret to process/log inspection.
+- `-s`: Display one or all active Telnet sessions.
+- `-k`: End one or all Telnet sessions.
+- `-m`: Send a message to one or all Telnet sessions.
+- `-?`: Display installed syntax.
+
 ## Common mistakes
 
 ### Enabling password authentication over plaintext Telnet
@@ -64,7 +85,7 @@ syntax into automation.
 Authentication method and channel confidentiality are separate. Even if NTLM
 authenticates, Telnet session bytes lack SSH/TLS-style protection.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Call `tlntadmn.exe` explicitly, quote messages/identities and check
 `$LASTEXITCODE`. Output is text. `+`/`-` authentication flags must reach the

@@ -30,6 +30,19 @@ server and `-P` queue are required and case-sensitive as option letters. It is
 an optional legacy printing client and does not query an arbitrary Windows
 spooler queue unless that queue is exposed through LPD.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `lpq.exe`: Query one exact queue on a Line Printer Daemon host.
+
+Native option letters are case-sensitive; `-S` and `-P` are both required.
+
+<!-- mant:entries role=option case=sensitive -->
+- `-S`: Select the LPD server by name or IP address.
+- `-P`: Select the exact case-sensitive LPD queue name.
+- `-l`: Request detailed queue status.
+- `/?`: Display installed syntax.
+
 ## Common mistakes
 
 ### Lowercasing `-S` or `-P`
@@ -55,7 +68,7 @@ LPQ cannot validate file language, text/binary selection, banner behavior,
 spooling, device buffers, media, or physical output. Correlate server/device
 evidence before using `lpr`.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Call `lpq.exe` explicitly, quote values and check `$LASTEXITCODE`. PowerShell
 does not treat uppercase/lowercase native switches as equivalent. Output is

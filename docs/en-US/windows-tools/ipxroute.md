@@ -35,6 +35,25 @@ Use it to gather evidence for an isolated legacy system, then migrate the
 application or encapsulated environment. Microsoft's Win32 RPC documentation
 calls the IPX protocol family obsolete and says not to use it in new software.
 
+## Commands and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `ipxroute.exe`: Display or modify legacy NWLink/IPX routing information.
+- `servers`: Display SAP-advertised servers, optionally filtered by type.
+- `ripout`: Display the route to one hexadecimal IPX network.
+- `resolve`: Translate an adapter GUID and friendly name in either direction.
+- `config`: Display every binding on which IPX is configured.
+- `def`: Change unknown-unicast source-routing broadcast behavior for one board.
+- `gbr`: Change general-broadcast source-routing behavior for one board.
+- `mbr`: Change multicast source-routing behavior for one board.
+
+`board=N` and `remove=xxxxxxxxxxxx` are real equals-bearing native operands;
+ManT does not yet index that token shape, so they remain documented in prose.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/type`: Filter `servers` by an integer SAP server type.
+- `/?`: Display installed syntax.
+
 ## Common mistakes
 
 ### Using mutation options during discovery
@@ -56,7 +75,7 @@ Current Windows usually lacks NWLink/IPX. Verify binary, protocol binding,
 driver, application, frame type, and network segment. Do not download a random
 legacy stack or enable an obsolete protocol on a trusted production network.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Output is localized legacy text. Capture raw output and `$LASTEXITCODE`; use
 typed adapter cmdlets only to inventory modern bindings, not to claim they can

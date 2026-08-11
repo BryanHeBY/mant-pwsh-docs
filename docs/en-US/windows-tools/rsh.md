@@ -30,6 +30,15 @@ Applications workflow and mistakenly labels the deprecation warning `rexec`.
 It provides no current Windows syntax. Treat the command as legacy and migrate;
 do not infer support from the generic applicability banner.
 
+## Command boundary
+
+<!-- mant:entries role=command case=insensitive -->
+- `rsh`: Historical remote-shell command from the retired Windows UNIX subsystem.
+
+Microsoft's current page provides no supported Windows syntax and points only
+to the retired subsystem's own `man rsh`. Do not invent parameters from a Unix
+or third-party client that happens to share the name.
+
 ## Common mistakes
 
 ### Confusing RSH with SSH
@@ -53,7 +62,7 @@ chosen supported replacement's own documentation.
 Legacy RSH trust models are unsafe on modern networks. Do not recreate `.rhosts`
 or privileged-source-port exceptions to keep an obsolete workflow alive.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 `rsh` may resolve to an unrelated executable. Use `Get-Command -All` and never
 pass remote command text until the implementation and transport are proven.

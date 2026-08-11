@@ -38,6 +38,19 @@ For `get`, the source is remote and the destination is local. For `put`, the
 source is local and the destination is remote. `-i` selects binary octet mode;
 without it, the default ASCII mode converts end-of-line characters.
 
+## Commands and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `tftp.exe`: Transfer one file through the optional unauthenticated TFTP client.
+- `get`: Download one remote source to an explicit local destination.
+- `put`: Upload one local source to an explicit remote destination.
+
+TFTP supplies neither directory discovery nor authentication; source and
+destination meanings reverse between `get` and `put`.
+
+<!-- mant:entries role=option case=insensitive -->
+- `-i`: Select byte-preserving binary/octet mode instead of ASCII conversion.
+
 ## Common mistakes
 
 ### Enabling the feature merely to test whether a remote port exists
@@ -81,7 +94,7 @@ MTU and device boot timing can produce timeouts. Bound attempts, capture both
 endpoint/packet evidence under privacy policy, and do not weaken broad firewall
 rules to make one transfer pass.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Invoke `tftp.exe` explicitly and pass host/action/paths as separate arguments.
 Capture `$LASTEXITCODE` immediately, but validate the exact resulting artifact.

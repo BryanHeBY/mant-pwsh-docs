@@ -37,6 +37,22 @@ administration. Do not send passwords, tokens, commands or sensitive output
 over an untrusted network. Use SSH or the application's documented TLS protocol.
 Keep Telnet only for an approved legacy device inside a segmented network.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `telnet.exe`: Start the optional Microsoft Telnet client or connect to one endpoint.
+
+Without a host, the executable enters its interactive client context; supplied
+ports still use Telnet rather than becoming protocol-neutral probes.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/a`: Attempt logon with the current Windows username.
+- `/e`: Select the character that enters the local Telnet prompt.
+- `/f`: Write a client-side transcript to the named file.
+- `/l`: Supply the username sent during Telnet logon.
+- `/t`: Select terminal emulation: `vt100`, `vt52`, `ansi`, or `vtnt`.
+- `/?`: Display installed syntax.
+
 ## Common mistakes
 
 ### Installing Telnet Client just to check a TCP port
@@ -78,7 +94,7 @@ They do not add encoding correctness, binary safety, authentication or shell
 compatibility. Unexpected control sequences and banners are untrusted display
 data.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Invoke `telnet.exe` explicitly. It is interactive and not a structured PowerShell
 pipeline producer. Use `Test-NetConnection` for a bounded TCP handshake and

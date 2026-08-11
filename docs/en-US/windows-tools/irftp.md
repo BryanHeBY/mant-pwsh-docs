@@ -30,6 +30,18 @@ Wireless Link facility. A file path sends named content, `/s` opens the picker,
 and `/h` sends without displaying the dialog. The infrared hardware and link
 must already be enabled and working.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `irftp.exe`: Send one or more named files through the legacy Windows infrared link.
+
+Without an explicit path, `/s` or no arguments opens the Wireless Link picker;
+automation should never depend on that interactive fallback.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/h`: Send without displaying the Wireless Link dialog.
+- `/s`: Open the Wireless Link dialog to select files interactively.
+
 ## Common mistakes
 
 ### Treating proximity as authentication
@@ -56,7 +68,7 @@ Migration should improve identity, encryption, integrity, logging, retention,
 and least privilege. Use an approved SMB/SFTP/HTTPS/device-management channel,
 not an arbitrary consumer sharing service.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Invoke `irftp.exe` explicitly and quote every path. It is a native GUI-aware
 tool, so process exit and dialog completion may not alone prove receipt. Avoid

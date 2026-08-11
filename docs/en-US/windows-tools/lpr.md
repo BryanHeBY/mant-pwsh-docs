@@ -29,6 +29,23 @@
 binary data such as PostScript. `-C` banner content and `-J` job name may be
 printed/disclosed. Submission acknowledgment is not physical completion.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `lpr.exe`: Submit one reviewed file to an LPD print queue.
+
+The filename is required. Preserve uppercase native option letters exactly.
+
+<!-- mant:entries role=option case=sensitive -->
+- `-S`: Select the LPD host by name or IP address.
+- `-P`: Select the required LPD queue name.
+- `-C`: Set banner-page content that may be printed or disclosed.
+- `-J`: Set the job name shown on the banner and in queue metadata.
+- `-o`: Select text mode; following it with `l` selects binary mode.
+- `-x`: Request compatibility with historical SunOS LPR behavior.
+- `-d`: Send the data file before the control file for devices requiring it.
+- `/?`: Display installed syntax.
+
 ## Common mistakes
 
 ### Lowercasing `-S`, `-P`, `-C`, or `-J`
@@ -73,7 +90,7 @@ optional native executable can appear missing even when an interactive 64-bit
 shell finds it. Resolve `lpr.exe` inside the actual service/agent process.
 `Sysnative` is a virtual bypass only for 32-bit callers, not a portable path.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Call `lpr.exe` explicitly; quote paths and inspect `$LASTEXITCODE` immediately.
 Do not pipe PowerShell text/objects into LPR and assume encoding or framing.

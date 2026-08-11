@@ -30,6 +30,15 @@ a host offering `rexecd`, and says support is not guaranteed. The current page
 publishes no syntax. Treat any found binary as legacy/third-party until its
 path, signature, version and local help are verified.
 
+## Command boundary
+
+<!-- mant:entries role=command case=insensitive -->
+- `rexec.exe`: Historical remote-command client for a `rexecd` service; deprecated.
+
+Microsoft's current reference provides no supported syntax or parameters. Do
+not reconstruct a command line from third-party implementations; identify and
+migrate the dependency without making a legacy remote call.
+
 ## Common mistakes
 
 ### Inventing syntax from Unix or old Windows pages
@@ -54,7 +63,7 @@ command shell, encoding, exit status, working directory or audit trail.
 Do not install or expose `rexecd` for compatibility testing. Migrate the
 workflow and remove any firewall/service exception through change control.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 PowerShell may resolve a function, alias or third-party executable named
 `rexec`; use `Get-Command -All` and an explicit verified path. Remote command

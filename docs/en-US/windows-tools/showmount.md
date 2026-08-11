@@ -30,6 +30,19 @@ mounted directories, and `-a` lists clients plus directories. It does not mount
 a filesystem or prove data access. The client/directory views can reveal
 sensitive topology and should be queried only on approved servers.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `showmount.exe`: Query NFSv3 MOUNT-protocol export or client/mount information.
+
+Always provide the exact server even though some builds default to the local
+host; no option mounts a filesystem or proves file access.
+
+<!-- mant:entries role=option case=insensitive -->
+- `-e`: List filesystems exported by the server.
+- `-a`: List every reported NFS client and its mounted directories.
+- `-d`: List server directories currently reported as mounted by clients.
+
 ## Common mistakes
 
 ### Treating `showmount -e` failure as proof NFS is down
@@ -55,7 +68,7 @@ probing of third-party infrastructure.
 The command can default to the local computer, hiding a targeting mistake.
 Always use an exact FQDN/IP and record DNS resolution, address family and time.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Invoke `showmount.exe` explicitly and check `$LASTEXITCODE`. Its output is
 remote-provided text; do not parse fixed column widths without retaining raw

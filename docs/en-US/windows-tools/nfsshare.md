@@ -29,6 +29,20 @@
 No arguments lists all exports; one share name displays its properties. An
 assignment such as `name=drive:path`, `-o`, or `/delete` mutates service state.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `nfsshare.exe`: List, inspect, create, change, or delete Server for NFS exports.
+
+Creation uses `share=drive:path`; access fields such as `rw=`, `ro=`, `root=`,
+`anonuid=`, and `anongid=` are security-sensitive equals-bearing operands that
+ManT cannot yet index individually.
+
+<!-- mant:entries role=option case=insensitive -->
+- `-o`: Apply one or more NFS export option/value pairs.
+- `/delete`: Delete the named export or every export when paired with `*`.
+- `/?`: Display installed syntax.
+
 ## Common mistakes
 
 ### Omitting both `ro` and `rw`
@@ -61,7 +75,7 @@ They can expose the same NTFS path through different authentication, locking,
 name, caching and permission semantics. Inventory both protocols and application
 writers before changing either.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use `nfsshare.exe` explicitly. Quote the entire `name=drive:path` and each
 `option=value` token in change workflows so PowerShell parsing cannot split

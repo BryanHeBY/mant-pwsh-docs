@@ -31,6 +31,47 @@ target Endpoint Mapper. It can bind an exact endpoint or interface UUID and add
 RPC/proxy authentication. Its official description is Exchange-oriented, but
 the binding concepts are general Microsoft RPC.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `rpcping.exe`: Test one bounded Microsoft RPC endpoint or interface binding.
+
+Options are case-sensitive because lower- and uppercase spellings can mean
+different things (`/s` versus `/S`, `/f` versus `/F`, and others).
+
+<!-- mant:entries role=option case=sensitive -->
+- `/t`: Select the RPC protocol sequence.
+- `/s`: Select the RPC server address.
+- `/e`: Select an exact endpoint instead of an interface.
+- `/f`: Select an interface UUID and optional major version.
+- `/O`: Select an object UUID registered by the interface.
+- `/i`: Set the number of RPC calls.
+- `/u`: Select the RPC security package.
+- `/a`: Select the RPC authentication level.
+- `/N`: Set the expected server principal name.
+- `/I`: Supply an alternate RPC identity; `*` prompts for its password.
+- `/C`: Set RPC authentication capability flags.
+- `/T`: Select static or dynamic identity tracking.
+- `/M`: Select the RPC impersonation level.
+- `/S`: Set the expected server SID.
+- `/P`: Supply an RPC/HTTP proxy identity; `*` prompts for its password.
+- `/F`: Set RPC/HTTP frontend authentication flags.
+- `/H`: Select RPC/HTTP frontend authentication schemes.
+- `/o`: Supply RPC binding options.
+- `/B`: Set the expected server-certificate subject.
+- `/b`: Retrieve and display the proxy server-certificate subject.
+- `/R`: Select an HTTP proxy for proxy-only mode.
+- `/E`: Restrict the test to the RPC/HTTP proxy rather than the backend.
+- `/q`: Suppress most prompts and assume yes; unsafe for exploratory use.
+- `/c`: Select a smart-card certificate interactively.
+- `/A`: Supply an HTTP proxy authentication identity.
+- `/U`: Select HTTP proxy authentication schemes.
+- `/r`: Set the periodic result-report interval.
+- `/v`: Set output verbosity.
+- `/d`: Launch the RPC network diagnostic UI.
+- `/p`: Prompt for credentials after authentication failure.
+- `/?`: Display installed syntax.
+
 ## Common mistakes
 
 ### Calling it an ICMP ping or confusing it with `rpcinfo`
@@ -68,7 +109,7 @@ RPC/HTTP proxy options, SChannel/RPC auth, HTTP proxy auth and backend RPC are
 separate layers. Validate chain, hostname, expected publisher/service, proxy and
 backend independently; do not disable verification to obtain a response.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Call `rpcping.exe` explicitly and quote comma-containing identity/binding values
 as single arguments. Check `$LASTEXITCODE` immediately. Avoid placing secrets in

@@ -30,6 +30,22 @@ calls. `-c`/`-s` select client/server, `-n`/`-r` select NFS/RPC, and `-m`
 shows mounts. `-z` displays and resets selected counters and is excluded from
 the TLDR because it destroys the baseline.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `nfsstat.exe`: Display or reset Microsoft NFS and ONC RPC call statistics.
+
+Display filters can be combined; `-z` remains a mutation even when combined
+with a narrower display selector.
+
+<!-- mant:entries role=option case=insensitive -->
+- `-c`: Limit call statistics to the NFS client side.
+- `-s`: Limit call statistics to the Server for NFS side.
+- `-m`: Display current mount flags and mount information.
+- `-n`: Display NFS operation statistics.
+- `-r`: Display ONC RPC operation statistics.
+- `-z`: Display and then reset the selected cumulative call statistics.
+
 ## Common mistakes
 
 ### Reading cumulative counts as a current failure rate
@@ -56,7 +72,7 @@ Authentication/mapping, export/ACL, version negotiation, stale handles, locks,
 timeouts and application behavior can all contribute. Correlate client/server
 counters, mounts, events, packet evidence and the exact operation.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Call `nfsstat.exe` explicitly and check `$LASTEXITCODE`. Combined legacy flags
 such as `-cn` are native-tool syntax; separate flags are clearer in generated

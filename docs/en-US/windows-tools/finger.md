@@ -37,6 +37,18 @@ presence, authentication or authorization system. Use an organization-approved
 identity/directory API for current information. Retain Finger only for a known
 legacy dependency with explicit owner, scope and privacy approval.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `finger.exe`: Request user information from a remote Finger service.
+
+The positional form is `user@host`; omitting `user` requests information about
+all users and can materially broaden disclosure.
+
+<!-- mant:entries role=option case=insensitive -->
+- `-l`: Request the remote service's long-list form.
+- `/?`: Display installed syntax; Finger options otherwise require `-`, not `/`.
+
 ## Common mistakes
 
 ### Querying `@host` without a username
@@ -71,7 +83,7 @@ Reachability does not justify exposing user enumeration. Identify the service
 owner, segment source/destination, restrict ACLs, log access and plan removal.
 Prefer removing the dependency rather than enabling an Internet-facing daemon.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Invoke `finger.exe` explicitly; `finger` may resolve differently on systems with
 third-party Unix tools. Its output is unstructured remote-controlled text.

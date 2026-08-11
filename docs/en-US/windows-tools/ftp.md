@@ -41,6 +41,48 @@ an isolated trusted network with compensating controls.
 
 ## Command-family map
 
+<!-- mant:entries role=command case=insensitive -->
+- `ftp.exe`: Start the Windows FTP client or run one FTP command script.
+- `open`: Connect the interpreter to an FTP server.
+- `user`: Send a username and optional password/account during FTP login.
+- `binary`: Select byte-preserving image transfer mode.
+- `ascii`: Select text transfer mode with line-ending conversion.
+- `get`: Download one remote file.
+- `put`: Upload one local file.
+- `mget`: Download multiple selected remote files.
+- `mput`: Upload multiple selected local files.
+- `delete`: Delete one remote file.
+- `mdelete`: Delete multiple selected remote files.
+- `dir`: Request a detailed remote directory listing.
+- `ls`: Request an abbreviated remote listing.
+- `lcd`: Change the local working directory.
+- `cd`: Change the remote working directory.
+- `quote`: Send one raw FTP command to the server.
+- `status`: Display current interpreter settings.
+- `help`: Display help for an FTP interpreter command.
+- `quit`: Close the connection and exit the interpreter.
+
+Launcher options are case-sensitive; in particular, `-a` and `-A` are distinct.
+
+<!-- mant:entries role=option case=sensitive -->
+- `-v`: Suppress display of remote-server responses.
+- `-d`: Enable client/server protocol debugging, which can disclose sensitive data.
+- `-i`: Disable interactive prompting during multi-file operations.
+- `-n`: Suppress automatic login after the initial connection.
+- `-g`: Disable local filename globbing.
+- `-s`: Read FTP interpreter commands from a UTF-8 script file.
+- `-a`: Bind the data connection using any local interface.
+- `-x`: Set the send buffer size on builds that support it.
+- `-r`: Set the receive buffer size on builds that support it.
+- `-b`: Set the asynchronous buffer count on builds that support it.
+- `-w`: Set the transfer window size.
+- `-?`: Display installed launcher syntax.
+
+The distinct uppercase `-A` launcher option requests anonymous login. ManT
+currently generates the same entry identity for `-a` and `-A`, so both cannot
+coexist in one semantic list even though this native client treats them
+differently.
+
 - Session/authentication: `open`, `user`, `account`, `close`/`disconnect`,
   `bye`/`quit`.
 - Local/remote navigation: `lcd`, `cd`, `pwd`, `dir`, `ls`.
@@ -106,7 +148,7 @@ forbids spaces in the `-s:<filename>` parameter form. BOM, line endings,
 interpreter encoding and literal variable text can still break scripts. Prefer a
 client with structured arguments/configuration rather than echo-built scripts.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Invoke `ftp.exe` explicitly. PowerShell expands and quotes launcher arguments,
 but the FTP interpreter later parses script lines independently; PowerShell
