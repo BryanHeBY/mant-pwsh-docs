@@ -2,7 +2,7 @@
   "$schema": "release-manifest/v1",
   "release": "v1",
   "locale": "en-US",
-  "requiredDocumentCount": 181,
+  "requiredDocumentCount": 186,
   "sources": {
     "pwsh7": {
       "runtimePlatforms": ["windows", "linux", "macos"],
@@ -92,6 +92,11 @@
         "schtasks.md",
         "sc.md",
         "net.md",
+        "query.md",
+        "quser.md",
+        "qwinsta.md",
+        "qprocess.md",
+        "qappsrv.md",
         "cmd.md",
         "start.md",
         "explorer.md",

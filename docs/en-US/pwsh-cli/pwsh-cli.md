@@ -101,6 +101,14 @@ license in the document's provenance catalog before adapting material.
 - [sc.exe](sc.md): SCM runtime, configuration, security, and control boundaries.
 - [net.exe](net.md): account, SMB client/server, service, discovery, and legacy command boundaries.
 
+## Windows Remote Desktop session inventory
+
+- [query.exe](query.md): user, session, process, and legacy Session Host discovery boundaries.
+- [quser](quser.md): searchable `query user` executable alias.
+- [qwinsta](qwinsta.md): searchable `query session` executable alias.
+- [qprocess](qprocess.md): searchable `query process` executable alias.
+- [qappsrv](qappsrv.md): searchable `query termserver` executable alias.
+
 ## Windows shell, GUI, and settings
 
 - [cmd](cmd.md): cmd builtins, child-shell parsing, AutoRun, and exit status.

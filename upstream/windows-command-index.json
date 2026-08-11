@@ -1140,27 +1140,32 @@
     {
       "name": "qappsrv",
       "source": "qappsrv.md",
-      "status": "unclassified"
+      "status": "alias",
+      "target": "pwsh-cli/qappsrv.md"
     },
     {
       "name": "qprocess",
       "source": "qprocess.md",
-      "status": "unclassified"
+      "status": "alias",
+      "target": "pwsh-cli/qprocess.md"
     },
     {
       "name": "query",
       "source": "query.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/query.md"
     },
     {
       "name": "quser",
       "source": "quser.md",
-      "status": "unclassified"
+      "status": "alias",
+      "target": "pwsh-cli/quser.md"
     },
     {
       "name": "qwinsta",
       "source": "qwinsta.md",
-      "status": "unclassified"
+      "status": "alias",
+      "target": "pwsh-cli/qwinsta.md"
     },
     {
       "name": "rd",

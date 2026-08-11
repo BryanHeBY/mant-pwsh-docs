@@ -382,6 +382,62 @@
         "Windows runtime verification remains required across representative member, domain, client, server, elevated, scheduled, and service contexts without mutating production identity, SMB, service, or time state."
       ]
     },
+    "query.md": {
+      "kind": "native-cli-family",
+      "status": "reviewed",
+      "versions": ["supported Windows client and server releases; visible fields, permissions, role behavior, localization, and legacy discovery vary by target"],
+      "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/query.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/query-user.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/query-session.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/query-process.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/query-termserver.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=39212183&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=69946388&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=194002&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": [
+        "The TLDR is query-only and distinguishes user, session/listener, process, counter, remote-target, and legacy discovery questions; the page contains blank-field, current-marker, session/PID, disconnected-session, logon-scope, remote-token, native-error, line-count, discovery, counter, and localized-text risks.",
+        "Windows runtime verification remains required across representative client/Session Host, local/remote, active/disconnected/listener, elevated/unelevated, and localized contexts without changing sessions or processes."
+      ]
+    },
+    "quser.md": {
+      "kind": "alias", "status": "reviewed",
+      "versions": ["same supported Windows targets as query user"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/quser.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/query-user.md"}
+      ],
+      "notes": ["This concise lookup page maps quser.exe to query.exe user and preserves session identity, parsing, permission, and native-exit warnings.", "Windows runtime verification remains required."]
+    },
+    "qwinsta.md": {
+      "kind": "alias", "status": "reviewed",
+      "versions": ["same supported Windows targets as query session"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/qwinsta.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/query-session.md"}
+      ],
+      "notes": ["This concise lookup page maps qwinsta.exe to query.exe session and preserves listener, blank-row, current-marker, counter, and mutation boundaries.", "Windows runtime verification remains required."]
+    },
+    "qprocess.md": {
+      "kind": "alias", "status": "reviewed",
+      "versions": ["same supported Windows targets as query process"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/qprocess.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/query-process.md"}
+      ],
+      "notes": ["This concise lookup page maps qprocess.exe to query.exe process and distinguishes default current-user scope, all-session selection, PID, and session ID.", "Windows runtime verification remains required."]
+    },
+    "qappsrv.md": {
+      "kind": "alias", "status": "reviewed",
+      "versions": ["same supported Windows targets as query termserver; discovery usefulness depends on legacy role and network behavior"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/qappsrv.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/query-termserver.md"}
+      ],
+      "notes": ["This concise lookup page maps qappsrv.exe to query.exe termserver and treats legacy discovery as non-authoritative.", "Windows runtime verification remains required where the executable and discovery mechanism are available."]
+    },
     "cmd.md": {
       "kind": "windows-shell",
       "status": "reviewed",

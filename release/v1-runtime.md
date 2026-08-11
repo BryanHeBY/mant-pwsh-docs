@@ -90,6 +90,14 @@ net.exe session
 net.exe file
 net.exe start
 net.exe view
+query.exe user
+query.exe session
+query.exe process *
+query.exe session /counter
+quser.exe
+qwinsta.exe
+qprocess.exe *
+qappsrv.exe /continue
 cmd.exe /d /c ver
 reg.exe query HKCU\Environment
 Get-Command explorer.exe, control.exe, mmc.exe, rundll32.exe -All
@@ -336,7 +344,12 @@ task, change account/group/policy/share/connection state, disconnect a session,
 close an open file, or set the clock merely for evidence. Record `net.exe`
 direction, logon/token identity, local versus domain scope, Server/Workstation
 service state, and any permission-denied or unavailable family as target-host
-evidence. Use an approved disposable fixture for mutations.
+evidence. Keep Remote Desktop session checks query-only. Record the `>` marker
+for the current session, blank/listener rows, session versus process IDs, caller rights,
+native exit status, locale, and collection time; do not parse a zero-row result
+from failed text, or log off, disconnect, reset, connect, shadow, message, or
+terminate anything for validation. Use an approved disposable fixture for
+mutations.
 
 On Windows, macOS, and Linux where declared by the document, record:
 
