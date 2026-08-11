@@ -111,7 +111,7 @@
   "documents": {
     "pwsh-cli.md": {
       "kind": "source-index",
-      "status": "draft",
+      "status": "reviewed",
       "versions": [
         "varies by tool"
       ],
@@ -144,7 +144,7 @@
     },
     "microsoft-learn-mcp.md": {
       "kind": "guide",
-      "status": "draft",
+      "status": "reviewed",
       "versions": ["service evolves"],
       "platforms": ["windows", "macos", "linux"],
       "sources": [{
@@ -159,7 +159,7 @@
     },
     "winget.md": {
       "kind": "native-cli",
-      "status": "draft",
+      "status": "reviewed",
       "versions": ["varies by App Installer"],
       "platforms": ["windows"],
       "sources": [{
@@ -174,7 +174,7 @@
     },
     "winget-search.md": {
       "kind": "native-cli-subcommand",
-      "status": "draft",
+      "status": "reviewed",
       "versions": ["varies by App Installer"],
       "platforms": ["windows"],
       "sources": [{
@@ -188,7 +188,7 @@
     },
     "winget-show.md": {
       "kind": "native-cli-subcommand",
-      "status": "draft",
+      "status": "reviewed",
       "versions": ["varies by App Installer"],
       "platforms": ["windows"],
       "sources": [{
@@ -202,7 +202,7 @@
     },
     "winget-install.md": {
       "kind": "native-cli-subcommand",
-      "status": "draft",
+      "status": "reviewed",
       "versions": ["varies by App Installer"],
       "platforms": ["windows"],
       "sources": [{
@@ -216,7 +216,7 @@
     },
     "winget-upgrade.md": {
       "kind": "native-cli-subcommand",
-      "status": "draft",
+      "status": "reviewed",
       "versions": ["varies by App Installer"],
       "platforms": ["windows"],
       "sources": [{
@@ -230,7 +230,7 @@
     },
     "winget-uninstall.md": {
       "kind": "native-cli-subcommand",
-      "status": "draft",
+      "status": "reviewed",
       "versions": ["varies by App Installer"],
       "platforms": ["windows"],
       "sources": [{
@@ -244,7 +244,7 @@
     },
     "winget-list.md": {
       "kind": "native-cli-subcommand",
-      "status": "draft",
+      "status": "reviewed",
       "versions": ["varies by App Installer"],
       "platforms": ["windows"],
       "sources": [{
@@ -258,7 +258,7 @@
     },
     "wsl.md": {
       "kind": "native-cli",
-      "status": "draft",
+      "status": "reviewed",
       "versions": ["varies by Windows and WSL release"],
       "platforms": ["windows"],
       "sources": [
@@ -280,7 +280,7 @@
     },
     "where.md": {
       "kind": "native-cli",
-      "status": "draft",
+      "status": "reviewed",
       "versions": ["varies by Windows release"],
       "platforms": ["windows"],
       "sources": [{
@@ -294,7 +294,7 @@
     },
     "robocopy.md": {
       "kind": "native-cli",
-      "status": "draft",
+      "status": "reviewed",
       "versions": ["varies by Windows release"],
       "platforms": ["windows"],
       "sources": [{
@@ -308,7 +308,7 @@
     },
     "schtasks.md": {
       "kind": "native-cli",
-      "status": "draft",
+      "status": "reviewed",
       "versions": ["varies by Windows release"],
       "platforms": ["windows"],
       "sources": [{
@@ -322,7 +322,7 @@
     },
     "sc.md": {
       "kind": "native-cli",
-      "status": "draft",
+      "status": "reviewed",
       "versions": ["varies by Windows release"],
       "platforms": ["windows"],
       "sources": [
@@ -348,7 +348,7 @@
     },
     "git.md": {
       "kind": "native-cli",
-      "status": "draft",
+      "status": "reviewed",
       "versions": ["varies by installed Git"],
       "platforms": ["windows", "macos", "linux"],
       "sources": [{
@@ -362,7 +362,7 @@
     },
     "ssh.md": {
       "kind": "native-cli",
-      "status": "draft",
+      "status": "reviewed",
       "versions": ["varies by installed OpenSSH"],
       "platforms": ["windows", "macos", "linux"],
       "sources": [{
@@ -376,7 +376,7 @@
     },
     "curl.md": {
       "kind": "native-cli",
-      "status": "draft",
+      "status": "reviewed",
       "versions": ["varies by installed curl"],
       "platforms": ["windows", "macos", "linux"],
       "sources": [{
@@ -390,7 +390,7 @@
     },
     "tar.md": {
       "kind": "native-cli",
-      "status": "draft",
+      "status": "reviewed",
       "versions": ["varies by installed tar implementation"],
       "platforms": ["windows", "macos", "linux"],
       "sources": [{
@@ -408,7 +408,7 @@
     },
     "dotnet.md": {
       "kind": "native-cli",
-      "status": "draft",
+      "status": "reviewed",
       "versions": [".NET 6 SDK and later"],
       "platforms": ["windows", "macos", "linux"],
       "sources": [{

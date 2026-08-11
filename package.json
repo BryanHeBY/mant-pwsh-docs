@@ -10,6 +10,7 @@
   "scripts": {
     "validate": "node tools/validate.mjs",
     "validate:structure": "node tools/validate.mjs --skip-mant",
-    "validate:release": "node tools/validate.mjs --release v1"
+    "validate:release": "node tools/validate.mjs --release v1",
+    "validate:upstream": "node tools/verify-upstream.mjs"
   }
 }

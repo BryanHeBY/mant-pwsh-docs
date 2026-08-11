@@ -7,3 +7,10 @@ ManT documents.
 `v1.json` is the authoritative inventory for the first English release. A
 portable validator will compare the manifest with `docs/en-US/` and the
 corresponding `upstream/` catalogs.
+
+For this repository, `reviewed` means the document has passed editorial,
+provenance, ManT-parse, and locked-upstream accessibility review. `verified`
+is stronger: it additionally requires recorded runtime verification on every
+platform declared by that document. This distinction keeps Windows-only and
+tool-version-specific runtime work visible without blocking a reviewed source
+release.
