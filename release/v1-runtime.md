@@ -170,6 +170,16 @@ tpmtool.exe getdeviceinformation
 makecab.exe /?
 diantz.exe /?
 expand.exe /?
+Get-Command chcp.com, doskey.exe, more.com, comp.exe, replace.exe, label.exe, waitfor.exe -All -ErrorAction SilentlyContinue
+Get-Command more -All -ErrorAction SilentlyContinue
+chcp.com
+doskey.exe /?
+more.com /?
+comp.exe /?
+replace.exe /?
+label.exe /?
+waitfor.exe /?
+cmd.exe /d /c "vol C:"
 cmd.exe /d /c ver
 reg.exe query HKCU\Environment
 Get-Command explorer.exe, control.exe, mmc.exe, rundll32.exe -All
@@ -191,6 +201,13 @@ extract cabinets. Record absence and version-specific help differences rather
 than mutating a host to make an example pass. Any later fixture-based packet,
 TPM, Cabinet, format, or recovery test requires its separately approved
 isolated procedure and the cleanup/evidence gates in the corresponding page.
+
+Do not change the active code page in the shared evidence session, export
+history or macros without a data-handling review, launch an interactive pager
+or comparator against real data, replace files, modify a volume label, or start/
+send a WAITFOR signal merely for evidence. Any fixture test must use an isolated
+child console, disposable files/volume, collision-resistant signal with finite
+timeout, explicit host, and before/after verification.
 
 Exercise directory creation, exact rename, move, and both `cd` spellings in a
 fresh temporary directory, then inspect before removing that directory:

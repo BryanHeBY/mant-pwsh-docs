@@ -945,6 +945,80 @@
       ],
       "notes": ["Official documentation establishes list-only -D, selected extraction, rename and ignore-directory options plus WinRE differences; the community source records CAB rebuild/layout/signature confusion. The TLDR is help/list/list-filter/exact-extract into a new isolated directory; the page covers wildcards, collisions, untrusted content, ZIP confusion, repackaging signatures and filesystem-result verification.", "Windows runtime verification remains help and list-only against a reviewed inert fixture; no extraction over existing, system or application paths and no execution, rebuild, installation or servicing is permitted merely for evidence."]
     },
+    "chcp.md": {
+      "kind": "native-console-cli", "status": "reviewed",
+      "versions": ["supported Windows client and server releases; code pages, console hosts and PowerShell encoding defaults vary by build, locale, edition and host"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/chcp.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=57131654&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official documentation establishes current-console scope and inheritance by programs started after a change; the community source records high-demand UTF-8/PowerShell confusion. The TLDR reads CHCP plus Console/$OutputEncoding state and scopes any change to a child cmd /d process; the page separates console code page, file bytes, native pipelines, fonts and already-running processes.", "Windows runtime verification remains query/help and encoding-property inspection only; no shared-session, profile, registry AutoRun, system-locale or file conversion change is permitted merely for evidence."]
+    },
+    "doskey.md": {
+      "kind": "native-interactive-cli", "status": "reviewed",
+      "versions": ["supported Windows client and server releases; behavior depends on console process, terminal/input host, executable context and session lifetime"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/doskey.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=36616151&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=55090336&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=560519&service=superuser&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Microsoft explicitly documents executable-scoped interactive macros and that they cannot run from batch programs; community sources show repeated batch, pipeline, argument and PowerShell-alias confusion. The TLDR is macro/history/resolution/help inspection; the page covers $ tokens, textual injection, macrofile review, secret-bearing history, clearing state and PSReadLine boundaries.", "Windows runtime verification remains help and command-resolution only unless history/macro data handling is approved; no macro import/creation/clear, history export/clear or input automation is permitted merely for evidence."]
+    },
+    "more.md": {
+      "kind": "native-interactive-cli", "status": "reviewed",
+      "versions": ["supported Windows client and server releases; a different form exists in Windows Recovery Environment and PowerShell resolution varies by edition"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/more.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=59240742&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=55248656&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official documentation defines files/pipes, forward paging, transforms and prompt keys; community sources establish Windows PowerShell function-versus-more.com resolution and multi-byte encoding failures. The TLDR discovers resolution, names more.com, selects one file/start line and renders objects to text; the page covers unattended hangs, feature limits, encodings, evidence transforms and secret/binary/live output.", "Windows runtime verification remains help and resolution-only; no interactive pager against real, unbounded, binary or sensitive output is permitted merely for evidence."]
+    },
+    "comp.md": {
+      "kind": "native-interactive-cli", "status": "reviewed",
+      "versions": ["supported Windows client and server releases; installed help and prompt-suppression options can differ from the online reference"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/comp.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=76870606&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=14460857&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official documentation defines byte comparison, ten-mismatch stop, prompts, wildcards and partial /N scope; community sources record high-demand automation hangs and an installed-help /M switch omitted from the online page. The TLDR labels COMP interactive and directs automation to FC /B or hashes; the page covers prefix/case/wildcard/tree/changing-file and result-parsing traps.", "Windows runtime verification remains help-only unless approved inert exact-file fixtures exist; never block an unattended evidence run at COMP's prompt."]
+    },
+    "replace.md": {
+      "kind": "destructive-native-cli", "status": "reviewed",
+      "versions": ["supported Windows client and server releases; filesystem timestamp, wildcard, attribute and path semantics affect selection"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/replace.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=1286507&service=superuser&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official documentation establishes source-file/destination-directory order, no dry run, /A versus /S and /U constraints, read-only override, hidden/system exclusion and exit codes; the community source records the recursive-destination use case. The TLDR inventories, uses /P for a disposable first pass and verifies hashes; the page covers direction, destination recursion, timestamp versus content, wildcard mappings and deployment/rollback.", "Windows runtime verification remains help-only unless approved disposable file fixtures exist; no real file add, replacement, read-only override or recursive destination scan is permitted merely for evidence."]
+    },
+    "label.md": {
+      "kind": "native-storage-cli", "status": "reviewed",
+      "versions": ["supported Windows client and server releases; label constraints depend on filesystem, mount form and storage role"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/label.md"}
+      ],
+      "notes": ["Official documentation establishes create/change/delete behavior, interactive omission risk, mount-point forms and NTFS label limits. The TLDR leads with volume/disk identity and VOL inspection before one explicit nonempty label and typed verification; the page distinguishes label, filesystem serial, volume GUID and device identity.", "Windows runtime verification remains help and read-only identity query-only; no label create, change or deletion is permitted merely for evidence."]
+    },
+    "vol.md": {
+      "kind": "cmd-builtin", "status": "reviewed",
+      "versions": ["supported Windows client and server releases; output is localized and filesystem/storage context affects identity meaning"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/vol.md"}
+      ],
+      "notes": ["Official documentation establishes read-only label/volume-serial display. The TLDR invokes the Cmd builtin through cmd /d, makes drive scope explicit and provides typed volume/disk correlation; the page prevents filesystem-serial, disk-serial, volume-GUID and label identity confusion plus localized-text parsing.", "Windows runtime verification is one explicit local drive query through cmd /d plus typed storage inventory; no downstream action may select a target from label or filesystem serial alone."]
+    },
+    "waitfor.md": {
+      "kind": "native-synchronization-cli", "status": "reviewed",
+      "versions": ["supported Windows client and server releases; domain, service, authentication, firewall and network policy determine remote behavior"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/waitfor.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=45675500&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official documentation establishes indefinite default wait, domain broadcast when /S is omitted, same-domain reception, one waiter per name and inline credential syntax; the community source records practical local/send confusion. The TLDR always uses finite timeout, collision-resistant name and explicit send target; the page distinguishes transient signal from durable/result-bearing orchestration and covers readiness race, collision, password, policy and result validation.", "Windows runtime verification remains help-only unless an approved isolated two-process same-host fixture exists; any fixture requires finite timeout, unique name, explicit host and cleanup, and no remote/domain broadcast or inline credential merely for evidence."]
+    },
     "cmd.md": {
       "kind": "windows-shell",
       "status": "reviewed",

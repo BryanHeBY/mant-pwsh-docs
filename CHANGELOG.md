@@ -10,7 +10,7 @@ bundles.
 
 ### Added
 
-- First English release inventory: 242 reviewed ManT pages across `pwsh7`,
+- First English release inventory: 250 reviewed ManT pages across `pwsh7`,
   `pwsh51`, and `pwsh-cli`.
 - Broad `pwsh7` and `pwsh51` shell manuals, focused language/command pages,
   compatibility guides, and custom `irx` shorthand resolution guidance.
@@ -93,6 +93,11 @@ bundles.
   `format`, `recover`, `pktmon`, `tpmtool`, `makecab`, `diantz`, and `expand`,
   with list/query-first TLDRs and explicit identity, evidence, privacy,
   lifecycle, alias, artifact, collision, and destructive-operation boundaries.
+- Windows console-code-page, interactive history/macro, forward-paging,
+  byte-comparison, same-name replacement, volume-label/serial, and named-signal
+  guides for `chcp`, `doskey`, `more`, `comp`, `replace`, `label`, `vol`, and
+  `waitfor`, prioritizing high-demand encoding, prompt, command-resolution,
+  wildcard, recursion, mutable-identity, timeout, and broadcast mistakes.
 - Windows adapter/DHCP/DNS inspection, bounded ICMP reachability, path tracing,
   path sampling, host identity, and direct DNS-query guides for `ipconfig`,
   `ping`, `tracert`, `pathping`, `hostname`, and `nslookup`.

@@ -2,7 +2,7 @@
   "$schema": "release-manifest/v1",
   "release": "v1",
   "locale": "en-US",
-  "requiredDocumentCount": 242,
+  "requiredDocumentCount": 250,
   "sources": {
     "pwsh7": {
       "runtimePlatforms": ["windows", "linux", "macos"],
@@ -190,6 +190,14 @@
         "fc.md",
         "sort.md",
         "clip.md",
+        "chcp.md",
+        "doskey.md",
+        "more.md",
+        "comp.md",
+        "replace.md",
+        "label.md",
+        "vol.md",
+        "waitfor.md",
         "attrib.md",
         "forfiles.md",
         "tree.md",

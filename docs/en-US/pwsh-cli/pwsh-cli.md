@@ -202,12 +202,15 @@ license in the document's provenance catalog before adapting material.
 - [call](call.md): invoke batch files and label subroutines without losing control flow.
 - [choice](choice.md): single-character prompts and one-based result handling.
 - [timeout](timeout.md): Windows delays, redirected input, and name conflicts.
+- [waitfor](waitfor.md): finite named-signal synchronization with explicit target, collision, domain, and delivery boundaries.
 - [exit](exit.md): distinguish batch return codes from terminating `cmd.exe`.
 - [path](path.md): process search path, resolution order, and safe scoping.
 - [pushd](pushd.md) / [popd](popd.md): balanced local/UNC directory stacks.
 - [title](title.md): interactive cmd window title and terminal-host limits.
 - [assoc](assoc.md) / [ftype](ftype.md): classic file-type mappings versus
   protected modern default apps.
+- [doskey](doskey.md): executable-scoped interactive history/macros, distinct from PowerShell aliases and batch automation.
+- [chcp](chcp.md): active console code page versus file, native-pipeline, console, and PowerShell encoding.
 
 ## Cmd files and directories
 
@@ -225,6 +228,7 @@ license in the document's provenance catalog before adapting material.
 - [subst](subst.md): session-context virtual drive letters for local paths.
 - [mklink](mklink.md): symbolic links, hard links, and directory junctions.
 - [xcopy](xcopy.md): previewed legacy directory-tree copies and exit contracts.
+- [replace](replace.md): no-dry-run same-name add/replace semantics, destination recursion, timestamp updates, and verification.
 
 ## Windows text pipelines
 
@@ -233,6 +237,8 @@ license in the document's provenance catalog before adapting material.
 - [fc](fc.md): text/binary comparison and its three-way exit contract.
 - [sort](sort.md): locale-sensitive line sorting versus `Sort-Object`.
 - [clip](clip.md): deliberate transfer of text into the Windows clipboard.
+- [more](more.md): explicit native forward-only paging with PowerShell resolution, interactivity, and encoding limits.
+- [comp](comp.md): interactive byte comparison, prompt-suppression/version gaps, prefix and wildcard traps.
 
 ## Windows process and host inventory
 
@@ -292,6 +298,7 @@ license in the document's provenance catalog before adapting material.
 - [chkntfs](chkntfs.md): startup check scheduling and exclusion policy.
 - [defrag](defrag.md): media-aware optimization, retrim, tiers, and scope.
 - [compact](compact.md): NTFS, executable, and CompactOS compression boundaries.
+- [label](label.md) / [vol](vol.md): mutable labels and filesystem serial display correlated with durable volume/disk identity.
 - [format](format.md): destructive filesystem creation gated by durable volume identity, restore, and media-aware sanitization limits.
 - [recover](recover.md): single-file readable-sector salvage on an imaged/clone copy, distinct from filesystem and disk recovery.
 - [makecab](makecab.md) / [diantz](diantz.md): explicit Cabinet builds, directive-file review, artifact verification, and searchable compatibility naming.
