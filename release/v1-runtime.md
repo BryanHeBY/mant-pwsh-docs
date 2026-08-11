@@ -173,6 +173,10 @@ dism.exe /Online /Cleanup-Image /CheckHealth
 sfc.exe /verifyonly
 pnputil.exe /enum-drivers
 pnputil.exe /enum-devices /connected /problem
+auditpol.exe /get /category:* /r
+gpresult.exe /scope user /r
+klist.exe tickets
+setspn.exe -Q "host/$env:COMPUTERNAME"
 ```
 
 Start a disposable process, record its PID/path/start time, preview
@@ -199,6 +203,11 @@ merely to satisfy this checklist. Confirm current `pnputil /?` verbs on the
 host, preserve DISM/SFC output and elevation context, and separately validate
 the documented MSI argument/exit-code handling with an approved disposable
 test package in an isolated Windows test environment.
+Keep security/authentication checks read-only except for `auditpol /backup` to
+a protected temporary path. Do not clear/restore policy, refresh Group Policy,
+purge/request Kerberos tickets, change KDC bindings, or add/delete/reset SPNs
+merely for verification. Record elevation, user/computer target, logon-session
+LUID, domain/forest scope, timestamps, and report sensitivity.
 
 Review Windows-only commands on a non-production target. In particular, use
 `robocopy /L` before any real copy, query an existing known task before task

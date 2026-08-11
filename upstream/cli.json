@@ -1142,6 +1142,39 @@
       ],
       "notes": ["The TLDR inventories exact feature identity before and after enablement and avoids hidden UI; the page distinguishes features, capabilities, packages, source policy, and pending restart.", "Windows runtime verification remains required."]
     },
+    "auditpol.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/auditpol.md"},
+        {"type": "web", "url": "https://stackoverflow.com/questions/75140216/how-to-enable-a-specific-system-audit-policy-in-powershell-in-windows-11", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The page leads with report queries and backup, quotes stable GUID identity through PowerShell, scopes category/subcategory changes, and treats policy authority and log-pipeline verification separately.", "Windows runtime verification remains required."]
+    },
+    "gpresult.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/gpresult.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=883244&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The page distinguishes target from run-as identity, requires explicit user/computer scope and elevation, protects reports and credentials, and captures evidence before refresh.", "Windows runtime verification remains required."]
+    },
+    "klist.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/klist.md"}],
+      "notes": ["The TLDR is query-only; the page identifies logon-session LUID, captures tickets before purge, treats get as cache-changing, and protects authentication diagnostics.", "Windows runtime verification remains required."]
+    },
+    "setspn.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases with AD DS tools"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/setspn.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=488876&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR is query-only; the page requires exact SPN/account/service identity, current -S guidance, duplicate/forest checks, replication awareness, and protocol verification.", "Windows runtime verification remains required."]
+    },
     "git.md": {
       "kind": "native-cli",
       "status": "reviewed",

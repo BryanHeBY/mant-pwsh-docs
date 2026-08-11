@@ -191,6 +191,13 @@ license in the document's provenance catalog before adapting material.
 - [pnputil](pnputil.md): Driver Store, device, and interface identity safety.
 - [fondue](fondue.md): single-feature enablement and source-policy boundaries.
 
+## Windows security policy and authentication diagnosis
+
+- [auditpol](auditpol.md): effective advanced audit policy and stable GUID identity.
+- [gpresult](gpresult.md): exact user/computer RSoP and report protection.
+- [klist](klist.md): Kerberos tickets, logon sessions, and binding evidence.
+- [setspn](setspn.md): AD SPN ownership, duplicates, and safe registration boundaries.
+
 ## Cross-platform developer tools
 
 - [git](git.md): repository context, configuration, and native exit codes.

@@ -85,7 +85,8 @@
     {
       "name": "auditpol",
       "source": "auditpol.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/auditpol.md"
     },
     {
       "name": "autochk",
@@ -606,7 +607,8 @@
     {
       "name": "gpresult",
       "source": "gpresult.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/gpresult.md"
     },
     {
       "name": "gpt",
@@ -689,7 +691,8 @@
     {
       "name": "klist",
       "source": "klist.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/klist.md"
     },
     {
       "name": "ksetup",
@@ -1378,7 +1381,8 @@
     {
       "name": "setspn",
       "source": "setspn.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/setspn.md"
     },
     {
       "name": "setx",

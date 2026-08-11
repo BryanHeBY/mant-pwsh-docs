@@ -10,7 +10,7 @@ bundles.
 
 ### Added
 
-- First English release inventory: 153 reviewed ManT pages across `pwsh7`,
+- First English release inventory: 157 reviewed ManT pages across `pwsh7`,
   `pwsh51`, and `pwsh-cli`.
 - Broad `pwsh7` and `pwsh51` shell manuals, focused language/command pages,
   compatibility guides, and custom `irx` shorthand resolution guidance.
@@ -47,6 +47,9 @@ bundles.
 - Windows Installer, DISM image servicing, protected-file verification,
   Driver Store/device management, and optional-feature enablement guides for
   `msiexec`, DISM, `sfc`, `pnputil`, and `fondue`.
+- Advanced audit policy, Group Policy RSoP, Kerberos ticket/session, and
+  Active Directory SPN diagnosis guides for `auditpol`, `gpresult`, `klist`,
+  and `setspn`.
 - Per-page locked provenance catalogs, reader-facing source/license sections,
   and an optional upstream accessibility audit.
 - Portable Node.js validation with ManT JSON diagnostics and a v1 release gate.

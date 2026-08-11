@@ -2,7 +2,7 @@
   "$schema": "release-manifest/v1",
   "release": "v1",
   "locale": "en-US",
-  "requiredDocumentCount": 153,
+  "requiredDocumentCount": 157,
   "sources": {
     "pwsh7": {
       "runtimePlatforms": ["windows", "linux", "macos"],
@@ -165,6 +165,10 @@
         "sfc.md",
         "pnputil.md",
         "fondue.md",
+        "auditpol.md",
+        "gpresult.md",
+        "klist.md",
+        "setspn.md",
         "git.md",
         "ssh.md",
         "curl.md",
