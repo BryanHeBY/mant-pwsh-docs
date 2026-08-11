@@ -45,6 +45,25 @@ received network credentials, the child completed, or its output is correct.
 Preserve the XML definition, operational events, action logs, and independent
 postcondition.
 
+## Resolvable operations
+
+<!-- mant:entries role=option case=insensitive -->
+- `/query`: List task registrations or return selected properties, formats, and XML.
+- `/create`: Register a task from command switches or a reviewed XML definition.
+- `/change`: Change supported action, principal, password, or interactive-only settings on an existing task.
+- `/run`: Queue an immediate instance using the stored action and principal; it does not wait for completion.
+- `/end`: Request termination of an instance started by the task.
+- `/delete`: Delete task registration without undoing prior effects or necessarily stopping a running instance.
+- `/tn TASK`: Select an exact task path and name.
+- `/s COMPUTER`: Target a remote computer for the management operation.
+- `/u DOMAIN\USER`, `/p PASSWORD`: Authenticate a remote management operation; these do not set the runtime principal.
+- `/ru USER`, `/rp PASSWORD`: Select the task runtime principal and password; avoid command-line secret exposure.
+- `/xml FILE`: Create from a complete XML file; in a supported query form, bare `/xml` returns the selected definition.
+- `/fo FORMAT`: Select table, list, or CSV query output.
+- `/v`: Request verbose query properties.
+- `/hresult`: Display the last result in HRESULT form where supported.
+- `/f`: Suppress confirmation for supported create/delete changes; it does not validate identity or rollback.
+
 ## Operation map
 
 | Operation | Purpose | Boundary |

@@ -29,6 +29,19 @@ where [/r DIR] [/q] [/f] [/t] PATTERN [...]
 Windows `PATH`. It is useful when a native command name is ambiguous or when a
 script must diagnose which executable a Windows process can find.
 
+## Important options
+
+<!-- mant:entries role=option case=insensitive -->
+- `/r DIRECTORY`: Recursively search below one explicit directory instead of normal current-directory and `PATH` lookup.
+- `/q`: Suppress matches and report only status 0 for a match or 1 for no match/failure.
+- `/f`: Quote each matched path in display output.
+- `/t`: Include file size and last-modified time in display output.
+- `/?`: Show installed command help.
+
+The required pattern can be prefixed with `$ENV:` to search directories held
+in an environment variable or `PATH:` to search an explicit path list. Do not
+combine these prefix forms with `/r`.
+
 ## Command resolution
 
 ```powershell
@@ -66,6 +79,18 @@ formatting, which is for humans rather than a stable data interface.
 Check `$LASTEXITCODE` in automation and do not parse display output to make a
 security decision. If a script has a required executable dependency, validate
 the selected file's path, signature or hash where appropriate, and version.
+
+## PowerShell boundaries
+
+Bare `where` can resolve to `Where-Object`; use `where.exe` for Windows file
+lookup. `where.exe` follows Windows path and `PATHEXT` rules, while
+`Get-Command -All` answers PowerShell command precedence.
+
+## Version and availability
+
+`where.exe` is available on supported Windows client and server releases. Its
+filesystem visibility depends on the caller's token, path contents, network
+access, and filesystem state at the time of the search.
 
 ## Related documents
 

@@ -60,6 +60,37 @@ open-file, service, and policy mutations can deny access, expose data, interrupt
 work, invalidate credentials, or affect many computers. Run `net.exe help` and
 `net.exe help <command>` on the target build before using a write form.
 
+## Resolvable commands
+
+<!-- mant:entries role=command case=insensitive -->
+- `user`: Inspect or manage local accounts, or domain accounts when `/domain` selects that authority.
+- `localgroup`: Inspect or manage groups in the target computer's local account database.
+- `group`: Inspect or manage domain groups in the selected domain context.
+- `accounts`: Display or change selected account/password policy values; effective policy can have additional sources.
+- `computer`: Perform legacy domain computer-account operations where supported.
+- `use`: Inspect or manage outbound SMB/network-resource connections for the current logon context.
+- `share`: Inspect or manage resources published by the local Server service.
+- `session`: Inspect or disconnect inbound client sessions to the local Server service.
+- `file`: Inspect or close files opened remotely through the local Server service.
+- `view`: Query legacy network browse visibility; absence is not proof a host or share is unreachable.
+- `config`: Inspect or change Workstation/Server service configuration according to the selected family.
+- `statistics`: Display cumulative Workstation or Server service counters.
+- `start`, `stop`, `pause`, `continue`: List or control services with less diagnostic detail than `sc.exe`.
+- `help`: Display installed syntax and help for a NET command.
+- `helpmsg`: Explain one numeric network error using installed localized messages.
+- `time`: Use the legacy network-time surface; prefer `w32tm` for Windows Time diagnostics.
+- `print`: Inspect or manage legacy network print queues where the subsystem remains available.
+- `name`, `send`: Address retired or legacy messaging facilities whose availability varies by build.
+
+## Common scope options
+
+<!-- mant:entries role=option case=insensitive -->
+- `/domain`: Direct a supported account/group operation to the computer's primary domain instead of the local database.
+- `/delete`: Remove the selected connection, share, account, group membership, or other subcommand-specific object.
+- `/persistent:yes`, `/persistent:no`: Set persistence for supported `net use` connections and the default for later connections.
+- `/savecred`: Save credentials for reuse; requires a separate credential lifecycle and threat review.
+- `/y`, `/yes`: Confirm a supported operation without prompting; exact availability is subcommand-specific.
+
 ## Command-family map
 
 | Boundary | Subcommands | What they address |

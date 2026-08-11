@@ -61,6 +61,27 @@ Multiple disks can each carry a BCD store, while the firmware chooses which
 boot path actually starts. Editing the running system store does not update
 every BCD file on attached disks.
 
+## Resolvable operations
+
+<!-- mant:entries role=option case=insensitive -->
+- `/?`: Display installed BCDEdit help, optionally for one operation.
+- `/enum TYPE`: Enumerate active, firmware, boot-manager, loader, resume, memory-test, or all entries as documented.
+- `/v`: Display full entry identifiers instead of well-known abbreviations in enumeration output.
+- `/store FILE`: Select an explicit offline BCD store for an operation that supports it.
+- `/export FILE`: Back up the current system store to a file.
+- `/import FILE`: Replace current system-store entries from a backup; preserve recovery and verify the exact target first.
+- `/create`: Create a new entry or well-known settings object and capture the returned identifier.
+- `/copy ID`: Copy one existing entry and capture the new identifier.
+- `/delete ID`: Delete an exact entry from the selected store.
+- `/set ID ELEMENT VALUE`: Set one documented element on an exact entry.
+- `/deletevalue ID ELEMENT`: Remove one element so inherited/default behavior can apply.
+- `/default ID`: Select the persistent default loader entry.
+- `/displayorder ID`: Change persistent boot-menu ordering according to the complete command form.
+- `/bootsequence ID`: Set a one-time boot sequence, distinct from persistent display order.
+- `/timeout SECONDS`: Set the boot-manager menu timeout.
+- `/debug`, `/bootdebug`, `/dbgsettings`: Configure debugging only through a reviewed diagnostic procedure.
+- `/ems`, `/emssettings`: Configure Emergency Management Services where supported and authorized.
+
 ## Command families
 
 | Goal | Commands | Safety boundary |

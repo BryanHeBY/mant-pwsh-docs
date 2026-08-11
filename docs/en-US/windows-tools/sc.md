@@ -53,6 +53,43 @@ all of them before a change. Prefer structured `Get-Service`, `Get-CimInstance
 Win32_Service`, and supported product/service APIs for automation; use SC when
 its lower-level fields or controls are required.
 
+## Resolvable commands
+
+<!-- mant:entries role=command case=insensitive -->
+- `query`, `queryex`: Query service or driver runtime state; `queryex` also exposes process identifiers and flags.
+- `qc`: Query core service configuration such as binary path, account, dependencies, and start type.
+- `qdescription`, `qfailure`, `qfailureflag`: Query description and recovery configuration.
+- `qprivs`, `qsidtype`, `qtriggerinfo`: Query required privileges, service SID type, or trigger-start metadata.
+- `sdshow`: Show the service security descriptor in SDDL form; protect captured security metadata.
+- `start`, `stop`, `pause`, `continue`, `interrogate`, `control`: Send one supported control to an exact service key name.
+- `create`: Create an SCM registration; it does not safely install all product files or dependencies.
+- `config`: Change selected service configuration using SC's required `name= value` spacing.
+- `description`: Change the service description.
+- `delete`: Mark a service registration for deletion; open handles can delay removal.
+- `failure`, `failureflag`: Configure failure actions and whether non-crash failures trigger them.
+- `triggerinfo`: Configure service triggers that can start or stop a service.
+- `privs`, `sidtype`, `sdset`: Change privileges, SID behavior, or the security descriptor.
+- `GetDisplayName`, `GetKeyName`: Translate between display and key names; neither alone verifies product identity.
+- `EnumDepend`: Enumerate services that depend on an exact service.
+- `showsid`: Calculate and display the service SID for a name.
+- `Lock`, `QueryLock`: Lock or inspect the SCM database lock; avoid locks in ordinary automation.
+- `boot`: Indicate whether the last boot should be saved as the last-known-good configuration.
+
+## Common query and configuration options
+
+<!-- mant:entries role=option case=insensitive -->
+- `type= TYPE`: Restrict query or set a service/driver type; the space after `=` is required before the value.
+- `state= STATE`: For query operations, select active, inactive, or all states.
+- `bufsize= BYTES`: Set enumeration buffer size for a query.
+- `ri= INDEX`: Resume enumeration from an index returned by an earlier query.
+- `group= GROUP`: Restrict enumeration to one load-order group.
+- `binpath= PATH`: Set a service binary command line; quoting and executable identity are security-critical.
+- `start= MODE`: Set boot, system, automatic, demand, disabled, or delayed-auto behavior where supported.
+- `error= MODE`: Set boot error-control behavior for the service or driver.
+- `obj= ACCOUNT`: Set the service logon account; changing identity also requires credential and rights planning.
+- `depend= SERVICES`: Set dependencies using SC's documented separator grammar.
+- `displayname= NAME`: Set the localized display name, not the stable service key name.
+
 ## Command-family map
 
 | Family | Representative commands | Boundary |

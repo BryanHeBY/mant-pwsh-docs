@@ -36,6 +36,19 @@ behavior but does not publish a complete Windows 10/11 `Explorer.exe` command
 line contract. Do not build new automation around copied legacy switches
 without verifying them on every target release.
 
+## Command identities
+
+<!-- mant:entries role=command case=insensitive -->
+- `explorer.exe`: Request the Windows desktop shell or a folder window; no complete current switch contract is claimed here.
+- `Invoke-Item`, `ii`: Perform a PowerShell provider item's default action; a filesystem folder normally opens in Explorer on an interactive Windows desktop.
+- `Start-Process`: Request explicit process-launch behavior while leaving shell associations and GUI lifecycle to Windows.
+
+## PowerShell boundaries
+
+Opening a shell item is a side effect, not object enumeration. Use
+`Get-Item`/`Get-ChildItem` for data and do not interpret an Explorer PID or
+launcher exit as the lifecycle of one visible window.
+
 ## Open a folder
 
 ```powershell

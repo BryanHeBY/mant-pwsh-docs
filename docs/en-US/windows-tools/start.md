@@ -47,8 +47,10 @@ start "TITLE" [/d PATH] [/i] [/min | /max] [/separate | /shared]
 
 ## Important options
 
-- `"TITLE"`: Set the new Command Prompt window title. A first quoted token is
-  interpreted as this title, not automatically as the program path.
+The first quoted `"TITLE"` token sets the new Command Prompt window title; it
+is not automatically interpreted as the program path.
+
+<!-- mant:entries role=option case=insensitive -->
 - `/d PATH`: Set the startup directory.
 - `/i`: Pass the original `cmd.exe` startup environment instead of the current
   environment.
@@ -61,11 +63,18 @@ start "TITLE" [/d PATH] [/i] [/min | /max] [/separate | /shared]
 - `/wait`: Wait for the started application to end.
 - `/b`: Do not open a new Command Prompt window; use Ctrl+Break when the target
   does not enable Ctrl+C processing.
-- `/machine x86|amd64|arm|arm64`: Select a process architecture where the
+- `/machine ARCHITECTURE`: Select `x86`, `amd64`, `arm`, or `arm64` where the
   installed Windows build supports this preview option.
 
 The `/separate` and `/shared` switches are for 16-bit programs and are not
 supported on 64-bit platforms.
+
+## PowerShell boundaries
+
+`start` is a `cmd.exe` builtin, while PowerShell can resolve `start` as an
+alias for `Start-Process`. Invoke `cmd.exe /d /c` for this exact grammar and
+preserve the first quoted title argument; use `Start-Process` when its typed
+parameters are the intended interface.
 
 ## Quoted program paths
 

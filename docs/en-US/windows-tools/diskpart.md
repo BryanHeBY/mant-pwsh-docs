@@ -44,6 +44,37 @@ every destructive command, repeat `list`, `select`, and `detail`; match several
 stable attributes and disconnect unrelated removable/backup disks when the
 approved procedure permits it.
 
+## Resolvable commands
+
+<!-- mant:entries role=command case=insensitive -->
+- `list`: List disks, partitions, volumes, or virtual disks and mark current focus.
+- `select`: Put one exact disk, partition, volume, or virtual disk in focus for later commands.
+- `detail`: Display identifiers and state for the focused object before any change.
+- `filesystems`: Display filesystems supported for formatting the focused volume.
+- `help`: Show installed DiskPart command or command-specific help.
+- `assign`, `remove`: Add or remove a drive letter or mount-point association.
+- `online`, `offline`: Change whether the focused disk or volume is available to Windows.
+- `attributes`: Inspect or change disk/volume attributes such as read-only state.
+- `automount`, `san`, `rescan`: Inspect or change storage arrival policy, SAN policy, or refresh visible storage.
+- `create`: Create a partition, volume, or virtual disk and normally shift focus to the new object.
+- `delete`: Delete the focused partition, volume, or virtual-disk object according to command-specific rules.
+- `extend`, `shrink`: Change selected volume or partition size subject to layout and filesystem constraints.
+- `active`, `inactive`: Change the MBR partition active marker; misuse can prevent boot.
+- `gpt`, `set id`: Change partition attributes or type identifiers under the applicable partition scheme.
+- `clean`: Remove partition/volume formatting from the focused disk; `clean all` writes every sector.
+- `convert`: Convert the focused disk's partition/disk model according to command-specific preconditions.
+- `uniqueid`: Inspect or change the focused disk identifier.
+- `format`: Create a filesystem on the focused volume; `quick` is neither preview nor secure erase.
+- `attach vdisk`, `detach vdisk`: Attach or detach the focused VHD/VHDX from the host.
+- `create vdisk`, `compact vdisk`, `expand vdisk`, `merge vdisk`: Create or change a selected virtual-disk file and parent chain.
+- `rem`: Add a comment line to a DiskPart script.
+- `exit`: End the DiskPart interpreter.
+
+## Script option
+
+<!-- mant:entries role=option case=insensitive -->
+- `/s FILE`: Run a reviewed DiskPart script file containing one command per line.
+
 ## Command-family map
 
 | Family | Commands | Purpose and boundary |

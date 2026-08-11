@@ -42,6 +42,17 @@ The comma separates the DLL name and entry point. Arguments after that are
 interpreted by the entry point, so their syntax, privileges, architecture, side
 effects, and exit behavior cannot be inferred from `rundll32.exe` itself.
 
+## Invocation entry
+
+<!-- mant:entries role=command case=insensitive -->
+- `rundll32.exe`: Load exactly one DLL entry point whose owner documents the Rundll32 calling convention and complete argument contract.
+
+## PowerShell boundaries
+
+Pass the combined `DLL-NAME,ENTRY-POINT` token as one argument. PowerShell
+cannot discover the entry point's private grammar, return type, or success
+contract; verify resulting state through the supported owning subsystem.
+
 ## Common mistakes
 
 ### Calling an arbitrary DLL export

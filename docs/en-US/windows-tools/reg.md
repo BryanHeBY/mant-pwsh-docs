@@ -50,6 +50,7 @@ reg.exe save
 reg.exe unload
 ```
 
+<!-- mant:entries role=command case=insensitive -->
 - `query`: Read keys and values or search recursively.
 - `add`: Create a key or set a named/default value and data type.
 - `delete`: Delete a key, one value, the default value, or all values.
@@ -65,6 +66,7 @@ reg.exe query KEY [/v VALUE | /ve] [/s] [/se SEPARATOR] [/f DATA]
               [/k | /d] [/c] [/e] [/t TYPE] [/z] [/reg:32 | /reg:64]
 ```
 
+<!-- mant:entries role=option case=insensitive -->
 - `/v NAME`: Query a named value.
 - `/ve`: Query the unnamed default value.
 - `/s`: Recurse through all subkeys and values.
@@ -92,9 +94,22 @@ consumer expects `REG_DWORD`, `REG_EXPAND_SZ`, `REG_MULTI_SZ`, `REG_BINARY`, or
 another exact type. `/f` suppresses confirmation and therefore requires an
 already verified key, view, value name, type, data, and rollback.
 
+<!-- mant:entries role=option case=insensitive -->
+- `/d DATA`: For `reg add`, set the value data using the type and separator selected for that operation.
+- `/va`: For `reg delete`, delete all values in the key but retain its subkeys.
+- `/f`: For `reg add` or `reg delete`, suppress confirmation; it does not validate the target or create rollback.
+- `/y`: For supported copy/export/save/restore operations, overwrite without prompting; inspect the exact subcommand contract first.
+
 For `delete`, omitting `/v`, `/ve`, and `/va` deletes the named key and its
 subkeys and values. `/va` deletes all values in the key but not its subkeys.
 Never construct a delete target from unvalidated input.
+
+## PowerShell boundaries
+
+Call `reg.exe` explicitly. PowerShell's Registry provider returns typed items
+and properties, while `reg.exe` emits localized text and uses native exit
+codes. Quote registry paths, distinguish the 32-bit and 64-bit views, and
+check `$LASTEXITCODE` immediately.
 
 ## Export and import
 

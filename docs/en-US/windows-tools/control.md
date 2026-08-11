@@ -41,6 +41,21 @@ control.exe MODULE.cpl[,TAB]
 Use legacy `.cpl` module or tab syntax only when the current official product
 documentation requires it. Canonical names are preferred for modern scripts.
 
+## Important options
+
+<!-- mant:entries role=option case=insensitive -->
+- `/name CANONICAL-NAME`: Open one nonlocalized Control Panel item by its documented canonical name.
+- `/page PAGE-NAME`: With `/name`, request a documented subpage owned by that Control Panel item.
+
+## Common canonical items
+
+<!-- mant:entries role=command case=insensitive -->
+- `Microsoft.ProgramsAndFeatures`: Open installed-program management where the Control Panel item remains available.
+- `Microsoft.PowerOptions`: Open power-plan settings supported by the target Windows build and hardware.
+- `Microsoft.NetworkAndSharingCenter`: Open the legacy network and sharing UI where available.
+- `Microsoft.CredentialManager`: Open the interactive Credential Manager UI for the current desktop session.
+- `Microsoft.DevicesAndPrinters`: Open the devices and printers shell item where the target release exposes it.
+
 ## Canonical names
 
 Canonical names are always English, even on a localized system. Examples in
@@ -55,6 +70,12 @@ Microsoft's catalog include:
 Not every item exists on every Windows version, edition, hardware
 configuration, or server installation. Some older names are deprecated or
 remapped for compatibility.
+
+## PowerShell boundaries
+
+Use `control.exe` explicitly and pass `/name` and its canonical name as
+separate arguments. Process creation or window appearance does not return the
+selected configuration as a PowerShell object and cannot verify a user action.
 
 ## Common mistakes
 

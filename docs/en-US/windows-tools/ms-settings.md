@@ -57,6 +57,22 @@ a URI from the localized page title.
 Availability of an identifier can depend on Windows release, SKU, hardware,
 installed apps, policy, and feature state.
 
+## Common page URIs
+
+<!-- mant:entries role=command case=insensitive -->
+- `ms-settings:`: Open Settings home without selecting a configuration page.
+- `ms-settings:display`: Open Display settings.
+- `ms-settings:network-status`: Open Network and Internet status.
+- `ms-settings:appsfeatures`: Open installed-app features where supported.
+- `ms-settings:privacy`: Open the privacy home page where supported.
+- `ms-settings:windowsupdate`: Open Windows Update settings.
+
+## PowerShell boundaries
+
+The URI is data passed to the Windows shell, not a PowerShell command name.
+Pass the complete URI as one string to `Start-Process`; launch success neither
+reads the setting nor proves that a user changed it.
+
 ## Common mistakes
 
 ### Treating the URI as a command that changes a setting

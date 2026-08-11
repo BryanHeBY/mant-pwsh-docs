@@ -30,6 +30,26 @@ session, user, service, memory, CPU time, module, and selected state fields;
 multiple filters are combined. `/svc` maps hosted services, `/v` adds display
 fields, and `/fo table|list|csv` selects presentation.
 
+## Important options
+
+<!-- mant:entries role=option case=insensitive -->
+- `/fi FILTER`: Include or exclude processes with one filter; repeat to combine filters.
+- `/fo FORMAT`: Select `table`, `list`, or `csv` presentation.
+- `/nh`: Suppress headers for table or CSV output; retaining CSV headers is safer for named-field parsing.
+- `/m MODULE`: List processes that loaded a matching DLL module, or list modules when no name is supplied.
+- `/svc`: Show service information hosted by each process; use table format for the documented complete view.
+- `/v`: Add verbose process fields; combine with `/svc` for the documented untruncated service view.
+- `/s COMPUTER`: Query a remote computer by name or IP address.
+- `/u DOMAIN\USER`: Authenticate the remote query as another user; valid only with `/s`.
+- `/p PASSWORD`: Supply the remote password; omit the value to prompt rather than exposing a secret.
+- `/?`: Show installed command help.
+
+## PowerShell boundaries
+
+Call `tasklist.exe` explicitly and pass an entire `/fi` expression as one
+argument. CSV is still localized text; use `Get-Process` or CIM when typed
+properties and stable property names are required.
+
 ## Common mistakes
 
 ### Parsing the default fixed-width table

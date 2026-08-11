@@ -35,6 +35,7 @@ cmd.exe [/c | /k] [/s] [/q] [/d] [/a | /u] [/t:BF]
 
 ## Important options
 
+<!-- mant:entries role=option case=insensitive -->
 - `/c STRING`: Run the command string, then exit.
 - `/k STRING`: Run the command string, then keep the cmd process open.
 - `/d`: Disable Command Processor AutoRun registry commands for this process.
@@ -51,7 +52,7 @@ cmd.exe [/c | /k] [/s] [/q] [/d] [/a | /u] [/t:BF]
 Use `/d` for deterministic automation unless the task intentionally depends
 on Command Processor AutoRun configuration.
 
-## PowerShell and cmd boundaries
+## PowerShell boundaries
 
 PowerShell parses the outer command first. Cmd then parses the string supplied
 to `/c` or `/k`. Keep the cmd portion as one PowerShell string and minimize

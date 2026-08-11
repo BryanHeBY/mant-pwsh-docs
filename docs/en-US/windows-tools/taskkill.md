@@ -25,6 +25,24 @@
 `/f` forces termination and `/t` includes child processes started by the
 selected process. Remote terminations are always forced.
 
+## Important options
+
+<!-- mant:entries role=option case=insensitive -->
+- `/pid PID`: Select one process ID; repeat the option to select multiple PIDs.
+- `/im IMAGE`: Select processes by executable image name; `*` is accepted only with a filter.
+- `/fi FILTER`: Apply one selection filter; repeated filters are combined.
+- `/f`: Force termination; remote termination is forced even when this switch is absent.
+- `/t`: Include child processes started by each selected process.
+- `/s COMPUTER`: Target a remote computer by name or IP address.
+- `/u DOMAIN\USER`: Authenticate the remote operation as another user; valid only with `/s`.
+- `/p PASSWORD`: Supply the remote password; omit its value to prompt rather than exposing a secret in the command line.
+
+## PowerShell boundaries
+
+Call `taskkill.exe` explicitly, pass each filter as one quoted argument, and
+check `$LASTEXITCODE`. Prefer `Stop-Process -WhatIf` for a typed local preview,
+but do not assume it reproduces Taskkill's remote or tree semantics.
+
 ## Common mistakes
 
 ### Killing every process with an image name
