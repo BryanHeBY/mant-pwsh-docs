@@ -310,6 +310,75 @@
         "This is an original guide, not an official about-topic name; its upstream source covers native-command parsing behavior.",
         "Argument passing, byte-stream behavior, and command resolution require verification on all declared platforms."
       ]
+    },
+    "Get-Command.md": {
+      "kind": "cmdlet",
+      "status": "draft",
+      "versions": [
+        "7.6"
+      ],
+      "platforms": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Core/Get-Command.md"
+        }
+      ],
+      "notes": [
+        "The page emphasizes command precedence and source discovery in cross-platform sessions.",
+        "Availability examples require verification on all declared platforms."
+      ]
+    },
+    "Get-Help.md": {
+      "kind": "cmdlet",
+      "status": "draft",
+      "versions": [
+        "7.6"
+      ],
+      "platforms": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Core/Get-Help.md"
+        }
+      ],
+      "notes": [
+        "The page distinguishes installed help, online help, and downloadable help content.",
+        "Module help availability requires verification on all declared platforms."
+      ]
+    },
+    "Get-Member.md": {
+      "kind": "cmdlet",
+      "status": "draft",
+      "versions": [
+        "7.6"
+      ],
+      "platforms": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Utility/Get-Member.md"
+        }
+      ],
+      "notes": [
+        "The page emphasizes object inspection before formatting or property access.",
+        "Object-type examples require verification on all declared platforms."
+      ]
     }
   }
 }

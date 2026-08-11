@@ -57,8 +57,16 @@ differences in newer stable releases.
 - [native-commands](native-commands.md): executable resolution, argument
   conversion, streams, exit codes, and safety.
 
-Future introductory pages will cover command discovery, using the help system,
-and moving scripts from Windows PowerShell 5.1.
+Future introductory pages will cover moving scripts from Windows PowerShell
+5.1.
+
+## Command discovery
+
+- [Get-Command](Get-Command.md): resolve aliases, functions, cmdlets, scripts,
+  modules, and executables.
+- [Get-Help](Get-Help.md): read installed, detailed, and online help.
+- [Get-Member](Get-Member.md): inspect the members and type information of
+  objects before selecting properties or calling methods.
 
 ## Planned command reference
 

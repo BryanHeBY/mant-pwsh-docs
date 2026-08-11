@@ -1,0 +1,119 @@
+<!-- mant:tldr:start -->
+# Get-Help
+
+> Read installed PowerShell 7 command and concept documentation.
+> More information: https://learn.microsoft.com/powershell/module/microsoft.powershell.core/get-help?view=powershell-7.6.
+
+- Show concise command help:
+
+`Get-Help {{command}}`
+
+- Show parameters, examples, inputs, and outputs:
+
+`Get-Help {{command}} -Full`
+
+- Open official online help:
+
+`Get-Help {{command}} -Online`
+<!-- mant:tldr:end -->
+
+# Get-Help
+
+## Synopsis
+
+```powershell
+Get-Help [[-Name] <string>] [-Full] [-Detailed] [-Examples] [-Online]
+    [-Parameter <string>] [<CommonParameters>]
+```
+
+`Get-Help` displays installed help for commands and `about_*` concepts. Help
+content comes from the command's module, local help files, or fallback
+information when full help has not been installed.
+
+## Help views
+
+The default view gives a short description and syntax. `-Detailed` adds
+parameter descriptions and examples. `-Full` adds all available metadata,
+including input and output types. `-Examples` focuses on examples, and
+`-Parameter` describes a particular parameter.
+
+```powershell
+Get-Help Get-ChildItem -Examples
+Get-Help Get-ChildItem -Parameter LiteralPath
+Get-Help about_Quoting_Rules
+```
+
+Use `Get-Command NAME -Syntax` for a compact parameter-set view when the
+full help page is more detail than an interactive troubleshooting session
+needs.
+
+## Online and updatable help
+
+`-Online` opens the command's online help URI in the configured browser when
+the command supplies one. It requires a suitable interactive environment and
+network access. It is not appropriate for unattended automation.
+
+Many modules support `Update-Help`, which downloads current help content from
+their configured source. Updating help can require elevation, network access,
+or a saved-help workflow in restricted environments. Do not make scripts rely
+on a help update occurring at runtime.
+
+## Searching help
+
+Help names can use wildcards. Use the `about_*` prefix to discover conceptual
+topics and `Get-Command` to discover command names before asking for detailed
+help.
+
+```powershell
+Get-Help about_*
+Get-Command *-Service
+Get-Help Get-Service -Full
+```
+
+The installed help version can differ from the online documentation version.
+Record the PowerShell and module versions when documentation behavior affects
+an operational decision.
+
+## Examples
+
+Inspect pipeline support before composing commands:
+
+```powershell
+Get-Help Select-Object -Full
+```
+
+Read one concept page in a terminal-friendly form:
+
+```powershell
+Get-Help about_Profiles
+```
+
+Find the required parameter details for a command:
+
+```powershell
+Get-Help Invoke-Command -Parameter ComputerName
+```
+
+## Platform and version differences
+
+PowerShell's help system is available on all supported PowerShell 7 platforms,
+but installed modules, downloadable help sources, browser integration, and
+permission requirements can differ. Help for Windows-only modules may not be
+available in a Linux or macOS session.
+
+## Related documents
+
+- [Get-Command](Get-Command.md)
+- [Get-Member](Get-Member.md)
+- [PowerShell 7 documentation](powershell-7-docs.md)
+
+## Sources and license
+
+This original ManT-oriented page was adapted from the official
+[Get-Help reference](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/get-help?view=powershell-7.6).
+It is organized around interactive help views, source freshness, and safe use
+in automated environments. Exact upstream revision and path are recorded in
+`upstream/pwsh7.json`.
+
+The cited documentation is licensed under CC BY 4.0. This adaptation is
+licensed under CC BY 4.0.
