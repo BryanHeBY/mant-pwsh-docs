@@ -795,6 +795,74 @@
       "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/rd.md"}],
       "notes": ["This concise lookup page distinguishes the cmd synonym from PowerShell's rmdir alias.", "Windows runtime verification remains required."]
     },
+    "cd.md": {
+      "kind": "cmd-builtin", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/cd.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/powershell/module/microsoft.powershell.management/set-location", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackoverflow.com/questions/17753986/how-to-change-directory-using-windows-command-line", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The page makes /d and the per-drive current-directory model prominent and distinguishes PowerShell's Set-Location alias.", "Windows runtime verification remains required."]
+    },
+    "chdir.md": {
+      "kind": "alias", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/chdir.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/powershell/module/microsoft.powershell.management/set-location", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["This concise lookup page distinguishes the cmd synonym from PowerShell's Set-Location alias.", "Windows runtime verification remains required."]
+    },
+    "move.md": {
+      "kind": "cmd-builtin", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/move.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/powershell/module/microsoft.powershell.management/move-item", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackoverflow.com/questions/71871305/how-do-you-move-more-than-a-single-item-with-powershell-at-once", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The page distinguishes cmd move from PowerShell Move-Item and makes collision, missing-destination, partial-success, and EFS behavior explicit.", "Windows runtime verification remains required."]
+    },
+    "md.md": {
+      "kind": "cmd-builtin", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/md.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/powershell/module/microsoft.powershell.management/new-item", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackoverflow.com/questions/50832054/mkdir-vs-new-item-is-it-the-same-cmdlets", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The page explains intermediate creation under command extensions and the PowerShell function/cmdlet resolution boundary.", "Windows runtime verification remains required."]
+    },
+    "mkdir.md": {
+      "kind": "alias", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/mkdir.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/powershell/module/microsoft.powershell.management/new-item", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackoverflow.com/questions/50832054/mkdir-vs-new-item-is-it-the-same-cmdlets", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["This concise lookup page distinguishes the cmd synonym from platform-dependent PowerShell resolution, including the Windows mkdir function.", "Windows runtime verification remains required."]
+    },
+    "ren.md": {
+      "kind": "cmd-builtin", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/ren.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/powershell/module/microsoft.powershell.management/rename-item", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackoverflow.com/questions/8780097/renaming-files-in-cmd-using-wildcards", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The page leads with exact-name and preview examples and explains in-place-only, mask, collision, partial-success, and PowerShell differences.", "Windows runtime verification remains required."]
+    },
+    "rename.md": {
+      "kind": "alias", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/rename.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/powershell/module/microsoft.powershell.management/rename-item", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["This concise lookup page records that rename is a cmd synonym but not a built-in PowerShell alias; ren is the Rename-Item alias.", "Windows runtime verification remains required."]
+    },
     "git.md": {
       "kind": "native-cli",
       "status": "reviewed",

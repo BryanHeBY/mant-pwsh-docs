@@ -87,6 +87,24 @@ cmd.exe /d /c "dir /b /a:-d %SystemRoot%\System32\cmd.exe"
 cmd.exe /d /c "copy /? & del /? & rd /?"
 ```
 
+Exercise directory creation, exact rename, move, and both `cd` spellings in a
+fresh temporary directory, then inspect before removing that directory:
+
+```powershell
+$testRoot = Join-Path ([IO.Path]::GetTempPath()) "mant-cli-$([guid]::NewGuid())"
+New-Item -ItemType Directory -Path $testRoot | Out-Null
+Set-Content -LiteralPath (Join-Path $testRoot 'source.txt') -Value 'test'
+$cmdLine = 'cd /d "{0}" && chdir && md nested\child && ren source.txt renamed.txt && move /-y renamed.txt target.txt' -f $testRoot
+cmd.exe /d /c $cmdLine
+Get-ChildItem -LiteralPath $testRoot -Recurse
+Remove-Item -LiteralPath $testRoot -Recurse -Confirm
+```
+
+Confirm that cmd printed `$testRoot`, created `nested\child`, and left exactly
+`target.txt`. Also run `Get-Command cd, chdir, move, md, mkdir, ren, rename -All`
+in both target PowerShell editions and compare the results with the command-
+resolution notes; `rename` is not a built-in PowerShell alias.
+
 Review Windows-only commands on a non-production target. In particular, use
 `robocopy /L` before any real copy, query an existing known task before task
 changes, and query a known service before `sc.exe` configuration work.

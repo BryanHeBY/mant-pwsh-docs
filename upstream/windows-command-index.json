@@ -159,7 +159,8 @@
     {
       "name": "cd",
       "source": "cd.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/cd.md"
     },
     {
       "name": "certreq",
@@ -184,7 +185,8 @@
     {
       "name": "chdir",
       "source": "chdir.md",
-      "status": "unclassified"
+      "status": "alias",
+      "target": "pwsh-cli/chdir.md"
     },
     {
       "name": "chglogon",
@@ -755,7 +757,8 @@
     {
       "name": "md",
       "source": "md.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/md.md"
     },
     {
       "name": "merge vdisk",
@@ -765,7 +768,8 @@
     {
       "name": "mkdir",
       "source": "mkdir.md",
-      "status": "unclassified"
+      "status": "alias",
+      "target": "pwsh-cli/mkdir.md"
     },
     {
       "name": "mklink",
@@ -801,7 +805,8 @@
     {
       "name": "move",
       "source": "move.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/move.md"
     },
     {
       "name": "mqbkup",
@@ -1163,12 +1168,14 @@
     {
       "name": "ren",
       "source": "ren.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/ren.md"
     },
     {
       "name": "rename",
       "source": "rename.md",
-      "status": "unclassified"
+      "status": "alias",
+      "target": "pwsh-cli/rename.md"
     },
     {
       "name": "repadmin",

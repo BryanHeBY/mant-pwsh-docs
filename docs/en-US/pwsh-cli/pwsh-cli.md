@@ -134,7 +134,11 @@ license in the document's provenance catalog before adapting material.
 ## Cmd files and directories
 
 - [dir](dir.md): text listings, attributes, short-name wildcards, and reparse points.
+- [cd](cd.md) / [chdir](chdir.md): cmd's per-drive directory model and `/d`.
+- [md](md.md) / [mkdir](mkdir.md): directory creation and shell resolution.
 - [copy](copy.md): ordinary copies versus concatenation and PowerShell's alias.
+- [move](move.md): collision policy, EFS, and PowerShell's `Move-Item` alias.
+- [ren](ren.md) / [rename](rename.md): in-place renames and wildcard-mask risks.
 - [del](del.md) / [erase](erase.md): permanent file deletion with exact previews.
 - [rd](rd.md) / [rmdir](rmdir.md): empty or recursive directory removal.
 

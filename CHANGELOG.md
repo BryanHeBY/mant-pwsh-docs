@@ -10,7 +10,7 @@ bundles.
 
 ### Added
 
-- First English release inventory: 108 reviewed ManT pages across `pwsh7`,
+- First English release inventory: 115 reviewed ManT pages across `pwsh7`,
   `pwsh51`, and `pwsh-cli`.
 - Broad `pwsh7` and `pwsh51` shell manuals, focused language/command pages,
   compatibility guides, and custom `irx` shorthand resolution guidance.
@@ -26,6 +26,8 @@ bundles.
   `assoc`, and `ftype`.
 - Cmd directory listing, file copy, permanent file deletion, and recursive
   directory removal guides, including `erase` and `rmdir` lookup aliases.
+- Cmd directory navigation, creation, move, and rename guides, including
+  `chdir`, `mkdir`, and `rename` lookup pages and PowerShell resolution notes.
 - Per-page locked provenance catalogs, reader-facing source/license sections,
   and an optional upstream accessibility audit.
 - Portable Node.js validation with ManT JSON diagnostics and a v1 release gate.
