@@ -379,7 +379,13 @@ license in the document's provenance catalog before adapting material.
 - [bootcfg](bootcfg.md): legacy Boot.ini families versus modern BCD identity and recovery.
 - [chkdsk](chkdsk.md): filesystem scan, repair mode, and result-code handling.
 - [chkntfs](chkntfs.md): startup check scheduling and exclusion policy.
+- [autochk](autochk.md): startup-only NTFS checking through supported dirty-state, policy, and event inspection.
+- [autoconv](autoconv.md): internal startup FAT/FAT32-to-NTFS worker and supported Convert front-end boundary.
+- [autofmt](autofmt.md): internal recovery formatter recognition without unsupported direct invocation.
 - [defrag](defrag.md): media-aware optimization, retrim, tiers, and scope.
+- [diskcomp](diskcomp.md) / [diskcopy](diskcopy.md): floppy-only track comparison and destructive same-type media copying.
+- [diskperf](diskperf.md): physical/logical disk-counter configuration, restart, localization, and sampling boundaries.
+- [freedisk](freedisk.md): explicit-unit installation-space gates and the 0-enough/1-insufficient exit contract.
 - [compact](compact.md): NTFS, executable, and CompactOS compression boundaries.
 - [label](label.md) / [vol](vol.md): mutable labels and filesystem serial display correlated with durable volume/disk identity.
 - [format](format.md): destructive filesystem creation gated by durable volume identity, restore, and media-aware sanitization limits.
@@ -387,9 +393,13 @@ license in the document's provenance catalog before adapting material.
 - [makecab](makecab.md) / [diantz](diantz.md): explicit Cabinet builds, directive-file review, artifact verification, and searchable compatibility naming.
 - [expand](expand.md): list-first, isolated Cabinet extraction with path, collision, signature, and format boundaries.
 - [manage-bde](manage-bde.md): BitLocker state, protectors, escrow, and access.
+- [fveupdate](fveupdate.md): Windows Setup-owned internal BitLocker metadata updater recognition.
 - [mountvol](mountvol.md): volume GUID, mount-point, automount, and ESP safety.
 - [diskpart](diskpart.md): focus-driven disk, partition, volume, and VHD safety.
 - [fsutil](fsutil.md): advanced filesystem, journal, link, and behavior state.
+- [ktmutil](ktmutil.md): Kernel Transaction Manager inspection with owner-controlled recovery decisions.
+- [pagefileconfig](pagefileconfig.md): deprecated paging-file CLI migration and configuration-versus-runtime state.
+- [pentnt](pentnt.md): deprecated historical Pentium FDIV workaround discovery and retirement.
 - [vssadmin](vssadmin.md): VSS writer, provider, shadow, and diff-area evidence.
 - [diskshadow](diskshadow.md): scripted VSS backup, restore, and transport boundaries.
 - [wbadmin](wbadmin.md): Windows Backup catalog, version, target, and recovery identity.

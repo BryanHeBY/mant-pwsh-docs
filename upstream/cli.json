@@ -2597,6 +2597,76 @@
       "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/pnpunattend.md"}],
       "notes": ["Microsoft's counterintuitive syntax makes auditsystem an online install unless /s requests search-only, and mixes Windows 7 prerequisites with current applicability. The TLDR preserves /s /l and correlates Driver Store inventory.", "Windows runtime verification remains help and auditsystem /s /l only; no driver-path/PATH/registry, staging/install, device, policy, reboot or removal mutation is permitted merely for evidence."]
     },
+    "autochk.md": {
+      "kind": "legacy-native-cli", "status": "reviewed", "versions": ["Windows startup-only NTFS checker; scheduling, volume and recovery behavior vary by build and storage stack"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/autochk.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/chkntfs.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/answers/questions/2762786/autochk-program-missing-skipping-autocheck", "license": {"spdx": "LicenseRef-Microsoft-Web-Terms", "url": "https://www.microsoft.com/en-us/legal/terms-of-use"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Microsoft states Autochk cannot be run directly and redirects configuration to Chkntfs; recurring support questions expose unsafe direct BootExecute editing and missing-binary confusion. The TLDR is dirty-state, policy, countdown and event inspection only.", "Windows runtime verification remains fsutil dirty query, chkntfs display and Wininit event reading only; no BootExecute, exclusion, schedule, countdown, filesystem, volume, repair or reboot mutation is permitted merely for evidence."]
+    },
+    "autoconv.md": {
+      "kind": "legacy-native-cli", "status": "reviewed", "versions": ["Windows startup-only FAT/FAT32-to-NTFS conversion worker invoked through convert.exe"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/autoconv.md"}],
+      "notes": ["Microsoft states AutoConv cannot run directly, is scheduled through Convert and cannot reverse NTFS back to FAT/FAT32. The TLDR inventories the volume, front-end help and a read-only filesystem check.", "Windows runtime verification remains typed volume inventory, convert help and read-only chkdsk only; no conversion, schedule, repair, filesystem, volume, partition or reboot mutation is permitted merely for evidence."]
+    },
+    "autofmt.md": {
+      "kind": "legacy-native-cli", "status": "reviewed", "versions": ["internal Windows recovery formatting worker; WinRE and storage identities vary by device/build"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/autofmt.md"}],
+      "notes": ["Microsoft states AutoFmt cannot be run directly and belongs to a recovery workflow. The TLDR performs online inventory, opens supported recovery settings and reads public formatter help without a write.", "Windows runtime verification remains online inventory/settings launch/help only; no recovery boot, AutoFmt invocation, format, filesystem, volume, partition, encryption or boot mutation is permitted merely for evidence."]
+    },
+    "diskcomp.md": {
+      "kind": "legacy-native-cli", "status": "reviewed", "versions": ["Windows floppy-only track comparison; depends on compatible hardware, drivers and media geometry"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/diskcomp.md"}],
+      "notes": ["Microsoft defines floppy-only, track-level, interactive swap behavior and result codes 0/1/3/4, including why file copies can fail a track comparison. The TLDR makes scope and the four-way result explicit.", "Windows runtime verification remains resolution/help only unless approved test floppies and interactive hardware are dedicated; no production/evidence media read or any media write is permitted merely for evidence."]
+    },
+    "diskcopy.md": {
+      "kind": "legacy-native-cli", "status": "reviewed", "versions": ["Windows floppy-only destructive copy; depends on compatible hardware, drivers and media geometry"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/diskcopy.md"}],
+      "notes": ["Microsoft defines source/destination floppy semantics, interactive swaps, destination formatting, /v verification and result codes 0/1/3/4. The TLDR labels the destructive direction and captures the result.", "Windows runtime verification remains resolution/help only; no floppy/media formatting, copying, swapping or writes are permitted merely for evidence."]
+    },
+    "diskperf.md": {
+      "kind": "native-cli", "status": "reviewed", "versions": ["Windows disk-counter startup configuration; consumers, localization and restart behavior vary by release/agent"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/diskperf.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/windows/win32/perfctrs/performance-counters-tools", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/answers/questions/1526966/disk-performance-counter-is-not-fully-functional-f", "license": {"spdx": "LicenseRef-Microsoft-Web-Terms", "url": "https://www.microsoft.com/en-us/legal/terms-of-use"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Microsoft defines query and physical/logical enable/disable changes after restart; current counter-tool guidance and accepted Q&A expose collection-tool and exact counter-path confusion. The TLDR queries state, discovers localized sets and samples bounded data before an approved enable.", "Windows runtime verification remains diskperf query and bounded counter discovery/sample only; no counter, registry, service, agent, collector, monitoring or reboot mutation is permitted merely for evidence."]
+    },
+    "freedisk.md": {
+      "kind": "native-cli", "status": "reviewed", "versions": ["Windows installation-space gate; remote access, drive naming, quotas and storage topology vary"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/freedisk.md"}],
+      "notes": ["Microsoft defines explicit byte-unit thresholds, remote targeting and the 0-enough/1-insufficient result contract. The TLDR avoids command-line passwords and contrasts the binary gate with typed capacity inventory.", "Windows runtime verification remains approved local or test-target free-space queries only; no credentials, installation, cleanup, quota, filesystem, volume, share or remote mutation is permitted merely for evidence."]
+    },
+    "fveupdate.md": {
+      "kind": "legacy-native-cli", "status": "reviewed", "versions": ["internal Windows Setup BitLocker metadata updater; not independently supported"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/fveupdate.md"}],
+      "notes": ["Microsoft explicitly identifies FveUpdate as Windows Setup-owned internal tooling that cannot be run independently. The TLDR uses supported BitLocker inventory and setup evidence collection only.", "Windows runtime verification remains file metadata, manage-bde status/protector inventory and event reading only; no FveUpdate execution, protector, encryption, suspension, volume, setup, recovery or reboot mutation is permitted merely for evidence."]
+    },
+    "ktmutil.md": {
+      "kind": "native-cli", "status": "reviewed", "versions": ["Windows Kernel Transaction Manager recovery utility; safe decisions depend on application/resource-manager state"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/ktmutil.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/windows/win32/ktm/transactions", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Microsoft defines list/resolve/force/forget forms and the transaction model shows why an outcome belongs to participants/resource managers. The TLDR is list-only and the page treats every recovery decision as high impact.", "Windows runtime verification remains installed help and list operations only; no resolve, force, forget, transaction, enlistment, resource-manager, service, database or recovery-state mutation is permitted merely for evidence."]
+    },
+    "pagefileconfig.md": {
+      "kind": "deprecated-native-cli", "status": "reviewed", "versions": ["deprecated Windows command; CIM configuration/runtime behavior varies with automatic management and build"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/pagefileconfig.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/windows/win32/cimwin32prov/win32-pagefilesetting", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/answers/questions/2118221/querying-win32-pagefilesetting-results-in-empty-re", "license": {"spdx": "LicenseRef-Microsoft-Web-Terms", "url": "https://www.microsoft.com/en-us/legal/terms-of-use"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Microsoft marks PageFileConfig deprecated; CIM reference plus accepted Q&A distinguish absent system-managed setting instances from runtime PageFileUsage. The TLDR inventories executable, setting, usage and automatic-management state only.", "Windows runtime verification remains read-only command resolution and CIM queries only; no page-file, automatic-management, registry, dump, storage, workload or reboot mutation is permitted merely for evidence."]
+    },
+    "pentnt.md": {
+      "kind": "deprecated-native-cli", "status": "reviewed", "versions": ["deprecated workaround for the historical Intel Pentium FDIV defect; may be absent"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/pentnt.md"}],
+      "notes": ["Microsoft marks PentNT deprecated and limits its purpose to the historical Pentium floating-point division defect. The TLDR inventories the legacy executable, CPU, OS and exact script references without enabling emulation.", "Windows runtime verification remains read-only resolution, processor/OS inventory and scoped text search only; no PentNT execution, emulation, startup, boot, firmware, hypervisor or script mutation is permitted merely for evidence."]
+    },
     "change.md": {
       "kind": "native-cli-family", "status": "reviewed", "versions": ["Windows RD Session Host role; logon/install-mode applicability and legacy COM behavior vary by role/build"], "platforms": ["windows"],
       "sources": [

@@ -100,17 +100,20 @@
     {
       "name": "autochk",
       "source": "autochk.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/autochk.md"
     },
     {
       "name": "autoconv",
       "source": "autoconv.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/autoconv.md"
     },
     {
       "name": "autofmt",
       "source": "autofmt.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/autofmt.md"
     },
     {
       "name": "automount",
@@ -427,12 +430,14 @@
     {
       "name": "diskcomp",
       "source": "diskcomp.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/diskcomp.md"
     },
     {
       "name": "diskcopy",
       "source": "diskcopy.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/diskcopy.md"
     },
     {
       "name": "diskpart",
@@ -443,7 +448,8 @@
     {
       "name": "diskperf",
       "source": "diskperf.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/diskperf.md"
     },
     {
       "name": "diskraid",
@@ -629,7 +635,8 @@
     {
       "name": "freedisk",
       "source": "freedisk.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/freedisk.md"
     },
     {
       "name": "fsutil",
@@ -652,7 +659,8 @@
     {
       "name": "fveupdate",
       "source": "fveupdate.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/fveupdate.md"
     },
     {
       "name": "getmac",
@@ -783,7 +791,8 @@
     {
       "name": "ktmutil",
       "source": "ktmutil.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/ktmutil.md"
     },
     {
       "name": "ktpass",
@@ -1080,7 +1089,8 @@
     {
       "name": "pagefileconfig",
       "source": "pagefileconfig.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/pagefileconfig.md"
     },
     {
       "name": "path",
@@ -1108,7 +1118,8 @@
     {
       "name": "pentnt",
       "source": "pentnt.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/pentnt.md"
     },
     {
       "name": "perfmon",

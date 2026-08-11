@@ -774,6 +774,14 @@ side effects. Do not change the default script host or saved WSH options.
 Keep Regsvr32 verification help-only: do not load/register/unregister/install any
 DLL/OCX merely for evidence. Record WMIC executable and FoD availability without
 installing the deprecated capability, and validate new examples through typed CIM.
+Keep Autochk, AutoConv, AutoFmt and FveUpdate verification to supported read-only
+front-end inventory; never invoke the internal executables. Keep DiskCopy help-only
+unless dedicated disposable floppy media is approved, and never write evidence
+media. Keep KtmUtil to help/list operations: do not resolve, force or forget a
+transaction merely for evidence. Query page-file configuration, runtime usage and
+automatic management separately without changing settings or rebooting. Do not
+enable PentNT emulation. DiskPerf changes require a separately approved restart;
+FreeDisk checks must use an explicit unit and current credentials without `/p`.
 Keep MSTSC to help/local-monitor inventory: do not connect, authenticate, open an
 untrusted RDP file, redirect resources or shadow/control a session for evidence.
 Keep SxSTrace to help-only unless a disposable failing application and new protected

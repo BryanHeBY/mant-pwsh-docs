@@ -10,12 +10,16 @@ bundles.
 
 ### Added
 
-- First English release inventory: 325 reviewed ManT pages across `pwsh7`,
+- First English release inventory: 336 reviewed ManT pages across `pwsh7`,
   `pwsh51`, and `pwsh-cli`.
 - Broad `pwsh7` and `pwsh51` shell manuals, focused language/command pages,
   compatibility guides, and custom `irx` shorthand resolution guidance.
 - Native CLI coverage for Microsoft Learn MCP discovery, winget, Windows system
   tools, Git, OpenSSH, curl, tar, and .NET.
+- Windows startup-only Autochk/AutoConv/AutoFmt and Setup-owned FveUpdate
+  recognition, floppy DiskComp/DiskCopy, disk-counter and free-space gates,
+  Kernel Transaction Manager inspection, and deprecated PageFileConfig/PentNT
+  migration guides with query-first TLDRs and explicit no-direct-run boundaries.
 - Windows shell, GUI, Settings, Control Panel, MMC, Registry, and Rundll32
   entry-point guides, plus matching `Start-Process`, `start`, `Invoke-Item`,
   and `ii` pages for PowerShell 7 and Windows PowerShell 5.1.
