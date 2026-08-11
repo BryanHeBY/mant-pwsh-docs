@@ -200,6 +200,9 @@ license in the document's provenance catalog before adapting material.
 - [cmdkey](cmdkey.md): exact credential targets without inline secret exposure.
 - [gpupdate](gpupdate.md): scoped policy refresh after preserving RSoP evidence.
 - [secedit](secedit.md): validate/export/analyze security templates before apply.
+- [icacls](icacls.md): DACL display, verification, backup, and inheritance safety.
+- [takeown](takeown.md): exact-object ownership recovery separate from access.
+- [cipher](cipher.md): EFS identity, recovery, scope, and free-space boundaries.
 
 ## Cross-platform developer tools
 

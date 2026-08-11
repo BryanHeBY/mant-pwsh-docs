@@ -1197,6 +1197,30 @@
       ],
       "notes": ["The TLDR validates, exports, and analyzes only; the page separates configure from analyze, narrows areas, controls database composition, protects rollback/log artifacts, and resolves target identities.", "Windows runtime verification remains required."]
     },
+    "icacls.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/icacls.md"},
+        {"type": "web", "url": "https://stackoverflow.com/questions/8581487/powershell-calling-icacls-with-parantheses-included-in-parameters", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR displays, verifies, and saves only; the page quotes inheritance ACEs, distinguishes grant/replace and inheritance copy/remove, treats /C as partial-result risk, controls links/recursion/restore roots, and prefers stable SIDs.", "Windows runtime verification remains required."]
+    },
+    "takeown.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/takeown.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=493291&service=superuser&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The page separates owner from DACL access, leads with exact-object scope, rejects drive-wide /R /D Y recipes, records intended durable owner, protects remote credentials, and diagnoses non-ACL failures.", "Windows runtime verification remains required."]
+    },
+    "cipher.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases with EFS support"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/cipher.md"}],
+      "notes": ["The TLDR is query-only; the page requires EFS key recovery before change, uses /U /N for inventory, defines /W as whole-volume unused-space overwrite, and verifies parent, descendant, destination, and recovery behavior.", "Windows runtime verification remains required."]
+    },
     "git.md": {
       "kind": "native-cli",
       "status": "reviewed",

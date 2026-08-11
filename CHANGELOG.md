@@ -10,7 +10,7 @@ bundles.
 
 ### Added
 
-- First English release inventory: 160 reviewed ManT pages across `pwsh7`,
+- First English release inventory: 163 reviewed ManT pages across `pwsh7`,
   `pwsh51`, and `pwsh-cli`.
 - Broad `pwsh7` and `pwsh51` shell manuals, focused language/command pages,
   compatibility guides, and custom `irx` shorthand resolution guidance.
@@ -52,6 +52,8 @@ bundles.
   and `setspn`.
 - Stored credential target, scoped Group Policy refresh, and security-template
   validation/export/analysis guides for `cmdkey`, `gpupdate`, and `secedit`.
+- Windows DACL/inheritance, ownership recovery, and EFS encryption/recovery
+  guides for `icacls`, `takeown`, and `cipher`.
 - Per-page locked provenance catalogs, reader-facing source/license sections,
   and an optional upstream accessibility audit.
 - Portable Node.js validation with ManT JSON diagnostics and a v1 release gate.

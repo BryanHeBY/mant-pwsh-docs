@@ -225,7 +225,8 @@
     {
       "name": "cipher",
       "source": "cipher.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/cipher.md"
     },
     {
       "name": "clean",
@@ -646,7 +647,8 @@
     {
       "name": "icacls",
       "source": "icacls.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/icacls.md"
     },
     {
       "name": "if",
@@ -1540,7 +1542,8 @@
     {
       "name": "takeown",
       "source": "takeown.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/takeown.md"
     },
     {
       "name": "tapicfg",

@@ -180,6 +180,9 @@ setspn.exe -Q "host/$env:COMPUTERNAME"
 cmdkey.exe /list
 gpresult.exe /scope user /r
 secedit.exe /validate $approvedTemplate
+icacls.exe $testRoot
+cipher.exe /C $approvedEfsFixture
+cipher.exe /U /N
 ```
 
 Start a disposable process, record its PID/path/start time, preview
@@ -215,6 +218,11 @@ Do not add/delete stored credentials, refresh policy, or configure/import a
 security template merely for verification. If an approved template fixture is
 available, validate it only; protect exported reports and record which user,
 database, areas, log paths, and policy authority are involved.
+Use a disposable NTFS test tree to display, verify, and save ACLs; do not reset,
+grant, deny, remove, restore, recurse ownership, encrypt/decrypt, rekey, or wipe
+free space merely for validation. Run the EFS check only when an approved
+encrypted fixture and recovery key exist, and record link policy, owner/DACL,
+certificate thumbprint, target volume, and exact scope.
 
 Review Windows-only commands on a non-production target. In particular, use
 `robocopy /L` before any real copy, query an existing known task before task
