@@ -35,6 +35,23 @@ Within an open command, `%0` or `%1` becomes the launched filename, `%*` all
 arguments, `%2` onward individual extra arguments, and `%~N` all remaining
 arguments starting at N.
 
+## Command forms
+
+<!-- mant:entries role=command case=insensitive -->
+- `ftype`: List classic file-type open commands, query one `FILETYPE`, assign
+  `FILETYPE=OPEN-COMMAND`, or remove it with `FILETYPE=` inside `cmd.exe`.
+
+The stored string is later interpreted as a launch command. Preserve the
+literal percent placeholders and quote the trusted executable and `"%1"`.
+
+## PowerShell boundaries
+
+There is no `ftype.exe`. PowerShell must invoke the builtin through
+`cmd.exe /d /c`, where percent signs, quotes, and metacharacters receive Cmd
+parsing before registration. Avoid constructing this string from untrusted
+data; after a change check the child exit code, query the exact stored value,
+and test only a dedicated safe extension/file type.
+
 ## Common mistakes
 
 ### Running it directly in PowerShell

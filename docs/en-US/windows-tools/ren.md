@@ -42,6 +42,20 @@ rename [DRIVE:][PATH]OLD_NAME NEW_NAME
 matched characters are carried according to cmd's positional filename-mask
 rules, not regular-expression capture groups.
 
+## Command forms
+
+<!-- mant:entries role=command case=insensitive -->
+- `ren`, `rename`: Rename selected files or one directory in place through
+  equivalent Cmd builtin names; the new operand cannot name another directory.
+
+## PowerShell boundaries
+
+Bare `ren` normally aliases `Rename-Item`, while `rename` can resolve
+differently by session/platform. Prefer `Rename-Item -LiteralPath -NewName`
+with `-WhatIf` for PowerShell transformations. Use `cmd.exe /d /c` only when
+Cmd's positional wildcard-mask behavior is intended; check its exit code and
+verify a precomputed old-to-new mapping because multi-item renames can be partial.
+
 ## Common mistakes
 
 ### Putting a directory path in the new name

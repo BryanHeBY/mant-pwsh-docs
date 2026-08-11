@@ -35,6 +35,23 @@ No arguments lists mappings. `.ext` queries one. Assignment changes persistent
 association state and requires administrator privileges according to Microsoft.
 Use `ftype FILETYPE` to inspect the associated open command.
 
+## Command forms
+
+<!-- mant:entries role=command case=insensitive -->
+- `assoc`: List classic extension mappings, query one `.EXT`, assign
+  `.EXT=FILETYPE`, or delete the mapping with `.EXT=` inside `cmd.exe`.
+
+The extension must include its leading dot. Query both this mapping and the
+corresponding `ftype` command before any persistent change.
+
+## PowerShell boundaries
+
+There is no `assoc.exe`, so PowerShell cannot invoke the builtin directly.
+Use one explicit `cmd.exe /d /c` string for read-only inspection and treat
+assignment/removal as persistent system state. Check the child exit code,
+re-query both layers, and never infer the effective user default application
+from this classic mapping alone.
+
 ## Common mistakes
 
 ### Running bare `assoc` in PowerShell

@@ -41,6 +41,20 @@ Cmd offers no force, owner, ACL, or mode switch here. Creation still depends
 on permissions, the filesystem, and whether an item already occupies a path
 component.
 
+## Command forms
+
+<!-- mant:entries role=command case=insensitive -->
+- `md`, `mkdir`: Create the named directory through equivalent Cmd builtin
+  names; with extensions enabled, create missing intermediate directories.
+
+## PowerShell boundaries
+
+PowerShell commonly resolves `md`/`mkdir` to its own convenience commands,
+not Cmd. Prefer `New-Item -ItemType Directory -LiteralPath` (or a deliberately
+chosen `-Path`) and inspect the returned item. Invoke `cmd.exe /d /c md ...`
+only for the builtin contract; check its exit code and verify the resolved
+absolute path and resulting item type.
+
 ## Common mistakes
 
 ### Assuming `md` always invokes cmd

@@ -25,6 +25,26 @@
 lists current substitutions; `DRIVE: /d` removes a substitution. This changes
 name resolution, not the underlying files, partition, volume, or mount layout.
 
+## Command and options
+
+<!-- mant:entries role=command case=insensitive -->
+- `subst.exe`: List substitutions, associate an unused drive letter with one
+  local path, or remove exactly one substitution.
+
+The drive-letter and target path are operands. Removal changes only the name
+mapping and never deletes target content.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/d`: Delete the substitution for the preceding exact drive letter.
+- `/?`: Display installed command help.
+
+## PowerShell boundaries
+
+Call `subst.exe` explicitly and remember that the mapping belongs to the
+current user/logon/elevation context, not a PowerShell drive provider. Check
+`$LASTEXITCODE`, run `subst.exe` again in the consuming context, and never pass
+the substituted letter to volume-management tools as if it identified a volume.
+
 ## Common mistakes
 
 ### Assuming the mapping is persistent

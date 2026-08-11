@@ -31,6 +31,50 @@ restore DACLs, verify canonical form, find or substitute SIDs, reset inherited
 ACLs, and grant, deny, or remove ACEs. `/T` recurses, `/C` continues after
 errors, and `/L` applies the operation to a symbolic link instead of its target.
 
+## Commands and options
+
+<!-- mant:entries role=command case=insensitive -->
+- `icacls.exe`: Display, validate, save/restore, or deliberately modify Windows
+  DACL, owner, inheritance, and integrity information for selected paths.
+
+Trustee/permission expressions such as `SID:(OI)(CI)(M)` are single native
+arguments. Numeric SIDs require the documented leading `*`.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/save`: Save DACLs for every matching path into the following ACL file for
+  later root-relative restoration.
+- `/restore`: Apply a saved ACL file beneath the named directory root.
+- `/setowner`: Set the owner of matching paths to the following principal.
+- `/findsid`: Find matching paths whose DACL explicitly mentions the supplied SID.
+- `/verify`: Find ACLs that are noncanonical or whose length disagrees with the
+  ACE count.
+- `/reset`: Replace matching ACLs with default inherited ACLs.
+- `/grant`: Add explicit grants for a trustee; the `:r` form replaces that
+  trustee's prior explicit grants instead.
+- `/deny`: Add an explicit deny ACE and remove the same permissions from an
+  explicit grant for that trustee.
+- `/remove`: Remove a trustee from a DACL; `:g` restricts removal to grants and
+  `:d` restricts it to denies.
+- `/setintegritylevel`: Add an integrity ACE using low, medium, or high level
+  and optional directory inheritance flags.
+- `/substitute`: Replace one SID with another beneath the named directory root.
+- `/inheritancelevel`: Set `e` (enable), `d` (disable and copy inherited ACEs),
+  or `r` (disable and remove inherited ACEs).
+- `/t`: Apply the operation to matching files in the current directory and all
+  subdirectories.
+- `/c`: Continue after file errors while still emitting diagnostics.
+- `/l`: Operate on a symbolic link entry rather than its destination.
+- `/q`: Suppress success messages; errors can still occur and must be reviewed.
+- `/?`: Display installed command help.
+
+## PowerShell boundaries
+
+PowerShell parses unquoted parentheses, so construct the entire
+`TRUSTEE:(OI)(CI)(M)` expression as one string and pass it directly—never via
+`Invoke-Expression`. Capture stdout, stderr, and `$LASTEXITCODE`; `/c` can leave
+partial results. Prefer `Get-Acl`/`Set-Acl` only when their typed descriptor
+workflow actually covers the needed inheritance and canonicalization behavior.
+
 ## Common mistakes
 
 ### Leaving inheritance parentheses unquoted in PowerShell

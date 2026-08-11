@@ -31,6 +31,37 @@ the local Administrators group. `/R` recurses and `/D Y|N` supplies a default
 answer for inaccessible directories. `/S`, `/U`, and `/P` select a legacy
 remote target and run-as identity.
 
+## Commands and options
+
+<!-- mant:entries role=command case=insensitive -->
+- `takeown.exe`: Recover ownership of selected Windows files/directories for
+  the current user or local Administrators group.
+
+Ownership is one field of the security descriptor and does not itself grant
+read, write, delete, or execute access.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/s`: Run against the following remote computer instead of the local system.
+- `/u`: Use the following account for the remote operation; valid with `/s`.
+- `/p`: Supply that account's password; omit this entire switch to receive a
+  non-echoed prompt rather than exposing a secret in the command line.
+- `/f`: Select the required file, directory, share path, or supported `*`
+  filename pattern.
+- `/a`: Assign ownership to the local Administrators group instead of the
+  current logged-on user.
+- `/r`: Recurse through the selected directory and its subdirectories.
+- `/d`: With `/r`, choose `Y` to take otherwise-unlistable directories or `N`
+  to skip them instead of prompting.
+- `/?`: Display installed command help.
+
+## PowerShell boundaries
+
+Call `takeown.exe` explicitly, pass each path/credential token as a separate
+native argument, and never inline a password. Capture original owner/DACL,
+stdout, stderr, and `$LASTEXITCODE`, then inspect the resulting security
+descriptor with `Get-Acl`. A successful owner change is not proof of effective
+access and does not authorize a broad follow-up ACL grant.
+
 ## Common mistakes
 
 ### Assuming ownership grants read, write, or delete access

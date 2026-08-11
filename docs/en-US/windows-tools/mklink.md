@@ -25,6 +25,28 @@
 `/d` creates a directory symbolic link, `/h` a file hard link, and `/j` a
 directory junction. The first path is the new link and the second is its target.
 
+## Command and options
+
+<!-- mant:entries role=command case=insensitive -->
+- `mklink`: Create one Windows link through the `cmd.exe` builtin, with the new
+  link path first and the existing/intended target path second.
+
+Without a type switch the builtin creates a file symbolic link.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/d`: Create a directory symbolic link.
+- `/h`: Create a hard link to a file on the same volume.
+- `/j`: Create a directory junction.
+- `/?`: Display installed builtin help through `cmd.exe`.
+
+## PowerShell boundaries
+
+There is no standalone `mklink.exe`; invoke the builtin through an explicit
+`cmd.exe /d /c` string or use `New-Item -ItemType SymbolicLink/HardLink/Junction`
+where the target PowerShell/filesystem supports it. Verify argument order,
+link type, reparse target, `$LASTEXITCODE`, and privilege/policy result before
+any recursive operation touches the new entry.
+
 ## Common mistakes
 
 ### Reversing link and target

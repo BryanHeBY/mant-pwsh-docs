@@ -32,6 +32,55 @@ and overwrites unused logical space on a selected local volume. EFS is
 file-level encryption tied to certificates and keys, not BitLocker volume
 encryption.
 
+## Commands and options
+
+<!-- mant:entries role=command case=insensitive -->
+- `cipher.exe`: Inspect or change NTFS EFS state, manage EFS certificate/key
+  workflows, or overwrite unused space on one selected local volume.
+
+Many modes are mutually exclusive or ignore other switches. Query state and
+recovery identity before selecting any mutation.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/e`: Encrypt named files or mark named directories so newly added files are
+  encrypted.
+- `/d`: Decrypt named files or directories.
+- `/c`: Display certificate and recovery-agent information for one encrypted
+  file.
+- `/s`: Apply the selected operation to subdirectories under the following
+  colon-delimited directory.
+- `/b`: Abort the operation when an error is encountered instead of continuing.
+- `/h`: Include hidden/system entries that are otherwise omitted.
+- `/k`: Create a new EFS certificate and key for the current user; all other
+  switches are ignored.
+- `/r`: Generate a recovery-agent certificate and key using the following
+  colon-delimited base filename, producing `.cer` and protected `.pfx` output.
+- `/smartcard`: With `/r`, write the recovery key/certificate to a smart card
+  and do not generate a `.pfx` file.
+- `/u`: Search local drives for encrypted files and update them to current
+  user/recovery keys unless `/n` is also present.
+- `/n`: With `/u`, perform inventory without updating encrypted files.
+- `/w`: Overwrite available unused space on the entire local volume containing
+  the following colon-delimited directory; all other options are ignored.
+- `/x`: Back up the current user's EFS certificate and private keys, or the
+  certificate used by a specified EFS file, to protected output.
+- `/y`: Display the thumbprint of the current user's EFS certificate.
+- `/adduser`: Add an EFS user certificate to the selected encrypted files.
+- `/removeuser`: Remove the certificate identified by `/certhash` from selected
+  encrypted files.
+- `/certhash`: Select a certificate by SHA-1 thumbprint for add/remove modes.
+- `/certfile`: Select a certificate from the following file for `/adduser`.
+- `/rekey`: Update selected encrypted files to the currently configured EFS key.
+- `/?`: Display installed command help.
+
+## PowerShell boundaries
+
+`cipher.exe` emits localized text and several successful modes create or
+change security-sensitive state. Pass colon-bound values as one native
+argument, capture `$LASTEXITCODE`, and re-query representative literal paths.
+Protect any `.pfx`/recovery output as credentials; do not pipe it through text
+formatting or assume PowerShell object semantics.
+
 ## Common mistakes
 
 ### Encrypting before backing up the EFS key

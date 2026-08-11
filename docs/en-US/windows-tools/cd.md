@@ -37,11 +37,27 @@ chdir [/d] [DRIVE:][PATH]
 chdir ..
 ```
 
-- `/d`: Change both the current drive and its current directory.
-- `..`: Change to the parent directory.
+<!-- mant:entries role=command case=insensitive -->
+- `cd`, `chdir`: Display or change the current directory maintained by the
+  current `cmd.exe`; the two builtin names are equivalent.
+
+The path and `..` parent-directory forms are operands. The only named switch
+also changes Cmd's active drive.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/d`: Change both the active drive and that drive's current directory.
+- `/?`: Display installed builtin help through `cmd.exe`.
 
 With no argument, `cd` prints the active drive and directory. With only a
 drive such as `cd D:`, it displays that drive's remembered current directory.
+
+## PowerShell boundaries
+
+Bare `cd` normally resolves to `Set-Location`; `/d` is not a PowerShell
+parameter. Use `Set-Location -LiteralPath` to change the current PowerShell
+location. A child Cmd location cannot affect its parent, so combine `cd /d`
+and the dependent builtin operation inside the same reviewed `cmd.exe /d /c`
+invocation and capture that child's exit code.
 
 ## Common mistakes
 

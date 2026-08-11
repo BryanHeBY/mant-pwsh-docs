@@ -35,6 +35,28 @@ rmdir [DRIVE:]PATH [/s [/q]]
 Without `/s`, the directory must be empty, including hidden/system entries.
 `/q` is valid with `/s` and removes confirmation.
 
+## Commands and options
+
+<!-- mant:entries role=command case=insensitive -->
+- `rd`, `rmdir`: Remove an empty directory, or an entire selected tree when
+  `/s` is explicitly present, through equivalent Cmd builtin names.
+
+Recursive removal is permanent and has no preview mode. Enumerate the exact
+absolute tree and reparse points before selecting it.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/s`: Remove the named directory tree including all files and subdirectories.
+- `/q`: Suppress the `/s` confirmation prompt; it is valid only with `/s` and
+  does not make deletion a dry run or guarantee success.
+- `/?`: Display installed builtin help through `cmd.exe`.
+
+## PowerShell boundaries
+
+Bare `rmdir` normally aliases `Remove-Item`, whose parameters differ. Prefer
+`Remove-Item -LiteralPath -Confirm` for a reviewed PowerShell target. If Cmd's
+tree deletion is required, invoke it explicitly, change outside the target
+tree first, check the child exit code, and re-enumerate the path afterward.
+
 ## Common mistakes
 
 ### Adding `/s /q` to silence “directory not empty”
