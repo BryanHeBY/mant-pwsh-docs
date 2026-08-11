@@ -40,7 +40,7 @@ fields, and `/fo table|list|csv` selects presentation.
 - `/svc`: Show service information hosted by each process; use table format for the documented complete view.
 - `/v`: Add verbose process fields; combine with `/svc` for the documented untruncated service view.
 - `/s COMPUTER`: Query a remote computer by name or IP address.
-- `/u DOMAIN\USER`: Authenticate the remote query as another user; valid only with `/s`.
+- `/u`: Authenticate the remote query as another user or `DOMAIN\USER`; valid only with `/s`.
 - `/p PASSWORD`: Supply the remote password; omit the value to prompt rather than exposing a secret.
 - `/?`: Show installed command help.
 

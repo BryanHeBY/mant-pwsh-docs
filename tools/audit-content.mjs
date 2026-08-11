@@ -143,7 +143,17 @@ function mantEntries(file) {
     if (outline?.schema !== "mant.outline/v5" || !Array.isArray(outline.nodes)) {
       return { entries: [], error: "ManT did not return a mant.outline/v5 document." };
     }
-    return { entries: collectEntries(outline.nodes) };
+    if (outline.diagnostics !== undefined && !Array.isArray(outline.diagnostics)) {
+      return { entries: [], error: "ManT returned a malformed outline diagnostics field." };
+    }
+    if (outline.entriesComplete !== undefined && outline.entriesComplete !== false) {
+      return { entries: [], error: "ManT returned an invalid entriesComplete value." };
+    }
+    return {
+      diagnostics: outline.diagnostics || [],
+      entries: collectEntries(outline.nodes),
+      entriesComplete: outline.entriesComplete !== false
+    };
   } catch (cause) {
     return { entries: [], error: `ManT returned invalid JSON: ${cause.message}` };
   }
@@ -166,6 +176,12 @@ function auditDocument(sourceName, filename, metadata) {
 
   if (semantic.error !== undefined) {
     flags.push("mant-outline-error");
+  }
+  if (semantic.diagnostics?.length > 0) {
+    flags.push("mant-outline-diagnostics");
+  }
+  if (semantic.entriesComplete === false) {
+    flags.push("incomplete-semantic-entries");
   }
   if (!options.skipMant && expectsSemanticEntries(metadata) && semantic.entries.length === 0) {
     flags.push("missing-semantic-entries");
@@ -205,6 +221,7 @@ function auditDocument(sourceName, filename, metadata) {
     headings: sectionHeadings,
     kind: metadata.kind,
     lineCount,
+    mantDiagnostics: semantic.diagnostics,
     mantError: semantic.error,
     path: relative(file),
     source: sourceName,

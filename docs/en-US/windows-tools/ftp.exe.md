@@ -72,16 +72,14 @@ Launcher options are case-sensitive; in particular, `-a` and `-A` are distinct.
 - `-g`: Disable local filename globbing.
 - `-s`: Read FTP interpreter commands from a UTF-8 script file.
 - `-a`: Bind the data connection using any local interface.
+- `-A`: Request anonymous login instead of the ordinary automatic-login behavior.
 - `-x`: Set the send buffer size on builds that support it.
 - `-r`: Set the receive buffer size on builds that support it.
 - `-b`: Set the asynchronous buffer count on builds that support it.
 - `-w`: Set the transfer window size.
 - `-?`: Display installed launcher syntax.
 
-The distinct uppercase `-A` launcher option requests anonymous login. ManT
-currently generates the same entry identity for `-a` and `-A`, so both cannot
-coexist in one semantic list even though this native client treats them
-differently.
+The interactive interpreter additionally groups its commands as follows:
 
 - Session/authentication: `open`, `user`, `account`, `close`/`disconnect`,
   `bye`/`quit`.

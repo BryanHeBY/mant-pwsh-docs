@@ -34,14 +34,25 @@ export to a drive letter. It is not Unix `mount`, DiskPart, or `mountvol.exe`.
 <!-- mant:entries role=command case=insensitive -->
 - `mount.exe`: List or create Windows Client for NFS drive mappings.
 
-Mount suboptions such as `mtype=`, `sec=`, and `fileaccess=` use a bare
-equals-bearing grammar that ManT cannot yet index individually.
+The launcher options and fixed `-o` value names have distinct selectors.
 
 <!-- mant:entries role=option case=insensitive -->
 - `-o`: Supply one or more NFS mount option/value tokens.
 - `-u`: Select an alternate NFS username.
 - `-p`: Supply its password inline or use `*` to prompt.
+- `rsize=KILOBYTES`: Set the NFS read buffer to a supported size from 1 through 32 KiB.
+- `wsize=KILOBYTES`: Set the NFS write buffer to a supported size from 1 through 32 KiB.
+- `timeout=SECONDS`: Set the RPC timeout within the documented fractional or 1–60 second range.
+- `retry=COUNT`: Set the number of retries for a soft mount within the documented 1–10 range.
+- `mtype=MODE`: Select a soft or hard mount and its corresponding outage behavior.
+- `lang=ENCODING`: Select the one legacy filename encoding used for the mount.
+- `fileaccess=MODE`: Set the three-digit owner/group/world mode assigned to newly created files.
+- `sec=MODE`: Select `sys`, `krb5`, `krb5i`, or `krb5p` security semantics.
 - `/?`: Display installed Windows Client for NFS syntax.
+
+The value-less `-o` suboptions `anon`, `nolock`, and `casesensitive` select
+anonymous identity, disable remote locking, and force case-sensitive server
+lookups respectively.
 
 ## Common mistakes
 

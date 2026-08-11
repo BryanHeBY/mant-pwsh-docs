@@ -31,25 +31,24 @@ attaches standard streams to a console, so it is normally preferable to
 <!-- mant:entries role=command case=insensitive -->
 - `cscript.exe`: Run a Windows Script Host script in the console host.
 
-Real WSH host options use `//` (`//B`, `//E`, `//H`, `//I`, `//Job`, `//Logo`,
-`//Nologo`, `//S`, `//T`, and `//X`). ManT does not yet support double-slash
-semantic tokens, so they remain fully described below instead of being changed
-to invalid single-slash spellings.
+Real WSH host options use `//` and must precede the script path.
 
-```text
-cscript SCRIPT [host options] [script arguments]
-//B                 batch mode: suppress alerts, errors and input prompts
-//I                 interactive mode
-//E:ENGINE          select a registered script engine
-//Job:ID            run one job from a .wsf file
-//NoLogo            suppress the WSH banner
-//T:SECONDS         terminate after a bounded time
-//U                 use Unicode console I/O mode
-//H:cscript|wscript change the default host
-//S                 save current per-user host options
-```
+<!-- mant:entries role=option case=insensitive -->
+- `//B`: Use batch mode, suppressing alerts, script-error dialogs, and input prompts.
+- `//D`: Start the registered script debugger.
+- `//E:ENGINE`: Select the registered scripting engine instead of choosing it from the file extension.
+- `//H:HOST`: Register `cscript.exe` or `wscript.exe` as the current user's default script host.
+- `//I`: Use interactive mode, displaying alerts, errors, and input prompts; this is the default.
+- `//Job:ID`: Run the identified job from a Windows Script File (`.wsf`).
+- `//Logo`: Display the Windows Script Host banner before the script runs; this is the default.
+- `//Nologo`: Suppress the Windows Script Host banner.
+- `//S`: Save the current host options as per-user defaults for later launches.
+- `//T:SECONDS`: Stop the script after the bounded runtime, up to the installed host's supported limit.
+- `//U`: Use Unicode for console input and output that is redirected.
+- `//X`: Start the script in the debugger.
+- `//?`: Display installed Windows Script Host syntax and parameters.
 
-Use the installed `cscript //?` spelling and put host switches before the
+Use the installed `cscript.exe //?` spelling and put host switches before the
 script path. Treat script arguments as the script's own interface and quote
 them for PowerShell before WSH parses them.
 

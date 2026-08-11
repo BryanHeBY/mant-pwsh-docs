@@ -47,11 +47,12 @@ calls the IPX protocol family obsolete and says not to use it in new software.
 - `gbr`: Change general-broadcast source-routing behavior for one board.
 - `mbr`: Change multicast source-routing behavior for one board.
 
-`board=N` and `remove=xxxxxxxxxxxx` are real equals-bearing native operands;
-ManT does not yet index that token shape, so they remain documented in prose.
+The following selectors narrow a query or identify the legacy board/node state.
 
 <!-- mant:entries role=option case=insensitive -->
 - `/type`: Filter `servers` by an integer SAP server type.
+- `board=BOARD`: Select the numbered network adapter whose source-routing behavior is queried or changed.
+- `remove=NODE`: Remove the exact 12-hex-digit node address from the selected board's source-routing table.
 - `/?`: Display installed syntax.
 
 ## Common mistakes

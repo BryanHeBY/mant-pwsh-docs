@@ -31,7 +31,7 @@ and CSV; `/s` selects a remote host.
 - `/fo FORMAT`: Select `table`, `list`, or `csv` presentation.
 - `/nh`: Suppress column headers for table/CSV output; retaining headers is safer for field mapping.
 - `/s COMPUTER`: Query one remote computer by name or IP address.
-- `/u DOMAIN\USER`: Authenticate the remote query as another user; valid only with `/s`.
+- `/u`: Authenticate the remote query as another user or `DOMAIN\USER`; valid only with `/s`.
 - `/p PASSWORD`: Supply the remote password; omit it to prompt instead of exposing a command-line secret.
 
 ## PowerShell boundaries

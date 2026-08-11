@@ -38,14 +38,14 @@ Double-slash switches belong to WSH and must precede the script path.
 - `//B`: Use batch mode and suppress alerts/prompts; the script still needs a
   safe unattended error/output contract.
 - `//D`: Enable active debugging.
-- `//E`: Use the following script engine instead of extension-based selection.
-- `//H`: Make `cscript.exe` or `wscript.exe` the current user's default WSH host.
+- `//E:ENGINE`: Use the named registered script engine instead of extension-based selection.
+- `//H:HOST`: Make `cscript.exe` or `wscript.exe` the current user's default WSH host.
 - `//I`: Use interactive mode (the default).
-- `//Job`: Run one named job from a `.wsf` file.
+- `//Job:ID`: Run the identified job from a `.wsf` file.
 - `//Logo`: Display the host banner.
 - `//Nologo`: Suppress the host banner.
 - `//S`: Save current command options as per-user defaults.
-- `//T`: Stop the script after the following number of seconds.
+- `//T:SECONDS`: Stop the script after the bounded number of seconds.
 - `//X`: Launch under a debugger.
 - `//U`: Use Unicode for redirected console I/O where applicable to the host.
 - `//?`: Display installed WSH command help.

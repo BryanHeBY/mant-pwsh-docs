@@ -32,23 +32,29 @@ with `+` to set it or `-` to clear it.
 - `attrib.exe`: Display attributes, or set/clear selected attributes on
   matching Windows filesystem entries.
 
-Each listed `-LETTER` form clears an attribute; replace `-` with `+` to set
-the same attribute. A path without an attribute modifier is read-only display.
+A path without an attribute modifier only displays current attributes.
 
 <!-- mant:entries role=option case=insensitive -->
-- `-r`: Clear read-only; the paired `+r` form sets read-only.
-- `-a`: Clear archive; the paired `+a` form sets archive.
-- `-s`: Clear system; the paired `+s` form sets system.
-- `-h`: Clear hidden; the paired `+h` form sets hidden.
-- `-o`: Clear offline; the paired `+o` form sets offline.
-- `-i`: Clear not-content-indexed; the paired `+i` form sets it.
-- `-x`: Clear no-scrub-data; the paired `+x` form sets it where supported.
-- `-p`: Clear pinned; the paired `+p` form pins provider-backed content where
-  the filesystem/provider implements that attribute.
-- `-u`: Clear unpinned; the paired `+u` form marks content unpinned where
-  supported.
-- `-b`: Clear the SMR blob attribute; the paired `+b` form sets it on storage
-  configurations that implement the attribute.
+- `+r`: Set the read-only attribute.
+- `-r`: Clear the read-only attribute.
+- `+a`: Set the archive attribute.
+- `-a`: Clear the archive attribute.
+- `+s`: Set the system attribute.
+- `-s`: Clear the system attribute.
+- `+h`: Set the hidden attribute.
+- `-h`: Clear the hidden attribute.
+- `+o`: Set the offline attribute.
+- `-o`: Clear the offline attribute.
+- `+i`: Set the not-content-indexed attribute.
+- `-i`: Clear the not-content-indexed attribute.
+- `+x`: Set the no-scrub-data attribute where supported.
+- `-x`: Clear the no-scrub-data attribute where supported.
+- `+p`: Pin provider-backed content where the filesystem/provider implements that attribute.
+- `-p`: Clear the pinned attribute.
+- `+u`: Mark provider-backed content unpinned where supported.
+- `-u`: Clear the unpinned attribute.
+- `+b`: Set the SMR blob attribute on storage configurations that implement it.
+- `-b`: Clear the SMR blob attribute.
 - `/s`: Apply to matching files below the path recursively.
 - `/d`: Include matching directories as well as files; use with `/s` for a
   recursive directory scope.

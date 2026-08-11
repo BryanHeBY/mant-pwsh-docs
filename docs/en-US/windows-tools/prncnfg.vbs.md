@@ -35,8 +35,8 @@ printer queue. It is a VBScript under
 <!-- mant:entries role=command case=insensitive -->
 - `prncnfg.vbs`: Display, configure, or rename one logical Windows printer queue.
 
-Run the localized script through `cscript.exe`; plus/minus state operands such
-as `+shared` remain in prose because ManT cannot yet index their token shape.
+Run the localized script through `cscript.exe`; every plus/minus state operand
+has a distinct effect and should be passed only with configuration mode `-t`.
 
 <!-- mant:entries role=option case=insensitive -->
 - `-g`: Display configuration for the selected queue.
@@ -57,6 +57,28 @@ as `+shared` remain in prose because ManT cannot yet index their token shape.
 - `-ut`: Set the daily availability end time in 24-hour form.
 - `-i`: Set the default priority assigned to jobs.
 - `-o`: Set the queue routing priority.
+- `+shared`: Share the printer queue on the network using its configured share name.
+- `-shared`: Stop sharing the printer queue on the network.
+- `+direct`: Send documents directly to the printer without first spooling them.
+- `-direct`: Restore normal print spooling instead of direct printing.
+- `+hidden`: Set the script's reserved hidden state flag.
+- `-hidden`: Clear the script's reserved hidden state flag.
+- `+published`: Publish the printer in Active Directory for discovery.
+- `-published`: Remove the printer's Active Directory publication.
+- `+rawonly`: Allow only raw-data print jobs in the queue.
+- `-rawonly`: Allow the queue's supported non-raw data types again.
+- `+queued`: Wait until the final page is spooled before starting to print.
+- `-queued`: Permit printing to begin before the complete document is spooled.
+- `+enablebidi`: Enable printer-to-spooler bidirectional status reporting.
+- `-enablebidi`: Disable bidirectional status reporting.
+- `+keepprintedjobs`: Retain documents in the queue after they are printed.
+- `-keepprintedjobs`: Remove printed documents according to normal spooler behavior.
+- `+workoffline`: Allow users to queue print jobs while the printer is offline.
+- `-workoffline`: Disable offline print-job submission for the queue.
+- `+enabledevq`: Hold jobs whose data type does not match the printer setup.
+- `-enabledevq`: Disable the mismatch-hold behavior.
+- `+docompletefirst`: Let completely spooled lower-priority jobs run before incomplete higher-priority jobs.
+- `-docompletefirst`: Preserve normal priority ordering instead of preferring completely spooled jobs.
 - `-?`: Display installed script syntax.
 
 ## Common mistakes

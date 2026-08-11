@@ -56,7 +56,7 @@ postcondition.
 - `/delete`: Delete task registration without undoing prior effects or necessarily stopping a running instance.
 - `/tn TASK`: Select an exact task path and name.
 - `/s COMPUTER`: Target a remote computer for the management operation.
-- `/u DOMAIN\USER`, `/p PASSWORD`: Authenticate a remote management operation; these do not set the runtime principal.
+- `/u`, `/p PASSWORD`: Authenticate a remote management operation; `/u` accepts a user or `DOMAIN\USER`, and these options do not set the runtime principal.
 - `/ru USER`, `/rp PASSWORD`: Select the task runtime principal and password; avoid command-line secret exposure.
 - `/xml FILE`: Create from a complete XML file; in a supported query form, bare `/xml` returns the selected definition.
 - `/fo FORMAT`: Select table, list, or CSV query output.

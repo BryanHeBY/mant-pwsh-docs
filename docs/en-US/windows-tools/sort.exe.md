@@ -42,11 +42,9 @@ Keep input and `/o` output paths distinct.
 - `/m`: Set the amount of main memory in kilobytes used by the sort operation.
 - `/rec`: Set maximum input-record length up to 65,535 characters.
 - `/o`: Write sorted text to the following output file instead of stdout.
+- `/+N`: Start comparison at one-based character position `N`; short records
+  sort before longer records at that position.
 - `/?`: Display installed command help.
-
-The special positional form `/+N` starts comparison at one-based character
-position `N`. It is part of the native syntax but is described outside the
-semantic option list because the digits are embedded in the switch name.
 
 ## PowerShell boundaries
 

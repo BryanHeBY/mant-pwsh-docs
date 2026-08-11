@@ -40,8 +40,7 @@ and console/stream settings. Telnet does not provide modern transport security.
 - `continue`: Resume a paused Telnet Server service.
 - `config`: Change legacy domain, timeout, connection, port, auth, or mode settings.
 
-Equals-bearing config fields such as `timeout=` and `port=` remain in prose
-because ManT cannot yet index that native token shape.
+The following options select sessions, credentials, or `config` fields.
 
 <!-- mant:entries role=option case=insensitive -->
 - `-u`: Select an alternate remote administrative username.
@@ -49,6 +48,18 @@ because ManT cannot yet index that native token shape.
 - `-s`: Display one or all active Telnet sessions.
 - `-k`: End one or all Telnet sessions.
 - `-m`: Send a message to one or all Telnet sessions.
+- `dom=DOMAIN`: Set the default domain used by the legacy Telnet Server.
+- `ctrlakeymap=MODE`: Enable or disable interpretation of `Ctrl+A` as `Alt`.
+- `timeout=HH-MM-SS`: Set the idle-session timeout using the documented time form.
+- `timeoutactive=MODE`: Enable or disable enforcement of the idle-session timeout.
+- `maxfail=ATTEMPTS`: Set the allowed failed-login count before disconnecting a client.
+- `maxconn=CONNECTIONS`: Set the maximum number of simultaneous Telnet connections.
+- `port=NUMBER`: Change the TCP listening port; this does not add transport encryption.
+- `mode=MODE`: Select console or stream operation for the legacy server.
+- `+NTLM`: Enable NTLM as an accepted authentication method.
+- `-NTLM`: Disable NTLM authentication.
+- `+passwd`: Enable password authentication over the plaintext Telnet channel.
+- `-passwd`: Disable password authentication.
 - `-?`: Display installed syntax.
 
 ## Common mistakes

@@ -503,8 +503,15 @@ function validateMant(documents) {
       const output = JSON.parse(result.stdout);
       if (output?.schema !== "mant.query/v5" || output.document === undefined) {
         reportError(`${relative(file)}: ManT JSON output was not a document query result.`);
-      } else if (output.diagnostics !== undefined && (!Array.isArray(output.diagnostics) || output.diagnostics.length !== 0)) {
-        reportError(`${relative(file)}: ManT reported ${output.diagnostics.length} diagnostic(s).`);
+        continue;
+      }
+      const diagnostics = output.document?.diagnostics;
+      if (diagnostics !== undefined && !Array.isArray(diagnostics)) {
+        reportError(`${relative(file)}: ManT returned a malformed document diagnostics field.`);
+      } else if (diagnostics?.length > 0) {
+        const codes = [...new Set(diagnostics.map((diagnostic) => diagnostic?.code).filter(Boolean))];
+        const suffix = codes.length > 0 ? ` (${codes.join(", ")})` : "";
+        reportError(`${relative(file)}: ManT reported ${diagnostics.length} document diagnostic(s)${suffix}.`);
       }
     } catch (cause) {
       reportError(`${relative(file)}: ManT returned invalid JSON (${cause.message}).`);

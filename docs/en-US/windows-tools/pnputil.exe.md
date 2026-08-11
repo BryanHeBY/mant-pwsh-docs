@@ -38,7 +38,7 @@ by Windows release.
 - `/enum-drivers`: Enumerate third-party Driver Store packages and their published names.
 - `/add-driver INF`: Add one INF or a reviewed wildcard set to the Driver Store.
 - `/delete-driver OEM-INF`: Delete one exact published package such as `oem42.inf`.
-- `/export-driver OEM-INF PATH`: Export one or all third-party packages to an explicit destination.
+- `/export-driver`: Export one exact published package, or all third-party packages, to an explicit destination path.
 - `/enum-devices`: Enumerate devices with supported class, instance, problem, connection, bus, or other filters.
 - `/enum-interfaces`: Enumerate device interfaces and associated device-instance identities.
 - `/disable-device`, `/enable-device`, `/restart-device`, `/remove-device`: Change one exactly selected device instance or supported filtered set.

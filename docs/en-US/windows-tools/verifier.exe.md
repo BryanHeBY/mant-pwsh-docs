@@ -41,9 +41,9 @@ take effect immediately. Numeric flags and rule support are build-specific.
 <!-- mant:entries role=option case=insensitive -->
 - `/standard`: Select Microsoft's standard verifier tests for the target build.
 - `/flags`: Select a build-specific numeric combination of verifier tests.
-- `/all`: Select all installed drivers for verification after restart; the
-  legal `/driver.exclude` modifier can omit exact binary names but currently
-  cannot be represented as a ManT option entry because its name contains a dot.
+- `/all`: Select all installed drivers for verification after restart.
+- `/driver.exclude`: With `/all`, omit the following exact driver binary names
+  from next-boot verification; wildcards are not supported.
 - `/driver`: Select exact driver binary names; wildcards are not supported.
 - `/bootmode`: Select persistent, disable-after-fail, one-boot, or unusual-shutdown behavior.
 - `/query`: Display current Driver Verifier activity and counters.

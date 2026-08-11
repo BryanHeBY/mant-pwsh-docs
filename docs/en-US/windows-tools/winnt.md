@@ -59,10 +59,10 @@ Setup phase and operating-system context.
 
 <!-- mant:entries role=option case=insensitive -->
 - `/cmdcons`: Add the historical Recovery Console startup option.
+- `/noreboot`: Prevent the automatic restart after the file-copy phase so the
+  historical Setup process can be continued deliberately.
 
-The additional `/noreboot` token prevents the automatic restart after the
-file-copy phase. ManT currently rejects that spelling as a semantic option, so
-it remains documented in prose rather than being rewritten inaccurately.
+The family members have these broader historical roles and limitations:
 
 - `winnt` was a text-mode-era Setup command and is deprecated.
 - `winnt32` installed/upgraded Windows Server 2003 and could copy sources,

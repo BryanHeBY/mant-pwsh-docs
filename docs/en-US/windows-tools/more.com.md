@@ -42,10 +42,11 @@ resources open.
 - `more.com`: Page text from named files or native standard input in a
   forward-only interactive Windows console viewer.
 
-The special `+N` operand starts at a line number but cannot be represented as
-a conventional slash option. It remains interactive and unsuitable for jobs.
+The native pager accepts the following startup options and position operand.
 
 <!-- mant:entries role=option case=insensitive -->
+- `+N`: Begin display at one-based line number `N`; this remains an interactive
+  paging operation and is unsuitable for unattended jobs.
 - `/e`: Enable extended prompt commands such as line/file skipping and help.
 - `/c`: Clear the screen before displaying each page.
 - `/p`: Expand form-feed characters before displaying content.

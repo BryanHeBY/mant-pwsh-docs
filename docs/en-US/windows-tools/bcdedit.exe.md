@@ -73,8 +73,8 @@ every BCD file on attached disks.
 - `/create`: Create a new entry or well-known settings object and capture the returned identifier.
 - `/copy ID`: Copy one existing entry and capture the new identifier.
 - `/delete ID`: Delete an exact entry from the selected store.
-- `/set ID ELEMENT VALUE`: Set one documented element on an exact entry.
-- `/deletevalue ID ELEMENT`: Remove one element so inherited/default behavior can apply.
+- `/set`: Set one documented element and value on an exact entry identifier.
+- `/deletevalue`: Remove one named element from an exact entry so inherited/default behavior can apply.
 - `/default ID`: Select the persistent default loader entry.
 - `/displayorder ID`: Change persistent boot-menu ordering according to the complete command form.
 - `/bootsequence ID`: Set a one-time boot sequence, distinct from persistent display order.

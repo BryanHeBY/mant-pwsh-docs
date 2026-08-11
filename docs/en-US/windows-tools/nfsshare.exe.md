@@ -34,12 +34,18 @@ assignment such as `name=drive:path`, `-o`, or `/delete` mutates service state.
 <!-- mant:entries role=command case=insensitive -->
 - `nfsshare.exe`: List, inspect, create, change, or delete Server for NFS exports.
 
-Creation uses `share=drive:path`; access fields such as `rw=`, `ro=`, `root=`,
-`anonuid=`, and `anongid=` are security-sensitive equals-bearing operands that
-ManT cannot yet index individually.
+Creation uses the positional assignment `SHARE=DRIVE:PATH`; the left-hand side
+is the chosen share name rather than a fixed option keyword.
 
 <!-- mant:entries role=option case=insensitive -->
 - `-o`: Apply one or more NFS export option/value pairs.
+- `anon=MODE`: Enable or disable access by anonymous, unmapped users.
+- `rw=HOSTS`: Grant read-write access to the colon-separated hosts or client groups.
+- `ro=HOSTS`: Grant read-only access to the colon-separated hosts or client groups.
+- `encoding=ENCODING`: Select the one legacy filename encoding used by the export.
+- `anonuid=UID`: Map anonymous users to the numeric user identifier, even when anonymous access is disabled.
+- `anongid=GID`: Map anonymous users to the numeric group identifier, even when anonymous access is disabled.
+- `root=HOSTS`: Grant root access to the listed hosts or client groups; omission grants none.
 - `/delete`: Delete the named export or every export when paired with `*`.
 - `/?`: Display installed syntax.
 

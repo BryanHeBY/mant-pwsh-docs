@@ -34,7 +34,7 @@ selected process. Remote terminations are always forced.
 - `/f`: Force termination; remote termination is forced even when this switch is absent.
 - `/t`: Include child processes started by each selected process.
 - `/s COMPUTER`: Target a remote computer by name or IP address.
-- `/u DOMAIN\USER`: Authenticate the remote operation as another user; valid only with `/s`.
+- `/u`: Authenticate the remote operation as another user or `DOMAIN\USER`; valid only with `/s`.
 - `/p PASSWORD`: Supply the remote password; omit its value to prompt rather than exposing a secret in the command line.
 
 ## PowerShell boundaries
