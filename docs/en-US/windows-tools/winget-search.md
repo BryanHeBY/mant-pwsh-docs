@@ -29,6 +29,21 @@ winget search [query] [--id ID] [--name NAME] [--moniker MONIKER]
 `winget search` queries configured package sources. Use it to discover
 candidate packages, not as the final confirmation for an automated install.
 
+## Search options
+
+<!-- mant:entries role=option case=insensitive -->
+- `-q QUERY`, `--query QUERY`: Search the default package fields for a free-form value.
+- `--id ID`: Match a package identifier; combine with `--exact` for automation.
+- `--name NAME`: Match package display name rather than stable identity.
+- `--moniker MONIKER`: Match a package moniker where source metadata provides one.
+- `--tag TAG`: Match source-defined package tags.
+- `--cmd COMMAND`, `--command COMMAND`: Match packages associated with a command name.
+- `-s SOURCE`, `--source SOURCE`: Restrict discovery to one configured source.
+- `-e`, `--exact`: Require an exact match for the selected field/query.
+- `-n COUNT`, `--count COUNT`: Limit displayed results; it does not prove additional matches do not exist.
+- `--versions`: Include available versions where the installed client supports it.
+- `--accept-source-agreements`: Accept reviewed source agreements for unattended access.
+
 ## Exact identity
 
 Search by `--id` with `--exact` when a script has a known package identifier:
@@ -54,6 +69,28 @@ diagnosis, not as an unreviewed prerequisite hidden inside every deployment.
 Search output is human-oriented and can change between client releases. Do not
 scrape columns to choose a package. Store an approved exact package ID and
 validate it with `winget show`.
+
+## PowerShell boundaries
+
+Pass each option/value separately and check `$LASTEXITCODE`. Search results are
+native formatted output, not package objects or an authorization decision.
+
+## Version and availability
+
+Options depend on the independently serviced WinGet client and configured
+sources. Confirm `winget search --help` and `winget --version` on the target.
+
+## Common mistakes
+
+### Installing the first fuzzy result
+
+Search is discovery only. Resolve one exact ID/source and inspect it with
+`winget show` before any change.
+
+### Treating no rows as proof that no package exists
+
+Source failure, stale metadata, policy, authentication, or client version can
+also produce incomplete discovery. Check source and exit state.
 
 ## Related documents
 

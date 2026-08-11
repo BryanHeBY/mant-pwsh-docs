@@ -35,6 +35,27 @@ The short name does not mean “current username,” list every type of Windows
 logon, or accept alternate credentials. `/server:` changes the target while
 the caller's token supplies authorization.
 
+## Command identities and option
+
+<!-- mant:entries role=command case=insensitive -->
+- `quser`, `query user`: List visible interactive and Remote Desktop user sessions through the same query operation.
+
+The remote selector uses the caller's existing authorization.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/server:SERVER`: Query one exact remote server using the caller's current credentials and permissions.
+
+## PowerShell boundaries
+
+Call `quser.exe` or `query.exe user` explicitly and capture `$LASTEXITCODE`.
+The display has blank and localized fields, so whitespace splitting is not a
+stable parser and native failure is not controlled by `-ErrorAction`.
+
+## Version and availability
+
+This Windows session query depends on target edition/version, Remote Desktop
+services, permissions, session type/state, and remote connectivity.
+
 ## Common mistakes
 
 - Splitting on whitespace when a disconnected row can have an empty session
@@ -44,6 +65,12 @@ the caller's token supplies authorization.
 - Passing a returned session ID to a process-ID command.
 - Using `-ErrorAction Stop` as if native failure were a PowerShell exception;
   capture `$LASTEXITCODE` immediately.
+
+## Related documents
+
+- [query](query.md)
+- [qwinsta](qwinsta.md)
+- [logoff](logoff.md)
 
 ## Sources and license
 

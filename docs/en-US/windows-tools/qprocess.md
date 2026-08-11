@@ -39,6 +39,31 @@ Without a selector, only the current user's processes are reported. This is
 easy to misread as a system-wide list. `*` broadens inventory but does not make
 the result complete across protected, short-lived, or inaccessible processes.
 
+## Command identities and options
+
+<!-- mant:entries role=command case=insensitive -->
+- `qprocess`, `query process`: Map accessible processes to owner and Windows session identity.
+
+The following switches select a session or remote host.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/id:SESSION`: Select processes belonging to one exact session ID; this is not a process ID.
+- `/server:SERVER`: Query one remote server with the caller's current authorization.
+
+A bare numeric selector means process ID, a program selector requires its
+documented `.exe` suffix, and `*` requests every accessible session process.
+
+## PowerShell boundaries
+
+Call the executable explicitly, preserve colon-bearing options as one native
+argument, and capture `$LASTEXITCODE`. Revalidate PID, start time, executable,
+owner, and session before any later action.
+
+## Version and availability
+
+This Windows/RDS query surface depends on target release, permissions, session
+visibility, process lifetime, and remote management access.
+
 ## Common mistakes
 
 - Confusing a bare PID with `/id:` session identity.
@@ -46,6 +71,12 @@ the result complete across protected, short-lived, or inaccessible processes.
 - Treating a point-in-time PID/session pairing as durable.
 - Using an executable name without the documented `.exe` suffix.
 - Feeding human-readable output directly into a termination command.
+
+## Related documents
+
+- [query](query.md)
+- [tasklist](tasklist.md)
+- [quser](quser.md)
 
 ## Sources and license
 

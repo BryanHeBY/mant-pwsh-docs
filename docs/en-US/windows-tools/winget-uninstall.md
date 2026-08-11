@@ -46,12 +46,55 @@ Do not remove a package based only on a display-name search. Confirm product,
 publisher, scope, current user/device impact, and any data-retention or
 rollback requirement before changing the endpoint.
 
+## Selection and removal options
+
+<!-- mant:entries role=option case=insensitive -->
+- `-q QUERY`, `--query QUERY`: Select by free-form query; avoid broad matching for removal.
+- `-m FILE`, `--manifest FILE`: Select a package using a reviewed local manifest where supported.
+- `--id ID`: Select an installed package by exact identifier.
+- `--name NAME`, `--moniker MONIKER`: Select by display name or moniker when exact identity is verified separately.
+- `--product-code CODE`: Select by registered product code where supported.
+- `-e`, `--exact`: Require exact matching for the selected field.
+- `-v VERSION`, `--version VERSION`: Select one installed version where the client exposes it.
+- `-s SOURCE`, `--source SOURCE`: Restrict package correlation to one source.
+- `--scope SCOPE`, `--architecture ARCHITECTURE`, `--installer-type TYPE`: Restrict the detected removal target.
+- `-i`, `--interactive`: Request interactive uninstaller behavior.
+- `-h`, `--silent`: Request silent uninstaller behavior; actual support belongs to the package.
+- `--force`: Continue through selected non-security checks without reducing removal impact.
+- `--purge`: Remove additional package data where supported; review data-retention consequences.
+- `--preserve`: Preserve supported package data during removal where available.
+- `-o FILE`, `--log FILE`: Request an explicit installer/uninstaller log path where supported.
+- `--disable-interactivity`: Disable prompts so unattended removal fails rather than waiting.
+
 ## UI and automation
 
 `--silent` requests an unattended installer path, but support and behavior are
 manifest-specific. Test the exact uninstall under the production user and
 elevation context. Capture logs and use a post-action check appropriate to the
 package; process success alone may not prove that all associated state is gone.
+
+## PowerShell boundaries
+
+Call WinGet as a native process, keep exact selection values separate, capture
+`$LASTEXITCODE`, and verify application, service, data, and reboot state after
+the vendor uninstaller finishes.
+
+## Version and availability
+
+Options and cleanup behavior depend on WinGet version, installer technology,
+manifest metadata, package registration, scope, and policy.
+
+## Common mistakes
+
+### Removing a fuzzy display-name match
+
+Confirm exact ID, product code, publisher, scope, version, owning application,
+and user/device impact before removal.
+
+### Assuming uninstall removes all data or shared dependencies safely
+
+`--purge` and `--preserve` are package-specific, while shared components and
+management agents can affect other workloads. Define retention and rollback.
 
 ## Related documents
 

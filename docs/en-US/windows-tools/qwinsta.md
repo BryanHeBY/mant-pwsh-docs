@@ -40,6 +40,31 @@ The leading `>` marks the caller's current session. Listener or idle rows can
 have no username, and Microsoft notes initially disabled sessions can remain
 absent until enabled. Therefore the text is not a complete or stable CSV schema.
 
+## Command identities and options
+
+<!-- mant:entries role=command case=insensitive -->
+- `qwinsta`, `query session`: Enumerate visible session and listener objects through the same query operation.
+
+The following switches select the host and additional display fields.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/server:SERVER`: Query one exact remote server with the caller's current authorization.
+- `/mode`: Include current line settings for visible sessions.
+- `/flow`: Include current flow-control settings.
+- `/connect`: Include current connection settings.
+- `/counter`: Display cumulative session creation, disconnection, and reconnection counters.
+
+## PowerShell boundaries
+
+Call the executable explicitly, preserve colon-bearing options, and capture
+`$LASTEXITCODE`. Treat the leading `>` as a current-session marker and retain
+blank columns rather than parsing by naïve whitespace positions.
+
+## Version and availability
+
+This Windows/RDS query depends on target release, roles/listeners, permissions,
+session state, remote access, and counter lifetime.
+
 ## Common mistakes
 
 - Expanding the name as a supported modern concept: it is a historical
@@ -48,6 +73,12 @@ absent until enabled. Therefore the text is not a complete or stable CSV schema.
 - Treating a missing/disabled row as proof that no session configuration exists.
 - Reusing a session ID after state/ownership changed.
 - Using the inventory as authorization to disconnect, reset, shadow, or log off.
+
+## Related documents
+
+- [query](query.md)
+- [quser](quser.md)
+- [rwinsta](rwinsta.md)
 
 ## Sources and license
 

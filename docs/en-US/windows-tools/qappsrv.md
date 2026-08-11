@@ -35,6 +35,30 @@ Discovery can be affected by role registration, historical browse mechanisms,
 permissions, name resolution, segmentation, and build/configuration. Confirm
 hosts through the authoritative RDS deployment and asset sources before acting.
 
+## Command identities and options
+
+<!-- mant:entries role=command case=insensitive -->
+- `qappsrv`, `query termserver`: Discover RD Session Host servers through the same legacy query operation.
+
+The following switches select discovery scope and presentation.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/domain:DOMAIN`: Restrict legacy discovery to one exact domain scope.
+- `/address`: Include returned network/node addresses in display output.
+- `/continue`: Continue displaying results without pausing between screens.
+
+## PowerShell boundaries
+
+Call `qappsrv.exe` or `query.exe termserver` explicitly, pass colon-bearing
+options as one argument, and capture `$LASTEXITCODE`. The localized output is
+not a typed deployment inventory.
+
+## Version and availability
+
+This legacy discovery surface is Windows/RDS-specific and can be absent or
+incomplete depending on roles, domain/browse mechanisms, network segmentation,
+permissions, and Windows version.
+
 ## Common mistakes
 
 - Reading the historical name as an inventory of installed applications.
@@ -42,6 +66,12 @@ hosts through the authoritative RDS deployment and asset sources before acting.
 - Treating a discovered address as current identity or authorization.
 - Using broad domain discovery when one known target answers the question.
 - Parsing localized text as a stable machine schema.
+
+## Related documents
+
+- [query](query.md)
+- [quser](quser.md)
+- [qwinsta](qwinsta.md)
 
 ## Sources and license
 

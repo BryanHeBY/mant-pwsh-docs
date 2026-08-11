@@ -26,11 +26,41 @@ PowerShell, `chdir` normally aliases `Set-Location`; it is not an invocation of
 the cmd builtin. Use [cd](cd.md) for the drive-specific current-directory
 model, `/d`, child-process limits, and full diagnostics.
 
+## Command identities and option
+
+<!-- mant:entries role=command case=insensitive -->
+- `chdir`, `cd`: In `cmd.exe`, display or change cmd's current directory using the same builtin implementation.
+- `Set-Location`: Change PowerShell's current provider location using cmdlet parameter binding.
+
+The following switch belongs only to the cmd builtin grammar.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/d`: In cmd, change both the current drive and directory instead of only that drive's stored directory.
+
+## PowerShell boundaries
+
+PowerShell normally resolves `chdir` to `Set-Location`; cmd's `/d` is not a
+PowerShell parameter. A child `cmd.exe /c` can change only its own location,
+so combine navigation and dependent cmd operations inside that child command.
+
+## Version and availability
+
+The cmd builtin is available on supported Windows releases. PowerShell alias
+availability can be changed by profiles or constrained sessions; inspect with
+`Get-Command chdir -All`.
+
 ## Common mistakes
 
 - Assuming the longer spelling bypasses PowerShell command resolution.
 - Omitting `/d` when a cmd operation must also switch drives.
 - Expecting a child `cmd.exe /c chdir ...` to change its parent shell.
+
+## Related documents
+
+- [cd](cd.md)
+- [cmd](cmd.md)
+- [pushd](pushd.md)
+- [popd](popd.md)
 
 ## Sources and license
 

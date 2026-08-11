@@ -30,6 +30,32 @@ winget install [query] [--id ID] [--exact] [--version VERSION]
 `winget install` installs a package selected from configured sources. It can
 start a vendor installer and may affect all users or device configuration.
 
+## Selection and installer options
+
+<!-- mant:entries role=option case=insensitive -->
+- `-q QUERY`, `--query QUERY`: Select by free-form query; avoid it in durable automation when an ID is known.
+- `-m FILE`, `--manifest FILE`: Install from a reviewed local manifest path.
+- `--id ID`: Select a source package identifier.
+- `-e`, `--exact`: Require an exact match for the selected field.
+- `-v VERSION`, `--version VERSION`: Request one exact source-provided version.
+- `-s SOURCE`, `--source SOURCE`: Restrict selection to one configured source.
+- `--scope SCOPE`: Request user or machine installation where the manifest supports it.
+- `--architecture ARCHITECTURE`: Select an installer for one architecture.
+- `--installer-type TYPE`: Restrict selection to one supported installer technology.
+- `--locale LOCALE`: Select an installer locale where available.
+- `-l LOCATION`, `--location LOCATION`: Request an installation location only when the installer honors it.
+- `-i`, `--interactive`: Request interactive installer behavior.
+- `-h`, `--silent`: Request silent installer behavior; the manifest/installer owns actual UI support.
+- `--custom ARGUMENTS`: Add reviewed arguments after WinGet's normal installer switches.
+- `--override ARGUMENTS`: Replace WinGet's normal installer arguments; this changes the manifest contract substantially.
+- `--accept-package-agreements`, `--accept-source-agreements`: Record explicit agreement acceptance for unattended use.
+- `--skip-dependencies`: Skip dependency processing only when dependencies are managed and verified separately.
+- `--force`: Continue through selected non-security checks; it does not make an installer trustworthy.
+- `--allow-reboot`: Permit the installer to restart Windows; use only inside coordinated maintenance.
+- `--no-upgrade`: Refuse to turn an install request into an upgrade of an existing package.
+- `--uninstall-previous`: Request removal of the previous version when the manifest supports the workflow.
+- `--disable-interactivity`: Fail instead of waiting for user input in unattended execution.
+
 ## Confirm before installing
 
 Run `winget show --id ID --exact` first and approve the package identifier,
@@ -58,12 +84,29 @@ Scope, architecture, installer switches, logging, and elevation behavior vary
 by manifest and client version. Test the exact command under the production
 user and elevation context before using it in fleet automation.
 
-## PowerShell automation
+## PowerShell boundaries
 
 `winget` is a native process. Check `$LASTEXITCODE` immediately, keep its
 arguments separate, and log the exact ID/version/source/exit result. Do not
 assume that a successful process return proves the installed application is
 ready; run a narrowly scoped post-install health check if the workload needs it.
+
+## Version and availability
+
+The accepted options and installer behavior depend on WinGet version, source
+manifest, installer technology, package policy, and Windows context.
+
+## Common mistakes
+
+### Assuming `--silent` guarantees unattended installation
+
+The installer owns its UI and reboot contract. Test the exact manifest and
+context, combine with explicit noninteractive policy, and handle failure.
+
+### Using `--override` as routine boilerplate
+
+It replaces manifest-provided installer arguments and can bypass publisher-
+tested behavior. Use it only with an exact documented installer contract.
 
 ## Related documents
 

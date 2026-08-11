@@ -28,11 +28,39 @@ name. PowerShell's built-in short alias for `Rename-Item` is `ren`. Use
 [ren](ren.md) for in-place limits, wildcard surprises, collision review, and
 safe batch rename guidance.
 
+## Command identities
+
+<!-- mant:entries role=command case=insensitive -->
+- `rename`, `ren`: In cmd, rename selected files or directories in place through the same builtin.
+- `Rename-Item`: In PowerShell, rename provider items; `ren` is its built-in alias and collides with cmd spelling.
+
+## PowerShell boundaries
+
+Bare `rename` is not the standard PowerShell alias, while `ren` normally is.
+Use `Rename-Item -LiteralPath -NewName -WhatIf` for reviewed object operations
+and `cmd.exe /d /c rename ...` only for exact cmd wildcard semantics.
+
+## Version and availability
+
+Cmd `rename`/`ren` is Windows-only and cannot move an item to another path.
+PowerShell providers, profiles, platform commands, collisions, and permissions
+can change the meaning or outcome.
+
+Neither cmd nor PowerShell rename is a transactional bulk operation. Build and
+review the complete old-to-new mapping, detect collisions and case-only changes,
+then verify every result before removing a rollback copy.
+
 ## Common mistakes
 
 - Assuming the longer spelling has the same meaning in cmd and PowerShell.
 - Supplying a new path even though rename operations are in-place.
 - Applying a wildcard transformation without first reviewing old-to-new pairs.
+
+## Related documents
+
+- [ren](ren.md)
+- [cmd](cmd.md)
+- [move](move.md)
 
 ## Sources and license
 
