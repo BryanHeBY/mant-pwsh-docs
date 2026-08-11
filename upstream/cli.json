@@ -1175,6 +1175,28 @@
       ],
       "notes": ["The TLDR is query-only; the page requires exact SPN/account/service identity, current -S guidance, duplicate/forest checks, replication awareness, and protocol verification.", "Windows runtime verification remains required."]
     },
+    "cmdkey.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/cmdkey.md"}],
+      "notes": ["The page prohibits inline passwords, requires exact target and user/session context, distinguishes entry presence from credential selection, and validates new connections after deletion.", "Windows runtime verification remains required."]
+    },
+    "gpupdate.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/gpupdate.md"}],
+      "notes": ["The TLDR captures RSoP before refresh, narrows user/computer scope, waits finitely, and verifies; the page distinguishes force, timeout, sync, logoff, boot, and actual enforcement.", "Windows runtime verification remains required."]
+    },
+    "secedit.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/secedit.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/secedit-analyze.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/secedit-configure.md"}
+      ],
+      "notes": ["The TLDR validates, exports, and analyzes only; the page separates configure from analyze, narrows areas, controls database composition, protects rollback/log artifacts, and resolves target identities.", "Windows runtime verification remains required."]
+    },
     "git.md": {
       "kind": "native-cli",
       "status": "reviewed",

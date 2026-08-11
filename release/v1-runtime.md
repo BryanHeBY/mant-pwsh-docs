@@ -177,6 +177,9 @@ auditpol.exe /get /category:* /r
 gpresult.exe /scope user /r
 klist.exe tickets
 setspn.exe -Q "host/$env:COMPUTERNAME"
+cmdkey.exe /list
+gpresult.exe /scope user /r
+secedit.exe /validate $approvedTemplate
 ```
 
 Start a disposable process, record its PID/path/start time, preview
@@ -208,6 +211,10 @@ a protected temporary path. Do not clear/restore policy, refresh Group Policy,
 purge/request Kerberos tickets, change KDC bindings, or add/delete/reset SPNs
 merely for verification. Record elevation, user/computer target, logon-session
 LUID, domain/forest scope, timestamps, and report sensitivity.
+Do not add/delete stored credentials, refresh policy, or configure/import a
+security template merely for verification. If an approved template fixture is
+available, validate it only; protect exported reports and record which user,
+database, areas, log paths, and policy authority are involved.
 
 Review Windows-only commands on a non-production target. In particular, use
 `robocopy /L` before any real copy, query an existing known task before task

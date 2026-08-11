@@ -197,6 +197,9 @@ license in the document's provenance catalog before adapting material.
 - [gpresult](gpresult.md): exact user/computer RSoP and report protection.
 - [klist](klist.md): Kerberos tickets, logon sessions, and binding evidence.
 - [setspn](setspn.md): AD SPN ownership, duplicates, and safe registration boundaries.
+- [cmdkey](cmdkey.md): exact credential targets without inline secret exposure.
+- [gpupdate](gpupdate.md): scoped policy refresh after preserving RSoP evidence.
+- [secedit](secedit.md): validate/export/analyze security templates before apply.
 
 ## Cross-platform developer tools
 

@@ -257,7 +257,8 @@
     {
       "name": "cmdkey",
       "source": "cmdkey.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/cmdkey.md"
     },
     {
       "name": "cmstp",
@@ -618,7 +619,8 @@
     {
       "name": "gpupdate",
       "source": "gpupdate.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/gpupdate.md"
     },
     {
       "name": "graftabl",
@@ -1339,7 +1341,8 @@
     {
       "name": "secedit",
       "source": "secedit.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/secedit.md"
     },
     {
       "name": "select",
