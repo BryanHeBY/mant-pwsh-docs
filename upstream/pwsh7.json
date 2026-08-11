@@ -379,6 +379,75 @@
         "The page emphasizes object inspection before formatting or property access.",
         "Object-type examples require verification on all declared platforms."
       ]
+    },
+    "Where-Object.md": {
+      "kind": "cmdlet",
+      "status": "draft",
+      "versions": [
+        "7.6"
+      ],
+      "platforms": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Core/Where-Object.md"
+        }
+      ],
+      "notes": [
+        "The page emphasizes pure filtering predicates and source-side filtering when available.",
+        "Input-object examples require verification on all declared platforms."
+      ]
+    },
+    "ForEach-Object.md": {
+      "kind": "cmdlet",
+      "status": "draft",
+      "versions": [
+        "7.6"
+      ],
+      "platforms": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Core/ForEach-Object.md"
+        }
+      ],
+      "notes": [
+        "The page distinguishes streaming use from side-effectful actions and parallel execution.",
+        "Parallel and input-object examples require verification on all declared platforms."
+      ]
+    },
+    "Select-Object.md": {
+      "kind": "cmdlet",
+      "status": "draft",
+      "versions": [
+        "7.6"
+      ],
+      "platforms": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Utility/Select-Object.md"
+        }
+      ],
+      "notes": [
+        "The page emphasizes preserving object shape before formatting or serialization.",
+        "Input-object examples require verification on all declared platforms."
+      ]
     }
   }
 }

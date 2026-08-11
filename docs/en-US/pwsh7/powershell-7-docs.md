@@ -68,6 +68,15 @@ Future introductory pages will cover moving scripts from Windows PowerShell
 - [Get-Member](Get-Member.md): inspect the members and type information of
   objects before selecting properties or calling methods.
 
+## Object pipeline
+
+- [Where-Object](Where-Object.md): filter objects with property comparisons or
+  explicit predicates.
+- [ForEach-Object](ForEach-Object.md): transform or act on one pipeline object
+  at a time.
+- [Select-Object](Select-Object.md): select, calculate, expand, or bound
+  object output before display or export.
+
 ## Planned command reference
 
 The first release will cover:
