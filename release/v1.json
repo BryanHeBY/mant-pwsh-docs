@@ -2,7 +2,7 @@
   "$schema": "release-manifest/v1",
   "release": "v1",
   "locale": "en-US",
-  "requiredDocumentCount": 383,
+  "requiredDocumentCount": 386,
   "sources": {
     "pwsh7": {
       "runtimePlatforms": [
@@ -148,8 +148,11 @@
         "dxdiag.exe.md",
         "taskmgr.exe.md",
         "resmon.exe.md",
+        "winver.exe.md",
+        "mrt.exe.md",
         "eventvwr.msc.md",
         "taskschd.msc.md",
+        "rsop.msc.md",
         "wf.msc.md",
         "secpol.msc.md",
         "certmgr.msc.md",

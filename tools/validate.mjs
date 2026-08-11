@@ -66,6 +66,7 @@ const windowsSpecialEntrypoints = new Map([
   ["mmsys", "mmsys.cpl.md"],
   ["ncpa", "ncpa.cpl.md"],
   ["powercfg", ["powercfg.exe.md", "powercfg.cpl.md"]],
+  ["rsop", "rsop.msc.md"],
   ["secpol", "secpol.msc.md"],
   ["services", "services.msc.md"],
   ["sysdm", "sysdm.cpl.md"],

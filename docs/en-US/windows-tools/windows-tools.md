@@ -178,8 +178,11 @@ license in the document's provenance catalog before adapting material.
 - [dxdiag.exe](dxdiag.exe.md): DirectX/device diagnostic GUI and waited, verified support-report export.
 - [taskmgr.exe](taskmgr.exe.md): live process/performance/startup/session inspection before controlled actions.
 - [resmon.exe](resmon.exe.md): direct searchable Resource Monitor entry with sampling and automation boundaries.
+- [winver.exe](winver.exe.md): interactive Windows edition/version/build identity with typed CIM and feature-detection alternatives.
+- [mrt.exe](mrt.exe.md): current, elevated MSRT scanning with complete switch, antivirus, evidence, and automatic-cleanup boundaries.
 - [eventvwr.msc](eventvwr.msc.md): interactive event exploration while preserving raw XML/EVTX provenance.
 - [taskschd.msc](taskschd.msc.md): interactive Task Scheduler entry with full-path, principal, XML, ACL, runtime-context, and result boundaries.
+- [rsop.msc](rsop.msc.md): interactive Resultant Set of Policy inspection distinct from complete, saved `gpresult` reporting.
 - [wf.msc](wf.msc.md): advanced firewall console entry with effective policy-store, rule/filter identity, and traffic-verification boundaries.
 - [secpol.msc](secpol.msc.md): Local Security Policy entry distinct from effective domain/MDM policy and runtime enforcement.
 - [certmgr.msc](certmgr.msc.md): Current User certificate-store entry distinct from Local Computer stores and the SDK `certmgr.exe`.

@@ -150,11 +150,13 @@ powercfg.exe /requests
 powercfg.exe /availablesleepstates
 reagentc.exe /info
 Get-Command dxdiag.exe -All
-Get-Command taskmgr.exe, resmon.exe, eventvwr.exe, mmc.exe -All
+Get-Command taskmgr.exe, resmon.exe, winver.exe, mrt.exe, eventvwr.exe, mmc.exe -All
+Get-AuthenticodeSignature (Get-Command mrt.exe).Source
 Get-Item "$env:SystemRoot\System32\eventvwr.msc", "$env:SystemRoot\System32\compmgmt.msc"
 Get-Item "$env:SystemRoot\System32\devmgmt.msc", "$env:SystemRoot\System32\diskmgmt.msc", "$env:SystemRoot\System32\services.msc"
 Get-Command regedit.exe -All
 Get-Item "$env:SystemRoot\System32\taskschd.msc", "$env:SystemRoot\System32\wf.msc", "$env:SystemRoot\System32\secpol.msc" -ErrorAction SilentlyContinue
+Get-Item "$env:SystemRoot\System32\rsop.msc" -ErrorAction SilentlyContinue
 Get-Item "$env:SystemRoot\System32\certmgr.msc", "$env:SystemRoot\System32\certlm.msc", "$env:SystemRoot\System32\lusrmgr.msc", "$env:SystemRoot\System32\fsmgmt.msc" -ErrorAction SilentlyContinue
 Get-ScheduledTask -ErrorAction SilentlyContinue | Select-Object -First 5 TaskPath, TaskName, State
 Get-NetFirewallProfile -PolicyStore ActiveStore -ErrorAction SilentlyContinue

@@ -1711,6 +1711,74 @@
         "Windows runtime verification remains manual launch-and-close only."
       ]
     },
+    "winver.exe.md": {
+      "kind": "windows-gui-entrypoint",
+      "status": "reviewed",
+      "versions": [
+        "supported Windows client and server releases; displayed product, version, build, licensing text, and terminology vary by release and servicing channel"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows/client-management/client-tools/windows-version-search",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows/apps/get-started/versioning-overview",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows/win32/sysinfo/operating-system-version",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
+        }
+      ],
+      "notes": [
+        "The page separates a human-readable About Windows dialog from typed CIM/registry data and distinguishes edition, display version, build/revision, architecture, servicing channel, SDK, and PowerShell versions while recommending feature detection.",
+        "Windows runtime verification remains executable resolution, manual launch-and-close, and read-only CIM/registry inventory."
+      ]
+    },
+    "mrt.exe.md": {
+      "kind": "security-diagnostic-cli",
+      "status": "reviewed",
+      "versions": [
+        "current Microsoft Windows Malicious Software Removal Tool on supported Windows releases; targeted malware, delivery, reporting, and tool version change over time"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "web",
+          "url": "https://support.microsoft.com/en-US/servicing/os/windows/2021/01/remove-specific-prevalent-malware-with-windows-malicious-software-removal-tool-kb890830",
+          "license": {
+            "spdx": "LicenseRef-Microsoft-Web-Terms",
+            "url": "https://www.microsoft.com/en-us/legal/terms-of-use"
+          },
+          "checkedAt": "2026-08-12"
+        }
+      ],
+      "notes": [
+        "The page exposes every Microsoft-documented switch as a semantic entry and distinguishes detect-only, extended, automatic cleanup, quiet UI, post-infection removal, antivirus, evidence, telemetry, freshness, elevation, and incident-response boundaries.",
+        "Windows runtime verification remains resolution, signature/version inspection, and help display; no scan or cleanup is run merely for evidence."
+      ]
+    },
     "eventvwr.msc.md": {
       "kind": "windows-gui-entrypoint",
       "status": "reviewed",
@@ -1777,6 +1845,49 @@
       "notes": [
         "The page makes the exact task path, principal, XML, ACL, runtime context, history, result, and external action dependencies explicit while redirecting automation to ScheduledTasks, SchTasks, or the API.",
         "Windows runtime verification remains file discovery or manual launch-and-close only; no task is created, changed, run, stopped, or deleted for evidence."
+      ]
+    },
+    "rsop.msc.md": {
+      "kind": "windows-gui-entrypoint",
+      "status": "reviewed",
+      "versions": [
+        "supported Windows releases where the RSoP MMC snap-in is available; policy data and permissions vary by edition, domain, management authority, and installed extensions"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/troubleshoot/windows-server/group-policy/use-resultant-set-of-policy-logging",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows/client-management/mdm/policy-csp-admx-grouppolicy",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows-server/administration/windows-commands/gpresult",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
+        }
+      ],
+      "notes": [
+        "The page distinguishes interactive RSoP logging/modeling from complete and reproducible gpresult reporting and records exact user/computer scope, policy authority, filtering, precedence, refresh, evidence, and automation boundaries.",
+        "Windows runtime verification remains file discovery, manual launch-and-close, or a read-only gpresult report; no policy is changed merely for evidence."
       ]
     },
     "wf.msc.md": {
