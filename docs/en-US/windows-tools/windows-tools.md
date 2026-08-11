@@ -180,9 +180,13 @@ license in the document's provenance catalog before adapting material.
 - [resmon.exe](resmon.exe.md): direct searchable Resource Monitor entry with sampling and automation boundaries.
 - [winver.exe](winver.exe.md): interactive Windows edition/version/build identity with typed CIM and feature-detection alternatives.
 - [mrt.exe](mrt.exe.md): current, elevated MSRT scanning with complete switch, antivirus, evidence, and automatic-cleanup boundaries.
+- [msra.exe](msra.exe.md): consented classic Remote Assistance with identity, invitation, privacy, control, and session-end safeguards.
 - [eventvwr.msc](eventvwr.msc.md): interactive event exploration while preserving raw XML/EVTX provenance.
 - [taskschd.msc](taskschd.msc.md): interactive Task Scheduler entry with full-path, principal, XML, ACL, runtime-context, and result boundaries.
 - [rsop.msc](rsop.msc.md): interactive Resultant Set of Policy inspection distinct from complete, saved `gpresult` reporting.
+- [comexp.msc](comexp.msc.md): Component Services entry with machine/application COM security, identity, architecture, DTC, and recovery boundaries.
+- [wmimgmt.msc](wmimgmt.msc.md): WMI Control entry with explicit namespace, ACL, transport, provider, and repository-repair boundaries.
+- [printmanagement.msc](printmanagement.msc.md): optional Print Management entry separating servers, queues, drivers, ports, jobs, and typed cmdlet automation.
 - [wf.msc](wf.msc.md): advanced firewall console entry with effective policy-store, rule/filter identity, and traffic-verification boundaries.
 - [secpol.msc](secpol.msc.md): Local Security Policy entry distinct from effective domain/MDM policy and runtime enforcement.
 - [certmgr.msc](certmgr.msc.md): Current User certificate-store entry distinct from Local Computer stores and the SDK `certmgr.exe`.

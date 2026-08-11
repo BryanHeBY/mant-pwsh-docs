@@ -71,8 +71,8 @@ subcommand pages remain unsuffixed.
 
 ## Project status
 
-The first English v1 inventory now contains 386 reviewed pages: 30 for
-PowerShell 7, 30 for Windows PowerShell 5.1, 320 Windows tool pages, and 6
+The first English v1 inventory now contains 390 reviewed pages: 30 for
+PowerShell 7, 30 for Windows PowerShell 5.1, 324 Windows tool pages, and 6
 cross-platform tool pages. The normative inventory lives in
 [release/v1.json](release/v1.json).
 

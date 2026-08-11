@@ -2,7 +2,7 @@
   "$schema": "release-manifest/v1",
   "release": "v1",
   "locale": "en-US",
-  "requiredDocumentCount": 386,
+  "requiredDocumentCount": 390,
   "sources": {
     "pwsh7": {
       "runtimePlatforms": [
@@ -150,9 +150,13 @@
         "resmon.exe.md",
         "winver.exe.md",
         "mrt.exe.md",
+        "msra.exe.md",
         "eventvwr.msc.md",
         "taskschd.msc.md",
         "rsop.msc.md",
+        "comexp.msc.md",
+        "wmimgmt.msc.md",
+        "printmanagement.msc.md",
         "wf.msc.md",
         "secpol.msc.md",
         "certmgr.msc.md",

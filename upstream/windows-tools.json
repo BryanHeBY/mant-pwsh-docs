@@ -1779,6 +1779,116 @@
         "Windows runtime verification remains resolution, signature/version inspection, and help display; no scan or cleanup is run merely for evidence."
       ]
     },
+    "comexp.msc.md": {
+      "kind": "windows-gui-entrypoint",
+      "status": "reviewed",
+      "versions": [
+        "supported Windows releases where Component Services is installed; COM+, DCOM, DTC, architecture, hardening, and registered applications vary by build and role"
+      ],
+      "platforms": ["windows"],
+      "sources": [
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows/win32/com/enabling-com-security-using-dcomcnfg",
+          "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"},
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows/win32/com/setting-machine-wide-security-using-dcomcnfg",
+          "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"},
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/troubleshoot/windows-server/application-management/enable-network-dtc-access",
+          "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"},
+          "checkedAt": "2026-08-12"
+        }
+      ],
+      "notes": [
+        "The page distinguishes machine-wide from per-application COM security and records AppID/CLSID, identity, architecture, launch/activation/access, authentication, DTC, product ownership, evidence, rollback, and remote-recovery boundaries.",
+        "Runtime verification remains file discovery, manual launch-and-close, and read-only event collection; no COM/DCOM/DTC configuration changes are made merely for evidence."
+      ]
+    },
+    "wmimgmt.msc.md": {
+      "kind": "windows-gui-entrypoint",
+      "status": "reviewed",
+      "versions": [
+        "supported Windows releases where WMI Control is available; namespaces, providers, ACL defaults, transport, and repository behavior vary by build and installed software"
+      ],
+      "platforms": ["windows"],
+      "sources": [
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows/win32/wmisdk/setting-namespace-security-with-the-wmi-control",
+          "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"},
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows/win32/wmisdk/securing-a-remote-wmi-connection",
+          "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"},
+          "checkedAt": "2026-08-12"
+        }
+      ],
+      "notes": [
+        "The page separates WMI namespace security from DCOM/firewall/identity and repository repair, requires explicit namespaces and targets, and redirects automation to typed CIM cmdlets.",
+        "Runtime verification remains file discovery, manual launch-and-close, and one read-only local CIM query; no ACL, default namespace, repository, provider, or service state is changed."
+      ]
+    },
+    "printmanagement.msc.md": {
+      "kind": "windows-gui-entrypoint",
+      "status": "reviewed",
+      "versions": [
+        "availability varies by Windows client/server edition, build, installation option, management capability, Print Server role, and installed tools"
+      ],
+      "platforms": ["windows"],
+      "sources": [
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/powershell/module/printmanagement/",
+          "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"},
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/troubleshoot/windows-client/printing/cannot-install-secure-web-services-on-devices",
+          "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"},
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows-server/administration/server-core/server-core-roles-and-services",
+          "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"},
+          "checkedAt": "2026-08-12"
+        }
+      ],
+      "notes": [
+        "The page separates server, queue, share, driver/package/architecture, port/monitor, device, job, Spooler, deployment, and optional-component identities and redirects automation to typed PrintManagement cmdlets.",
+        "Runtime verification remains presence and read-only inventory; no queue, driver, port, job, Spooler, capability, role, or policy state is changed."
+      ]
+    },
+    "msra.exe.md": {
+      "kind": "windows-gui-entrypoint",
+      "status": "reviewed",
+      "versions": [
+        "classic Windows Remote Assistance availability and behavior vary by Windows edition/build, policy, firewall, domain/MDM management, and network environment"
+      ],
+      "platforms": ["windows"],
+      "sources": [
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows-hardware/customize/desktop/unattend/microsoft-windows-remoteassistance-exe",
+          "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"},
+          "checkedAt": "2026-08-12"
+        }
+      ],
+      "notes": [
+        "The page documents only the supported interactive entry point and covers independent identity verification, consent/control, invitation secrecy/expiry, privacy, policy, firewall/network, session termination, and product-confusion boundaries without promoting forum-derived switches.",
+        "Runtime verification remains resolution, signature/version inspection, and manual launch-and-close; no invitation, connection, control request, firewall change, or remote session is created merely for evidence."
+      ]
+    },
     "eventvwr.msc.md": {
       "kind": "windows-gui-entrypoint",
       "status": "reviewed",
