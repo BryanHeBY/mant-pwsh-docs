@@ -29,6 +29,20 @@ Windows `mount.exe` belongs to the optional Client for NFS feature. With no
 arguments it lists NFS mounts; otherwise it creates a connection from a server
 export to a drive letter. It is not Unix `mount`, DiskPart, or `mountvol.exe`.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `mount.exe`: List or create Windows Client for NFS drive mappings.
+
+Mount suboptions such as `mtype=`, `sec=`, and `fileaccess=` use a bare
+equals-bearing grammar that ManT cannot yet index individually.
+
+<!-- mant:entries role=option case=insensitive -->
+- `-o`: Supply one or more NFS mount option/value tokens.
+- `-u`: Select an alternate NFS username.
+- `-p`: Supply its password inline or use `*` to prompt.
+- `/?`: Display installed Windows Client for NFS syntax.
+
 ## Common mistakes
 
 ### Copying Unix syntax or targeting an SMB share
@@ -67,7 +81,7 @@ speed. Test the real application and failure mode.
 Resolve the chosen drive across user/session contexts, then verify effective
 identity, root/anonymous mapping, read/write/lock behavior and reconnect.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Call `mount.exe` explicitly because other environments may provide a same-name
 command. Quote export and drive arguments and check `$LASTEXITCODE`. `*` asks

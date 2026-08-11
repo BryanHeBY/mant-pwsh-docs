@@ -36,6 +36,19 @@ Microsoft's page explicitly says the command is unsupported on Windows 10,
 despite its broad generated applicability banner. Use explicit paths, a
 controlled working directory, or application configuration instead.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `append.exe`: Display, set, or clear the DOS-compatible data-file search list.
+
+An empty command displays state; the positional semicolon clears it.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/x`: Include (`on`) or exclude (`off`) executable searches.
+- `/path`: Apply (`on`) or skip (`off`) APPEND for requests already containing a path.
+- `/e`: Copy the initial path list into the process `APPEND` environment variable.
+- `/?`: Display installed legacy syntax.
+
 ## Common mistakes
 
 ### Assuming PATH and APPEND are interchangeable
@@ -56,7 +69,7 @@ variable; it does not make the mechanism a modern persistent configuration API.
 `append` with no arguments displays the list; `append ;` clears it. Keep the
 semicolon out of discovery scripts.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Call `append.exe` explicitly if it exists. PowerShell's environment provider can
 inspect `$env:APPEND`, but changing that variable does not reproduce every

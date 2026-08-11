@@ -26,6 +26,14 @@ recovery workflow. Microsoft states that it cannot be run directly from the
 command line. It is not a general replacement for `format.com`, DiskPart,
 Disk Management, or supported Windows Recovery Environment procedures.
 
+## Invocation boundary
+
+<!-- mant:entries role=command case=insensitive -->
+- `autofmt.exe`: Internal Windows recovery formatting worker; never invoke directly.
+
+Microsoft exposes no supported public parameters. Use the exact supported
+recovery or formatting workflow after independently verifying the target.
+
 ## Common mistakes
 
 ### Treating an internal executable as a public CLI
@@ -44,7 +52,7 @@ Formatting is destructive filesystem creation. It is not a backup, a general
 hardware repair, or a guaranteed media sanitization method. Match the action to
 the incident and preserve recoverable data first.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 The TLDR inventory is for normal Windows preparation only. PowerShell may not
 be present in the recovery environment, and objects gathered online must be

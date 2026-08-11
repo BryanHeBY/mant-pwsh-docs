@@ -31,6 +31,21 @@ suffixes. `/s` selects a remote computer without leading backslashes, and a
 drive is required remotely. Its binary result is intentionally simpler than a
 capacity report: `0` means enough space and `1` means not enough.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `freedisk.exe`: Test whether an exact local or remote drive meets a free-space threshold.
+
+Exit code `0` means enough space and `1` means insufficient space; neither is a
+typed capacity report.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/s`: Select a remote computer without leading backslashes.
+- `/u`: Select an alternate remote account.
+- `/p`: Supply its password inline or prompt when the value is omitted.
+- `/d`: Select the exact drive whose free space is tested.
+- `/?`: Display installed syntax.
+
 ## Common mistakes
 
 ### Treating any nonzero value as an ordinary process crash
@@ -57,7 +72,7 @@ Free bytes do not validate permissions, quotas, filesystem support, path
 length, compression, cluster/shared-volume ownership, or future peak usage.
 Run the product's supported prerequisite checks as well.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 `Get-Volume` is better for typed local inventory; FreeDisk remains useful where
 its exit contract is required. Capture `$LASTEXITCODE` before another native

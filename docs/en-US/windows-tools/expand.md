@@ -35,6 +35,20 @@ It is not PowerShell's `Expand-Archive`, which handles ZIP archives. It also
 does not validate publisher trust, authorize installation, or guarantee that
 an archive's files are harmless.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `expand.exe`: List or expand Microsoft-compressed distribution files and CAB members.
+
+This command handles Microsoft Cabinet/distribution compression, not ZIP.
+
+<!-- mant:entries role=option case=insensitive -->
+- `-d`: List CAB members without extracting them.
+- `-f`: Select one or more CAB member names or wildcards for extraction.
+- `-r`: Rename expanded files according to stored distribution names.
+- `-i`: Rename expanded files while ignoring stored directory structure.
+- `/?`: Display installed syntax.
+
 ## Safe extraction workflow
 
 1. Preserve and hash the original CAB; determine its source, signature, and
@@ -92,7 +106,7 @@ Treat untrusted archives as hostile input. Use a patched host, isolated output,
 capacity quotas, malware/content scanning, and explicit path verification.
 Never pipe a listed or extracted filename directly into execution.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Call `expand.exe` explicitly, because command resolution may include functions
 or scripts with the same bare name. Quote source and destination separately;

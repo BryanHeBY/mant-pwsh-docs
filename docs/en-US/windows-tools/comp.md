@@ -36,6 +36,22 @@ location as a line number, `/C` compares without case, and `/N=number` compares
 only a specified number of lines. These change reporting or scope; they do not
 make a full equality proof stronger.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `comp.exe`: Compare two exact files or matched file sets byte by byte.
+
+Missing operands and the follow-up prompt make default invocation interactive.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/d`: Display differing byte values in decimal.
+- `/a`: Display differing bytes as characters.
+- `/l`: Report mismatch locations as line numbers.
+- `/n`: Compare only the specified number of lines rather than complete inputs.
+- `/c`: Compare ASCII letters without case distinction.
+- `/offline`: Do not skip files carrying the Offline attribute.
+- `/?`: Display installed syntax; some builds also expose target-local `/m`.
+
 ## Common mistakes
 
 ### Letting the “Compare more files” prompt hang automation
@@ -83,7 +99,7 @@ Open databases, logs, virtual disks, and application files can change between
 reads. Quiesce through the owning application or compare consistent snapshots;
 a comparator cannot create a transactionally consistent view.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Call `comp.exe` explicitly; `Compare-Object` compares PowerShell objects and is
 not a byte-for-byte file replacement. Pass exact literal paths, avoid wildcard

@@ -32,6 +32,24 @@ it. `/D` lists, `/E` extracts all, `/L <dir>` chooses the destination, `/A`
 follows a cabinet chain, `/C` copies a source, and `/Y` suppresses overwrite
 prompts.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `extrac32.exe`: List, copy, or extract files from a Microsoft Cabinet archive.
+- `extract.exe`: Historical Cabinet extractor replaced by `extrac32.exe` on modern Windows.
+
+Resolve the actual executable before choosing syntax; the two names are not a
+promise of identical behavior on every image.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/a`: Follow a chained cabinet set when extracting.
+- `/c`: Copy the source file without Cabinet extraction.
+- `/d`: Display the Cabinet directory without extracting.
+- `/e`: Extract every file from the Cabinet.
+- `/l`: Select an explicit output directory.
+- `/y`: Suppress overwrite confirmation and permit replacement.
+- `/?`: Display installed syntax; pipe through a pager if help vanishes.
+
 ## Common mistakes
 
 ### Running an SFX package to inspect its files
@@ -66,7 +84,7 @@ expected file set, hashes, sizes, and signatures.
 managers, and installers have different validation and servicing semantics;
 choose the supported tool for the artifact and goal.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Invoke `extrac32.exe` explicitly, quote paths, use a pre-created destination,
 and inspect `$LASTEXITCODE` immediately. Native output is text; file objects

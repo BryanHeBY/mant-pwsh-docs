@@ -48,6 +48,37 @@ storage vendor or a qualified recovery service.
 
 ## Command-family map
 
+<!-- mant:entries role=command case=insensitive -->
+- `refsutil.exe`: Inspect, repair, or recover supported ReFS structures and data.
+- `compression`: Query or configure ReFS volume compression.
+- `dedup`: Scan for or consolidate equivalent ReFS clusters.
+- `fixboot`: Repair or update ReFS boot-sector metadata.
+- `iometrics`: Query or configure ReFS I/O activity tracking.
+- `leak`: Estimate, diagnose, or repair allocated-space leaks/corruption.
+- `salvage`: Diagnose/scan a damaged ReFS volume and copy recoverable files out.
+- `streamsnapshot`: Create, list, query, or delete data-stream snapshots.
+- `triage`: Scrub a directory or global ReFS tables.
+
+The following common switches are case-sensitive across family-specific syntax;
+always confirm installed help for the exact Windows build.
+
+<!-- mant:entries role=option case=sensitive -->
+- `/q`: Query state or estimate required scratch space without applying a repair.
+- `/c`: Configure a supported family setting.
+- `/s`: Scan or set tracking according to the selected family.
+- `/d`: Diagnose leaks or perform deduplication according to family context.
+- `/a`: Attempt repair in the leak family.
+- `/x`: Force exclusive access/dismount and invalidate open handles.
+- `/g`: Select global-table triage instead of directory triage.
+- `-D`: Diagnose a Salvage source and initialize its work directory.
+- `-QS`: Perform a quick Salvage scan.
+- `-FS`: Perform a full Salvage scan.
+- `-C`: Copy files found by a completed Salvage scan.
+- `-SL`: Copy only files named by a reviewed selected-files list.
+- `-IC`: Interactively select found files to copy.
+- `-sv`: Assume the highest supported ReFS on-disk version; high risk.
+- `-m`: Include deleted files in Salvage results.
+
 | Family | Primary purpose | Boundary |
 | --- | --- | --- |
 | `compression` | Query or configure ReFS volume compression format, engine, and chunk size | `/q` queries; `/c` changes future/volume behavior and compatibility/performance. |
@@ -161,7 +192,7 @@ specific support notes. Treat these as documentation defects to resolve with
 the target's `refsutil.exe` help, OS build/edition, ReFS version, and current
 Microsoft support—not as license to combine switches from different builds.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Pass scalar drive/mount-point paths and quote working, target, scratch, and file-
 list paths. Keep source, work, and target canonical identities in the recovery

@@ -26,6 +26,14 @@ a FAT or FAT32 volume conversion to NTFS. It preserves existing files and
 directories, but the filesystem conversion cannot be reversed to FAT/FAT32.
 Microsoft explicitly says AutoConv cannot be run from the command line.
 
+## Invocation boundary
+
+<!-- mant:entries role=command case=insensitive -->
+- `autoconv.exe`: Internal startup FAT/FAT32-to-NTFS conversion worker.
+
+Microsoft exposes no supported direct syntax. Schedule conversion only through
+the documented `convert.exe` front end.
+
 ## Common mistakes
 
 ### Calling the worker directly
@@ -46,7 +54,7 @@ Conversion retains the existing tree; formatting creates a filesystem and can
 destroy the previous one. Record the exact volume ID, not only a drive letter,
 and stop if the selected target is ambiguous.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use typed `Get-Volume` inventory where available, but invoke the native
 `convert.exe` only during an approved change. Capture its output and

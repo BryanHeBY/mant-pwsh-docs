@@ -31,6 +31,14 @@ scheduled, or CHKDSK could not obtain exclusive access. Microsoft explicitly
 states that it cannot be run directly from a command line. Use `chkntfs` to
 inspect or configure startup checking and `chkdsk` for an attended scan.
 
+## Invocation boundary
+
+<!-- mant:entries role=command case=insensitive -->
+- `autochk.exe`: Internal startup form of CHKDSK; never invoke directly.
+
+Microsoft exposes no supported command-line parameters. Use `chkntfs` to
+configure startup checking and `chkdsk` for a supported attended scan.
+
 ## Common mistakes
 
 ### Running Autochk as if it were CHKDSK
@@ -56,7 +64,7 @@ and schedule supported maintenance instead of permanently suppressing it.
 Collect the Wininit event after boot and correlate it with the volume identity,
 dirty state, storage health, and the command that scheduled the check.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 The useful PowerShell workflow invokes `fsutil.exe`, `chkntfs.exe`, and
 `Get-WinEvent`; it does not invoke Autochk. Native output is localized text, so

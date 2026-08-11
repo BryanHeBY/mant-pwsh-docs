@@ -30,6 +30,17 @@ same-type floppy. It can format the destination during copying, reproduces
 source fragmentation, and assigns a new volume serial number. It does not copy
 to a hard disk and is not a general disk-cloning or file-copy command.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `diskcopy.exe`: Copy one complete floppy disk onto another compatible floppy.
+
+The first drive is source and the second is overwritten destination.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/v`: Verify copied information after writing it.
+- `/?`: Display installed syntax.
+
 ## Exit codes
 
 `0` is success, `1` is a nonfatal read/write error, `3` is a fatal hard error,
@@ -57,7 +68,7 @@ Verification checks the just-written copy. It does not provide durable identity,
 authenticity, or future readability. Record image hashes and storage metadata
 when those guarantees matter.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 DiskCopy is interactive native software. It reads console input and writes
 localized text; it is unsuitable for unattended remoting. Capture

@@ -48,6 +48,52 @@ BitLocker has several independent state dimensions. Record all of them:
 
 ## Command families
 
+<!-- mant:entries role=command case=insensitive -->
+- `manage-bde.exe`: Inspect or administer BitLocker state and recovery material.
+
+All documented families use leading hyphens and several perform long-running or
+recovery-critical mutations.
+
+<!-- mant:entries role=option case=insensitive -->
+- `-status`: Report conversion, method, protection, and lock state.
+- `-on`: Start BitLocker encryption on an exact volume.
+- `-off`: Start full decryption and eventual protector removal.
+- `-pause`: Pause encryption or decryption conversion work.
+- `-resume`: Resume paused conversion work.
+- `-lock`: Remove current access to an unlocked data volume.
+- `-unlock`: Unlock a data volume with an approved protector.
+- `-protectors`: Get, add, delete, disable, enable, or escrow key protectors.
+- `-autounlock`: Enable, disable, or clear OS-stored auto-unlock keys.
+- `-forcerecovery`: Delete TPM-related protectors and require recovery at restart.
+- `-wipefreespace`: Overwrite a volume's free space.
+- `-changepassword`: Change a data-volume password protector.
+- `-changepin`: Change an OS-volume PIN protector.
+- `-changekey`: Change an OS-volume startup-key protector.
+- `-keypackage`: Generate a key package for damaged-volume recovery.
+- `-upgrade`: Upgrade BitLocker metadata on the selected volume.
+- `-computername`: Select a remote computer where the family supports it.
+- `-protectionaserrorlevel`: Return `0` for protected and `1` for unprotected status.
+- `-get`: List protectors and their identifiers.
+- `-add`: Add a new exact protector without removing the old one.
+- `-delete`: Delete protectors by exact ID or type.
+- `-disable`: Suspend protector enforcement without decrypting the volume.
+- `-enable`: Re-enable protector enforcement.
+- `-adbackup`: Back up one recovery-password protector to Active Directory.
+- `-aadbackup`: Back up one recovery-password protector to Microsoft Entra ID.
+- `-id`: Select one exact protector GUID.
+- `-type`: Select a protector type and potentially broaden impact.
+- `-rebootcount`: Bound suspension to a number of restarts; zero is indefinite.
+- `-password`: Prompt for or supply a password protector; avoid inline secrets.
+- `-recoverypassword`: Select a 48-digit recovery-password protector.
+- `-recoverykey`: Select an external `.bek` recovery key.
+- `-startupkey`: Select an external startup key.
+- `-tpmandpin`: Select a TPM-plus-PIN protector.
+- `-tpmandstartupkey`: Select a TPM-plus-startup-key protector.
+- `-tpmandpinandstartupkey`: Select TPM, PIN, and startup-key protection.
+- `-certificate`: Select a certificate-based data-volume protector.
+- `-sid`: Select an AD-account-or-group protector.
+- `-?`: Display family-specific installed help.
+
 | Family | Purpose | High-risk boundary |
 | --- | --- | --- |
 | `-status` | Query volume state | `-protectionaserrorlevel` uses `0` for protected and `1` for unprotected; capture immediately. |
@@ -144,7 +190,7 @@ BitLocker metadata before unlocking or changing anything.
 not merely one data drive's preference. Inventory every dependent data volume
 and recovery path first.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Manage-bde emits native, localized, recovery-sensitive text. Quote volume
 arguments and `{protector-guid}` values, capture output securely, and check

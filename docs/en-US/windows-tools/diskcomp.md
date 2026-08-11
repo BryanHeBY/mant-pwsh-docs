@@ -30,6 +30,18 @@ types; it does not support fixed disks, network drives, or `subst` drives. It
 ignores the volume serial number and can prompt repeatedly when one drive is
 used for both disks.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `diskcomp.exe`: Compare tracks on two compatible floppy disks.
+
+Drive operands are floppy drives, not paths or modern block-device images.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/1`: Compare only the first side of each floppy disk.
+- `/8`: Compare only the first eight sectors of each track.
+- `/?`: Display installed syntax.
+
 ## Exit codes
 
 `0` means the disks match, `1` means differences were found, `3` is a hard
@@ -55,7 +67,7 @@ Single-drive operation prompts for disk changes, and the source/destination
 labels are not a cryptographic chain of custody. Physically label media and
 record hashes of acquired images when preservation matters.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 This native tool reads the console and emits localized text. Do not pipe objects
 to it or parse success text. Use explicit drive tokens and its documented exit

@@ -35,6 +35,14 @@ This is a narrow legacy salvage tool. It is not DiskPart's `recover` command,
 Windows File Recovery (`winfr`), CHKDSK, filesystem repair, undelete, snapshot
 restore, or professional media recovery.
 
+## Invocation boundary
+
+<!-- mant:entries role=command case=insensitive -->
+- `recover.exe`: Salvage readable sectors in one exact existing file.
+
+The documented syntax accepts one filename and no wildcard or separate output
+path. Work only on a disposable image/clone when the source matters.
+
 ## Safe recovery sequence
 
 1. Stop normal use of the failing device and preserve power/controller/error
@@ -87,7 +95,7 @@ CHKDSK, `recover`, controller diagnostics, file-signature repair, backup
 restore, and physical-media recovery solve different problems. Running more
 repair tools in sequence can erase evidence or reduce later recovery options.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Invoke `recover.exe` explicitly so the native utility is unambiguous. Use a
 literal, fully qualified path from a reviewed scalar value, never a wildcard,

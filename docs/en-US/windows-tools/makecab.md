@@ -38,6 +38,19 @@ signature and provenance.
 
 ## Simple and directive-file modes
 
+<!-- mant:entries role=command case=insensitive -->
+- `makecab.exe`: Build one Microsoft Cabinet directly or from a directive file.
+
+Direct mode accepts one source and optional destination name; multi-file or
+split output requires a reviewed DDF.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/d`: Define or override one MakeCab directive variable.
+- `/f`: Process a named directive file; repeat to process additional files.
+- `/l`: Select the destination directory for direct-mode output.
+- `/v`: Set message verbosity from errors only through full debugging.
+- `/?`: Display installed syntax and target-build directive support.
+
 In simple mode, omitting destination replaces the source filename's final
 character with `_`. Avoid that implicit name: choose an explicit clean output
 directory and destination, and verify both source and artifact hashes.
@@ -91,7 +104,7 @@ Hash and list the artifact, test extraction into an empty directory, validate
 expected member names/counts/content, and separately apply the required signing
 and supply-chain controls. Never install a test CAB merely to verify creation.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Invoke `makecab.exe` explicitly. Pass `/D` variable assignments as individual
 quoted arguments when values contain spaces, capture output and
