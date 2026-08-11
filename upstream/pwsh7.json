@@ -264,6 +264,52 @@
         "The page is original guidance emphasizing reproducible automation and profile safety.",
         "Profile paths and host behavior require verification on all declared platforms."
       ]
+    },
+    "about_Functions.md": {
+      "kind": "about-topic",
+      "status": "draft",
+      "versions": [
+        "7.6"
+      ],
+      "platforms": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Core/About/about_Functions.md"
+        }
+      ],
+      "notes": [
+        "The page is original guidance emphasizing stable parameter contracts and streaming pipeline input.",
+        "Runtime examples require verification on all declared platforms."
+      ]
+    },
+    "native-commands.md": {
+      "kind": "guide",
+      "status": "draft",
+      "versions": [
+        "7.6"
+      ],
+      "platforms": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Core/About/about_Parsing.md"
+        }
+      ],
+      "notes": [
+        "This is an original guide, not an official about-topic name; its upstream source covers native-command parsing behavior.",
+        "Argument passing, byte-stream behavior, and command resolution require verification on all declared platforms."
+      ]
     }
   }
 }

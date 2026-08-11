@@ -52,6 +52,10 @@ differences in newer stable releases.
   invocation paths, runtime information, errors, and native exit status.
 - [about_Profiles](about_Profiles.md): interactive customization without
   making automation depend on startup state.
+- [about_Functions](about_Functions.md): reusable commands with parameters,
+  pipeline input, scope, and module-oriented design.
+- [native-commands](native-commands.md): executable resolution, argument
+  conversion, streams, exit codes, and safety.
 
 Future introductory pages will cover command discovery, using the help system,
 and moving scripts from Windows PowerShell 5.1.
@@ -74,7 +78,7 @@ The first release will cover:
 Language and shell concepts use their official `about_*` topic names. The
 first group will cover parsing, quoting rules, pipelines, redirection,
 automatic variables, profiles, functions, operators, scopes, error handling,
-and native commands.
+and native-command interoperability.
 
 Coverage is practical rather than a mirror of every upstream reference page.
 Each document should be useful independently and link back to the complete
