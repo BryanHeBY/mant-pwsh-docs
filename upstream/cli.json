@@ -692,11 +692,34 @@
       "kind": "windows-gui-entrypoint", "status": "reviewed",
       "versions": ["supported Windows releases where DirectX Diagnostic Tool is included; switches and collected fields vary by build, architecture, DirectX and drivers"], "platforms": ["windows"],
       "sources": [
-        {"type": "web", "url": "https://support.microsoft.com/en-us/windows/open-and-run-dxdiag-exe-dad7792c-2ad5-f6cd-5a37-bf92228dfd85", "license": {"spdx": "LicenseRef-Microsoft-Web-Terms", "url": "https://www.microsoft.com/en-us/legal/terms-of-use"}, "checkedAt": "2026-08-11"},
         {"type": "web", "url": "https://stackprinter.appspot.com/export?question=30824928&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"},
         {"type": "web", "url": "https://learn.microsoft.com/en-us/answers/questions/2470635/dxdiag-from-command-line-has-no-output", "license": {"spdx": "LicenseRef-Microsoft-Web-Terms", "url": "https://www.microsoft.com/en-us/legal/terms-of-use"}, "checkedAt": "2026-08-11"}
       ],
       "notes": ["The TLDR opens the GUI, requires target help for switches, and uses Start-Process -Wait plus a new report path; the page contains runtime-version-versus-feature/driver, async/stale output, quoting/directory/error-contract, versioned switch/order, WHQL/privacy/network, report disclosure, native-status, and structured-inventory risks.", "Windows runtime verification remains executable/help discovery-only; report collection requires a new protected fixture path, process/content verification, and privacy review."]
+    },
+    "taskmgr.md": {
+      "kind": "windows-gui-entrypoint", "status": "reviewed",
+      "versions": ["Windows 10 and Windows 11; pages, metrics, permissions, and actions vary by build and session"], "platforms": ["windows"],
+      "sources": [{"type": "web", "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-server/support-tools/support-tools-task-manager", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"}],
+      "notes": ["The TLDR is launch/discovery-only; the page contains live-snapshot, PID/start/identity, termination, metric-comparison, startup persistence, priority/affinity/efficiency/dump, localized-GUI automation, and session/elevation risks.", "Windows runtime verification remains manual launch-and-close only."]
+    },
+    "resmon.md": {
+      "kind": "windows-gui-entrypoint", "status": "reviewed",
+      "versions": ["supported Windows releases where Resource Monitor is included"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/perfmon.md"}],
+      "notes": ["This searchable direct-executable alias maps to the documented perfmon /res view. The TLDR is launch-only; the page contains sampling/baseline, metric-comparison, process action/wait-chain, missing-row/access, localized-GUI automation, and evidence-context risks.", "Windows runtime verification remains manual launch-and-close only."]
+    },
+    "eventvwr.md": {
+      "kind": "windows-gui-entrypoint", "status": "reviewed",
+      "versions": ["Windows 10 and Windows 11; channels, providers, rendering, and permissions vary by installed system"], "platforms": ["windows"],
+      "sources": [{"type": "web", "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-client/system-management-components/delete-saved-log-from-event-viewer", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"}],
+      "notes": ["The TLDR is launch-only and redirects automation to WinEvent/Wevtutil; the page contains rendered-versus-raw identity/XML, filter/query direction, false empty result, clear/config/archive/task/subscription, provider-resource, localized-GUI automation, and evidence-custody risks.", "Windows runtime verification remains manual launch-and-close only."]
+    },
+    "compmgmt.md": {
+      "kind": "windows-gui-entrypoint", "status": "reviewed",
+      "versions": ["Windows 10 and Windows 11; included snap-ins and remote management vary by edition/build and installed features"], "platforms": ["windows"],
+      "sources": [{"type": "web", "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-server/system-management-components/error-connect-device-manager-remotely", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"}],
+      "notes": ["The TLDR is launch-only; the page contains per-snap-in local/remote target and authorization, broad mutation, false GUI success, UAC/session, localized-MMC automation, and dedicated-CLI before/after/rollback requirements.", "Windows runtime verification remains manual launch-and-close only; no contained snap-in mutation is permitted merely for evidence."]
     },
     "cmd.md": {
       "kind": "windows-shell",

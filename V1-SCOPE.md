@@ -11,8 +11,8 @@ is [`release/v1.json`](release/v1.json).
 | --- | ---: | --- |
 | `pwsh7` | 30 | PowerShell 7 shell, language, common commands, aliases, process/item actions, custom-shorthand guidance, and compatibility guidance. |
 | `pwsh51` | 30 | Windows PowerShell 5.1 equivalents, process/item actions, custom-shorthand guidance, and edition-specific behavior. |
-| `pwsh-cli` | 154 | Native tools frequently called from PowerShell, including Windows shell/GUI/registry entry points, batch/file, directory, link, text, process, host, network, account/SMB/service compatibility, Remote Desktop session inventory/notification/lifecycle/control, WinRM/WinRS remote management, Event Log/forwarding, performance-counter and ETW diagnostics, system-information/GUI diagnostics, cleanup, shutdown, time-zone/time-service, power/sleep, Driver Verifier, DirectX diagnostics, installation, image-servicing, driver, security-policy, authentication, ACL, EFS, certificate, advanced filesystem and disk management, VSS and backup, Windows RE/ReFS diagnosis/recovery, compression, BitLocker, volume mounting, and boot-recovery operations, file associations, winget, and optional Microsoft Learn MCP discovery. |
-| **Total** | **214** | Current first-release document inventory. |
+| `pwsh-cli` | 158 | Native tools frequently called from PowerShell, including Windows shell/GUI/registry and management-console entry points, batch/file, directory, link, text, process, host, network, account/SMB/service compatibility, Remote Desktop session inventory/notification/lifecycle/control, WinRM/WinRS remote management, Event Log/forwarding, performance-counter and ETW diagnostics, system-information/GUI diagnostics, cleanup, shutdown, time-zone/time-service, power/sleep, Driver Verifier, DirectX diagnostics, installation, image-servicing, driver, security-policy, authentication, ACL, EFS, certificate, advanced filesystem and disk management, VSS and backup, Windows RE/ReFS diagnosis/recovery, compression, BitLocker, volume mounting, and boot-recovery operations, file associations, winget, and optional Microsoft Learn MCP discovery. |
+| **Total** | **218** | Current first-release document inventory. |
 
 The two shell manuals, `pwsh7` and `pwsh51`, remain the broad equivalent of a
 traditional `sh` manual. The `*-docs` pages are deliberately separate
@@ -66,7 +66,7 @@ Every required page must:
 
 The v1 tag may be created only when:
 
-- all 214 manifest documents exist and pass portable validation;
+- all 218 manifest documents exist and pass portable validation;
 - every document is at least `reviewed` in its provenance catalog;
 - PowerShell 7 runtime checks pass on Windows, Linux, and macOS;
 - Windows PowerShell 5.1 runtime checks pass on Windows;

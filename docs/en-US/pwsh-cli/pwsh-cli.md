@@ -148,6 +148,10 @@ license in the document's provenance catalog before adapting material.
 - [powercfg](powercfg.md): power scheme, sleep-state, blocker, wake, hibernation, and report boundaries.
 - [reagentc](reagentc.md): online/offline Windows RE identity and recovery-configuration safeguards.
 - [dxdiag](dxdiag.md): DirectX/device diagnostic GUI and waited, verified support-report export.
+- [taskmgr](taskmgr.md): live process/performance/startup/session inspection before controlled actions.
+- [resmon](resmon.md): direct searchable Resource Monitor entry with sampling and automation boundaries.
+- [eventvwr](eventvwr.md): interactive event exploration while preserving raw XML/EVTX provenance.
+- [compmgmt](compmgmt.md): Computer Management console entry with per-snap-in target/change boundaries.
 
 ## Windows shell, GUI, and settings
 

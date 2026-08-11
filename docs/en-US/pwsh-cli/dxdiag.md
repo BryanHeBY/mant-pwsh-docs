@@ -2,7 +2,7 @@
 # dxdiag
 
 > Open DirectX Diagnostic Tool or export a new access-controlled report while waiting for collection to finish; preserve driver, feature-level, architecture, WHQL, host, and artifact context.
-> More information: https://support.microsoft.com/windows/open-and-run-dxdiag-exe-dad7792c-2ad5-f6cd-5a37-bf92228dfd85.
+> More information: https://learn.microsoft.com/answers/questions/2470635/dxdiag-from-command-line-has-no-output.
 
 - Open the interactive DirectX Diagnostic Tool:
 
@@ -63,12 +63,11 @@ GPU/audio drivers, hardware, architecture, language and session environment.
 
 ## Sources and license
 
-This original guide was adapted from Microsoft's official support guide for
-[opening and sharing DxDiag results](https://support.microsoft.com/windows/open-and-run-dxdiag-exe-dad7792c-2ad5-f6cd-5a37-bf92228dfd85).
-Automation failure modes were cross-checked against practitioner questions about
-[waiting for report export](https://stackoverflow.com/questions/30824928/opening-command-prompt-and-performing-commands)
-and [missing DxDiag output](https://learn.microsoft.com/answers/questions/2470635/dxdiag-from-command-line-has-no-output).
+This original guide was informed by a Microsoft-hosted discussion of
+[missing DxDiag command-line output](https://learn.microsoft.com/answers/questions/2470635/dxdiag-from-command-line-has-no-output).
+Automation failure modes were also cross-checked against a practitioner question
+about [waiting for report export](https://stackoverflow.com/questions/30824928/opening-command-prompt-and-performing-commands).
 Exact sources and licenses are recorded in `upstream/cli.json`.
 
-Microsoft material and this adaptation are licensed under their recorded terms.
+Microsoft-hosted material and this adaptation are licensed under their recorded terms.
 Stack Overflow contributions are licensed under CC BY-SA 4.0.

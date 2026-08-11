@@ -141,6 +141,8 @@ powercfg.exe /requests
 powercfg.exe /availablesleepstates
 reagentc.exe /info
 Get-Command dxdiag.exe -All
+Get-Command taskmgr.exe, resmon.exe, eventvwr.exe, mmc.exe -All
+Get-Item "$env:SystemRoot\System32\eventvwr.msc", "$env:SystemRoot\System32\compmgmt.msc"
 cmd.exe /d /c ver
 reg.exe query HKCU\Environment
 Get-Command explorer.exe, control.exe, mmc.exe, rundll32.exe -All
@@ -447,6 +449,9 @@ collection merely for evidence. Bounded offset/report tests require an approved
 endpoint or new protected path, exact target identity, wait/content checks, and
 privacy/retention review. Recovery mutation additionally requires offline target,
 disk/BCD/image/encryption evidence, console/media, rollback and boot testing.
+GUI management entry verification is existence/manual launch-and-close only in
+an interactive session. Do not end/suspend/reprioritize a process, change startup,
+clear/configure logs, or mutate any Computer Management snap-in merely for evidence.
 
 On Windows, macOS, and Linux where declared by the document, record:
 

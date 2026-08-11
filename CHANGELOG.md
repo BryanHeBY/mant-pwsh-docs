@@ -10,7 +10,7 @@ bundles.
 
 ### Added
 
-- First English release inventory: 214 reviewed ManT pages across `pwsh7`,
+- First English release inventory: 218 reviewed ManT pages across `pwsh7`,
   `pwsh51`, and `pwsh-cli`.
 - Broad `pwsh7` and `pwsh51` shell manuals, focused language/command pages,
   compatibility guides, and custom `irx` shorthand resolution guidance.
@@ -72,6 +72,9 @@ bundles.
   guides for `w32tm`, `powercfg`, `reagentc`, and `dxdiag`, including bounded
   offset sampling, effective policy, protected report export, and boot/recovery
   identity and rollback constraints.
+- Searchable Windows GUI management entries for `taskmgr`, `resmon`, `eventvwr`,
+  and `compmgmt`, with live-snapshot, raw-event, per-snap-in target, and
+  structured-automation boundaries.
 - Windows adapter/DHCP/DNS inspection, bounded ICMP reachability, path tracing,
   path sampling, host identity, and direct DNS-query guides for `ipconfig`,
   `ping`, `tracert`, `pathping`, `hostname`, and `nslookup`.
