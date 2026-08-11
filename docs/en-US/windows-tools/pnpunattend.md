@@ -30,6 +30,19 @@ device drivers and, by default, can install them online. `/s` changes the action
 to search-only; `/l` displays log information. It is not a recursive arbitrary-
 folder scanner supplied on the command line.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `pnpunattend.exe`: Audit configured unattended-driver paths and optionally install matches.
+- `auditsystem`: Search configured paths and, by default, install matching drivers online.
+
+Search-only behavior requires `/s`; the subcommand name alone is not read-only.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/s`: Search only and suppress online driver installation.
+- `/l`: Display human-oriented driver-search log information.
+- `/?`: Display installed syntax.
+
 ## Common mistakes
 
 ### Omitting `/s` from an “audit” command
@@ -63,7 +76,7 @@ Use `pnputil.exe` for explicit package/device inventory and supported modern
 driver operations. Preserve `pnpunattend` for an existing unattended workflow
 whose configured search paths and deployment pass are understood.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Call `pnpunattend.exe` explicitly and capture `$LASTEXITCODE`. `/s` means search
 without install, not silent; `/l` emits human-oriented log text. Do not parse

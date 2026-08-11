@@ -30,6 +30,14 @@ system upgrade to update BitLocker metadata. Microsoft explicitly states that
 it cannot be run independently. Its catalog entry is useful for recognizing a
 setup component, not as a supported BitLocker repair command.
 
+## Invocation boundary
+
+<!-- mant:entries role=command case=insensitive -->
+- `fveupdate.exe`: Internal BitLocker metadata-update worker used by Windows Setup.
+
+Microsoft exposes no supported direct syntax. Do not invoke it to repair or
+upgrade a volume outside its owning Setup workflow.
+
 ## Common mistakes
 
 ### Executing the internal tool after a search result names it
@@ -50,7 +58,7 @@ Binary presence and version do not prove the intended volume metadata changed.
 Verify the supported upgrade outcome and BitLocker state, and keep the relevant
 Setup and BitLocker event evidence.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 PowerShell is appropriate for read-only inventory and log collection, not for
 calling this internal executable. Message filtering is exploratory and

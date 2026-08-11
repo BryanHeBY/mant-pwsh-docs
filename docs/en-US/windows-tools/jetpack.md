@@ -30,6 +30,14 @@ Jet database by copying into a temporary database, deleting the original, and
 renaming the temporary result. Microsoft examples stop the owning service first
 and restart it afterward. This is an offline, destructive replacement workflow.
 
+## Invocation boundary
+
+<!-- mant:entries role=command case=insensitive -->
+- `jetpack.exe`: Compact an offline WINS or DHCP Jet database through a temporary database.
+
+Both database paths are positional and the owning service must be stopped;
+compaction is neither backup nor general repair.
+
 ## Common mistakes
 
 ### Running against a live database
@@ -55,7 +63,7 @@ point it at a valuable artifact.
 Database name, directory, logs, service name, backup/restore process, failover,
 and verification differ. Use the procedure for the installed role and version.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 JetPack is native and mutates files. Resolve literal paths, preserve hashes and
 service evidence, capture `$LASTEXITCODE`, and verify database/service/client

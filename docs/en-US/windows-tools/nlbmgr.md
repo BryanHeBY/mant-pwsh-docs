@@ -31,6 +31,20 @@ pre-WMI ICMP check. The GUI can manage clusters/hosts and replicate
 configuration. Microsoft marks Windows NLB deprecated and recommends Software
 Load Balancer for SDN as an alternative.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `nlbmgr.exe`: Launch the deprecated Network Load Balancing Manager GUI.
+
+Command-line operands only seed interactive manager behavior; they do not
+provide transactional cluster automation.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/hostlist`: Load management targets from a reviewed host-list file.
+- `/autorefresh`: Poll displayed hosts at the supplied interval in seconds.
+- `/noping`: Skip preliminary ping without fixing RPC/NLB connectivity.
+- `/?`: Display installed syntax.
+
 ## Common mistakes
 
 ### Treating a host list as passive bookmarks
@@ -55,7 +69,7 @@ review the cluster-wide plan and preserve rollback.
 Deprecation is not immediate removal, but new designs should evaluate supported
 load balancers and application health/HA requirements instead of copying NLB.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 The launcher exits independently of work performed later in its GUI. Prefer
 typed NLB cmdlets for reviewed automation when available, with exact cluster and

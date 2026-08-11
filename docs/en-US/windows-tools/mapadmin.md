@@ -41,6 +41,26 @@ Kerberos, anonymous/root mapping, export and NTFS permissions all affect the
 effective identity. Current Windows NFS deployments use supported PowerShell
 cmdlets and mapping-store designs rather than blindly restoring old UNM data.
 
+## Command families and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `mapadmin.exe`: Administer legacy User Name Mapping identities and map databases.
+- `add`: Add one explicit Windows-to-UNIX user or group mapping.
+- `delete`: Delete one explicit mapping.
+- `list`: List mappings in the selected scope.
+- `backup`: Export the complete mapping database to a protected file.
+- `restore`: Replace mapping state from a reviewed backup.
+- `listdomainmaps`: List broad Windows-domain-to-UNIX-file mappings.
+- `adddomainmap`: Add a domain mapping.
+- `removedomainmap`: Remove a domain mapping and broaden identity impact.
+
+Credentials apply to remote administration rather than mapping identities.
+
+<!-- mant:entries role=option case=insensitive -->
+- `-u`: Select an alternate administrative username.
+- `-p`: Supply its password inline; omit the value to prompt.
+- `-?`: Display installed family syntax.
+
 ## Common mistakes
 
 ### Passing `-p <password>` on the command line
@@ -86,7 +106,7 @@ not an in-place command substitution.
 group-file mappings. Query `listdomainmaps`, identify downstream clients and
 exports, preserve a backup, and approve exact removal scope first.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 `mapadmin.exe` emits localized native text and accepts native credential
 arguments. Capture raw output, `$LASTEXITCODE`, exact server, tool version, and

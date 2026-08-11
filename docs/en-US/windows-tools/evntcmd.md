@@ -31,6 +31,19 @@ computer, `/v 0..10` controls diagnostic verbosity, and `/n` suppresses the
 otherwise relevant SNMP service restart. This is mutation-only legacy
 integration, not an Event Log query or a modern monitoring pipeline.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `evntcmd.exe`: Apply an SNMP event-to-trap configuration file.
+
+The configuration file can add/delete event mappings and trap destinations.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/s`: Select a remote computer.
+- `/v`: Set diagnostic verbosity from 0 through 10.
+- `/n`: Suppress configuration application and display intended changes.
+- `/?`: Display installed syntax.
+
 ## Common mistakes
 
 ### Typing `#pragma` lines as shell commands
@@ -57,7 +70,7 @@ The same file can add/delete mappings and destinations across computers.
 Preserve existing configuration, ownership, firewall/service state, receiver
 identity, and rollback before deployment.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 EvntCmd consumes a file and emits localized native text. Do not pipe pragma
 objects to it. Capture stdout/stderr and `$LASTEXITCODE`, then independently

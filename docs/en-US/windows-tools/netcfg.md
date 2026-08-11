@@ -32,6 +32,40 @@ a reboot and can disrupt every adapter, including the management path.
 
 ## Command families
 
+<!-- mant:entries role=command case=insensitive -->
+- `netcfg.exe`: Inspect or change Windows network components and bindings.
+
+Query and mutation modes share the same executable; `/d` and `/x` are broad,
+connectivity-breaking cleanup operations.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/s`: List installed components of a selected class/type.
+- `/q`: Query whether one component ID is installed.
+- `/b`: Display the binding path containing one component.
+- `/m`: Write a network binding map in the current directory.
+- `/v`: Enable verbose information, including with binding-map output.
+
+Component installation and removal require exact published IDs.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/l`: Select the INF used for component installation.
+- `/c`: Select the component class.
+- `/i`: Install one exact component ID from the selected INF.
+- `/u`: Uninstall one exact component ID.
+
+Provisioning and broad cleanup are separate high-impact modes.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/winpe`: Install the predefined WinPE networking component set.
+
+Full device cleanup is broader than WinPE provisioning.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/d`: Clean all network devices and require a restart.
+- `/x`: Clean network devices, skipping those without a physical object.
+
+Use the separate `netcfg.exe /?` form to display installed syntax.
+
 - `/s <type>`, `/q <component-ID>`, `/b <path>`: show components, query one
   component and display binding paths.
 - `/m` and `/v`: write `NetworkBindingMap.txt` in the current directory and
@@ -76,7 +110,7 @@ Use a dedicated protected directory, ensure the fixed filename does not exist,
 and retain a hash/timestamp. A binding map exposes product and network-stack
 details and should not be posted publicly without review.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Call `netcfg.exe` explicitly and capture `$LASTEXITCODE` before other commands.
 PowerShell's current directory determines `/m` output location. Do not assemble

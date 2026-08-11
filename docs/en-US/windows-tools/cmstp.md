@@ -30,6 +30,20 @@ by an INF, optionally with packaged support files. No read-only profile-list
 mode is documented. Treat invocation with an INF as code/configuration
 deployment that can change networking and user or machine state.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `cmstp.exe`: Install or remove a verified Connection Manager service profile.
+
+Self-extracting package `/q:a` and `/c:` options belong to an outer parser and
+are not CMSTP switches.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/s`: Suppress prompts and verification without sandboxing the INF.
+- `/u`: Uninstall the selected profile; valid only with `/s`.
+- `/nf`: Suppress creation of the support-files directory where supported.
+- `/?`: Display installed syntax.
+
 ## Common mistakes
 
 ### Running an INF merely to discover what it does
@@ -62,7 +76,7 @@ The packaged syntax expects execution from the directory containing the
 profile executable. Prefer an explicit verified absolute path and do not rely
 on current-directory search or a same-name file.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Call `cmstp.exe` explicitly and inspect `$LASTEXITCODE` immediately. `/q:a` and
 `/c:cmstp.exe` belong to the self-extracting package, while `/s`, `/u`, and

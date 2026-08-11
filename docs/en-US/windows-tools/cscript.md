@@ -28,6 +28,14 @@ attaches standard streams to a console, so it is normally preferable to
 
 ## Important options
 
+<!-- mant:entries role=command case=insensitive -->
+- `cscript.exe`: Run a Windows Script Host script in the console host.
+
+Real WSH host options use `//` (`//B`, `//E`, `//H`, `//I`, `//Job`, `//Logo`,
+`//Nologo`, `//S`, `//T`, and `//X`). ManT does not yet support double-slash
+semantic tokens, so they remain fully described below instead of being changed
+to invalid single-slash spellings.
+
 ```text
 cscript SCRIPT [host options] [script arguments]
 //B                 batch mode: suppress alerts, errors and input prompts
@@ -63,7 +71,7 @@ them for PowerShell before WSH parses them.
 - Parsing localized console text without checking exit status, encoding and the
   script's own stdout/stderr contract.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Invoke `cscript.exe` explicitly so `.vbs` file association and `wscript.exe`
 defaults cannot change the host. PowerShell parses and removes its own quotes

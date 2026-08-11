@@ -37,6 +37,26 @@ owner, filesystem, reparse behavior, existing explicit and inherited ACEs,
 canonical order, protected state, principal SIDs, inheritance flags, effective
 access, backup/recovery identities, and rollback before changing anything.
 
+## Syntax and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `cacls.exe`: Display or change legacy file and directory ACLs.
+
+Prefer `icacls` or typed ACL APIs for current automation.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/t`: Traverse selected subdirectories and therefore broaden scope.
+- `/m`: Change ACLs on volumes mounted to directories.
+- `/l`: Act on a symbolic link itself rather than its target.
+- `/s`: Display the security descriptor in SDDL form.
+- `/e`: Edit instead of replacing the existing ACL.
+- `/c`: Continue after access errors and risk partial application.
+- `/g`: Grant one account a legacy permission set.
+- `/r`: Revoke one account only when used with `/e`.
+- `/p`: Replace one account's permissions.
+- `/d`: Deny one account access and potentially override allows.
+- `/?`: Display installed deprecated syntax.
+
 ## Common mistakes
 
 ### Translating `/G`, `/P`, `/R`, or `/D` by name alone
@@ -75,7 +95,7 @@ privileges, share permissions, integrity level, ownership, claims, and the
 operation attempted. Validate with the real least-privileged identity and retain
 the security rationale.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use explicit `.exe` names to avoid command ambiguity. PowerShell's `Get-Acl` and
 `Set-Acl` expose objects but do not make ACL editing automatically safe; object

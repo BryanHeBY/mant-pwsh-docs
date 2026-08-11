@@ -37,6 +37,19 @@ feature, queue, event, and MSMQ management interfaces instead.
 
 ## Backup and restore
 
+<!-- mant:entries role=command case=insensitive -->
+- `mqbkup.exe`: Back up or restore local MSMQ messages and registry configuration.
+- `mqsvc.exe`: MSMQ service executable; do not launch manually.
+- `mqtgsvc.exe`: MSMQ trigger service executable; do not launch manually.
+
+Backup and restore modes mutate service availability and persistent queue data.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/b`: Back up MSMQ state into a new dedicated directory.
+- `/r`: Restore MSMQ state from an exact reviewed backup directory.
+- `/y`: Suppress confirmation and permit destructive directory handling.
+- `/?`: Display installed backup/restore syntax.
+
 `mqbkup /b <folder>` backs up local messages and registry settings; `/r`
 restores them. Both stop the local MSMQ service and try to restart it only if it
 was running beforehand. Local applications must be closed. An existing nonempty
@@ -75,7 +88,7 @@ MSMQ Triggers can start an executable or COM component based on message rules.
 Inventory trigger definitions, binary path/signature, service identity,
 arguments, queue ACLs, secrets, network access, and downstream side effects.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 MSMQ cmdlets return objects when the optional module exists; service executables
 and MqBkUp are native. Capture the backup exit code and logs immediately. Never

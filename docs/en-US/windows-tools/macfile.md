@@ -38,6 +38,23 @@ This is preservation/migration documentation for historical servers. Do not
 assume modern SMB, NTFS ACLs, Apple metadata, and old Macintosh fork/permission
 semantics are interchangeable.
 
+## Command families and parameters
+
+<!-- mant:entries role=command case=insensitive -->
+- `macfile.exe`: Administer legacy Services for Macintosh metadata and volumes.
+- `directory`: Change an existing directory's Macintosh owner/group/permissions.
+- `forkize`: Join resource/data forks or change Macintosh creator/type metadata.
+- `server`: Change Macintosh sign-in message or session limit.
+- `volume`: Add, change, remove, or list Macintosh-accessible volumes.
+
+Family-specific values must be read from installed help on the preserved host.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/server`: Select the exact Services for Macintosh server.
+- `/user`: Select an alternate administrative user.
+- `/password`: Supply its password inline and expose the secret.
+- `/?`: Display installed family syntax.
+
 ## Common mistakes
 
 ### Assuming `directory` creates a directory
@@ -81,7 +98,7 @@ extended attributes have different models. Build an explicit mapping, identify
 denies/inheritance/special identities, test with representative accounts, and
 retain a reversible copy.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Use PowerShell for read-only NTFS inventory, hashes, signatures, and migration
 manifests. `macfile.exe` output and arguments are native text. Do not interpolate

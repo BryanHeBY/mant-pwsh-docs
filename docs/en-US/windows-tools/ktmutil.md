@@ -33,6 +33,18 @@ Those operations are not generic cleanup commands.
 
 ## Syntax map
 
+<!-- mant:entries role=command case=insensitive -->
+- `ktmutil.exe`: Inspect or resolve Windows Kernel Transaction Manager state.
+- `list`: List transaction managers, transactions, or enlistments.
+- `tm`: Select transaction-manager operations.
+- `tx`: Select transaction operations.
+- `en`: Select enlistment operations.
+- `resolve`: Force a reviewed in-doubt transaction outcome.
+- `commit`: Resolve the selected transaction as committed.
+- `rollback`: Resolve the selected transaction as rolled back.
+- `complete`: Complete an enlistment's recovery processing.
+- `forget`: Discard remembered transaction recovery information.
+
 ```text
 ktmutil list tms
 ktmutil list transactions [{TmGUID}]
@@ -70,7 +82,7 @@ KTM state is only one layer. Correlate it with the owning service/database,
 resource-manager logs, event timestamps, cluster/failover state, and supported
 recovery documentation.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 KtmUtil returns native text, not transaction objects. Preserve stdout, stderr,
 time, host, executable version, exact command, and `$LASTEXITCODE`. Braces in

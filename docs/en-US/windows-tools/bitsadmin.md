@@ -42,6 +42,45 @@ target build and prefer the supported interface that fits the workflow.
 
 ## Command-family map
 
+<!-- mant:entries role=command case=insensitive -->
+- `bitsadmin.exe`: Inspect or administer legacy Background Intelligent Transfer Service jobs.
+
+BITS jobs persist beyond the creating process and require an explicit terminal
+decision; transferred data is not committed until completion.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/list`: List jobs visible in the selected owner scope.
+- `/info`: Display detailed state for one exact job GUID.
+- `/listfiles`: List files attached to one job.
+- `/getstate`: Display one job's current lifecycle state.
+- `/geterror`: Display the current error for one job.
+- `/?`: Display installed command-family help.
+
+Lifecycle operations act on persistent job state.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/create`: Create a persistent BITS job.
+- `/addfile`: Add one remote/local file pair to a job.
+- `/addfileset`: Add reviewed file pairs from a set.
+- `/resume`: Allow a suspended job to transfer.
+- `/suspend`: Pause transfer without deleting job state.
+- `/complete`: Commit transferred temporary files to destinations.
+- `/cancel`: Delete one job and its temporary state.
+- `/transfer`: Create, transfer, and complete a foreground command-line job.
+- `/reset`: Cancel every job owned by the selected scope.
+- `/takeownership`: Transfer ownership of another identity's job.
+- `/allusers`: Broaden list/reset scope across user identities.
+
+Transfer policy, execution hooks, and progress counters form another family.
+
+<!-- mant:entries role=option case=insensitive -->
+- `/setpriority`: Set foreground or background transfer priority.
+- `/setnotifycmdline`: Configure a persistent post-transfer command surface.
+- `/getbytestransferred`: Display current transferred-byte count.
+
+The related `/getbytestotal` counter reports the expected total byte count and
+must be interpreted together with state and current transferred bytes.
+
 - Discovery: `/list`, `/info`, `/listfiles`, `/getstate`, `/geterror`, progress,
   byte/file counts, owner, timestamps, type, priority and timeout getters.
 - Lifecycle: `/create`, `/addfile`, `/addfileset`, ranged files, `/resume`,
@@ -107,7 +146,7 @@ It requires elevation and can reveal sensitive URLs, paths, owners, headers and
 application activity. Use current-user scope by default; protect collected
 output and redact secrets without destroying evidence.
 
-## PowerShell behavior
+## PowerShell boundaries
 
 Invoke `bitsadmin.exe` explicitly and capture `$LASTEXITCODE`. Prefer
 `Get-BitsTransfer -JobId <guid>` and the other BitsTransfer cmdlets where the
