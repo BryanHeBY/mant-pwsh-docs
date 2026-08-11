@@ -180,6 +180,15 @@ replace.exe /?
 label.exe /?
 waitfor.exe /?
 cmd.exe /d /c "vol C:"
+cmd.exe /d /c "help echo"
+cmd.exe /d /c "help rem"
+cmd.exe /d /c "help goto"
+cmd.exe /d /c "help shift"
+cmd.exe /d /c "help pause"
+cmd.exe /d /c "help prompt"
+cmd.exe /d /c "help cls"
+cmd.exe /d /c "color /?"
+Get-Command echo, cls, prompt -All -ErrorAction SilentlyContinue
 cmd.exe /d /c ver
 reg.exe query HKCU\Environment
 Get-Command explorer.exe, control.exe, mmc.exe, rundll32.exe -All
@@ -208,6 +217,12 @@ or comparator against real data, replace files, modify a volume label, or start/
 send a WAITFOR signal merely for evidence. Any fixture test must use an isolated
 child console, disposable files/volume, collision-resistant signal with finite
 timeout, explicit host, and before/after verification.
+
+Keep Cmd builtin verification to `help` and PowerShell resolution in the shared
+evidence session. Do not pause for input, change a persistent/current prompt or
+color, clear useful evidence, or execute synthetic control-flow/argument loops
+merely to prove the pages exist. Any parser fixture must be a reviewed inert
+batch file in a disposable directory and record its exact bytes/code page.
 
 Exercise directory creation, exact rename, move, and both `cd` spellings in a
 fresh temporary directory, then inspect before removing that directory:

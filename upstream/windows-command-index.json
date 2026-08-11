@@ -267,7 +267,8 @@
     {
       "name": "cls",
       "source": "cls.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/cls.md"
     },
     {
       "name": "cmd",
@@ -289,7 +290,8 @@
     {
       "name": "color",
       "source": "color.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/color.md"
     },
     {
       "name": "comp",
@@ -467,7 +469,8 @@
     {
       "name": "echo",
       "source": "echo.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/echo.md"
     },
     {
       "name": "edit",
@@ -642,7 +645,8 @@
     {
       "name": "goto",
       "source": "goto.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/goto.md"
     },
     {
       "name": "gpfixup",
@@ -1054,7 +1058,8 @@
     {
       "name": "pause",
       "source": "pause.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/pause.md"
     },
     {
       "name": "pbadmin",
@@ -1150,7 +1155,8 @@
     {
       "name": "prompt",
       "source": "prompt.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/prompt.md"
     },
     {
       "name": "pubprn",
@@ -1264,7 +1270,8 @@
     {
       "name": "rem",
       "source": "rem.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/rem.md"
     },
     {
       "name": "remove",
@@ -1498,7 +1505,8 @@
     {
       "name": "shift",
       "source": "shift.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/shift.md"
     },
     {
       "name": "showmount",

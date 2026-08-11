@@ -1019,6 +1019,46 @@
       ],
       "notes": ["Official documentation establishes indefinite default wait, domain broadcast when /S is omitted, same-domain reception, one waiter per name and inline credential syntax; the community source records practical local/send confusion. The TLDR always uses finite timeout, collision-resistant name and explicit send target; the page distinguishes transient signal from durable/result-bearing orchestration and covers readiness race, collision, password, policy and result validation.", "Windows runtime verification remains help-only unless an approved isolated two-process same-host fixture exists; any fixture requires finite timeout, unique name, explicit host and cleanup, and no remote/domain broadcast or inline credential merely for evidence."]
     },
+    "echo.md": {
+      "kind": "cmd-builtin", "status": "reviewed", "versions": ["supported Windows client and server releases; behavior depends on Cmd parse/expansion context"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/echo.md"}, {"type": "web", "url": "https://stackprinter.appspot.com/export?question=14334850&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}],
+      "notes": ["Official documentation defines message/echo-state behavior and escaping; community demand highlights empty expansions producing state text. The TLDR uses a clean child Cmd for fixed text/state, an established blank line and PowerShell data output; the page covers untrusted metacharacters, block/delayed expansion, secret visibility and nested parse layers.", "Runtime verification remains help and inert fixed-text fixture only; never interpolate untrusted or secret data merely for evidence."]
+    },
+    "rem.md": {
+      "kind": "cmd-builtin", "status": "reviewed", "versions": ["supported Windows client and server releases; behavior depends on batch/block/pipe/expansion context"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/rem.md"}, {"type": "web", "url": "https://stackprinter.appspot.com/export?question=12407800&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}],
+      "notes": ["Microsoft documents REM as the supported Cmd comment and forbids redirection/pipe characters; community analysis supplies block and :: label pitfalls. The TLDR shows plain comments only; the page rejects prefixing arbitrary code, comments in complex piped blocks and secrets in source.", "Runtime verification remains help-only unless a reviewed inert parser fixture exists."]
+    },
+    "goto.md": {
+      "kind": "cmd-builtin", "status": "reviewed", "versions": ["supported Windows client and server releases; :EOF depends on command extensions"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/goto.md"}, {"type": "web", "url": "https://stackprinter.appspot.com/export?question=37515901&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}],
+      "notes": ["Official documentation defines fixed labels and virtual :EOF; community analysis documents batch/subroutine return boundaries. The TLDR is static-label and :EOF only; the page covers fall-through, dynamic-label injection, exit distinction, lack of scope and bounded-loop design.", "Runtime verification remains help-only unless a reviewed inert batch fixture exists."]
+    },
+    "shift.md": {
+      "kind": "cmd-builtin", "status": "reviewed", "versions": ["supported Windows client and server releases; /N requires command extensions"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/shift.md"}, {"type": "web", "url": "https://stackprinter.appspot.com/export?question=8328338&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}],
+      "notes": ["Official documentation defines destructive one-way slots, unchanged %* and /N; community demand highlights the %10 misconception. The TLDR makes these boundaries explicit; the page covers validation-before-shift, progress/termination, quoting and PowerShell parameter binding.", "Runtime verification remains help-only unless a reviewed inert argument fixture exists."]
+    },
+    "pause.md": {
+      "kind": "cmd-builtin", "status": "reviewed", "versions": ["supported Windows client and server releases; behavior depends on interactive console/input host"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/pause.md"}, {"type": "web", "url": "https://stackprinter.appspot.com/export?question=988403&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}, {"type": "web", "url": "https://stackprinter.appspot.com/export?question=30552328&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}],
+      "notes": ["Official documentation establishes any-key indefinite blocking and Ctrl+C flow; community sources show high demand and unattended-hang/choice confusion. The TLDR contrasts PAUSE with bounded CHOICE and TIMEOUT; the page rejects prompt suppression as nonblocking, consent use, synthetic input and keep-window-open design.", "Runtime verification remains help-only; no shared or unattended evidence run may block on PAUSE."]
+    },
+    "prompt.md": {
+      "kind": "cmd-builtin", "status": "reviewed", "versions": ["supported Windows client and server releases; rendering depends on extensions, console host, mapping and locale"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/prompt.md"}],
+      "notes": ["Official documentation defines session-local templates and tokens. The TLDR isolates Cmd configuration and inspects PowerShell's separate prompt function; the page covers untrusted context, $ quoting, escape/control spoofing and persistent AutoRun risk.", "Runtime verification remains help and PowerShell resolution-only; no persistent/current prompt mutation is required merely for evidence."]
+    },
+    "cls.md": {
+      "kind": "cmd-builtin", "status": "reviewed", "versions": ["supported Windows client and server releases; visual effect depends on host and redirection"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/cls.md"}],
+      "notes": ["Official documentation establishes visible Command Prompt clearing. The TLDR distinguishes Cmd CLS and PowerShell Clear-Host; the page explicitly denies scrollback/log/history/secret deletion and warns against clearing diagnostic evidence.", "Runtime verification remains help/resolution-only; do not clear useful evidence merely for validation."]
+    },
+    "color.md": {
+      "kind": "cmd-builtin", "status": "reviewed", "versions": ["supported Windows client and server releases; palette/rendering depend on host, terminal, theme and accessibility settings"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/color.md"}],
+      "notes": ["The current official page contradicts itself about digit order: parameter prose versus the 84 example. The TLDR requires target-local help and an isolated visual test; the page records rather than guesses through the conflict and covers accessibility, nonpersistent scope, noninteractive output and result handling.", "Runtime verification remains help-only; no shared-session color change is required merely for evidence."]
+    },
     "cmd.md": {
       "kind": "windows-shell",
       "status": "reviewed",

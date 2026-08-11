@@ -10,7 +10,7 @@ bundles.
 
 ### Added
 
-- First English release inventory: 250 reviewed ManT pages across `pwsh7`,
+- First English release inventory: 258 reviewed ManT pages across `pwsh7`,
   `pwsh51`, and `pwsh-cli`.
 - Broad `pwsh7` and `pwsh51` shell manuals, focused language/command pages,
   compatibility guides, and custom `irx` shorthand resolution guidance.
@@ -98,6 +98,11 @@ bundles.
   guides for `chcp`, `doskey`, `more`, `comp`, `replace`, `label`, `vol`, and
   `waitfor`, prioritizing high-demand encoding, prompt, command-resolution,
   wildcard, recursion, mutable-identity, timeout, and broadcast mistakes.
+- Searchable Cmd message/comment, label control-flow, argument shifting,
+  attended pause, prompt, clear-screen, and color guides for `echo`, `rem`,
+  `goto`, `shift`, `pause`, `prompt`, `cls`, and `color`, including empty-
+  expansion, parse-layer, subroutine, unattended-hang, trust/accessibility, and
+  upstream-documentation inconsistency traps.
 - Windows adapter/DHCP/DNS inspection, bounded ICMP reachability, path tracing,
   path sampling, host identity, and direct DNS-query guides for `ipconfig`,
   `ping`, `tracert`, `pathping`, `hostname`, and `nslookup`.

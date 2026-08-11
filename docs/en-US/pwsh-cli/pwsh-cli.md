@@ -203,6 +203,14 @@ license in the document's provenance catalog before adapting material.
 - [choice](choice.md): single-character prompts and one-based result handling.
 - [timeout](timeout.md): Windows delays, redirected input, and name conflicts.
 - [waitfor](waitfor.md): finite named-signal synchronization with explicit target, collision, domain, and delivery boundaries.
+- [echo](echo.md): message/command-echo state with empty expansion, metacharacter, block, and shell-resolution boundaries.
+- [rem](rem.md): supported batch comments without treating arbitrary disabled code or `::` labels as inert text.
+- [goto](goto.md): fixed-label control flow, `:EOF`, subroutine fall-through, and dynamic-label risks.
+- [shift](shift.md): destructive `%0`–`%9` parameter shifting, unchanged `%*`, quoting, and termination rules.
+- [pause](pause.md): attended any-key wait, distinct from bounded choices, delays, and unattended automation.
+- [prompt](prompt.md): session-local Cmd prompt templates distinct from PowerShell and trustworthy context.
+- [cls](cls.md): visible-screen clearing distinct from scrollback, logs, history, and secret deletion.
+- [color](color.md): session-local accessible presentation with explicit upstream digit-order inconsistency.
 - [exit](exit.md): distinguish batch return codes from terminating `cmd.exe`.
 - [path](path.md): process search path, resolution order, and safe scoping.
 - [pushd](pushd.md) / [popd](popd.md): balanced local/UNC directory stacks.
