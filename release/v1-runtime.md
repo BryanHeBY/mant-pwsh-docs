@@ -797,6 +797,13 @@ backup targets, or back up/restore messages merely for evidence. Keep NlbMgr to
 help/tool/host-list and an empty GUI session without contacting hosts. Do not
 open untrusted phone books. Keep TapiCfg to `show` and TcmSetup to help/domain/
 DNS inventory; do not mutate AD partitions/SCPs/defaults or TAPI server lists.
+Keep Winnt/Winnt32/RiSetup/SysOcMgr to copied artifact metadata, hashes and
+current deployment inventory; never start legacy Setup or service an image for
+evidence. Keep NTBackup to copied BKF metadata/hash/ACL and current WbAdmin
+inventory; never install/launch a legacy restore utility on a production host.
+Keep ServerManagerCmd to version/query/XML review and current typed feature
+inventory/WhatIf. Query Server CEIP/WER only. Do not launch HelpCtr or alter
+NTVDM, Config.nt, PIF, TSR, telemetry, role/feature, backup or restart state.
 Keep MSTSC to help/local-monitor inventory: do not connect, authenticate, open an
 untrusted RDP file, redirect resources or shadow/control a session for evidence.
 Keep SxSTrace to help-only unless a disposable failing application and new protected

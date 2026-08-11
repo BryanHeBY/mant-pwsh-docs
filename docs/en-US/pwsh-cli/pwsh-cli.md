@@ -379,6 +379,12 @@ license in the document's provenance catalog before adapting material.
 
 ## Windows legacy server roles
 
+- [winnt](winnt.md): Windows Server 2003 Winnt/Winnt32/RIS Setup/SysOcMgr artifact interpretation and current deployment migration.
+- [ntbackup](ntbackup.md): preserved BKF recovery with the required legacy restore utility, explicitly separate from WbAdmin.
+- [servermanagercmd](servermanagercmd.md): deprecated role/feature automation migration to typed Server Manager cmdlets.
+- [server-telemetry](server-telemetry.md): legacy Server CEIP/WER query state versus managed diagnostic-data and privacy policy.
+- [helpctr](helpctr.md): deprecated Server 2003 Help Center recognition and current help discovery.
+- [ntcmdprompt](ntcmdprompt.md): NTVDM-era Command.com-to-Cmd compatibility distinct from a modern shell launch.
 - [evntcmd](evntcmd.md): file-driven Event-to-SNMP trap mappings and destinations without confusing `/n` for a dry run.
 - [jetpack](jetpack.md): offline WINS/DHCP database compaction with service, backup, free-space, and unique-temporary-file gates.
 - [msmq](msmq.md): Message Queuing service/trigger executables plus destructive, service-stopping backup and restore boundaries.

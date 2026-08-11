@@ -718,7 +718,7 @@
     {
       "name": "helpctr",
       "source": "helpctr.md",
-      "status": "unclassified"
+      "status": "documented", "target": "pwsh-cli/helpctr.md"
     },
     {
       "name": "hostname",
@@ -1061,12 +1061,12 @@
     {
       "name": "ntbackup",
       "source": "ntbackup.md",
-      "status": "unclassified"
+      "status": "documented", "target": "pwsh-cli/ntbackup.md"
     },
     {
       "name": "ntcmdprompt",
       "source": "ntcmdprompt.md",
-      "status": "unclassified"
+      "status": "documented", "target": "pwsh-cli/ntcmdprompt.md"
     },
     {
       "name": "ntfrsutl",
@@ -1413,7 +1413,8 @@
     {
       "name": "risetup",
       "source": "risetup.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/winnt.md"
     },
     {
       "name": "rmdir",
@@ -1526,17 +1527,20 @@
     {
       "name": "serverceipoptin",
       "source": "serverceipoptin.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/server-telemetry.md"
     },
     {
       "name": "servermanagercmd",
       "source": "servermanagercmd.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/servermanagercmd.md"
     },
     {
       "name": "serverweroptin",
       "source": "serverweroptin.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/server-telemetry.md"
     },
     {
       "name": "set environmental variables",
@@ -1727,7 +1731,8 @@
     {
       "name": "sysocmgr",
       "source": "sysocmgr.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/winnt.md"
     },
     {
       "name": "systeminfo",
@@ -1972,12 +1977,14 @@
     {
       "name": "winnt",
       "source": "winnt.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/winnt.md"
     },
     {
       "name": "winnt32",
       "source": "winnt32.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/winnt.md"
     },
     {
       "name": "winrs",
