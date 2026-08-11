@@ -2,7 +2,7 @@
   "$schema": "release-manifest/v1",
   "release": "v1",
   "locale": "en-US",
-  "requiredDocumentCount": 222,
+  "requiredDocumentCount": 228,
   "sources": {
     "pwsh7": {
       "runtimePlatforms": ["windows", "linux", "macos"],
@@ -133,6 +133,12 @@
         "diskmgmt.md",
         "services.md",
         "optionalfeatures.md",
+        "msconfig.md",
+        "gpedit.md",
+        "systempropertiesadvanced.md",
+        "magnify.md",
+        "narrator.md",
+        "osk.md",
         "cmd.md",
         "start.md",
         "explorer.md",

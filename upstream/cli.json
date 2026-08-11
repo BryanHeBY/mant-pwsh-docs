@@ -748,6 +748,67 @@
       "sources": [{"type": "web", "url": "https://learn.microsoft.com/en-us/windows/client-management/client-tools/add-remove-hide-features", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"}],
       "notes": ["The TLDR launches classic/Settings UI and inventories feature state; the page contains exact identity/target, optional-feature-versus-capability/package/server-role/winget distinctions, payload/network/policy, restart/pending/security, removal/rollback/dependency, localized-GUI automation and postchange verification risks.", "Windows runtime verification remains discovery/manual launch-and-close only; no feature/capability mutation is permitted merely for evidence."]
     },
+    "msconfig.md": {
+      "kind": "windows-gui-entrypoint", "status": "reviewed",
+      "versions": ["supported Windows client and server releases where System Configuration is included; tabs and startup/boot behavior vary by build, edition, role and policy"], "platforms": ["windows"],
+      "sources": [
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-client/performance/windows-boot-issues-troubleshooting", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/windows-hardware/drivers/devtest/bcdedit--set", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=646775&service=superuser&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official sources establish startup-isolation and BCD safety; the community question is a demand/mistake signal. The TLDR is launch/query-only and the page covers one-variable isolation, service filters, temporary selective state, incomplete persistence inventory, boot/recovery and root-cause verification.", "Windows runtime verification remains discovery/manual launch-and-close/query-only; no startup, service or boot mutation is permitted merely for evidence."]
+    },
+    "gpedit.md": {
+      "kind": "windows-gui-entrypoint", "status": "reviewed",
+      "versions": ["supported Windows editions where Local Group Policy Editor is installed; policies and precedence vary by build, templates and management authority"], "platforms": ["windows"],
+      "sources": [
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/group-policy/group-policy-overview", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/group-policy/group-policy-modeling-results", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/answers/questions/4186794/gpedit-msc-missing", "license": {"spdx": "LicenseRef-Microsoft-Web-Terms", "url": "https://www.microsoft.com/en-us/legal/terms-of-use"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=1003509&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official sources establish editor role and resultant-policy verification; Q&A sources expose recurring edition and authority/precedence mistakes. The TLDR is availability/launch/RSoP-only and the page covers scope, tri-state definitions, local/domain/MDM authority, refresh evidence and template/UI automation.", "Windows runtime verification remains discovery/manual launch-and-close/query-only; no policy edit or refresh is permitted merely for evidence."]
+    },
+    "systempropertiesadvanced.md": {
+      "kind": "windows-gui-entrypoint", "status": "reviewed",
+      "versions": ["supported Windows releases where the classic Advanced System Properties entry point is included; controls and limits vary by build, architecture, edition and policy"], "platforms": ["windows"],
+      "sources": [
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/windows/win32/shell/executing-control-panel-items", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/windows/win32/procthread/environment-variables", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=1565006&service=superuser&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official sources establish the entry point and environment inheritance/scope; the community question is a Path-editor demand/mistake signal. The TLDR launches and reads process/user/machine Path only; the page covers environment scope/inheritance, elevated identity, Path hazards, trusted system file and high-impact performance/profile/recovery settings.", "Windows runtime verification remains discovery/manual launch-and-close/query-only; no environment, memory, profile, dump, startup or recovery mutation is permitted merely for evidence."]
+    },
+    "magnify.md": {
+      "kind": "windows-gui-entrypoint", "status": "reviewed",
+      "versions": ["supported Windows client releases where Magnifier is included; behavior varies by build, display/input topology, session and policy"], "platforms": ["windows"],
+      "sources": [
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/windows/apps/design/accessibility/accessibility-overview", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/windows/apps/develop/launch/launch-settings", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/answers/questions/2803825/windows-magnifier-stuck-on-everything-enlarged-can", "license": {"spdx": "LicenseRef-Microsoft-Web-Terms", "url": "https://www.microsoft.com/en-us/legal/terms-of-use"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official sources establish assistive-technology role and Settings URI; the Q&A source captures frequent unexpected activation/exit demand. The TLDR gives launch/settings/discovery and normal exit, while the page rejects protected-file ACL/delete/rename workarounds and covers session, view diagnosis and non-automation boundaries.", "Windows runtime verification is disposable interactive launch-and-normal-close only; no startup, protected-file, ACL or forced-termination mutation is permitted merely for evidence."]
+    },
+    "narrator.md": {
+      "kind": "windows-gui-entrypoint", "status": "reviewed",
+      "versions": ["supported Windows client releases where Narrator is included; behavior varies by build, speech/Braille resources, input, session and policy"], "platforms": ["windows"],
+      "sources": [
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/windows/apps/design/accessibility/accessibility-overview", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/windows/apps/develop/launch/launch-settings", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/answers/questions/3861151/how-do-i-get-the-narrator-to-read-each-line-of-a-s", "license": {"spdx": "LicenseRef-Microsoft-Web-Terms", "url": "https://www.microsoft.com/en-us/legal/terms-of-use"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official sources establish screen-reader role and Settings URI; the Q&A source records recurring shortcut/navigation demand. The TLDR gives launch/settings/discovery and normal toggle/exit, while the page covers privacy/user impact, protected-file/IFEO workarounds, keyboard layout, silent-output diagnosis and non-automation boundaries.", "Windows runtime verification is disposable interactive launch-and-normal-close only; no startup, protected-file, ACL, IFEO or forced-termination mutation is permitted merely for evidence."]
+    },
+    "osk.md": {
+      "kind": "windows-gui-entrypoint", "status": "reviewed",
+      "versions": ["supported Windows client releases where the classic On-Screen Keyboard is included; behavior varies by build, edition, language/input resources, session, device role and policy"], "platforms": ["windows"],
+      "sources": [
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/windows/apps/design/input/keyboard-interactions", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/windows/apps/develop/launch/launch-settings", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/en-us/windows/iot/iot-enterprise/os-features/on-screen-keyboard", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official sources establish classic OSK role, distinction from touch keyboard, Settings URI, modes and sign-in/device considerations. The TLDR gives launch/settings/discovery; the page covers component confusion, session, secrets/input automation, user dependence, layout/focus and kiosk/secure-desktop boundaries.", "Windows runtime verification is disposable interactive launch-and-normal-close only; no startup, input automation, protected-file, ACL or forced-termination mutation is permitted merely for evidence."]
+    },
     "cmd.md": {
       "kind": "windows-shell",
       "status": "reviewed",

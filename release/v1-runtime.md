@@ -145,6 +145,12 @@ Get-Command taskmgr.exe, resmon.exe, eventvwr.exe, mmc.exe -All
 Get-Item "$env:SystemRoot\System32\eventvwr.msc", "$env:SystemRoot\System32\compmgmt.msc"
 Get-Item "$env:SystemRoot\System32\devmgmt.msc", "$env:SystemRoot\System32\diskmgmt.msc", "$env:SystemRoot\System32\services.msc"
 Get-Command optionalfeatures.exe -All
+Get-Command msconfig.exe, SystemPropertiesAdvanced.exe, magnify.exe, narrator.exe, osk.exe -All
+Get-Item "$env:SystemRoot\System32\gpedit.msc" -ErrorAction SilentlyContinue
+Get-CimInstance Win32_StartupCommand | Select-Object Name, Command, Location, User
+gpresult.exe /scope user /r
+[Environment]::GetEnvironmentVariable('Path', 'User')
+[Environment]::GetEnvironmentVariable('Path', 'Machine')
 cmd.exe /d /c ver
 reg.exe query HKCU\Environment
 Get-Command explorer.exe, control.exe, mmc.exe, rundll32.exe -All
@@ -457,6 +463,16 @@ clear/configure logs, or mutate any Computer Management snap-in merely for evide
 Do not enable/disable/uninstall/update/rescan devices; initialize/format/delete/
 resize/convert/offline disks or volumes; control/reconfigure services; or add/
 remove features/capabilities merely for GUI-entry verification.
+Keep System Configuration, Local Group Policy and Advanced System Properties
+verification query/manual-launch-only. Do not alter startup/service/boot state,
+refresh or edit policy, change environment variables, virtual memory, performance,
+profiles, dumps, startup or recovery merely for evidence. Record Windows edition,
+user/computer scope and management authority; verify effective policy with RSoP.
+Launch Magnifier, Narrator and OSK only in a disposable interactive test session
+with audio/privacy/accessibility impact understood, then close them through their
+normal UI or documented shortcut. Do not change automatic-start settings, force-
+terminate assistive tools, automate user input/secrets, or rename/delete/take
+ownership/change ACLs/redirect protected accessibility executables for validation.
 
 On Windows, macOS, and Linux where declared by the document, record:
 

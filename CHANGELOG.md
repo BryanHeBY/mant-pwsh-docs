@@ -10,7 +10,7 @@ bundles.
 
 ### Added
 
-- First English release inventory: 222 reviewed ManT pages across `pwsh7`,
+- First English release inventory: 228 reviewed ManT pages across `pwsh7`,
   `pwsh51`, and `pwsh-cli`.
 - Broad `pwsh7` and `pwsh51` shell manuals, focused language/command pages,
   compatibility guides, and custom `irx` shorthand resolution guidance.
@@ -78,6 +78,10 @@ bundles.
 - Searchable Device Manager, Disk Management, Services, and Optional Features
   entries, with device-instance, unique-disk, SCM identity, and feature-versus-
   capability safeguards.
+- Searchable System Configuration, Local Group Policy Editor, Advanced System
+  Properties, Magnifier, Narrator, and On-Screen Keyboard entries, with
+  resultant-policy, environment-scope, startup/recovery, assistive-technology,
+  session, privacy, and protected-system-file safeguards.
 - Windows adapter/DHCP/DNS inspection, bounded ICMP reachability, path tracing,
   path sampling, host identity, and direct DNS-query guides for `ipconfig`,
   `ping`, `tracert`, `pathping`, `hostname`, and `nslookup`.

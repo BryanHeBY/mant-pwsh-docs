@@ -156,6 +156,12 @@ license in the document's provenance catalog before adapting material.
 - [diskmgmt](diskmgmt.md): Disk Management entry with unique disk/volume/boot/recovery identity safeguards.
 - [services](services.md): Services console entry with SCM runtime/configuration/security boundaries.
 - [optionalfeatures](optionalfeatures.md): classic/Settings feature entry with feature/capability/servicing distinctions.
+- [msconfig](msconfig.md): controlled clean-startup isolation with boot and recovery safeguards.
+- [gpedit](gpedit.md): Local Group Policy Editor entry with edition, authority, and RSoP boundaries.
+- [systempropertiesadvanced](systempropertiesadvanced.md): advanced environment, performance, profile, and recovery settings.
+- [magnify](magnify.md): Magnifier launch/settings entry without protected-file disable workarounds.
+- [narrator](narrator.md): Narrator launch/settings entry with user, privacy, and input boundaries.
+- [osk](osk.md): classic On-Screen Keyboard entry distinct from touch, IME, and secure-desktop input.
 
 ## Windows shell, GUI, and settings
 
