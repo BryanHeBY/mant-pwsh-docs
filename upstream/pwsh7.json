@@ -34,6 +34,49 @@
   },
   "documents": {
     "pwsh7.md": {
+      "kind": "shell-manual",
+      "status": "draft",
+      "versions": [
+        "7.x"
+      ],
+      "platforms": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Core/About/about_Pwsh.md"
+        },
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Core/About/about_Parsing.md"
+        },
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Core/About/about_Quoting_Rules.md"
+        },
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Core/About/about_Pipelines.md"
+        },
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Core/About/about_Automatic_Variables.md"
+        }
+      ],
+      "notes": [
+        "The shell manual is original project text synthesized from the listed official topics rather than a copy of one upstream page.",
+        "Launcher and selected language behavior were checked with PowerShell 7.6.3 on Linux; Windows and macOS verification remains outstanding."
+      ]
+    },
+    "powershell-7-docs.md": {
       "kind": "source-index",
       "status": "draft",
       "versions": [
@@ -57,7 +100,7 @@
         }
       ],
       "notes": [
-        "The source index is original project text; the repositories define its product scope and future reference baseline.",
+        "This document is the navigation index; pwsh7.md is the primary shell and language manual.",
         "Alias availability must be checked at runtime for each targeted release and platform."
       ]
     }

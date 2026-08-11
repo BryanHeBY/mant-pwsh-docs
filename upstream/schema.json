@@ -233,6 +233,7 @@
         "kind": {
           "enum": [
             "source-index",
+            "shell-manual",
             "cmdlet",
             "alias",
             "about-topic",

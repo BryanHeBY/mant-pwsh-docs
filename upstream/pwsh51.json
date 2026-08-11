@@ -34,6 +34,47 @@
   },
   "documents": {
     "pwsh51.md": {
+      "kind": "shell-manual",
+      "status": "draft",
+      "versions": [
+        "5.1"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/5.1/Microsoft.PowerShell.Core/About/about_PowerShell_exe.md"
+        },
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/5.1/Microsoft.PowerShell.Core/About/about_Parsing.md"
+        },
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/5.1/Microsoft.PowerShell.Core/About/about_Quoting_Rules.md"
+        },
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/5.1/Microsoft.PowerShell.Core/About/about_Pipelines.md"
+        },
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/5.1/Microsoft.PowerShell.Core/About/about_Automatic_Variables.md"
+        }
+      ],
+      "notes": [
+        "The shell manual is original project text synthesized from the listed official topics rather than a copy of one upstream page.",
+        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+      ]
+    },
+    "windows-powershell-5.1-docs.md": {
       "kind": "source-index",
       "status": "draft",
       "versions": [
@@ -55,7 +96,7 @@
         }
       ],
       "notes": [
-        "The source index is original project text; the repositories define its product scope and future reference baseline.",
+        "This document is the navigation index; pwsh51.md is the primary shell and language manual.",
         "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
       ]
     }

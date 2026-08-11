@@ -1,0 +1,99 @@
+<!-- mant:tldr:start -->
+# powershell-7-docs
+
+> Browse the PowerShell 7 documentation source with ManT.
+> Use `pwsh7` for the shell and language reference.
+
+- Open the shell and language reference:
+
+`mant pwsh7 --source pwsh7`
+
+- Open this documentation index:
+
+`mant powershell-7-docs --source pwsh7`
+
+- Inspect the sections in a document:
+
+`mant {{document-name}} --source pwsh7 --outline=sections`
+
+- Search within one document:
+
+`mant {{document-name}} --source pwsh7 --search={{pattern}}`
+<!-- mant:tldr:end -->
+
+# PowerShell 7 documentation
+
+## Overview
+
+This is the navigation page for the PowerShell 7 ManT source. Use
+[`pwsh7`](pwsh7.md) for a self-contained shell and language reference similar
+in purpose to a traditional shell manual. Other documents focus on one
+cmdlet, alias, launcher, concept, or compatibility issue.
+
+The source covers modern PowerShell on Windows, macOS, and Linux. It follows
+the supported PowerShell 7 long-term support channel and records material
+differences in newer stable releases.
+
+## Start here
+
+- [pwsh7](pwsh7.md): shell invocation, language, object pipelines, streams,
+  errors, native commands, modules, profiles, and platform behavior.
+
+Future introductory pages will cover the `pwsh` executable, discovering
+commands, using the help system, and moving scripts from Windows PowerShell
+5.1.
+
+## Planned command reference
+
+The first release will cover:
+
+- core cmdlets and their built-in aliases, including short forms such as
+  `irm` and `iwr`;
+- compatibility and commonly encountered custom short names, including
+  `irx`, with their origin and availability stated explicitly;
+- discovery, help, pipelines, formatting, remoting, jobs, modules, and
+  package management;
+- native-command interoperability, argument passing, output streams, and
+  exit status handling.
+
+## Planned concepts and guides
+
+Language and shell concepts use their official `about_*` topic names. The
+first group will cover parsing, quoting rules, pipelines, redirection,
+automatic variables, profiles, functions, operators, scopes, error handling,
+and native commands.
+
+Coverage is practical rather than a mirror of every upstream reference page.
+Each document should be useful independently and link back to the complete
+`pwsh7` reference where broader context is needed.
+
+## Platform and version policy
+
+Portable behavior is documented first. Windows-, macOS-, and Linux-specific
+sections identify differences in installation, security, paths, modules, and
+native command behavior. Each command document records the version and
+platform used for runtime verification.
+
+## Query with ManT
+
+After adding this repository to `sources.toml` and running
+`mant --update-docs`, use this index for navigation and `pwsh7` for shell
+questions:
+
+```text
+mant powershell-7-docs --source pwsh7
+mant pwsh7 --source pwsh7 --outline
+mant pwsh7 --source pwsh7 --node native-commands
+mant pwsh7 --source pwsh7 --search=LASTEXITCODE
+```
+
+## Sources and license
+
+This source contains original ManT-oriented documentation informed by the
+[official Microsoft PowerShell documentation](https://learn.microsoft.com/powershell/)
+and the PowerShell source code. Exact upstream revisions and document-level
+provenance are recorded in the repository's `upstream/pwsh7.json` catalog.
+
+The documentation in this source is licensed under CC BY 4.0. Microsoft
+product names are trademarks of the Microsoft group of companies; this
+project is not affiliated with or endorsed by Microsoft.
