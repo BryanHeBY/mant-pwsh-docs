@@ -138,6 +138,25 @@ and inspect each supported `mklink` type, then test whether `xcopy /b` copies
 the link or the target as documented. Never infer recursive scope from the
 rendered `tree` diagram alone.
 
+On a non-production Windows host, record process and host inventory without
+placing credentials on command lines:
+
+```powershell
+tasklist.exe /fi "PID eq $PID" /fo list
+whoami.exe /user /fo csv
+whoami.exe /groups /fo list
+systeminfo.exe /fo csv
+driverquery.exe /fo csv
+openfiles.exe /local
+openfiles.exe /query /fo csv /v
+```
+
+Start a disposable process, record its PID/path/start time, preview
+`Stop-Process -WhatIf`, terminate it without `/f` or `/t`, and verify it exited.
+Test force/tree behavior only on an isolated process tree. Do not enable local
+open-file tracking merely for validation because it requires a restart and can
+affect performance; record the current setting and leave it unchanged.
+
 Review Windows-only commands on a non-production target. In particular, use
 `robocopy /L` before any real copy, query an existing known task before task
 changes, and query a known service before `sc.exe` configuration work.

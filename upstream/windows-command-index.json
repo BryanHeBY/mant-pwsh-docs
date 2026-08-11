@@ -418,7 +418,8 @@
     {
       "name": "driverquery",
       "source": "driverquery.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/driverquery.md"
     },
     {
       "name": "dtrace",
@@ -948,7 +949,8 @@
     {
       "name": "openfiles",
       "source": "openfiles.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/openfiles.md"
     },
     {
       "name": "pagefileconfig",
@@ -1510,7 +1512,8 @@
     {
       "name": "systeminfo",
       "source": "systeminfo.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/systeminfo.md"
     },
     {
       "name": "takeown",
@@ -1525,12 +1528,14 @@
     {
       "name": "taskkill",
       "source": "taskkill.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/taskkill.md"
     },
     {
       "name": "tasklist",
       "source": "tasklist.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/tasklist.md"
     },
     {
       "name": "tcmsetup",
@@ -1710,7 +1715,8 @@
     {
       "name": "whoami",
       "source": "whoami.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/whoami.md"
     },
     {
       "name": "winnt",

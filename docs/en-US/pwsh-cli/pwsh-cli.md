@@ -156,6 +156,15 @@ license in the document's provenance catalog before adapting material.
 - [sort](sort.md): locale-sensitive line sorting versus `Sort-Object`.
 - [clip](clip.md): deliberate transfer of text into the Windows clipboard.
 
+## Windows process and host inventory
+
+- [tasklist](tasklist.md): filtered process snapshots and typed alternatives.
+- [taskkill](taskkill.md): exact-PID termination with force/tree escalation.
+- [systeminfo](systeminfo.md): host and operating-system configuration snapshots.
+- [whoami](whoami.md): current access-token identity, groups, and privileges.
+- [openfiles](openfiles.md): shared-file queries and controlled disconnects.
+- [driverquery](driverquery.md): installed driver inventory boundaries.
+
 ## Cross-platform developer tools
 
 - [git](git.md): repository context, configuration, and native exit codes.

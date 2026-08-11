@@ -960,6 +960,48 @@
       ],
       "notes": ["The page leads with /l, documents destination ambiguity, empty directories, links, partial copies, verification, and status edge cases.", "Windows runtime verification remains required."]
     },
+    "tasklist.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/tasklist.md"}],
+      "notes": ["The page prefers exact filters and typed process objects, rejects default-table parsing and inline passwords, and records PID reuse races.", "Windows runtime verification remains required."]
+    },
+    "taskkill.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/taskkill.md"},
+        {"type": "web", "url": "https://stackoverflow.com/questions/35436565/what-is-pid-advantage", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The page leads with exact PID revalidation and treats /f, /t, image-name selection, remote force, PID reuse, and credentials as explicit hazards.", "Windows runtime verification remains required."]
+    },
+    "systeminfo.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/systeminfo.md"}],
+      "notes": ["The page distinguishes a localized snapshot from authoritative typed asset and security inventories and forbids inline remote passwords.", "Windows runtime verification remains required."]
+    },
+    "whoami.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/whoami.md"},
+        {"type": "web", "url": "https://stackoverflow.com/questions/61397541/get-logon-username-in-elevated-script-with-standard-user-account", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The page defines whoami as current-process token inspection and distinguishes token identity from the interactive desktop user.", "Windows runtime verification remains required."]
+    },
+    "openfiles.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/openfiles.md"}],
+      "notes": ["The page leads with queries, requires exact-ID revalidation before disconnect, and treats local tracking as a rebooting performance-affecting host change.", "Windows runtime verification remains required."]
+    },
+    "driverquery.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/driverquery.md"}],
+      "notes": ["The page distinguishes drivers from devices and Driver Store packages and rejects signature presence as complete trust evidence.", "Windows runtime verification remains required."]
+    },
     "git.md": {
       "kind": "native-cli",
       "status": "reviewed",
