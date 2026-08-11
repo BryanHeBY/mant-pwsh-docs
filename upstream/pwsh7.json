@@ -218,6 +218,52 @@
         "The page separates stream routing from error and native exit-status policy.",
         "Native redirection behavior requires verification on all declared platforms."
       ]
+    },
+    "about_Automatic_Variables.md": {
+      "kind": "about-topic",
+      "status": "draft",
+      "versions": [
+        "7.6"
+      ],
+      "platforms": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Core/About/about_Automatic_Variables.md"
+        }
+      ],
+      "notes": [
+        "The page distinguishes PowerShell success state from native process exit status.",
+        "Runtime examples require verification on all declared platforms."
+      ]
+    },
+    "about_Profiles.md": {
+      "kind": "about-topic",
+      "status": "draft",
+      "versions": [
+        "7.6"
+      ],
+      "platforms": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Core/About/about_Profiles.md"
+        }
+      ],
+      "notes": [
+        "The page is original guidance emphasizing reproducible automation and profile safety.",
+        "Profile paths and host behavior require verification on all declared platforms."
+      ]
     }
   }
 }

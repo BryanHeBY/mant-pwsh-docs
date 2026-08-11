@@ -48,6 +48,10 @@ differences in newer stable releases.
   native-command boundaries.
 - [about_Redirection](about_Redirection.md): success, diagnostic, and
   information stream routing.
+- [about_Automatic_Variables](about_Automatic_Variables.md): pipeline state,
+  invocation paths, runtime information, errors, and native exit status.
+- [about_Profiles](about_Profiles.md): interactive customization without
+  making automation depend on startup state.
 
 Future introductory pages will cover command discovery, using the help system,
 and moving scripts from Windows PowerShell 5.1.
