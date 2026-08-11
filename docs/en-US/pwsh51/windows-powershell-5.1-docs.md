@@ -58,8 +58,15 @@ applies to the older edition.
 - [native-commands](native-commands.md): executable resolution, argument
   conversion, text streams, exit codes, and safety.
 
-Further introductory pages will cover discovering commands, using the help
-system, and migrating to PowerShell 7.
+Further introductory pages will cover migrating to PowerShell 7.
+
+## Command discovery
+
+- [Get-Command](Get-Command.md): resolve aliases, functions, cmdlets, scripts,
+  modules, and executable applications.
+- [Get-Help](Get-Help.md): read installed, detailed, and online help.
+- [Get-Member](Get-Member.md): inspect object types and members before selecting
+  properties or calling methods.
 
 ## Planned command reference
 

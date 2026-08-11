@@ -288,6 +288,51 @@
         "This is an original ManT-oriented topic guide, not a copy of the upstream reference.",
         "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
       ]
+    },
+    "Get-Command.md": {
+      "kind": "cmdlet",
+      "status": "draft",
+      "versions": ["5.1"],
+      "platforms": ["windows"],
+      "sources": [{
+        "type": "git",
+        "baseline": "powershell-docs",
+        "path": "reference/5.1/Microsoft.PowerShell.Core/Get-Command.md"
+      }],
+      "notes": [
+        "This is an original ManT-oriented cmdlet guide, not a copy of the upstream reference.",
+        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+      ]
+    },
+    "Get-Help.md": {
+      "kind": "cmdlet",
+      "status": "draft",
+      "versions": ["5.1"],
+      "platforms": ["windows"],
+      "sources": [{
+        "type": "git",
+        "baseline": "powershell-docs",
+        "path": "reference/5.1/Microsoft.PowerShell.Core/Get-Help.md"
+      }],
+      "notes": [
+        "This is an original ManT-oriented cmdlet guide, not a copy of the upstream reference.",
+        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+      ]
+    },
+    "Get-Member.md": {
+      "kind": "cmdlet",
+      "status": "draft",
+      "versions": ["5.1"],
+      "platforms": ["windows"],
+      "sources": [{
+        "type": "git",
+        "baseline": "powershell-docs",
+        "path": "reference/5.1/Microsoft.PowerShell.Utility/Get-Member.md"
+      }],
+      "notes": [
+        "This is an original ManT-oriented cmdlet guide, not a copy of the upstream reference.",
+        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+      ]
     }
   }
 }
