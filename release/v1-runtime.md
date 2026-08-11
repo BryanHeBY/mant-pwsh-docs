@@ -790,6 +790,13 @@ Keep TpmVscMgr to help and read-only TPM/reader/certificate inventory; never
 create/destroy a card or expose PIN/PUK/admin keys. Do not change PwLauncher or
 reboot for evidence. Keep RegIni to help/export/ACL/input/hash review and WinSAT
 to help unless a disposable idle benchmark host and trusted media are approved.
+Keep EvntCmd to help/service/file/provider inventory, JetPack to role/file/temp
+inventory, and MSMQ to feature/service/help/queue/new-path inventory; do not
+apply traps, compact databases, launch service images, stop services, delete
+backup targets, or back up/restore messages merely for evidence. Keep NlbMgr to
+help/tool/host-list and an empty GUI session without contacting hosts. Do not
+open untrusted phone books. Keep TapiCfg to `show` and TcmSetup to help/domain/
+DNS inventory; do not mutate AD partitions/SCPs/defaults or TAPI server lists.
 Keep MSTSC to help/local-monitor inventory: do not connect, authenticate, open an
 untrusted RDP file, redirect resources or shadow/control a session for evidence.
 Keep SxSTrace to help-only unless a disposable failing application and new protected

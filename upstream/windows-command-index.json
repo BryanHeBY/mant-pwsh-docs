@@ -530,7 +530,8 @@
     {
       "name": "Evntcmd",
       "source": "evntcmd.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/evntcmd.md"
     },
     {
       "name": "exec",
@@ -774,7 +775,8 @@
     {
       "name": "jetpack",
       "source": "jetpack.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/jetpack.md"
     },
     {
       "name": "klist",
@@ -933,17 +935,20 @@
     {
       "name": "mqbkup",
       "source": "mqbkup.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/msmq.md"
     },
     {
       "name": "mqsvc",
       "source": "mqsvc.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/msmq.md"
     },
     {
       "name": "mqtgsvc",
       "source": "mqtgsvc.md",
-      "status": "unclassified"
+      "status": "family",
+      "target": "pwsh-cli/msmq.md"
     },
     {
       "name": "msdt",
@@ -1038,7 +1043,8 @@
     {
       "name": "nlbmgr",
       "source": "nlbmgr.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/nlbmgr.md"
     },
     {
       "name": "nltest",
@@ -1113,7 +1119,8 @@
     {
       "name": "pbadmin",
       "source": "pbadmin.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/pbadmin.md"
     },
     {
       "name": "pentnt",
@@ -1737,7 +1744,8 @@
     {
       "name": "tapicfg",
       "source": "tapicfg.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/tapicfg.md"
     },
     {
       "name": "taskkill",
@@ -1754,7 +1762,8 @@
     {
       "name": "tcmsetup",
       "source": "tcmsetup.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/tcmsetup.md"
     },
     {
       "name": "telnet",

@@ -377,6 +377,16 @@ license in the document's provenance catalog before adapting material.
 - [dfsrmig](dfsrmig.md): PDC-governed FRS-to-DFSR SYSVOL migration state and irreversible elimination boundary.
 - [ntfrsutl](ntfrsutl.md): legacy FRS internal inventory only after proving exact replica-set participation.
 
+## Windows legacy server roles
+
+- [evntcmd](evntcmd.md): file-driven Event-to-SNMP trap mappings and destinations without confusing `/n` for a dry run.
+- [jetpack](jetpack.md): offline WINS/DHCP database compaction with service, backup, free-space, and unique-temporary-file gates.
+- [msmq](msmq.md): Message Queuing service/trigger executables plus destructive, service-stopping backup and restore boundaries.
+- [nlbmgr](nlbmgr.md): deprecated NLB GUI target-list, polling, WMI, replication, and modern-alternative boundaries.
+- [pbadmin](pbadmin.md): deprecated Phone Book Administrator discovery and Connection Manager migration.
+- [tapicfg](tapicfg.md): domain TAPI directory-partition/SCP discovery before forest-wide changes.
+- [tcmsetup](tcmsetup.md): replacement-not-append TAPI client server lists and complete-list validation.
+
 ## Windows storage, boot, and recovery
 
 - [bcdboot](bcdboot.md): explicit Windows/system partition boot-file repair.
