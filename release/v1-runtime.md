@@ -228,6 +228,17 @@ tftp.exe /?
 Get-WindowsOptionalFeature -Online -FeatureName TelnetClient
 telnet.exe /?
 finger.exe /?
+Get-Command nfsadmin.exe, nfsshare.exe, nfsstat.exe, showmount.exe, rpcinfo.exe, rpcping.exe -All -ErrorAction SilentlyContinue
+nfsadmin.exe server config
+nfsadmin.exe server -l
+nfsadmin.exe client config
+nfsshare.exe
+nfsstat.exe
+nfsstat.exe -m
+showmount.exe -e $approvedNfsServer
+rpcinfo.exe /p $approvedNfsServer
+rpcping.exe /?
+rpcping.exe /t ncacn_ip_tcp /s $approvedRpcServer /i 1 /v 2
 Get-Command dcdiag.exe, repadmin.exe, nltest.exe, netdom.exe -All -ErrorAction SilentlyContinue
 dcdiag.exe /?
 repadmin.exe /?
@@ -327,6 +338,16 @@ send credentials or input, transfer/delete/rename a file, query remote users, or
 create a plaintext protocol transcript merely for evidence. Approved TCP
 reachability checks do not establish protocol, authentication, encryption,
 authorization, data-channel or application health.
+
+Do not install NFS features merely for evidence. Where already installed, keep
+NfsAdmin to config display/lock list, NfsShare to list/get, and NfsStat free of
+`-z`; do not release locks, restart/reconfigure services, change mappings,
+exports, root/anonymous access, counters, mounts, ACLs or firewall rules. Query
+Showmount/RpcInfo only against exact approved NFS servers and protect exported
+paths/client/mount/program metadata; never broadcast. Keep RpcPing to help and
+one approved exact-server, single-iteration verbose Endpoint Mapper call with
+no alternate/proxy credentials, UI, quiet mode or guessed service claim. Record
+that TCP 135 success does not prove the target interface/dynamic endpoint.
 
 Replace every AD placeholder only with an approved lab or production target
 whose owner has authorized the exact read-only collection. Do not run DCDiag

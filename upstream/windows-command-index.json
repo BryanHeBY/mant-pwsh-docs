@@ -998,17 +998,20 @@
     {
       "name": "nfsadmin",
       "source": "nfsadmin.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/nfsadmin.md"
     },
     {
       "name": "nfsshare",
       "source": "nfsshare.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/nfsshare.md"
     },
     {
       "name": "nfsstat",
       "source": "nfsstat.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/nfsstat.md"
     },
     {
       "name": "nlbmgr",
@@ -1397,12 +1400,14 @@
     {
       "name": "rpcinfo",
       "source": "rpcinfo.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/rpcinfo.md"
     },
     {
       "name": "rpcping",
       "source": "rpcping.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/rpcping.md"
     },
     {
       "name": "rsh",
@@ -1547,7 +1552,8 @@
     {
       "name": "showmount",
       "source": "showmount.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/showmount.md"
     },
     {
       "name": "shrink",

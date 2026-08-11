@@ -288,6 +288,15 @@ license in the document's provenance catalog before adapting material.
 - [telnet](telnet.md): optional plaintext terminal client separated from safe TCP reachability and SSH.
 - [finger](finger.md): privacy-bounded legacy user-information discovery without enumeration or identity trust.
 
+## Windows NFS and RPC interoperability
+
+- [nfsadmin](nfsadmin.md): Server/Client for NFS configuration and lock inventory before global changes.
+- [nfsshare](nfsshare.md): NFS export, client, root/anonymous mapping, and NTFS authorization boundaries.
+- [nfsstat](nfsstat.md): cumulative NFS/ONC RPC counters and mounts without destroying the baseline.
+- [showmount](showmount.md): exact-server MOUNT/export discovery with NFSv4 and sensitive-client caveats.
+- [rpcinfo](rpcinfo.md): ONC RPC portmapper programs, versions, transports, and dynamic-service discovery.
+- [rpcping](rpcping.md): Microsoft RPC Endpoint Mapper/interface binding distinct from ICMP and ONC RPC.
+
 ## Windows background transfer
 
 - [bitsadmin](bitsadmin.md): GUID-bound BITS job lifecycle, completion, ownership, security, and artifact-trust boundaries.

@@ -2500,6 +2500,58 @@
       ],
       "notes": ["The TLDR identifies ReFS and uses query/estimate/diagnose forms only; the page maps compression, cluster dedup, fixboot, iometrics, leak, salvage, streamsnapshot, and triage, records upstream inconsistencies, and contains source identity, automatic recovery, separate work/target, read-only copy, version override, deleted-data, dismount, diagnosis/repair, resource, and boot-metadata risks.", "Windows/ReFS runtime verification remains required on representative supported builds and disposable volumes."]
     },
+    "nfsadmin.md": {
+      "kind": "native-cli-family", "status": "reviewed", "versions": ["optional Windows Services for NFS client/server components; options vary by build, role, NFS version and mapping design"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/nfsadmin.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/powershell/module/nfs/get-nfsmappedidentity", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=917449&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR separates Server/Client for NFS and uses configuration/lock queries only; the page covers feature/role identity, mutating config suffixes, destructive lock release, service restart, global case behavior, legacy mapping and credential exposure.", "Windows runtime verification remains resolution/help, server/client config display and lock listing only where the corresponding optional feature is already installed; no service, lock, audit, protocol, group/member, cache, mapping, case, credential or registry mutation is permitted merely for evidence."]
+    },
+    "nfsshare.md": {
+      "kind": "native-cli", "status": "reviewed", "versions": ["optional Windows Server for NFS; export/authentication/mapping/cluster behavior varies by build and configuration"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/nfsshare.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=539267&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=761071&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official syntax establishes all-client read/write defaults when ro/rw are omitted, root/anonymous mapping and wildcard deletion; practitioner cases expose UID/GID privilege and Windows-export interoperability failures. The TLDR is export/property/ACL query-only.", "Windows runtime verification remains no-argument/exact-share listing plus typed NFS and NTFS ACL reads only; no export create/change/delete, wildcard, root/anonymous, host/group, encoding, mapping, ACL, cluster or service mutation is permitted merely for evidence."]
+    },
+    "nfsstat.md": {
+      "kind": "native-cli", "status": "reviewed", "versions": ["optional Windows Services for NFS; counters and mount data vary by installed client/server role and build"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/nfsstat.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=377170&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR reads cumulative client/server/NFS/ONC-RPC/mount evidence and excludes -z; the page covers rates/deltas, baseline destruction, ONC-versus-MS RPC, rejection interpretation and upstream elevation-wording uncertainty.", "Windows runtime verification remains read-only counter/mount display on hosts where NFS is already installed; no -z reset, feature/service, mount, workload or firewall change is permitted merely for evidence."]
+    },
+    "showmount.md": {
+      "kind": "native-cli", "status": "reviewed", "versions": ["optional Windows NFS client tooling; result semantics depend on remote MOUNT/NFS implementation and version"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/showmount.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=749788&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR binds one exact approved server and separates export/mountd metadata from TCP 2049; the page covers NFSv4-without-MOUNT, listing-versus-authorization, sensitive -a fan-out and local-default target errors.", "Windows runtime verification remains resolution and exact approved-server -e, with -d/-a only under data-handling approval; no mount, feature, export, identity, firewall or remote configuration mutation is permitted merely for evidence."]
+    },
+    "rpcinfo.md": {
+      "kind": "native-cli", "status": "reviewed", "versions": ["optional Windows ONC RPC/NFS tooling; registrations depend on remote portmapper implementation"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/rpcinfo.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=377170&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The page explicitly distinguishes ONC RPC portmapper from Microsoft RPC Endpoint Mapper, rejects broadcast discovery and fixed-port assumptions, and binds program/version/transport before calls. The TLDR is help, exact-host /p and separate TCP reachability only.", "Windows runtime verification remains help and exact approved-host /p plus bounded reachability; no /b broadcast, unspecified-version /t or /u call, feature, server, firewall or network mutation is permitted merely for evidence."]
+    },
+    "rpcping.md": {
+      "kind": "native-cli-family", "status": "reviewed", "versions": ["Windows Microsoft RPC tooling; interface, protocol, authentication, proxy, endpoint and dynamic-port behavior varies by build and target service"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/rpcping.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/windows/security/threat-protection/windows-firewall/best-practices-configuring", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/troubleshoot/windows-server/active-directory/replication-error-1722-rpc-server-unavailable", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=393674&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official sources establish interface/endpoint/auth/proxy syntax and endpoint-mapper-to-dynamic-port behavior; practitioner demand exposes port-135-only confusion. The TLDR uses help, DNS, TCP 135 and one bounded unauthenticated exact-server Endpoint Mapper call, while explicitly distinguishing ICMP and ONC RPC.", "Windows runtime verification remains help/DNS/TCP 135 and one approved exact-server single-iteration verbose Endpoint Mapper call; no credential/proxy/Basic/smart-card/UI/quiet/high-iteration, interface guessing, firewall/dynamic-port, registry, SPN, certificate or service mutation is permitted merely for evidence."]
+    },
     "git.md": {
       "kind": "native-cli",
       "status": "reviewed",

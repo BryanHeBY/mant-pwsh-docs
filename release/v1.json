@@ -2,7 +2,7 @@
   "$schema": "release-manifest/v1",
   "release": "v1",
   "locale": "en-US",
-  "requiredDocumentCount": 299,
+  "requiredDocumentCount": 305,
   "sources": {
     "pwsh7": {
       "runtimePlatforms": ["windows", "linux", "macos"],
@@ -191,6 +191,12 @@
         "pubprn.md",
         "pushprinterconnections.md",
         "rundll32-printui.md",
+        "nfsadmin.md",
+        "nfsshare.md",
+        "nfsstat.md",
+        "showmount.md",
+        "rpcinfo.md",
+        "rpcping.md",
         "ftp.md",
         "tftp.md",
         "telnet.md",

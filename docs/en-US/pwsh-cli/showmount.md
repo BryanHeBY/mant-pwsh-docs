@@ -1,0 +1,86 @@
+<!-- mant:tldr:start -->
+# showmount
+
+> Query an approved NFS server's exported filesystems and mountd view without mounting anything.
+> More information: https://learn.microsoft.com/windows-server/administration/windows-commands/showmount.
+
+- Confirm that the optional Windows client tool is installed:
+
+`Get-Command showmount.exe -ErrorAction SilentlyContinue | Select-Object Source,@{Name='FileVersion';Expression={$_.FileVersionInfo.FileVersion}}`
+
+- List exports advertised by one exact NFS server:
+
+`showmount.exe -e "{{nfs01.example.com}}"`
+
+- List directories currently reported as mounted (sensitive server-wide metadata):
+
+`showmount.exe -d "{{nfs01.example.com}}"`
+
+- Test only the well-known NFS TCP endpoint separately from mountd/RPC discovery:
+
+`Test-NetConnection "{{nfs01.example.com}}" -Port 2049 -InformationLevel Detailed`
+<!-- mant:tldr:end -->
+
+# showmount
+
+## Overview
+
+`showmount.exe` queries the NFS MOUNT protocol: `-e` lists exports, `-d` lists
+mounted directories, and `-a` lists clients plus directories. It does not mount
+a filesystem or prove data access. The client/directory views can reveal
+sensitive topology and should be queried only on approved servers.
+
+## Common mistakes
+
+### Treating `showmount -e` failure as proof NFS is down
+
+NFSv4 can operate without the separate NFSv3 MOUNT protocol that `showmount`
+expects. Also distinguish DNS, portmapper/mountd, firewall, protocol version,
+transport and export-policy failures from TCP 2049 reachability.
+
+### Assuming a listed export is authorized and usable
+
+Listing does not validate client host scope, Kerberos/AUTH_SYS, UID/GID mapping,
+NTFS permissions, root/anonymous behavior, locking or file operations. Test the
+real client identity and exact version through an approved mount workflow.
+
+### Running `-a` as harmless discovery
+
+It enumerates client-to-directory relationships and may be expensive or
+restricted. Start with `-e`; protect mount/client inventory and avoid broad
+probing of third-party infrastructure.
+
+### Omitting the server
+
+The command can default to the local computer, hiding a targeting mistake.
+Always use an exact FQDN/IP and record DNS resolution, address family and time.
+
+## PowerShell behavior
+
+Invoke `showmount.exe` explicitly and check `$LASTEXITCODE`. Its output is
+remote-provided text; do not parse fixed column widths without retaining raw
+evidence. Quote IPv6/name inputs and do not confuse it with a PowerShell cmdlet.
+
+## Version and platform differences
+
+The Windows tool is optional/feature-dependent. Remote NFS implementations and
+versions differ; a Unix `showmount` man page is not proof of identical Windows
+options. NFSv4-only servers may intentionally expose no mountd result.
+
+## Related documents
+
+- [rpcinfo](rpcinfo.md)
+- [nfsstat](nfsstat.md)
+- [nfsshare](nfsshare.md)
+- [mountvol](mountvol.md)
+
+## Sources and license
+
+This original guide was adapted from Microsoft's official
+[showmount reference](https://learn.microsoft.com/windows-server/administration/windows-commands/showmount).
+The common mountd/firewall/version failure was cross-checked against a
+[showmount troubleshooting question](https://serverfault.com/questions/749788/showmount-e-fails-from-one-node).
+Exact sources and licenses are recorded in `upstream/cli.json`.
+
+The Microsoft documentation and this adaptation are licensed under CC BY
+4.0. Server Fault contributions are licensed under CC BY-SA 4.0.

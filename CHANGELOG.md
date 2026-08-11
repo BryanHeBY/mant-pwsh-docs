@@ -10,7 +10,7 @@ bundles.
 
 ### Added
 
-- First English release inventory: 299 reviewed ManT pages across `pwsh7`,
+- First English release inventory: 305 reviewed ManT pages across `pwsh7`,
   `pwsh51`, and `pwsh-cli`.
 - Broad `pwsh7` and `pwsh51` shell manuals, focused language/command pages,
   compatibility guides, and custom `irx` shorthand resolution guidance.
@@ -121,6 +121,12 @@ bundles.
   query/prerequisite-first TLDRs and script-host, language-path, user/machine,
   queue/job/driver/port/device, AD publication, policy, INF, bitness, credential,
   purge, physical-output, and settings-restore boundaries.
+- Windows optional NFS administration/export/statistics/mount-discovery and
+  ONC/Microsoft RPC diagnostic guides for `nfsadmin`, `nfsshare`, `nfsstat`,
+  `showmount`, `rpcinfo`, and `rpcping`, with query-only TLDRs and explicit
+  UID/GID/root/anonymous, export/NTFS, NFS version/MOUNT, cumulative-counter,
+  portmapper/Endpoint Mapper, dynamic-port, interface, credential, broadcast,
+  lock-release, and counter-reset boundaries.
 - Windows FTP, optional TFTP/Telnet, and legacy Finger client guides with
   connection-free TLDRs and explicit plaintext, passive/active data-channel,
   script credential, binary integrity, unauthenticated provisioning, feature-
