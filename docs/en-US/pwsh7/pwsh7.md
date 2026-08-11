@@ -134,6 +134,14 @@ later assignments. Automatic variables including `$_`, `$args`, `$input`,
 `$?`, `$LASTEXITCODE`, `$PSItem`, and `$PSVersionTable` describe the current
 execution context.
 
+<!-- mant:entries role=variable case=insensitive -->
+- `$_`, `$PSItem`: Refer to the current pipeline object inside a script block.
+- `$args`: Hold positional arguments not bound to named parameters.
+- `$input`: Enumerate pipeline input available to the current function or script block.
+- `$?`: Report whether the latest PowerShell operation succeeded.
+- `$LASTEXITCODE`: Hold the exit code from the latest native program or explicitly exited PowerShell child process.
+- `$PSVersionTable`: Describe the current PowerShell version, edition, and platform.
+
 Environment variables use the `Env:` drive, for example `$env:PATH`.
 PowerShell 7 treats environment-variable values as strings and uses
 platform-specific name and path-list casing rules.

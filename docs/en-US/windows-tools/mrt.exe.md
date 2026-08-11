@@ -48,7 +48,12 @@ the current tool contract.
 - `/?`: Display the supported MSRT command-line switches in a dialog.
 - `/N`: Run in detect-only mode; report detected targeted malware without removing it.
 - `/F`: Force an extended scan of the computer.
-- `/F:y`: Force an extended scan and automatically clean detected targeted malware; Microsoft publishes this case-insensitive fixed value as `/F:Y`.
+
+The cleanup form has a fixed attached value rather than an arbitrary `/F`
+argument.
+
+<!-- mant:entries role=option case=insensitive attached=fixed -->
+- `/F:Y`: Force an extended scan and automatically clean detected targeted malware.
 
 `/N` changes remediation behavior, not scan scope. `/F:Y` authorizes automatic
 cleanup and must not be treated as a harmless spelling of `/F`.

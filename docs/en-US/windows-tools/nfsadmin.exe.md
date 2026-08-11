@@ -78,7 +78,12 @@ configuration and requires separate authorization and verification.
 - `protocol= PROTOCOL`: Select the Client for NFS `TCP`, `UDP`, or `TCP+UDP` transport set.
 - `rsize= SIZE`: Set the Client for NFS read buffer in kilobytes to one documented discrete value.
 - `wsize= SIZE`: Set the Client for NFS write buffer in kilobytes to one documented discrete value.
-- `perf=`: Restore the documented Client for NFS performance fields by supplying the single fixed value `default` as `perf=default`.
+
+The performance reset is a fixed equals-bearing option, not a field that
+accepts an arbitrary value.
+
+<!-- mant:entries role=option case=insensitive attached=fixed -->
+- `perf=default`: Restore the documented Client for NFS performance fields.
 
 The following traditional dash options select credentials or lock operations
 outside the equals-bearing `config` field grammar.

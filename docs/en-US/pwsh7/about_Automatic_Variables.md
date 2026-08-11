@@ -26,6 +26,29 @@ current pipeline item, command arguments, script location, success state,
 errors, host information, and runtime version. They are useful context, but
 scripts should not overwrite them casually.
 
+## Variable index
+
+<!-- mant:entries role=variable case=insensitive -->
+- `$_`, `$PSItem`: Refer to the current pipeline object in a script block.
+- `$args`: Hold positional arguments that were not bound to named parameters.
+- `$input`: Enumerate pipeline input available to the current function or script block.
+- `$PSBoundParameters`: Map parameter names to values explicitly bound to the current advanced function or script.
+- `$PSScriptRoot`: Identify the directory containing the running script or module.
+- `$PSCommandPath`: Identify the full path of the running script or module.
+- `$MyInvocation`: Describe how the current command was invoked.
+- `$?`: Report whether the latest PowerShell operation succeeded.
+- `$Error`: Hold recent PowerShell error records.
+- `$LASTEXITCODE`: Hold the exit code from the latest native program or explicitly exited PowerShell child process.
+- `$PSVersionTable`: Describe the current PowerShell version, edition, platform, and compatibility data.
+- `$PID`: Identify the current PowerShell process.
+- `$Host`: Identify the application hosting PowerShell.
+- `$HOME`: Identify the current user's home directory.
+- `$PWD`: Hold the current provider location.
+- `$PROFILE`: Identify the profile paths for the current host and user.
+- `$null`: Represent PowerShell's null value.
+- `$^`: Hold the first token from the last input line received by the session.
+- `$$`: Hold the last token from the last input line received by the session.
+
 ## Pipeline and command variables
 
 `$_` and `$PSItem` both name the current object in a pipeline script block.
@@ -43,6 +66,10 @@ Get-ChildItem -File |
 
 Prefer a `param(...)` block over reading `$args` when an interface needs
 names, types, defaults, validation, or discoverable help.
+
+In an interactive session, `$^` and `$$` expose the first and last tokens from
+the last input line. They are convenient for brief interactive recall, but
+scripts should use named variables instead of depending on prior session input.
 
 ## Script and invocation location
 
