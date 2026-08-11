@@ -173,6 +173,10 @@ license in the document's provenance catalog before adapting material.
 - [pathping](pathping.md): sampled hop latency and loss with rate-limit caveats.
 - [hostname](hostname.md): short host identity versus DNS and cluster names.
 - [nslookup](nslookup.md): direct DNS queries versus application resolution.
+- [netstat](netstat.md): sockets, listeners, owning PIDs, and exact-port queries.
+- [route](route.md): IPv4 route inspection and high-risk mutation boundaries.
+- [arp](arp.md): per-interface IPv4 neighbor-cache evidence.
+- [getmac](getmac.md): physical and virtual adapter MAC inventory.
 
 ## Cross-platform developer tools
 

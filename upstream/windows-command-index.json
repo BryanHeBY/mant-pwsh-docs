@@ -42,7 +42,8 @@
     {
       "name": "arp",
       "source": "arp.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/arp.md"
     },
     {
       "name": "assign",
@@ -583,7 +584,8 @@
     {
       "name": "getmac",
       "source": "getmac.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/getmac.md"
     },
     {
       "name": "gettype",
@@ -891,7 +893,8 @@
     {
       "name": "netstat",
       "source": "netstat.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/netstat.md"
     },
     {
       "name": "nfsadmin",
@@ -1251,7 +1254,8 @@
     {
       "name": "route ws2008",
       "source": "route_ws2008.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/route.md"
     },
     {
       "name": "rpcinfo",

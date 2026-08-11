@@ -1041,6 +1041,33 @@
       ],
       "notes": ["The page uses non-interactive typed queries and separates a direct DNS server answer from the Windows application resolver path.", "Windows runtime verification remains required."]
     },
+    "netstat.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/netstat.md"},
+        {"type": "web", "url": "https://stackoverflow.com/questions/48198/how-do-i-find-out-which-process-is-listening-on-a-tcp-or-udp-port-on-windows", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The page leads with numeric endpoints and PIDs, prefers exact typed local-port selection, and separates listener, ownership, and reachability evidence.", "Windows runtime verification remains required."]
+    },
+    "route.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/route_ws2008.md"}],
+      "notes": ["The TLDR is query-only; the page explicitly defines /f as a flush and covers masks, persistence, wildcards, prefix length, metrics, and remote-session risk.", "Windows runtime verification remains required."]
+    },
+    "arp.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/arp.md"}],
+      "notes": ["The TLDR is query-only; the page defines the cache as per-interface, on-link IPv4 evidence rather than device inventory.", "Windows runtime verification remains required."]
+    },
+    "getmac.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/getmac.md"}],
+      "notes": ["The page distinguishes physical, virtual, disconnected, randomized, and remote adapter identities and prohibits inline passwords.", "Windows runtime verification remains required."]
+    },
     "git.md": {
       "kind": "native-cli",
       "status": "reviewed",

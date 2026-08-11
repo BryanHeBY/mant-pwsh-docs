@@ -156,6 +156,11 @@ tracert.exe /d /4 /h 4 /w 1000 127.0.0.1
 pathping.exe /n /4 /q 2 /p 100 127.0.0.1
 hostname.exe
 nslookup.exe -type=A localhost
+netstat.exe -ano -p tcp
+netstat.exe -ano -p udp
+route.exe print
+arp.exe -a
+getmac.exe /v /fo csv
 ```
 
 Start a disposable process, record its PID/path/start time, preview
@@ -168,6 +173,10 @@ unreachable target in the lab. Record the address family, DNS server, source
 network, complete command, and timestamp. Do not flush DNS or release/renew
 DHCP merely to satisfy verification, and do not interpret ICMP failure as
 proof that an application service is unavailable.
+Keep route and ARP verification query-only. Correlate a known disposable
+listener with `Get-NetTCPConnection` and its current PID, distinguish TCP from
+UDP endpoint semantics, and confirm physical and virtual adapter rows instead
+of accepting the first MAC address.
 
 Review Windows-only commands on a non-production target. In particular, use
 `robocopy /L` before any real copy, query an existing known task before task
