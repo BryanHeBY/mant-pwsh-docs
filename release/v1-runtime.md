@@ -189,6 +189,10 @@ certutil.exe -dump $approvedCertificateFixture
 certutil.exe -hashfile $approvedHashFixture SHA256
 certutil.exe -user -store My
 certutil.exe -verify $approvedCertificateFixture
+bcdboot.exe /?
+bcdedit.exe /enum active /v
+bcdedit.exe /enum osloader /v
+bcdedit.exe /enum firmware /v
 ```
 
 Start a disposable process, record its PID/path/start time, preview
@@ -232,6 +236,12 @@ For `certutil`, compare the SHA-256 result with `Get-FileHash`, record user
 versus machine store context, and protect subject/provider/store output. Do
 not import/delete/repair certificates, export private keys, change trust,
 flush retrieval caches, or run CA-management verbs merely for verification.
+Keep boot verification query-only. Record firmware mode, Secure Boot,
+BitLocker protection, elevation, and the current system store; do not run
+BCDBoot, export/import a BCD store, or change boot entries/order merely to
+satisfy this checklist. Quote BCD identifiers in PowerShell, and record an
+unsupported `/enum firmware` as not applicable on BIOS systems rather than a
+documentation failure.
 Use a disposable NTFS test tree to display, verify, and save ACLs; do not reset,
 grant, deny, remove, restore, recurse ownership, encrypt/decrypt, rekey, or wipe
 free space merely for validation. Run the EFS check only when an approved

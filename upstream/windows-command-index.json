@@ -111,12 +111,14 @@
     {
       "name": "bcdboot",
       "source": "bcdboot.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/bcdboot.md"
     },
     {
       "name": "bcdedit",
       "source": "bcdedit.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/bcdedit.md"
     },
     {
       "name": "bdehdcfg",

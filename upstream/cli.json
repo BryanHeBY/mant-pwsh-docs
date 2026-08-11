@@ -1239,6 +1239,26 @@
       ],
       "notes": ["The TLDR is read-only; the page treats output as human-oriented, recommends Get-FileHash for automation, scopes certificate stores and identifiers exactly, separates parsing from verification, and contains high-risk store, private-key, trust, revocation, and CA-management verbs.", "Windows runtime verification remains required."]
     },
+    "bcdboot.md": {
+      "kind": "native-cli", "status": "reviewed",
+      "versions": ["supported Windows and Windows PE releases; newer servicing options vary by build"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/bcdboot.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/windows-hardware/manufacture/desktop/bcdboot-command-line-options-techref-di?view=windows-11", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR identifies the Windows source and system target and verifies the resulting BCD; the page explains UEFI /s NVRAM behavior, firmware/layout selection, /p and /addlast ordering, /d and /c preservation, new servicing switches, and why successful file copy is not proof of bootability.", "Windows runtime verification remains required."]
+    },
+    "bcdedit.md": {
+      "kind": "native-cli-family", "status": "reviewed",
+      "versions": ["supported Windows 10, Windows 11, and Windows Server releases"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/bcdedit.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/windows-hardware/manufacture/desktop/bcdedit-command-line-options?view=windows-11", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/windows-hardware/drivers/devtest/boot-options-identifiers", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackoverflow.com/questions/41030701/unable-to-edit-with-bcdedit-filelds-in-powershell-cmd-exe-command-line-fails", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The TLDR is query/backup-only; the page quotes identifiers for PowerShell, distinguishes current/offline/firmware stores and current/default entries, contains high-risk set/import/security options, and requires encryption, firmware, and recovery planning.", "Windows runtime verification remains required."]
+    },
     "git.md": {
       "kind": "native-cli",
       "status": "reviewed",

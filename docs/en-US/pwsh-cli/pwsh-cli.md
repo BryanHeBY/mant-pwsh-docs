@@ -206,6 +206,11 @@ license in the document's provenance catalog before adapting material.
 - [certreq](certreq.md): explicit certificate request and acceptance lifecycle.
 - [certutil](certutil.md): certificate, store, chain, and hash diagnostics.
 
+## Windows boot and recovery
+
+- [bcdboot](bcdboot.md): explicit Windows/system partition boot-file repair.
+- [bcdedit](bcdedit.md): BCD store, entry, firmware, and backup boundaries.
+
 ## Cross-platform developer tools
 
 - [git](git.md): repository context, configuration, and native exit codes.
