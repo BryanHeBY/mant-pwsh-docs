@@ -286,7 +286,9 @@ license in the document's provenance catalog before adapting material.
 - [ftp](ftp.md): plaintext legacy FTP, interpreter/script boundaries, active data channels, and artifact verification.
 - [tftp](tftp.md): unauthenticated/unencrypted optional provisioning transfer with explicit octet-mode and trust boundaries.
 - [telnet](telnet.md): optional plaintext terminal client separated from safe TCP reachability and SSH.
+- [tlntadmn](tlntadmn.md): query-first inventory of a legacy Telnet Server without enabling or reconfiguring it.
 - [finger](finger.md): privacy-bounded legacy user-information discovery without enumeration or identity trust.
+- [rexec](rexec.md) / [rsh](rsh.md): deprecated or retired remote-command clients, source verification, and encrypted migration paths.
 
 ## Windows NFS and RPC interoperability
 
@@ -294,6 +296,7 @@ license in the document's provenance catalog before adapting material.
 - [nfsshare](nfsshare.md): NFS export, client, root/anonymous mapping, and NTFS authorization boundaries.
 - [nfsstat](nfsstat.md): cumulative NFS/ONC RPC counters and mounts without destroying the baseline.
 - [showmount](showmount.md): exact-server MOUNT/export discovery with NFSv4 and sensitive-client caveats.
+- [mount](mount.md): Windows Client for NFS export-to-drive mounting with identity, security, locking, and outage semantics.
 - [rpcinfo](rpcinfo.md): ONC RPC portmapper programs, versions, transports, and dynamic-service discovery.
 - [rpcping](rpcping.md): Microsoft RPC Endpoint Mapper/interface binding distinct from ICMP and ONC RPC.
 
@@ -305,6 +308,7 @@ license in the document's provenance catalog before adapting material.
 
 - [mode](mode.md): query-first serial, console, code-page, typematic, and legacy printer-device management.
 - [print](print.md): reviewed text-file submission with exact queue, rendering, spool, and physical-output boundaries.
+- [lpq](lpq.md) / [lpr](lpr.md): exact legacy LPD queue inspection and reviewed text or binary submission.
 - [prncnfg](prncnfg.md): exact-queue configuration inventory through a localized inbox VBScript.
 - [prndrvr](prndrvr.md): printer-driver inventory with INF model, signature, architecture, and broad-removal safeguards.
 - [prnjobs](prnjobs.md) / [prnqctl](prnqctl.md): exact job evidence separated from queue-wide pause, purge, and physical test output.

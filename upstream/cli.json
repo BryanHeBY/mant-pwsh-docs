@@ -2552,6 +2552,51 @@
       ],
       "notes": ["Official sources establish interface/endpoint/auth/proxy syntax and endpoint-mapper-to-dynamic-port behavior; practitioner demand exposes port-135-only confusion. The TLDR uses help, DNS, TCP 135 and one bounded unauthenticated exact-server Endpoint Mapper call, while explicitly distinguishing ICMP and ONC RPC.", "Windows runtime verification remains help/DNS/TCP 135 and one approved exact-server single-iteration verbose Endpoint Mapper call; no credential/proxy/Basic/smart-card/UI/quiet/high-iteration, interface guessing, firewall/dynamic-port, registry, SPN, certificate or service mutation is permitted merely for evidence."]
     },
+    "mount.md": {
+      "kind": "native-cli", "status": "reviewed", "versions": ["optional Windows Client for NFS; protocol, authentication, mapping and locking behavior vary by Windows build and server"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/mount.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=878130&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=989907&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official syntax establishes NFS paths, drive targets, credential prompting, hard/soft, buffers, retry/timeout, locking, case, file mode and sys/Kerberos security options; practitioner cases expose identity mapping, path and remote-locking failures. The TLDR lists/discovers before one explicit reviewed Kerberos-private hard mount.", "Windows runtime verification remains executable resolution and no-argument mount inventory only; no feature, service, identity, mapping, export, credential, mount, lock, ACL or firewall mutation is permitted merely for evidence."]
+    },
+    "lpq.md": {
+      "kind": "legacy-native-cli", "status": "reviewed", "versions": ["optional Windows LPR Port Monitor client; output and queue semantics depend on the remote LPD implementation"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/lpq.md"}],
+      "notes": ["Microsoft requires uppercase -S and -P and defines exact-server/queue query plus detailed output. The TLDR resolves the optional client and queries one exact queue while separating TCP 515 reachability.", "Windows runtime verification remains local help and one approved exact-server/queue query only; protect job metadata and do not submit, cancel, pause, purge, configure or retry anything merely for evidence."]
+    },
+    "lpr.md": {
+      "kind": "legacy-native-cli", "status": "reviewed", "versions": ["optional Windows LPR Port Monitor client; text conversion, binary language and banner behavior depend on the remote LPD queue/device"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/lpr.md"},
+        {"type": "web", "url": "https://learn.microsoft.com/troubleshoot/windows-server/printing/printing-pauses-event-2004-4227-lpr-port", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://learn.microsoft.com/windows/win32/winprog64/file-system-redirector", "license": {"spdx": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=27156706&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=74096719&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=11915241&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Microsoft defines uppercase target/metadata switches, distinguishes text from binary submission, documents the 11-port burst-stall mechanism and WOW64 resolution behavior; practitioner failures expose raw PDF/device-language, periodic-delay and 32-bit service-host traps. The TLDR places help, target query and exact-artifact review before one explicitly reviewed binary submission example.", "Windows runtime verification is executable resolution/help only; no print job, retry, port-monitor registry change or Spooler restart may be performed merely for evidence."]
+    },
+    "rexec.md": {
+      "kind": "legacy-native-cli", "status": "reviewed", "versions": ["deprecated and not guaranteed on current Windows; any discovered same-name executable requires provenance verification"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/rexec.md"}],
+      "notes": ["Microsoft's current page deprecates Rexec and publishes no supported syntax. The page therefore refuses to invent a remote-call recipe and prioritizes path/signature verification plus SSH or WinRM/PowerShell-remoting migration.", "Runtime verification remains command resolution, signature/version and local help only; no remote call, daemon installation/exposure, credential transmission or firewall exception is permitted merely for evidence."]
+    },
+    "rsh.md": {
+      "kind": "legacy-native-cli", "status": "reviewed", "versions": ["retired Subsystem for UNIX-based Applications context; current Windows availability is not guaranteed"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/rsh.md"}],
+      "notes": ["Microsoft's current page describes a retired subsystem, provides no usable syntax and contains a rexec wording inconsistency. The page separates RSH from SSH and PowerShell remoting and makes migration the actionable path.", "Runtime verification remains command resolution, signature/version and local help only; no RSH connection, host-based trust file, privileged-port exception or daemon exposure is permitted merely for evidence."]
+    },
+    "tlntadmn.md": {
+      "kind": "legacy-native-cli-family", "status": "reviewed", "versions": ["legacy optional Windows Telnet Server administration; feature and service availability vary by edition/build"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/tlntadmn.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=916875&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=610794&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official syntax defines no-argument settings, exact remote target, service/session/config families, inline credentials and NTLM/password modes; practitioner security demand reinforces installed-client/server-state versus insecure-use separation. The TLDR is settings/session inventory only.", "Windows runtime verification remains resolution plus local settings and one approved exact-server session list only; no install, enable, service, session, message, configuration, authentication, port, firewall or credential action is permitted merely for evidence."]
+    },
     "git.md": {
       "kind": "native-cli",
       "status": "reviewed",

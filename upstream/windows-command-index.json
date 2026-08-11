@@ -822,12 +822,14 @@
     {
       "name": "lpq",
       "source": "lpq.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/lpq.md"
     },
     {
       "name": "lpr",
       "source": "lpr.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/lpr.md"
     },
     {
       "name": "macfile",
@@ -896,7 +898,8 @@
     {
       "name": "mount",
       "source": "mount.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/mount.md"
     },
     {
       "name": "mountvol",
@@ -1372,7 +1375,8 @@
     {
       "name": "rexec",
       "source": "rexec.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/rexec.md"
     },
     {
       "name": "risetup",
@@ -1412,7 +1416,8 @@
     {
       "name": "rsh",
       "source": "rsh.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/rsh.md"
     },
     {
       "name": "rundll32",
@@ -1744,7 +1749,8 @@
     {
       "name": "tlntadmn",
       "source": "tlntadmn.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/tlntadmn.md"
     },
     {
       "name": "tpmtool",

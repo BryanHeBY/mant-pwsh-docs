@@ -342,12 +342,23 @@ authorization, data-channel or application health.
 Do not install NFS features merely for evidence. Where already installed, keep
 NfsAdmin to config display/lock list, NfsShare to list/get, and NfsStat free of
 `-z`; do not release locks, restart/reconfigure services, change mappings,
-exports, root/anonymous access, counters, mounts, ACLs or firewall rules. Query
-Showmount/RpcInfo only against exact approved NFS servers and protect exported
+exports, root/anonymous access, counters, mounts, ACLs or firewall rules. Resolve
+`mount.exe` and run it without arguments only; do not create or remove a mount.
+Query Showmount/RpcInfo only against exact approved NFS servers and protect exported
 paths/client/mount/program metadata; never broadcast. Keep RpcPing to help and
 one approved exact-server, single-iteration verbose Endpoint Mapper call with
 no alternate/proxy credentials, UI, quiet mode or guessed service claim. Record
 that TCP 135 success does not prove the target interface/dynamic endpoint.
+
+For LPR/LPD, resolve `lpq.exe` and `lpr.exe`, capture local help, and limit
+remote evidence to `lpq` against one exact approved server and queue. Do not
+submit or retry a print job merely for evidence. Record uppercase native switch
+spelling, queue/device identity, TCP 515 reachability separately, and protect
+remote job metadata. For `tlntadmn`, query local settings and at most one exact
+approved server/session list; do not install, enable, start, stop, configure,
+message or end anything, and never pass a password. For deprecated `rexec` and
+retired `rsh`, runtime evidence is executable resolution, signature/version,
+and local help only—never connect to or enable a legacy daemon.
 
 Replace every AD placeholder only with an approved lab or production target
 whose owner has authorized the exact read-only collection. Do not run DCDiag
