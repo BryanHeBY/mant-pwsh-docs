@@ -1168,6 +1168,30 @@
       ],
       "notes": ["Official documentation limits PRINT to text files and port/UNC queue destinations with LPT1 default; community sources show repeated friendly-name and page-layout/raw-language confusion. The TLDR deliberately submits nothing and instead inventories the queue and previews an exact text file; the page covers format/rendering, irreversible output, device identity, completion, duplicates, confidentiality and untrusted content.", "Windows runtime verification remains help, queue/port inventory and inert local file inspection only; no print job, raw byte stream, port mapping, queue/default, driver or spooler mutation is permitted merely for evidence."]
     },
+    "ftp.md": {
+      "kind": "native-cli-family", "status": "reviewed", "versions": ["supported Windows client and server releases; launcher options, script encoding and buffer controls vary by Windows build"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/ftp.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=18643542&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=30591387&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Microsoft defines the launcher, script-file, UTF-8 and interpreter boundaries; high-volume practitioner evidence establishes that quote PASV does not implement a passive client data channel and shows real active-mode hangs. The TLDR opens no FTP connection and directs new work to encrypted clients; the page maps interpreter families and covers plaintext credentials, protocol confusion, binary mode, wildcard/destructive selection, replies/artifacts and script encoding.", "Windows runtime verification remains resolution/help and approved TCP reachability only; no FTP login, credential, script execution, data-channel connection, transfer, rename or deletion is permitted merely for evidence."]
+    },
+    "tftp.md": {
+      "kind": "native-cli", "status": "reviewed", "versions": ["optional Windows TFTP Client feature; availability and servicing vary by Windows edition/build"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/tftp.md"}],
+      "notes": ["Microsoft explicitly documents no authentication/encryption, recommends against installing the client on Internet-connected systems, states that Microsoft no longer provides a server, and defines default ASCII versus -i octet mode. The TLDR only inventories the feature/executable/help and hashes a separately approved artifact; the page covers direction, byte integrity, identity, isolated provisioning, missing transaction/discovery semantics and bounded UDP diagnosis.", "Windows runtime verification remains optional-feature state, resolution and help-only unless an approved isolated non-sensitive fixture exists; do not enable the feature or transfer any file merely for evidence."]
+    },
+    "telnet.md": {
+      "kind": "native-cli", "status": "reviewed", "versions": ["optional Windows Telnet Client feature; console and terminal behavior vary by Windows build and endpoint"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/telnet.md"}],
+      "notes": ["Microsoft documents optional installation, username, logging, escape and terminal-type controls. The TLDR only inventories feature/executable/help and uses a non-Telnet TCP handshake; the page prevents plaintext administration, feature-for-port-test, protocol/TLS misuse, log leakage, indefinite interaction and terminal-type confusion.", "Windows runtime verification remains optional-feature state, resolution/help and approved TCP reachability only; do not enable the feature, negotiate Telnet, send input/credentials or create a transcript merely for evidence."]
+    },
+    "finger.md": {
+      "kind": "native-cli", "status": "reviewed", "versions": ["supported Windows releases where the legacy client remains included; remote daemon and output are endpoint-defined"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/finger.md"}],
+      "notes": ["Microsoft documents remote-defined output, hyphen options, multiple operands and that omitting a username requests all users. The TLDR performs no Finger query; the page covers enumeration/privacy, unverified identity, terminal-control text, option/implementation differences and network exposure.", "Windows runtime verification remains resolution/help, DNS and approved TCP reachability only; do not request one or all users or enable/expose a Finger service merely for evidence."]
+    },
     "cmd.md": {
       "kind": "windows-shell",
       "status": "reviewed",

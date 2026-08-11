@@ -579,7 +579,8 @@
     {
       "name": "finger",
       "source": "finger.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/finger.md"
     },
     {
       "name": "flattemp",
@@ -624,7 +625,8 @@
     {
       "name": "ftp",
       "source": "ftp.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/ftp.md"
     },
     {
       "name": "ftype",
@@ -1681,12 +1683,14 @@
     {
       "name": "telnet",
       "source": "telnet.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/telnet.md"
     },
     {
       "name": "tftp",
       "source": "tftp.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/tftp.md"
     },
     {
       "name": "time",

@@ -115,6 +115,10 @@ bundles.
   TLDRs and explicit serial framing/ownership, console-host, encoding, legacy
   LPT, exact queue, rendering, spool-completion, duplicate and physical-output
   boundaries.
+- Windows FTP, optional TFTP/Telnet, and legacy Finger client guides with
+  connection-free TLDRs and explicit plaintext, passive/active data-channel,
+  script credential, binary integrity, unauthenticated provisioning, feature-
+  installation, terminal/logging, user-enumeration and remote-text boundaries.
 - Windows adapter/DHCP/DNS inspection, bounded ICMP reachability, path tracing,
   path sampling, host identity, and direct DNS-query guides for `ipconfig`,
   `ping`, `tracert`, `pathping`, `hostname`, and `nslookup`.

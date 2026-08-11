@@ -214,6 +214,13 @@ mode.com con codepage /status
 Get-PnpDevice -Class Ports -PresentOnly -ErrorAction SilentlyContinue
 print.exe /?
 Get-Printer -ErrorAction SilentlyContinue
+Get-Command ftp.exe, tftp.exe, telnet.exe, finger.exe -All -ErrorAction SilentlyContinue
+ftp.exe -?
+Get-WindowsOptionalFeature -Online -FeatureName TFTP
+tftp.exe /?
+Get-WindowsOptionalFeature -Online -FeatureName TelnetClient
+telnet.exe /?
+finger.exe /?
 Get-Command echo, cls, prompt -All -ErrorAction SilentlyContinue
 reg.exe query HKCU\Environment
 Get-Command explorer.exe, control.exe, mmc.exe, rundll32.exe -All
@@ -258,6 +265,12 @@ Do not reconfigure a serial/LPT device, console code page/dimensions/typematic
 state, or submit any print/raw-device job merely for evidence. Query only an
 approved inactive COM port; protect printer and BITS inventory as potentially
 sensitive operational data.
+
+Do not enable TFTP/Telnet features, start an FTP/TFTP/Telnet/Finger connection,
+send credentials or input, transfer/delete/rename a file, query remote users, or
+create a plaintext protocol transcript merely for evidence. Approved TCP
+reachability checks do not establish protocol, authentication, encryption,
+authorization, data-channel or application health.
 
 Keep Cmd builtin verification to `help` and PowerShell resolution in the shared
 evidence session. Do not pause for input, change a persistent/current prompt or

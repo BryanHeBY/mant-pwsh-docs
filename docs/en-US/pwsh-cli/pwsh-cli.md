@@ -281,6 +281,13 @@ license in the document's provenance catalog before adapting material.
 - [netsh-wlan](netsh-wlan.md): Wi-Fi interfaces, networks, and profile safety.
 - [netsh-winsock](netsh-winsock.md): provider catalog and autotuning evidence.
 
+## Windows optional and legacy network clients
+
+- [ftp](ftp.md): plaintext legacy FTP, interpreter/script boundaries, active data channels, and artifact verification.
+- [tftp](tftp.md): unauthenticated/unencrypted optional provisioning transfer with explicit octet-mode and trust boundaries.
+- [telnet](telnet.md): optional plaintext terminal client separated from safe TCP reachability and SSH.
+- [finger](finger.md): privacy-bounded legacy user-information discovery without enumeration or identity trust.
+
 ## Windows background transfer
 
 - [bitsadmin](bitsadmin.md): GUID-bound BITS job lifecycle, completion, ownership, security, and artifact-trust boundaries.

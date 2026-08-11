@@ -2,7 +2,7 @@
   "$schema": "release-manifest/v1",
   "release": "v1",
   "locale": "en-US",
-  "requiredDocumentCount": 270,
+  "requiredDocumentCount": 274,
   "sources": {
     "pwsh7": {
       "runtimePlatforms": ["windows", "linux", "macos"],
@@ -182,6 +182,10 @@
         "bitsadmin.md",
         "mode.md",
         "print.md",
+        "ftp.md",
+        "tftp.md",
+        "telnet.md",
+        "finger.md",
         "exit.md",
         "for.md",
         "if.md",
