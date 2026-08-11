@@ -199,7 +199,8 @@
     {
       "name": "change",
       "source": "change.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/change.md"
     },
     {
       "name": "chcp",
@@ -216,17 +217,20 @@
     {
       "name": "chglogon",
       "source": "chglogon.md",
-      "status": "unclassified"
+      "status": "alias",
+      "target": "pwsh-cli/chglogon.md"
     },
     {
       "name": "chgport",
       "source": "chgport.md",
-      "status": "unclassified"
+      "status": "alias",
+      "target": "pwsh-cli/chgport.md"
     },
     {
       "name": "chgusr",
       "source": "chgusr.md",
-      "status": "unclassified"
+      "status": "alias",
+      "target": "pwsh-cli/chgusr.md"
     },
     {
       "name": "chkdsk",
@@ -595,7 +599,8 @@
     {
       "name": "flattemp",
       "source": "flattemp.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/flattemp.md"
     },
     {
       "name": "fondue",
@@ -1816,7 +1821,8 @@
     {
       "name": "tsecimp",
       "source": "tsecimp.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/tsecimp.md"
     },
     {
       "name": "tskill",
@@ -1827,7 +1833,8 @@
     {
       "name": "tsprof",
       "source": "tsprof.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/tsprof.md"
     },
     {
       "name": "type",

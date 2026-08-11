@@ -2,7 +2,7 @@
   "$schema": "release-manifest/v1",
   "release": "v1",
   "locale": "en-US",
-  "requiredDocumentCount": 318,
+  "requiredDocumentCount": 325,
   "sources": {
     "pwsh7": {
       "runtimePlatforms": ["windows", "linux", "macos"],
@@ -104,6 +104,13 @@
         "tscon.md",
         "shadow.md",
         "tskill.md",
+        "change.md",
+        "chglogon.md",
+        "chgport.md",
+        "chgusr.md",
+        "flattemp.md",
+        "tsecimp.md",
+        "tsprof.md",
         "winrm.md",
         "winrs.md",
         "wevtutil.md",

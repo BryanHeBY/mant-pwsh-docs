@@ -10,7 +10,7 @@ bundles.
 
 ### Added
 
-- First English release inventory: 318 reviewed ManT pages across `pwsh7`,
+- First English release inventory: 325 reviewed ManT pages across `pwsh7`,
   `pwsh51`, and `pwsh-cli`.
 - Broad `pwsh7` and `pwsh51` shell manuals, focused language/command pages,
   compatibility guides, and custom `irx` shorthand resolution guidance.
@@ -49,6 +49,10 @@ bundles.
 - Remote Desktop session notification and lifecycle guides for `msg`,
   `tsdiscon`, `logoff`, and `rwinsta`, with explicit owner warning, session-ID
   revalidation, privilege, persistence, and data-loss boundaries.
+- Remote Desktop Session Host maintenance coverage for `change` plus searchable
+  `chglogon`, `chgport`, and `chgusr` replacement names, `flattemp`, `tsecimp`,
+  and `tsprof`, with query-first TLDRs and logon drain, session COM, install-mode,
+  temp isolation, destructive XML, and effective-profile-precedence boundaries.
 - Remote Desktop attach, consent-governed shadowing, and session-process
   termination guides for `tscon`, `shadow`, and `tskill`, including console/
   physical-access, password, privacy, wildcard, PID, and session-ID traps.

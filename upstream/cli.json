@@ -2597,6 +2597,39 @@
       "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/pnpunattend.md"}],
       "notes": ["Microsoft's counterintuitive syntax makes auditsystem an online install unless /s requests search-only, and mixes Windows 7 prerequisites with current applicability. The TLDR preserves /s /l and correlates Driver Store inventory.", "Windows runtime verification remains help and auditsystem /s /l only; no driver-path/PATH/registry, staging/install, device, policy, reboot or removal mutation is permitted merely for evidence."]
     },
+    "change.md": {
+      "kind": "native-cli-family", "status": "reviewed", "versions": ["Windows RD Session Host role; logon/install-mode applicability and legacy COM behavior vary by role/build"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/change.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/change-logon.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/change-port.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/change-user.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=1178262&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=327330&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The family page distinguishes logon disable/drain variants, session-only COM mapping and role-dependent install/execute mapping; practitioner cases expose administrative-RDP versus RDSH confusion and execute-mode restoration. The TLDR is role and three query forms only.", "Windows runtime verification remains query-only; no admission, session mapping, install mode, installer, user, session or reboot mutation is permitted merely for evidence."]
+    },
+    "chglogon.md": {"kind": "native-cli-alias", "status": "reviewed", "versions": ["legacy name replaced by change logon"], "platforms": ["windows"], "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/chglogon.md"}], "notes": ["Searchable replacement page; runtime remains change logon /query only."]},
+    "chgport.md": {"kind": "native-cli-alias", "status": "reviewed", "versions": ["legacy name replaced by change port"], "platforms": ["windows"], "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/chgport.md"}], "notes": ["Searchable replacement page; runtime remains change port /query only."]},
+    "chgusr.md": {"kind": "native-cli-alias", "status": "reviewed", "versions": ["legacy name replaced by change user"], "platforms": ["windows"], "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/chgusr.md"}], "notes": ["Searchable replacement page; runtime remains change user /query only."]},
+    "flattemp.md": {
+      "kind": "native-cli", "status": "reviewed", "versions": ["Windows RD Session Host role; effective temporary paths also depend on policy, profile/home and process/session state"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/flattemp.md"}],
+      "notes": ["Microsoft defines query/enable/disable, session-ID subfolders, shared-folder risk, network-temp failure and separate-folder policy interaction. The TLDR queries setting, role, current effective paths and sessions.", "Windows runtime verification remains query/effective-path inventory only; no flattening, environment, policy, directory, ACL, cleanup or session mutation is permitted merely for evidence."]
+    },
+    "tsecimp.md": {
+      "kind": "legacy-native-cli", "status": "reviewed", "versions": ["Windows TAPI server security tooling; providers, lines and domain behavior depend on installed telephony stack"], "platforms": ["windows"],
+      "sources": [{"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/tsecimp.md"}],
+      "notes": ["Official syntax distinguishes /d inventory, /v no-import validation, /u domain checking and plain import; XML NoMerge/missing LineList/Remove semantics can delete assignments. The TLDR is inventory/hash/parse/validate only.", "Windows runtime verification remains /d and /f on an approved copy with /v only; no import, domain-wide check, Tsec.ini, provider, line, address or user mutation is permitted merely for evidence."]
+    },
+    "tsprof.md": {
+      "kind": "legacy-native-cli", "status": "reviewed", "versions": ["legacy Windows RDS user extension fields; effective profile behavior varies with policy, containers and profile versions"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/tsprof.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=1047494&service=serverfault&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Microsoft defines local/domain query/update/copy of RDS extension fields; practitioner evidence demonstrates stored field versus effective AppData/GPO divergence. The TLDR queries exact users and collects resultant policy.", "Windows runtime verification remains /q for one approved test user and read-only resultant policy; no field copy/update, file/profile/container, ACL, session, GPO or directory mutation is permitted merely for evidence."]
+    },
     "wdsutil.md": {
       "kind": "native-cli-family", "status": "reviewed", "versions": ["Windows Deployment Services role/administration tooling; WDS-only OS deployment is partially deprecated and April 2026 hands-free deployment is secure-disabled/unsupported by default"], "platforms": ["windows"],
       "sources": [

@@ -117,6 +117,11 @@ license in the document's provenance catalog before adapting material.
 - [tscon](tscon.md): attach/switch sessions with destination and credential boundaries.
 - [shadow](shadow.md): consent-governed session viewing or remote control.
 - [tskill](tskill.md): exact-PID session process termination after graceful recovery.
+- [change](change.md): RD Session Host logon admission, session COM mapping, and application install/execute mode.
+- [chglogon](chglogon.md) / [chgport](chgport.md) / [chgusr](chgusr.md): searchable legacy names replaced by the `change` family.
+- [flattemp](flattemp.md): per-session temporary-folder isolation and effective-path verification.
+- [tsecimp](tsecimp.md): TAPI provider/line inventory and XML validation before assignment import.
+- [tsprof](tsprof.md): legacy local/domain RDS profile-field query, update, and copy boundaries.
 
 ## Windows remote management
 

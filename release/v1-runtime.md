@@ -105,6 +105,12 @@ rwinsta.exe /?
 tscon.exe /?
 shadow.exe /?
 tskill.exe /?
+change.exe logon /query
+change.exe port /query
+change.exe user /query
+flattemp.exe /query
+tsecimp.exe /d
+tsprof.exe /q /local "$approvedLocalRdsTestUser"
 winrm.exe help
 winrm.exe get winrm/config/client
 winrm.exe get winrm/config/service
@@ -685,6 +691,12 @@ suppress shadow consent, view/control a user's screen, prompt for another
 user's password, or terminate a process merely for evidence. Any mutation test
 requires a separately approved disposable host/session/process, privacy and
 physical-console review, exact identity revalidation, and recovery plan.
+Keep `change` to `logon /query`, `port /query`, and `user /query`; do not alter
+admission, COM mappings or install mode merely for evidence. Query FlatTemp and
+effective paths only. Keep TSecImp to `/d` plus `/f <approved-copy> /v`; never
+import assignments or use production identity XML. Keep TSProf to `/q` for one
+approved local/domain test user; do not update/copy fields or migrate profile
+files merely for evidence. Protect session, user, path, TAPI and line metadata.
 Keep WinRM/WinRS verification local and query/help-only by default. Record
 client versus service direction, listeners, transport/port/address/certificate,
 authentication, TrustedHosts, plugins/endpoint ACLs, shells, firewall/network
