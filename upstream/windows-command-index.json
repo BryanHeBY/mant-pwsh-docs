@@ -64,7 +64,8 @@
     {
       "name": "at",
       "source": "at.md",
-      "status": "unclassified"
+      "status": "legacy",
+      "target": "pwsh-cli/at.md"
     },
     {
       "name": "atmadm",
@@ -149,12 +150,14 @@
     {
       "name": "bitsadmin",
       "source": "bitsadmin.md",
-      "status": "unclassified"
+      "status": "documented",
+      "target": "pwsh-cli/bitsadmin.md"
     },
     {
       "name": "bootcfg",
       "source": "bootcfg.md",
-      "status": "unclassified"
+      "status": "legacy",
+      "target": "pwsh-cli/bootcfg.md"
     },
     {
       "name": "break",
@@ -165,7 +168,8 @@
     {
       "name": "cacls",
       "source": "cacls.md",
-      "status": "unclassified"
+      "status": "legacy",
+      "target": "pwsh-cli/cacls.md"
     },
     {
       "name": "call",

@@ -1107,6 +1107,49 @@
       ],
       "notes": ["Official sources establish /T versus prompting/set behavior, syntax/privilege, typed formatting, synchronization and Kerberos skew impact; the high-volume community source records locale parsing demand. The TLDR is query-only, captures one instant, converts rather than relabels UTC and inspects W32Time.", "Windows runtime verification remains time /T, typed Get-Date and W32Time queries only; no system clock, timezone, service, source, policy or synchronization change is permitted merely for evidence."]
     },
+    "at.md": {
+      "kind": "native-cli", "status": "reviewed", "versions": ["legacy Windows Schedule-service interface; current target-local help can deprecate it in favor of Task Scheduler"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/at.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/schtasks.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=68831051&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["The online AT reference still documents the legacy scheduler while current installed help can explicitly deprecate it; the community source records active migration demand. The TLDR is inventory-only and directs new work to Task Scheduler; the page covers all-job deletion, principal/context, desktop/network paths, parse layers, clock semantics, duration and migration verification.", "Windows runtime verification remains executable/help and read-only AT/Task Scheduler inventory; no task creation, edit, run or deletion is permitted merely for evidence."]
+    },
+    "cacls.md": {
+      "kind": "native-cli", "status": "reviewed", "versions": ["deprecated on supported Windows client and server releases; use ICACLS or supported ACL APIs"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/cacls.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/icacls.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=2928738&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=52103763&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Microsoft explicitly deprecates CACLS for ICACLS; high-demand questions show persistent grant/replace and inheritance/lockout confusion. The TLDR performs resolution and read-only ACL inspection only; the page covers explicit versus inherited ACEs, recursion versus propagation, SID identity, effective access, reparse points, recovery identities and rollback.", "Windows runtime verification remains help and exact inert read-only ACL display; no ownership, DACL, SACL, inheritance or recursive mutation is permitted merely for evidence."]
+    },
+    "bootcfg.md": {
+      "kind": "native-cli", "status": "reviewed", "versions": ["legacy NT loader and Boot.ini generation; Windows Vista and later use BCD and BCDEdit"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/bootcfg.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/bcdedit.md"}
+      ],
+      "notes": ["The BOOTCFG page describes Boot.ini even under a current applicability banner; Microsoft's BCDEdit page explicitly states that BCD replaces Boot.ini and BCDEdit is primary for Vista and later. The TLDR is discovery/query-only and the page maps legacy families without pretending their IDs/switches translate to BCD.", "Windows runtime verification remains resolution/help and query-only on an explicitly identified compatible legacy fixture or BCD host; no boot store, Boot.ini, firmware, debugger, EMS, integrity or timeout mutation is permitted merely for evidence."]
+    },
+    "bitsadmin.md": {
+      "kind": "native-cli-family", "status": "reviewed", "versions": ["supported Windows releases where BITSAdmin is included; switches, BITS service policy and job visibility vary by build, identity and elevation"], "platforms": ["windows"],
+      "sources": [
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/bitsadmin.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/bitsadmin-list.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/bitsadmin-info.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/bitsadmin-listfiles.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/bitsadmin-complete.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/bitsadmin-reset.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/bitsadmin-setnotifycmdline.md"},
+        {"type": "git", "baseline": "windowsserverdocs", "path": "WindowsServerDocs/administration/windows-commands/bitsadmin-takeownership.md"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=20993417&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"},
+        {"type": "web", "url": "https://stackprinter.appspot.com/export?question=15751498&service=stackoverflow&language=en&hideAnswers=false&showAll=true&width=640", "license": {"spdx": "CC-BY-SA-4.0", "url": "https://stackoverflow.com/help/licensing"}, "checkedAt": "2026-08-11"}
+      ],
+      "notes": ["Official documentation establishes nonunique display names, GUID identity, owner/elevation visibility and the broad switch surface; community sources show repeated explicit-completion and stale-object/error-state failures. The TLDR is current-user GUID-bound inventory only; the page maps discovery, lifecycle, network/authentication, execution/ownership and cache/peer/service families plus incident-response and artifact-trust boundaries.", "Windows runtime verification remains current-user list/help and exact reviewed-job read-only info/listfiles only; no create, add, transfer, resume, suspend, complete, cancel, reset, ownership, notification, credential, header, proxy, peer/cache or service mutation is permitted merely for evidence."]
+    },
     "cmd.md": {
       "kind": "windows-shell",
       "status": "reviewed",

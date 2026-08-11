@@ -98,6 +98,7 @@ license in the document's provenance catalog before adapting material.
 - [where](where.md): Windows executable lookup versus PowerShell resolution.
 - [robocopy](robocopy.md): safe previews, mirror risk, and special exit codes.
 - [schtasks](schtasks.md): task definition, principal, trigger, action, and result identity.
+- [at](at.md): legacy Schedule-service inventory and explicit Task Scheduler migration.
 - [sc.exe](sc.md): SCM runtime, configuration, security, and control boundaries.
 - [net.exe](net.md): account, SMB client/server, service, discovery, and legacy command boundaries.
 
@@ -280,6 +281,10 @@ license in the document's provenance catalog before adapting material.
 - [netsh-wlan](netsh-wlan.md): Wi-Fi interfaces, networks, and profile safety.
 - [netsh-winsock](netsh-winsock.md): provider catalog and autotuning evidence.
 
+## Windows background transfer
+
+- [bitsadmin](bitsadmin.md): GUID-bound BITS job lifecycle, completion, ownership, security, and artifact-trust boundaries.
+
 ## Windows installation, servicing, and drivers
 
 - [msiexec](msiexec.md): package identity, logging, waiting, and restart codes.
@@ -298,6 +303,7 @@ license in the document's provenance catalog before adapting material.
 - [gpupdate](gpupdate.md): scoped policy refresh after preserving RSoP evidence.
 - [secedit](secedit.md): validate/export/analyze security templates before apply.
 - [icacls](icacls.md): DACL display, verification, backup, and inheritance safety.
+- [cacls](cacls.md): deprecated ACL syntax and ICACLS migration without inheritance/lockout mistakes.
 - [takeown](takeown.md): exact-object ownership recovery separate from access.
 - [cipher](cipher.md): EFS identity, recovery, scope, and free-space boundaries.
 - [certreq](certreq.md): explicit certificate request and acceptance lifecycle.
@@ -307,6 +313,7 @@ license in the document's provenance catalog before adapting material.
 
 - [bcdboot](bcdboot.md): explicit Windows/system partition boot-file repair.
 - [bcdedit](bcdedit.md): BCD store, entry, firmware, and backup boundaries.
+- [bootcfg](bootcfg.md): legacy Boot.ini families versus modern BCD identity and recovery.
 - [chkdsk](chkdsk.md): filesystem scan, repair mode, and result-code handling.
 - [chkntfs](chkntfs.md): startup check scheduling and exclusion policy.
 - [defrag](defrag.md): media-aware optimization, retrim, tiers, and scope.

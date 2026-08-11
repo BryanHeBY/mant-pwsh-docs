@@ -197,6 +197,17 @@ cmd.exe /d /c "date /t"
 cmd.exe /d /c "time /t"
 Get-CimInstance Win32_OperatingSystem | Select-Object Caption, Version, BuildNumber, OSArchitecture
 Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion' | Select-Object ProductName, DisplayVersion, CurrentBuildNumber, UBR
+Get-Command at.exe, cacls.exe, icacls.exe, bootcfg.exe, bcdedit.exe, bitsadmin.exe -All -ErrorAction SilentlyContinue
+at.exe /?
+at.exe
+cacls.exe /?
+icacls.exe /?
+bootcfg.exe /?
+bootcfg.exe /query
+bcdedit.exe /enum all /v
+bitsadmin.exe /?
+bitsadmin.exe /list /verbose
+Get-BitsTransfer -ErrorAction SilentlyContinue
 Get-Command echo, cls, prompt -All -ErrorAction SilentlyContinue
 reg.exe query HKCU\Environment
 Get-Command explorer.exe, control.exe, mmc.exe, rundll32.exe -All
@@ -230,6 +241,12 @@ Do not change VERIFY state, system date/time, time zone, Windows Time service,
 source, policy, or synchronization merely for evidence; do not run BREAK with
 output redirection. Record localized display and missing inventory fields as
 observations rather than changing the host to match an example.
+
+Do not create, edit, run or delete an AT/Task Scheduler job; mutate any ACL,
+ownership or inheritance; edit Boot.ini/BCD/firmware; or create, resume,
+complete, cancel, reset, take ownership of, or otherwise mutate a BITS job merely
+for evidence. BITS all-users inventory also requires a separate data-handling
+review because URLs, paths, owners and headers can be sensitive.
 
 Keep Cmd builtin verification to `help` and PowerShell resolution in the shared
 evidence session. Do not pause for input, change a persistent/current prompt or

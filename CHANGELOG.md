@@ -107,6 +107,10 @@ bundles.
   MS-DOS BREAK compatibility guides plus query-first system date/time guides,
   with explicit PowerShell/native resolution, Windows 11 detection, invariant
   timestamp, rollover, redirection, synchronization, and Kerberos safeguards.
+- Legacy AT scheduler, deprecated CACLS, and Boot.ini-era BOOTCFG migration
+  guides plus a current BITSAdmin family guide, with query-only TLDRs and
+  explicit task principal, ACL inheritance, BCD identity, GUID/job completion,
+  delayed execution, ownership, credential, and artifact-trust boundaries.
 - Windows adapter/DHCP/DNS inspection, bounded ICMP reachability, path tracing,
   path sampling, host identity, and direct DNS-query guides for `ipconfig`,
   `ping`, `tracert`, `pathping`, `hostname`, and `nslookup`.
