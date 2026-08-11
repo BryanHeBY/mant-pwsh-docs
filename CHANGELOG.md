@@ -10,7 +10,7 @@ bundles.
 
 ### Added
 
-- First English release inventory: 367 reviewed ManT pages across `pwsh7`,
+- First English release inventory: 390 reviewed ManT pages across `pwsh7`,
   `pwsh51`, `windows-tools`, and `cross-platform-tools`.
 - Separate Windows and cross-platform tool sources with semantic entry pages,
   independent installation, provenance catalogs, and explicit cross-source
@@ -109,6 +109,11 @@ bundles.
 - Searchable Windows GUI management entries for `taskmgr`, `resmon`, `eventvwr`,
   and `compmgmt`, with live-snapshot, raw-event, per-snap-in target, and
   structured-automation boundaries.
+- Searchable Windows version, malicious-software removal, Resultant Set of
+  Policy, Component Services, WMI Control, Print Management, and Remote
+  Assistance entries, with complete MSRT switches, effective-policy limits,
+  typed automation alternatives, identity/consent safeguards, and optional-
+  component boundaries.
 - Searchable Device Manager, Disk Management, Services, and Optional Features
   entries, with device-instance, unique-disk, SCM identity, and feature-versus-
   capability safeguards.
@@ -161,6 +166,9 @@ bundles.
   UID/GID/root/anonymous, export/NTFS, NFS version/MOUNT, cumulative-counter,
   portmapper/Endpoint Mapper, dynamic-port, interface, credential, broadcast,
   lock-release, and counter-reset boundaries.
+- Complete semantic outline coverage for Server/Client for NFS equals-bearing
+  configuration fields such as `auditlocation=`, `nfsprotocol=`,
+  `fileaccess=`, and `timeout=`.
 - Windows Client for NFS mounting, LPR/LPD queue inspection/submission, Telnet
   Server inventory, and deprecated Rexec/RSH migration guides for `mount`,
   `lpq`, `lpr`, `tlntadmn`, `rexec`, and `rsh`, with prerequisite-first TLDRs

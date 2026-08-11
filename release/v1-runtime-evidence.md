@@ -64,6 +64,63 @@ Installed native-tool versions were:
 | tar | GNU tar 1.35 |
 | dotnet | unavailable on this host |
 
+## Linux evidence refresh — 2026-08-12
+
+Environment: Arch Linux `7.1.6-arch1-1` on x86-64, PowerShell 7.6.3
+(`Core`, `Unix`), and ManT 0.6.0. ManT fetched the remote Git sources at
+repository revision `43e1e9ddf58e571e66c9d954062f7db8df7584a7` and reported:
+
+| Source | Documents |
+| --- | ---: |
+| `pwsh7` | 30 |
+| `pwsh51` | 30 |
+| `windows-tools` | 324 |
+| `cross-platform-tools` | 6 |
+
+The complete portable release, strict content, concise-syntax, and upstream
+checks passed for 390 documents. They exposed 3,594 semantic entries from 585
+explicit declarations with no flagged content or option-entry gaps.
+
+Remote-source ManT queries verified the current suffix and semantic models:
+
+```text
+mant pwsh7 --source pwsh7 --outline=sections --format json
+mant iex --source pwsh7 --explain=-Command --format json
+mant mrt.exe --source windows-tools --explain=/F:Y --format json
+mant nfsadmin.exe --source windows-tools --explain=timeout= --format json
+mant git --source cross-platform-tools --explain=status --format json
+```
+
+The excerpts resolved to `-Command`, `/F:y` (through the insensitive `/F:Y`
+selector), `timeout=`, and the `git status` command entry. This confirms that
+PowerShell parameters, Windows slash/fixed-value options, bare equals-bearing
+Windows options, executable suffixes, and cross-platform subcommands remain
+addressable from the installed remote sources.
+
+PowerShell runtime checks returned:
+
+```json
+{
+  "Version": "7.6.3",
+  "Edition": "Core",
+  "Platform": "Unix",
+  "Aliases": {
+    "irm": "Invoke-RestMethod",
+    "iwr": "Invoke-WebRequest",
+    "iex": "Invoke-Expression"
+  },
+  "Irx": 0,
+  "Curl": ["/usr/bin/curl"],
+  "PipelineType": "DirectoryInfo"
+}
+```
+
+This fresh run reconfirms the representative alias, `irx`, native `curl`, and
+object-pipeline behaviors on this Linux host. Installed
+native-tool versions were Git 2.55.0, OpenSSH 10.4p1 with OpenSSL 3.6.3, curl
+8.21.0, and GNU tar 1.35. The .NET CLI remains unavailable, so its Linux
+runtime row remains pending despite portable document validation passing.
+
 ## Pending evidence
 
 | Requirement | State |

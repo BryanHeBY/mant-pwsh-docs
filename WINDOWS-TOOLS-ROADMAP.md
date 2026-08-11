@@ -51,8 +51,12 @@ Every Windows page will identify one of these availability classes:
 
 ## Page granularity and filenames
 
-- Use the executable or cmd-builtin spelling for a top-level page, omitting
-  `.exe` from the filename.
+- Retain the canonical suffix for every Windows entry-point document, including
+  `.exe`, `.com`, `.msc`, `.cpl`, and `.vbs`. On Windows, ManT may resolve an
+  extensionless query through its exact-name-first `PATHEXT` model; on macOS
+  and Linux the explicitly suffixed document name is required.
+- Keep Cmd builtins, URI schemes, conceptual topics, multi-program families,
+  aliases without a native suffix, and focused subcommand pages unsuffixed.
 - Give common aliases their own small lookup page when users are likely to run
   `mant ALIAS`; link to the canonical document instead of duplicating detail.
 - Prefix interactive subcommands with the host name, for example
@@ -60,8 +64,9 @@ Every Windows page will identify one of these availability classes:
 - Add separate subcommand pages when an operation is destructive, has a large
   parameter surface, has a distinct success contract, or is commonly queried.
   Summarize the remaining subcommands and parameters in the family overview.
-- Use stable semantic names for URI and GUI pages, such as `ms-settings.md` and
-  `explorer.md`.
+- Use the actual entry-point identity for GUI pages, such as `explorer.exe.md`,
+  `services.msc.md`, and `appwiz.cpl.md`; keep URI topics such as
+  `ms-settings.md` unsuffixed.
 - Keep all published files flat within `docs/en-US/windows-tools` for ManT.
 
 ## Required page content
