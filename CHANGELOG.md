@@ -10,10 +10,14 @@ bundles.
 
 ### Added
 
+- Exactly one reader-visible evidence disposition on every published page:
+  385 bounded `Runtime evidence` sections and 9 explicit `Verification
+  boundary` sections, enforced by validation and supported by authoring
+  guidance plus conservative templates.
 - ManT protocol v6 semantic entries for PowerShell variables, including
   automatic-variable lookup in both shell editions, and fixed attached native
   options such as `/F:Y` and `perf=default`.
-- First English release inventory: 390 reviewed ManT pages across `pwsh7`,
+- First English release inventory: 394 reviewed ManT pages across `pwsh7`,
   `pwsh51`, `windows-tools`, and `cross-platform-tools`.
 - Separate Windows and cross-platform tool sources with semantic entry pages,
   independent installation, provenance catalogs, and explicit cross-source
