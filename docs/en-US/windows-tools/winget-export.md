@@ -74,6 +74,13 @@ installer availability by architecture/locale, or be blocked by policy. Record
 the source identity and archive approved installers separately when the
 deployment requires reproducible artifacts.
 
+## PowerShell considerations
+
+The JSON is written to the path, while warnings and progress remain native
+console streams. Check `$LASTEXITCODE` before reading the file and use
+`Get-Content -Raw | ConvertFrom-Json`; line-by-line pipeline input is not one
+complete JSON document.
+
 ## Common mistakes
 
 ### Calling the export a system backup
@@ -87,6 +94,12 @@ addition to this package list.
 A zero exit status does not mean every installed application was represented.
 Preserve stdout/stderr and reconcile the exported IDs against a separate
 installed-software inventory.
+
+## Version and availability
+
+Schema fields and source matching depend on the installed WinGet client and
+configured catalogs. Validate the file against the schema shipped with the
+target client when it crosses machines or long time periods.
 
 ## Verification boundary
 

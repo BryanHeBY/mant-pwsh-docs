@@ -105,6 +105,13 @@ and removes nondefault sources; it can also cause agreements to be presented
 again. Export and review current state first, name the target whenever
 possible, and verify the resulting source inventory.
 
+## PowerShell considerations
+
+Most source output is localized display text. Only `source export` has the
+documented JSON contract; check `$LASTEXITCODE` before piping that stdout to
+`ConvertFrom-Json`. Quote headers and URLs as single arguments and avoid
+persisting credentials in command history.
+
 ## Common mistakes
 
 ### Treating `trusted` as certificate verification

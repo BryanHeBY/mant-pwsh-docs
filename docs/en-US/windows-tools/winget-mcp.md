@@ -92,6 +92,12 @@ Before allowing an agent to call `install-winget-package`, require it to:
 MCP tool results are structured protocol data, but package metadata and
 installer behavior still come from configured WinGet sources and publishers.
 
+## PowerShell considerations
+
+`winget mcp` emits JSON-shaped configuration as native stdout, not a PowerShell
+object. Capture it only after checking `$LASTEXITCODE`; preserve backslashes and
+the absolute command string when moving it into an MCP client's JSON file.
+
 ## Common mistakes
 
 ### Confusing package MCP with documentation MCP

@@ -86,6 +86,12 @@ if ($LASTEXITCODE -ne 0) { throw "Import failed: $LASTEXITCODE" }
 Reconcile each requested package after the run. A batch-level success result
 does not replace application-specific health checks.
 
+## PowerShell considerations
+
+Resolve the JSON path before invocation and pass it as one native argument.
+WinGet does not accept package-list objects from the PowerShell pipeline;
+serialize reviewed JSON to a file, then check `$LASTEXITCODE` immediately.
+
 ## Common mistakes
 
 ### Using `--ignore-unavailable` without recording omissions
@@ -102,6 +108,12 @@ approved artifacts when repeatability is required.
 
 It controls WinGet prompts, not every publisher installer's UI/reboot contract.
 Test each exact package on a representative fixture.
+
+## Version and availability
+
+Accepted package-list schemas, source authentication, installer selection, and
+agreement behavior depend on the target WinGet version and configured sources.
+Test the same file with the production client before broad deployment.
 
 ## Verification boundary
 

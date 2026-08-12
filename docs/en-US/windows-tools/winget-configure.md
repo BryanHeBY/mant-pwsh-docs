@@ -105,6 +105,12 @@ Agreement acceptance records a decision; it is not a trust control. Use a
 disposable test machine before fleet deployment and verify final resource
 state independently.
 
+## PowerShell considerations
+
+WinGet is a native process: pass the resolved file path as one argument and
+check `$LASTEXITCODE` immediately. Its progress and diagnostic text are not
+PowerShell objects; preserve logs rather than parsing localized console tables.
+
 ## Common mistakes
 
 ### Treating configuration as a package list
