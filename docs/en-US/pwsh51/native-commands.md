@@ -87,11 +87,14 @@ terminating PowerShell error. Check the value immediately and define the
 program-specific success rule:
 
 ```powershell
-& robocopy.exe .\source .\target /E
+& robocopy.exe .\source .\target /E /L
 if ($LASTEXITCODE -gt 7) {
     throw "robocopy failed with exit code $LASTEXITCODE"
 }
 ```
+
+`/L` makes this a list-only preview, so the example doesn't copy or delete
+files. Remove it only after reviewing the resolved paths and intended changes.
 
 Do not blindly treat every nonzero result as failure: some Windows tools use
 nonzero values for warnings, differences, or successful work. Consult the
@@ -110,6 +113,23 @@ and test redirection with the installed Windows PowerShell host.
 This page targets Windows PowerShell 5.1 and the Windows process command-line
 model. PowerShell 7 changed native argument passing and some redirection
 behavior; native utility availability also varies by Windows release.
+
+## Runtime evidence
+
+Windows PowerShell 5.1.26100.8875 confirmed bare-name alias collisions,
+separate exact executable discovery, native exit code `7`, and the legacy
+mixed-stderr boundary: under stopping error policy, `2>&1` entered `catch` with
+`NativeCommandError`, while a scoped `Continue` capture completed with one
+`ErrorRecord` and exit code `7`. The probes used only `cmd.exe` without an
+operational operand. Target-specific quoting, stdin encodings, other native
+programs, and Windows builds remain outstanding.
+
+If a native producer's exit code matters, do not shorten its live output with
+`Select-Object -First`. Early downstream closure can make a command that was
+still writing observe a broken pipe. The recorded `tasklist.exe` probe printed
+three plausible CSV rows and then left `$LASTEXITCODE = -1`; complete bounded
+capture returned `0`. Drain both redirected streams concurrently, wait for the
+process, record status, and summarize the captured text afterward.
 
 ## Related documents
 

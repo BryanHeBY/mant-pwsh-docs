@@ -146,6 +146,13 @@ mant pwsh51 --source pwsh51 --node native-commands
 mant pwsh51 --source pwsh51 --search=LASTEXITCODE
 ```
 
+## Verification boundary
+
+This page is a navigation and retrieval index, not a runtime-behavior claim.
+Repository validation checks its structure, links, semantic declarations, and
+ManT parsing. Runtime evidence and any remaining platform boundary belong to
+the linked command and shell pages.
+
 ## Related documents
 
 - [Windows PowerShell 5.1 shell and language](pwsh51.md)

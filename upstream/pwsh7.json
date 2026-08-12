@@ -13,23 +13,23 @@
       "type": "git",
       "repository": "https://github.com/MicrosoftDocs/PowerShell-Docs.git",
       "branch": "main",
-      "revision": "48b3cad41a1fc0c6e7e41991edb4d4cca7357382",
+      "revision": "6f52659e0ecae0a7e1fc567ab6ce094808e1d044",
       "license": {
         "spdx": "CC-BY-4.0",
         "url": "https://github.com/MicrosoftDocs/PowerShell-Docs/blob/main/LICENSE.md"
       },
-      "retrievedAt": "2026-08-11"
+      "retrievedAt": "2026-08-12"
     },
     "powershell": {
       "type": "git",
       "repository": "https://github.com/PowerShell/PowerShell.git",
       "branch": "master",
-      "revision": "dba85f8b5dc99ef13875b1cb64cd17756a61ebf6",
+      "revision": "3ff3c711bf54a18f8440f3c5190c3ac91cdc5852",
       "license": {
         "spdx": "MIT",
         "url": "https://github.com/PowerShell/PowerShell/blob/master/LICENSE.txt"
       },
-      "retrievedAt": "2026-08-11"
+      "retrievedAt": "2026-08-12"
     }
   },
   "documents": {
@@ -73,7 +73,7 @@
       ],
       "notes": [
         "The shell manual is original project text synthesized from the listed official topics rather than a copy of one upstream page.",
-        "Launcher and selected language behavior were checked with PowerShell 7.6.3 on Linux; Windows and macOS verification remains outstanding."
+        "Launcher and selected language behavior were checked with PowerShell 7.6.3 on Linux and PowerShell 7.6.4 on Windows; macOS and remaining platform-specific behavior remain outstanding."
       ]
     },
     "powershell-7-docs.md": {
@@ -101,7 +101,8 @@
       ],
       "notes": [
         "This document is the navigation index; pwsh7.md is the primary shell and language manual.",
-        "Alias availability must be checked at runtime for each targeted release and platform."
+        "Alias availability must be checked at runtime for each targeted release and platform.",
+        "The navigation index introduces no separate runtime behavior; evidence and remaining platform boundaries belong to the linked pages."
       ]
     },
     "pwsh.md": {
@@ -124,7 +125,7 @@
       ],
       "notes": [
         "The page is an original task-oriented adaptation of the launcher reference.",
-        "Launcher help and selected exit behavior were checked with PowerShell 7.6.3 on Linux; Windows and macOS verification remains outstanding."
+        "Launcher help and selected exit behavior were checked with PowerShell 7.6.3 on Linux and PowerShell 7.6.4 on Windows; macOS and remaining platform-specific behavior remain outstanding."
       ]
     },
     "about_Parsing.md": {
@@ -147,7 +148,7 @@
       ],
       "notes": [
         "The page distinguishes cross-platform parsing from the Windows-only stop-parsing token.",
-        "Runtime examples require verification on all declared platforms."
+        "PowerShell 7.6.3 Linux and 7.6.4 Windows smoke evidence covers the parsing examples; macOS remains pending. Windows catalog harnesses demonstrated two whitespace failures: variable/parameter merging can fail a read before plausible downstream null/default counts, while Where-Object document-eq$name remains syntactically valid but silently selects zero rows. The shared guidance now requires explicit predicates, fail-fast reads, and expected coverage invariants."
       ]
     },
     "about_Quoting_Rules.md": {
@@ -170,7 +171,7 @@
       ],
       "notes": [
         "The page is original guidance emphasizing literal data and native-command boundaries.",
-        "Culture and target-native-parser examples require verification on all declared platforms."
+        "PowerShell 7.6.4 on Windows confirmed indexed interpolation versus subexpression selection, invariant interpolation versus de-DE ToString conversion with culture restoration, and literal child source; Linux parser evidence also covers the page. macOS, here-string and smart-quote edges, Unicode, and target-native parsers remain outstanding."
       ]
     },
     "about_Pipelines.md": {
@@ -189,11 +190,37 @@
           "type": "git",
           "baseline": "powershell-docs",
           "path": "reference/7.6/Microsoft.PowerShell.Core/About/about_Pipelines.md"
+        },
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Core/About/about_Operators.md"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/powershell/scripting/learn/deep-dives/everything-about-null?view=powershell-7.6",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://learn.microsoft.com/legal/termsofuse"
+          },
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/powershell/module/microsoft.powershell.management/new-item?view=powershell-7.6",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://learn.microsoft.com/legal/termsofuse"
+          },
+          "checkedAt": "2026-08-12"
         }
       ],
       "notes": [
         "The page treats cmdlet object pipelines and native-command boundaries separately.",
-        "Native pipe and byte-stream behavior requires verification on all declared platforms."
+        "PowerShell 7.6.4 on Windows confirmed the documented native-byte boundary, bounded Export-Csv no-clobber fixture, and the fact that uncaptured .NET/cmdlet success results contaminate enclosing output unless precisely captured or suppressed; macOS and remaining Linux platform behavior remain outstanding.",
+        "PowerShell 7.6.4 parser evidence on 2026-08-12 confirmed that a bare foreach statement before a pipe raises EmptyPipeElement, while array/subexpression wrapping and an invoked script block each pass the two emitted objects to Measure-Object.",
+        "A ManT-result audit falsely counted one diagnostic because an omitted optional property produced null and @($null) is a one-element array. PowerShell 7.6.4 confirmed wrapped=1, direct null Count=0, and a property/value-gated count=0; the page now makes this Agent evidence boundary searchable.",
+        "Runtime metadata and the official New-Item reference confirm Path exists but LiteralPath does not. The corrected output-suppression example uses -Path and requires target validation; the smoke suite locks this distinction."
       ]
     },
     "about_Redirection.md": {
@@ -212,11 +239,22 @@
           "type": "git",
           "baseline": "powershell-docs",
           "path": "reference/7.6/Microsoft.PowerShell.Core/About/about_Redirection.md"
+        },
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Core/About/about_Character_Encoding.md"
+        },
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Core/About/about_Preference_Variables.md"
         }
       ],
       "notes": [
         "The page separates stream routing from error and native exit-status policy.",
-        "Native redirection behavior requires verification on all declared platforms."
+        "PowerShell 7.6.4 on Windows confirmed the documented native-byte boundary and overwrite behavior; macOS and remaining Linux platform behavior remain outstanding.",
+        "A 2026-08-12 isolated cmd.exe probe wrote one stderr line and returned 7. With ErrorActionPreference Stop, 2>&1, and PSNativeCommandUseErrorActionPreference false, PowerShell 7.6.4 completed the assignment with one ErrorRecord and preserved LASTEXITCODE 7; no file or system state changed."
       ]
     },
     "about_Automatic_Variables.md": {
@@ -238,8 +276,8 @@
         }
       ],
       "notes": [
-        "The page distinguishes PowerShell success state from native process exit status.",
-        "Runtime examples require verification on all declared platforms."
+        "The page indexes all 47 automatic-variable headings in the locked PowerShell 7.6 source and distinguishes PowerShell success state from native process exit status.",
+        "PowerShell 7.6.4 on Windows confirmed the stable platform and language-context examples. In an ordinary non-debugger session, ConsoleFileName and PSDebugContext were absent rather than present with null values; macOS, Linux, debugger, event, remoting, and legacy console-file contexts remain outstanding."
       ]
     },
     "about_Profiles.md": {
@@ -262,7 +300,7 @@
       ],
       "notes": [
         "The page is original guidance emphasizing reproducible automation and profile safety.",
-        "Profile paths and host behavior require verification on all declared platforms."
+        "PowerShell 7.6.4 in a clean Windows NoProfile process confirmed that PROFILE is a string equal to CurrentUserCurrentHost and exposes all four documented profile-path properties. No profile file was read or created; loading order, host behavior, policy, remoting, macOS, Linux, and other configurations remain outstanding."
       ]
     },
     "about_Functions.md": {
@@ -285,7 +323,7 @@
       ],
       "notes": [
         "The page is original guidance emphasizing stable parameter contracts and streaming pipeline input.",
-        "Runtime examples require verification on all declared platforms."
+        "PowerShell 7.6.4 on Windows confirmed advanced-function begin/process/end timing and that an unsuppressed collection Add return value contaminates normal output. The in-memory language behavior remains to be repeated on macOS and Linux."
       ]
     },
     "native-commands.md": {
@@ -308,7 +346,7 @@
       ],
       "notes": [
         "This is an original guide, not an official about-topic name; its upstream source covers native-command parsing behavior.",
-        "Argument passing, byte-stream behavior, and command resolution require verification on all declared platforms."
+        "PowerShell 7.6.4 on Windows confirmed native resolution, Windows argument mode, exit and merged-error boundaries, BOM-less UTF-8, and exact redirected bytes; Linux 7.6.3 covered selected native resolution and exit behavior. macOS, remaining Linux encoding cases, stdin, target parsers, and arbitrary tools remain outstanding."
       ]
     },
     "Get-Command.md": {
@@ -327,11 +365,21 @@
           "type": "git",
           "baseline": "powershell-docs",
           "path": "reference/7.6/Microsoft.PowerShell.Core/Get-Command.md"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/powershell/scripting/developer/cmdlet/cmdlet-dynamic-parameters?view=powershell-7.6",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
         }
       ],
       "notes": [
         "The page emphasizes command precedence and source discovery in cross-platform sessions.",
-        "Availability examples require verification on all declared platforms."
+        "PowerShell 7.6.4 in a clean Windows NoProfile process confirmed alias precedence over a same-name function, ordered All results, and a nonempty Syntax view. The suite also checks core command, Windows alias, native-name, and documented-option metadata; module, provider, PATH, macOS, and Linux variance remains outstanding.",
+        "The dual-edition NoProfile provider fixture passes 14/14: fixed built-in paths return the documented provider object types; FileSystem, Registry, and Certificate expose different dynamic parameters; Get-Help -Path Cert:\\ returns provider-customized help; and Get-PSDrive can change later provider discovery by loading Microsoft.PowerShell.Security. It emits no environment value, registry data, certificate, or user path and performs no provider mutation or network access."
       ]
     },
     "Get-Help.md": {
@@ -350,11 +398,21 @@
           "type": "git",
           "baseline": "powershell-docs",
           "path": "reference/7.6/Microsoft.PowerShell.Core/Get-Help.md"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_providers?view=powershell-7.6",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
         }
       ],
       "notes": [
         "The page distinguishes installed help, online help, and downloadable help content.",
-        "Module help availability requires verification on all declared platforms."
+        "PowerShell 7.6.4 in a clean Windows NoProfile process confirmed named parameter help and syntax fallback for an in-memory function without detailed help. The probe performed no update, GUI, network, or profile-content operation; provider, downloadable, GUI, macOS, and Linux help remains outstanding.",
+        "The dual-edition NoProfile provider fixture passes 14/14: fixed built-in paths return the documented provider object types; FileSystem, Registry, and Certificate expose different dynamic parameters; Get-Help -Path Cert:\\ returns provider-customized help; and Get-PSDrive can change later provider discovery by loading Microsoft.PowerShell.Security. It emits no environment value, registry data, certificate, or user path and performs no provider mutation or network access."
       ]
     },
     "Get-Member.md": {
@@ -377,7 +435,7 @@
       ],
       "notes": [
         "The page emphasizes object inspection before formatting or property access.",
-        "Object-type examples require verification on all declared platforms."
+        "PowerShell 7.6.4 on Windows confirmed an in-memory custom object exposes Name and Count before formatting, while Format-Table output exposes formatting-system records instead. Platform/provider-specific types remain outstanding."
       ]
     },
     "Where-Object.md": {
@@ -400,7 +458,7 @@
       ],
       "notes": [
         "The page emphasizes pure filtering predicates and source-side filtering when available.",
-        "Input-object examples require verification on all declared platforms."
+        "PowerShell 7.6.4 on Windows confirmed -InputObject evaluates a three-item array once while pipeline input evaluates its three members and selects the two enabled objects. Provider-specific filtering and macOS/Linux repetition remain outstanding."
       ]
     },
     "ForEach-Object.md": {
@@ -423,7 +481,7 @@
       ],
       "notes": [
         "The page distinguishes streaming use from side-effectful actions and parallel execution.",
-        "Parallel and input-object examples require verification on all declared platforms."
+        "PowerShell 7.6.4 on Windows confirmed one -InputObject invocation versus three pipeline invocations, begin/item/end phase order, and that a bounded -Parallel probe returned every input without ordinary caller-variable visibility. macOS/Linux and action-specific concurrency remain outstanding."
       ]
     },
     "Select-Object.md": {
@@ -445,8 +503,8 @@
         }
       ],
       "notes": [
-        "The page emphasizes preserving object shape before formatting or serialization.",
-        "Input-object examples require verification on all declared platforms."
+        "The page emphasizes preserving object shape before formatting or serialization and documents the distinct First/Last/Skip versus SkipLast parameter sets.",
+        "PowerShell 7.6.4 on Windows confirmed complete parameter metadata, First+Last+Skip selection, the incompatible SkipLast combination, unique-value case policy, and parse-valid examples. Provider objects, resource limits, macOS, Linux, and calculated-property variants remain outstanding."
       ]
     },
     "Get-ChildItem.md": {
@@ -465,11 +523,30 @@
           "type": "git",
           "baseline": "powershell-docs",
           "path": "reference/7.6/Microsoft.PowerShell.Management/Get-ChildItem.md"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/powershell/module/microsoft.powershell.management/get-psdrive?view=powershell-7.6",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_providers?view=powershell-7.6",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
         }
       ],
       "notes": [
-        "The page emphasizes provider boundaries, literal paths, and bounded enumeration.",
-        "Provider and recursive examples require verification on all declared platforms."
+        "The page emphasizes provider boundaries, literal paths, bounded enumeration, source-side FileSystem Filter semantics, and PowerShell-side Include/Exclude semantics.",
+        "PowerShell 7.6.4 on Windows confirmed complete parameter metadata, parse-valid examples, and a bounded SystemRoot FileSystemInfo result. Provider, path, symlink, mount, permission, macOS, and Linux behavior remains outstanding.",
+        "The dual-edition NoProfile provider fixture passes 14/14: fixed built-in paths return the documented provider object types; FileSystem, Registry, and Certificate expose different dynamic parameters; Get-Help -Path Cert:\\ returns provider-customized help; and Get-PSDrive can change later provider discovery by loading Microsoft.PowerShell.Security. It emits no environment value, registry data, certificate, or user path and performs no provider mutation or network access."
       ]
     },
     "Sort-Object.md": {
@@ -492,7 +569,7 @@
       ],
       "notes": [
         "The page emphasizes bounded, reproducible sort contracts.",
-        "Culture and input-object examples require verification on all declared platforms."
+        "PowerShell 7.6.4 on Windows confirmed Stable/Top/Bottom metadata and stable equal-key order b,a,c on in-memory objects. Culture/provider cases and macOS/Linux repetition remain outstanding."
       ]
     },
     "Import-Module.md": {
@@ -515,7 +592,7 @@
       ],
       "notes": [
         "The page emphasizes command conflicts, trusted sources, and reproducible module selection.",
-        "Module availability and compatibility require verification on all declared platforms."
+        "PowerShell 7.6.4 on Windows imported only a trusted GUID-temporary fixture: -NoClobber retained an existing function, -Prefix Probe created the prefixed command, and -PassThru returned the fixture module. It was unloaded and removed; third-party, binary, remote, macOS and Linux compatibility remain outstanding."
       ]
     },
     "irm.md": {
@@ -543,7 +620,7 @@
       ],
       "notes": [
         "The page explicitly warns against downloading remote content into Invoke-Expression.",
-        "Alias availability requires verification on all declared platforms."
+        "PowerShell 7.6.3 on Linux and PowerShell 7.6.4 on Windows confirmed that irm resolves to Invoke-RestMethod; macOS remains outstanding."
       ]
     },
     "iwr.md": {
@@ -571,7 +648,7 @@
       ],
       "notes": [
         "The page adds explicit artifact-verification guidance for downloads.",
-        "Alias availability requires verification on all declared platforms."
+        "PowerShell 7.6.3 on Linux and PowerShell 7.6.4 on Windows confirmed that iwr resolves to Invoke-WebRequest; macOS remains outstanding."
       ]
     },
     "iex.md": {
@@ -599,7 +676,7 @@
       ],
       "notes": [
         "The page treats parsing data as code as a security risk, documents safer alternatives, and explains that -Command binds pipeline strings by value and evaluates each item separately.",
-        "Alias availability requires verification on all declared platforms."
+        "PowerShell 7.6.3 on Linux and PowerShell 7.6.4 on Windows confirmed that iex resolves to Invoke-Expression; macOS remains outstanding."
       ]
     },
     "irx.md": {
@@ -642,7 +719,7 @@
       ],
       "notes": [
         "The page is a platform-specific command-resolution guide rather than a claim that curl is a universal built-in alias.",
-        "Windows alias behavior and native executable availability require verification on all declared platforms."
+        "PowerShell 7.6.4 on Windows and PowerShell 7.6.3 on Linux confirmed native curl resolution without a built-in curl alias; macOS and environment-specific executable availability remain outstanding."
       ]
     },
     "Start-Process.md": {
@@ -664,11 +741,30 @@
             "url": "https://stackoverflow.com/help/licensing"
           },
           "checkedAt": "2026-08-11"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/dotnet/api/system.diagnostics.process.standardoutput?view=net-10.0",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/dotnet/api/system.diagnostics.processstartinfo.argumentlist?view=net-10.0",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
         }
       ],
       "notes": [
-        "The guide emphasizes when direct native invocation is preferable and explains wait, exit-code, stream, and argument-list pitfalls.",
-        "Core behavior was checked with PowerShell 7.6.3 on Linux; Windows and macOS verification remains outstanding."
+        "The guide emphasizes when direct native invocation is preferable and explains wait, exit-code, stream, and argument-list pitfalls. Microsoft's .NET Process contract supplies the dual-redirected-stream deadlock boundary.",
+        "Core behavior was checked with PowerShell 7.6.3 on Linux; PowerShell 7.6.4 on Windows confirmed complete parameter metadata and the bounded smoke examples. A Windows PowerShell 5.1 harness reproduced the shared .NET sequential-read deadlock pattern and concurrent reads avoided it; macOS and remaining platform-specific behavior remain outstanding.",
+        "PowerShell 7 runtime metadata confirmed ProcessStartInfo exposes both Arguments and the structured ArgumentList collection. The page distinguishes the .NET property from the Start-Process -ArgumentList parameter and warns that shared Windows PowerShell 5.1 code cannot assume the property exists."
       ]
     },
     "start.md": {
@@ -716,7 +812,7 @@
       ],
       "notes": [
         "The guide highlights exact-path input, provider-dependent actions, pipeline binding, and the risk of opening untrusted items.",
-        "Alias and pipeline behavior were checked with PowerShell 7.6.3 on Linux; desktop actions still require platform verification."
+        "PowerShell 7.6.4 on Windows confirmed the ii alias and every documented option against live metadata; Linux 7.6.3 confirmed the alias. No item or GUI handler was invoked; provider actions, associations, desktop behavior, policy, and macOS remain outstanding."
       ]
     },
     "ii.md": {
@@ -771,7 +867,7 @@
       ],
       "notes": [
         "The guide treats PowerShell 7 and Windows PowerShell 5.1 as separately verified runtimes.",
-        "Module compatibility and Windows PowerShell remoting require Windows-specific verification."
+        "Separate Windows PowerShell 5.1.26100.8875 and PowerShell 7.6.4 suites confirm edition, version-table keys, command resolution, encoding, question-mark wrappers, and parameter differences. Module, .NET, remoting, provider, application, macOS, and Linux migration workloads remain outstanding."
       ]
     }
   }

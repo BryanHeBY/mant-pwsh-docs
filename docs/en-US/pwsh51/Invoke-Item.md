@@ -93,6 +93,14 @@ This page is specific to Windows PowerShell 5.1 on Windows. Default actions
 depend on the active provider, file associations, installed applications,
 interactive user session, and policy. `ii` is the built-in alias.
 
+## Runtime evidence
+
+Windows PowerShell 5.1.26100.8875 confirmed that `ii` resolves to
+`Invoke-Item` and that every documented option exists in live command
+metadata. No item was invoked: the smoke suite deliberately avoids opening a
+file, directory, registry key, URL, application, or GUI handler. Provider
+actions, associations, desktop availability, and policy remain outstanding.
+
 ## Related documents
 
 - [ii alias](ii.md)

@@ -23,7 +23,7 @@
 
 ```powershell
 Select-Object [[-Property] <object[]>] [-First <int>] [-Last <int>]
-    [-Unique] [-ExpandProperty <string>] [<CommonParameters>]
+    [-Unique] [-CaseInsensitive] [-ExpandProperty <string>] [<CommonParameters>]
 ```
 
 `Select-Object` creates output objects with selected properties, expands one
@@ -42,7 +42,8 @@ export, or a downstream command that needs a smaller contract.
 - `-SkipLast COUNT`: Omit the requested number of objects from the end; availability depends on the PowerShell 7 version.
 - `-Index INDEX`: Return objects at zero-based input indexes.
 - `-SkipIndex INDEX`: Exclude objects at zero-based input indexes; availability depends on the PowerShell 7 version.
-- `-Unique`: Remove duplicate selected values according to the cmdlet's comparison behavior.
+- `-Unique`: Remove duplicate values after the other selection parameters are applied; comparisons are case-sensitive by default.
+- `-CaseInsensitive`: Make unique-value string comparisons case-insensitive; added in PowerShell 7.4.
 - `-Wait`: Continue consuming upstream input after enough objects have been selected so upstream side effects can complete.
 - `-InputObject OBJECT`: Treat the supplied value as one object; pipeline input is the normal form for collections.
 
@@ -86,16 +87,25 @@ itself, but remember that type and null behavior now come from that value.
 Get-Process | Select-Object -ExpandProperty ProcessName
 ```
 
-Do not combine an expanded property with assumptions about the original
-object's other properties; preserve those properties in a selected object when
-the downstream step still needs them.
+When `-Property` and `-ExpandProperty` are combined, `Select-Object` attempts
+to add the selected properties as `NoteProperty` members to each expanded
+object. That can alter referenced input objects and can fail on a name
+collision. Construct a new object explicitly when mutation is unacceptable.
 
 ## First, last, unique, skip, and index
 
-`-First` and `-Last` bound results. `-Unique` removes consecutive duplicate
-output values according to the command's comparison behavior. Other options
-can skip or select indexed positions. Apply filtering and sorting before these
-options when ordering determines which values are retained.
+`-First` and `-Last` can be combined to return both ends of the input. When
+`-Skip` is also present, it skips from the beginning before those selections:
+`1..20 | Select-Object -First 3 -Last 3 -Skip 4` returns `5, 6, 7, 18,
+19, 20`. `-SkipLast` belongs to a different parameter set and cannot be
+combined with `-First` or `-Last` in the same invocation. Use `-Skip` with
+`-SkipLast` to trim both ends, then pipe to a second `Select-Object` if another
+first/last selection is required.
+
+`-Unique` removes duplicates from the subset remaining after other selection
+parameters; it is case-sensitive unless `-CaseInsensitive` is used. Other
+options can select or exclude indexed positions. Apply filtering and sorting
+before these options when ordering determines which values are retained.
 
 ```powershell
 Get-ChildItem -File |
@@ -110,8 +120,11 @@ Export a stable CSV shape:
 ```powershell
 Get-Service |
     Select-Object Name, DisplayName, Status |
-    Export-Csv -LiteralPath ./services.csv -NoTypeInformation
+    Export-Csv -LiteralPath ./services.csv -NoTypeInformation -NoClobber
 ```
+
+`-NoClobber` makes an existing destination an error; still resolve the final
+path and choose a protected parent before exporting sensitive service data.
 
 Return file paths as strings for a native command:
 
@@ -124,13 +137,30 @@ Get-ChildItem -File |
 
 ### Expanding a property too early
 
-`-ExpandProperty` discards access to sibling properties from the original
-object. Select an object shape when later stages still need context.
+`-ExpandProperty` normally emits the property's values rather than a wrapper
+with the original object's context. Combining it with `-Property` instead adds
+selected note properties to expanded objects and can mutate referenced input.
+Construct the intended output object explicitly when either behavior is
+surprising.
+
+### Assuming `-Unique` is case-insensitive or only compares neighbors
+
+The comparison is case-sensitive by default and applies after other selection
+parameters to the whole selected subset. Use `-CaseInsensitive` on PowerShell
+7.4 or later when casing should not distinguish strings.
 
 ### Taking `-First` before defining order
 
 The first objects are whatever the upstream command emitted. Filter and sort
 explicitly when the retained subset has semantic meaning.
+
+### Combining incompatible skip parameters
+
+`-First`, `-Last`, and `-Skip` share one parameter set, while `-SkipLast`
+shares the separate skip-only set. A command such as
+`Select-Object -First 3 -Last 3 -SkipLast 4` fails parameter binding; split
+the required stages into separate pipeline commands and verify which end each
+stage trims.
 
 ### Expecting selection to be display-only
 
@@ -142,8 +172,18 @@ their methods or type identity are still required.
 
 `Select-Object` is available across PowerShell 7 platforms. Input object
 properties depend on the source cmdlet, module, provider, and operating
-system. Verify calculated-property examples on every target where source
-objects may differ.
+system. `-CaseInsensitive` requires PowerShell 7.4 or later. Verify calculated
+property and expansion behavior on every target where source objects may
+differ.
+
+## Runtime evidence
+
+PowerShell 7.6.4 on Windows confirmed all documented option metadata, default
+`-Unique` output `a,A`, 7.4+ case-insensitive output `a`, and combined
+`-First 3 -Last 3 -Skip 4` output `5,6,7,18,19,20`. Adding `-SkipLast` raised
+`AmbiguousParameterSet`. The in-memory fixtures do not cover provider-specific
+objects, large-stream resource limits, macOS, Linux, or every calculated
+property expression.
 
 ## Related documents
 

@@ -48,6 +48,33 @@ scripts should not overwrite them casually.
 - `$null`: Represent PowerShell's null value.
 - `$^`: Hold the first token from the last input line received by the session.
 - `$$`: Hold the last token from the last input line received by the session.
+- `$ConsoleFileName`: Identify the most recently used legacy `.psc1` console file where that Windows PowerShell console-file feature exists; it is absent in the recorded PowerShell 7.6.4 session.
+- `$EnabledExperimentalFeatures`: List the experimental PowerShell features enabled for the current process.
+- `$Event`: Hold the event currently being processed inside an event-registration `-Action` block.
+- `$EventArgs`: Hold event arguments inside an event-registration `-Action` block.
+- `$EventSubscriber`: Hold the subscriber for the event-registration `-Action` block currently running.
+- `$Sender`: Hold the object that generated the event inside an event-registration `-Action` block.
+- `$PSSenderInfo`: Describe the client that created the current PSSession; client-supplied application arguments are untrusted input.
+- `$ExecutionContext`: Expose the current host's `EngineIntrinsics` execution context for advanced runtime inspection.
+- `$PSCmdlet`: Expose the current cmdlet or advanced-function context, including parameter-set and ShouldProcess services.
+- `$foreach`: Hold the enumerator of the currently running `foreach` statement, not the emitted values.
+- `$switch`: Hold the enumerator of the currently running `switch` statement, not the emitted values.
+- `$Matches`: Hold capture groups from the most recent successful scalar regex match or regex switch match.
+- `$this`: Refer to the current instance inside a PowerShell class, ETS script property/method, or supported event delegate.
+- `$StackTrace`: Hold the PowerShell stack trace for the most recent error.
+- `$PSDebugContext`: Expose debugger context while stopped in the debugger; a normal PowerShell 7 session may not define the variable.
+- `$NestedPromptLevel`: Report the current nested prompt or debugger prompt depth, with zero for the original prompt.
+- `$PSEdition`: Identify the PowerShell product edition, normally `Core` in PowerShell 7.
+- `$PSHOME`: Identify the PowerShell installation directory, not the user's home directory.
+- `$PSCulture`: Identify the current culture name used for locale-sensitive behavior.
+- `$PSUICulture`: Identify the current UI culture name used for localized resources.
+- `$ShellId`: Identify the current PowerShell shell registration.
+- `$IsCoreCLR`: Report whether the current session runs on CoreCLR; it is true for supported PowerShell 7.
+- `$IsWindows`: Report whether the current PowerShell 7 process runs on Windows.
+- `$IsLinux`: Report whether the current PowerShell 7 process runs on Linux.
+- `$IsMacOS`: Report whether the current PowerShell 7 process runs on macOS.
+- `$true`: Represent the Boolean true constant; do not assign application state to it.
+- `$false`: Represent the Boolean false constant; do not assign application state to it.
 
 ## Pipeline and command variables
 
@@ -67,9 +94,31 @@ Get-ChildItem -File |
 Prefer a `param(...)` block over reading `$args` when an interface needs
 names, types, defaults, validation, or discoverable help.
 
+`$PSCmdlet` exists in cmdlets and advanced functions and exposes the active
+parameter set plus services such as `ShouldProcess`. `$ExecutionContext`
+exposes lower-level engine services; it is not a portable replacement for
+ordinary cmdlets and language features.
+
 In an interactive session, `$^` and `$$` expose the first and last tokens from
 the last input line. They are convenient for brief interactive recall, but
 scripts should use named variables instead of depending on prior session input.
+
+## Language and matching context
+
+`$foreach` and `$switch` are the live enumerators of their corresponding
+language statements and exist only while those statements run. Calling their
+methods changes iteration state; read or advance them only when that behavior
+is deliberate. They are unrelated to the `ForEach-Object` cmdlet.
+
+`$Matches` is populated by a successful scalar `-match` or `-notmatch`, and by
+regex `switch` matching. It retains the last successful match when a later
+comparison fails, and a later successful match overwrites it. Copy required
+capture values immediately instead of treating `$Matches` as a fresh result
+after every comparison.
+
+`$this` identifies the current instance in PowerShell class methods, ETS
+script properties/methods, and supported event delegates. It has no general
+meaning outside those contexts.
 
 ## Script and invocation location
 
@@ -87,11 +136,28 @@ Get-Content -LiteralPath $configuration -Raw
 are useful for diagnostics, but `$PSScriptRoot` and `$PSCommandPath` are
 usually clearer for building paths.
 
+## Events and remoting identity
+
+`$Event`, `$EventArgs`, `$EventSubscriber`, and `$Sender` are populated only
+inside an event registration's `-Action` script block. Their lifetime and
+thread/runspace context differ from normal sequential pipeline variables; copy
+only the data required by the action and unregister bounded test subscribers.
+
+`$PSSenderInfo` is available only inside a PSSession and describes the
+originating client. Its `ApplicationArguments` property contains
+client-supplied data and must never be used as authentication or authorization
+evidence.
+
 ## Success, errors, and native exit codes
 
 `$?` reports whether the latest PowerShell operation succeeded. `$Error` holds
 recent error records. Neither is a substitute for a deliberate error-handling
 boundary with `try`, `catch`, and `-ErrorAction Stop`.
+
+PowerShell 7 keeps the actual command status in `$?` when a statement is
+wrapped in parentheses `(...)`, a subexpression `$(...)`, or an array
+expression `@(...)`. Windows PowerShell 5.1 instead resets `$?` to `$true`
+after these wrappers, so migration tests must not assume the legacy result.
 
 `$LASTEXITCODE` holds the exit code from the latest native program or an
 explicitly exited PowerShell child process. A nonzero native code does not
@@ -106,6 +172,13 @@ if ($LASTEXITCODE -ne 0) {
 
 Check a tool's own documentation before treating every nonzero exit code as a
 failure. Some commands use nonzero values for a meaningful non-error result.
+
+`$StackTrace` records the most recent PowerShell error stack. It can contain
+paths, command text, and implementation details, so protect diagnostic output.
+`$PSDebugContext` is populated while the debugger controls execution; on the
+recorded 7.6.4 ordinary session the variable was absent outside debugging, so
+test it with `Get-Variable -ErrorAction SilentlyContinue` rather than assuming
+that it always exists with a null value.
 
 ## Session and runtime variables
 
@@ -124,6 +197,18 @@ if ($PSVersionTable.PSVersion -lt [version]'7.6') {
 `$PROFILE` identifies profile scripts for the current host and user. See
 [about_Profiles](about_Profiles.md) for safe profile discovery and loading.
 
+`$PSEdition`, `$PSHOME`, `$PSCulture`, `$PSUICulture`, `$ShellId`, and
+`$EnabledExperimentalFeatures` describe the running product and process.
+`$IsWindows`, `$IsLinux`, and `$IsMacOS` are mutually exclusive platform
+flags; `$IsCoreCLR` identifies the runtime family. Prefer these explicit flags
+over parsing OS description strings.
+
+The official topic also retains `$ConsoleFileName` for legacy `.psc1` console
+files populated by Windows PowerShell's `-PSConsoleFile` or `Export-Console`.
+Those snap-in console-file interfaces are not PowerShell 7 features, and the
+variable was absent in the recorded 7.6.4 session. Gate legacy code with
+`Get-Variable ConsoleFileName -ErrorAction SilentlyContinue`.
+
 ## Null and collections
 
 `$null` is PowerShell's null value. Compare with `$null` on the left side of a
@@ -139,6 +224,10 @@ Do not use an empty string, zero, `$false`, and `$null` interchangeably. They
 have different meaning in parameter binding, conditionals, serialization, and
 native command arguments.
 
+`$true` and `$false` are Boolean constants. Although PowerShell variable names
+are case-insensitive, use the conventional lowercase spellings and store
+application state in a separate, descriptively named variable.
+
 ## Platform and version differences
 
 The meaning of automatic variables is mostly portable, but their values can
@@ -146,6 +235,17 @@ reflect host, operating system, current provider, startup mechanism, and
 PowerShell version. Record a minimum version when a script depends on a
 variable or behavior introduced in a later 7.x release. Windows PowerShell
 5.1 must be documented and tested separately.
+
+## Runtime evidence
+
+The page's semantic index matches all 47 automatic-variable names in the
+locked PowerShell 7.6 source, with no missing or extra names. PowerShell 7.6.4
+on Windows confirmed the stable runtime/platform variables, `Core` edition,
+mutually exclusive Windows/Linux/macOS flags, retained `$Matches` data after a
+failed match, and `$foreach`/`$switch` enumerators. In an ordinary non-debugger
+session, `$ConsoleFileName` and `$PSDebugContext` were absent rather than
+defined with null values. macOS, Linux, debugger, event, remoting, nested
+prompt, and legacy console-file contexts remain outstanding.
 
 ## Related documents
 

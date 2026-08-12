@@ -1,7 +1,7 @@
 <!-- mant:tldr:start -->
 # curl
 
-> On Windows PowerShell-compatible environments, `curl` can be an alias for `Invoke-WebRequest`; elsewhere it commonly names the native curl executable.
+> In PowerShell 7, `curl` is not a built-in alias; resolve the ambient name before depending on a native executable or custom definition.
 > More information: https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_aliases?view=powershell-7.6.
 
 - See what `curl` resolves to:
@@ -21,10 +21,11 @@
 
 ## Meaning
 
-`curl` is ambiguous in PowerShell environments. On Windows, PowerShell can
-define `curl` as an alias for `Invoke-WebRequest`. On Linux and macOS, the
-tested PowerShell 7.6 session has no built-in `curl` alias, so `curl` normally
-resolves to a native executable when one is installed.
+PowerShell 7 does not define `curl` as an alias on Windows, Linux, or macOS.
+The ambient name normally resolves to a native executable when one is
+installed, but a profile, module, or endpoint can still define an alias or
+function with that name. Windows PowerShell 5.1 is different: it defines
+`curl` as an alias for `Invoke-WebRequest` by default.
 
 Never infer the meaning from the spelling alone. Query the current session:
 
@@ -68,10 +69,10 @@ if ($null -eq $command) {
 
 ## Version and platform differences
 
-PowerShell 7 does not define `curl` as a built-in alias on the tested Linux
-environment. Windows sessions and migrated profiles can still introduce one,
-while Windows editions vary in whether and which native `curl.exe` is
-installed.
+PowerShell 7 does not define `curl` as a built-in alias on any platform.
+Windows PowerShell 5.1, migrated profiles, modules, and endpoint configuration
+can introduce one, while Windows versions vary in whether and which native
+`curl.exe` is installed.
 
 ## Common mistakes
 
@@ -84,6 +85,14 @@ portable shorthand for `Invoke-WebRequest` parameters.
 
 Use `Get-Command curl -All` to expose shadowed aliases, functions, and
 applications before deciding which command a script requires.
+
+## Runtime evidence
+
+PowerShell 7.6.4 on Windows and 7.6.3 on Linux both resolved bare `curl` to a
+native application without a built-in PowerShell alias. The Windows result was
+`curl.exe`; the Linux result was `/usr/bin/curl`. These observations prove
+command identity only. macOS, executable version drift, profile/module
+collisions, and native curl option behavior remain environment-specific.
 
 ## Related documents
 

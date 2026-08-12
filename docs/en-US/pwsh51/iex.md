@@ -127,6 +127,15 @@ higher risk than direct invocation.
 variables and functions visible to later commands. Its output is ordinary
 pipeline output, but that does not reduce the code-execution risk.
 
+## Runtime evidence
+
+Windows PowerShell 5.1.26100.8875 evaluated two fixed, in-memory command
+strings piped to `Invoke-Expression` in order and changed a GUID-named script
+variable from `1` to `2` in the current scope. The variable was removed in
+`finally`; no file, profile, network response, user input, or downloaded text
+was evaluated. This deliberately proves the dangerous scope and per-item
+pipeline contract, not that dynamic evaluation is safe.
+
 ## Related documents
 
 - [irm](irm.md)

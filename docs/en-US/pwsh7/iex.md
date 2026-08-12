@@ -35,9 +35,9 @@ injection risk and usually has safer alternatives.
 
 ## Availability
 
-`iex` is available by default in the tested PowerShell 7.6 Linux session.
-Profiles and constrained endpoints can change alias availability. Use
-`Get-Alias iex` or `Get-Command iex -All` when diagnosing an interactive
+`iex` is a built-in alias in PowerShell 7 on Windows, macOS, and Linux.
+Profiles and constrained endpoints can remove or replace aliases. Use
+`Get-Alias iex` or `Get-Command iex -All` when diagnosing a particular
 session.
 
 ## Syntax
@@ -135,6 +135,15 @@ still higher risk than direct invocation.
 `Invoke-Expression` evaluates in the current scope, so it can create or alter
 variables and functions visible to later commands. Its output becomes normal
 PowerShell pipeline output, but that does not reduce its code-execution risk.
+
+## Runtime evidence
+
+PowerShell 7.6.4 on Windows confirmed the `iex` alias and evaluated two fixed,
+in-memory command strings piped to `Invoke-Expression` in order, changing only
+a GUID-named script variable from `1` to `2` in current scope. The variable was
+removed in `finally`; no file, profile, network response, user input, or
+downloaded text was evaluated. Linux 7.6.3 confirmed the alias; macOS remains
+outstanding. This proves the dangerous scope contract, not safety.
 
 ## Related documents
 

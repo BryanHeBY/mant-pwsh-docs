@@ -81,6 +81,13 @@ mant curl --source cross-platform-tools --search=--fail
 mant dotnet --source cross-platform-tools --search=LASTEXITCODE
 ```
 
+## Verification boundary
+
+This page is a navigation and retrieval index, not a runtime-behavior claim.
+Repository validation checks its structure, links, semantic declarations, and
+ManT parsing. Runtime evidence and any remaining implementation or platform
+boundary belong to the linked tool pages.
+
 ## Related documents
 
 - [curl](curl.md)

@@ -27,10 +27,18 @@ Do not validate a script in one edition and assume it behaves identically in the
 
 ## Identify the runtime
 
-`$PSVersionTable` identifies `PSVersion`, `PSEdition`, platform, and related runtime information. Use it in diagnostics and feature gates instead of guessing from an executable name or operating system.
+`$PSVersionTable` identifies `PSVersion`, `PSEdition`, and related runtime
+information. PowerShell 7 also provides `Platform` and `OS` keys, but Windows
+PowerShell 5.1 does not. Use .NET environment properties for a diagnostic that
+must populate operating-system and architecture fields in both editions.
 
 ```powershell
-$PSVersionTable | Format-List PSVersion, PSEdition, Platform, OS
+$PSVersionTable
+[pscustomobject]@{
+    OSVersion = [Environment]::OSVersion.VersionString
+    Is64BitOperatingSystem = [Environment]::Is64BitOperatingSystem
+    Is64BitProcess = [Environment]::Is64BitProcess
+}
 ```
 
 For scripts that need a feature introduced in a recent PowerShell 7 release, check the version explicitly and fail with an actionable message.
@@ -56,7 +64,11 @@ Get-Command -Module Legacy.Windows.Module
 
 Native applications receive a command line and produce text or bytes; they do not receive PowerShell objects. Argument conversion, output encoding, byte stream handling, `$LASTEXITCODE`, and redirection behavior have changed over PowerShell versions. Test each native tool with the PowerShell edition that will run it.
 
-Use explicit command names to avoid alias collisions. For example, `curl` can mean a PowerShell alias on Windows but a native executable on Linux or macOS. Use `curl.exe` where the Windows executable is required, or use `Invoke-WebRequest` when the PowerShell cmdlet is intended.
+Use explicit command names to avoid alias collisions. Windows PowerShell 5.1
+defines `curl` as an alias for `Invoke-WebRequest`; PowerShell 7 does not define
+that alias on any platform. Profiles and modules can still add one. Use
+`curl.exe` where the Windows executable is required, or use
+`Invoke-WebRequest` when the PowerShell cmdlet is intended.
 
 ## Profiles and startup
 
@@ -87,6 +99,16 @@ Execution policy is not a security boundary in either edition. Avoid parsing unt
 This guide compares the PowerShell 7.6 documentation baseline with Windows
 PowerShell 5.1. It is a migration checklist, not a promise that every interim
 PowerShell 7 release or Windows image has the same modules and behavior.
+
+## Runtime evidence
+
+Edition-matched Windows suites run separately under Windows PowerShell
+5.1.26100.8875 and PowerShell 7.6.4. They confirm `Desktop` versus `Core`,
+absent versus present `Platform`/`OS` keys, different `curl`/`sc` resolution,
+UTF-16LE versus BOM-less UTF-8 redirection defaults, legacy versus modern `$?`
+wrapper behavior, and edition-specific command parameters. This does not prove
+module, .NET API, remoting, provider, or application compatibility; those need
+workload-specific migration fixtures.
 
 ## Related documents
 

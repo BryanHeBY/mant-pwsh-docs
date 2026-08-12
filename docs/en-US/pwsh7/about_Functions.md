@@ -145,6 +145,14 @@ This page follows PowerShell 7.6 on Windows, macOS, and Linux. Function syntax
 is largely portable, but commands called by a function, parameter types,
 providers, and modules can be platform- or version-specific.
 
+## Runtime evidence
+
+PowerShell 7.6.4 on Windows passed two integers through an advanced function
+and observed one `begin`, two `process` objects, and one `end` marker. A
+separate function body called `.Add()` without suppression and therefore
+emitted its integer return value `0` before the explicit `done` string. The
+test used only in-memory values.
+
 ## Related documents
 
 - [about_Pipelines](about_Pipelines.md)

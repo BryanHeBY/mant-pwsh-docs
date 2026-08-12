@@ -46,6 +46,17 @@ Use `Start-Process` when that exact cmdlet is intended.
 - `-NoNewWindow`: Reuse the current console on Windows; it cannot be combined with `-WindowStyle`.
 - `-RedirectStandardInput PATH`, `-RedirectStandardOutput PATH`, `-RedirectStandardError PATH`: Connect standard streams to files.
 - `-Verb VERB`: On Windows, request a ShellExecute verb such as `RunAs`; it belongs to the shell-execute parameter set.
+- `-Credential CREDENTIAL`: On Windows, start with another credential where
+  the selected parameter set and operating system permit it.
+- `-LoadUserProfile`: Load the selected Windows user's registry profile; this
+  does not load PowerShell profile scripts.
+- `-UseNewEnvironment`: On Windows, start with machine-scope defaults instead
+  of inherited or user-scope variables. `USERNAME` becomes `SYSTEM`, but the
+  process security identity does not change.
+- `-Environment TABLE`: Override or remove environment variables for the child;
+  this parameter was added in PowerShell 7.4.
+- `-WhatIf`, `-Confirm`: Preview or confirm process creation; these parameters
+  are available in PowerShell 7 but not Windows PowerShell 5.1.
 
 ## Version and platform differences
 
@@ -76,6 +87,14 @@ full name for CI, remoting, modules, and shared scripts.
 See [Start-Process](Start-Process.md) for parameters, argument passing, streams,
 waiting, process objects, and platform differences.
 
+## Runtime evidence
+
+PowerShell 7.6.4 on Windows confirmed that `start` resolves to `Start-Process`
+and matched the documented options to live metadata. The earlier Linux 7.6.3
+run confirmed the Windows-only alias is absent there. No target process or GUI
+application was launched; macOS and profile-defined aliases remain
+outstanding.
+
 ## Related documents
 
 - [Get-Command](Get-Command.md)
@@ -86,9 +105,8 @@ waiting, process objects, and platform differences.
 
 This original alias guide was adapted from the official
 [Start-Process reference](https://learn.microsoft.com/powershell/module/microsoft.powershell.management/start-process?view=powershell-7.6),
-which lists `start` under Windows aliases and `saps` under all platforms. The
-PowerShell 7.6.3 Linux authoring runtime also confirmed that `start` is absent
-by default. Exact provenance is recorded in `upstream/pwsh7.json`.
+which lists `start` under Windows aliases and `saps` under all platforms. Exact
+provenance is recorded in `upstream/pwsh7.json`.
 
 The cited documentation is licensed under CC BY 4.0. This adaptation is
 licensed under CC BY 4.0.

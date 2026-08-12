@@ -40,10 +40,11 @@ Get-FileHash -LiteralPath $destination -Algorithm SHA256
 ```
 
 In Windows PowerShell 5.1, `Invoke-WebRequest` parses HTML using the legacy
-Internet Explorer engine by default. On systems where this is unavailable or
-undesirable, use `-UseBasicParsing` when its reduced response behavior meets
-the task. Test proxy, TLS, authentication, and parser assumptions on the
-target Windows host.
+Internet Explorer engine by default, and page script can run during full
+parsing. Security updates released for CVE-2025-54100 on 2025-12-09 add a
+confirmation prompt before that risky default path. Use `-UseBasicParsing` for
+noninteractive automation and untrusted content. Test proxy, TLS,
+authentication, and parser assumptions on the target Windows build.
 
 For structured API responses, `Invoke-RestMethod` is often more convenient.
 
@@ -56,8 +57,17 @@ For structured API responses, `Invoke-RestMethod` is often more convenient.
 - `-Body BODY`, `-ContentType TYPE`: Supply request content and describe its media type.
 - `-Credential CREDENTIAL`, `-UseDefaultCredentials`: Select explicit or current Windows credentials; do not combine them.
 - `-WebSession SESSION`, `-SessionVariable NAME`: Reuse or capture cookies and session state; do not combine the parameters.
-- `-OutFile PATH`: Write the response body to a file instead of returning a response object.
+- `-OutFile PATH`: Write the response body to a file instead of returning a
+  response object. An existing writable file is replaced without confirmation;
+  preflight the path or generate a unique destination.
+- `-PassThru`: With `-OutFile`, also request a pipeline result. Validate both
+  outputs because the versioned reference records an empty-file defect on some paths.
 - `-UseBasicParsing`: Avoid the Internet Explorer DOM parser and return reduced parsing behavior.
+- `-InFile PATH`: Read the request body from a file; set the matching content type.
+- `-UserAgent VALUE`: Override the request user-agent header deliberately.
+- `-DisableKeepAlive`: Disable persistent HTTP connection reuse for the request.
+- `-TransferEncoding VALUE`: Set the request transfer-encoding value; use only
+  when the endpoint requires it.
 - `-TimeoutSec SECONDS`: Bound the request timeout; DNS resolution can still exceed very small values.
 - `-MaximumRedirection COUNT`: Limit automatic redirects.
 - `-Proxy URI`, `-ProxyCredential CREDENTIAL`, `-ProxyUseDefaultCredentials`: Configure the proxy and its authentication.
@@ -66,16 +76,29 @@ For structured API responses, `Invoke-RestMethod` is often more convenient.
 ## Version and compatibility
 
 This page is limited to Windows PowerShell 5.1. Its default HTML parser and
-parameter surface differ from PowerShell 7; `-UseBasicParsing` is especially
-important on hosts without a usable Internet Explorer engine.
+parameter surface differ from PowerShell 7. Updated hosts can prompt before
+full parsing; `-UseBasicParsing` avoids both the legacy parser and that prompt.
 
 ## Common mistakes
 
+### Overwriting an existing `-OutFile`
+
+The cmdlet does not provide a no-clobber switch. Check `Test-Path` before the
+request or create a unique temporary destination, then move the verified
+artifact deliberately.
+
 ### Depending on the Internet Explorer parser
 
-Default parsing can fail when Internet Explorer components are unavailable or
-not initialized. Use `-UseBasicParsing` when its reduced response model is
-sufficient, and test on the target host.
+Default parsing can execute page script, fail when Internet Explorer components
+are unavailable, or prompt after the CVE-2025-54100 update. Use
+`-UseBasicParsing` unless reviewed DOM parsing is explicitly required.
+
+### Assuming `-PassThru` guarantees both outputs
+
+`-PassThru` is valid only with `-OutFile`. The official 5.1 reference records
+an empty-file defect, although the tested serviced build wrote both outputs for
+a `file:` request. Verify the file exists, is nonempty, and has the expected
+integrity before consuming it.
 
 ### Expecting converted API objects
 
@@ -86,6 +109,15 @@ sufficient, and test on the target host.
 
 Check the final destination, expected size, signature, or checksum before
 opening or executing a downloaded file.
+
+## Runtime evidence
+
+Windows PowerShell 5.1.26100.8875 resolved `iwr` to `Invoke-WebRequest`. A
+bounded `file:` URI fixture under a verified GUID temporary directory returned
+one `-PassThru` object and wrote a nonempty file. The suite also confirms the
+documented options against live metadata and removes the fixture. No network
+request was made; HTTP authentication, proxy, redirect, TLS, Internet Explorer
+parser, and remote-content behavior remain outstanding.
 
 ## Related documents
 

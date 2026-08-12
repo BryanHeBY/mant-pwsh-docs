@@ -23,7 +23,7 @@
 
 ```powershell
 Get-Help [[-Name] <string>] [-Full] [-Detailed] [-Examples] [-Online]
-    [-Parameter <string>] [<CommonParameters>]
+    [-Parameter <string>] [-Path <string>] [<CommonParameters>]
 ```
 
 `Get-Help` displays installed help for commands and `about_*` concepts. The
@@ -43,6 +43,8 @@ full help has not been downloaded.
 - `-Category CATEGORY`: Restrict results to categories such as cmdlets, functions, aliases, or provider help.
 - `-Component COMPONENT`: Filter help by component metadata.
 - `-Role ROLE`, `-Functionality FUNCTIONALITY`: Filter help when topics supply role or functionality metadata.
+- `-Path PATH`: Show provider-customized help for how a cmdlet behaves at the
+  specified PowerShell provider path.
 
 ## Help views
 
@@ -54,6 +56,7 @@ describes one parameter.
 ```powershell
 Get-Help Get-ChildItem -Examples
 Get-Help Get-ChildItem -Parameter LiteralPath
+Get-Help Get-ChildItem -Path Cert:\
 Get-Help about_Quoting_Rules
 ```
 
@@ -110,6 +113,20 @@ This page targets Windows PowerShell 5.1. Installed help can be older than the
 operating system or module, and online links can lead to a newer documentation
 version; verify the version selector before adopting an example.
 
+## Runtime evidence
+
+Windows PowerShell 5.1.26100.8875 was tested in a clean `-NoProfile` process.
+`Get-Help Get-Command -Parameter Name` returned a named, nonempty parameter
+view. A temporary in-memory function with no comment-based or external help
+still returned its name and nonempty syntax, confirming that syntax fallback
+does not prove detailed help is installed. The probe did not update help, open
+a browser or window, contact the network, or inspect user profile content.
+The provider fixture additionally confirmed that
+`Get-Help Get-ChildItem -Path Cert:\` returns named help with a nonempty
+provider-customized synopsis. It enumerated no certificate. Downloadable
+module help, GUI views, third-party providers, and other Windows builds remain
+outstanding.
+
 ## Related documents
 
 - [Get-Command](Get-Command.md)
@@ -120,8 +137,10 @@ version; verify the version selector before adopting an example.
 
 This original ManT-oriented page was adapted from the official
 [Get-Help reference](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/get-help?view=powershell-5.1).
-It is organized around interactive help views, source freshness, and safe use
-in Windows automation. Exact upstream revision and path are recorded in
+Provider concepts are cross-checked against the official
+[about_Providers](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_providers?view=powershell-5.1)
+reference. It is organized around interactive help views, source freshness,
+and safe use in Windows automation. Exact upstream revision and path are recorded in
 `upstream/pwsh51.json`.
 
 The cited documentation is licensed under CC BY 4.0. This adaptation is

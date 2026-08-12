@@ -72,8 +72,11 @@ for the exact behavior of the current PowerShell build.
   Windows. It cannot be combined with `-NoNewWindow`.
 - `-Environment TABLE`: Override or remove environment variables for the new
   process. This parameter was added in PowerShell 7.4.
-- `-Credential`, `-LoadUserProfile`, `-UseNewEnvironment`: Select Windows
-  account/profile behavior in the default parameter set.
+- `-Credential`, `-LoadUserProfile`: Select Windows account and user-profile
+  behavior in the default parameter set.
+- `-UseNewEnvironment`: On Windows, use only machine-scope default variables,
+  omitting inherited and user-scope variables. It sets `USERNAME` to `SYSTEM`
+  without changing the process security identity.
 - `-WhatIf`, `-Confirm`: Preview or confirm process creation. These parameters
   were added to `Start-Process` in PowerShell 6.
 
@@ -93,6 +96,15 @@ if ($LASTEXITCODE -ne 0) {
 Use `Start-Process` for a new window, a shell verb, explicit redirection,
 credentials, an environment override, or process lifecycle control.
 
+If lower-level `[System.Diagnostics.Process]` code redirects both stdout and
+stderr into memory, do not call synchronous `ReadToEnd()` on one stream and
+only then start reading the other. A child that fills the unread pipe can block
+while the parent waits for the first stream to close. Start asynchronous reads
+for both streams (or at least one, as the .NET contract requires), impose a
+finite wait, handle `Start()` failure separately from process exit, and clean
+up only a process that actually started. `Start-Process` file redirection does
+not require this in-memory dual-pipe pattern.
+
 ## Common mistakes
 
 ### Expecting a process object without `-PassThru`
@@ -108,6 +120,15 @@ by MSI properties, cmd strings, or another PowerShell process must survive both
 PowerShell parsing and the target parser. Keep nesting shallow and inspect the
 target's actual syntax.
 
+The cmdlet's `-ArgumentList` parameter is also distinct from .NET's
+`ProcessStartInfo.ArgumentList` property. The latter exists in the .NET runtime
+used by PowerShell 7 and accepts separate strings, while
+`ProcessStartInfo.Arguments` accepts one already-escaped command-line string;
+only one may be used. Code shared with Windows PowerShell 5.1 cannot assume the
+property exists. Inspect runtime metadata and verify the constructed arguments
+before calling `Start()`—a nonterminating property error followed by a
+successful no-argument launch is not valid evidence for the intended command.
+
 ### Using `-Wait` as proof that work completed
 
 Some launchers hand work to an existing process or service and exit. Conversely,
@@ -119,11 +140,25 @@ Verify the requested artifact or state, not just the launcher process.
 It can hide normal stdout/stderr flow and complicate exit-code capture. Direct
 invocation is clearer unless a launch-control feature is needed.
 
+### Reading two redirected .NET process streams sequentially
+
+Sequential synchronous reads can deadlock when the child fills the stream that
+the parent has not begun to drain. This can look like a hung native tool even
+though the capture harness is blocked. Read the streams concurrently and keep
+start errors, timeout, exit code, stdout, and stderr as separate evidence.
+
 ### Assuming `start` is portable
 
 PowerShell 7 provides `saps` as an all-platform alias. The `start` alias is
 Windows-only and also conflicts conceptually with the cmd builtin. Use the full
 cmdlet name in shared scripts.
+
+### Treating `-UseNewEnvironment` as a clean copy of the current environment
+
+On Windows it starts from machine-scope defaults, omits user-scope variables,
+and reports `USERNAME=SYSTEM` even though the security identity was not changed.
+Use `-Environment` for reviewed per-variable overrides in PowerShell 7.4 or
+later, and inspect the resulting environment when it is part of the contract.
 
 ## Version and platform differences
 
@@ -135,6 +170,18 @@ started with appropriate platform detachment.
 
 The `-Environment` parameter requires PowerShell 7.4 or later. This page targets
 PowerShell 7.6; check installed help when supporting earlier 7.x releases.
+
+## Runtime evidence
+
+PowerShell 7.6.4 on Windows confirmed complete documented parameter metadata,
+including `-WhatIf`, `-Confirm`, and the 7.4+ environment boundary, plus
+parse-valid bounded examples. Runtime type metadata confirmed this .NET
+`ProcessStartInfo` exposes both `Arguments` and `ArgumentList`; no process was
+launched for that check. The shared dual-stream deadlock contract was
+reproduced by the Windows PowerShell harness and avoided with concurrent reads;
+the earlier Linux 7.6.3 run covered core launch behavior. No operational target,
+credentials, desktop handler, or persistent environment was changed. macOS,
+verbs, window state, and real application lifetimes remain outstanding.
 
 ## Related documents
 
@@ -149,6 +196,8 @@ This original guide was adapted from Microsoft's official
 [Start-Process reference](https://learn.microsoft.com/powershell/module/microsoft.powershell.management/start-process?view=powershell-7.6).
 The recurring wait behavior is also informed by the community discussion
 [How to tell PowerShell to wait for each command to end](https://stackoverflow.com/questions/1741490/how-to-tell-powershell-to-wait-for-each-command-to-end-before-starting-the-next).
+The lower-level dual-stream warning follows Microsoft's
+[System.Diagnostics.Process.StandardOutput contract](https://learn.microsoft.com/dotnet/api/system.diagnostics.process.standardoutput?view=net-10.0).
 Exact sources and licenses are recorded in `upstream/pwsh7.json`.
 
 The Microsoft documentation is licensed under CC BY 4.0 and Stack Overflow

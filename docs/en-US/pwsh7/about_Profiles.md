@@ -21,7 +21,8 @@
 
 ## Short description
 
-A PowerShell profile is a script that runs as an interactive session starts.
+A PowerShell profile is a script that runs when an applicable PowerShell host
+starts.
 Profiles can define prompts, aliases, functions, imported modules, helper
 variables, and preferences. They are useful personal configuration, but they
 are not an automation dependency.
@@ -67,12 +68,25 @@ experience, not silently configure build, deployment, or security behavior.
 
 PowerShell loads applicable all-users profiles before current-user profiles.
 Host-specific profiles are distinct from all-hosts profiles. A console host,
-an integrated terminal, an editor host, and a remoting endpoint can therefore
-have different profile behavior.
+an integrated terminal, and an editor host can therefore have different profile
+behavior.
 
 The profile path for a host does not prove that the host will load it. Startup
 options, host policy, file permissions, execution policy on Windows, and
 endpoint configuration can prevent loading.
+
+## Noninteractive and remote sessions
+
+`-NonInteractive` prevents interactive prompts; it does not disable profile
+loading. Use `-NoProfile` explicitly when reproducibility requires a clean
+startup. Combining `-NoProfile` and `-NonInteractive` is appropriate for an
+unattended process that must neither load customization nor prompt for input.
+
+PowerShell profiles are not run automatically in remote sessions, and
+`$PROFILE` is not populated there. Do not assume that aliases, functions, or
+modules from a local or remote user's normal console profile exist in a
+remoting endpoint. Initialize required state explicitly in the remote command,
+module, or endpoint configuration.
 
 ## Automation and troubleshooting
 
@@ -105,6 +119,16 @@ locations, filesystem permissions, available hosts, and installed modules
 differ. A profile that loads successfully on one platform can refer to tools
 or paths that do not exist on another. Prefer platform guards and small,
 separable configuration modules for cross-platform profiles.
+
+## Runtime evidence
+
+In a clean PowerShell 7.6.4 Windows `-NoProfile` process, `$PROFILE` was a
+string whose value equaled `CurrentUserCurrentHost` and exposed all four
+documented profile-path properties: `AllUsersAllHosts`,
+`AllUsersCurrentHost`, `CurrentUserAllHosts`, and `CurrentUserCurrentHost`.
+This shape check neither read nor created any profile file. Loading order,
+host-specific execution, execution-policy effects, remoting, macOS, Linux, and
+other user or host configurations remain outstanding.
 
 ## Related documents
 

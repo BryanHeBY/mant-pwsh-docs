@@ -42,6 +42,8 @@ Treat remote values as untrusted. Validate properties and error responses
 before using them in a filesystem, native command, or deployment operation.
 Windows PowerShell 5.1 uses the legacy web-request implementation, so proxy,
 authentication, TLS, and response behavior can differ from PowerShell 7.
+Its full parser can execute page script; use `-UseBasicParsing` for untrusted
+content and noninteractive automation.
 
 ## Important parameters
 
@@ -53,7 +55,17 @@ authentication, TLS, and response behavior can differ from PowerShell 7.
 - `-ContentType TYPE`: Set the request media type and any required charset.
 - `-Credential CREDENTIAL`, `-UseDefaultCredentials`: Select explicit or current Windows credentials; do not combine them.
 - `-WebSession SESSION`, `-SessionVariable NAME`: Reuse or capture cookies and session state; do not combine the parameters.
-- `-OutFile PATH`: Write the response body to a file instead of returning converted response content.
+- `-OutFile PATH`: Write the response body to a file instead of returning
+  converted response content. An existing writable file is replaced without
+  confirmation; preflight the path or generate a unique destination.
+- `-PassThru`: With `-OutFile`, also request a pipeline result. On the tested
+  serviced 5.1 build the pipeline result was returned but the file was empty.
+- `-UseBasicParsing`: Avoid the legacy full parser and its page-script risk.
+- `-InFile PATH`: Read the request body from a file; set the matching content type.
+- `-UserAgent VALUE`: Override the request user-agent header deliberately.
+- `-DisableKeepAlive`: Disable persistent HTTP connection reuse for the request.
+- `-TransferEncoding VALUE`: Set the request transfer-encoding value; use only
+  when the endpoint requires it.
 - `-TimeoutSec SECONDS`: Bound the request timeout; DNS resolution can still exceed very small values.
 - `-MaximumRedirection COUNT`: Limit automatic redirects.
 - `-Proxy URI`, `-ProxyCredential CREDENTIAL`, `-ProxyUseDefaultCredentials`: Configure the proxy and its authentication.
@@ -75,6 +87,12 @@ least-privilege process.
 
 ## Common mistakes
 
+### Overwriting an existing `-OutFile`
+
+The cmdlet does not provide a no-clobber switch. Check `Test-Path` before the
+request or create a unique temporary destination, then move the verified
+artifact deliberately.
+
 ### Copying PowerShell 7 parameters into a 5.1 script
 
 Check the installed command with `Get-Command Invoke-RestMethod -Syntax`.
@@ -85,10 +103,21 @@ The legacy web stack and parameter surface differ materially from PowerShell 7.
 Validate the HTTP outcome and the returned scalar, object, or collection before
 using its values in commands, paths, or deployment actions.
 
-### Assuming `-OutFile` also emits the response
+### Assuming `-PassThru` safely produces both outputs
 
-In Windows PowerShell 5.1, `-OutFile` writes the body and does not provide the
-PowerShell 7 `-PassThru` behavior.
+Windows PowerShell 5.1 does expose `-PassThru`, but the official reference
+records an empty-file defect. The tested 5.1.26100.8875 build reproduced it for
+a `file:` request: pipeline data was returned while the destination stayed at
+zero bytes. Do not consume either output until both have been validated.
+
+## Runtime evidence
+
+Windows PowerShell 5.1.26100.8875 resolved `irm` to `Invoke-RestMethod`. A
+bounded `file:` URI fixture under a verified GUID temporary directory returned
+one pipeline result with `-OutFile -PassThru` but left the destination at zero
+bytes, reproducing the documented defect. The suite removes the fixture and
+made no network request. JSON/XML conversion, authentication, proxy, redirect,
+TLS, and remote-content behavior remain outstanding.
 
 ## Related documents
 

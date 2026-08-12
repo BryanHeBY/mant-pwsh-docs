@@ -55,6 +55,14 @@ and formatting data. Import only trusted modules from known sources.
 - `-CimSession SESSION`: Import a CIM/CDXML module through the supplied CIM session.
 - `-ModuleInfo MODULE`: Import one or more discovered module objects; accepts pipeline input by value.
 - `-Assembly ASSEMBLY`: Import cmdlets and providers implemented by supplied assembly objects; accepts pipeline input by value and executes trusted code.
+- `-ArgumentList ARGUMENTS`: Pass arguments to a script module while importing
+  it; the parameter is valid only for script modules.
+- `-AsCustomObject`: Return a script module as a custom object whose exported
+  members become properties and script methods instead of normal session commands.
+- `-DisableNameChecking`: Suppress warnings for unapproved verbs or prohibited
+  command-name characters; it does not correct the module's naming problem.
+- `-CimNamespace NAMESPACE`, `-CimResourceUri URI`: Override CIM module
+  discovery for a `-CimSession`, primarily for non-Windows CIM servers.
 
 ## Module discovery
 
@@ -162,6 +170,15 @@ system, architecture, native dependencies, and module manifest requirements.
 A module that loads in PowerShell 7 on one platform may not load on another.
 Windows PowerShell 5.1 modules are not automatically compatible with
 PowerShell 7.
+
+## Runtime evidence
+
+PowerShell 7.6.4 on Windows imported a trusted fixture module created inside
+the smoke test's GUID temporary directory. `-NoClobber` preserved an existing
+`Get-MantDocFixture` function; after isolated cleanup, `-Prefix Probe` created
+`Get-ProbeMantDocFixture`, and `-PassThru` returned the expected module object.
+The module was unloaded and the verified temporary tree removed. This does not
+generalize to third-party, binary, remote, or cross-platform compatibility.
 
 ## Related documents
 

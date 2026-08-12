@@ -37,12 +37,19 @@ it before sorting, selecting properties, exporting, or performing an action.
 - `-Value VALUE`: Supply the comparison value when the selected operator requires one.
 - `-EQ`, `-IEQ`, `-CEQ`: Test equality with default, explicitly insensitive, or sensitive case handling.
 - `-NE`, `-INE`, `-CNE`: Test inequality with the corresponding case policy.
-- `-GT`, `-GE`, `-LT`, `-LE`: Perform ordered comparisons.
-- `-Like`, `-NotLike`: Match or reject wildcard patterns.
-- `-Match`, `-NotMatch`: Match or reject regular expressions.
-- `-Contains`, `-NotContains`: Test whether a property collection contains a value.
-- `-In`, `-NotIn`: Test whether a property value occurs in a supplied collection.
+- `-GT`, `-GE`, `-LT`, `-LE`, `-CGT`, `-CGE`, `-CLT`, `-CLE`: Perform
+  default or explicitly case-sensitive ordered comparisons.
+- `-Like`, `-NotLike`, `-CLike`, `-CNotLike`: Match or reject wildcard
+  patterns with default or case-sensitive comparison.
+- `-Match`, `-NotMatch`, `-CMatch`, `-CNotMatch`: Match or reject regular
+  expressions with default or case-sensitive comparison.
+- `-Contains`, `-NotContains`, `-CContains`, `-CNotContains`: Test whether a
+  property collection contains a value with default or case-sensitive comparison.
+- `-In`, `-NotIn`, `-CIn`, `-CNotIn`: Test whether a property value occurs in
+  a supplied collection with default or case-sensitive comparison.
 - `-Is`, `-IsNot`: Test the runtime type of a property value.
+- `-InputObject OBJECT`: Treat the supplied value as one object. Pipe a
+  collection when each member must be filtered separately.
 
 ## Comparison and predicate forms
 
@@ -85,6 +92,11 @@ or API queries to reduce work and transfer.
 
 ## Common mistakes
 
+### Passing a collection through `-InputObject`
+
+`-InputObject $items` evaluates the collection as one object; it does not bind
+each member separately. Use `$items | Where-Object ...` for per-item filtering.
+
 ### Filtering a formatting label
 
 Use `Get-Member` before formatting to confirm the actual source property.
@@ -104,6 +116,13 @@ Prefer the source command's own filter when available, then use
 This page targets Windows PowerShell 5.1. Operator and property availability
 inside a filter depends on the 5.1 language and the actual input type; avoid
 assuming examples written for newer PowerShell versions are accepted.
+
+## Runtime evidence
+
+Windows PowerShell 5.1.26100.8875 confirmed that `-InputObject` received a
+three-item array as one object and invoked its predicate once, while piping the
+same array invoked the predicate three times and selected the two enabled
+objects. The fixture used only in-memory custom objects.
 
 ## Related documents
 

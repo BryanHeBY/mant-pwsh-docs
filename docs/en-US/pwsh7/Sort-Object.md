@@ -34,7 +34,6 @@ filtering and selection first when input can be large.
 
 <!-- mant:entries role=option case=insensitive -->
 - `-Property PROPERTY`: Sort by one or more named or calculated keys; per-key hashtables can specify direction.
-- `-Ascending`: Sort in ascending order; this is the default when no direction is supplied.
 - `-Descending`: Reverse the selected sort direction.
 - `-Unique`: Return one object for each distinct comparison key after sorting.
 - `-Stable`: Preserve original input order when comparison keys are equal.
@@ -118,6 +117,12 @@ Get-ChildItem -LiteralPath ./logs -File -Recurse |
 
 ## Common mistakes
 
+### Passing `-Ascending` as a switch
+
+`Sort-Object` has no `-Ascending` parameter. Ascending order is the default.
+`Ascending = $true` is valid only as a key in a calculated-property hashtable
+passed to `-Property`.
+
 ### Sorting an unbounded stream
 
 Sorting requires enough buffering to compare the input. Filter near the
@@ -140,6 +145,12 @@ version that provides it.
 `Sort-Object` is cross-platform, but input objects and string comparison can
 depend on locale, provider, module, and operating system. Record culture or
 case assumptions where ordering affects automation output.
+
+## Runtime evidence
+
+PowerShell 7.6.4 metadata exposed `-Stable`, `-Top`, and `-Bottom`. Sorting
+three equal-key in-memory objects with `-Stable` retained their source order
+`b,a,c`. Culture- and provider-dependent ordering still requires target data.
 
 ## Related documents
 

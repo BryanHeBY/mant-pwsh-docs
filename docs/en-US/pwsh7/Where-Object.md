@@ -38,12 +38,21 @@ performing an action.
 - `-Value VALUE`: Supply the comparison value when the chosen operator requires one.
 - `-EQ`, `-IEQ`, `-CEQ`: Test equality using default, explicitly case-insensitive, or case-sensitive comparison.
 - `-NE`, `-INE`, `-CNE`: Test inequality with the corresponding case policy.
-- `-GT`, `-GE`, `-LT`, `-LE`: Perform ordered greater-than or less-than comparisons.
-- `-Like`, `-NotLike`: Match or reject wildcard patterns.
-- `-Match`, `-NotMatch`: Match or reject regular expressions.
-- `-Contains`, `-NotContains`: Test whether the property collection contains a value.
-- `-In`, `-NotIn`: Test whether the property value occurs in a supplied collection.
+- `-GT`, `-GE`, `-LT`, `-LE`, `-CGT`, `-CGE`, `-CLT`, `-CLE`: Perform
+  default or explicitly case-sensitive ordered comparisons.
+- `-Like`, `-NotLike`, `-CLike`, `-CNotLike`: Match or reject wildcard
+  patterns with default or case-sensitive comparison.
+- `-Match`, `-NotMatch`, `-CMatch`, `-CNotMatch`: Match or reject regular
+  expressions with default or case-sensitive comparison.
+- `-Contains`, `-NotContains`, `-CContains`, `-CNotContains`: Test whether a
+  property collection contains a value with default or case-sensitive comparison.
+- `-In`, `-NotIn`, `-CIn`, `-CNotIn`: Test whether a property value occurs in
+  a supplied collection with default or case-sensitive comparison.
 - `-Is`, `-IsNot`: Test the runtime type of the property value.
+- `-Not`: Keep objects whose selected property is absent, null, or false; this
+  concise parameter set was introduced in PowerShell 6.1.
+- `-InputObject OBJECT`: Treat the supplied value as one object. Pipe a
+  collection when each member must be filtered separately.
 
 ## Property comparison syntax
 
@@ -118,6 +127,11 @@ Get-Content -Raw ./items.json |
 
 ## Common mistakes
 
+### Passing a collection through `-InputObject`
+
+`-InputObject $items` evaluates the collection as one object; it does not bind
+each member separately. Use `$items | Where-Object ...` for per-item filtering.
+
 ### Filtering on a formatted column
 
 A display label is not necessarily an object property. Place `Get-Member`
@@ -140,6 +154,13 @@ that cannot be expressed at the source.
 properties and the availability of source commands vary by operating system,
 module, provider, and runtime version. Verify the source command's object type
 on every supported target.
+
+## Runtime evidence
+
+PowerShell 7.6.4 on Windows confirmed that `-InputObject` received a
+three-item array as one object and invoked its predicate once, while piping the
+same array invoked the predicate three times and selected the two enabled
+objects. This verifies the binding boundary, not provider-specific filters.
 
 ## Related documents
 

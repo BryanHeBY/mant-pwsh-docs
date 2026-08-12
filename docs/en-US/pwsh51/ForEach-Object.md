@@ -40,6 +40,8 @@ in-memory collection.
 - `-MemberName NAME`: Read an instance property or call an instance method for every input object.
 - `-ArgumentList ARGUMENTS`: Pass arguments to the method selected by `-MemberName`.
 - `-InputObject OBJECT`: Treat the supplied value as one input object; pipe a collection to process its members separately.
+- `-WhatIf`, `-Confirm`: Preview or confirm simplified `-MemberName` method
+  invocation. They are rejected for the script-block parameter set.
 
 ## Process blocks
 
@@ -80,6 +82,12 @@ first been verified.
 
 ## Common mistakes
 
+### Expecting `ForEach-Object -WhatIf` to preview a script block
+
+`ForEach-Object -WhatIf { ... }` is rejected rather than previewing commands
+inside the block. Put `-WhatIf` on each operation that supports it, and design
+an explicit preview path for operations that do not.
+
 ### Passing a collection through `-InputObject`
 
 `-InputObject $items` handles the collection as one object. Pipe `$items` when
@@ -101,6 +109,14 @@ a collection in the current scope and supports language control flow.
 This page targets Windows PowerShell 5.1. It does not provide PowerShell 7's
 `-Parallel`, `-ThrottleLimit`, `-TimeoutSeconds`, `-AsJob`, or
 `-UseNewRunspace` parameter set.
+
+## Runtime evidence
+
+Windows PowerShell 5.1.26100.8875 confirmed that `-InputObject` invoked a
+process block once for a three-item array, whereas pipeline input invoked it
+three times. A separate in-memory run emitted `begin`, the three item markers,
+then `end` in that order. Script-block `-WhatIf` remained rejected with
+`NoShouldProcessForScriptBlockSet`.
 
 ## Related documents
 

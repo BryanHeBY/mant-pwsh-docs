@@ -34,8 +34,18 @@ native dependencies in diagnostics. PowerShell 7 syntax such as `&&`, `||`,
 `??`, `??=`, and `? :` does not parse in Windows PowerShell 5.1. Maintain a
 5.1-compatible path or separate scripts when that edition remains supported.
 
+Windows PowerShell 5.1's `$PSVersionTable` has no `Platform` or `OS` keys;
+formatting those names only produces blank fields. Record the Windows runtime
+separately when diagnostics need it:
+
 ```powershell
-$PSVersionTable | Format-List PSVersion, PSEdition, Platform, OS
+[pscustomobject]@{
+    PSVersion = $PSVersionTable.PSVersion
+    PSEdition = $PSVersionTable.PSEdition
+    OSVersion = [Environment]::OSVersion.VersionString
+    Is64BitProcess = [Environment]::Is64BitProcess
+    Is64BitOperatingSystem = [Environment]::Is64BitOperatingSystem
+}
 ```
 
 Parsing, quoting, redirection, automatic variables, native argument passing,
@@ -67,6 +77,24 @@ Use explicit executable names and test encoding, output, redirection, and
 This guide compares Windows PowerShell 5.1 with the repository's PowerShell
 7.6 baseline. Module compatibility, remoting, and native tools still depend on
 the actual Windows release and installed products.
+
+## Common mistakes
+
+### Expecting PowerShell 7 keys in `$PSVersionTable`
+
+`Platform` and `OS` are useful PowerShell 7 keys but aren't present in Windows
+PowerShell 5.1. Check key existence or use the .NET `Environment` properties
+shown above instead of treating blank formatted fields as real platform data.
+
+## Runtime evidence
+
+Edition-matched Windows smoke suites now run separately under Windows
+PowerShell 5.1.26100.8875 and PowerShell 7.6.4. They confirm `Desktop` versus
+`Core`, absent versus present `Platform`/`OS` keys, different `curl`/`sc`
+resolution, UTF-16LE versus BOM-less UTF-8 redirection defaults, legacy versus
+modern `$?` wrapper behavior, and edition-specific command parameters. This is
+a bounded migration baseline, not proof that every module, .NET API, remoting
+endpoint, or native application works unchanged.
 
 ## Related documents
 

@@ -107,6 +107,18 @@ on Linux. Windows OpenSSH packaging, service configuration, key-file ACLs,
 agent integration, and default config paths differ from Unix-like systems;
 older clients can lack newer algorithms and options.
 
+On Windows NT `10.0.26200.0`, Windows PowerShell 5.1 resolved both the in-box
+`C:\Windows\System32\OpenSSH\ssh.exe` and Git's bundled `ssh.exe`. Exact
+in-box file version `9.5.5.1` identified itself as
+`OpenSSH_for_Windows_9.5p2, LibreSSL 3.8.2`; `-V` wrote one line to stderr and
+returned 0. Unlike many Windows tools, `-?` is not help: this client reported
+an unknown option plus usage in eight stderr lines and returned 255. Use the
+version and authoritative/manual documentation for discovery; do not generate
+generic punctuation-help probes for native tools. No destination,
+configuration expansion, identity, agent, socket, forward, DNS lookup, network
+connection, authentication, or remote command ran.
+Do not treat stderr alone as failure or silently exchange the two clients.
+
 ## Common mistakes
 
 ### Automatically accepting or suppressing host-key changes
@@ -125,6 +137,17 @@ authorized.
 Prefer a deployed remote script or a small, validated argument set. Nested
 PowerShell-to-SSH-to-shell parsing is not safely solved with
 `Invoke-Expression`.
+
+## Runtime evidence
+
+The repeatable Windows cross-platform fixture preserved both discovered
+`ssh.exe` Application candidates and selected the in-box System32 OpenSSH
+client under both PowerShell collectors. `-V` returned status `0` with one
+OpenSSH version line on stderr; `-?` returned `255` with an unknown-option and
+usage diagnostic on stderr, so it is not a generic help-success contract. No
+destination, config expansion, identity, agent, socket, DNS lookup, connection,
+authentication, forward, or remote command ran; macOS and connection behavior
+remain pending.
 
 ## Related documents
 

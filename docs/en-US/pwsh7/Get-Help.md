@@ -23,7 +23,7 @@
 
 ```powershell
 Get-Help [[-Name] <string>] [-Full] [-Detailed] [-Examples] [-Online]
-    [-Parameter <string>] [<CommonParameters>]
+    [-Parameter <string>] [-Path <string>] [<CommonParameters>]
 ```
 
 `Get-Help` displays installed help for commands and `about_*` concepts. Help
@@ -43,6 +43,8 @@ information when full help has not been installed.
 - `-Category CATEGORY`: Restrict results to command or help categories such as cmdlets, functions, aliases, or provider help.
 - `-Component COMPONENT`: Filter help by the component metadata supplied by help authors.
 - `-Role ROLE`, `-Functionality FUNCTIONALITY`: Filter help using role or functionality metadata when a help topic supplies it.
+- `-Path PATH`: Show provider-customized help for how a cmdlet behaves at the
+  specified PowerShell provider path.
 
 ## Help views
 
@@ -54,6 +56,7 @@ including input and output types. `-Examples` focuses on examples, and
 ```powershell
 Get-Help Get-ChildItem -Examples
 Get-Help Get-ChildItem -Parameter LiteralPath
+Get-Help Get-ChildItem -Path Cert:\
 Get-Help about_Quoting_Rules
 ```
 
@@ -134,6 +137,20 @@ but installed modules, downloadable help sources, browser integration, and
 permission requirements can differ. Help for Windows-only modules may not be
 available in a Linux or macOS session.
 
+## Runtime evidence
+
+PowerShell 7.6.4 on Windows was tested in a clean `-NoProfile` process.
+`Get-Help Get-Command -Parameter Name` returned a named, nonempty parameter
+view. A temporary in-memory function with no comment-based or external help
+still returned its name and nonempty syntax, confirming that syntax fallback
+does not prove detailed help is installed. The probe did not update help, open
+a browser or window, contact the network, or inspect user profile content.
+The provider fixture additionally confirmed that
+`Get-Help Get-ChildItem -Path Cert:\` returns named help with a nonempty
+provider-customized synopsis. It enumerated no certificate. Downloadable
+module help, GUI views, third-party providers, macOS, and Linux remain
+outstanding.
+
 ## Related documents
 
 - [Get-Command](Get-Command.md)
@@ -144,8 +161,10 @@ available in a Linux or macOS session.
 
 This original ManT-oriented page was adapted from the official
 [Get-Help reference](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/get-help?view=powershell-7.6).
-It is organized around interactive help views, source freshness, and safe use
-in automated environments. Exact upstream revision and path are recorded in
+Provider concepts are cross-checked against the official
+[about_Providers](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_providers?view=powershell-7.6)
+reference. It is organized around interactive help views, source freshness,
+and safe use in automated environments. Exact upstream revision and path are recorded in
 `upstream/pwsh7.json`.
 
 The cited documentation is licensed under CC BY 4.0. This adaptation is

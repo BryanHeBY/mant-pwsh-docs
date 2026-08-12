@@ -101,6 +101,20 @@ options, protocols, TLS backends, or features. Windows PowerShell 5.1 can
 resolve bare `curl` to an alias, so use `curl.exe` when that executable is the
 required contract.
 
+On Windows NT `10.0.26200.0`, Windows PowerShell 5.1 resolved bare `curl` first
+to its `Invoke-WebRequest` alias and separately found exact System32
+`curl.exe` file/tool version `8.21.0`. Explicit `curl.exe --version` returned 0
+with four stdout lines; `--help all` returned 0 with 274 nonempty stdout lines.
+Every long option indexed by this page appeared in that installed all-help
+payload; the check used token boundaries so forms shown after short aliases,
+such as `-m, --max-time`, were not falsely classified as absent.
+No URL, proxy request, DNS lookup, socket, credential, upload, download, output
+file, or network operation ran. Resolve `CommandType Application` or name
+`curl.exe` explicitly on Windows when curl semantics are required. A no-profile
+PowerShell 7.6.4 session on the same host resolved bare `curl` directly to that
+application because PowerShell 7 does not provide the Windows PowerShell
+`curl` alias by default.
+
 ## Common mistakes
 
 ### Using `--location` without a redirect trust policy
@@ -118,6 +132,16 @@ verify downloaded artifacts. An HTTP 200 response is not a signature.
 Use `--output` for the body and a deliberate `--write-out` destination or
 format for metadata. Do not parse a progress meter or diagnostic stream as the
 payload.
+
+## Runtime evidence
+
+The repeatable Windows cross-platform fixture confirmed that bare `curl` is an
+`Invoke-WebRequest` alias in Windows PowerShell 5.1 but an Application in the
+no-profile PowerShell 7.6.4 session. It then selected exact System32
+`curl.exe` in both collectors: `--version` returned four stdout lines/status
+`0`, and `--help all` returned 274 nonempty stdout lines/status `0`. No URL,
+proxy, DNS lookup, socket, credential, request, transfer, or output file was
+used; macOS and real protocol behavior remain pending.
 
 ## Related documents
 

@@ -45,6 +45,11 @@ Use `curl.exe` when a script needs the executable; use the full
 later commonly include `curl.exe`, but do not treat its presence or version as
 an invariant across managed Windows estates.
 
+When the alias is intended, prefer an explicit
+`Invoke-WebRequest -UseBasicParsing` command for noninteractive or untrusted
+content. Full Windows PowerShell 5.1 HTML parsing uses Internet Explorer
+components and can execute page script; patched hosts prompt before that path.
+
 ## Automation contract
 
 Do not write bare `curl` in a script whose behavior must survive profiles,
@@ -76,6 +81,19 @@ in Windows PowerShell 5.1 normally binds `Invoke-WebRequest` parameters.
 
 The alias does not prove that the executable is installed. Resolve
 `curl.exe` as an application and validate its version when it is a dependency.
+
+### Treating the alias as a harmless text downloader
+
+The alias invokes the legacy web cmdlet, not native curl. Avoid full HTML
+parsing for untrusted content and verify any downloaded artifact before use.
+
+## Runtime evidence
+
+In a clean Windows PowerShell 5.1.26100.8875 session, `curl` resolved to the
+`Invoke-WebRequest` alias while exact `curl.exe` remained a separately
+discoverable native application. This proves the local resolution collision,
+not that every Windows build includes native curl or that its version and
+options match another host.
 
 ## Related documents
 

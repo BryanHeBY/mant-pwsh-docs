@@ -47,18 +47,22 @@ The parent shell parses its own quoting before PowerShell parses the command.
 When the command is a string, it normally consumes the rest of the command
 line. Use a script file rather than accumulating nested quote escapes.
 
-`-CommandWithArgs` exposes later launcher arguments through `$args`. It is
-experimental in the PowerShell 7.6 baseline; do not require it in scripts that
-must run on earlier PowerShell 7 releases.
+`-CommandWithArgs` exposes later launcher arguments through `$args`. It was
+introduced as experimental in PowerShell 7.4 and became a mainstream feature
+in 7.5-preview.5. Do not require it in scripts that must run on releases before
+7.4. PowerShell 7.6.4's bundled `pwsh -Help` still displays a stale
+`[Experimental]` label even though the current 7.6 reference records the
+feature as mainstream.
 
 ## Common options
 
 <!-- mant:entries role=option case=insensitive -->
 - `-Command COMMAND`, `-c COMMAND`: Execute PowerShell source, then exit unless `-NoExit` is also present.
-- `-CommandWithArgs COMMAND`, `-cwa COMMAND`: Execute a command and make following launcher arguments available as `$args`; experimental in the 7.6 baseline.
+- `-CommandWithArgs COMMAND`, `-cwa COMMAND`: Execute a command and make following launcher arguments available as `$args`; available since 7.4 and mainstream since 7.5-preview.5.
 - `-File PATH`, `-f PATH`: Run a PowerShell script file with remaining arguments passed to that script.
 - `-NoProfile`, `-nop`: Do not load any PowerShell profile scripts.
-- `-NonInteractive`, `-noni`: Do not prompt for interactive input; unsuitable prompts become errors.
+- `-NonInteractive`, `-noni`: Do not prompt for interactive input; unsuitable
+  prompts become errors. This option does not disable profile loading.
 - `-NoLogo`, `-nol`: Suppress the startup banner.
 - `-NoExit`, `-noe`: Keep the session open after startup commands finish.
 - `-WorkingDirectory PATH`, `-wd PATH`: Set the initial filesystem working directory.
@@ -123,6 +127,20 @@ Forward `$LASTEXITCODE` explicitly when a caller needs the exact native
 status. Non-terminating PowerShell errors also require an intentional failure
 contract.
 
+### Letting the parent expand child-process source
+
+An expandable `-Command` string created in a PowerShell parent can substitute
+`$variables` and `$()` expressions before `pwsh` receives it. Use a literal
+string for fixed child source, pass a script block from a PowerShell caller
+when appropriate, or prefer `-File` for substantial automation.
+
+### Treating `-CommandWithArgs` as experimental in PowerShell 7.6
+
+The bundled help in PowerShell 7.6.4 retains an `[Experimental]` marker, but
+the current official 7.6 reference says the feature became mainstream in
+7.5-preview.5. Check both the target runtime's behavior and the current
+versioned reference when bundled help and release status disagree.
+
 ### Depending on profiles in automation
 
 Use `-NoProfile` and normally `-NonInteractive`; load required modules and
@@ -152,6 +170,18 @@ pwsh -NoProfile -Command { param($value) "value: $value" } -Args $message
 The final example is reliable only when a PowerShell host passes the script
 block as a script block. Use `-File` when invoking from another shell or a
 process API that passes only strings.
+
+## Runtime evidence
+
+PowerShell 7.6.4 on Windows confirmed the installed launcher identity,
+`-NoProfile` Core/Win32NT metadata, `-CommandWithArgs` preserving `alpha` and
+`two words` as separate `$args`, and a literal child command returning `1`.
+The bundled help still labeled `-CommandWithArgs` experimental while the
+locked 7.6 reference records it as mainstream; the page preserves that
+documented discrepancy. PowerShell 7.6.3 on Linux covered launcher help and
+selected exit behavior. macOS, stdin, encoded commands, login shells,
+execution policy, profiles, and all failure-exit combinations remain
+outstanding.
 
 ## Related documents
 

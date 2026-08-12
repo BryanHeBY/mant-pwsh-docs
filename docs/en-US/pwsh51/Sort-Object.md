@@ -34,7 +34,6 @@ result before sorting large Windows directory trees or service inventories.
 
 <!-- mant:entries role=option case=insensitive -->
 - `-Property PROPERTY`: Sort by one or more named or calculated keys.
-- `-Ascending`: Sort in ascending order; this is the default.
 - `-Descending`: Reverse the selected sort direction.
 - `-Unique`: Return one object for each distinct comparison key after sorting.
 - `-CaseSensitive`: Use case-sensitive string comparison.
@@ -91,6 +90,12 @@ and locale. Record culture assumptions if sorting affects a saved result.
 
 ## Common mistakes
 
+### Passing `-Ascending` as a switch
+
+`Sort-Object` has no `-Ascending` parameter. Ascending order is the default.
+`Ascending = $true` is valid only as a key in a calculated-property hashtable
+passed to `-Property`.
+
 ### Copying PowerShell 7-only switches
 
 Windows PowerShell 5.1 has no `-Stable`, `-Top`, or `-Bottom`. Sort and then
@@ -112,6 +117,13 @@ and specify culture/case requirements when output must be reproducible.
 This page targets Windows PowerShell 5.1. Do not use PowerShell 7 parameters
 such as `-Stable`, `-Top`, or `-Bottom` in a 5.1 script; implement and test the
 required ordering explicitly.
+
+## Runtime evidence
+
+Windows PowerShell 5.1.26100.8875 metadata contained none of `-Stable`, `-Top`,
+or `-Bottom`. An in-memory two-key sort used an ascending numeric key and a
+descending calculated string key to produce `c,b,a`, confirming the documented
+calculated-key form without provider or locale input.
 
 ## Related documents
 

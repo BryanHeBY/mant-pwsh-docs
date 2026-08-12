@@ -67,11 +67,22 @@
           "type": "git",
           "baseline": "powershell-docs",
           "path": "reference/5.1/Microsoft.PowerShell.Core/About/about_Automatic_Variables.md"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_providers?view=powershell-5.1",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
         }
       ],
       "notes": [
         "The shell manual is original project text synthesized from the listed official topics rather than a copy of one upstream page.",
-        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+        "Windows PowerShell 5.1 runtime evidence covers object flow, native text boundaries, no-clobber behavior, and the fact that uncaptured .NET/cmdlet success results contaminate enclosing output unless precisely captured or suppressed.",
+        "Corrected the built-in Certificate provider drive spelling from Certificate: to Cert: and distinguished provider name from drive name using official about_Providers plus dual-edition runtime evidence.",
+        "The reader-visible Runtime evidence section records the bounded 62-check Windows PowerShell 5.1 suite and leaves third-party, remote, and host-specific behavior outside that evidence."
       ]
     },
     "windows-powershell-5.1-docs.md": {
@@ -97,7 +108,7 @@
       ],
       "notes": [
         "This document is the navigation index; pwsh51.md is the primary shell and language manual.",
-        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+        "Runtime verification belongs to the linked command, language, and compatibility pages; the navigation index itself introduces no separate shell behavior."
       ]
     },
     "powershell.exe.md": {
@@ -118,7 +129,7 @@
       ],
       "notes": [
         "This is an original launcher guide, not a copy of the upstream reference.",
-        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+        "The installed Windows PowerShell 5.1 launcher accepted Version 5.1 first and started 5.1.26100.8875; a fixed literal Command source preserved child-side variable parsing. Stdin, encoded command, policy, apartment, host, profile, and failure-exit combinations remain outstanding."
       ]
     },
     "about_Parsing.md": {
@@ -139,7 +150,7 @@
       ],
       "notes": [
         "This is an original ManT-oriented topic guide, not a copy of the upstream reference.",
-        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+        "Windows PowerShell 5.1 smoke verification covers the parsing examples. Local catalog harnesses demonstrated two whitespace failures: variable/parameter merging can fail a read before plausible downstream null/default counts, while Where-Object document-eq$name remains syntactically valid but silently selects zero rows. The page now requires explicit predicates, fail-fast reads, and expected coverage invariants."
       ]
     },
     "about_Quoting_Rules.md": {
@@ -160,7 +171,7 @@
       ],
       "notes": [
         "This is an original ManT-oriented topic guide, not a copy of the upstream reference.",
-        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+        "Windows PowerShell 5.1.26100.8875 confirmed indexed interpolation versus subexpression selection, invariant interpolation versus de-DE ToString conversion with culture restoration, and a literal child-command source boundary. Here-strings, smart quotes, target-native parsers, Unicode, and other nested hosts remain outstanding."
       ]
     },
     "native-commands.md": {
@@ -181,7 +192,7 @@
       ],
       "notes": [
         "No official about_Native_Commands topic exists in the locked 5.1 PowerShell-Docs baseline; this original guide is a project topic name informed by about_Parsing.",
-        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+        "Windows PowerShell 5.1.26100.8875 confirmed alias-versus-executable resolution, native exit code 7, and the edition-specific 2>&1 NativeCommandError boundary under stopping versus scoped Continue error policy. Target quoting, stdin encoding, other tools, and Windows builds remain outstanding."
       ]
     },
     "about_Pipelines.md": {
@@ -198,11 +209,36 @@
           "type": "git",
           "baseline": "powershell-docs",
           "path": "reference/5.1/Microsoft.PowerShell.Core/About/about_Pipelines.md"
+        },
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/5.1/Microsoft.PowerShell.Core/About/about_Operators.md"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/powershell/scripting/learn/deep-dives/everything-about-null?view=powershell-7.6",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://learn.microsoft.com/legal/termsofuse"
+          },
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/powershell/module/microsoft.powershell.management/new-item?view=powershell-5.1",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://learn.microsoft.com/legal/termsofuse"
+          },
+          "checkedAt": "2026-08-12"
         }
       ],
       "notes": [
         "This is an original ManT-oriented topic guide, not a copy of the upstream reference.",
-        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+        "Windows PowerShell 5.1 parser evidence on 2026-08-12 confirmed that a bare foreach statement before a pipe raises EmptyPipeElement, while array/subexpression wrapping and an invoked script block each pass the two emitted objects to Measure-Object.",
+        "A ManT-result audit falsely counted one diagnostic because an omitted optional property produced null and @($null) is a one-element array. Windows PowerShell 5.1 confirmed wrapped=1, direct null Count=0, and a property/value-gated count=0; the page now makes this Agent evidence boundary searchable.",
+        "Runtime metadata and the official New-Item reference confirm Path exists but LiteralPath does not. The corrected output-suppression example uses -Path and requires target validation; the smoke suite locks this distinction."
       ]
     },
     "about_Redirection.md": {
@@ -219,11 +255,22 @@
           "type": "git",
           "baseline": "powershell-docs",
           "path": "reference/5.1/Microsoft.PowerShell.Core/About/about_Redirection.md"
+        },
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Core/About/about_Character_Encoding.md"
+        },
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/5.1/Microsoft.PowerShell.Core/About/about_Preference_Variables.md"
         }
       ],
       "notes": [
         "This is an original ManT-oriented topic guide, not a copy of the upstream reference.",
-        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+        "Windows PowerShell 5.1 on Windows confirmed UTF-16LE redirection defaults, UTF-8 BOM output for Set-Content -Encoding UTF8, bounded no-clobber behavior, BOM-less UTF-8 misdecoding, native exit-code handling, and mixed-stream capture.",
+        "A 2026-08-12 isolated cmd.exe probe wrote one stderr line and returned 7. With ErrorActionPreference Stop and 2>&1, Windows PowerShell 5.1 entered catch with NativeCommandError before the assignment completed; LASTEXITCODE observed in that early catch varied between isolated and full-suite runs and is not reliable. A scoped Continue capture completed with one ErrorRecord and exit 7. No file or system state changed."
       ]
     },
     "about_Automatic_Variables.md": {
@@ -244,7 +291,8 @@
       ],
       "notes": [
         "This is an original ManT-oriented topic guide, not a copy of the upstream reference.",
-        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+        "The page now indexes all 42 automatic variables listed in the locked Windows PowerShell 5.1 source rather than only the original common subset.",
+        "Windows PowerShell 5.1.26100.8875 in a clean NoProfile process confirmed the Desktop runtime variables, a present empty ConsoleFileName, absent PSDebugContext outside debugging, retained Matches data after a failed match, foreach and switch enumerators, legacy question-mark wrapper reset, native exit status, and missing Platform/OS version-table keys. Event, remoting, debugger, nested-prompt, psc1, Nano Server, and IoT contexts remain outstanding."
       ]
     },
     "about_Profiles.md": {
@@ -265,7 +313,7 @@
       ],
       "notes": [
         "This is an original ManT-oriented topic guide, not a copy of the upstream reference.",
-        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+        "Windows PowerShell 5.1.26100.8875 in a clean NoProfile process confirmed that PROFILE is a string equal to CurrentUserCurrentHost and exposes all four documented profile-path properties. No profile file was read or created; loading order, host behavior, policy, remoting, and other configurations remain outstanding."
       ]
     },
     "about_Functions.md": {
@@ -286,37 +334,69 @@
       ],
       "notes": [
         "This is an original ManT-oriented topic guide, not a copy of the upstream reference.",
-        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+        "Windows PowerShell 5.1.26100.8875 confirmed advanced-function begin/process/end timing and that an unsuppressed collection Add return value contaminates normal output. The probe used only in-memory values."
       ]
     },
     "Get-Command.md": {
       "kind": "cmdlet",
       "status": "reviewed",
-      "versions": ["5.1"],
-      "platforms": ["windows"],
-      "sources": [{
-        "type": "git",
-        "baseline": "powershell-docs",
-        "path": "reference/5.1/Microsoft.PowerShell.Core/Get-Command.md"
-      }],
+      "versions": [
+        "5.1"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/5.1/Microsoft.PowerShell.Core/Get-Command.md"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/powershell/scripting/developer/cmdlet/cmdlet-dynamic-parameters?view=powershell-7.6",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
+        }
+      ],
       "notes": [
         "This is an original ManT-oriented cmdlet guide, not a copy of the upstream reference.",
-        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+        "Windows PowerShell 5.1.26100.8875 in a clean NoProfile process confirmed alias precedence over a same-name function, ordered All results, and a nonempty Syntax view. The suite also checks core command, alias, and documented-option metadata; module, provider, PATH, and other-build variance remains outstanding.",
+        "The dual-edition NoProfile provider fixture passes 14/14: fixed built-in paths return the documented provider object types; FileSystem, Registry, and Certificate expose different dynamic parameters; Get-Help -Path Cert:\\ returns provider-customized help; and Get-PSDrive can change later provider discovery by loading Microsoft.PowerShell.Security. It emits no environment value, registry data, certificate, or user path and performs no provider mutation or network access."
       ]
     },
     "Get-Help.md": {
       "kind": "cmdlet",
       "status": "reviewed",
-      "versions": ["5.1"],
-      "platforms": ["windows"],
-      "sources": [{
-        "type": "git",
-        "baseline": "powershell-docs",
-        "path": "reference/5.1/Microsoft.PowerShell.Core/Get-Help.md"
-      }],
+      "versions": [
+        "5.1"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/5.1/Microsoft.PowerShell.Core/Get-Help.md"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_providers?view=powershell-5.1",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
+        }
+      ],
       "notes": [
         "This is an original ManT-oriented cmdlet guide, not a copy of the upstream reference.",
-        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+        "Windows PowerShell 5.1.26100.8875 in a clean NoProfile process confirmed named parameter help and syntax fallback for an in-memory function without detailed help. The probe performed no update, GUI, network, or profile-content operation; provider, downloadable, GUI, and other-build help remains outstanding.",
+        "The dual-edition NoProfile provider fixture passes 14/14: fixed built-in paths return the documented provider object types; FileSystem, Registry, and Certificate expose different dynamic parameters; Get-Help -Path Cert:\\ returns provider-customized help; and Get-PSDrive can change later provider discovery by loading Microsoft.PowerShell.Security. It emits no environment value, registry data, certificate, or user path and performs no provider mutation or network access."
       ]
     },
     "Get-Member.md": {
@@ -331,22 +411,47 @@
       }],
       "notes": [
         "This is an original ManT-oriented cmdlet guide, not a copy of the upstream reference.",
-        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+        "Windows PowerShell 5.1.26100.8875 confirmed that an in-memory custom object exposes Name and Count before formatting, while Format-Table output exposes formatting-system records instead."
       ]
     },
     "Get-ChildItem.md": {
       "kind": "cmdlet",
       "status": "reviewed",
-      "versions": ["5.1"],
-      "platforms": ["windows"],
-      "sources": [{
-        "type": "git",
-        "baseline": "powershell-docs",
-        "path": "reference/5.1/Microsoft.PowerShell.Management/Get-ChildItem.md"
-      }],
+      "versions": [
+        "5.1"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/5.1/Microsoft.PowerShell.Management/Get-ChildItem.md"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/powershell/module/microsoft.powershell.management/get-psdrive?view=powershell-5.1",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_providers?view=powershell-5.1",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
+        }
+      ],
       "notes": [
         "This is an original ManT-oriented cmdlet guide, not a copy of the upstream reference.",
-        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+        "Windows PowerShell 5.1.26100.8875 confirmed complete parameter metadata, the serviced FollowSymlink parameter, parse-valid examples, and a bounded SystemRoot FileSystemInfo result. Provider, path, link, and recursive behavior remain outstanding.",
+        "The dual-edition NoProfile provider fixture passes 14/14: fixed built-in paths return the documented provider object types; FileSystem, Registry, and Certificate expose different dynamic parameters; Get-Help -Path Cert:\\ returns provider-customized help; and Get-PSDrive can change later provider discovery by loading Microsoft.PowerShell.Security. It emits no environment value, registry data, certificate, or user path and performs no provider mutation or network access."
       ]
     },
     "Where-Object.md": {
@@ -361,7 +466,7 @@
       }],
       "notes": [
         "This is an original ManT-oriented cmdlet guide, not a copy of the upstream reference.",
-        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+        "Windows PowerShell 5.1.26100.8875 confirmed that -InputObject evaluates a three-item array once while pipeline input evaluates its three members and selects the two enabled objects."
       ]
     },
     "ForEach-Object.md": {
@@ -376,7 +481,7 @@
       }],
       "notes": [
         "This is an original ManT-oriented cmdlet guide, not a copy of the upstream reference.",
-        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+        "Windows PowerShell 5.1.26100.8875 confirmed one -InputObject invocation versus three pipeline invocations, begin/item/end phase order, and the script-block WhatIf rejection."
       ]
     },
     "Select-Object.md": {
@@ -391,7 +496,7 @@
       }],
       "notes": [
         "This is an original ManT-oriented cmdlet guide, not a copy of the upstream reference.",
-        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+        "Windows PowerShell 5.1.26100.8875 confirmed complete parameter metadata, First+Last+Skip selection, the incompatible SkipLast combination, case-sensitive Unique behavior, and parse-valid examples."
       ]
     },
     "Sort-Object.md": {
@@ -406,7 +511,7 @@
       }],
       "notes": [
         "This is an original ManT-oriented cmdlet guide, not a copy of the upstream reference.",
-        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+        "Windows PowerShell 5.1.26100.8875 confirmed Stable/Top/Bottom are absent and an in-memory ascending primary/descending calculated secondary sort produced c,b,a."
       ]
     },
     "Import-Module.md": {
@@ -421,7 +526,7 @@
       }],
       "notes": [
         "This is an original ManT-oriented cmdlet guide, not a copy of the upstream reference.",
-        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+        "Windows PowerShell 5.1.26100.8875 imported only a trusted GUID-temporary fixture: -NoClobber retained an existing function, -Prefix Probe created the prefixed command, and -PassThru returned the fixture module. It was unloaded and the tree removed."
       ]
     },
     "irm.md": {
@@ -443,7 +548,7 @@
       ],
       "notes": [
         "The page explicitly warns against downloading remote content into Invoke-Expression.",
-        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+        "Windows PowerShell 5.1.26100.8875 confirmed the irm alias and reproduced the documented OutFile+PassThru empty-file defect with a local file URI under the suite's verified temporary root. HTTP conversion, authentication, proxy, redirect, TLS, and remote content remain outstanding."
       ]
     },
     "iwr.md": {
@@ -465,7 +570,7 @@
       ],
       "notes": [
         "The page adds explicit artifact-verification and legacy parser guidance.",
-        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+        "Windows PowerShell 5.1.26100.8875 confirmed the iwr alias and a local file URI OutFile+PassThru fixture returned one object and a nonempty file below the suite's verified temporary root. HTTP authentication, proxy, redirect, TLS, IE parser, and remote content remain outstanding."
       ]
     },
     "iex.md": {
@@ -487,7 +592,7 @@
       ],
       "notes": [
         "The page treats parsing data as code as a security risk, documents safer alternatives, and explains that -Command binds pipeline strings by value and evaluates each item separately.",
-        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+        "Windows PowerShell 5.1.26100.8875 evaluated two fixed in-memory pipeline strings in order and changed a GUID-named script variable in current scope; the variable was removed in finally. No file, profile, network, user, or downloaded input was evaluated."
       ]
     },
     "irx.md": {
@@ -502,7 +607,7 @@
       }],
       "notes": [
         "The page is an availability guide for a custom shorthand, not a claim about a universal alias mapping.",
-        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+        "Get-Command irx -All returned no command in the clean Windows PowerShell 5.1.26100.8875 session. Installed modules and user/session configuration can still define it elsewhere."
       ]
     },
     "curl.md": {
@@ -524,7 +629,7 @@
       ],
       "notes": [
         "The page is a Windows command-resolution guide rather than a claim that curl is a universal built-in alias.",
-        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+        "Windows PowerShell 5.1.26100.8875 confirmed bare curl resolves to Invoke-WebRequest while exact curl.exe remains separately discoverable. Native curl availability, version, and options remain environment-specific."
       ]
     },
     "Start-Process.md": {
@@ -546,11 +651,30 @@
             "url": "https://stackoverflow.com/help/licensing"
           },
           "checkedAt": "2026-08-11"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/dotnet/api/system.diagnostics.process.standardoutput?view=netframework-4.8.1",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/dotnet/api/system.diagnostics.processstartinfo.arguments?view=netframework-4.8.1",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
         }
       ],
       "notes": [
-        "The guide emphasizes when direct native invocation is preferable and explains wait, exit-code, stream, and argument-list pitfalls.",
-        "Runtime verification requires Windows PowerShell 5.1 on Windows."
+        "The guide emphasizes when direct native invocation is preferable and explains wait, exit-code, stream, and argument-list pitfalls. Microsoft's .NET Process contract supplies the dual-redirected-stream deadlock boundary.",
+        "Windows PowerShell 5.1 runtime verification reproduced a blocked capture harness when stdout and stderr were read synchronously in sequence; concurrent asynchronous reads completed the same no-operand usage probe and separated start failure, timeout, exit, stdout and stderr.",
+        "Runtime metadata confirmed .NET Framework ProcessStartInfo exposes the Arguments string but not the newer ArgumentList collection. The page separates that API from Start-Process -ArgumentList and requires argument-construction validation before launch."
       ]
     },
     "start.md": {
@@ -572,7 +696,7 @@
       ],
       "notes": [
         "The page distinguishes the PowerShell alias from the cmd.exe start builtin.",
-        "Runtime verification requires Windows PowerShell 5.1 on Windows."
+        "Windows PowerShell 5.1.26100.8875 confirmed start resolves to Start-Process and every documented alias option matches live metadata. No target process or GUI application was launched."
       ]
     },
     "Invoke-Item.md": {
@@ -598,7 +722,7 @@
       ],
       "notes": [
         "The guide highlights exact-path input, provider-dependent actions, pipeline binding, and the risk of opening untrusted items.",
-        "Runtime verification requires Windows PowerShell 5.1 on Windows."
+        "Windows PowerShell 5.1.26100.8875 confirmed the ii alias and every documented option against live metadata. No item, file association, provider action, application, or GUI handler was invoked."
       ]
     },
     "ii.md": {
@@ -629,7 +753,7 @@
       ],
       "notes": [
         "The page documents the common ii . workflow while preserving broader provider semantics and trust boundaries.",
-        "Runtime verification requires Windows PowerShell 5.1 on Windows."
+        "Windows PowerShell 5.1.26100.8875 confirmed ii resolves to Invoke-Item and every documented alias option matches live metadata. No item or GUI handler was invoked."
       ]
     },
     "powershell-7-compatibility.md": {
@@ -644,7 +768,7 @@
       }],
       "notes": [
         "The guide treats Windows PowerShell 5.1 and PowerShell 7 as separately verified runtimes.",
-        "Runtime verification requires Windows PowerShell 5.1 on Windows and is not part of portable repository validation."
+        "Separate Windows PowerShell 5.1.26100.8875 and PowerShell 7.6.4 suites confirm edition, version-table keys, command resolution, encoding, question-mark wrappers, and parameter differences. Modules, .NET APIs, remoting endpoints, and arbitrary native applications still require workload-specific migration tests."
       ]
     }
   }

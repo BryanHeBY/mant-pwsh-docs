@@ -42,16 +42,21 @@ full cmdlet name in automation to avoid command-name ambiguity.
 - `-Depth COUNT`: Bound recursive descent to the requested number of levels.
 - `-File`: Return filesystem files only; this is a FileSystem-provider dynamic parameter.
 - `-Directory`: Return filesystem directories only; this is a FileSystem-provider dynamic parameter.
+- `-Hidden`: Return filesystem items with the hidden attribute.
+- `-ReadOnly`: Return filesystem items with the read-only attribute.
+- `-System`: Return filesystem items with the system attribute.
 - `-Attributes EXPRESSION`: Select filesystem items using an attribute expression.
 - `-Force`: Include hidden or otherwise normally omitted items where supported; it does not bypass ACLs.
 - `-Name`: Return relative name strings instead of provider item objects.
+- `-FollowSymlink`: Follow directory symbolic links during recursion when the serviced Windows PowerShell 5.1 FileSystem provider exposes this dynamic parameter; it is not available on every 5.1 host.
 
 ## Paths and providers
 
 `-Path` accepts provider paths and wildcard patterns. Use `-LiteralPath` when
 the path is data that can contain `[` or `*`. A filesystem path and a provider
-path such as `Env:`, `HKLM:`, `HKCU:`, `Certificate:`, or `Function:` expose
-different item types and parameters.
+path such as `Env:`, `HKLM:`, `HKCU:`, `Cert:`, or `Function:` expose
+different item types and parameters. `Certificate` is the provider name;
+`Cert:` is its built-in drive name.
 
 ```powershell
 Get-ChildItem -Path C:\logs
@@ -66,10 +71,19 @@ command modifies any returned item.
 
 ## Filtering and recursion
 
-Use `-Filter` when the provider supports source-side filtering. `-Include` and
-`-Exclude` have provider-specific path rules. `-Recurse` descends into child
+Use `-Filter` when the provider supports source-side filtering. For the
+built-in FileSystem provider it accepts one string passed to the enumeration
+API, whose wildcard support is limited to `*` and `?`. `-Include` and
+`-Exclude` accept string arrays and PowerShell wildcard patterns including
+`*`, `?`, and `[]`, but PowerShell applies them after provider enumeration and
+their effect depends on the exact path form. `-Recurse` descends into child
 containers; `-Depth` bounds traversal; `-File` and `-Directory` choose a kind;
 and `-Force` can include hidden items.
+
+In Windows PowerShell 5.1, `-Depth` has no effect when combined with
+`-Include`; use the FileSystem provider's `-Filter` when it can express the
+match. `-Include` and `-Exclude` also have no effect with `-LiteralPath` in
+5.1. These limitations were fixed in later PowerShell releases.
 
 Large recursive scans can cross network shares, junctions, protected folders,
 or large user profiles. Bound the root and filter before results feed a
@@ -119,12 +133,40 @@ contract for Registry, Certificate, Environment, or third-party providers.
 Anchor an exact root and use source filtering and `-Depth`. Junctions, shares,
 permissions, and profile trees can make a seemingly small traversal expensive.
 
+### Assuming every Windows PowerShell 5.1 build has the same dynamic parameters
+
+The current official 5.1 reference lists `-FollowSymlink` while also noting
+that the parameter was introduced in PowerShell 6. The serviced Windows build
+used for this repository exposes it in 5.1, but older 5.1 FileSystem providers
+may not. Check `Get-Command Get-ChildItem -Syntax` on the target host before
+depending on it.
+
 ## Windows-specific behavior
 
 Filesystem permissions, hidden attributes, providers, registry views, UNC
 paths, and junction handling depend on Windows version and process
 architecture. Native programs do not accept arbitrary provider paths; convert
 to a filesystem path before passing one to an `.exe`.
+
+## Runtime evidence
+
+Windows PowerShell 5.1.26100.8875 confirmed all documented option names against
+live metadata, including the serviced `-FollowSymlink` parameter, and a
+bounded SystemRoot enumeration produced a `FileSystemInfo` object. A separate
+`-NoProfile` provider fixture confirmed `DirectoryInfo`, `AliasInfo`,
+`DictionaryEntry`, `FunctionInfo`, `PSVariable`, `RegistryKey`, and
+`X509StoreLocation` objects from fixed built-in paths without emitting their
+values. It also confirmed six selected FileSystem-only dynamic parameters,
+none of them on Registry paths, and Certificate-provider `CodeSigningCert`.
+In the fresh process, the first `Get-PSProvider` snapshot contained six core
+providers but not Certificate; subsequent `Get-PSDrive` discovery loaded
+`Microsoft.PowerShell.Security`, exposed `Cert:`, and made the Certificate
+provider visible. Provider discovery is session state, so record invocation
+order rather than treating snapshots from different load points as a
+contradiction.
+The fixture does not traverse links, recurse, enumerate environment/registry/
+certificate contents, or perform provider mutation; path edge cases,
+third-party providers, and recursive behavior remain outstanding.
 
 ## Related documents
 
@@ -137,8 +179,11 @@ to a filesystem path before passing one to an `.exe`.
 
 This original ManT-oriented page was adapted from the official
 [Get-ChildItem reference](https://learn.microsoft.com/powershell/module/microsoft.powershell.management/get-childitem?view=powershell-5.1).
-It emphasizes Windows providers, literal paths, and bounded recursive
-enumeration. Exact upstream revision and path are recorded in
+Provider object types and drive semantics are cross-checked against the
+official [about_Providers](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_providers?view=powershell-5.1)
+and [Get-PSDrive](https://learn.microsoft.com/powershell/module/microsoft.powershell.management/get-psdrive?view=powershell-5.1)
+references. It emphasizes Windows providers, literal paths, and bounded
+recursive enumeration. Exact upstream revision and path are recorded in
 `upstream/pwsh51.json`.
 
 The cited documentation is licensed under CC BY 4.0. This adaptation is

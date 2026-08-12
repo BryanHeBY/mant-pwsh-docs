@@ -50,15 +50,12 @@ differences in newer stable releases.
   information stream routing.
 - [about_Automatic_Variables](about_Automatic_Variables.md): pipeline state,
   invocation paths, runtime information, errors, and native exit status.
-- [about_Profiles](about_Profiles.md): interactive customization without
+- [about_Profiles](about_Profiles.md): startup customization without
   making automation depend on startup state.
 - [about_Functions](about_Functions.md): reusable commands with parameters,
   pipeline input, scope, and module-oriented design.
 - [native-commands](native-commands.md): executable resolution, argument
   conversion, streams, exit codes, and safety.
-
-Future introductory pages will cover moving scripts from Windows PowerShell
-5.1.
 
 ## Command discovery
 
@@ -103,7 +100,8 @@ Future introductory pages will cover moving scripts from Windows PowerShell
 - [iwr](iwr.md): alias for `Invoke-WebRequest`, with explicit download verification.
 - [iex](iex.md): alias for `Invoke-Expression`; use safer direct invocation instead.
 - [irx](irx.md): a non-built-in custom shorthand; resolve it in the current session before use.
-- [curl](curl.md): resolve the Windows alias versus the native executable before using it.
+- [curl](curl.md): distinguish PowerShell 7's ambient native command from the
+  Windows PowerShell 5.1 alias and any custom definitions.
 
 ## Migration
 
@@ -137,8 +135,9 @@ Each document should be useful independently and link back to the complete
 
 Portable behavior is documented first. Windows-, macOS-, and Linux-specific
 sections identify differences in installation, security, paths, modules, and
-native command behavior. Each command document records the version and
-platform used for runtime verification.
+native command behavior. Durable runtime evidence records the exact version
+and platform actually tested; a document is not implicitly verified on every
+platform it describes.
 
 ## Query with ManT
 
@@ -152,6 +151,13 @@ mant pwsh7 --source pwsh7 --outline
 mant pwsh7 --source pwsh7 --node native-commands
 mant pwsh7 --source pwsh7 --search=LASTEXITCODE
 ```
+
+## Verification boundary
+
+This page is a navigation and retrieval index, not a runtime-behavior claim.
+Repository validation checks its structure, links, semantic declarations, and
+ManT parsing. Runtime evidence and any remaining platform boundary belong to
+the linked command and shell pages.
 
 ## Related documents
 

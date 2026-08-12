@@ -119,6 +119,15 @@ This page follows current Git documentation and was runtime-checked with Git
 behavior, symlink support, line-ending policy, shell hooks, and bundled SSH
 vary across Windows, macOS, and Linux.
 
+On Windows NT `10.0.26200.0`, Windows PowerShell 5.1 resolved three Git
+applications: Git for Windows `2.44.0.windows.1` under both `cmd` and `bin`,
+plus Codex's bundled `2.53.0.windows.3`. The selected
+`C:\Program Files\Git\cmd\git.exe` returned 0 with one stdout version line;
+`-h` returned 0 with 37 nonempty stdout help lines. No repository, working
+tree, configuration, hook, credential helper, pager, network, or file changed.
+Automation that depends on one distribution must pin the resolved executable,
+not merely assume the first `git` on `PATH` is universal.
+
 ## Common mistakes
 
 ### Running against the wrong repository or worktree
@@ -135,6 +144,16 @@ result. Interpret the documented contract of the selected subcommand.
 
 `add`, `restore`, `reset`, and `commit` affect different layers. Inspect both
 `status` and the exact diff before using a destructive mode.
+
+## Runtime evidence
+
+The repeatable Windows cross-platform fixture preserved all three discovered
+`git.exe` Application candidates, selected
+`C:\Program Files\Git\cmd\git.exe`, and ran only `--version` plus top-level
+`-h` under Windows PowerShell 5.1 and PowerShell 7.6.4. Both returned status
+`0` with expected version/usage text. No repository, working tree, config,
+hook, credential helper, pager, network, or file operation ran; macOS and
+repository-scoped command behavior remain pending.
 
 ## Related documents
 

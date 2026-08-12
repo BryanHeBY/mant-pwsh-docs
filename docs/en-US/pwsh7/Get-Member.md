@@ -14,7 +14,7 @@
 
 - Inspect a static .NET type:
 
-`Get-Member -InputObject ([type]::GetType('{{TypeName}}')) -Static`
+`[{{System.DateTime}}] | Get-Member -Static`
 <!-- mant:tldr:end -->
 
 # Get-Member
@@ -23,7 +23,7 @@
 
 ```powershell
 Get-Member [[-Name] <string[]>] [-InputObject <psobject>] [-MemberType <PSMemberTypes>]
-    [-Static] [-Force] [<CommonParameters>]
+    [-View <PSMemberViewTypes>] [-Static] [-Force] [<CommonParameters>]
 ```
 
 `Get-Member` reports the members and type names of objects passed through the
@@ -140,6 +140,13 @@ The cmdlet works across PowerShell 7 platforms, but object types and members
 depend on installed modules, .NET runtime behavior, provider implementations,
 and operating system. Inspect objects on every target platform when writing
 portable property or method access.
+
+## Runtime evidence
+
+PowerShell 7.6.4 on Windows exposed `Name` and `Count` as note properties on an
+in-memory custom object. After `Format-Table`, `Get-Member` instead saw
+formatting-system records and no `Name` property. The probe does not depend on
+an operating-system provider.
 
 ## Related documents
 

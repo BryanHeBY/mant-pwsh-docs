@@ -56,6 +56,96 @@ Write-Output "items: $((Get-ChildItem).Count)"
 Cmdlets bind parameters after parsing. Use complete parameter names in shared
 scripts and quote data that could be mistaken for syntax.
 
+## Piping language statements
+
+Language statements such as `foreach`, `if`, and `switch` are not commands and
+cannot be followed directly by `|`. This source fails during parsing with
+`EmptyPipeElement`:
+
+```text
+foreach ($item in 1..3) { $item } | Measure-Object
+```
+
+Capture the statement output first, or invoke a script block when the output
+should stream directly into the next command:
+
+```powershell
+$items = foreach ($item in 1..3) { $item }
+$items | Measure-Object
+
+& { foreach ($item in 1..3) { $item } } | Measure-Object
+```
+
+`ForEach-Object` is a cmdlet, so it can appear as a normal pipeline element;
+the `foreach` language statement has different grammar and behavior.
+
+## Embedding indexed values
+
+An index works when the variable reference is the complete argument, but an
+index or member access embedded in a larger expandable token needs `$()`:
+
+```powershell
+$parts = @('alpha', 'beta')
+Write-Output $parts[1]                 # beta
+Write-Output "value=$parts[1]"         # value=alpha beta[1]
+Write-Output "value=$($parts[1])"      # value=beta
+```
+
+Without the subexpression, Windows PowerShell expands the simple `$parts`
+reference and treats `[1]` as literal text. The same rule matters when
+building native arguments such as `"--explain=$($parts[1])"`. Assign the
+selected value to a scalar first when that is clearer.
+
+## Token boundaries around variables and parameters
+
+Whitespace still separates command arguments. Compressing a generated command
+can silently change its tokens:
+
+Incorrect—the intended variable and parameter boundaries are absent:
+
+```text
+Get-Content $catalogPath-Raw-Encoding utf8
+```
+
+Correct—make every boundary explicit:
+
+```powershell
+# Keep file paths and parameter names as separate tokens.
+Get-Content -LiteralPath $catalogPath -Raw -Encoding utf8
+```
+
+The first form can bind a different variable/text token and report an unknown
+combined parameter such as `-Raw-Encoding`. If a diagnostic script continues
+after that error, later null/default calculations can still print plausible
+counts. Prefer named parameters with visible spaces; use
+`$ErrorActionPreference = 'Stop'` or explicit `-ErrorAction Stop` when a failed
+read must invalidate all downstream evidence. Fail fast before calculating or
+publishing any derived count.
+
+Missing whitespace does not always produce an error. In `Where-Object`'s
+simplified syntax, this form is syntactically valid but combines the intended
+property, operator, and variable boundaries and can silently select nothing:
+
+```powershell
+$name = 'alpha'
+$rows = @([pscustomobject]@{ document = 'alpha' })
+$matches = @($rows | Where-Object document-eq$name) # Incorrect: count is 0.
+```
+
+Use an explicit predicate when variables or generated tokens participate, then
+assert the expected coverage before publishing a result:
+
+```powershell
+$matches = @($rows | Where-Object { $_.document -eq $name })
+if ($matches.Count -ne 1) {
+    throw "Expected one document, found $($matches.Count)."
+}
+```
+
+A successful pipeline status and an empty collection do not prove that no
+source rows matched. Treat the input count, selected count, and expected key
+set as evidence invariants.
+
 ## Special characters and literal input
 
 Spaces, quotes, dollar signs, backticks, commas, semicolons, pipes, braces,
@@ -101,6 +191,17 @@ CLI owns its own option and argument conventions.
 This page describes the Windows PowerShell 5.1 parser on Windows. Do not copy
 PowerShell 7 native-argument behavior or newer parsing features into a 5.1
 script without testing the exact host.
+
+## Runtime evidence
+
+Windows PowerShell 5.1.26100.8875 parsed every PowerShell example in this
+edition's document set. Bounded probes confirmed indexed interpolation
+requiring `$()`, the `EmptyPipeElement` error for piping directly from a
+`foreach` statement, and literal child source preserving `$value` for the
+child parser. A failed catalog-read probe also confirmed that removing
+whitespace before `-Raw` or `-Encoding` changes tokenization and can lead to
+plausible but invalid downstream counts. Native target parsers and arbitrary
+quoting combinations remain application-specific.
 
 ## Related documents
 

@@ -96,7 +96,16 @@ Windows Explorer behavior is not evidence for Linux or macOS desktop behavior.
 
 The cmdlet exists in PowerShell 7 on Windows, Linux, and macOS. The default
 action is provider- and platform-specific and can require an interactive
-desktop. `ii` is its built-in alias in the tested PowerShell 7.6 Linux session.
+desktop. `ii` is the built-in alias for `Invoke-Item`.
+
+## Runtime evidence
+
+PowerShell 7.6.4 on Windows confirmed that `ii` resolves to `Invoke-Item` and
+that every documented option exists in live command metadata; the earlier
+Linux 7.6.3 check confirmed the alias there. No item was invoked on Windows:
+the suite deliberately avoids opening a file, directory, URL, application, or
+GUI handler. Provider actions, associations, desktop availability, macOS, and
+policy remain outstanding.
 
 ## Related documents
 

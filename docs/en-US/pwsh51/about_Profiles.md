@@ -23,8 +23,8 @@
 
 A profile is a PowerShell script that runs as a Windows PowerShell session
 starts. Profiles can define prompts, aliases, functions, imported modules,
-helper variables, and preferences. They are personal interactive configuration,
-not an automation dependency.
+helper variables, and preferences. They are startup configuration, not an
+automation dependency.
 
 ## Profile locations
 
@@ -68,12 +68,25 @@ build, deployment, or security behavior.
 
 Windows PowerShell loads applicable all-users profiles before current-user
 profiles. Host-specific profiles and all-hosts profiles are distinct. A console
-window, Windows PowerShell ISE, remoting endpoint, Task Scheduler task, or a
-third-party host can therefore start with different profile state.
+window, Windows PowerShell ISE, Task Scheduler task, or a third-party host can
+therefore start with different profile state.
 
 A profile path does not prove it will load. Startup options, execution policy,
 file permissions, host policy, endpoint configuration, and user identity can
 prevent loading.
+
+## Noninteractive and remote sessions
+
+`-NonInteractive` prevents interactive prompts; it does not disable profile
+loading. Use `-NoProfile` explicitly when reproducibility requires a clean
+startup. Combining `-NoProfile` and `-NonInteractive` is appropriate for an
+unattended process that must neither load customization nor prompt for input.
+
+PowerShell profiles are not run automatically in remote sessions, and
+`$PROFILE` is not populated there. Do not assume that aliases, functions, or
+modules from a local or remote user's normal console profile exist in a
+remoting endpoint. Initialize required state explicitly in the remote command,
+module, or endpoint configuration.
 
 ## Automation and troubleshooting
 
@@ -104,6 +117,16 @@ does not make untrusted source safe to execute.
 These profile paths and loading rules apply to Windows PowerShell 5.1 hosts.
 PowerShell 7 uses different application and profile locations; host-specific
 profiles also remain distinct within the same edition.
+
+## Runtime evidence
+
+In a clean Windows PowerShell 5.1.26100.8875 `-NoProfile` process, `$PROFILE`
+was a string whose value equaled `CurrentUserCurrentHost` and exposed all four
+documented profile-path properties: `AllUsersAllHosts`,
+`AllUsersCurrentHost`, `CurrentUserAllHosts`, and `CurrentUserCurrentHost`.
+This shape check neither read nor created any profile file. Loading order,
+host-specific execution, execution-policy effects, remoting, and other user or
+host configurations remain outstanding.
 
 ## Related documents
 

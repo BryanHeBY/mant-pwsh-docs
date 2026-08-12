@@ -23,7 +23,8 @@
 
 ```powershell
 Get-Member [[-Name] <string[]>] [-InputObject <psobject>]
-    [-MemberType <PSMemberTypes>] [-Static] [-Force] [<CommonParameters>]
+    [-MemberType <PSMemberTypes>] [-View <PSMemberViewTypes>]
+    [-Static] [-Force] [<CommonParameters>]
 ```
 
 `Get-Member` reports the members and type names of objects passed through the
@@ -111,6 +112,13 @@ properties. Verify the member before using it in a script.
 This page describes Windows PowerShell 5.1. Members depend on the runtime type,
 loaded type data, remoting serialization, and installed .NET Framework rather
 than only on the spelling of the originating command.
+
+## Runtime evidence
+
+Windows PowerShell 5.1.26100.8875 exposed `Name` and `Count` as note properties
+on an in-memory custom object. After `Format-Table`, `Get-Member` instead saw
+formatting-system records and no `Name` property, verifying the requirement to
+inspect objects before formatting.
 
 ## Related documents
 

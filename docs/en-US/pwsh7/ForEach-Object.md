@@ -40,6 +40,8 @@ iterates an in-memory collection.
 - `-MemberName NAME`: Read an instance property or call an instance method for every input object.
 - `-ArgumentList ARGUMENTS`: Pass arguments to the method selected by `-MemberName`.
 - `-InputObject OBJECT`: Treat the supplied value as one input object; pipe a collection when each member must be processed separately.
+- `-WhatIf`, `-Confirm`: Preview or confirm simplified `-MemberName` method
+  invocation. They are rejected for script-block and parallel parameter sets.
 - `-Parallel SCRIPTBLOCK`: Run input operations in parallel runspaces; available in PowerShell 7 and not Windows PowerShell 5.1.
 - `-ThrottleLimit COUNT`: Limit concurrent `-Parallel` runspaces; the default pool size is five.
 - `-TimeoutSeconds SECONDS`: Stop parallel work after the requested timeout; zero means no timeout.
@@ -90,9 +92,13 @@ clear logging or output for results that must be audited.
 ```powershell
 Get-ChildItem -File |
     ForEach-Object {
-        Copy-Item -LiteralPath $_.FullName -Destination ./backup -ErrorAction Stop
+        Copy-Item -LiteralPath $_.FullName -Destination ./backup -WhatIf `
+            -ErrorAction Stop
     }
 ```
+
+`-WhatIf` keeps this example as a preview. Remove it only after reviewing the
+resolved inputs, destination, overwrite behavior, and rollback plan.
 
 Avoid using this cmdlet merely to format text. Keep objects in the pipeline
 until a final display or serialization step.
@@ -127,6 +133,12 @@ Get-ChildItem ./input -Filter '*.json' -File |
 
 ## Common mistakes
 
+### Expecting `ForEach-Object -WhatIf` to preview a script block
+
+`ForEach-Object -WhatIf { ... }` is rejected rather than previewing commands
+inside the block. Put `-WhatIf` on each operation that supports it, and design
+an explicit preview path for operations that do not.
+
 ### Passing a collection through `-InputObject`
 
 `-InputObject $items` treats the collection as one object. Use
@@ -150,6 +162,15 @@ control-flow behavior, and buffering implications.
 The core process and member forms are portable across PowerShell 7 platforms.
 The input objects, target actions, and `-Parallel` behavior can depend on
 operating system, module, PowerShell version, and external resource limits.
+
+## Runtime evidence
+
+PowerShell 7.6.4 on Windows confirmed that `-InputObject` invoked a process
+block once for a three-item array, whereas pipeline input invoked it three
+times, with `begin` and `end` emitted once around the item markers. A bounded
+`-Parallel -ThrottleLimit 2` probe returned all three inputs but could not see
+an ordinary caller variable, confirming the separate-runspace boundary. It did
+not assert completion order or mutate caller state.
 
 ## Related documents
 

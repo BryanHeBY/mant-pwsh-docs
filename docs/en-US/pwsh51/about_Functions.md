@@ -111,6 +111,14 @@ functions in a module and export only supported public commands. A module built
 for .NET Framework and Windows PowerShell 5.1 may not load in PowerShell 7,
 and the reverse is also possible; test the intended edition explicitly.
 
+## Runtime evidence
+
+Windows PowerShell 5.1.26100.8875 passed two integers through an advanced
+function and observed one `begin`, two `process` objects, and one `end` marker.
+A separate function body called `.Add()` without suppression and therefore
+emitted its integer return value `0` before the explicit `done` string. This
+confirms both pipeline-block timing and the implicit-output hazard.
+
 ## Related documents
 
 - [about_Pipelines](about_Pipelines.md)

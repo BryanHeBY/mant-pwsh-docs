@@ -21,10 +21,10 @@
 
 ## Meaning
 
-`irx` is not a built-in Windows PowerShell 5.1 alias, cmdlet, function, or
-executable. If it works on a Windows PowerShell machine, a profile, module,
-script, endpoint, or executable defined it; its meaning is not a portable
-Windows PowerShell contract.
+`irx` is not a built-in Windows PowerShell 5.1 alias or cmdlet. If
+`Get-Command irx` resolves something, a profile, module, script, endpoint, or
+executable on that machine supplied it; its meaning is not a portable Windows
+PowerShell contract.
 
 ## Availability
 
@@ -73,6 +73,14 @@ Similar spelling is not evidence of a command contract.
 
 Avoid fixing a script by defining an undocumented profile alias. Use the full
 command name and declare its owning module or deployment prerequisite.
+
+## Runtime evidence
+
+`Get-Command irx -All` returned no command in the recorded clean Windows
+PowerShell 5.1.26100.8875 session. The test suppresses only the expected
+not-found error and does not create an alias or load a profile. This establishes
+absence from that session, not universal absence from installed modules or
+user-defined configuration.
 
 ## Related documents
 

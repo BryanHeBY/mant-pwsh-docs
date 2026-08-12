@@ -38,6 +38,10 @@ on the provider, desktop session, and Windows file association.
 - `-Filter FILTER`: Ask a supporting provider to filter items before Windows PowerShell receives them.
 - `-Include PATTERN`: Include only matching paths; its effect depends on path contents and provider expansion.
 - `-Exclude PATTERN`: Omit matching paths; it does not make an otherwise untrusted invocation safe.
+- `-WhatIf`, `-Confirm`: Preview or confirm the provider's default action before
+  it opens a document or runs an executable.
+- `-Credential CREDENTIAL`: Exposed for provider compatibility, but no provider
+  installed with Windows PowerShell supports it; it is not an elevation mechanism.
 
 ## Common mistakes
 
@@ -60,6 +64,13 @@ clear. Keep `ii` for concise interactive work.
 
 See [Invoke-Item](Invoke-Item.md) for provider behavior, parameters, pipeline
 input, output, trust, and Windows PowerShell 5.1 constraints.
+
+## Runtime evidence
+
+In the recorded clean Windows PowerShell 5.1.26100.8875 session, `ii` resolved
+to the built-in `Invoke-Item` alias and every documented option matched live
+cmdlet metadata. No item was invoked or GUI opened; provider actions and file
+associations remain deliberately untested here.
 
 ## Related documents
 

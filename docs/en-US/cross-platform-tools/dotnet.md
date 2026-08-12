@@ -103,8 +103,13 @@ specific subcommand's `--help` for installed-version options; not every .NET
 SDK supports the same switches.
 
 The currently available PowerShell 7 test environment for this repository does
-not include `dotnet`; this document remains draft until runtime verification
-covers the intended Windows, macOS, and Linux SDK environments.
+not include `dotnet`. Exact Windows PowerShell 5.1 Application discovery on
+Windows NT `10.0.26200.0` also found no `dotnet` executable, including the
+standard `C:\Program Files\dotnet\dotnet.exe` candidate. No first-run setup,
+SDK selection, workload, certificate, telemetry, feed, restore, build, project,
+cache, or filesystem operation ran. This document remains unverified until
+compatible SDK hosts cover Windows, macOS, and Linux; absence is an environment
+result, not evidence that the syntax passed.
 
 ## Version and platform differences
 
@@ -132,6 +137,17 @@ consumed by `dotnet run`.
 Project targets, analyzers, packages, workloads, and NuGet configuration can
 execute code or access networks. Review the repository and feeds before using
 credentials or elevated privileges.
+
+## Runtime evidence
+
+The repeatable Windows cross-platform fixture classified `dotnet.exe` as
+unavailable under both installed PowerShell editions and therefore marked the
+behavior probe skipped, not passed. It did not attempt a bare fallback command
+or trigger first-run setup. On a host with an SDK, the fixture is constrained
+to `dotnet --version` with telemetry and first-time experience disabled inside
+a verified GUID temporary CLI home that is removed afterward. SDK selection,
+Windows/macOS/Linux execution, workload, certificate, feed, restore, build,
+project, cache, and generated-file behavior remain unverified.
 
 ## Related documents
 

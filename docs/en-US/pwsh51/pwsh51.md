@@ -68,7 +68,8 @@ script files are easier to review, quote, test, and log.
 - `-Command COMMAND`, `-c COMMAND`: Execute PowerShell source and then exit.
 - `-File PATH`, `-f PATH`: Run a Windows PowerShell script file.
 - `-NoProfile`, `-nop`: Do not load any Windows PowerShell profile scripts.
-- `-NonInteractive`, `-noni`: Reject attempts to request interactive input.
+- `-NonInteractive`, `-noni`: Reject attempts to request interactive input; it
+  does not disable profile loading.
 - `-NoLogo`, `-nol`: Omit the startup banner.
 - `-NoExit`, `-noe`: Keep the session open after running startup commands.
 - `-ExecutionPolicy POLICY`, `-ep POLICY`: Set the process-scope execution policy without changing the persisted policy.
@@ -217,11 +218,14 @@ program, `$LASTEXITCODE` contains its process exit code. A nonzero native exit
 code does not automatically throw, so automation should test it explicitly:
 
 ```powershell
-robocopy.exe .\source .\destination /E
+robocopy.exe .\source .\destination /E /L
 if ($LASTEXITCODE -ge 8) {
     throw "robocopy failed with exit code $LASTEXITCODE"
 }
 ```
+
+The `/L` switch makes the example a list-only preview. Remove it only after
+reviewing both resolved paths and the planned file operations.
 
 Do not assume that every native tool uses zero for success and every nonzero
 value for failure; tools such as `robocopy.exe` define ranges of successful or
@@ -251,10 +255,11 @@ not pass binary data through a text pipeline without an explicit safe format.
 ## Paths, providers, and locations
 
 PowerShell exposes data stores through providers and drives. Filesystem paths
-are the most common, but drives such as `HKLM:`, `HKCU:`, `Certificate:`,
-`Env:`, `Alias:`, `Function:`, and `Variable:` expose other stores through
-related cmdlets. Not every provider is available on every Windows
-installation.
+are the most common, but drives such as `HKLM:`, `HKCU:`, `Cert:`, `Env:`,
+`Alias:`, `Function:`, and `Variable:` expose other stores through related
+cmdlets. `Certificate` is the provider name, while `Cert:` is its built-in
+drive name. Not every provider is loaded or available in every session or
+Windows installation.
 
 Use `Join-Path`, `-LiteralPath`, and provider-aware cmdlets instead of manual
 string concatenation. Native programs accept filesystem paths and cannot
@@ -355,6 +360,18 @@ if ($LASTEXITCODE -ne 0) {
 }
 $items = $json | ConvertFrom-Json
 ```
+
+## Runtime evidence
+
+On 2026-08-12, the repository's `-NoProfile` Windows PowerShell 5.1 suite
+passed 64 of 64 checks on version `5.1.26100.8875`. The checks cover the named
+language, binding, native-command, provider, function, module, and temporary
+filesystem contracts used by this guide. Provider checks deliberately read
+only fixed built-in paths and metadata: `Get-PSDrive` auto-loaded the
+Certificate provider and exposed its `Cert:` drive; no environment value,
+registry data, certificate, user path, profile, or network resource was read.
+This evidence does not establish third-party module behavior, remote endpoints,
+or every Windows build and host configuration described above.
 
 ## Related documents
 

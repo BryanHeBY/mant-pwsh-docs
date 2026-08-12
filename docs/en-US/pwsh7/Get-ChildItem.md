@@ -42,6 +42,9 @@ automation should prefer the full cmdlet name to avoid shell-specific habits.
 - `-Depth COUNT`: Bound recursive descent to the requested number of levels.
 - `-File`: Return filesystem files only; this is a FileSystem-provider dynamic parameter.
 - `-Directory`: Return filesystem directories only; this is a FileSystem-provider dynamic parameter.
+- `-Hidden`: Return filesystem items with the hidden attribute.
+- `-ReadOnly`: Return filesystem items with the read-only attribute.
+- `-System`: Return filesystem items with the system attribute.
 - `-Attributes EXPRESSION`: Select filesystem items by attribute expression, including combined and negated attributes.
 - `-Force`: Include hidden or otherwise normally omitted items where the provider supports it; it does not bypass security checks.
 - `-Name`: Return relative name strings instead of provider item objects.
@@ -66,10 +69,17 @@ automation that will act on results.
 
 ## Filtering and recursion
 
-Use `-Filter` when the provider can apply a simple filter near the source. It
-is usually more efficient than retrieving every item and filtering later.
-`-Include` and `-Exclude` are path-pattern controls with provider-specific
-behavior; use them only after testing the exact path form.
+Use `-Filter` when the provider can apply a simple filter near the source. For
+the built-in FileSystem provider it is one string passed to the enumeration
+API, whose wildcard support is limited to `*` and `?`; this is usually more
+efficient than retrieving every item and filtering later. Custom providers can
+define different support.
+
+`-Include` and `-Exclude` accept string arrays and PowerShell wildcard patterns
+including `*`, `?`, and `[]`. PowerShell applies them after provider
+enumeration, so they are not performance-equivalent to `-Filter`; their effect
+also depends on the exact path form. Test the provider, path, and recursion
+combination before relying on the result set.
 
 `-Recurse` descends into child containers. `-Depth` limits recursion in
 providers that support it. Use `-File` or `-Directory` to select one item kind
@@ -139,6 +149,25 @@ permissions, hidden-item rules, links, mounts, and path syntax vary by
 operating system. Test recursive and provider-specific behavior on every
 target platform.
 
+## Runtime evidence
+
+PowerShell 7.6.4 on Windows confirmed every documented option name against
+live metadata, parse-valid examples, and a bounded SystemRoot enumeration that
+produced a `FileSystemInfo` object. A separate `-NoProfile` provider fixture
+confirmed `DirectoryInfo`, `AliasInfo`, `DictionaryEntry`, `FunctionInfo`,
+`PSVariable`, `RegistryKey`, and `X509StoreLocation` objects from fixed
+built-in paths without emitting their values. It also confirmed six selected
+FileSystem-only dynamic parameters, none of them on Registry paths, and
+Certificate-provider `CodeSigningCert`. In the fresh process, the first
+`Get-PSProvider` snapshot contained six core providers but not Certificate;
+subsequent `Get-PSDrive` discovery loaded `Microsoft.PowerShell.Security`,
+exposed `Cert:`, and made the Certificate provider visible. Provider discovery
+is session state, so record invocation order rather than treating snapshots
+from different load points as a contradiction. The fixture does not traverse
+links, recurse, enumerate environment/registry/certificate contents, or
+perform provider mutation; path edge cases, third-party providers, mounts,
+permissions, macOS, and Linux remain outstanding.
+
 ## Related documents
 
 - [Where-Object](Where-Object.md)
@@ -150,8 +179,11 @@ target platform.
 
 This original ManT-oriented page was adapted from the official
 [Get-ChildItem reference](https://learn.microsoft.com/powershell/module/microsoft.powershell.management/get-childitem?view=powershell-7.6).
-It emphasizes provider boundaries, literal paths, and bounded recursive
-enumeration. Exact upstream revision and path are recorded in
+Provider object types and drive semantics are cross-checked against the
+official [about_Providers](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_providers?view=powershell-7.6)
+and [Get-PSDrive](https://learn.microsoft.com/powershell/module/microsoft.powershell.management/get-psdrive?view=powershell-7.6)
+references. It emphasizes provider boundaries, literal paths, and bounded
+recursive enumeration. Exact upstream revision and path are recorded in
 `upstream/pwsh7.json`.
 
 The cited documentation is licensed under CC BY 4.0. This adaptation is

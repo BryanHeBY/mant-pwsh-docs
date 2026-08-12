@@ -17,6 +17,10 @@
 `$text = @'
 {{multi-line text}}
 '@`
+
+- Keep child-process PowerShell source literal in the parent session:
+
+`$childSource = '$value = 1; $value'; pwsh -NoProfile -Command $childSource`
 <!-- mant:tldr:end -->
 
 # about_Quoting_Rules
@@ -96,6 +100,24 @@ count: $((Get-ChildItem).Count)
 Use literal here-strings for data or templates that must not evaluate. Use
 expandable here-strings only when the interpolation is deliberate and reviewed.
 
+## Nested PowerShell processes
+
+When one PowerShell process starts another with `-Command`, the parent parses
+the argument before the child parses it as PowerShell source. An expandable
+string in the parent can therefore replace `$variables` and `$()` expressions
+before the child sees them. Keep fixed child source in a single-quoted string,
+pass a script block when both sides are PowerShell and that boundary is
+intentional, or prefer a reviewed script file for substantial automation:
+
+```powershell
+$childSource = '$value = 1; $value'
+pwsh -NoProfile -Command $childSource
+```
+
+Do not keep adding escape layers until a nested command happens to work. Check
+which process owns each expansion, and inspect the exact value passed across
+the process boundary.
+
 ## External commands
 
 Quoted PowerShell strings become argument values before a native program sees
@@ -107,10 +129,26 @@ backslashes, Unicode, and leading hyphens.
 
 ## Culture and conversion
 
-String interpolation uses PowerShell and .NET conversion behavior. Culture can
-affect formatted values such as dates and numbers. For machine-readable data,
-choose an explicit invariant format or a structured serialization format such
-as JSON rather than relying on display conversion.
+PowerShell uses invariant culture when it converts values inserted by
+expandable-string interpolation. An explicit `.ToString()` call uses the
+current culture unless an overload or format provider says otherwise. For
+example, with a `de-DE` current culture, `"$number"` can produce `1.2` while
+`$number.ToString()` produces `1,2`.
+
+Choose an explicit invariant or named culture for machine-readable text. Use a
+structured format such as JSON when the consumer needs typed data rather than
+display strings.
+
+## Runtime evidence
+
+PowerShell 7.6.4 on Windows confirmed that an indexed array reference embedded
+directly in an expandable string emits the whole array plus literal index text,
+while `$()` selects the intended item. A scoped `de-DE` culture probe confirmed
+invariant interpolation `1.2` versus current-culture `.ToString()` output
+`1,2`, with both thread cultures restored in `finally`. A literal child-command
+string preserved `$value` for the child parser. The earlier Linux parser pass
+covered the page; macOS, smart quotes, here-string edge cases, Unicode, and
+target-native parsers remain outstanding.
 
 ## Related documents
 

@@ -67,10 +67,12 @@ a last resort for a tool that cannot be expressed as separate arguments.
 ## Output and streams
 
 Native programs have standard output and standard error, not PowerShell object
-output and six diagnostic streams. Their output can enter a PowerShell pipeline
-as text or, in supported PowerShell 7 scenarios, as bytes. Do not treat native
-text as an object with properties; parse a documented structured format such
-as JSON explicitly.
+output and six diagnostic streams. When native stdout is piped to a PowerShell
+command, PowerShell decodes it into strings. PowerShell 7.4 and later instead
+preserve the raw byte stream when unredirected native stdout is redirected
+directly to a file with `>` or `>>`; that special path does not put byte objects
+in the PowerShell pipeline. Do not treat native text as an object with
+properties; parse a documented structured format such as JSON explicitly.
 
 ```powershell
 $json = tool list --output json
@@ -120,6 +122,23 @@ filesystem semantics, console encodings, and native argument parsing are not.
 The `PSNativeCommandArgumentPassing` preference and byte-stream handling can
 also depend on the PowerShell 7 version. Document a minimum version whenever
 automation depends on these details.
+
+## Runtime evidence
+
+PowerShell 7.6.4 on Windows confirmed native `curl.exe` and `sc.exe`
+resolution, `Windows` argument-passing mode, exit code `7`, one merged stderr
+`ErrorRecord` with the native error preference disabled, BOM-less UTF-8 text,
+and exact byte preservation through redirection. PowerShell 7.6.3 on Linux
+confirmed selected native resolution and exit boundaries. macOS, remaining
+Linux encoding cases, target-specific parsers, stdin contracts, and arbitrary
+native tools remain outstanding.
+
+If a native producer's exit code matters, do not shorten its live output with
+`Select-Object -First`. Early downstream closure can make a command that was
+still writing observe a broken pipe. The recorded `tasklist.exe` probe printed
+three plausible CSV rows and then left `$LASTEXITCODE = -1`; complete bounded
+capture returned `0`. Drain both redirected streams concurrently, wait for the
+process, record status, and summarize the captured text afterward.
 
 ## Related documents
 

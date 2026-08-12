@@ -67,10 +67,11 @@ script files are easier to review, quote, test, and log.
 
 <!-- mant:entries role=option case=insensitive -->
 - `-Command COMMAND`, `-c COMMAND`: Execute PowerShell source and then exit.
-- `-CommandWithArgs COMMAND`, `-cwa COMMAND`: Execute a command and expose the remaining launcher arguments through `$args`; this option is experimental in the 7.6 baseline.
+- `-CommandWithArgs COMMAND`, `-cwa COMMAND`: Execute a command and expose the remaining launcher arguments through `$args`; it became a mainstream parameter in 7.5-preview.5, although some bundled 7.6 help still labels it experimental.
 - `-File PATH`, `-f PATH`: Run a PowerShell script file.
 - `-NoProfile`, `-nop`: Do not load any PowerShell profile scripts.
-- `-NonInteractive`, `-noni`: Reject attempts to request interactive input.
+- `-NonInteractive`, `-noni`: Reject attempts to request interactive input; it
+  does not disable profile loading.
 - `-NoLogo`, `-nol`: Omit the startup banner.
 - `-NoExit`, `-noe`: Keep the session open after running startup commands.
 - `-WorkingDirectory PATH`, `-wd PATH`: Set the initial working directory.
@@ -190,8 +191,10 @@ Get-Process |
 
 Pipeline input is usually enumerated. Wrap a command in unary comma or use an
 appropriate `-NoEnumerate` facility when one collection object must travel as
-a single item. Native commands exchange text or bytes rather than live .NET
-objects, so crossing the native boundary changes pipeline semantics.
+a single item. Native output piped into a PowerShell command is decoded into
+strings rather than live .NET domain objects, so crossing the native boundary
+changes pipeline semantics. PowerShell 7.4+ raw-byte preservation applies to
+direct native stdout file redirection, not ordinary object pipelines.
 
 ## Streams and redirection
 
@@ -351,6 +354,17 @@ if ($LASTEXITCODE -ne 0) {
 $items = $json | ConvertFrom-Json
 ```
 
+## Runtime evidence
+
+The repository runs edition-matched, no-profile suites under PowerShell
+7.6.4 on Windows and previously under 7.6.3 on Linux. Windows evidence covers
+launcher arguments, command resolution, automatic variables, object pipelines,
+stream/error boundaries, encoding, parsing, quoting, functions, modules, and
+native exit status; focused pages state the exact checks and remaining gaps.
+This shell overview does not convert those partial platform results into a
+claim of universal module, provider, remoting, desktop, macOS, or native-tool
+compatibility.
+
 ## Related documents
 
 - [PowerShell 7 documentation](powershell-7-docs.md)
@@ -363,8 +377,10 @@ as they are added.
 This original ManT-oriented reference was written from the official
 [PowerShell launcher documentation](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_pwsh?view=powershell-7.6),
 plus the official parsing, quoting, pipeline, and automatic-variable topics,
-with runtime checks against PowerShell 7.6.3 on Linux. Exact upstream
-repository revisions and paths are recorded in `upstream/pwsh7.json`.
+with runtime checks against PowerShell 7.6.3 on Linux and PowerShell 7.6.4 on
+Windows. Exact upstream repository revisions and paths are recorded in
+`upstream/pwsh7.json`; the repeatable evidence scope is recorded under
+`release/`.
 
 The documentation is licensed under CC BY 4.0. The cited PowerShell
 documentation is licensed under CC BY 4.0; cited PowerShell source code is

@@ -23,7 +23,9 @@
 
 ```powershell
 Get-Command [[-Name] <string[]>] [-All] [-CommandType <CommandTypes>]
-    [-Module <string[]>] [-Syntax] [<CommonParameters>]
+    [-Module <string[]>] [-FullyQualifiedModule <ModuleSpecification[]>]
+    [-ParameterName <string[]>] [-ParameterType <PSTypeName[]>]
+    [-Syntax] [<CommonParameters>]
 ```
 
 `Get-Command` returns metadata for aliases, functions, filters, cmdlets,
@@ -56,6 +58,16 @@ PowerShell 7 or Unix-like host.
 - `-Syntax`: Display parameter syntax rather than normal metadata.
 - `-ListImported`: Restrict results to modules loaded in the current session.
 - `-TotalCount COUNT`: Limit the number of matching results.
+- `-Verb VERB`, `-Noun NOUN`: Find commands by wildcard-aware approved-verb
+  or noun patterns.
+- `-ParameterName NAME`, `-ParameterType TYPE`: Find commands in the current
+  session that expose matching parameter names, aliases, or types.
+- `-ArgumentList ARGUMENTS`: Resolve command metadata in the context of
+  arguments that trigger dynamic parameters, such as a provider path.
+- `-FullyQualifiedModule SPECIFICATION`: Select a module by name plus version
+  or GUID constraints; it is mutually exclusive with `-Module`.
+- `-ShowCommandInfo`: Use the command-information display introduced in
+  Windows PowerShell 5.0.
 
 Quote a wildcard pattern if an invoking shell might expand it before Windows
 PowerShell receives it.
@@ -83,6 +95,8 @@ descriptions, examples, input types, and output types.
 
 ```powershell
 Get-Command Get-ChildItem -Syntax
+Get-Command -ParameterName *Credential*
+Get-Command Get-ChildItem -ArgumentList Cert:\ -Syntax
 Get-Help Get-ChildItem -Full
 ```
 
@@ -112,6 +126,21 @@ An exported name can still depend on a missing Windows feature, incompatible
 bitness, or unavailable service. Import and exercise the required operation on
 the target Windows baseline.
 
+## Runtime evidence
+
+Windows PowerShell 5.1.26100.8875 was tested in a clean `-NoProfile` process
+with a session-local function and same-name alias. Normal lookup selected the
+alias, `-All` returned the alias followed by the function, and `-Syntax`
+returned a nonempty syntax view. The repository smoke test also confirms the
+documented core commands, aliases, and option names against live command
+metadata. The provider fixture passed FileSystem, Registry, and Certificate
+paths through `-ArgumentList`: the first exposed six selected filesystem
+parameters, Registry exposed none of that set, and Certificate exposed
+`CodeSigningCert`. These are path/provider-dependent dynamic parameters, not
+static portability guarantees. Installed-module discovery, third-party
+providers, external `PATH` layouts, and other Windows builds remain
+environment-specific.
+
 ## Related documents
 
 - [Get-Help](Get-Help.md)
@@ -123,6 +152,8 @@ the target Windows baseline.
 
 This original ManT-oriented page was adapted from the official
 [Get-Command reference](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/get-command?view=powershell-5.1).
+Dynamic-parameter behavior is cross-checked against Microsoft's
+[cmdlet dynamic parameter guidance](https://learn.microsoft.com/powershell/scripting/developer/cmdlet/cmdlet-dynamic-parameters?view=powershell-7.6).
 It emphasizes command precedence, Windows module availability, and automation
 diagnostics. Exact upstream revision and path are recorded in
 `upstream/pwsh51.json`.

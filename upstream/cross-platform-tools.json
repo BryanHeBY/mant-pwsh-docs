@@ -99,7 +99,8 @@
       ],
       "notes": [
         "The source index is original project text; each tool page records its authoritative upstream material.",
-        "Installing this ManT source does not install any documented executable."
+        "Installing this ManT source does not install any documented executable.",
+        "The navigation index introduces no separate runtime behavior; implementation and platform evidence belongs to the linked tool pages."
       ]
     },
     "git.md": {
@@ -121,7 +122,7 @@
         }
       ],
       "notes": [
-        "Runtime inspection used Git 2.55.0 on Linux; Windows and macOS behavior needs separate verification."
+        "Runtime inspection used Git 2.55.0 on Linux. On Windows NT 10.0.26200.0, the repeatable cross-platform fixture under both PowerShell collectors preserved three Git candidates, selected Git for Windows 2.44.0.windows.1 from Program Files, and returned status 0 for version/top-level help without a repository, config, credential, network or file operation. macOS and repository-scoped behavior remain pending."
       ]
     },
     "ssh.md": {
@@ -143,7 +144,7 @@
         }
       ],
       "notes": [
-        "Runtime inspection used OpenSSH 10.4p1 on Linux; Windows and macOS configuration behavior needs separate verification."
+        "Runtime inspection used OpenSSH 10.4p1 on Linux. On Windows NT 10.0.26200.0, the repeatable cross-platform fixture under both PowerShell collectors preserved in-box and Git-bundled candidates, selected in-box file version 9.5.5.1, and confirmed OpenSSH_for_Windows_9.5p2/LibreSSL 3.8.2 on stderr/status 0. Its -? form remained an unknown-option/usage diagnostic with eight stderr lines/status 255, not generic help. No connection, config or identity operation ran; macOS remains pending."
       ]
     },
     "curl.md": {
@@ -165,7 +166,7 @@
         }
       ],
       "notes": [
-        "Runtime inspection used curl 8.21.0 on Linux; Windows curl.exe availability and feature set need separate verification."
+        "Runtime inspection used curl 8.21.0 on Linux. On Windows NT 10.0.26200.0, the repeatable cross-platform fixture confirmed bare curl is the Invoke-WebRequest alias in Windows PowerShell 5.1 but an Application in PowerShell 7.6.4. Exact System32 curl.exe 8.21.0 returned valid version/all-help stdout with status 0 under both; no URL, network, credential or file operation ran. macOS remains pending."
       ]
     },
     "tar.md": {
@@ -191,7 +192,7 @@
         }
       ],
       "notes": [
-        "Runtime inspection used GNU tar 1.35 on Linux; the guide intentionally does not claim GNU options apply to Windows or macOS tar implementations."
+        "Runtime inspection used GNU tar 1.35 on Linux. On Windows NT 10.0.26200.0, the repeatable cross-platform fixture under both PowerShell collectors preserved System32 and Git-bundled implementations, selected System32 bsdtar/libarchive 3.8.4, and returned valid version/help status 0 without an archive or filesystem operation. Installed help exposes implementation-specific semantics including security-significant -p ACL/owner/file-flag restoration; GNU options remain conditional and macOS remains pending."
       ]
     },
     "dotnet.md": {
@@ -213,7 +214,7 @@
         }
       ],
       "notes": [
-        "The current Linux authoring environment has no dotnet executable; runtime verification is required on each declared platform."
+        "The Linux authoring environment and Windows NT 10.0.26200.0 host have no dotnet Application. The repeatable Windows fixture classified it unavailable under both PowerShell collectors and marked the behavior probe skipped rather than passed. If present, only --version may run with telemetry/first-time experience disabled in a verified temporary CLI home. Runtime verification remains required on compatible Windows, macOS and Linux SDK hosts."
       ]
     }
   }

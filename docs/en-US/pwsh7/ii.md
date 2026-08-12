@@ -27,9 +27,10 @@ in Explorer.
 
 ## Availability
 
-The alias exists in the tested PowerShell 7.6.3 Linux session and is documented
-for `Invoke-Item`. The resulting action still depends on the provider,
-operating system, desktop session, and file association.
+PowerShell 7 defines `ii` as the built-in alias for `Invoke-Item` on Windows,
+macOS, and Linux. The resulting action still depends on the provider,
+operating system, desktop session, and file association. Profiles and
+constrained endpoints can remove or replace aliases in a particular session.
 
 ## Important parameters
 
@@ -39,6 +40,10 @@ operating system, desktop session, and file association.
 - `-Filter FILTER`: Ask a supporting provider to filter items before PowerShell receives them.
 - `-Include PATTERN`: Include only matching paths; its effect depends on path contents and provider expansion.
 - `-Exclude PATTERN`: Omit matching paths; it does not make an otherwise untrusted invocation safe.
+- `-WhatIf`, `-Confirm`: Preview or confirm the provider's default action before
+  it opens a document or runs an executable.
+- `-Credential CREDENTIAL`: Exposed for provider compatibility, but no provider
+  installed with PowerShell supports it; it is not an elevation mechanism.
 
 ## Common mistakes
 
@@ -62,6 +67,13 @@ remain clear. Keep `ii` for concise interactive work.
 
 See [Invoke-Item](Invoke-Item.md) for provider behavior, parameters, pipeline
 input, output, trust, and platform differences.
+
+## Runtime evidence
+
+PowerShell 7.6.4 on Windows and the earlier 7.6.3 Linux run both confirmed that
+`ii` resolves to `Invoke-Item`; the Windows suite also matched every documented
+option to live cmdlet metadata. No item was invoked or GUI opened. macOS,
+provider actions, and desktop associations remain outstanding.
 
 ## Related documents
 

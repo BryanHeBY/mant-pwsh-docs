@@ -21,10 +21,9 @@
 
 ## Meaning
 
-`irx` is not a built-in PowerShell 7 alias, cmdlet, function, or executable.
-The PowerShell 7.6 Linux runtime used for this source did not resolve it. If it
-works in a session, it was supplied by a profile, module, script, endpoint, or
-executable on that environment; its meaning is not portable.
+`irx` is not a built-in PowerShell 7 alias or cmdlet. If `Get-Command irx`
+resolves something, a profile, module, script, endpoint, or executable in that
+environment supplied it; its meaning is not portable.
 
 ## Availability
 
@@ -75,6 +74,13 @@ is not. Similar spelling does not establish a command contract.
 
 Defining `irx` locally can hide the dependency rather than fix it. Use the
 full owned command name and declare the module or profile that provides it.
+
+## Runtime evidence
+
+`Get-Command irx -All` returned no command in clean PowerShell 7.6.4 Windows
+and 7.6.3 Linux sessions. The checks did not create an alias or load a profile.
+This establishes absence from those sessions, not universal absence from
+installed modules, endpoint configuration, macOS, or user-defined profiles.
 
 ## Related documents
 

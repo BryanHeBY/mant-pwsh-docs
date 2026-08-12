@@ -47,6 +47,11 @@ in reviewed scripts.
 - `-RedirectStandardInput PATH`, `-RedirectStandardOutput PATH`, `-RedirectStandardError PATH`: Connect standard streams to files.
 - `-Credential CREDENTIAL`: Start with another Windows credential where the operating system permits it.
 - `-Verb VERB`: Request a ShellExecute verb such as `RunAs`; it belongs to the shell-execute parameter set.
+- `-LoadUserProfile`: Load the selected Windows user's registry profile; this
+  does not load PowerShell profile scripts.
+- `-UseNewEnvironment`: Start with machine-scope defaults instead of inherited
+  or user-scope variables. `USERNAME` becomes `SYSTEM`, but the process security
+  identity does not change.
 
 ## Version and availability
 
@@ -75,6 +80,13 @@ contract without depending on ambient aliases.
 
 See [Start-Process](Start-Process.md) for arguments, streams, credentials,
 waiting, process objects, and Windows PowerShell 5.1 constraints.
+
+## Runtime evidence
+
+In the clean Windows PowerShell 5.1.26100.8875 session, `start` resolved to the
+built-in `Start-Process` alias and the documented option names matched live
+cmdlet metadata. The cmd builtin was exercised only in separate protected
+fixtures; this alias test did not launch a target process or GUI application.
 
 ## Related documents
 
