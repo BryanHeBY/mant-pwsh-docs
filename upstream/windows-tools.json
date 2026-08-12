@@ -915,6 +915,49 @@
         "Microsoft ESE and support guidance was reviewed; no database, log, backup, service, checksum, recovery, defragmentation, copy, restore, or repair ran."
       ]
     },
+    "wsb.exe.md": {
+      "kind": "native-cli",
+      "status": "reviewed",
+      "versions": [
+        "wsb CLI: Windows 11 version 24H2 or later; .wsb configuration: Windows 10 build 18342 or later"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/en-us/windows/security/application-security/application-isolation/windows-sandbox/windows-sandbox-cli",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/en-us/windows/security/application-security/application-isolation/windows-sandbox/windows-sandbox-configure-using-wsb-file",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/en-us/windows/security/application-security/application-isolation/windows-sandbox/",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
+        }
+      ],
+      "notes": [
+        "The page corrects the public modern interface to wsb.exe, registers every official 24H2 command and option, documents the lack of exec process I/O, and makes every .wsb integration/security element an outline node.",
+        "Official CLI and configuration contracts were reviewed; no optional feature, sandbox, hypervisor, RDP, command, host share, network, clipboard, device, artifact, or discard action ran."
+      ]
+    },
     "wsl.exe.md": {
       "kind": "native-cli",
       "status": "reviewed",
