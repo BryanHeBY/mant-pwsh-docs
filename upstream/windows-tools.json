@@ -188,6 +188,63 @@
         "WinGet 1.29.280 top-level and mcp help exposed 19 commands, 13 global long options, and two mcp-specific options, all matched by local ManT entries under both PowerShell collectors. The mcp command is absent from the cited 2026-07-19 overview and is labeled as local-version evidence; only help ran, not enable/disable."
       ]
     },
+    "winget-configure.md": {
+      "kind": "native-cli-subcommand",
+      "status": "reviewed",
+      "versions": [
+        "WinGet 1.6.2631 or later; options vary by App Installer"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "winget-cli",
+          "path": "doc/windows/package-manager/winget/configure.md"
+        },
+        {
+          "type": "git",
+          "baseline": "winget-cli",
+          "path": "doc/windows/package-manager/configuration/check.md"
+        }
+      ],
+      "notes": [
+        "The guide treats a configuration and its referenced resources as executable code, and separates structural validation, desired-state testing, trust review, and application.",
+        "Official documentation and implementation were reviewed statically; no configuration component or resource was enabled, downloaded, tested, or applied."
+      ]
+    },
+    "winget-mcp.md": {
+      "kind": "native-cli-subcommand",
+      "status": "reviewed",
+      "versions": [
+        "WinGet 1.29 or later"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "winget-cli",
+          "path": "doc/windows/package-manager/winget/mcp-server-overview.md"
+        },
+        {
+          "type": "git",
+          "baseline": "winget-cli",
+          "path": "src/AppInstallerCLICore/Commands/McpCommand.cpp"
+        },
+        {
+          "type": "git",
+          "baseline": "winget-cli",
+          "path": "src/WinGetMCPServer/WingetPackageTools.cs"
+        }
+      ],
+      "notes": [
+        "The page distinguishes the bundled package-management MCP server from the optional Microsoft Learn documentation MCP server and records the implementation's read-only versus destructive tool annotations.",
+        "Official command and server source were inspected; the feature was not enabled, registered with a client, or allowed to query or mutate package state."
+      ]
+    },
     "winget-search.md": {
       "kind": "native-cli-subcommand",
       "status": "reviewed",
