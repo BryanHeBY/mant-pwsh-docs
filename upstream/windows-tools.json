@@ -318,6 +318,69 @@
         "Official options and schema were reviewed; no import, agreement acceptance, installation, elevation, or reboot behavior ran."
       ]
     },
+    "winget-pin.md": {
+      "kind": "native-cli-subcommand-family",
+      "status": "reviewed",
+      "versions": [
+        "varies by App Installer"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "winget-cli",
+          "path": "doc/windows/package-manager/winget/pinning.md"
+        }
+      ],
+      "notes": [
+        "The page distinguishes normal, blocking, and gating pins and states that WinGet pins do not govern application self-update or other deployment systems.",
+        "Official syntax was reviewed; no package lookup, pin mutation, reset, or upgrade ran."
+      ]
+    },
+    "winget-download.md": {
+      "kind": "native-cli-subcommand",
+      "status": "reviewed",
+      "versions": [
+        "varies by App Installer"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "winget-cli",
+          "path": "doc/windows/package-manager/winget/download.md"
+        }
+      ],
+      "notes": [
+        "The guide treats downloaded executables and Store licenses as controlled artifacts and rejects hash bypass as routine troubleshooting.",
+        "Official options and prerequisites were reviewed; no source authentication, query, download, license retrieval, bypass, or execution ran."
+      ]
+    },
+    "winget-repair.md": {
+      "kind": "native-cli-subcommand",
+      "status": "reviewed",
+      "versions": [
+        "varies by App Installer and package repair metadata"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "winget-cli",
+          "path": "doc/windows/package-manager/winget/repair.md"
+        }
+      ],
+      "notes": [
+        "The page separates publisher-installer repair from generic system or user-data recovery and requires post-repair application-specific validation.",
+        "Official syntax was reviewed; no inventory, source query, installer, elevation, file change, or restart ran."
+      ]
+    },
     "winget-search.md": {
       "kind": "native-cli-subcommand",
       "status": "reviewed",
