@@ -250,7 +250,15 @@ bundles.
   unsuffixed.
 - The initial documentation bundle version is 0.6.0, aligned with the ManT
   protocol and runtime baseline it targets.
-- CI is manual-only until ManT 0.6.0 is publicly installable.
+- The parser and CI baseline is ManT 0.6.4. Exact dotted dash options such as
+  CertUtil's `-ca.cert` are now semantic option entries, and entries rejected
+  by the stricter placeholder grammar use unambiguous option names with their
+  compound operand syntax in prose.
+- CI validates pull requests and pushes to `main`. Portable ManT validation
+  runs on Linux, macOS, and Windows while a separate Windows job exercises
+  version-neutral fixtures through both Windows PowerShell and PowerShell 7.
+- Fragment-aware upstream checks cap retained response bodies at 8 MiB and
+  fail closed on oversized pages.
 
 ### Pending release verification
 
