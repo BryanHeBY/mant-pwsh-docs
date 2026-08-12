@@ -52,6 +52,50 @@
         "url": "https://github.com/MicrosoftDocs/WSL/blob/main/LICENSE"
       },
       "retrievedAt": "2026-08-11"
+    },
+    "windows-dev-docs": {
+      "type": "git",
+      "repository": "https://github.com/MicrosoftDocs/windows-dev-docs.git",
+      "branch": "docs",
+      "revision": "49e56499eea1cf3338c263d46cf027abc615446e",
+      "license": {
+        "spdx": "CC-BY-4.0",
+        "url": "https://github.com/MicrosoftDocs/windows-dev-docs/blob/docs/LICENSE"
+      },
+      "retrievedAt": "2026-08-12"
+    },
+    "windows-sudo": {
+      "type": "git",
+      "repository": "https://github.com/microsoft/sudo.git",
+      "branch": "main",
+      "revision": "9f50d79704a9d4d468bc59f725993714762981ca",
+      "license": {
+        "spdx": "MIT",
+        "url": "https://github.com/microsoft/sudo/blob/main/LICENSE"
+      },
+      "retrievedAt": "2026-08-12"
+    },
+    "terminal-docs": {
+      "type": "git",
+      "repository": "https://github.com/MicrosoftDocs/terminal.git",
+      "branch": "main",
+      "revision": "c341a6362f9f0346a17ecc5e1e74d2cd9372c8f9",
+      "license": {
+        "spdx": "CC-BY-4.0",
+        "url": "https://github.com/MicrosoftDocs/terminal/blob/main/LICENSE"
+      },
+      "retrievedAt": "2026-08-12"
+    },
+    "entra-docs": {
+      "type": "git",
+      "repository": "https://github.com/MicrosoftDocs/entra-docs.git",
+      "branch": "main",
+      "revision": "a1ca9fe1a68bb3df47f45c668ad50286e4737c67",
+      "license": {
+        "spdx": "MIT",
+        "url": "https://github.com/MicrosoftDocs/entra-docs/blob/main/LICENSE"
+      },
+      "retrievedAt": "2026-08-12"
     }
   },
   "discovery": [
@@ -505,6 +549,109 @@
       "notes": [
         "This guide documents inventory limitations and requires exact identity before action.",
         "A 2026-08-12 help-only audit matched all 37 WinGet 1.29.280 long options to local ManT entries under both PowerShell collectors; locally present sort/direction options are explicitly labeled as absent from the contemporaneous official page. No installed-package or source inventory ran."
+      ]
+    },
+    "sudo.exe.md": {
+      "kind": "native-cli",
+      "status": "reviewed",
+      "versions": [
+        "Windows 11 version 24H2 and later; implementation evolves independently"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "windows-dev-docs",
+          "path": "hub/advanced-settings/sudo/index.md"
+        },
+        {
+          "type": "git",
+          "baseline": "windows-sudo",
+          "path": "sudo/src/main.rs"
+        },
+        {
+          "type": "git",
+          "baseline": "windows-sudo",
+          "path": "sudo/Resources/en-US/Sudo.resw"
+        }
+      ],
+      "notes": [
+        "The guide separates UAC elevation from alternate-user execution and documents current public-source options, mutually exclusive modes, environment risk, and GUI lifetime behavior.",
+        "Documentation and source were reviewed; no UAC prompt, mode change, environment preservation, or elevated target ran."
+      ]
+    },
+    "runas.exe.md": {
+      "kind": "native-cli",
+      "status": "reviewed",
+      "versions": [
+        "stable Windows interface; installed help and policy vary by release"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc771525(v=ws.11)",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "git",
+          "baseline": "windows-dev-docs",
+          "path": "hub/advanced-settings/sudo/index.md"
+        }
+      ],
+      "notes": [
+        "The page distinguishes alternate local identity, network-only credentials, and UAC elevation and explicitly rejects passwords in command lines or scripts.",
+        "Published syntax was reviewed; no credential prompt, alternate logon, profile, saved credential, smart card, remote authentication, or child process ran."
+      ]
+    },
+    "wt.exe.md": {
+      "kind": "native-gui-cli",
+      "status": "reviewed",
+      "versions": [
+        "varies by installed Windows Terminal package"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "terminal-docs",
+          "path": "TerminalDocs/command-line-arguments.md"
+        }
+      ],
+      "notes": [
+        "The page makes every current action and primary option addressable and gives the PowerShell-specific escaped-semicolon and stop-parsing forms.",
+        "Official syntax was reviewed; no Terminal GUI, window, tab, pane, profile, or child shell launched."
+      ]
+    },
+    "dsregcmd.exe.md": {
+      "kind": "native-cli",
+      "status": "reviewed",
+      "versions": [
+        "varies by Windows build, Entra registration stack, and execution context"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "entra-docs",
+          "path": "docs/identity/devices/troubleshoot-device-dsregcmd.md"
+        }
+      ],
+      "notes": [
+        "The guide prioritizes status interpretation in the affected user context, report privacy, and supported orchestration before destructive leave/rejoin actions.",
+        "Official field semantics and switch roles were reviewed; no report, PRT refresh, join, leave, recovery, or identity mutation ran."
       ]
     },
     "wsl.exe.md": {
