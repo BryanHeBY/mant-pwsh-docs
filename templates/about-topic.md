@@ -37,6 +37,12 @@ PowerShell-Expression value
 
 State relevant differences.
 
+## Verification boundary
+
+State why runtime behavior has not yet been observed and name the applicable
+host or fixture. Replace this entire section with `## Runtime evidence` and the
+bounded result after a real observation; never keep both sections.
+
 ## Related documents
 
 - [about_Related_Topic](about_Related_Topic.md)

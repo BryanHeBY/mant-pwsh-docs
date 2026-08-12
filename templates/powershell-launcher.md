@@ -47,6 +47,12 @@ Provide safe examples for interactive, command, script, and pipeline use.
 
 State executable names, supported editions, and argument parsing differences.
 
+## Verification boundary
+
+State why launcher behavior has not yet been observed and name the applicable
+edition/platform. Replace this entire section with `## Runtime evidence` and
+the bounded result after a real observation; never keep both.
+
 ## Sources and license
 
 List the authoritative source and license.

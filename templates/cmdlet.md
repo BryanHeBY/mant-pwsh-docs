@@ -59,6 +59,12 @@ Remove this section when there is no recurring trap.
 
 State applicable PowerShell editions, versions, and operating systems.
 
+## Verification boundary
+
+State why runtime behavior has not yet been observed and name the applicable
+edition, platform, or fixture. Replace this entire section with `## Runtime
+evidence` and the bounded result after a real observation; never keep both.
+
 ## Related documents
 
 - [Related-Command](Related-Command.md)

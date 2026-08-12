@@ -39,6 +39,13 @@ Provide interactive and automation examples.
 
 Describe quoting, output capture, and exit status handling.
 
+## Verification boundary
+
+State why runtime behavior has not yet been observed and name the applicable
+implementation, platform, or fixture. Replace this entire section with
+`## Runtime evidence` and the bounded result after a real observation; never
+keep both.
+
 ## Related documents
 
 - [command](command.md)

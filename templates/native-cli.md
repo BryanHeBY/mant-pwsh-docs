@@ -62,6 +62,13 @@ State relevant differences.
 For Microsoft products, optionally provide focused Microsoft Learn MCP search
 queries. For other products, link only to the vendor's official resources.
 
+## Verification boundary
+
+State why runtime behavior has not yet been observed and name the applicable
+implementation, platform, or fixture. Replace this entire section with
+`## Runtime evidence` and the bounded result after a real observation; never
+keep both.
+
 ## Sources and license
 
 List all authoritative sources and their licenses.

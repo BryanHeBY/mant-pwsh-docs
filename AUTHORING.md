@@ -49,8 +49,9 @@ it fits the subject:
 5. Examples.
 6. Common mistakes, when the subject has recurring high-impact traps.
 7. Version and platform differences.
-8. Related documents.
-9. Sources and license.
+8. Runtime evidence or verification boundary.
+9. Related documents.
+10. Sources and license.
 
 Do not add YAML front matter or DocFX directives. Avoid raw HTML, block
 quotes outside an embedded tldr preface, task lists, images that carry
@@ -205,6 +206,34 @@ to their complete cmdlet page and state whether the alias is built in on each
 supported edition and platform. When a PowerShell alias conflicts with a
 native executable, describe command precedence and show an unambiguous form
 such as `curl.exe` or a module-qualified cmdlet name.
+
+## Evidence disposition
+
+Every published document must contain exactly one of these H2 sections near
+the end of the reader-facing content:
+
+- `## Runtime evidence` when at least one material behavior, identity,
+  availability, help-parser, or fixture claim was actually observed;
+- `## Verification boundary` when the page is navigation-only or has no safe,
+  applicable completed runtime observation.
+
+Do not use `Runtime evidence` merely because verification is planned. State
+what ran or was inspected, the relevant host/version/path or fixture boundary,
+the observed result, and what was not established. Partial evidence is valid:
+for example, exact identity and help output may be recorded while destructive
+behavior remains assigned to a disposable fixture. Absence on one host is
+availability evidence, not proof that a tool is unsupported everywhere.
+
+Use `Verification boundary` to explain why execution was not appropriate and
+name the approved environment or evidence needed next. A deliberate decision
+not to launch a GUI, clear a terminal, block for input, replace clipboard
+contents, start an installer, contact a remote endpoint, or mutate storage is
+often the correct boundary. Do not manufacture a runtime result merely to
+replace a pending statement with a number.
+
+Keep the matching `upstream/` catalog note aligned with the page. The validator
+rejects missing/duplicate dispositions and a generic portable-only pending note
+that conflicts with a page's `Runtime evidence` section.
 
 ## Links
 

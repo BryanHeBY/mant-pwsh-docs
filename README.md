@@ -87,16 +87,21 @@ number.
 
 ## Project status
 
-The planned English 0.6.0 inventory contains 390 reviewed pages: 30 for
-PowerShell 7, 30 for Windows PowerShell 5.1, 324 Windows tool pages, and 6
+The planned English 0.6.0 inventory contains 394 reviewed pages: 30 for
+PowerShell 7, 30 for Windows PowerShell 5.1, 328 Windows tool pages, and 6
 cross-platform tool pages. The normative inventory lives in
 [release/v0.6.0.json](release/v0.6.0.json).
+The repository-wide deep-review gates, current batches, and confirmed findings
+are tracked in [QUALITY-AUDIT.md](QUALITY-AUDIT.md).
 
 Portable ManT parsing, provenance validation, and locked-upstream
 accessibility audit pass locally. The final `v0.6.0` tag remains pending recorded
 runtime verification on all platforms required by
-[V0.6.0-SCOPE.md](V0.6.0-SCOPE.md), including Windows PowerShell 5.1 on Windows. CI
-is manual-only while ManT 0.6.0 is not publicly installable.
+[V0.6.0-SCOPE.md](V0.6.0-SCOPE.md). Windows PowerShell 5.1 and PowerShell 7.6
+now have completed editorial/source/metadata passes and partial platform
+runtime evidence; remaining Windows fixtures, macOS, and compatible dotnet SDK
+hosts remain incomplete. CI runs the portable validator on Linux, macOS, and Windows
+using the publicly released ManT 0.6.1.
 
 ## License
 

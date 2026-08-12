@@ -42,6 +42,11 @@ List high-value conceptual documents.
 
 Show outline, explanation, search, and source-selection examples.
 
+## Verification boundary
+
+This page is a navigation and retrieval index, not a runtime-behavior claim.
+Put runtime evidence and remaining platform boundaries on the linked pages.
+
 ## Sources and license
 
 Describe the source's authorship and license.

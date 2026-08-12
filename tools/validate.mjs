@@ -47,9 +47,11 @@ const windowsEntrypointKinds = new Set([
 const windowsTopicFamilies = new Set(["extract", "msmq", "server-telemetry", "winnt"]);
 const windowsSpecialEntrypoints = new Map([
   ["chcp", "chcp.com.md"],
+  ["format", "format.com.md"],
   ["mode", "mode.com.md"],
   ["more", "more.com.md"],
   ["tree", "tree.com.md"],
+  ["winrm", "winrm.cmd.md"],
   ["appwiz", "appwiz.cpl.md"],
   ["certlm", "certlm.msc.md"],
   ["certmgr", "certmgr.msc.md"],
@@ -193,6 +195,35 @@ function validateSourceDirectory(sourceRoot) {
   return flatMarkdownFiles(sourceRoot);
 }
 
+function countLevelOneHeadings(lines) {
+  let openFence;
+  let count = 0;
+
+  for (const line of lines) {
+    const fence = /^ {0,3}(`{3,}|~{3,})(.*)$/u.exec(line);
+    if (openFence !== undefined) {
+      if (fence !== null
+          && fence[1][0] === openFence.character
+          && fence[1].length >= openFence.length
+          && /^[\t ]*$/u.test(fence[2])) {
+        openFence = undefined;
+      }
+      continue;
+    }
+
+    if (fence !== null && !(fence[1][0] === "`" && fence[2].includes("`"))) {
+      openFence = { character: fence[1][0], length: fence[1].length };
+      continue;
+    }
+
+    if (/^# (?!#)/u.test(line)) {
+      count += 1;
+    }
+  }
+
+  return count;
+}
+
 function validateTldr(file, lines) {
   const startMarker = "<!-- mant:tldr:start -->";
   const endMarker = "<!-- mant:tldr:end -->";
@@ -217,8 +248,7 @@ function validateTldr(file, lines) {
     reportError(`${relative(file)}: tldr end marker occurs before its start marker.`);
     return lines;
   }
-  const tldrHeadings = lines.slice(startLine + 1, endLine).filter((line) => /^# (?!#)/u.test(line));
-  if (tldrHeadings.length !== 1) {
+  if (countLevelOneHeadings(lines.slice(startLine + 1, endLine)) !== 1) {
     reportError(`${relative(file)}: tldr preface must contain exactly one level-one title.`);
   }
   return lines.slice(endLine + 1);
@@ -242,11 +272,33 @@ function validateLocalLinks(file, sourceRoot, body) {
   }
 }
 
+function validateVersionEvidenceLabels(file, text) {
+  const ambiguousLabel = /(?:\b(?:Name|n)\s*=\s*["'](?:FileVersion|ProductVersion)["']|\b(?:FileVersion|ProductVersion)\s*=)/giu;
+  for (const match of text.matchAll(ambiguousLabel)) {
+    const line = text.slice(0, match.index).split("\n").length;
+    reportError(`${relative(file)}:${line}: version evidence must label collector-selected strings and fixed numeric resources separately.`);
+  }
+}
+
+function validatePowerShellParameterTraps(file, text) {
+  const lines = text.split(/\r?\n/u);
+  for (const [index, sourceLine] of lines.entries()) {
+    const commandLine = sourceLine
+      .trimStart()
+      .replace(/^(?:[-*+]|\d+[.)])\s+/u, "")
+      .replace(/^PS[^>]*>\s*/iu, "");
+    if (/^(?:\$[A-Z_][\w:]*\s*=\s*)?New-Item\b[^\r\n]*\s-LiteralPath(?:\s|$)/iu.test(commandLine)) {
+      reportError(`${relative(file)}:${index + 1}: New-Item exposes -Path, not -LiteralPath; validate the intended parent and target before using -Path.`);
+    }
+  }
+}
+
 function validateMarkdown(file, sourceRoot) {
-  const lines = fs.readFileSync(file, "utf8").replace(/^\uFEFF/u, "").split(/\r?\n/u);
+  const text = fs.readFileSync(file, "utf8").replace(/^\uFEFF/u, "");
+  const lines = text.split(/\r?\n/u);
   const bodyLines = validateTldr(file, lines);
   const body = bodyLines.join("\n");
-  if (bodyLines.filter((line) => /^# (?!#)/u.test(line)).length !== 1) {
+  if (countLevelOneHeadings(bodyLines) !== 1) {
     reportError(`${relative(file)}: document body must contain exactly one level-one title.`);
   }
   const sourcesIndex = bodyLines.findIndex((line) => line.trim() === "## Sources and license");
@@ -256,7 +308,28 @@ function validateMarkdown(file, sourceRoot) {
     reportError(`${relative(file)}: sources section must include an HTTPS authoritative link.`);
   }
   validateLocalLinks(file, sourceRoot, body);
+  validateVersionEvidenceLabels(file, text);
+  validatePowerShellParameterTraps(file, text);
   checkedDocuments += 1;
+}
+
+function validateRuntimePowerShellScripts() {
+  const runtimeRoot = path.join(repositoryRoot, "tests", "runtime");
+  if (!fs.existsSync(runtimeRoot)) {
+    return;
+  }
+  const pending = [runtimeRoot];
+  while (pending.length > 0) {
+    const directory = pending.pop();
+    for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+      const file = path.join(directory, entry.name);
+      if (entry.isDirectory()) {
+        pending.push(file);
+      } else if (entry.isFile() && entry.name.endsWith(".ps1")) {
+        validatePowerShellParameterTraps(file, fs.readFileSync(file, "utf8").replace(/^\uFEFF/u, ""));
+      }
+    }
+  }
 }
 
 function validateLicense(license, context) {
@@ -281,7 +354,7 @@ function validateRegisteredName(sourceName, filename, document, context) {
     return;
   }
   const registeredName = filename.slice(0, -3);
-  const suffix = registeredName.match(/^(.*)\.(?:exe|com|msc|vbs|cpl)$/iu);
+  const suffix = registeredName.match(/^(.*)\.(?:exe|com|cmd|msc|vbs|cpl)$/iu);
   const baseName = suffix?.[1] ?? registeredName;
   const special = windowsSpecialEntrypoints.get(baseName);
   const expected = windowsTopicFamilies.has(baseName)
@@ -363,6 +436,21 @@ function validateCatalog(sourceName, catalogPath, actualDocuments) {
     if (!Array.isArray(document?.sources) || document.sources.length === 0) {
       reportError(`${context}: sources must be a non-empty array.`);
       continue;
+    }
+    const documentPath = path.join(repositoryRoot, expectedRoot, filename);
+    if (fs.existsSync(documentPath)) {
+      const documentText = fs.readFileSync(documentPath, "utf8").replace(/^\uFEFF/u, "");
+      const notesText = Array.isArray(document?.notes) ? document.notes.join(" ") : "";
+      const hasRuntimeEvidence = /^## Runtime evidence\s*$/mu.test(documentText);
+      const runtimeEvidenceCount = (documentText.match(/^## Runtime evidence\s*$/gmu) ?? []).length;
+      const verificationBoundaryCount = (documentText.match(/^## Verification boundary\s*$/gmu) ?? []).length;
+      if (runtimeEvidenceCount + verificationBoundaryCount !== 1) {
+        reportError(`${context}: document must contain exactly one Runtime evidence or Verification boundary section.`);
+      }
+      const hasGenericRuntimePendingNote = /Runtime verification requires .*not part of portable repository validation/iu.test(notesText);
+      if (hasRuntimeEvidence && hasGenericRuntimePendingNote) {
+        reportError(`${context}: catalog retains a generic runtime-pending note although the document has a Runtime evidence section.`);
+      }
     }
     for (const source of document.sources) {
       if (source?.type === "git") {
@@ -556,10 +644,15 @@ for (const [sourceName, catalogPath] of catalogs) {
     catalog: validateCatalog(sourceName, catalogPath, actualDocuments)
   });
 }
+validateVersionEvidenceLabels(
+  path.join(repositoryRoot, "release", "v0.6.0-runtime.md"),
+  fs.readFileSync(path.join(repositoryRoot, "release", "v0.6.0-runtime.md"), "utf8")
+);
 if (options.release !== undefined) {
   validateRelease(options.release, sourceData);
 }
 validateWindowsCommandIndex(sourceData);
+validateRuntimePowerShellScripts();
 validateMant(allDocuments);
 
 for (const message of warnings) {

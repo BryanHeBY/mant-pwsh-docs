@@ -6,12 +6,61 @@ import { spawn } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
 const repositoryRoot = fileURLToPath(new URL("../", import.meta.url));
-const catalogPaths = [
+const allCatalogPaths = [
   "upstream/pwsh7.json",
   "upstream/pwsh51.json",
   "upstream/windows-tools.json",
   "upstream/cross-platform-tools.json"
 ];
+const catalogAliases = new Map(allCatalogPaths.map((catalogPath) => [
+  path.basename(catalogPath, ".json"),
+  catalogPath
+]));
+const requestedCatalogs = [];
+let showProgress = false;
+let countOnly = false;
+for (let index = 2; index < process.argv.length; index += 1) {
+  const argument = process.argv[index];
+  if (argument === "--help" || argument === "-h") {
+    console.log("Usage: verify-upstream.mjs [--catalog NAME]... [--progress] [--count-only]");
+    console.log(`Catalog names: ${[...catalogAliases.keys()].join(", ")}`);
+    process.exit(0);
+  }
+  if (argument === "--progress") {
+    showProgress = true;
+    continue;
+  }
+  if (argument === "--count-only") {
+    countOnly = true;
+    continue;
+  }
+  if (argument === "--catalog") {
+    const value = process.argv[index + 1];
+    if (value === undefined || value.startsWith("-")) {
+      console.error("error: --catalog requires a catalog name.");
+      process.exit(2);
+    }
+    requestedCatalogs.push(value);
+    index += 1;
+    continue;
+  }
+  if (argument.startsWith("--catalog=")) {
+    requestedCatalogs.push(argument.slice("--catalog=".length));
+    continue;
+  }
+  console.error(`error: unknown argument ${argument}.`);
+  process.exit(2);
+}
+const catalogPaths = requestedCatalogs.length === 0
+  ? allCatalogPaths
+  : [...new Set(requestedCatalogs.map((name) => {
+      const catalogPath = catalogAliases.get(name);
+      if (catalogPath === undefined) {
+        console.error(`error: unknown catalog ${name}.`);
+        process.exit(2);
+      }
+      return catalogPath;
+    }))];
 const concurrency = 8;
 const timeoutSeconds = 20;
 const errors = [];
@@ -118,7 +167,11 @@ for (const catalogPath of catalogPaths) {
 }
 
 async function checkTarget(url, labels) {
-  const runCurl = (headOnly) => new Promise((resolve) => {
+  const parsed = new URL(url);
+  const fragment = decodeURIComponent(parsed.hash.slice(1));
+  parsed.hash = "";
+  const fetchUrl = parsed.toString();
+  const runCurl = (headOnly, captureBody = false) => new Promise((resolve) => {
     const args = [
       "--silent",
       "--show-error",
@@ -131,40 +184,71 @@ async function checkTarget(url, labels) {
     ];
     if (headOnly) {
       args.push("--head");
-    } else {
+    } else if (!captureBody) {
       args.push("--range", "0-0");
     }
-    args.push(url);
+    args.push(fetchUrl);
     const child = spawn(process.env.CURL_BIN || "curl", args, {
-      stdio: ["ignore", "ignore", "pipe"]
+      stdio: ["ignore", captureBody ? "pipe" : "ignore", "pipe"]
     });
     let stderr = "";
+    let stdout = "";
+    if (captureBody) {
+      child.stdout.setEncoding("utf8");
+      child.stdout.on("data", (chunk) => { stdout += chunk; });
+    }
     child.stderr.setEncoding("utf8");
     child.stderr.on("data", (chunk) => { stderr += chunk; });
-    child.on("error", (cause) => resolve({ cause, stderr }));
-    child.on("close", (status) => resolve({ status, stderr }));
+    child.on("error", (cause) => resolve({ cause, stderr, stdout }));
+    child.on("close", (status) => resolve({ status, stderr, stdout }));
   });
-  let result = await runCurl(true);
+  let result = await runCurl(fragment.length === 0, fragment.length > 0);
   if (result.cause === undefined && result.status !== 0) {
     // Some valid documentation servers reject or mishandle HEAD. A one-byte
     // range request provides a bounded GET fallback; servers that ignore the
     // range still stream to a discarded stdout rather than repository files.
-    result = await runCurl(false);
+    result = await runCurl(false, fragment.length > 0);
   }
   if (result.cause !== undefined) {
     fail(`${labels.join(", ")}: ${url} could not start curl (${result.cause.message}).`);
   } else if (result.status !== 0) {
     fail(`${labels.join(", ")}: ${url} could not be fetched (${result.stderr.trim() || `curl exited ${result.status}`}).`);
+  } else if (fragment.length > 0) {
+    const escaped = fragment.replace(/[.*+?^${}()|[\]\\]/gu, "\\$&");
+    const anchor = new RegExp(`\\b(?:id|name)=["']${escaped}["']`, "u");
+    if (!anchor.test(result.stdout)) {
+      fail(`${labels.join(", ")}: ${url} returned a page without the requested fragment target.`);
+    }
   }
 }
 
 const entries = [...targets.entries()];
+if (countOnly) {
+  for (const error of errors) {
+    console.error(`error: ${error}`);
+  }
+  console.log(`Found ${entries.length} unique upstream source URL(s).`);
+  process.exit(errors.length > 0 ? 1 : 0);
+}
 let cursor = 0;
+let completed = 0;
+let nextProgress = 25;
+const reportProgress = () => {
+  if (!showProgress) {
+    return;
+  }
+  completed += 1;
+  if (completed >= nextProgress || completed === entries.length) {
+    console.error(`progress: checked ${completed}/${entries.length} upstream source URL(s).`);
+    nextProgress += 25;
+  }
+};
 async function worker() {
   while (cursor < entries.length) {
     const [url, labels] = entries[cursor];
     cursor += 1;
     await checkTarget(url, labels);
+    reportProgress();
   }
 }
 
