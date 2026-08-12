@@ -28,9 +28,11 @@ Use `cscript.exe` for console output; launching the script through its default
 ## Syntax
 
 ```text
-cscript.exe //nologo %SystemRoot%\System32\slmgr.vbs
-    [COMPUTER [USER PASSWORD]] OPTION [arguments]
+slmgr.vbs [COMPUTER [USER PASSWORD]] OPTION [arguments]
 ```
+
+For console use, prefix this script grammar with `cscript.exe //nologo` and the
+absolute `%SystemRoot%\System32\slmgr.vbs` path.
 
 Remote inline credentials are observable and cross-version remote use has
 compatibility limits. Prefer Volume Activation Management Tool or supported

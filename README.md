@@ -87,8 +87,8 @@ number.
 
 ## Project status
 
-The planned English 0.6.0 inventory contains 394 reviewed pages: 30 for
-PowerShell 7, 30 for Windows PowerShell 5.1, 328 Windows tool pages, and 6
+The planned English 0.6.0 inventory contains 416 reviewed pages: 30 for
+PowerShell 7, 30 for Windows PowerShell 5.1, 350 Windows tool pages, and 6
 cross-platform tool pages. The normative inventory lives in
 [release/v0.6.0.json](release/v0.6.0.json).
 The repository-wide deep-review gates, current batches, and confirmed findings

@@ -1,7 +1,7 @@
 # Documentation quality audit
 
 This record tracks the repository-wide deep review beyond the existing
-`reviewed` status in the upstream catalogs. The authoritative list of 394
+`reviewed` status in the upstream catalogs. The authoritative list of 416
 published documents remains `release/v0.6.0.json`; this file does not duplicate
 that inventory.
 
@@ -64,15 +64,15 @@ document in its release inventory has an evidence-backed disposition.
 
 As of 2026-08-12:
 
-- all 394 documents pass the portable ManT 0.6.4 validator;
-- all 394 documents have exactly one reader-visible evidence disposition: 385
-  `Runtime evidence` sections and 9 `Verification boundary` sections;
+- all 416 documents pass the portable ManT 0.6.4 validator;
+- all 416 documents have exactly one reader-visible evidence disposition: 385
+  `Runtime evidence` sections and 31 `Verification boundary` sections;
 - catalog-scoped audits reach every current source URL: 71 unique PowerShell,
-  783 Windows-tool, and 5 cross-platform targets, or 858 unique URLs after
+  820 Windows-tool, and 5 cross-platform targets, or 895 unique URLs after
   cross-catalog deduplication;
-- the strict content audit reports 4,335 semantic entries from 635 explicit
+- the strict content audit reports 4,697 semantic entries from 681 explicit
   declarations with zero flags;
-- the concise-syntax audit reports zero option-entry gaps in 58 documents;
+- the concise-syntax audit reports zero option-entry gaps in 69 documents;
 - edition-matched parsers report zero syntax errors across 90 Windows
   PowerShell 5.1 and 114 PowerShell 7 body examples;
 - Windows PowerShell 5.1 smoke evidence passes 64 of 64 checks;
@@ -276,12 +276,13 @@ As of 2026-08-12:
 | QA-160 | Moving the parser baseline from ManT 0.6.1 to 0.6.4 changed two author-visible grammar boundaries. Exact dotted dash options became representable, while eight compound placeholder terms across Netsh, WSL, curl, Git, and SSH now fail with `markdown.semantic-entry.invalid-placeholder` instead of being accepted ambiguously. | Installed the public 0.6.4 crate in an isolated root, migrated CertUtil's temporary command-role aliases to exact `-ca.cert` and `-ca.chain` option entries, and moved compound operand shapes such as `DOMAIN\USER`, `NAME=VALUE`, and `[ADDRESS:]PORT` into descriptions while retaining canonical option selectors. Both exact CertUtil explanations return one option selection. All 394 release documents, 4,335 semantic entries, and 58 concise-syntax documents pass; protocol identifiers remain v6. No CertUtil or other native operation ran. |
 | QA-161 | Fragment-aware upstream verification accumulated the entire response in one JavaScript string. The 20-second curl timeout bounded time but not retained bytes, so a large or hostile page could exhaust process memory. | Added curl's response-size gate plus an independent Node byte counter, capped retained fragment bodies at 8 MiB, documented the boundary, and failed closed with a source-labelled error. A fake curl process emitting 9,000,000 bytes reproduced the rejection at 8,388,608 bytes; the normal catalog path still finds 858 unique URLs. |
 | QA-162 | CI ran the full three-platform matrix for every branch push and every pull request, producing two matrices for the same PR commit. Windows also waited for ManT compilation before starting runtime fixtures even though those fixtures do not use ManT. | Restricted push validation to `main`, retained pull-request and manual triggers, added per-ref cancellation, and split the Windows runtime fixtures into an independent 15-minute job parallel to the three-platform portable matrix. The prior baseline run passed all platforms; the new structure will be confirmed by its first pushed workflow run. |
+| QA-163 | The Windows catalog broadly covered classic commands but left WinGet's newer top-level surfaces and several high-demand modern inbox tools as overview-only or absent. Agent workflows could miss source trust, configuration-code execution, package MCP mutation, alternate identity versus elevation, Terminal semicolon parsing, Entra execution context, servicing restart codes, ESE hard-repair data loss, and Sandbox host-integration risk. | Added 22 reviewed manuals: all remaining WinGet top-level commands plus Sudo, RunAs, Windows Terminal, DsRegCmd, WUSA, Slmgr, FltMc, Esentutl, and the official Windows 11 24H2 `wsb` CLI. Every parameter/subcommand is semantic where ManT can represent it; duplicate contextual selectors and settings/config keys use explicit searchable prose or outline headings. All new pages retain `Verification boundary` until an approved Windows fixture exists. The full 416-page ManT 0.6.4 validation and 4,697-entry strict content audit pass with zero flags. |
 
 ## ManT consumer observations
 
 These are workflow notes, not blockers for the documentation audit:
 
-- ManT 0.6.4 validates all 394 files and can address semantic entries and
+- ManT 0.6.4 validates all 416 files and can address semantic entries and
   search matches through the CLI and MCP server.
 - Configured Git-backed sources refresh by committed revision. A dirty local
   worktree therefore remains `unchanged`; use ManT's direct Markdown-path mode

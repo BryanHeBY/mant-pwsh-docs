@@ -2,7 +2,7 @@
   "$schema": "release-manifest/v1",
   "release": "v0.6.0",
   "locale": "en-US",
-  "requiredDocumentCount": 394,
+  "requiredDocumentCount": 416,
   "sources": {
     "pwsh7": {
       "runtimePlatforms": [
@@ -95,7 +95,25 @@
         "winget-upgrade.md",
         "winget-uninstall.md",
         "winget-list.md",
+        "winget-configure.md",
+        "winget-mcp.md",
+        "winget-source.md",
+        "winget-export.md",
+        "winget-import.md",
+        "winget-pin.md",
+        "winget-download.md",
+        "winget-repair.md",
+        "winget-dscv3.md",
+        "winget-settings.md",
+        "winget-features.md",
+        "winget-hash.md",
+        "winget-validate.md",
         "wsl.exe.md",
+        "wsb.exe.md",
+        "wt.exe.md",
+        "sudo.exe.md",
+        "runas.exe.md",
+        "dsregcmd.exe.md",
         "where.exe.md",
         "robocopy.exe.md",
         "schtasks.exe.md",
@@ -412,7 +430,11 @@
         "diskshadow.exe.md",
         "wbadmin.exe.md",
         "bdehdcfg.exe.md",
-        "refsutil.exe.md"
+        "refsutil.exe.md",
+        "wusa.exe.md",
+        "slmgr.vbs.md",
+        "fltmc.exe.md",
+        "esentutl.exe.md"
       ]
     },
     "cross-platform-tools": {

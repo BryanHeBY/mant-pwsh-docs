@@ -11,13 +11,13 @@ bundles.
 ### Added
 
 - Exactly one reader-visible evidence disposition on every published page:
-  385 bounded `Runtime evidence` sections and 9 explicit `Verification
+  385 bounded `Runtime evidence` sections and 31 explicit `Verification
   boundary` sections, enforced by validation and supported by authoring
   guidance plus conservative templates.
 - ManT protocol v6 semantic entries for PowerShell variables, including
   automatic-variable lookup in both shell editions, and fixed attached native
   options such as `/F:Y` and `perf=default`.
-- First English release inventory: 394 reviewed ManT pages across `pwsh7`,
+- First English release inventory: 416 reviewed ManT pages across `pwsh7`,
   `pwsh51`, `windows-tools`, and `cross-platform-tools`.
 - Separate Windows and cross-platform tool sources with semantic entry pages,
   independent installation, provenance catalogs, and explicit cross-source
@@ -26,6 +26,14 @@ bundles.
   compatibility guides, and custom `irx` shorthand resolution guidance.
 - Tool coverage for Microsoft Learn MCP discovery, winget, Windows system
   tools, Git, OpenSSH, curl, tar, and .NET.
+- Complete WinGet top-level command coverage, including configuration, package
+  MCP, source, package-list transfer, pinning, offline download, repair, DSC v3,
+  settings/features, hashing, and manifest validation, with exact selection,
+  supply-chain, agreement, structured-output, and Agent approval boundaries.
+- Modern Windows coverage for Sudo for Windows, alternate-user RunAs, Windows
+  Terminal, Entra `dsregcmd`, Windows Update Standalone Installer, Slmgr,
+  Filter Manager, Esentutl, and the Windows 11 24H2 `wsb` Sandbox CLI plus
+  `.wsb` integration controls.
 - Windows startup-only Autochk/AutoConv/AutoFmt and Setup-owned FveUpdate
   recognition, floppy DiskComp/DiskCopy, disk-counter and free-space gates,
   Kernel Transaction Manager inspection, and deprecated PageFileConfig/PentNT

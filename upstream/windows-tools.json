@@ -277,13 +277,13 @@
       "sources": [
         {
           "type": "git",
-          "baseline": "winget-cli",
-          "path": "doc/windows/package-manager/winget/configure.md"
+          "baseline": "windows-dev-docs",
+          "path": "hub/package-manager/winget/configure.md"
         },
         {
           "type": "git",
-          "baseline": "winget-cli",
-          "path": "doc/windows/package-manager/configuration/check.md"
+          "baseline": "windows-dev-docs",
+          "path": "hub/package-manager/configuration/check.md"
         }
       ],
       "notes": [
@@ -303,8 +303,8 @@
       "sources": [
         {
           "type": "git",
-          "baseline": "winget-cli",
-          "path": "doc/windows/package-manager/winget/mcp-server-overview.md"
+          "baseline": "windows-dev-docs",
+          "path": "hub/package-manager/winget/mcp-server-overview.md"
         },
         {
           "type": "git",
@@ -407,8 +407,8 @@
       "sources": [
         {
           "type": "git",
-          "baseline": "winget-cli",
-          "path": "doc/windows/package-manager/winget/pinning.md"
+          "baseline": "windows-dev-docs",
+          "path": "hub/package-manager/winget/pinning.md"
         }
       ],
       "notes": [
@@ -428,8 +428,8 @@
       "sources": [
         {
           "type": "git",
-          "baseline": "winget-cli",
-          "path": "doc/windows/package-manager/winget/download.md"
+          "baseline": "windows-dev-docs",
+          "path": "hub/package-manager/winget/download.md"
         }
       ],
       "notes": [
@@ -449,8 +449,8 @@
       "sources": [
         {
           "type": "git",
-          "baseline": "winget-cli",
-          "path": "doc/windows/package-manager/winget/repair.md"
+          "baseline": "windows-dev-docs",
+          "path": "hub/package-manager/winget/repair.md"
         }
       ],
       "notes": [

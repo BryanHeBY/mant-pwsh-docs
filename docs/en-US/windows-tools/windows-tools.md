@@ -190,10 +190,26 @@ license in the document's provenance catalog before adapting material.
 - [winget upgrade](winget-upgrade.md): controlled one-package or bulk upgrades.
 - [winget uninstall](winget-uninstall.md): exact-package removal safety.
 - [winget list](winget-list.md): inventory limits and upgrade-available review.
+- [winget configure](winget-configure.md): review, validate, test, and apply desired-state configuration resources.
+- [winget mcp](winget-mcp.md): configure the bundled package-management MCP server with per-install approval boundaries.
+- [winget source](winget-source.md): inspect and govern package-catalog supply-chain state.
+- [winget export](winget-export.md) / [winget import](winget-import.md): transfer reviewed source-matched package identities without calling the list a system backup.
+- [winget pin](winget-pin.md): normal, blocking, and version-range upgrade policy.
+- [winget download](winget-download.md): stage exact installers, dependencies, and licenses without executing them.
+- [winget repair](winget-repair.md): invoke one publisher-defined package repair and verify application health separately.
+- [winget dscv3](winget-dscv3.md): package, source, user-settings, and administrator-settings DSC v3 resources.
+- [winget settings](winget-settings.md): user JSON defaults, administrator settings, requirements, and experimental behavior.
+- [winget features](winget-features.md): version- and policy-specific experimental feature inventory.
+- [winget hash](winget-hash.md) / [winget validate](winget-validate.md): manifest byte identity and structural validation kept separate from trust and lifecycle tests.
 
 ## Windows system tools
 
 - [wsl.exe](wsl.exe.md): explicit distribution selection and Windows/Linux boundaries.
+- [wsb.exe](wsb.exe.md): Windows Sandbox 24H2 CLI plus `.wsb` network, clipboard, device, and host-share boundaries.
+- [wt.exe](wt.exe.md): Windows Terminal windows, tabs, panes, profiles, and PowerShell semicolon parsing.
+- [sudo.exe](sudo.exe.md): Windows 11 UAC elevation modes and console input-injection boundaries.
+- [runas.exe](runas.exe.md): alternate local/network identity explicitly distinguished from UAC elevation.
+- [dsregcmd.exe](dsregcmd.exe.md): context-sensitive Entra device, user, SSO, and join diagnostics.
 - [where.exe](where.exe.md): Windows executable lookup versus PowerShell resolution.
 - [robocopy.exe](robocopy.exe.md): safe previews, mirror risk, and special exit codes.
 - [schtasks.exe](schtasks.exe.md): task definition, principal, trigger, action, and result identity.
@@ -287,6 +303,8 @@ license in the document's provenance catalog before adapting material.
 - [diskmgmt.msc](diskmgmt.msc.md): Disk Management entry with unique disk/volume/boot/recovery identity safeguards.
 - [services.msc](services.msc.md): Services console entry with SCM runtime/configuration/security boundaries.
 - [optionalfeatures.exe](optionalfeatures.exe.md): classic/Settings feature entry with feature/capability/servicing distinctions.
+- [fltmc.exe](fltmc.exe.md): file-system minifilter/instance/volume inventory before vendor-governed kernel changes.
+- [esentutl.exe](esentutl.exe.md): owner-aware offline ESE inspection, recovery, compaction, and last-resort hard-repair boundaries.
 - [msconfig.exe](msconfig.exe.md): controlled clean-startup isolation with boot and recovery safeguards.
 - [gpedit.msc](gpedit.msc.md): Local Group Policy Editor entry with edition, authority, and RSoP boundaries.
 - [systempropertiesadvanced.exe](systempropertiesadvanced.exe.md): advanced environment, performance, profile, and recovery settings.
@@ -462,11 +480,13 @@ license in the document's provenance catalog before adapting material.
 
 - [msiexec.exe](msiexec.exe.md): package identity, logging, waiting, and restart codes.
 - [dism.exe](dism.exe.md): explicit online/offline Windows image inventory and servicing.
+- [wusa.exe](wusa.exe.md): exact MSU provenance, applicability, servicing-result, restart, and rollback handling.
 - [sfc.exe](sfc.exe.md): protected-system-file verification and scoped repair.
 - [pnputil.exe](pnputil.exe.md): Driver Store, device, and interface identity safety.
 - [pnpunattend.exe](pnpunattend.exe.md): search-only unattended driver audit that avoids implicit online installation.
 - [wdsutil.exe](wdsutil.exe.md): WDS device, driver, image, PXE, transport, multicast, lifecycle, boot-image support, and unattended-security boundaries.
 - [fondue.exe](fondue.exe.md): single-feature enablement and source-policy boundaries.
+- [slmgr.vbs](slmgr.vbs.md): console-hosted Windows licensing, activation, KMS, token, and forest configuration.
 
 ## Windows security policy and authentication diagnosis
 

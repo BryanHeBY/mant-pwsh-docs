@@ -31,8 +31,10 @@ Esentutl mode is not permission to run it against a live product database.
 
 ```text
 esentutl.exe MODE [mode-specific arguments]
-esentutl.exe /MODE?           display help for one mode
 ```
+
+Append `?` to an installed mode spelling, for example `/g?`, to display its
+mode-specific help before use.
 
 ## Modes
 
