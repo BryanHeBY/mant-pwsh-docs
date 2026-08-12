@@ -458,6 +458,126 @@
         "Official syntax was reviewed; no inventory, source query, installer, elevation, file change, or restart ran."
       ]
     },
+    "winget-dscv3.md": {
+      "kind": "native-cli-subcommand-family",
+      "status": "reviewed",
+      "versions": [
+        "varies by App Installer and DSC v3 resource schema"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "windows-dev-docs",
+          "path": "hub/package-manager/winget/dscv3.md"
+        }
+      ],
+      "notes": [
+        "The page distinguishes command-resource protocol discovery from winget configure orchestration and treats resource set as a package/source/settings mutation.",
+        "Official resource families and options were reviewed; no resource manifest, DSC exchange, package, source, or settings operation ran."
+      ]
+    },
+    "winget-settings.md": {
+      "kind": "native-cli-subcommand-family",
+      "status": "reviewed",
+      "versions": [
+        "WinGet settings evolve by App Installer version; reviewed for the 1.28/1.29 documentation family"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "winget-cli",
+          "path": "doc/windows/package-manager/winget/settings.md"
+        },
+        {
+          "type": "git",
+          "baseline": "winget-cli",
+          "path": "schemas/JSON/settings/settings.schema.0.2.json"
+        },
+        {
+          "type": "git",
+          "baseline": "winget-cli",
+          "path": "PRIVACY.md"
+        }
+      ],
+      "notes": [
+        "Every documented settings group/key is an outline heading; the guide separates user settings, administrator/policy state, preferences, requirements, experimental features, and explicit CLI overrides.",
+        "Official settings documentation, schema, and privacy material were reviewed; no editor, export, feature, policy, log cleanup, network, or package behavior ran."
+      ]
+    },
+    "winget-features.md": {
+      "kind": "native-cli-subcommand",
+      "status": "reviewed",
+      "versions": [
+        "intentionally specific to the installed WinGet version"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "winget-cli",
+          "path": "doc/windows/package-manager/winget/features.md"
+        }
+      ],
+      "notes": [
+        "The page treats the feature list as version/user/policy evidence rather than a stable parseable API or enable command.",
+        "Official behavior was reviewed; no feature, settings, policy, client info, or network state was queried or changed."
+      ]
+    },
+    "winget-hash.md": {
+      "kind": "native-cli-subcommand",
+      "status": "reviewed",
+      "versions": [
+        "varies by App Installer and manifest schema"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "winget-cli",
+          "path": "doc/windows/package-manager/winget/hash.md"
+        }
+      ],
+      "notes": [
+        "The guide distinguishes byte identity from publisher trust and requires exact file identity, independent hashing, signature review, and acquisition provenance.",
+        "Official hash options were reviewed; no file, signature, package, URL, or manifest was opened or hashed."
+      ]
+    },
+    "winget-validate.md": {
+      "kind": "native-cli-subcommand",
+      "status": "reviewed",
+      "versions": [
+        "varies by App Installer and manifest schema/repository policy"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "winget-cli",
+          "path": "doc/windows/package-manager/winget/validate.md"
+        },
+        {
+          "type": "git",
+          "baseline": "winget-cli",
+          "path": "schemas/JSON/manifests"
+        }
+      ],
+      "notes": [
+        "The page separates client/schema validation from publisher authorization, artifact safety, lifecycle testing, and repository review.",
+        "Official validation documentation was reviewed; no manifest, artifact, URL, hash, submission, or package lifecycle ran."
+      ]
+    },
     "winget-search.md": {
       "kind": "native-cli-subcommand",
       "status": "reviewed",
