@@ -63,6 +63,7 @@ const catalogPaths = requestedCatalogs.length === 0
     }))];
 const concurrency = 8;
 const timeoutSeconds = 20;
+const maxCapturedBodyBytes = 8 * 1024 * 1024;
 const errors = [];
 const targets = new Map();
 
@@ -186,21 +187,44 @@ async function checkTarget(url, labels) {
       args.push("--head");
     } else if (!captureBody) {
       args.push("--range", "0-0");
+    } else {
+      // Fragment validation needs the page body, but an upstream server must
+      // not be able to make this editorial audit retain an unbounded response.
+      args.push("--max-filesize", String(maxCapturedBodyBytes));
     }
     args.push(fetchUrl);
     const child = spawn(process.env.CURL_BIN || "curl", args, {
       stdio: ["ignore", captureBody ? "pipe" : "ignore", "pipe"]
     });
     let stderr = "";
-    let stdout = "";
+    const stdoutChunks = [];
+    let stdoutBytes = 0;
+    let bodyTooLarge = false;
     if (captureBody) {
-      child.stdout.setEncoding("utf8");
-      child.stdout.on("data", (chunk) => { stdout += chunk; });
+      child.stdout.on("data", (chunk) => {
+        stdoutBytes += chunk.length;
+        if (stdoutBytes > maxCapturedBodyBytes) {
+          bodyTooLarge = true;
+          child.kill();
+          return;
+        }
+        stdoutChunks.push(chunk);
+      });
     }
     child.stderr.setEncoding("utf8");
     child.stderr.on("data", (chunk) => { stderr += chunk; });
-    child.on("error", (cause) => resolve({ cause, stderr, stdout }));
-    child.on("close", (status) => resolve({ status, stderr, stdout }));
+    child.on("error", (cause) => resolve({
+      cause,
+      stderr,
+      stdout: Buffer.concat(stdoutChunks).toString("utf8"),
+      bodyTooLarge
+    }));
+    child.on("close", (status) => resolve({
+      status,
+      stderr,
+      stdout: Buffer.concat(stdoutChunks).toString("utf8"),
+      bodyTooLarge
+    }));
   });
   let result = await runCurl(fragment.length === 0, fragment.length > 0);
   if (result.cause === undefined && result.status !== 0) {
@@ -209,7 +233,9 @@ async function checkTarget(url, labels) {
     // range still stream to a discarded stdout rather than repository files.
     result = await runCurl(false, fragment.length > 0);
   }
-  if (result.cause !== undefined) {
+  if (result.bodyTooLarge || result.status === 63) {
+    fail(`${labels.join(", ")}: ${url} exceeded the ${maxCapturedBodyBytes}-byte fragment-validation limit.`);
+  } else if (result.cause !== undefined) {
     fail(`${labels.join(", ")}: ${url} could not start curl (${result.cause.message}).`);
   } else if (result.status !== 0) {
     fail(`${labels.join(", ")}: ${url} could not be fetched (${result.stderr.trim() || `curl exited ${result.status}`}).`);

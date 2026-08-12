@@ -50,6 +50,10 @@ normal validators intentionally remain offline so they work in restricted or
 air-gapped environments; upstream verification is not a document-reading
 dependency.
 
+Fragment checks retain at most 8 MiB of a response body. An oversized page
+fails the audit instead of allowing an upstream server to consume unbounded
+process memory.
+
 During a source-specific review, pass one or more catalog names to verify only
 that locked subset without weakening the default full audit:
 
