@@ -100,8 +100,10 @@ runtime verification on all platforms required by
 [V0.6.0-SCOPE.md](V0.6.0-SCOPE.md). Windows PowerShell 5.1 and PowerShell 7.6
 now have completed editorial/source/metadata passes and partial platform
 runtime evidence; remaining Windows fixtures, macOS, and compatible dotnet SDK
-hosts remain incomplete. CI runs the portable validator on Linux, macOS, and
-Windows using the publicly released ManT 0.6.4.
+hosts remain incomplete. CI runs the ManT 0.6.4 portable validator on Linux,
+macOS, and Windows. A separate Windows job runs the version-neutral runtime
+fixtures through both Windows PowerShell and PowerShell 7 in parallel with the
+portable matrix.
 
 ## License
 

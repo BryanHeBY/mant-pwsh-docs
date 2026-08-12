@@ -33,9 +33,10 @@ npm run validate
 
 Use `npm run validate:structure` only when ManT is intentionally unavailable;
 release work must run the normal command. GitHub Actions runs the normal ManT
-0.6.4-backed validation on pushes, pull requests, and manual dispatch across
-Ubuntu, macOS, and Windows. The Windows job also runs the protected Cmd builtin
-behavior fixture through both Windows PowerShell and pwsh. Use
+0.6.4-backed validation for pull requests, pushes to `main`, and manual
+dispatch across Ubuntu, macOS, and Windows. A separate, parallel Windows job
+runs the version-neutral runtime fixtures through both Windows PowerShell and
+pwsh. Use
 `npm run validate:release` before creating
 `v0.6.0` to enforce the full release manifest in `release/v0.6.0.json`.
 

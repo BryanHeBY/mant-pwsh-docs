@@ -2,8 +2,14 @@ name: validate
 
 on:
   push:
+    branches:
+      - main
   pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: validate-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
@@ -12,6 +18,7 @@ jobs:
   documentation:
     name: ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
     strategy:
       fail-fast: false
       matrix:
@@ -29,67 +36,58 @@ jobs:
         run: cargo install mant --version 0.6.4 --locked
       - name: Validate published documentation
         run: npm run validate
+
+  windows-runtime:
+    name: windows-runtime
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
       - name: Validate Cmd builtin behavior through Windows PowerShell
-        if: runner.os == 'Windows'
         shell: powershell
         run: powershell.exe -NoProfile -File .\tests\runtime\cmd-builtins-smoke.ps1
       - name: Validate Cmd builtin behavior through PowerShell
-        if: runner.os == 'Windows'
         shell: pwsh
         run: pwsh -NoProfile -File .\tests\runtime\cmd-builtins-smoke.ps1
       - name: Validate read-only Windows CLIs through Windows PowerShell
-        if: runner.os == 'Windows'
         shell: powershell
         run: powershell.exe -NoProfile -File .\tests\runtime\windows-readonly-cli-smoke.ps1
       - name: Validate read-only Windows CLIs through PowerShell
-        if: runner.os == 'Windows'
         shell: pwsh
         run: pwsh -NoProfile -File .\tests\runtime\windows-readonly-cli-smoke.ps1
       - name: Validate cross-platform tool boundaries through Windows PowerShell
-        if: runner.os == 'Windows'
         shell: powershell
         run: powershell.exe -NoProfile -File .\tests\runtime\cross-platform-tools-windows-smoke.ps1
       - name: Validate cross-platform tool boundaries through PowerShell
-        if: runner.os == 'Windows'
         shell: pwsh
         run: pwsh -NoProfile -File .\tests\runtime\cross-platform-tools-windows-smoke.ps1
       - name: Validate private local inventory through Windows PowerShell
-        if: runner.os == 'Windows'
         shell: powershell
         run: powershell.exe -NoProfile -File .\tests\runtime\windows-host-network-inventory-smoke.ps1
       - name: Validate private local inventory through PowerShell
-        if: runner.os == 'Windows'
         shell: pwsh
         run: pwsh -NoProfile -File .\tests\runtime\windows-host-network-inventory-smoke.ps1
       - name: Validate isolated file/text behavior through Windows PowerShell
-        if: runner.os == 'Windows'
         shell: powershell
         run: powershell.exe -NoProfile -File .\tests\runtime\windows-file-text-smoke.ps1
       - name: Validate isolated file/text behavior through PowerShell
-        if: runner.os == 'Windows'
         shell: pwsh
         run: pwsh -NoProfile -File .\tests\runtime\windows-file-text-smoke.ps1
       - name: Validate Windows file identity through Windows PowerShell
-        if: runner.os == 'Windows'
         shell: powershell
         run: powershell.exe -NoProfile -File .\tests\runtime\audit-windows-file-identity.ps1 -FailOnIdentityError
       - name: Validate Windows file identity through PowerShell
-        if: runner.os == 'Windows'
         shell: pwsh
         run: pwsh -NoProfile -File .\tests\runtime\audit-windows-file-identity.ps1 -FailOnIdentityError
       - name: Validate local remote-management help through Windows PowerShell
-        if: runner.os == 'Windows'
         shell: powershell
         run: powershell.exe -NoProfile -File .\tests\runtime\windows-remote-management-help-smoke.ps1
       - name: Validate local remote-management help through PowerShell
-        if: runner.os == 'Windows'
         shell: pwsh
         run: pwsh -NoProfile -File .\tests\runtime\windows-remote-management-help-smoke.ps1
       - name: Validate provider boundaries through Windows PowerShell
-        if: runner.os == 'Windows'
         shell: powershell
         run: powershell.exe -NoProfile -File .\tests\runtime\powershell-provider-readonly-smoke.ps1
       - name: Validate provider boundaries through PowerShell
-        if: runner.os == 'Windows'
         shell: pwsh
         run: pwsh -NoProfile -File .\tests\runtime\powershell-provider-readonly-smoke.ps1
