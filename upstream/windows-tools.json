@@ -245,6 +245,79 @@
         "Official command and server source were inspected; the feature was not enabled, registered with a client, or allowed to query or mutate package state."
       ]
     },
+    "winget-source.md": {
+      "kind": "native-cli-subcommand-family",
+      "status": "reviewed",
+      "versions": [
+        "varies by App Installer"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "winget-cli",
+          "path": "doc/windows/package-manager/winget/source.md"
+        }
+      ],
+      "notes": [
+        "The page treats source configuration as software-supply-chain state and distinguishes human-readable list output from the JSON export contract.",
+        "Official syntax was reviewed statically; no catalog was contacted, refreshed, added, edited, removed, or reset."
+      ]
+    },
+    "winget-export.md": {
+      "kind": "native-cli-subcommand",
+      "status": "reviewed",
+      "versions": [
+        "varies by App Installer"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "winget-cli",
+          "path": "doc/windows/package-manager/winget/export.md"
+        },
+        {
+          "type": "git",
+          "baseline": "winget-cli",
+          "path": "schemas/JSON/packages"
+        }
+      ],
+      "notes": [
+        "The page explicitly limits package-list export to source-matched identities and versions rather than presenting it as an application or system backup.",
+        "Official options and schema were reviewed; no Windows inventory or source query ran and no export artifact was created."
+      ]
+    },
+    "winget-import.md": {
+      "kind": "native-cli-subcommand",
+      "status": "reviewed",
+      "versions": [
+        "varies by App Installer"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "winget-cli",
+          "path": "doc/windows/package-manager/winget/import.md"
+        },
+        {
+          "type": "git",
+          "baseline": "winget-cli",
+          "path": "schemas/JSON/packages"
+        }
+      ],
+      "notes": [
+        "The guide requires review and hashing of package-list input and reconciliation of each requested package after serial installer execution.",
+        "Official options and schema were reviewed; no import, agreement acceptance, installation, elevation, or reboot behavior ran."
+      ]
+    },
     "winget-search.md": {
       "kind": "native-cli-subcommand",
       "status": "reviewed",

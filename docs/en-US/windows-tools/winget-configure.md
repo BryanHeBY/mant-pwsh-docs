@@ -140,6 +140,8 @@ disposable Windows fixture with an approved configuration and rollback plan.
 ## Related documents
 
 - [Windows Package Manager](winget.exe.md)
+- [winget export](winget-export.md)
+- [winget import](winget-import.md)
 - [Microsoft Learn MCP queries](microsoft-learn-mcp.md)
 
 ## Sources and license
