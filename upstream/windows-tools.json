@@ -96,6 +96,39 @@
         "url": "https://github.com/MicrosoftDocs/entra-docs/blob/main/LICENSE"
       },
       "retrievedAt": "2026-08-12"
+    },
+    "windows-driver-docs": {
+      "type": "git",
+      "repository": "https://github.com/MicrosoftDocs/windows-driver-docs.git",
+      "branch": "staging",
+      "revision": "98420838c820f33e58942b9b8d8d70aa03b7b6aa",
+      "license": {
+        "spdx": "CC-BY-4.0",
+        "url": "https://github.com/MicrosoftDocs/windows-driver-docs/blob/staging/LICENSE"
+      },
+      "retrievedAt": "2026-08-12"
+    },
+    "win32-docs": {
+      "type": "git",
+      "repository": "https://github.com/MicrosoftDocs/win32.git",
+      "branch": "docs",
+      "revision": "2eb6588c6703d31599285bbb06563c3d41b57590",
+      "license": {
+        "spdx": "CC-BY-4.0",
+        "url": "https://github.com/MicrosoftDocs/win32/blob/docs/LICENSE"
+      },
+      "retrievedAt": "2026-08-12"
+    },
+    "microsoft-support-docs": {
+      "type": "git",
+      "repository": "https://github.com/MicrosoftDocs/SupportArticles-docs.git",
+      "branch": "main",
+      "revision": "b6cee2bf8451c153907c7feb86ea834d53564ac8",
+      "license": {
+        "spdx": "CC-BY-4.0",
+        "url": "https://github.com/MicrosoftDocs/SupportArticles-docs/blob/main/LICENSE"
+      },
+      "retrievedAt": "2026-08-12"
     }
   },
   "discovery": [
@@ -652,6 +685,114 @@
       "notes": [
         "The guide prioritizes status interpretation in the affected user context, report privacy, and supported orchestration before destructive leave/rejoin actions.",
         "Official field semantics and switch roles were reviewed; no report, PRT refresh, join, leave, recovery, or identity mutation ran."
+      ]
+    },
+    "wusa.exe.md": {
+      "kind": "windows-servicing-cli",
+      "status": "reviewed",
+      "versions": [
+        "varies by Windows build and servicing stack"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "web",
+          "url": "https://support.microsoft.com/en-US/servicing/os/windows/2017/03/description-of-the-windows-update-standalone-installer-in-windows",
+          "license": {
+            "spdx": "LicenseRef-Microsoft-Web-Terms",
+            "url": "https://www.microsoft.com/en-us/legal/terms-of-use"
+          },
+          "checkedAt": "2026-08-12"
+        }
+      ],
+      "notes": [
+        "The page requires catalog/signature/hash/applicability review, handles restart-required and HRESULT evidence, and marks extraction/restart forms as build-sensitive.",
+        "Microsoft Support syntax was reviewed; no package, servicing query, install, uninstall, extraction, staging, or restart ran."
+      ]
+    },
+    "slmgr.vbs.md": {
+      "kind": "windows-script-cli",
+      "status": "reviewed",
+      "versions": [
+        "varies by Windows edition, activation channel, and Software Protection Platform"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "windowsserverdocs",
+          "path": "WindowsServerDocs/get-started/activation-slmgr-vbs-options.md"
+        }
+      ],
+      "notes": [
+        "Every current documented Slmgr option is registered, console-host invocation is explicit, secrets are excluded from reusable automation, and local versus forest-wide mutations are separated.",
+        "The official option reference was reviewed; no licensing query, key, activation, KMS, token, forest, credential, or remote operation ran."
+      ]
+    },
+    "fltmc.exe.md": {
+      "kind": "windows-kernel-diagnostic-cli",
+      "status": "reviewed",
+      "versions": [
+        "varies by Windows build, installed minifilters, and driver policy"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "windows-driver-docs",
+          "path": "windows-driver-docs-pr/ifs/development-and-testing-tools.md"
+        },
+        {
+          "type": "git",
+          "baseline": "windows-driver-docs",
+          "path": "windows-driver-docs-pr/ifs/loading-and-unloading.md"
+        },
+        {
+          "type": "git",
+          "baseline": "windows-driver-docs",
+          "path": "windows-driver-docs-pr/ifs/load-order-groups-and-altitudes-for-minifilter-drivers.md"
+        }
+      ],
+      "notes": [
+        "The guide makes the stable installed command families selectable while deferring exact mutation grammar to installed help and vendor policy; altitude is not treated as trust.",
+        "Microsoft Filter Manager contracts were reviewed; no filter, instance, altitude, volume, service, or driver state was queried or changed."
+      ]
+    },
+    "esentutl.exe.md": {
+      "kind": "windows-database-recovery-cli",
+      "status": "reviewed",
+      "versions": [
+        "varies by Windows ESE version, file format, and owning product"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "win32-docs",
+          "path": "desktop-src/extensible-storage-engine/extensible-storage-engine-files.md"
+        },
+        {
+          "type": "git",
+          "baseline": "microsoft-support-docs",
+          "path": "support/windows-server/active-directory/jet-database-errors-recovery-steps.md"
+        },
+        {
+          "type": "git",
+          "baseline": "microsoft-support-docs",
+          "path": "support/windows-server/active-directory/0xc00002e1-error-start-domain-controller.md"
+        }
+      ],
+      "notes": [
+        "The page registers stable top-level modes, requires product/database/log ownership before operation, and refuses a generic hard-repair recipe because /p can discard data.",
+        "Microsoft ESE and support guidance was reviewed; no database, log, backup, service, checksum, recovery, defragmentation, copy, restore, or repair ran."
       ]
     },
     "wsl.exe.md": {
