@@ -37,7 +37,7 @@ networking cmdlets instead when an equivalent supported interface exists.
 - `-a FILE`: Run commands from an alias file and return to the Netsh shell afterward.
 - `-c CONTEXT`: Enter one installed helper context before executing the remaining command.
 - `-r COMPUTER`: Target a remote computer for contexts that implement remote operation.
-- `-u DOMAIN\USER`: Select credentials for a supported remote operation.
+- `-u`: Select a `DOMAIN\USER` identity for a supported remote operation.
 - `-p PASSWORD`: Supply a remote password; use `*` for an interactive prompt instead of an inline secret.
 - `-f FILE`: Execute a reviewed Netsh script file.
 

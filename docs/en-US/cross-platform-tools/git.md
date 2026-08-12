@@ -33,8 +33,8 @@ exit code form its interface.
 
 <!-- mant:entries role=option case=sensitive -->
 - `-C PATH`: Run as if Git started in `PATH`; repeated relative values are resolved from the preceding `-C` location.
-- `-c NAME=VALUE`: Override one configuration value for this invocation; omitting `=` means true, while an empty value is distinct.
-- `--config-env=NAME=ENVVAR`: Read a temporary configuration value from an environment variable instead of exposing the value directly in the command line.
+- `-c`: Override one `NAME=VALUE` configuration value for this invocation; omitting `=` means true, while an empty value is distinct.
+- `--config-env`: Read a temporary `NAME=ENVVAR` configuration value from an environment variable instead of exposing the value directly in the command line.
 - `-p`, `--paginate`: Send terminal output through the configured pager.
 - `-P`, `--no-pager`: Disable paging for this invocation, which is usually preferable in automation.
 - `--git-dir=PATH`: Set the repository metadata directory and disable normal `.git` discovery.

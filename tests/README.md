@@ -6,7 +6,7 @@ across supported host platforms.
 
 The GitHub Actions workflow runs the portable check on Linux, macOS, and
 Windows for pushes, pull requests, and manual dispatches. It installs the
-public ManT 0.6.1 crate. The Windows job additionally runs the version-neutral
+public ManT 0.6.4 crate. The Windows job additionally runs the version-neutral
 Cmd builtin fixture through both Windows PowerShell and pwsh. Edition-specific
 PowerShell smoke tests remain separate because the PowerShell 7 suite targets
 7.6 semantics while hosted-runner versions can float.

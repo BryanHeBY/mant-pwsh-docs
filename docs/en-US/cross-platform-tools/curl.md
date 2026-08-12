@@ -45,7 +45,7 @@ curl path and version because features are build-dependent.
 - `--json DATA`: Send JSON data and set JSON request/accept headers; availability depends on curl version.
 - `-F FORM`, `--form FORM`: Build a multipart form, including file uploads when requested by the value syntax.
 - `-T FILE`, `--upload-file FILE`: Upload one local file or standard input when the file is `-`.
-- `-u USER:PASS`, `--user USER:PASS`: Supply server credentials; omit the password to prompt where supported instead of exposing it in history.
+- `-u`, `--user`: Supply `USER:PASS` server credentials; omit the password to prompt where supported instead of exposing it in history.
 - `--connect-timeout SECONDS`: Bound only the connection phase.
 - `-m SECONDS`, `--max-time SECONDS`: Bound the total operation time.
 - `--retry COUNT`: Retry selected transient failures; combine only with deliberate retry timing and idempotency policy.

@@ -95,14 +95,13 @@ target identity, output paths, secrets, and rollback remain mandatory gates.
 
 #### Dot-bearing CA retrieval verbs
 
-ManT 0.6.1's dash-option grammar stops before a dot, while command-role names
-cannot begin with `-`. The semantic selectors therefore omit only the leading
-hyphen; the exact CertUtil invocation verbs remain `-ca.cert` and `-ca.chain`.
-Do not invoke the selector spelling as a CertUtil argument.
+ManT 0.6.4 preserves non-empty dotted segments in dash-option names. These
+semantic selectors therefore match the exact CertUtil invocation verbs instead
+of using index-only aliases.
 
-<!-- mant:entries role=command case=insensitive -->
-- `ca.cert`: Index the exact CertUtil verb `-ca.cert`, which retrieves the selected CA certificate to a protected new output file.
-- `ca.chain`: Index the exact CertUtil verb `-ca.chain`, which retrieves the selected CA chain to a protected new output file.
+<!-- mant:entries role=option case=insensitive -->
+- `-ca.cert`: Retrieve the selected CA certificate to a protected new output file.
+- `-ca.chain`: Retrieve the selected CA chain to a protected new output file.
 
 ### CA discovery, database, and row operations
 
@@ -410,9 +409,8 @@ Microsoft's current source exposes 133 verb headings; the case-insensitive
 union is 134 because the installed -ConvertEPF verb is absent online. The
 help-only -v -uSAGE form returned 0, 1600 lines, no stderr, and 162 unique
 headings: the same 134 verbs plus 28 global options. The page indexes every
-heading and records ManT 0.6.1's inability to preserve leading-hyphen
-dot-bearing selectors such as -ca.cert; ca.cert and ca.chain are explicit
-index-only fallbacks.
+heading. ManT 0.6.4 preserves the exact leading-hyphen dot-bearing selectors
+-ca.cert and -ca.chain; direct explanations resolve each without ambiguity.
 
 ## Related documents
 - [certreq.exe](certreq.exe.md)

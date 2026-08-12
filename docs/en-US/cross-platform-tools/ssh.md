@@ -41,7 +41,7 @@ the remote shell or program then parses the command sent after connection.
 - `-J DESTINATION`: Reach the target through one or more comma-separated jump hosts; destination options do not automatically configure each jump host.
 - `-L SPEC`: Create a local listening socket or port that forwards to a destination through the SSH connection.
 - `-R SPEC`: Create a remote listening socket or port that forwards through the SSH connection.
-- `-D [ADDRESS:]PORT`: Create a local dynamic SOCKS listener.
+- `-D`: Create a local dynamic SOCKS listener from an `[ADDRESS:]PORT` specification.
 - `-N`: Do not run a remote command; useful for forwarding-only sessions.
 - `-T`: Disable pseudo-terminal allocation for predictable noninteractive commands.
 - `-t`: Force pseudo-terminal allocation; repeat when allocation is required despite no local terminal.

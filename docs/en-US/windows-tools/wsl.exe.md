@@ -96,9 +96,9 @@ state, and restart requirements. They are never discovery shortcuts.
 - `--set-default-version`: Select the default WSL version for newly installed distributions.
 - `--terminate`: Stop all processes in one exact distribution.
 - `-d DISTRIBUTION`, `--distribution DISTRIBUTION`: Select the exact distribution for a Linux command or operation.
-- `--export DISTRIBUTION FILE`: Export one distribution to an archive or supported VHD format.
-- `--import DISTRIBUTION LOCATION FILE`: Register a new distribution from an archive at an explicit Windows location.
-- `--import-in-place DISTRIBUTION FILE`: Register a supported ext4 VHDX in place without copying it.
+- `--export`: Export one `DISTRIBUTION` to an archive or supported VHD `FILE`.
+- `--import`: Register a `DISTRIBUTION` from an archive at an explicit Windows `LOCATION`.
+- `--import-in-place`: Register a `DISTRIBUTION` from a supported ext4 VHDX `FILE` without copying it.
 - `--unregister DISTRIBUTION`: Permanently unregister and delete one distribution's WSL storage.
 - `--format`: With export, select a supported tar-compression or VHD output format.
 - `--vhd`: Under supported export/import/mount parents, treat the artifact as a VHD/VHDX rather than a tar archive or physical disk.
