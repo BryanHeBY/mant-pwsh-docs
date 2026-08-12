@@ -125,8 +125,22 @@ behavior, remoting, and output vary by DC version and estate history. Current
 Microsoft documentation and target-local help take precedence over claims that
 presence/absence on one host proves the domain state.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`dfsrmig.exe` Application candidate under either PowerShell collector. No
+feature, role, or compatibility component was installed merely to change
+that result, and no same-named PATH substitute was used. This is target-host
+command-resolution evidence, not proof that the tool is unsupported on every
+applicable Windows environment.
+
+Behavior verification remains PDC identity and approved global/local
+state plus share/service inventory only; no state transition,
+global-object/member deletion/creation, AD/DFSR/FRS polling, service, registry,
+authoritative/non-authoritative restore or metadata cleanup is permitted merely
+for evidence.
+
+## Related documents
 - [ntfrsutl.exe](ntfrsutl.exe.md)
 - [dcdiag.exe](dcdiag.exe.md)
 - [repadmin.exe](repadmin.exe.md)

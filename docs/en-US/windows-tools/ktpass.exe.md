@@ -124,15 +124,24 @@ when a file was created.
 
 ## Version and platform differences
 
-`ktpass.exe` is a Windows/AD administrative tool; the resulting keytab is for a
-Kerberos implementation on another platform. Switch behavior and defaults have
-changed across Windows releases. Cryptographic support also depends on domain
+`ktpass.exe` is a Windows/AD administrative tool and is not present on every
+Windows installation; the resulting keytab is for a Kerberos implementation
+on another platform. Exact System32 discovery on the recorded Windows NT
+`10.0.26200.0` client found no `ktpass.exe`, so no local help or keytab
+operation ran. Switch behavior and defaults have changed across Windows
+releases. Cryptographic support also depends on domain
 policy, account attributes, installed service stack, and client libraries.
 Use the tool version belonging to the managed Windows generation and verify its
 local help before a controlled rotation.
 
-## Related documents
+## Runtime evidence
 
+Exact System32 discovery on Windows NT 10.0.26200.0 found no ktpass.exe. It
+remains documented as an optional AD DS administrative tool; no local help,
+directory operation, password/key rotation, mapping, SPN change, keytab
+creation, or secret handling ran.
+
+## Related documents
 - [setspn.exe](setspn.exe.md)
 - [ksetup.exe](ksetup.exe.md)
 - [klist.exe](klist.exe.md)

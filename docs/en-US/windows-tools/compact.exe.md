@@ -16,6 +16,10 @@
 
 `compact.exe /CompactOS:query`
 
+- Query CompactOS state for an offline Windows directory without changing it:
+
+`compact.exe /CompactOS:query /WinDir:"{{offline-Windows-directory}}"`
+
 - Compress one exact file with ordinary NTFS compression:
 
 `compact.exe /C "{{file}}"`
@@ -58,6 +62,8 @@ name applies to the current directory, so prefer an explicit absolute scope.
 - `/exe`: Select `XPRESS4K`, `XPRESS8K`, `XPRESS16K`, or `LZX` system compression.
 - `/compactos`: Query or set installation-wide CompactOS policy with `query`,
   `always`, or `never`.
+- `/windir`: With `/compactos:query`, identify the Windows directory of an
+  offline operating-system installation.
 - `/?`: Display syntax supported by the installed executable.
 
 ## Scope and algorithms
@@ -75,6 +81,9 @@ name applies to the current directory, so prefer an explicit absolute scope.
   suit read-mostly files; modification patterns and platform support matter.
 - CompactOS is installation-wide OS-binary policy, separate from compressing
   one application directory.
+- `/WinDir` is an offline-OS selector for `/CompactOS:query`; it is not a
+  destination for compression and does not make `always` or `never` target an
+  arbitrary directory.
 
 ## Common mistakes
 
@@ -116,6 +125,15 @@ It changes persistent OS-binary compression policy and can consume time,
 power, CPU, and working space. Query first; use only under supported deployment
 or device-capacity policy, and verify servicing and recovery afterward.
 
+### Treating every nonzero CompactOS query status as command failure
+
+Microsoft's command reference does not define a portable exit-code table for
+CompactOS state. On Windows build `10.0.26200`, `/CompactOS:query` printed a
+valid “not in the Compact state” result but returned 102 under both Windows
+PowerShell 5.1 and PowerShell 7.6.4. Preserve the localized output and
+`$LASTEXITCODE`, distinguish a reported state from an access or syntax error,
+and validate any automation contract on every supported build.
+
 ### Assuming logical size equals physical savings
 
 Compressed size, logical length, sparse allocation, deduplication, cluster
@@ -133,18 +151,34 @@ application requirements. Ordinary compact does not support FAT/FAT32.
 
 Compact is a native text tool. Quote absolute paths and `/S:path` as one
 argument, capture output and `$LASTEXITCODE`, and do not infer complete tree
-success when `/i` was used. PowerShell's `Compress-Archive` creates ZIP files
-and is unrelated to NTFS compression.
+success when `/i` was used. A nonzero CompactOS query status can encode the
+reported state on some builds rather than a parser failure. PowerShell's
+`Compress-Archive` creates ZIP files and is unrelated to NTFS compression.
 
 ## Version and platform differences
 
 This Windows-only command applies to supported Windows client and server
 releases. NTFS is required for ordinary compression. `/EXE` and CompactOS
 behavior depend on Windows version, filesystem/filter stack, architecture,
-servicing, and deployment policy.
+servicing, and deployment policy. Current installed and online help expose
+`/WinDir` only with offline `/CompactOS:query`; mutation of the running OS with
+`always` or `never` is a persistent administrative operation.
+
+On Windows NT `10.0.26200.0`, exact System32 file version `10.0.26100.1`
+printed 42 nonempty standard-output help lines for `/?`, no standard-error
+lines, and returned 0. No path, wildcard, file, directory, algorithm, CompactOS
+state, offline Windows directory, filesystem metadata, or compression operation
+was supplied, read, or changed.
+
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 file version 10.0.26100.1 explicit
+/? returned 42 nonempty stdout lines, no stderr and status 0. Read-only
+/CompactOS:query separately reported a valid non-Compact state but returned 102
+under both installed PowerShell editions. No compression or CompactOS state
+changed; disposable NTFS file/algorithm verification remains pending.
 
 ## Related documents
-
 - [defrag.exe](defrag.exe.md)
 - [attrib.exe](attrib.exe.md)
 - [cipher.exe](cipher.exe.md)

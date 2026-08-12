@@ -121,8 +121,19 @@ releases. Windows Recovery Environment exposes different parameters. Option
 forms, compression formats, path rules, and servicing use depend on the target
 build, so check installed help in the actual environment.
 
-## Related documents
+On Windows NT `10.0.26200.0`, exact System32 file version `5.00` printed 17
+nonempty help lines for `/?`, returned 0, and produced no Windows PowerShell
+5.1 `ErrorRecord` objects. No archive, member, destination, rename, extraction,
+servicing input, or filesystem output was supplied or created.
 
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 file version 5.00 explicit /?
+returned 17 nonempty help lines, status 0 and no Windows PowerShell 5.1
+ErrorRecord objects. A reviewed inert archive remains required for list/extract
+evidence; no extraction, execution, rebuild, installation or servicing ran.
+
+## Related documents
 - [makecab.exe](makecab.exe.md)
 - [diantz.exe](diantz.exe.md)
 - [dism.exe](dism.exe.md)

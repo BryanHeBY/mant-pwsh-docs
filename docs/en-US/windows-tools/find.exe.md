@@ -91,7 +91,19 @@ text.
 ## Version and platform differences
 
 This executable is Windows-only. Matching and input/output depend on the
-active code page and text encoding.
+active code page and text encoding. On Windows NT `10.0.26200.0`, installed
+file version `10.0.26100.1` printed 12 nonempty help lines and returned 0 for
+`/?`. `-?` was treated as a missing filename and returned 2; no search string,
+file, standard input, offline content, or filesystem state was selected.
+
+## Runtime evidence
+
+The protected fixture searched one fixed ASCII file under both PowerShell
+collectors. Explicit `/i /n "needle phrase"` returned status `0` and the
+expected literal line; a fixed absent literal returned status `1`, confirming
+that no match is not an execution error. It used no stdin, wildcard, offline
+file, user data, regular expression, arbitrary encoding, or untrusted control
+text; the temporary root was removed.
 
 ## Related documents
 

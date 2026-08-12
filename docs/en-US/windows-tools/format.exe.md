@@ -1,195 +1,104 @@
 <!-- mant:tldr:start -->
 # format.exe
 
-> Create a new filesystem only after proving the target volume identity and restore path; this destroys the volume's existing filesystem and data.
+> Resolve `format.exe` before use: Windows ships the destructive formatter as `format.com`, not `format.exe`.
 > More information: https://learn.microsoft.com/windows-server/administration/windows-commands/format.
 
-- Display the syntax supported by this Windows build without touching a volume:
+- Confirm that the explicit `.exe` name is absent on the current host:
 
-`format.exe /?`
+`Get-Command format.exe -All -ErrorAction SilentlyContinue`
 
-- Correlate drive letters, labels, filesystem types, sizes, and unique volume paths before selecting a target:
+- Resolve the actual Windows formatter without invoking it:
 
-`Get-Volume | Select-Object DriveLetter, FileSystemLabel, FileSystem, Size, SizeRemaining, UniqueId, Path`
+`Get-Command format.com -CommandType Application -ErrorAction Stop`
 
-- Correlate the proposed volume with its partition and physical disk instead of trusting a drive letter alone:
+- Read installed formatter syntax without selecting a volume:
 
-`Get-Partition -DriveLetter {{X}} | Get-Disk | Select-Object Number, FriendlyName, SerialNumber, UniqueId, BusType, Size`
-
-- After verified backup/restore, maintenance, and target-identity gates, format exactly the reviewed placeholder volume:
-
-`format.exe "{{X:}}" /FS:{{NTFS}} /V:"{{LABEL}}"`
-
+`format.com /?`
 <!-- mant:tldr:end -->
 
 # format.exe
 
-## Overview
+## Meaning and resolution
 
-`format.exe` creates a new filesystem on a volume, mount point, or drive
-letter. It destroys the existing filesystem namespace and data on that target.
-The filesystem, allocation unit, label, compression, integrity, short-name,
-trim, Dev Drive, DAX, and overwrite options can also change compatibility,
-performance, or recovery behavior.
-
-Formatting is not partition creation, a dry run, backup, hardware repair, or a
-universal media-sanitization method. Establish the exact disk, partition,
-volume GUID, drive letter, workload owner, encryption state, and verified
-restore path before invoking it. Prefer an isolated maintenance console so a
-mistake does not also destroy remote access.
-
-## Command and options
+Windows ships its filesystem formatter as `format.com`. It does not ship a
+`format.exe`, and explicitly asking PowerShell for `format.exe` does not use
+`PATHEXT` to substitute the `.com` extension. If that name resolves, another
+package, script, function, alias, or executable supplied it; do not assume it
+has the Windows formatter's identity or contract.
 
 <!-- mant:entries role=command case=insensitive -->
-- `format.exe`: Destructively create a new filesystem on one explicitly
-  identified Windows volume, mount point, or drive-letter target.
+- `format.exe`: Non-built-in name; resolve and verify its provenance before any use.
+- `format.com`: Actual Windows filesystem formatter; every formatting mode is destructive and has no dry run.
+- `format`: Ambient name that can resolve the system `.com` file or an earlier alias, function, script, batch file, or application.
 
-Every successful formatting mode destroys the prior filesystem namespace.
-There is no dry-run switch; installed help and the target workload matrix are
-part of the change review.
+## Why the extension matters
 
-<!-- mant:entries role=option case=insensitive -->
-- `/fs`: Select the following filesystem supported by this Windows build and
-  target media, such as NTFS, ReFS, FAT/FAT32, exFAT, or UDF.
-- `/v`: Assign the following volume label; `/v:` requests an empty label and
-  avoids the post-format label prompt.
-- `/q`: Perform a quick format, skipping the sector scan and overriding `/p`.
-- `/l`: Select large/small NTFS file-record behavior using optional
-  `enable`/`disable` state.
-- `/a`: Select allocation-unit size; supported values depend on filesystem,
-  sector size, and volume size.
-- `/c`: Make new files compressed by default on NTFS where cluster size permits.
-- `/x`: Force dismount before formatting and invalidate open handles.
-- `/p`: Zero every sector, then perform the following number of additional
-  random overwrites; `/q` disables this behavior.
-- `/s`: Enable or disable short 8.3 filename support on the new filesystem.
-- `/txf`: Enable or disable TxF behavior where the target Windows/filesystem
-  supports the option.
-- `/i`: Enable or disable ReFS integrity on the new volume.
-- `/dax`: Enable or disable NTFS DAX on DAX-capable hardware.
-- `/logsize`: Set NTFS log size in kilobytes subject to the documented minimum.
-- `/norepairlogs`: Disable NTFS repair logs, with consequences for spot repair.
-- `/notrim`: Skip trim/delete notification during formatting.
-- `/devdrv`: Format a supported ReFS volume as a Dev Drive.
-- `/sha256checksums`: Use SHA-256 for ReFS checksum operations where supported.
-- `/f`: Select a legacy floppy-disk size.
-- `/t`: Select legacy track count; pair it with `/n`; it conflicts with `/f`.
-- `/n`: Select legacy sectors per track; pair it with `/t`.
-- `/y`: Suppress the force-dismount prompt and assume an empty label; it is not
-  a general confirmation or safety bypass.
-- `/?`: Display the syntax installed with the target Windows build.
+PowerShell command resolution and `PATHEXT` apply when the name has no
+extension. An explicit extension selects that exact command name. On developer
+machines, package directories can add an unrelated `format.bat` or other
+command earlier in `PATH`, so even bare `format` is not a durable identity.
 
-## Quick, full, and overwrite modes
-
-- `/Q` deletes filesystem tables and skips the sector-by-sector bad-area scan.
-  Microsoft restricts it to previously formatted volumes known to be healthy.
-- A full format takes much longer because it examines the volume; on supported
-  modern Windows releases it also writes across the volume.
-- `/P:count` zeroes every sector and then performs `count` additional random
-  overwrites. `/Q` overrides and disables `/P`.
-- Neither mode necessarily sanitizes remapped, reserved, cached, snapshot,
-  replica, thin-provisioned, SSD flash, or backup copies. Use the device and
-  organization's approved cryptographic erase or sanitize process when data
-  disposal is the objective.
-
-## Filesystem and feature choices
-
-Use the installed `format /?` and the target workload's support matrix. Valid
-filesystems and options vary by Windows release, media, sector size, and role.
-The default allocation unit is normally the safest general-purpose choice.
-In particular, NTFS compression is unavailable above a 4096-byte allocation
-unit, ReFS integrity and Dev Drive options have different goals, DAX requires
-capable hardware, and `/NoTrim` changes storage-notification behavior.
-
-Explicitly decide the label. Without a suitable `/V` value, format can prompt
-afterward; `/Y` suppresses the force-dismount prompt and assumes an empty label,
-so it is not a general unattended-safety switch.
-
-## Common mistakes
-
-### Formatting the right letter on the wrong device
-
-Drive letters are mutable access paths, not durable device identities. Match
-the volume GUID, partition offsets and size, disk number, serial/unique ID,
-bus type, and application ownership. Remove or offline unrelated removable
-media where practical, then revalidate immediately before the command.
-
-### Treating `/Q` as preview, safe deletion, or secure erase
-
-Quick format is destructive and intentionally skips a media scan. Recoverable
-content can remain. It is neither a dry run nor a sanitization guarantee, and
-combining it with `/P` silently defeats the requested overwrite behavior.
-
-### Forcing a dismount while applications are active
-
-`/X` invalidates open handles. Stop databases, virtual machines, services,
-backup jobs, replicas, and mounts through supported procedures first. Confirm
-there is no paging, dump, boot, recovery, cluster, Storage Spaces, or other
-system dependency on the volume.
-
-### Assuming a successful format proves healthy storage
-
-A format result describes that operation, not end-to-end health. Correlate
-device/controller events, SMART or NVMe health, enclosure paths, redundancy,
-firmware, and workload I/O. Preserve evidence before stressing a failing
-device; image valuable data first.
-
-### Choosing advanced options from a generic recipe
-
-Large allocation units, ReFS integrity, compression, short names, TxF, DAX,
-Dev Drive, checksum, trim, and repair-log choices have workload- and version-
-specific effects. Validate support, backup/restore, servicing, security tools,
-and measured performance on disposable media before production use.
-
-### Ignoring BitLocker, EFS, snapshots, and replicas
-
-Formatting an unlocked BitLocker volume does not manage every key or copy.
-EFS recovery depends on certificates, while VSS, backup, replication, cloud,
-and application copies can retain data. Inventory each layer independently.
+Use `Get-Command format -All` for diagnosis and `format.com` only after the
+storage target, restore path, workload outage, and destructive change have been
+independently approved. Merely correcting the extension is not authorization
+to format a volume.
 
 ## PowerShell boundaries
 
-Microsoft documents `0` for success, `1` for invalid parameters, `4` for a
-fatal error, and `5` when the operator declines the confirmation. Capture
-`$LASTEXITCODE` immediately, preserve the transcript, and verify the resulting
-volume by unique identity and expected filesystem. Never translate every
-nonzero value into the same failure message.
-
-PowerShell can resolve functions or aliases before an application. Invoke
-`format.exe` explicitly, quote mount-point paths, and never construct a target
-from unvalidated text or a first-match pipeline.
-
-Microsoft's current parameter table also contains an orphan `/R` row whose
-description duplicates NTFS compression even though `/R` is absent from the
-published syntax. This guide does not invent behavior for that inconsistency;
-use installed `format.exe /?` and the applicable filesystem guidance.
+`Get-Command format.exe` requests the explicit `.exe` name; PowerShell does not
+replace that suffix with `.com`. By contrast, bare `format` searches aliases,
+functions, scripts, and applications and can return several matches. Use
+`Get-Command format -All`, verify the selected path and provenance, and keep the
+`.com` suffix in any approved Windows formatter invocation.
 
 ## Version and platform differences
 
-This administrative command is Windows-only. Filesystems, flags, Recovery
-Environment syntax, maximum sizes, feature support, and defaults differ by
-Windows build and storage stack; local help and current Microsoft guidance are
-part of the change review.
+The recorded Windows NT `10.0.26200.0` host supplies
+`C:\Windows\System32\format.com` version `10.0.26100.1` and no built-in
+`format.exe`. Windows editions, recovery environments, and filesystem support
+can expose different formatter options; non-Windows systems have unrelated
+formatting tools. Re-run exact command discovery on the target host instead of
+generalizing this file version or option set.
+
+## Common mistakes
+
+### Treating every Windows command as an `.exe`
+
+Windows also ships `.com`, `.cmd`, and script entry points. Inventing an `.exe`
+suffix can turn a known system command into a not-found error or, worse, select
+an unrelated third-party binary that happens to use that name.
+
+### Falling back to bare `format` without checking precedence
+
+`format` can be shadowed. Inspect every match and invoke the verified full path
+or `format.com`; never choose a destructive tool from the first ambient match.
+
+## Full command
+
+See [format.com](format.com.md) for destructive behavior, target-identity
+gates, options, exit codes, sanitization limits, and storage recovery planning.
+
+## Runtime evidence
+
+On the recorded Windows host, exact discovery found
+`C:\Windows\System32\format.com`, 69,632 bytes, file version
+`10.0.26100.1`, and no built-in `format.exe`. Bare `format` discovery also
+returned third-party `format.bat` candidates, so an extensionless name is not
+an identity gate. Exact `format.com /?` printed 88 help lines and returned 0
+without a storage target. This establishes resolution and help behavior only;
+no filesystem or media state was read or changed.
 
 ## Related documents
-
 - [diskpart.exe](diskpart.exe.md)
 - [mountvol.exe](mountvol.exe.md)
 - [manage-bde.exe](manage-bde.exe.md)
 
 ## Sources and license
 
-This original guide was adapted from Microsoft's official
-[Format reference](https://learn.microsoft.com/windows-server/administration/windows-commands/format).
-Microsoft's archived but still maintained
-[format-behavior article](https://learn.microsoft.com/previous-versions/troubleshoot/windows-server/format-command-not-write-zeros-to-disk)
-establishes the Vista-and-later full-format zero-write behavior and its
-thin/on-demand-allocation consequence.
-Recurring confusion about full versus quick formatting and bad-sector scans
-was cross-checked against a high-quality
-[practitioner question and answers](https://superuser.com/questions/1596556/does-a-full-format-on-a-modern-windows-system-really-check-for-bad-sectors).
-Syntax and supported behavior follow Microsoft's current reference. Exact
-sources and licenses are recorded in `upstream/windows-tools.json`.
+This command-resolution guide is based on the official
+[Format reference](https://learn.microsoft.com/windows-server/administration/windows-commands/format)
+and read-only command discovery on the recorded Windows host. Exact source and
+runtime evidence are recorded in `upstream/windows-tools.json` and `release/`.
 
-The Microsoft documentation and this adaptation are licensed under CC BY 4.0.
-Super User contributions are licensed under CC BY-SA 4.0.
+Microsoft documentation and this adaptation are licensed under CC BY 4.0.

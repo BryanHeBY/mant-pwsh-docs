@@ -2,6 +2,7 @@
 # dism.exe
 
 > Inspect and service an explicit online or offline Windows image.
+> Use an elevated console; the recorded client build privilege-gates even `/?`.
 > More information: https://learn.microsoft.com/windows-hardware/manufacture/desktop/what-is-dism.
 
 - List optional features in the running Windows installation:
@@ -31,6 +32,14 @@ target selection such as `/Online` or `/Image:path` combines with a servicing
 family such as `/Cleanup-Image`, `/Get-Features`, `/Get-Packages`,
 `/Get-Capabilities`, `/Add-Driver`, or image-management operations.
 
+Elevation can be required before DISM parses the requested operation. On the
+recorded Windows client build, ordinary-token `dism.exe /?` returned 740
+(`ERROR_ELEVATION_REQUIRED`) instead of help; that is an access result, not an
+image-health result.
+
+<!-- mant:entries role=command case=insensitive -->
+- `dism.exe`: Inspect or service an explicitly selected online installation, offline Windows directory, or image container.
+
 ## Targets and operations
 
 <!-- mant:entries role=option case=insensitive -->
@@ -57,12 +66,17 @@ family such as `/Cleanup-Image`, `/Get-Features`, `/Get-Packages`,
 - `/LogPath:FILE`: Write the DISM log to an explicit path with adequate space and protected access.
 - `/ScratchDir:PATH`: Select a scratch directory with sufficient local space for the operation.
 - `/NoRestart`: Suppress an automatic restart where supported; it does not remove pending-restart requirements.
+- `/?`: Request help for the current DISM context; the recorded build required elevation before showing even top-level help.
 
 ## PowerShell boundaries
 
 Call `dism.exe` explicitly, pass colon-bearing options as single arguments,
 and capture `$LASTEXITCODE` plus the DISM/CBS logs. Display tables are not a
 stable object API, and completion can still leave a pending restart.
+
+Record token elevation before classifying output. Exit 740 with the explicit
+elevation diagnostic means DISM did not reach the requested help or servicing
+operation; do not parse it as an empty feature list or component-store result.
 
 ## Common mistakes
 
@@ -104,14 +118,31 @@ Review the command result, DISM log, component/package state, pending restart,
 and relevant application behavior. A completed command can still require a
 restart or further SFC verification.
 
+### Reading error 740 as image corruption
+
+`ERROR_ELEVATION_REQUIRED` is a host access failure. Preserve the arguments,
+complete native output, token context, and `$LASTEXITCODE`; rerun only in an
+approved elevated context. Do not infer anything about the online or offline
+image from a command that privilege checks rejected.
+
 ## Version and platform differences
 
 DISM is Windows-only. Available commands depend on the host tool, target image,
 Windows edition/version, WinPE/WinRE/online context, architecture, packages,
-features, and mounted image type. Most servicing changes require elevation.
+features, and mounted image type. Elevation can be required for help and
+inventory as well as changes. On Windows NT `10.0.26200.0`, installed
+`dism.exe` file version `10.0.26100.8457` returned 740 and an explicit
+elevation message for ordinary-token `/?`; no target or servicing operation
+was supplied.
+
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, installed DISM file version 10.0.26100.8457
+returned 740 (ERROR_ELEVATION_REQUIRED) before showing ordinary-token /? help.
+No image target, inventory, mount, cleanup, repair, feature, capability,
+package, driver, commit, discard, log, or scratch operation ran.
 
 ## Related documents
-
 - [sfc.exe](sfc.exe.md)
 - [fondue.exe](fondue.exe.md)
 - [pnputil.exe](pnputil.exe.md)

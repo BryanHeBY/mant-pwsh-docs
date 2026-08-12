@@ -4,7 +4,8 @@
 > Inspect Kernel Transaction Manager state; never resolve or force an in-doubt transaction without the owning resource manager's recovery decision.
 > More information: https://learn.microsoft.com/windows-server/administration/windows-commands/ktmutil.
 
-- Display the installed subcommands without changing transaction state:
+- Request the installed subcommand list from an elevated diagnostic shell; an
+  ordinary token can be rejected before listing it:
 
 `ktmutil.exe`
 
@@ -94,8 +95,23 @@ This is Windows-only low-level recovery tooling. Installed resource managers,
 transaction protocols, permissions, application versions, and failover state
 govern safe use; never transfer a recovery decision between environments.
 
-## Related documents
+On Windows NT `10.0.26200.0`, exact System32 file version `10.0.26100.1` did
+not list subcommands for the recorded ordinary token. A bare invocation printed
+one localized standard-output line requiring administrator privileges, no
+standard-error lines, and returned 1. This is access evidence only, not help or
+transaction inventory. No manager, transaction, enlistment, GUID, service,
+database, recovery decision, resolve, force, commit, rollback, complete, or
+forget operation ran.
 
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 file version 10.0.26100.1 bare
+invocation under the recorded ordinary token returned 1 with one localized
+stdout line requiring administrator privileges and no stderr. This is access
+evidence, not the documented subcommand list; no transaction inventory or
+resolve/force/forget/recovery mutation ran.
+
+## Related documents
 - [wevtutil.exe](wevtutil.exe.md)
 - [sc.exe](sc.exe.md)
 

@@ -83,8 +83,13 @@ extensions for experiments.
 The builtin exists on supported Windows client/server releases, but modern app
 defaults add per-user and managed-policy layers beyond this classic mapping.
 
-## Related documents
+## Runtime evidence
 
+Exact cmd.exe 10.0.26100.1 `help ASSOC` printed eight nonempty stdout lines, no
+PowerShell error records, and returned 1 without querying or changing an
+association. Protected disposable mapping fixtures remain required.
+
+## Related documents
 - [ftype](ftype.md)
 - [cmd.exe](cmd.exe.md)
 - [control.exe](control.exe.md)

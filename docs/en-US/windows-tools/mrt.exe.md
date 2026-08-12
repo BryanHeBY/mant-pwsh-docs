@@ -4,9 +4,9 @@
 > Run Microsoft's Malicious Software Removal Tool only as a current, elevated, incident-aware supplement to antivirus; detect-only and quiet modes still perform a real scan.
 > More information: https://support.microsoft.com/en-US/servicing/os/windows/2021/01/remove-specific-prevalent-malware-with-windows-malicious-software-removal-tool-kb890830.
 
-- Show the supported command-line switches:
+- Verify the exact in-box executable and Microsoft signature without starting a scan or GUI:
 
-`mrt.exe /?`
+`$mrt = Join-Path $env:SystemRoot 'System32\MRT.exe'; Get-Item -LiteralPath $mrt | Select-Object FullName, Length, VersionInfo; Get-AuthenticodeSignature -LiteralPath $mrt`
 
 - Start a detect-only scan that reports but does not remove detected malware:
 
@@ -58,6 +58,11 @@ argument.
 `/N` changes remediation behavior, not scan scope. `/F:Y` authorizes automatic
 cleanup and must not be treated as a harmless spelling of `/F`.
 
+There is no documented console-only discovery switch. `/?` launches the
+executable and displays a GUI dialog rather than writing ordinary command-line
+help. An Agent that needs only syntax should read this page or the current KB;
+it should not start MSRT merely to prove that the dialog exists.
+
 ## Before running
 
 Resolve the exact executable, inspect its signature/version and freshness,
@@ -69,6 +74,13 @@ approved Microsoft update or download channel when the installed tool is stale.
 Prefer a normal antivirus full/offline scan or an approved endpoint-response
 workflow when the investigation requires broad detection, continuous
 protection, centralized telemetry, quarantine policy, or forensic collection.
+
+Microsoft states that an MSRT full scan can take several hours, scans fixed and
+removable drives, and does not scan mapped network drives. Cleanup can lose
+data, may not restore infected files to their original state, and can require a
+restart or manual follow-up. A run can also create a randomly named temporary
+directory at a drive root; it is usually removed automatically but can remain.
+Include these effects in before/after evidence and cleanup planning.
 
 ## Common mistakes
 
@@ -87,6 +99,13 @@ protection, centralized telemetry, quarantine policy, or forensic collection.
 - Ignoring Microsoft's reporting behavior or organizational privacy, proxy,
   telemetry, and incident-handling requirements.
 
+Microsoft's current KB says MSRT sends basic information when it detects
+malware or encounters an error, including tool/system metadata, the result,
+an anonymous GUID, and a one-way hash derived from removed-file paths. Sending
+suspected files or their hashes requires an additional prompt and consent.
+Enterprise policy can disable reporting; verify the current policy instead of
+assuming that `/Q` or `/N` disables network reporting.
+
 ## PowerShell behavior
 
 Invoke `mrt.exe` explicitly. Use `Start-Process -Wait -PassThru` when elevation
@@ -104,8 +123,35 @@ the documented MSRT log and security-product/incident evidence separately.
 Windows releases, malware families, tool version, delivery method, reporting,
 and behavior change over time; consult the current Microsoft KB before use.
 
-## Related documents
+On the recorded Windows NT `10.0.26200.0` host, an identity-only observation
+earlier on 2026-08-12 found MSRT fixed file/product version
+`5.143.26070.2001`, a valid `Microsoft Windows` signature, and SHA-256
+`AF76DE1A3016E20A92B67DEF4EB0ECE7ECBC9BEDF2C6172938ED122F6D76B07D`.
+Later that day, the file changed without this audit invoking it: at
+`2026-08-12T12:56:39+08:00`, fixed/string versions were
+`5.144.26080.1002`, last-write time was `2026-08-12T04:52:43Z`, the signature
+remained valid, and SHA-256 was
+`84BE2A00027E27AAA53C0BC942C32E9B625490C4BC048C16163A836D0AEE71BA`.
+Microsoft's public KB/catalog still exposed July v5.143 when checked, so the
+local v5.144 identity is recorded as newer local evidence rather than assigned
+an unverified public release label. No help dialog, scan, cleanup, reporting,
+log write, temporary extraction, update request, or restart path was started.
 
+## Runtime evidence
+
+Two identity-only observations on Windows NT 10.0.26200.0 captured a real
+same-day file transition. Earlier on 2026-08-12, MRT fixed version
+5.143.26070.2001 had SHA-256
+AF76DE1A3016E20A92B67DEF4EB0ECE7ECBC9BEDF2C6172938ED122F6D76B07D and matched
+the public KB's July v5.143 family. At 2026-08-12T12:56:39+08:00, the exact
+file had fixed/string version 5.144.26080.1002, last-write
+2026-08-12T04:52:43Z, valid Microsoft Windows signature, and SHA-256
+84BE2A00027E27AAA53C0BC942C32E9B625490C4BC048C16163A836D0AEE71BA, while the
+public KB/catalog still exposed v5.143. The audit did not invoke or update MRT;
+no help dialog, scan, cleanup, reporting, log write, temporary extraction,
+update request, or restart path ran.
+
+## Related documents
 - [sfc.exe](sfc.exe.md)
 - [certutil.exe](certutil.exe.md)
 - [taskmgr.exe](taskmgr.exe.md)

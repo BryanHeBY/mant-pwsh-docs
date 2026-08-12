@@ -53,6 +53,9 @@ A nonzero `/t` timeout implies forced application closure even without `/f`.
 - `/e`: Record a reason for an unexpected shutdown of the local computer.
 - `/o`: Open Advanced startup after restart; use with `/r`.
 - `/hybrid`: Prepare a local shutdown for Fast Startup; use with `/s`.
+- `/soft`: Installed-build modifier whose spelling appears only in the Usage
+  line on the recorded host. Neither that help text nor the locked/current
+  Microsoft page defines its behavior; do not infer semantics from its name.
 - `/fw`: Make the next restart enter firmware UI; combine only as documented.
 - `/f`: Force running applications to close without warning users.
 - `/m`: Select one remote computer by UNC-style name.
@@ -75,6 +78,10 @@ A nonzero `/t` timeout implies forced application closure even without `/f`.
   Restart Sign-On and restart registered apps under the last interactive user.
 - Using `/o`, `/fw`, or `/hybrid` without firmware/recovery/Fast Startup context;
   these change the next boot path and have strict valid combinations.
+- Treating `/soft` as a graceful-close guarantee. It is present only in the
+  installed Usage line and absent from the locked/current Microsoft Shutdown
+  page; until authoritative semantics exist for the target build, do not use it
+  merely because feature detection finds the token.
 - Assuming `/a` can cancel after timeout/commit, or that a zero exit code proves
   restart completion. Verify target, notification, events, uptime, and health.
 
@@ -90,9 +97,18 @@ semantics. Never interpolate an untrusted hostname, timeout, reason, or comment.
 `shutdown.exe` is Windows-only. Options, timeout limits, Fast Startup, firmware/
 recovery flows, Automatic Restart Sign-On, reason policy, remote administration,
 privileges, and application restart behavior vary by Windows generation/build.
+On Windows NT 10.0.26200.0, file version 10.0.26100.8457 exposes `/soft` while
+Microsoft's locked/current page omits it.
+
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, installed file version 10.0.26100.8457 /? returned
+1 and exposed /soft only in the Usage line; the locked and current Microsoft
+page omits it. The page indexes the token but does not infer or recommend its
+semantics. Runtime verification remains help-only; no lifecycle or cancellation
+action may be performed merely for evidence.
 
 ## Related documents
-
 - [query.exe](query.exe.md)
 - [msg.exe](msg.exe.md)
 - [logoff.exe](logoff.exe.md)

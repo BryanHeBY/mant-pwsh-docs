@@ -83,9 +83,23 @@ specific workload and record the original setting before a change.
 This Windows-only context can require elevation for changes. Catalog contents
 depend on architecture, Windows release, and installed networking/security
 software; restart requirements and application impact must be verified.
+On exact System32 Netsh file version `10.0.26100.8457`, `winsock ?` returned 0
+with 12 nonempty help lines. The bounded read-only `show catalog` and
+`show autotuning` forms returned 0 with 490 and one nonempty lines. Catalog
+output was used only to confirm command success and was not retained because it
+can reveal installed provider/security software. No audit, dump, remove, reset,
+set, provider, or networking state changed.
+
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 Netsh file version 10.0.26100.8457
+winsock ? returned 0/12 nonempty lines; read-only show catalog and show
+autotuning returned 0 with 490 and one line. Provider output was not retained
+because it can reveal installed networking/security software. No audit, dump,
+remove, reset, set, provider, or networking state changed; representative
+application/provider verification remains required.
 
 ## Related documents
-
 - [netsh.exe](netsh.exe.md)
 - [netsh-interface](netsh-interface.md)
 - [netstat.exe](netstat.exe.md)

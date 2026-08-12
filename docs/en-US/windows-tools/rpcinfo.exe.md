@@ -86,9 +86,18 @@ Never let a placeholder omission fall back to the local host unnoticed.
 The Windows binary is associated with optional Services for NFS components.
 Remote ONC RPC versions/transports vary. Do not substitute syntax from a Unix
 implementation without checking Windows local help.
+Exact System32 discovery on the recorded Windows NT `10.0.26200.0` Home China
+client found no `rpcinfo.exe`; do not substitute a PATH match, broadcast, or
+contact a remote RPC service merely for documentation evidence.
+
+## Runtime evidence
+
+Exact System32 discovery on the recorded Windows NT 10.0.26200.0 Home China
+client found rpcinfo.exe absent; no PATH substitute, host, broadcast, RPC call,
+or network action ran. Help, approved-host /p and bounded reachability remain
+pending where installed.
 
 ## Related documents
-
 - [rpcping.exe](rpcping.exe.md)
 - [showmount.exe](showmount.exe.md)
 - [nfsstat.exe](nfsstat.exe.md)

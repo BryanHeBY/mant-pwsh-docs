@@ -118,9 +118,22 @@ do not invent `INSTALLDIR`, feature, or license properties.
 This executable is Windows-only. Package bitness, per-user/per-machine
 context, elevation, policy, installed Windows Installer version, transforms,
 custom actions, and vendor package design affect behavior.
+Exact System32 discovery on the recorded Windows NT `10.0.26200.0` client
+found Windows Installer executable file version `5.0.26100.1`. It was not
+invoked merely for catalog closure: help/UI forms can start an interactive
+installer process, and operation semantics cannot be verified without an
+approved disposable MSI, explicit logging path, restart policy, and before/
+after package-state checks.
+
+## Runtime evidence
+
+Exact System32 discovery on Windows NT 10.0.26200.0 found MSIExec.exe file
+version 5.0.26100.1. It was deliberately not invoked for catalog closure
+because help/UI forms can start an interactive installer process; approved
+disposable-package, logging, restart, privilege, architecture, and before/after
+state verification remains pending.
 
 ## Related documents
-
 - [winget-install](winget-install.md)
 - [cmd.exe](cmd.exe.md)
 - [reg.exe](reg.exe.md)

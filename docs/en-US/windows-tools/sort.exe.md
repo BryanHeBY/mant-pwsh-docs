@@ -80,6 +80,19 @@ column/key selector.
 
 This executable is Windows-only and host locale affects order. Other
 platforms' native `sort` utilities have unrelated options and collation rules.
+On Windows NT `10.0.26200.0`, installed file version `10.0.26100.1` printed
+53 nonempty help lines and returned 0 for `/?`. `-?` was interpreted as an
+invalid filename and returned 1; no input, output, locale, record, memory, or
+filesystem state was selected.
+
+## Runtime evidence
+
+The protected fixture passed exact `sort.exe` one four-line fixed ASCII file
+and fully captured stdout under both PowerShell collectors. It returned four
+lines/status `0` in the expected current-host collation order and wrote no
+output file; payload text was not emitted and cleanup removed the fixture.
+This does not establish invariant, numeric, arbitrary-locale, encoding,
+long-record, memory-limit, `/+N`, `/unique`, or `/o` behavior.
 
 ## Related documents
 

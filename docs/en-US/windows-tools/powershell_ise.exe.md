@@ -8,6 +8,10 @@
 
 `Get-Command powershell_ise.exe -ErrorAction Stop; powershell.exe -NoProfile -Command '$PSVersionTable | Format-List'`
 
+- Inspect the launcher identity without opening the GUI:
+
+`$ise = Get-Item -LiteralPath (Get-Command powershell_ise.exe -CommandType Application).Source; $ise.VersionInfo | Select-Object FileVersionRaw, FileVersion, ProductVersionRaw, ProductVersion; Get-AuthenticodeSignature -LiteralPath $ise.FullName`
+
 - Open an isolated ISE session without loading its profiles:
 
 `Start-Process powershell_ise.exe -ArgumentList '-NoProfile'`
@@ -94,8 +98,30 @@ PowerShell 6/7 host, is not available on macOS/Linux, and requires a GUI. It is
 not receiving new features; Visual Studio Code plus the PowerShell extension is
 the supported PowerShell 7 editing/debugging route.
 
-## Related documents
+On the recorded Windows NT `10.0.26200.0` host, the 64-bit ISE launcher
+resolved from `C:\Windows\System32\WindowsPowerShell\v1.0\powershell_ise.exe`,
+not the System32 root. Fixed and string file/product versions all reported
+`10.0.26100.8875`; the exact file had a valid Microsoft Windows signature and
+SHA-256
+`B4B1A489F51C8D7E4FE69DB4D4D1AB1F92CAF2973BE3C770E185EBC157EF52EB`.
+A separate 32-bit launcher was present below SysWOW64. Neither GUI was started
+and no profile or script was loaded for this evidence.
 
+## Runtime evidence
+
+On Windows NT `10.0.26200.0`, the read-only file-identity audit under Windows
+PowerShell `5.1.26100.8875` and PowerShell `7.6.4` resolved the exact entry
+point to `C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell_ise.exe`. Its
+fixed numeric file version was `10.0.26100.8875`. Both collectors reported the
+same result.
+
+The audit invoked no discovered command, opened no window, contacted no remote
+endpoint, and changed no state. This proves only this host's entry-point
+availability and file identity; it does not prove that the UI loads, the
+current user is authorized, an optional snap-in or component is functional, or
+any displayed or requested operation succeeds.
+
+## Related documents
 - `mant powershell --source pwsh51`: Windows PowerShell launcher behavior.
 - `mant pwsh --source pwsh7`: PowerShell 7 launcher behavior.
 - `mant pwsh51 --source pwsh51`: broad Windows PowerShell 5.1 shell manual.

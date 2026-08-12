@@ -87,8 +87,22 @@ This is Windows-only. Counter implementation and consumers differ across
 Windows versions, storage stacks, virtual machines, containers, and monitoring
 agents. Confirm whether a restart is acceptable on the exact target.
 
-## Related documents
+On Windows NT `10.0.26200.0`, exact System32 file version `10.0.26100.1`
+printed 23 nonempty standard-output lines for `-?`, no standard-error lines,
+and returned 0. Installed help says these counters are permanently enabled on
+systems later than Windows 2000 while retaining legacy remote/configuration
+syntax. No computer name, counter configuration, registry value, service,
+sample, monitoring agent, or restart state was queried or changed.
 
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 file version 10.0.26100.1 explicit
+-? returned 23 nonempty stdout lines, no stderr and status 0. Installed help
+retains legacy remote/change syntax but says counters are permanently enabled
+after Windows 2000. No target/query/change/sample/restart ran; bounded counter
+discovery/sample remains separately controlled.
+
+## Related documents
 - [typeperf.exe](typeperf.exe.md)
 - [perfmon.exe](perfmon.exe.md)
 - [lodctr.exe](lodctr.exe.md)

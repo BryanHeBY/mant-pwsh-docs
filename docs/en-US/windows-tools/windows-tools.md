@@ -74,6 +74,95 @@ Their pages should explain the details that commonly cause automation bugs:
 - structured formats such as JSON and their conversion to PowerShell objects;
 - operating-system and tool-version differences.
 
+### Capture mode and line counts
+
+Treat a native help line count as evidence metadata, not as a command contract.
+Direct invocation through a console-hosted PowerShell can expose host-wrapped
+records, while a no-console process with redirected stdout/stderr exposes the
+underlying redirected stream shape. On the recorded host, the same exact
+GetMac, DriverQuery, ARP, and Route help commands had stable exit codes and
+nonempty payloads but different nonempty counts between those two collectors.
+Always record collector, console/redirection mode, encoding, stream, and
+normalization rule with a count. Compare option tokens or parsed structure when
+completeness matters; never infer a tool revision merely from an unexplained
+line-count difference.
+
+### Executable identity and version resources
+
+Do not assume that a Windows entry point lives in System32. For example,
+`explorer.exe` and `regedit.exe` resolve from the Windows directory, while
+`powershell_ise.exe` normally resolves below the Windows PowerShell directory.
+Resolve the exact filename as an Application, preserve all matches, and record
+the selected absolute path before reading its identity:
+
+```powershell
+$applications = @(Get-Command explorer.exe -All -CommandType Application)
+$applications | Select-Object Name, Source, Version
+```
+
+The resolved path and its actual leaf name establish which filesystem object
+was inspected. Do not require `VersionInfo.OriginalFilename`,
+`FileDescription`, or `ProductName` to repeat that leaf name: they are PE
+version-resource strings, can be localized, and may be selected from a
+companion `.mui` resource. On the recorded host, several exact System32 tools
+reported resource-original names ending in `.exe.mui`; `systeminfo.exe` even
+reported `sysinfo.exe.mui`. Those values are useful resource metadata, not a
+replacement for exact command and path resolution.
+
+PE version resources contain both string values and a
+language/code-page-independent fixed numeric value. PowerShell exposes the
+former as `VersionInfo.FileVersion` and `ProductVersion`; its
+`FileVersionRaw`/`ProductVersionRaw` extended properties assemble the four
+numeric fixed parts. The selected strings can vary by language/code page and,
+on the recorded host, by PowerShell/.NET runtime even for the same absolute
+path. Servicing can also make the two forms differ. Label and retain the
+collector runtime plus both forms instead of calling either one merely “the
+file version”:
+
+```powershell
+$item = Get-Item -LiteralPath $applications[0].Source
+$version = $item.VersionInfo
+[pscustomobject]@{
+    Path = $item.FullName
+    Collector = $PSVersionTable.PSVersion.ToString()
+    FileVersionFixed = $version.FileVersionRaw.ToString()
+    FileVersionString = $version.FileVersion
+    ProductVersionFixed = $version.ProductVersionRaw.ToString()
+    ProductVersionString = $version.ProductVersion
+    Signature = (Get-AuthenticodeSignature -LiteralPath $item.FullName).Status
+    SHA256 = (Get-FileHash -LiteralPath $item.FullName -Algorithm SHA256).Hash
+}
+```
+
+Use fixed versions for numeric comparison and string versions as displayed
+metadata from that collector. Neither proves product behavior or support; bind evidence to path,
+hash, signature, architecture, OS edition/build, collection time, and a
+successful tool-specific read-only query where one exists.
+
+### MSIX app execution aliases
+
+`Get-Command` can also return a per-user MSIX app execution alias below
+`%LOCALAPPDATA%\Microsoft\WindowsApps`. Such an entry is a Windows-managed
+reparse point that activates a registered package, not an ordinary PE file to
+classify by reading the alias path's version resource, Authenticode signature,
+or hash. This host, for example, exposed `winget.exe` only as an alias and
+exposed both a signed System32 `wsl.exe` launcher and a `WindowsApps` alias.
+
+Preserve all `Get-Command -All` results and label aliases separately. Failure
+to read an alias as a normal file is not evidence that the product is absent or
+unsigned. Use a product's read-only version command for behavior-facing
+identity, and inspect package registration separately when needed:
+
+```powershell
+winget --version
+$wingetExitCode = $LASTEXITCODE
+Get-AppxPackage -Name Microsoft.DesktopAppInstaller |
+    Select-Object Name, Version, PackageFullName, SignatureKind
+```
+
+`Get-AppxPackage` reports registration/package identity; it does not prove that
+the command alias is enabled, wins command precedence, or runs successfully.
+
 ## Optional Microsoft Learn MCP queries
 
 Microsoft's official Microsoft Learn MCP server can provide current product
@@ -135,7 +224,7 @@ license in the document's provenance catalog before adapting material.
 
 ## Windows remote management
 
-- [winrm.exe](winrm.exe.md): WS-Management identity, client/service, listener, authentication, plugin, and shell configuration boundaries.
+- [winrm.cmd](winrm.cmd.md): WS-Management identity, client/service, listener, authentication, plugin, and shell configuration boundaries.
 - [winrs.exe](winrs.exe.md): explicit remote native command execution through an approved WinRM endpoint.
 
 ## Windows eventing and forwarding
@@ -445,6 +534,8 @@ license in the document's provenance catalog before adapting material.
 - [chkntfs.exe](chkntfs.exe.md): startup check scheduling and exclusion policy.
 - [autochk.exe](autochk.exe.md): startup-only NTFS checking through supported dirty-state, policy, and event inspection.
 - [autoconv.exe](autoconv.exe.md): internal startup FAT/FAT32-to-NTFS worker and supported Convert front-end boundary.
+- [convert.exe](convert.exe.md): supported FAT/FAT32-to-NTFS front end, exact
+  volume identity, security, dismount, and startup-scheduling boundaries.
 - [autofmt.exe](autofmt.exe.md): internal recovery formatter recognition without unsupported direct invocation.
 - [defrag.exe](defrag.exe.md): media-aware optimization, retrim, tiers, and scope.
 - [diskcomp.exe](diskcomp.exe.md) / [diskcopy.exe](diskcopy.exe.md): floppy-only track comparison and destructive same-type media copying.
@@ -453,12 +544,13 @@ license in the document's provenance catalog before adapting material.
 - [freedisk.exe](freedisk.exe.md): explicit-unit installation-space gates and the 0-enough/1-insufficient exit contract.
 - [compact.exe](compact.exe.md): NTFS, executable, and CompactOS compression boundaries.
 - [label.exe](label.exe.md) / [vol](vol.md): mutable labels and filesystem serial display correlated with durable volume/disk identity.
-- [format.exe](format.exe.md): destructive filesystem creation gated by durable volume identity, restore, and media-aware sanitization limits.
+- [format.com](format.com.md): destructive filesystem creation gated by durable volume identity, restore, and media-aware sanitization limits.
 - [recover.exe](recover.exe.md): single-file readable-sector salvage on an imaged/clone copy, distinct from filesystem and disk recovery.
 - [makecab.exe](makecab.exe.md) / [diantz.exe](diantz.exe.md): explicit Cabinet builds, directive-file review, artifact verification, and searchable compatibility naming.
 - [expand.exe](expand.exe.md): list-first, isolated Cabinet extraction with path, collision, signature, and format boundaries.
 - [extract](extract.md): modern `extrac32.exe` replacement, silent-output handling, and non-executing Cabinet inspection/extraction.
 - [manage-bde.exe](manage-bde.exe.md): BitLocker state, protectors, escrow, and access.
+- [repair-bde.exe](repair-bde.exe.md): destructive damaged-BitLocker salvage into a separately identified spare volume or new image.
 - [fveupdate.exe](fveupdate.exe.md): Windows Setup-owned internal BitLocker metadata updater recognition.
 - [mountvol.exe](mountvol.exe.md): volume GUID, mount-point, automount, and ESP safety.
 - [diskpart.exe](diskpart.exe.md): focus-driven disk, partition, volume, and VHD safety.
@@ -484,8 +576,15 @@ mant winget-install --source windows-tools --search=--id
 mant reg --source windows-tools --search=registry
 ```
 
-## Related documents
+## Runtime evidence
 
+The interoperability guide distinguishes resolved executable layout,
+collector-selected FileVersion/ProductVersion strings, language-independent
+fixed numeric version parts, signatures and hashes. A read-only runtime audit
+reports all forms because language/code-page choice, PowerShell/.NET collector
+and Windows servicing can leave them different.
+
+## Related documents
 - [Microsoft Learn MCP queries](microsoft-learn-mcp.md)
 - [cmd.exe](cmd.exe.md)
 - [Windows Package Manager](winget.exe.md)
@@ -496,7 +595,12 @@ mant reg --source windows-tools --search=registry
 
 This source contains original ManT-oriented documentation informed by each
 tool vendor's official documentation and source repositories, including the
-[Windows Package Manager documentation](https://learn.microsoft.com/windows/package-manager/winget/).
+[Windows Package Manager documentation](https://learn.microsoft.com/windows/package-manager/winget/),
+[Win32 version-resource reference](https://learn.microsoft.com/windows/win32/menurc/version-information),
+[VS_FIXEDFILEINFO reference](https://learn.microsoft.com/windows/win32/api/verrsrc/ns-verrsrc-vs_fixedfileinfo),
+[PowerShell type-extension reference](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_types.ps1xml?view=powershell-7.6),
+and Microsoft's description of
+[Windows app execution aliases](https://learn.microsoft.com/sysinternals/downloads/microsoft-store).
 Exact upstream revisions and page-level provenance are recorded in the
 repository's `upstream/windows-tools.json` catalog.
 

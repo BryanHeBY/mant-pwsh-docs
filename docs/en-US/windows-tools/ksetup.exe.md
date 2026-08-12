@@ -32,7 +32,8 @@ Unlike a typical `krb5.conf`, Windows stores these mappings in the registry.
 
 `/dumpstate`, `/listrealmflags`, and `/getenctypeattr` are diagnostic forms.
 `/setrealm`, `/addkdc`, `/addkpasswd`, `/mapuser`, realm/host mapping changes,
-flag changes, and password operations mutate local or trust-related state.
+flag/encryption changes, `/domain`, `/removerealm`, and password operations
+mutate local, registry-backed, or trust-related state.
 
 ## Commands and parameters
 
@@ -58,10 +59,18 @@ Most operations modify the selected Windows computer, not the named KDC. Use
 - `/delrealmflags`: Remove selected flags from a realm.
 - `/getenctypeattr`: Display configured encryption-type trust attributes.
 - `/setenctypeattr`: Set encryption-type trust attributes for a domain/realm.
+- `/addenctypeattr`: Add one or more supported encryption types to the
+  existing trust attribute for one domain.
+- `/delenctypeattr`: Delete the encryption-type trust attribute for one domain;
+  this is not “remove one algorithm.”
+- `/removerealm`: Delete all registry-backed information for the following
+  realm; do not use it on a domain controller's default realm.
+- `/domain`: Set the domain name used for KSetup Kerberos operations; it does
+  not join the computer to that domain or create a trust.
 - `/setcomputerpassword`: Change the local computer account/realm password.
 - `/changepassword`: Change a mapped user's Kerberos password.
 - `/server`: Select a remote Windows computer for supported KSetup operations.
-- `/?`: Display installed syntax.
+- `/?`: Display installed syntax; on the recorded Windows build it returned 0.
 
 ## Common mistakes
 
@@ -100,6 +109,23 @@ a security decision, not a harmless troubleshooting switch. Require a defined
 multi-hop use case and limit delegation through the appropriate identity and
 service controls.
 
+### Treating `/delenctypeattr` as removal of one encryption type
+
+Installed and official syntax accepts only a domain name: it removes the
+domain's encryption-type trust attribute. Use `/getenctypeattr` first, preserve
+the exact prior value, and use the reviewed set/add operation when the intent is
+to retain other algorithms. Deleting the attribute is not equivalent to
+disabling one weak algorithm.
+
+### Removing a realm or changing `/domain` as harmless targeting
+
+`/removerealm` deletes all registry-backed information for the named realm;
+Microsoft warns against removing a domain controller's default realm because
+that can make it unusable. `/domain` changes the domain used by KSetup
+operations—it is not a read-only target selector, domain join, or trust
+creation. Capture `/dumpstate`, role/topology, recovery access, and the exact
+prior registry-backed configuration before either change.
+
 ### Changing the computer or user password in command history
 
 `/setcomputerpassword` and `/changepassword` accept secret text. They can
@@ -119,10 +145,22 @@ The command is Windows-only. Supported switches and encryption policies vary
 with Windows build, domain/forest level, trust type, and hardening policy.
 Remote selection with `/server` changes the target computer; it is not a KDC
 selector for an otherwise local query. Check local help and test changes on a
-representative disposable client before deployment.
+representative disposable client before deployment. On Windows NT
+`10.0.26200.0`, installed file version `10.0.26100.8115` printed 55 nonempty
+help lines and returned 0 for `/?`; that installed surface includes
+`/removerealm`, `/domain`, `/addenctypeattr`, and `/delenctypeattr`.
+
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, installed file version 10.0.26100.8115
+ordinary-token /? printed 55 nonempty help lines and returned 0. Installed and
+locked official syntax expose /RemoveRealm, /Domain, /AddEncTypeAttr, and
+/DelEncTypeAttr; these are now indexed with
+registry/domain-controller/whole-trust-attribute deletion boundaries. No realm,
+domain, KDC, password server, mapping, flag, encryption attribute, password,
+trust, ticket, registry, or network state was queried or changed.
 
 ## Related documents
-
 - [klist.exe](klist.exe.md)
 - [setspn.exe](setspn.exe.md)
 - [ktpass.exe](ktpass.exe.md)

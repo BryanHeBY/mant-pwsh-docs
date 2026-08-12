@@ -100,8 +100,14 @@ state. Do not pipe `query user` text directly into reset or use
 session`; availability, delegation, remote behavior, and recovery consequences
 vary by build, edition, RDS role/configuration, session type, and policy.
 
-## Related documents
+## Runtime evidence
 
+Exact System32 discovery on the recorded Windows NT 10.0.26200.0 Home China
+client found rwinsta.exe absent; no PATH substitute or reset ran. Help and
+reset verification remains pending on an approved disposable
+malfunctioning-session fixture with recovery evidence.
+
+## Related documents
 - [query.exe](query.exe.md)
 - [logoff.exe](logoff.exe.md)
 - [tsdiscon.exe](tsdiscon.exe.md)

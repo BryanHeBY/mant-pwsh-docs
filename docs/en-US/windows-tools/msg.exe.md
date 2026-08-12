@@ -110,8 +110,14 @@ response behavior, and remote reachability vary by build, edition, RDS role,
 session state, policy, and client. Installed help and representative runtime
 testing are required.
 
-## Related documents
+## Runtime evidence
 
+Exact System32 discovery on the recorded Windows NT 10.0.26200.0 Home China
+client found msg.exe absent; no PATH substitute or message/session operation
+ran. Help and delivery verification remains pending on an approved disposable
+active session and user.
+
+## Related documents
 - [query.exe](query.exe.md)
 - [logoff.exe](logoff.exe.md)
 - [tsdiscon.exe](tsdiscon.exe.md)

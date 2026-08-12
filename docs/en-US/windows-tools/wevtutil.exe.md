@@ -172,12 +172,25 @@ boundaries. EVTX export and provenance remain separate from formatted objects.
 `wevtutil.exe` is Windows-only. Channels/providers, access, manifests, rendering,
 query support, remote behavior, retention policy, and event schema vary by build,
 edition, installed roles/products, language packs, policy, and caller rights.
+On exact System32 file version `10.0.26100.8115`, `/?` returned 0 with 39
+nonempty stdout lines and no PowerShell error records. No channel, publisher,
+manifest, query, remote computer, credential, input, output, export, archive,
+clear, or event/configuration operation was supplied.
+
+## Runtime evidence
+
+The protected local-help fixture resolved exact System32 `wevtutil.exe` and
+captured `/?` under both installed PowerShell editions. Each returned status
+`0`, 39 nonempty stdout lines, and no stderr. No channel, publisher, manifest,
+query, remote host, credential, input/output path, export, archive, clear, or
+configuration operation was supplied; event access and custody remain outside
+this help-only evidence.
 
 ## Related documents
 
 - [wecutil.exe](wecutil.exe.md)
 - [eventcreate.exe](eventcreate.exe.md)
-- [winrm.exe](winrm.exe.md)
+- [winrm.cmd](winrm.cmd.md)
 - [certutil.exe](certutil.exe.md)
 
 ## Sources and license

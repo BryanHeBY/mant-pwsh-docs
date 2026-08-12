@@ -40,6 +40,11 @@ restore, or professional media recovery.
 <!-- mant:entries role=command case=insensitive -->
 - `recover.exe`: Salvage readable sectors in one exact existing file.
 
+### Installed help
+
+<!-- mant:entries role=option case=insensitive -->
+- `/?`: Display the installed single-file syntax without reading or changing a target file.
+
 The documented syntax accepts one filename and no wildcard or separate output
 path. Work only on a disposable image/clone when the source matters.
 
@@ -106,11 +111,20 @@ result cannot certify recovered bytes.
 ## Version and platform differences
 
 This Windows-only utility is present on supported Windows client and server
-releases covered by Microsoft. Filesystem, device, encryption, virtual-storage,
-and recovery-environment constraints can make a different tool necessary.
+releases covered by Microsoft. On Windows NT `10.0.26200.0`, installed file
+version `10.0.26100.1` returned four nonempty help lines and status 0 for
+explicit `/?`; no file operand was supplied. Filesystem, device, encryption,
+virtual-storage, and recovery-environment constraints can make a different
+tool necessary.
+
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, installed file version 10.0.26100.1 explicit /?
+returned four nonempty syntax lines and status 0 without a file operand. No
+production, failing, unique, evidentiary or user-data file may be read or
+changed merely for evidence.
 
 ## Related documents
-
 - [chkdsk.exe](chkdsk.exe.md)
 - [diskpart.exe](diskpart.exe.md)
 - [wbadmin.exe](wbadmin.exe.md)

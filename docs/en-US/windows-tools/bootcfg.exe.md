@@ -118,8 +118,21 @@ Vista and later BCD stores, with behavior affected by BIOS/MBR versus UEFI/GPT,
 Secure Boot, BitLocker, WinPE/offline context, architecture, installed OS entries
 and Windows build. Tool presence alone does not identify the active boot path.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`bootcfg.exe` Application candidate under either PowerShell collector. No
+feature, role, or compatibility component was installed merely to change
+that result, and no same-named PATH substitute was used. This is target-host
+command-resolution evidence, not proof that the tool is unsupported on every
+applicable Windows environment.
+
+Behavior verification remains resolution/help and query-only on an
+explicitly identified compatible legacy fixture or BCD host; no boot store,
+Boot.ini, firmware, debugger, EMS, integrity or timeout mutation is permitted
+merely for evidence.
+
+## Related documents
 - [bcdedit.exe](bcdedit.exe.md)
 - [bcdboot.exe](bcdboot.exe.md)
 - [reagentc.exe](reagentc.exe.md)

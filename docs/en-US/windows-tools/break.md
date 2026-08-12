@@ -94,8 +94,16 @@ releases solely for MS-DOS compatibility. Historical MS-DOS behavior must not
 be projected onto modern Cmd. PowerShell's keyword semantics are documented by
 the applicable PowerShell edition and language version.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT 10.0.26200.0, exact System32 `cmd.exe` fixed version
+`10.0.26100.8737` returned six nonempty lines and status `1` for
+`cmd.exe /d /c help BREAK` under both PowerShell collectors. The fixture did
+not retain the localized payload. This proves only static help discovery: no
+BREAK statement ran, no debugger context was entered, and no redirection or
+file target was supplied.
+
+## Related documents
 - [for](for.md)
 - [goto](goto.md)
 - [cmd.exe](cmd.exe.md)

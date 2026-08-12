@@ -51,7 +51,7 @@ which adapters exist or turn the formatted output into a durable identity API.
   header is normally safer for interchange and diagnostics.
 - `/v`: Include verbose adapter details such as connection name and network
   adapter description.
-- `/?`: Display the syntax installed with this executable.
+- `-?`, `/?`: Display the syntax installed with this executable.
 
 ## PowerShell boundaries
 
@@ -97,6 +97,21 @@ can block the query. Distinguish transport/access errors from an empty result.
 
 This executable and `Get-NetAdapter` are Windows-only. Remote availability
 depends on target Windows version, policy, services, firewall, and credentials.
+On Windows NT `10.0.26200.0`, installed file version `10.0.26100.1` returned
+0 for both `/?` and `-?`; an earlier direct PowerShell capture counted 25
+rendered nonempty records and matched the indexed selector surface. No
+local/remote adapter, MAC address, credential, transport name, or network state
+was queried by those help probes.
+
+## Runtime evidence
+
+The repeatable privacy-bounded inventory fixture captured redirected `/?` help
+and local `/fo csv /nh` under both PowerShell collectors. Help remained
+nonempty/status `0`; the local query returned six captured rows/status `0`, but
+no MAC, transport, or adapter value was emitted. Redirected help used 21
+logical lines rather than the earlier 25 host-rendered records, so line count
+is collector metadata, not syntax. Remote hosts, credentials, adapter meaning,
+randomization, and authorization remain outside this evidence.
 
 ## Related documents
 

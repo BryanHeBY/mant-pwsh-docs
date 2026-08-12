@@ -60,6 +60,8 @@ its lower-level fields or controls are required.
 - `qc`: Query core service configuration such as binary path, account, dependencies, and start type.
 - `qdescription`, `qfailure`, `qfailureflag`: Query description and recovery configuration.
 - `qprivs`, `qsidtype`, `qtriggerinfo`: Query required privileges, service SID type, or trigger-start metadata.
+- `qpreferrednode`, `qmanagedaccount`, `qprotection`: Query preferred NUMA node, LSA-managed service-account password state, or process-protection level where the service/build supports it.
+- `quserservice`: Query the local per-user service instance associated with a user-service template where supported.
 - `sdshow`: Show the service security descriptor in SDDL form; protect captured security metadata.
 - `start`, `stop`, `pause`, `continue`, `interrogate`, `control`: Send one supported control to an exact service key name.
 - `create`: Create an SCM registration; it does not safely install all product files or dependencies.
@@ -69,6 +71,7 @@ its lower-level fields or controls are required.
 - `failure`, `failureflag`: Configure failure actions and whether non-crash failures trigger them.
 - `triggerinfo`: Configure service triggers that can start or stop a service.
 - `privs`, `sidtype`, `sdset`: Change privileges, SID behavior, or the security descriptor.
+- `preferrednode`, `managedaccount`: Change preferred NUMA-node or LSA-managed-password metadata where supported.
 - `GetDisplayName`, `GetKeyName`: Translate between display and key names; neither alone verifies product identity.
 - `EnumDepend`: Enumerate services that depend on an exact service.
 - `showsid`: Calculate and display the service SID for a name.
@@ -89,24 +92,37 @@ its lower-level fields or controls are required.
 - `obj= ACCOUNT`: Set the service logon account; changing identity also requires credential and rights planning.
 - `depend= SERVICES`: Set dependencies using SC's documented separator grammar.
 - `displayname= NAME`: Set the localized display name, not the stable service key name.
+- `/?`: Top-level `sc.exe /?` prints the installed command list on the recorded build but returns native exit code 1639; it is not a successful SCM query.
 
 ## Command-family map
 
 | Family | Representative commands | Boundary |
 | --- | --- | --- |
 | Runtime inventory | `query`, `queryex`, `EnumDepend`, `GetDisplayName`, `GetKeyName` | Query may require enumeration resume; `queryex` PID can host several services. |
-| Configuration inventory | `qc`, `qdescription`, `qfailure`, `qfailureflag`, `qprivs`, `qsidtype`, `qtriggerinfo`, `showsid` | Installed help is authoritative; fields have separate security/lifecycle meaning. |
+| Configuration inventory | `qc`, `qdescription`, `qfailure`, `qfailureflag`, `qprivs`, `qsidtype`, `qtriggerinfo`, `qpreferrednode`, `qmanagedaccount`, `qprotection`, `quserservice`, `showsid` | Installed help is authoritative; fields have separate security/lifecycle meaning and some apply only to particular service/build types. |
 | Security inventory | `sdshow`, `QueryLock` | Security descriptors reveal control rights; protect captured output. |
 | Control | `start`, `stop`, `pause`, `continue`, `interrogate`, `control` | Changes availability; not every service accepts every control. |
 | Registration/configuration | `create`, `config`, `description`, `delete` | Changes SCM/registry state; it does not install/uninstall product files safely. |
-| Recovery/trigger/security | `failure`, `failureflag`, `triggerinfo`, `privs`, `sidtype`, `sdset` | Can alter restart programs, privileges, SID/access behavior, and attack surface. |
+| Recovery/trigger/security | `failure`, `failureflag`, `triggerinfo`, `privs`, `sidtype`, `sdset`, `preferrednode`, `managedaccount` | Can alter restart programs, privileges, identity/password management, NUMA placement, SID/access behavior, and attack surface. |
 | Driver/boot/SCM internals | `boot`, `Lock`, server operand | Boot-driver and database-lock operations can affect system startup and management. |
 
-Use `sc.exe` with no arguments and `sc.exe <command> /?` on the target because
-the complete command list is broader than the four pages in the Windows command
-index and varies across builds.
+Use top-level `sc.exe` output to discover the installed command list, then use
+the matching Microsoft reference and a safe, exact query on the target. Do not
+generate `sc.exe <command> /?` mechanically: SC's subcommand parsers are
+inconsistent. On the recorded build, `config` without a service printed usage,
+`query` without a service enumerated active services, and `query /?` plus
+`qmanagedaccount /?` treated `/?` as a service name and failed with exit 123.
 
 ## Common mistakes
+
+### Treating displayed SC help as a successful command
+
+On the recorded build, both bare `sc.exe` and `sc.exe /?` printed the command
+list but returned 1639 (`ERROR_INVALID_COMMAND_LINE`). Conversely, some
+subcommands interpret `/?` as a service name. Capture help text and
+`$LASTEXITCODE` separately, never use a generated help probe as proof that a
+service query succeeded, and do not suppress all nonzero codes merely because
+one help form is intentionally nonzero.
 
 ### Typing bare `sc` in Windows PowerShell
 
@@ -207,6 +223,8 @@ value as separate arguments where SC requires `name= value`. Capture native
 stdout/stderr and `$LASTEXITCODE` immediately, but independently verify with
 structured service/CIM data and application evidence. SC output is localized
 human text and numeric fields can include Win32- and service-specific codes.
+Help-like output is not an exception to native status handling: preserve 1639
+from the recorded top-level help case rather than normalizing it to success.
 
 ## Version and platform differences
 
@@ -214,6 +232,16 @@ SC is Windows-only. Commands and fields vary with Windows build, service versus
 driver type, local/remote SCM support, protection level, trigger configuration,
 and privileges. Windows PowerShell alias behavior is not evidence for
 PowerShell 7. Use target-host resolution and installed SC help.
+
+## Runtime evidence
+
+The protected local-help fixture resolved exact System32 `sc.exe` under both
+installed PowerShell editions. `sc.exe /?` produced 84 nonempty stdout lines,
+no stderr, and status `1639` in each collector. The nonzero status is part of
+this top-level help contract, not evidence of a service query failure. No
+server, service, driver, database, control, configuration, credential, or
+security descriptor was supplied or changed; subcommand parser and operational
+behavior remain separately bounded.
 
 ## Related documents
 

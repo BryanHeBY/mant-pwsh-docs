@@ -6,7 +6,7 @@
 
 - Resolve the implementation and display its API version without enabling DTrace:
 
-`Get-Command dtrace.exe -All -ErrorAction SilentlyContinue | Select-Object Source,@{Name='FileVersion';Expression={$_.FileVersionInfo.FileVersion}}; dtrace.exe -V`
+`Get-Command dtrace.exe -All -ErrorAction SilentlyContinue | Select-Object Source,@{Name='FileVersionFixed';Expression={$_.FileVersionInfo.FileVersionRaw.ToString()}},@{Name='FileVersionString';Expression={$_.FileVersionInfo.FileVersion}}; dtrace.exe -V`
 
 - List syscall probes without tracing them:
 
@@ -97,8 +97,21 @@ Windows-only page. Built-in availability begins with Windows Server 2025;
 other Windows versions may have no DTrace or the distinct MSI/preview port.
 Never infer Windows support from a Unix `dtrace` executable.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`dtrace.exe` Application candidate under either PowerShell collector. No
+feature, role, or compatibility component was installed merely to change
+that result, and no same-named PATH substitute was used. This is target-host
+command-resolution evidence, not proof that the tool is unsupported on every
+applicable Windows environment.
+
+Behavior verification remains version/exact-provider listing and -e
+compilation only; no BCD/security/reboot, enabled trace/target, -w/destructive
+action, output capture, live dump, registry or protection mutation is permitted
+merely for evidence.
+
+## Related documents
 - [logman.exe](logman.exe.md)
 - [tracerpt.exe](tracerpt.exe.md)
 - [pktmon.exe](pktmon.exe.md)

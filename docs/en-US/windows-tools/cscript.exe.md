@@ -83,8 +83,21 @@ before WSH receives arguments. Capture stdout/stderr deliberately and check
 security policy, optional legacy components, encoding and script behavior vary
 by Windows build, architecture and installed applications.
 
-## Related documents
+On Windows NT `10.0.26200.0`, exact System32 file version `10.0.26100.4768`
+printed 17 nonempty help lines for `//?`, returned 0, and produced no Windows
+PowerShell 5.1 `ErrorRecord` objects. No script path or code was supplied, so
+no script engine, COM object, dialog, persisted host option, or script action
+ran.
 
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 file version 10.0.26100.4768
+explicit //? returned 17 nonempty help lines, status 0 and no Windows
+PowerShell 5.1 ErrorRecord objects. No script or code ran and no WSH
+default/persisted option changed; an approved inert code-reviewed
+least-privilege fixture remains required for execution evidence.
+
+## Related documents
 - [wscript.exe](wscript.exe.md)
 - [cmd.exe](cmd.exe.md)
 - `powershell.exe` and `pwsh` in their respective PowerShell sources

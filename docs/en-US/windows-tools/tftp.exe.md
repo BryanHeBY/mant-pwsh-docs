@@ -106,9 +106,19 @@ TFTP Client is an optional Windows feature; feature name, availability and
 servicing behavior vary by edition/build. Server extensions, block size,
 timeouts, path rules, overwrite policy and firmware workflow are implementation-
 specific. Target-local help and representative isolated testing are required.
+Exact System32 discovery on the recorded Windows NT `10.0.26200.0` Home China
+client found no `tftp.exe`; do not substitute a PATH match or enable the
+optional feature merely for documentation evidence.
+
+## Runtime evidence
+
+Exact System32 discovery on the recorded Windows NT 10.0.26200.0 Home China
+client found tftp.exe absent; no PATH substitute, feature enablement, host, or
+transfer ran. Optional-feature/help verification remains pending where already
+installed, and protocol transfer requires an approved isolated nonsensitive
+fixture.
 
 ## Related documents
-
 - [dism.exe](dism.exe.md)
 - [pnputil.exe](pnputil.exe.md)
 - [certutil.exe](certutil.exe.md)

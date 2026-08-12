@@ -2,6 +2,7 @@
 # auditpol.exe
 
 > Inspect Windows advanced audit policy by stable category or subcategory identity.
+> `/get` requires read permission on the audit-policy object or the `SeSecurityPrivilege` user right; do not confuse access failure with an empty policy.
 > More information: https://learn.microsoft.com/windows-server/administration/windows-commands/auditpol.
 
 - List selectable audit subcategories in report-friendly form:
@@ -31,6 +32,9 @@ delegation security descriptors, and version-limited global resource SACLs.
 `/r` requests report output suitable for preserving or processing rather than
 the default display table.
 
+<!-- mant:entries role=command case=insensitive -->
+- `auditpol.exe`: Inspect or administer advanced system and per-user audit policy.
+
 ## Operations and selectors
 
 <!-- mant:entries role=option case=insensitive -->
@@ -42,6 +46,7 @@ the default display table.
 - `/clear`: Remove system audit policy settings and potentially disable required coverage.
 - `/remove`: Remove per-user audit policy for an exact user or all users according to the full command.
 - `/resourceSACL`: Configure version-limited global resource SACL policy.
+- `/?`: Display top-level or command-context help without querying or changing policy.
 - `/category:VALUE`, `/subcategory:VALUE`: Select exact categories/subcategories by name, wildcard, or stable GUID as documented.
 - `/user:VALUE`: Select one per-user policy identity; resolve the account/SID before change.
 - `/success:VALUE`, `/failure:VALUE`: Enable, disable, or leave audit outcome settings according to the selected operation.
@@ -53,6 +58,13 @@ the default display table.
 Call `auditpol.exe` explicitly and pass a brace-wrapped GUID as one quoted
 argument. Output is native text/CSV rather than typed policy objects; preserve
 the raw report and check `$LASTEXITCODE` immediately.
+
+Microsoft documents a least-privilege boundary for `/get`: the caller needs
+Read permission in the policy object's security descriptor, or can use the
+`Manage auditing and security log` (`SeSecurityPrivilege`) user right. The
+recorded ordinary token returned exit code 1314 for `/get /category:*`. Do not
+automatically grant broader administrator membership when delegated read
+access is sufficient, and do not interpret 1314 as a policy with no entries.
 
 ## Common mistakes
 
@@ -94,12 +106,21 @@ the entire logging pipeline without exposing sensitive audit content.
 
 ## Version and platform differences
 
-This executable is Windows-only. Permissions, Group Policy, language, audit
-subcategory availability, and legacy resource-SACL support vary by Windows
-release and management context.
+This executable is Windows-only. On Windows NT `10.0.26200.0`, installed file
+version `10.0.26100.8115` returned all eight documented top-level commands,
+12 nonempty help lines, and status 0 for ordinary-token `/?`. That help success
+does not grant `/get`: the same token's earlier policy query returned 1314.
+Permissions, Group Policy, language, audit subcategory availability, and legacy
+resource-SACL support vary by Windows release and management context.
+
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, installed file version 10.0.26100.8115
+ordinary-token /? returned all eight documented commands, 12 nonempty lines and
+status 0. Help success is distinct from the same token's earlier /get failure
+with 1314; no policy query or mutation ran in this help probe.
 
 ## Related documents
-
 - [gpresult.exe](gpresult.exe.md)
 - [whoami.exe](whoami.exe.md)
 - [systeminfo.exe](systeminfo.exe.md)

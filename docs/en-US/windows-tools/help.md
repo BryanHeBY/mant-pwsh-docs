@@ -100,6 +100,19 @@ releases. Available topics depend on installed components and interpreter
 context. PowerShell help content depends on edition, module version, locale,
 installed help, and network/update state.
 
+On Windows NT `10.0.26200.0`, `cmd.exe /d /c help` returned 95 normalized
+nonempty localized lines and status 1. The payload was a valid topic list;
+status 1 is therefore part of this discovery invocation and must not be
+interpreted as proof that the help text failed. No listed example, PowerShell
+help update, network request, or target command ran.
+
+## Runtime evidence
+
+Exact System32 `cmd.exe /d /c help` returned 95 normalized nonempty localized
+lines and status `1` under both PowerShell collectors. The payload was treated
+as valid command discovery despite the nonzero status. No listed command,
+example, PowerShell `Update-Help`, pager, or network operation ran.
+
 ## Related documents
 
 - [cmd.exe](cmd.exe.md)

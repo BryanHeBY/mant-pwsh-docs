@@ -6,7 +6,7 @@
 
 - Resolve the exact Windows command and version:
 
-`Get-Command dispdiag.exe -All -ErrorAction SilentlyContinue | Select-Object Source,@{Name='FileVersion';Expression={$_.FileVersionInfo.FileVersion}}`
+`Get-Command dispdiag.exe -All -ErrorAction SilentlyContinue | Select-Object Source,@{Name='FileVersionFixed';Expression={$_.FileVersionInfo.FileVersionRaw.ToString()}},@{Name='FileVersionString';Expression={$_.FileVersionInfo.FileVersion}}`
 
 - Display installed syntax without collecting data:
 
@@ -89,8 +89,17 @@ Windows-only. Output schema, included data, privilege needs and display-stack
 behavior can vary by Windows and graphics-driver build. Validate installed
 help on the affected host.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT 10.0.26200.0, exact System32 DispDiag file version
+10.0.26100.8737 -? returned 15 nonempty stdout help lines/no stderr/status 1,
+and a before/after workspace snapshot found no file change. The harness also
+exposed an uncaptured Task.WaitAll boolean on PowerShell's success stream; that
+contamination was separated from native output and added to both pipeline
+guides. No base DAT, dump, interactive key test, driver/display change or
+public disclosure occurred.
+
+## Related documents
 - [dxdiag.exe](dxdiag.exe.md)
 - [msinfo32.exe](msinfo32.exe.md)
 - [eventvwr.msc](eventvwr.msc.md)

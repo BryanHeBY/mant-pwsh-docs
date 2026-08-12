@@ -78,8 +78,20 @@ hosts. Verify the executable, driver, adapter, and local help on the exact
 system. The current Microsoft Learn banner does not prove that every listed
 Windows edition includes usable ATM support.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`atmadm.exe` Application candidate under either PowerShell collector. No
+feature, role, or compatibility component was installed merely to change
+that result, and no same-named PATH substitute was used. This is target-host
+command-resolution evidence, not proof that the tool is unsupported on every
+applicable Windows environment.
+
+Behavior verification remains resolution, adapter inventory and /c /a /s
+reads only on an approved ATM fixture; no driver, adapter, link, call,
+signaling or network mutation is permitted merely for evidence.
+
+## Related documents
 - [getmac.exe](getmac.exe.md)
 - [pktmon.exe](pktmon.exe.md)
 

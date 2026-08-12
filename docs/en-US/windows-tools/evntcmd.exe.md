@@ -82,8 +82,20 @@ This Windows-only command depends on legacy SNMP/Event-to-Trap components that
 may be absent. Provider names, event IDs, service installation, firewall,
 network policy, and receiver compatibility vary by build and role.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`evntcmd.exe` Application candidate under either PowerShell collector. No
+feature, role, or compatibility component was installed merely to change
+that result, and no same-named PATH substitute was used. This is target-host
+command-resolution evidence, not proof that the tool is unsupported on every
+applicable Windows environment.
+
+Behavior verification remains help, service, file/hash and provider
+inventory only; no mapping, destination, SNMP, service, firewall, receiver or
+remote mutation is permitted merely for evidence.
+
+## Related documents
 - [wevtutil.exe](wevtutil.exe.md)
 - [eventcreate.exe](eventcreate.exe.md)
 - [sc.exe](sc.exe.md)

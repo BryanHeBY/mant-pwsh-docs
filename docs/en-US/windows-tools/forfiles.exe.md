@@ -47,7 +47,7 @@ Preview the identical selection before placing a mutation there.
   `cmd /c echo @file` display.
 - `/d`: Select entries by last-modified date: an absolute regional date, a
   negative age (on/before cutoff), or a positive offset (on/after cutoff).
-- `/?`: Display installed command help.
+- `-?`, `/?`: Display installed command help.
 
 ## PowerShell boundaries
 
@@ -88,10 +88,18 @@ full path, and test names containing spaces and metacharacters.
 ## Version and platform differences
 
 This executable is Windows-only. Absolute date input and displayed timestamps
-are locale-dependent; filesystem timestamp precision and semantics vary.
+are locale-dependent; filesystem timestamp precision and semantics vary. On
+Windows NT `10.0.26200.0`, installed file version `10.0.26100.1` printed 65
+nonempty help lines and returned 0 for both `/?` and `-?`. No root, mask,
+date, nested command, file, directory, or filesystem state was selected.
+
+## Runtime evidence
+
+Installed file version 10.0.26100.1 /? and -? each printed 65 nonempty lines
+and returned 0. No root, mask, date, nested command, file, directory, or
+filesystem state was selected.
 
 ## Related documents
-
 - [for](for.md)
 - [dir](dir.md)
 - [del](del.md)

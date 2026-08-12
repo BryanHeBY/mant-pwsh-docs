@@ -2,6 +2,7 @@
 # reagentc.exe
 
 > Inventory Windows Recovery Environment state, exact image location, BCD identifier, and online/offline target before enabling, disabling, relocating, customizing, or scheduling recovery boot.
+> Except for help, run even `/info` from an elevated, explicitly identified Windows context.
 > More information: https://learn.microsoft.com/windows-hardware/manufacture/desktop/reagentc-command-line-options.
 
 - Display installed REAgentC syntax and supported operations:
@@ -75,14 +76,33 @@ native output/status and immutable before/after evidence. Do not interpolate a
 path or BCD GUID from untrusted text. A mutation workflow needs console/recovery
 media, BitLocker keys, backup, boot verification, and a tested rollback.
 
+On the recorded non-elevated host, the read-only `/info` operation returned
+exit code 5 and stated that it can run only from an elevated command prompt.
+Do not reinterpret that result as WinRE being disabled, missing, or corrupt.
+
 ## Version and platform differences
 
 `reagentc.exe` is Windows-only. Online/offline support, Audit Mode, `/osguid`,
 reset images, partition sizing/attributes, WinRE servicing, and paths vary by
 Windows version, firmware, partition style, deployment phase and encryption.
 
-## Related documents
+On Windows NT `10.0.26200.0`, exact System32 file version `10.0.26100.7705`
+did not expose help to the recorded ordinary token: `/?` printed one localized
+standard-output line and two localized standard-error lines requiring an
+elevated prompt, then returned 5. Treat this as an access result, not proof of
+syntax or WinRE state. No `/info`, BCD, recovery image, partition, encryption,
+firmware, boot, or WinRE mutation ran.
 
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 file version 10.0.26100.7705
+explicit /? under the recorded ordinary token returned 5 with one localized
+stdout and two localized stderr lines requiring elevation, so it is access
+evidence rather than help syntax. No /info or recovery state was queried;
+mutation requires a disposable boot/recovery fixture, exact BCD/disk/image
+identity, recovery keys/media and tested rollback.
+
+## Related documents
 - [bcdedit.exe](bcdedit.exe.md)
 - [bcdboot.exe](bcdboot.exe.md)
 - [diskpart.exe](diskpart.exe.md)

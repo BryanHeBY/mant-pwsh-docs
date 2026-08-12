@@ -101,9 +101,18 @@ Materialize and review the exact byte artifact first.
 Windows-only and optional-feature dependent. Queue extensions, text conversion,
 banner policy and binary languages vary by LPD/device. `-x` exists only for old
 SunOS compatibility and should not be added generically.
+Exact System32 discovery on the recorded Windows NT `10.0.26200.0` Home China
+client found no `lpr.exe`; do not substitute a PATH match or submit a print job
+merely for documentation evidence.
+
+## Runtime evidence
+
+Exact System32 discovery on the recorded Windows NT 10.0.26200.0 Home China
+client found lpr.exe absent; no PATH substitute, print job, retry,
+port-monitor, registry, or Spooler action ran. Resolution/help remains pending
+where the optional client is installed.
 
 ## Related documents
-
 - [lpq.exe](lpq.exe.md)
 - [print.exe](print.exe.md)
 - [prnjobs.vbs](prnjobs.vbs.md)

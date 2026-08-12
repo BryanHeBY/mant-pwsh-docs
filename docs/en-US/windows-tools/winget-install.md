@@ -36,6 +36,7 @@ start a vendor installer and may affect all users or device configuration.
 - `-q QUERY`, `--query QUERY`: Select by free-form query; avoid it in durable automation when an ID is known.
 - `-m FILE`, `--manifest FILE`: Install from a reviewed local manifest path.
 - `--id ID`: Select a source package identifier.
+- `--name NAME`, `--moniker MONIKER`: Select by display name or moniker only when exact identity is verified separately.
 - `-e`, `--exact`: Require an exact match for the selected field.
 - `-v VERSION`, `--version VERSION`: Request one exact source-provided version.
 - `-s SOURCE`, `--source SOURCE`: Restrict selection to one configured source.
@@ -46,15 +47,35 @@ start a vendor installer and may affect all users or device configuration.
 - `-l LOCATION`, `--location LOCATION`: Request an installation location only when the installer honors it.
 - `-i`, `--interactive`: Request interactive installer behavior.
 - `-h`, `--silent`: Request silent installer behavior; the manifest/installer owns actual UI support.
+- `-o FILE`, `--log FILE`: Request an installer log path where the selected installer supports it.
 - `--custom ARGUMENTS`: Add reviewed arguments after WinGet's normal installer switches.
 - `--override ARGUMENTS`: Replace WinGet's normal installer arguments; this changes the manifest contract substantially.
 - `--accept-package-agreements`, `--accept-source-agreements`: Record explicit agreement acceptance for unattended use.
 - `--skip-dependencies`: Skip dependency processing only when dependencies are managed and verified separately.
+- `--dependencies-only`: Install dependencies without installing the requested package; available in the locally reviewed WinGet 1.29 client but absent from the cited 2026-07-19 command page.
+- `--dependency-source SOURCE`: Resolve package dependencies through one specified source.
+- `--ignore-security-hash`: Bypass an installer hash mismatch; this weakens a security control and should not be routine automation.
+- `--ignore-local-archive-malware-scan`: Skip the malware scan for a local archive-manifest install; use only under an independently verified security process.
 - `--force`: Continue through selected non-security checks; it does not make an installer trustworthy.
 - `--allow-reboot`: Permit the installer to restart Windows; use only inside coordinated maintenance.
 - `--no-upgrade`: Refuse to turn an install request into an upgrade of an existing package.
 - `--uninstall-previous`: Request removal of the previous version when the manifest supports the workflow.
+- `-r NAME`, `--rename NAME`: Rename the executable produced by a portable package where supported.
+- `--header HEADER`: Send a reviewed HTTP header to a REST package source; do not expose credentials in process arguments or logs.
+- `--authentication-mode MODE`: Choose `silent`, `silentPreferred`, or `interactive` source authentication behavior.
+- `--authentication-account ACCOUNT`: Select the account used for source authentication.
 - `--disable-interactivity`: Fail instead of waiting for user input in unattended execution.
+
+## Execution and diagnostics options
+
+<!-- mant:entries role=option case=insensitive -->
+- `-?`, `--help`: Display help for this subcommand without selecting or installing a package.
+- `--wait`: Wait for a key press before the client exits; avoid it in unattended automation.
+- `--logs`, `--open-logs`: Open the WinGet log directory in the interactive desktop.
+- `--verbose`, `--verbose-logs`: Enable verbose WinGet logging for this invocation.
+- `--nowarn`, `--ignore-warnings`: Suppress warning display; it does not make an installer safe.
+- `--proxy URL`: Use the specified proxy for this invocation; protect credentials embedded in a proxy URL.
+- `--no-proxy`: Disable proxy use for this invocation.
 
 ## Confirm before installing
 
@@ -108,8 +129,14 @@ context, combine with explicit noninteractive policy, and handle failure.
 It replaces manifest-provided installer arguments and can bypass publisher-
 tested behavior. Use it only with an exact documented installer contract.
 
-## Related documents
+## Runtime evidence
 
+A 2026-08-12 help-only audit matched all 44 WinGet 1.29.280 long options to
+local ManT entries under both PowerShell collectors; locally present
+dependencies-only is explicitly labeled as absent from the contemporaneous
+official page. No install or source query ran.
+
+## Related documents
 - [winget show](winget-show.md)
 - [winget search](winget-search.md)
 - [winget upgrade](winget-upgrade.md)

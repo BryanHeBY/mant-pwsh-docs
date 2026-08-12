@@ -80,8 +80,12 @@ These entries expose the options used in the bounded workflow above.
 - `--drop-only`: Restrict supported output/conversion to dropped packets.
 - `--component-id`: Restrict PCAPNG conversion to one component ID.
 - `--out`: Select a new text or PCAPNG conversion destination.
-- `--stats-only`: Display only ETL statistics during text conversion.
-- `--timestamp-only`: Use only a timestamp as the converted text event prefix.
+- `--stats`, `--stats-only`: Display only ETL statistics during text conversion;
+  installed 10.0.26100.3624 help prints the first spelling while the locked
+  Microsoft page documents the second, and that build parses both.
+- `--timestamp`, `--timestamp-only`: Use a simplified timestamp prefix during
+  text conversion; installed help and the locked page use the respective forms,
+  and that build parses both.
 - `--metadata`: Include ETW event level and keyword metadata in converted text.
 - `--tmfpath`: Select trusted TMF search paths for WPP decoding.
 - `--brief`: Use compact supported text rendering.
@@ -94,6 +98,9 @@ These entries expose the options used in the bounded workflow above.
 - `--drop-reason`: Include the most recent reason for each drop counter.
 - `--live`: Continuously refresh counter output until interrupted.
 - `--refresh-rate`: Set live counter refreshes per second from 1 through 30.
+- `--buffer`, `--buffer-info`: Request ETW buffer information from `status`.
+  Installed help's syntax and option row disagree on which long spelling to
+  show; both reached the driver access gate on the recorded ordinary token.
 
 ## A bounded capture lifecycle
 
@@ -182,6 +189,15 @@ Conversion is lossy for Packet Monitor-specific flow and drop information.
 Hash and retain the original under the evidence policy, record conversion
 options/tool version, and analyze a copy.
 
+### Assuming a missing ETL makes conversion a no-write parser test
+
+`etl2txt` can create or replace its default same-basename `.txt` output before
+it proves that the input ETL can be opened. A missing-input parser probe on the
+recorded build created a two-byte output artifact and returned 2. Therefore an
+invalid or missing input is not a no-write dry run. Always supply a reviewed
+new `--out` path, reject an existing target, and clean up only the exact artifact
+created by the failed attempt after recording evidence.
+
 ### Copying syntax from a newer Windows build
 
 Subcommands such as PCAPNG conversion and option spellings have varied. Query
@@ -200,10 +216,25 @@ parse localized tables when structured output exists.
 This command is Windows-only. Availability, options, capture flags, component
 types, conversion support, elevation, and multi-session capabilities vary by
 Windows build. Installed subcommand help is the runtime authority alongside
-the applicable Microsoft Learn page.
+the applicable Microsoft Learn page. Installed 10.0.26100.3624 differs from the
+locked `etl2txt` page on `--stats`/`--stats-only` and
+`--timestamp`/`--timestamp-only`; support both only after exact-version help or
+bounded parser evidence rather than mechanically rewriting one spelling.
+
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 PktMon file version 10.0.26100.3624
+top-level and all 11 subcommand help forms returned status 0. Installed etl2txt
+help prints --stats/--timestamp while the locked page documents
+--stats-only/--timestamp-only; a missing-input parser comparison accepted all
+four and rejected a deliberately invalid option. It also unexpectedly created a
+two-byte default .txt before reporting missing ETL/status 2; the exact
+task-owned artifact was hashed and deleted. Status help inconsistently shows
+--buffer-info in syntax and --buffer in its row; both status forms reached the
+ordinary-token driver access gate/status 5. No local topology/status payload
+was retained and no capture/filter/counter/session/driver state changed.
 
 ## Related documents
-
 - [netsh.exe](netsh.exe.md)
 - [netstat.exe](netstat.exe.md)
 - [tracerpt.exe](tracerpt.exe.md)
@@ -216,6 +247,8 @@ This original guide was adapted from Microsoft's official
 [command-format guide](https://learn.microsoft.com/windows-server/networking/technologies/pktmon/pktmon-syntax),
 [filter syntax](https://learn.microsoft.com/windows-server/administration/windows-commands/pktmon-filter-add),
 [capture syntax](https://learn.microsoft.com/windows-server/administration/windows-commands/pktmon-start),
+[text conversion](https://learn.microsoft.com/windows-server/administration/windows-commands/pktmon-etl2txt),
+[status](https://learn.microsoft.com/windows-server/administration/windows-commands/pktmon-status),
 and [PCAPNG conversion reference](https://learn.microsoft.com/windows-server/administration/windows-commands/pktmon-etl2pcap).
 A practitioner question about an unavailable `pcapng` subcommand was used as
 a version-mismatch demand signal; current syntax follows Microsoft Learn.

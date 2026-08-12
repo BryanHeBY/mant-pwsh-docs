@@ -6,7 +6,7 @@
 
 - Resolve the exact Windows executable and confirm the RD Session Host role:
 
-`Get-Command change.exe -All -ErrorAction SilentlyContinue | Select-Object Source,@{Name='FileVersion';Expression={$_.FileVersionInfo.FileVersion}}; Get-WindowsFeature -Name RDS-RD-Server -ErrorAction SilentlyContinue`
+`Get-Command change.exe -All -ErrorAction SilentlyContinue | Select-Object Source,@{Name='FileVersionFixed';Expression={$_.FileVersionInfo.FileVersionRaw.ToString()}},@{Name='FileVersionString';Expression={$_.FileVersionInfo.FileVersion}}; Get-WindowsFeature -Name RDS-RD-Server -ErrorAction SilentlyContinue`
 
 - Query whether new RDS client logons are enabled, disabled, or draining:
 
@@ -140,8 +140,15 @@ applicability does not make install mode or logon admission meaningful on a
 client/ordinary RDP server. Legacy application mapping behavior can differ with
 modern MSIX, virtualization, FSLogix and vendor packaging.
 
-## Related documents
+## Runtime evidence
 
+Exact System32 discovery on the recorded Windows NT 10.0.26200.0 Home China
+client found change.exe, chglogon.exe, chgport.exe, and chgusr.exe absent; no
+PATH substitute or query/mutation ran. Representative Session Host query
+verification remains pending; no admission, mapping, install mode, installer,
+user, session, or reboot mutation is permitted merely for evidence.
+
+## Related documents
 - [query.exe](query.exe.md)
 - [quser.exe](quser.exe.md)
 - [flattemp.exe](flattemp.exe.md)

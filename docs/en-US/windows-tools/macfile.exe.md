@@ -113,8 +113,21 @@ version, and local help. A current Learn banner does not establish that the role
 ships or is supported on the target. Prefer current SMB with supported macOS
 interoperability for new deployments.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`macfile.exe` Application candidate under either PowerShell collector. No
+feature, role, or compatibility component was installed merely to change
+that result, and no same-named PATH substitute was used. This is target-host
+command-resolution evidence, not proof that the tool is unsupported on every
+applicable Windows environment.
+
+Behavior verification remains resolution plus copied
+file/tree/ACL/fork/hash inventory only; no role, directory metadata/permission,
+fork, server, volume, guest/password/session/message or file mutation is
+permitted merely for evidence.
+
+## Related documents
 - [icacls.exe](icacls.exe.md)
 - [net.exe](net.exe.md)
 - [robocopy.exe](robocopy.exe.md)

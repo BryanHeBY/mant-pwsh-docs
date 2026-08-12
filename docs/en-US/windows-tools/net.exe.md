@@ -328,8 +328,15 @@ and security policy. Historical Learn pages are useful for semantics such as
 `net use`, but their old applicability list is not evidence of current support.
 Confirm target-host help and current Microsoft lifecycle/support guidance.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT 10.0.26200.0, exact System32 Net.exe file version 10.0.26100.7019
+top-level help printed 17 nonempty stdout lines, no PowerShell error records,
+and returned 1. No family operand, identity, share, session, file, service,
+time target, or mutation was supplied; representative member/domain,
+client/server, elevated, scheduled, and service contexts remain pending.
+
+## Related documents
 - [sc.exe](sc.exe.md)
 - [schtasks.exe](schtasks.exe.md)
 - [openfiles.exe](openfiles.exe.md)

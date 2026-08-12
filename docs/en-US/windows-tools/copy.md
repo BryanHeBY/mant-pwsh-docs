@@ -105,6 +105,14 @@ that the workflow actually requires.
 This builtin is Windows-only; WinRE exposes a different form. `COPYCMD` can
 preset `/y`, so automation should specify overwrite policy explicitly.
 
+## Runtime evidence
+
+The protected fixture created two binary inputs below a verified GUID-named
+temporary root and confirmed that exact Cmd `copy /b /y` concatenated them into
+the expected six bytes under both PowerShell collectors. The output and inputs
+were removed with the root. This does not cover caller-owned overwrite,
+wildcards, network restart, EFS, prompts, or source/output collision.
+
 ## Related documents
 
 - [cmd.exe](cmd.exe.md)

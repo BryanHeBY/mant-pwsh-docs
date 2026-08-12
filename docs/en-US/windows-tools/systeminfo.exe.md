@@ -27,12 +27,19 @@ and CSV; `/s` selects a remote host.
 
 ## Important options
 
+<!-- mant:entries role=command case=insensitive -->
+- `systeminfo.exe`: Report a local or explicitly selected remote Windows host
+  snapshot without changing host configuration.
+
+The following slash forms select remote access and output presentation.
+
 <!-- mant:entries role=option case=insensitive -->
 - `/fo FORMAT`: Select `table`, `list`, or `csv` presentation.
 - `/nh`: Suppress column headers for table/CSV output; retaining headers is safer for field mapping.
 - `/s COMPUTER`: Query one remote computer by name or IP address.
 - `/u`: Authenticate the remote query as another user or `DOMAIN\USER`; valid only with `/s`.
 - `/p PASSWORD`: Supply the remote password; omit it to prompt instead of exposing a command-line secret.
+- `-?`, `/?`: Display installed command help.
 
 ## PowerShell boundaries
 
@@ -67,6 +74,20 @@ diffing rendered text.
 
 This executable is Windows-only. Available fields and remote access depend on
 Windows release, permissions, services, firewall, policy, and architecture.
+On Windows NT `10.0.26200.0`, installed file version `10.0.26100.8457` printed
+25 nonempty help lines and returned 0 for both `/?` and `-?`; its six-option
+surface matched the page. No local/remote host snapshot, credential, service,
+firewall, hardware, update, or network state was queried by the help probes.
+
+## Runtime evidence
+
+The repeatable read-only Windows CLI fixture resolved exact System32
+`systeminfo.exe`, captured localized `/?` help, and ran one local `/fo csv /nh`
+snapshot with a 30-second bound. It returned exit code `0` and nonempty output
+under both PowerShell collectors; the machine inventory was counted but not
+emitted into test logs. No remote host or credential was supplied. Field
+completeness, locale, servicing authority, and other Windows builds remain
+separate concerns.
 
 ## Related documents
 

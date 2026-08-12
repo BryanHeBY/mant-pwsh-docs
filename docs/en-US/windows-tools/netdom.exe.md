@@ -151,9 +151,18 @@ Netdom is Windows-only and AD DS/RSAT-dependent. Current Microsoft Learn lists
 supported Windows Server releases, but families and options still vary with
 Server/RSAT build, domain/forest functional level, trust type, privilege, and
 policy. Verify local family help and the current family-specific Microsoft page.
+Exact System32 discovery on the recorded Windows NT `10.0.26200.0` client
+found no `netdom.exe`; no help, domain query, membership, verify, rename,
+reset, password, trust, reboot, credential, or directory operation ran.
+
+## Runtime evidence
+
+Exact System32 discovery on Windows NT 10.0.26200.0 found no netdom.exe. It
+remains documented as an optional AD DS/RSAT tool; no help, domain query,
+membership, verify, account, join/move/remove, rename/name, reset/password,
+trust, credential, reboot, or directory operation ran.
 
 ## Related documents
-
 - [nltest.exe](nltest.exe.md)
 - [dcdiag.exe](dcdiag.exe.md)
 - [repadmin.exe](repadmin.exe.md)

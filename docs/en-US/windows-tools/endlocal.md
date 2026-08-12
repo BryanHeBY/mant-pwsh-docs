@@ -84,8 +84,14 @@ at the correct time.
 This builtin is available inside `cmd.exe` batch files on supported Windows
 client and server releases. It is not PowerShell scope syntax.
 
-## Related documents
+## Runtime evidence
 
+The protected behavior fixture confirmed the same-line ENDLOCAL value-transfer
+idiom for one parser-safe ASCII value. Arbitrary percent, exclamation, caret,
+quote, newline and metacharacter data are deliberately not generalized from
+that result.
+
+## Related documents
 - [setlocal](setlocal.md)
 - [set](set.md)
 - [exit](exit.md)

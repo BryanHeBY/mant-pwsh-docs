@@ -63,7 +63,11 @@ blank columns rather than parsing by naïve whitespace positions.
 ## Version and availability
 
 This Windows/RDS query depends on target release, roles/listeners, permissions,
-session state, remote access, and counter lifetime.
+session state, remote access, and counter lifetime. Exact System32 discovery on
+the recorded Windows NT `10.0.26200.0` Home China client found no
+`qwinsta.exe`; this is an edition/component availability observation, not a
+claim about Session Host, Server, or other client installations. Do not
+substitute a PATH match when exact discovery fails.
 
 ## Common mistakes
 
@@ -74,8 +78,13 @@ session state, remote access, and counter lifetime.
 - Reusing a session ID after state/ownership changed.
 - Using the inventory as authorization to disconnect, reset, shadow, or log off.
 
-## Related documents
+## Runtime evidence
 
+Exact System32 discovery on the recorded Windows NT 10.0.26200.0 Home China
+client found qwinsta.exe absent; no PATH substitute or session query ran.
+Representative installations where the component exists remain required.
+
+## Related documents
 - [query.exe](query.exe.md)
 - [quser.exe](quser.exe.md)
 - [rwinsta.exe](rwinsta.exe.md)

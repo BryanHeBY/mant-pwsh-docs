@@ -81,9 +81,19 @@ then verify sample count, timestamps, validity/status, gaps, size, and hash.
 `typeperf.exe` is Windows-only. Counters, names, formulas, instances, providers,
 formats, remote access, and localization vary by build, language, roles/products,
 architecture, service/workload state, and privilege.
+On exact System32 file version `10.0.26100.1`, `-?` returned 0 with 39
+nonempty stdout lines and no PowerShell error records. No counter, instance,
+remote computer, sampling interval/count, configuration file, SQL destination,
+output file, or collection ran.
+
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 TypePerf file version 10.0.26100.1
+-? returned 0 with 39 nonempty stdout lines and no PowerShell error records. No
+counter/instance/remote/sampling/configuration/SQL/output collection ran;
+target-localized inventory and approved bounded sampling remain pending.
 
 ## Related documents
-
 - [logman.exe](logman.exe.md)
 - [relog.exe](relog.exe.md)
 - [lodctr.exe](lodctr.exe.md)

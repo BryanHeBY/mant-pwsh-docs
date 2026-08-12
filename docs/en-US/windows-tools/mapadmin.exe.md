@@ -121,8 +121,23 @@ vary substantially across Windows/Windows Server generations. Verify the exact
 server role, service, cmdlets, NFS version, store, and client/server support
 matrix; a generic Learn banner is not sufficient evidence.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`mapadmin.exe` Application candidate under either PowerShell collector. No
+feature, role, or compatibility component was installed merely to change
+that result, and no same-named PATH substitute was used. This is target-host
+command-resolution evidence, not proof that the tool is unsupported on every
+applicable Windows environment.
+
+Behavior verification remains resolution, parameterless settings,
+list/listdomainmaps and current typed store reads only against an approved
+exact server; backup requires a separately approved new protected path. No
+credential argument, service/config,
+add/delete/primary/domain-map/restore/store/export/ACL or identity mutation is
+permitted merely for evidence.
+
+## Related documents
 - [nfsadmin.exe](nfsadmin.exe.md)
 - [nfsshare.exe](nfsshare.exe.md)
 - [mount.exe](mount.exe.md)

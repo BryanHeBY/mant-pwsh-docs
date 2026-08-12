@@ -65,6 +65,8 @@ approved procedure permits it.
 - `convert`: Convert the focused disk's partition/disk model according to command-specific preconditions.
 - `uniqueid`: Inspect or change the focused disk identifier.
 - `format`: Create a filesystem on the focused volume; `quick` is neither preview nor secure erase.
+- `add`, `break`, `import`, `recover`, `repair`, `retain`: Change legacy
+  dynamic-disk mirrors, groups, recovery, RAID-5 regions, or boot-volume state.
 - `attach vdisk`, `detach vdisk`: Attach or detach the focused VHD/VHDX from the host.
 - `create vdisk`, `compact vdisk`, `expand vdisk`, `merge vdisk`: Create or change a selected virtual-disk file and parent chain.
 - `rem`: Add a comment line to a DiskPart script.
@@ -84,7 +86,7 @@ approved procedure permits it.
 | Partition lifecycle | `create`, `delete`, `extend`, `shrink`, `active`, `inactive`, `gpt`, `set id` | Can change layout/bootability and cause immediate data loss. |
 | Disk initialization | `clean`, `convert`, `uniqueid` | `clean` removes layout; `clean all` writes every sector; conversion and IDs affect discovery/boot. |
 | Filesystem | `format` | Recreates filesystem metadata; `quick` is not a preview or secure erase. |
-| Dynamic disks | `add`, `break`, `import`, `recover`, `repair`, `retain` | Legacy/dynamic-disk topology and redundancy operations need a platform runbook. |
+| Dynamic disks | `add`, `break`, `import`, `recover`, `repair`, `retain` | Deprecated for new deployments except Microsoft's documented boot-mirror exception; existing LDM/VDS topology needs a platform runbook. |
 | Virtual disks | `attach vdisk`, `detach vdisk`, `create vdisk`, `select vdisk`, `detail vdisk`, `compact vdisk`, `expand vdisk`, `merge vdisk`, `list vdisk` | The selected file, parent chain, host exposure, read-only state, and consumers matter. |
 | Script control | `rem`, `exit`, per-command `noerr` | `noerr` can continue after operational errors and create partial state. |
 
@@ -183,6 +185,15 @@ Online/offline and automount changes can affect shared storage across boots or
 arrivals. Confirm cluster ownership, reservation/fencing, SAN policy,
 hypervisor controls, and vendor guidance before changing presentation.
 
+### Designing new resilient storage with dynamic-disk commands
+
+Microsoft deprecates dynamic disks for new deployments except the documented
+mirror-boot-volume case and recommends basic disks or Storage Spaces for new
+resilient data layouts. DiskPart's VDS-era dynamic commands do not manage
+Storage Spaces, while modern Storage PowerShell cmdlets do not manage legacy
+dynamic disks. Identify which model owns the existing data; do not translate
+`add`, `break`, `repair`, or `recover` mechanically between them.
+
 ## PowerShell behavior
 
 DiskPart subcommands are not PowerShell commands; they run inside the
@@ -198,9 +209,20 @@ This Windows-only administrative family applies to supported Windows client,
 server, Windows PE, and recovery environments, but command support varies by
 basic/dynamic disk, MBR/GPT, removable media, filesystem, SAN/cluster policy,
 VHD version, Windows build, and installed storage stack.
+Dynamic disks and the VDS model remain available for compatibility but are
+deprecated for most new use; Storage Spaces is a distinct management model.
+
+## Runtime evidence
+
+The installed signed System32 binary was confirmed as version
+`10.0.26100.8875`,
+but DiskPart was deliberately not launched because it is an elevated
+focus-dependent storage interpreter. Current family/script sources and
+direct-file ManT entries were verified; no interpreter, script, disk,
+partition, volume, VHD, dynamic-disk, SAN, automount, clean, or format
+operation ran. Disposable-disk runtime verification remains pending.
 
 ## Related documents
-
 - [mountvol.exe](mountvol.exe.md)
 - [bcdboot.exe](bcdboot.exe.md)
 - [manage-bde.exe](manage-bde.exe.md)
@@ -210,6 +232,8 @@ VHD version, Windows build, and installed storage stack.
 This original guide was adapted from Microsoft's official
 [DiskPart family reference](https://learn.microsoft.com/windows-server/administration/windows-commands/diskpart)
 and [script guidance](https://learn.microsoft.com/windows-server/administration/windows-commands/diskpart-scripts-and-examples).
+Microsoft's current [basic/dynamic disk guidance](https://learn.microsoft.com/windows-server/storage/disk-management/change-disk-type-dynamic-basic)
+supplies the deprecation and Storage Spaces boundary.
 The recurring question whether `clean` destroys existing data was cross-
 checked against
 [practitioner discussion](https://superuser.com/questions/1164515/will-diskpart-clean-destroy-existing-data)

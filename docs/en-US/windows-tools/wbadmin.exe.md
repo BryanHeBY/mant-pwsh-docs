@@ -4,6 +4,10 @@
 > Discover Windows Backup versions, contents, online disks, and active-job state before starting, stopping, deleting, or restoring anything.
 > More information: https://learn.microsoft.com/windows-server/administration/windows-commands/wbadmin.
 
+- Show the exact installed syntax for a family; WBAdmin uses `-?`, not `/?`:
+
+`wbadmin.exe delete backup -?`
+
 - Show the status of a currently running backup or recovery job:
 
 `wbadmin.exe get status`
@@ -52,10 +56,11 @@ the process exit code.
 | Full-system recovery | `start sysrecovery` | Runs only in Windows Recovery Environment and affects OS-state volumes. |
 | Job control | `stop job` | Interrupts an active backup/recovery and can leave an unusable partial result. |
 | Catalog | `restore catalog`, `delete catalog` | Catalog metadata is distinct from stored backup data; deletion impairs discovery. |
-| Retention | `delete systemstatebackup` | Deletes eligible system-state versions, not arbitrary backup kinds. |
+| Retention | `delete backup`, `delete systemstatebackup` | Installed builds can expose a general backup deletion family separately from system-state-only retention; selectors and eligible backup types differ. |
 
-These complete families are semantic command entries. Run `wbadmin.exe help
-family` on the target because installed features and editions change support.
+These complete families are semantic command entries. Run
+`wbadmin.exe family -?` on the target because installed features and editions
+change support. Do not copy the more common `/?` convention to WBAdmin.
 
 <!-- mant:entries role=command case=insensitive -->
 - `wbadmin.exe`: Inspect or administer Windows Backup on supported installations.
@@ -73,12 +78,14 @@ family` on the target because installed features and editions change support.
 - `stop job`: Interrupt the currently running backup or recovery operation.
 - `restore catalog`: Restore the local backup catalog from available backup media.
 - `delete catalog`: Delete a corrupted local catalog only under the documented conditions.
+- `delete backup`: Delete selected eligible backup versions on builds that expose this installed command; exactly one retention/version selector is required.
 - `delete systemstatebackup`: Delete eligible system-state backup versions.
 
 The same option name can have narrower semantics under different command
 families; inspect that family's help before constructing an invocation.
 
 <!-- mant:entries role=option case=insensitive -->
+- `-?`: Request WBAdmin or exact-family help; do not substitute the common Windows `/?` spelling.
 - `-backupTarget`: Select the exact backup source or destination volume/UNC path.
 - `-machine`: Select the source computer represented at a shared or alternate target.
 - `-version`: Select the exact `MM/DD/YYYY-HH:MM` identifier returned by inventory.
@@ -117,8 +124,8 @@ families; inspect that family's help before constructing an invocation.
 - `-removetarget`: Remove a disk target from scheduled backup policy.
 - `-schedule`: Set one or more daily scheduled backup times in `HH:MM` form.
 - `-allowDeleteOldBackups`: Permit removal of backups made before an OS upgrade.
-- `-deleteOldest`: Delete the oldest eligible system-state backup.
-- `-keepVersions`: Retain the newest requested number of system-state versions.
+- `-deleteOldest`: Delete the oldest eligible backup for the selected deletion family.
+- `-keepVersions`: Retain the newest requested number of eligible versions; installed `delete backup` help states that zero deletes all eligible backups.
 
 ## Safe discovery sequence
 
@@ -212,6 +219,16 @@ can be restored. Deleting it can make valid media hard to discover without
 securely erasing that media. Preserve evidence and try the documented catalog
 restore path first.
 
+### Treating `delete backup` as a harmless alias
+
+The recorded Windows client exposes `delete backup` separately from
+`delete systemstatebackup` and catalog deletion. Its installed syntax requires
+exactly one of `-keepVersions`, `-version`, or `-deleteOldest`; notably,
+`-keepVersions:0` means delete all eligible backups, not keep none while
+previewing. Inventory version, type, target, and machine first, retain a tested
+independent recovery point, and never add `-quiet` until selectors and
+post-deletion verification have been reviewed.
+
 ### Stopping a job because progress looks idle
 
 VSS quiescing, verification, large files, slow media, and recovery can spend
@@ -226,6 +243,12 @@ when its value contains spaces, braces, or UNC syntax. Avoid PowerShell's
 formatted-object output as input. Capture raw native output, streams, and
 `$LASTEXITCODE` immediately, then verify catalog, media, event-log, and restore
 state separately. Output is localized human text, not a stable data API.
+Help syntax and status are also easy to misread. On the recorded build,
+top-level `-?` and `delete backup -?` returned 0 with help, whereas top-level
+`/?`, `help delete backup`, and `delete backup /?` returned `-1`. The last form
+prefixed valid syntax with a parser-error message. Use WBAdmin's `-?` form and
+retain output plus status; neither `-1` nor the word `ERROR` alone proves that
+the command family is absent.
 
 ## Version and platform differences
 
@@ -233,11 +256,24 @@ WBAdmin is Windows-only. Current Microsoft pages list supported Windows client
 and server releases, but commands, Windows Server Backup features/cmdlets,
 system-state support, applications, schedule behavior, and permissions vary by
 edition, role/feature installation, recovery environment, target type, and
-build. `start sysrecovery` is limited to WinRE. Confirm `wbadmin.exe /?` and
-subcommand help on the target.
+build. `start sysrecovery` is limited to WinRE. On the recorded Windows NT
+`10.0.26200.0` client, the installed top-level help listed only eight families
+and included `delete backup`, which Microsoft's current WBAdmin family index
+does not list. Conversely, several server/system-state/WinRE families in the
+official index were absent from that top-level client list. Installed
+`wbadmin.exe` file version was `10.0.26100.8737`. Confirm top-level and exact
+subcommand help on the target, and treat the online family index as a contract
+source rather than an exhaustive installed-build inventory.
+
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, installed file version 10.0.26100.8737 top-level
+help listed eight families including the online-index-omitted DELETE BACKUP.
+DELETE BACKUP -? returned 0 with help; the commonly copied /? form returned -1
+as a syntax error but still exposed the same selectors and keepVersions:0 risk.
+No backup, deletion, catalog, schedule, job, or recovery operation ran.
 
 ## Related documents
-
 - [vssadmin.exe](vssadmin.exe.md)
 - [diskshadow.exe](diskshadow.exe.md)
 - [manage-bde.exe](manage-bde.exe.md)

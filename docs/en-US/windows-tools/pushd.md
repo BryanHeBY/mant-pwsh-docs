@@ -81,6 +81,14 @@ credentials in command strings; use approved identity and share mechanisms.
 Local stack behavior is Windows cmd syntax. UNC mapping and automatic cleanup
 require command extensions, enabled by default.
 
+## Runtime evidence
+
+The protected fixture created one task-owned local directory with a space in
+its name, then confirmed under both PowerShell collectors that `pushd` followed
+by `popd` in the same child restores the original current directory. It did not
+use a UNC path, allocate a temporary drive letter, authenticate, or test an
+unbalanced stack or early exit.
+
 ## Related documents
 
 - [popd](popd.md)

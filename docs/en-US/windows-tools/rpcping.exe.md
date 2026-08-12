@@ -120,6 +120,20 @@ variables that transcripts/loggers capture, and preserve verbose native output.
 Windows-only. Available auth packages, RPC/HTTP proxy behavior, dynamic-port
 policy, endpoint registration and hardening differ by build/domain/service.
 Local help and the target application's current interface contract govern.
+On exact System32 file version `10.0.26100.8457`, local `/?` returned 0 with
+165 nonempty help lines and no PowerShell error-stream objects. No server,
+endpoint, interface UUID, protocol sequence, proxy, credential, certificate,
+iteration, network connection, or RPC call was supplied.
+
+## Runtime evidence
+
+The protected local-help fixture resolved exact System32 `rpcping.exe` and
+captured `/?` under both installed PowerShell editions. Each returned status
+`0`, 164 nonempty redirected stdout lines, and no stderr. An older direct
+collector counted 165 lines; line count is harness metadata, while the help
+payload and option structure are the interface evidence. No server, interface,
+endpoint, proxy, credential, certificate, protocol sequence, or network probe
+was supplied.
 
 ## Related documents
 

@@ -12,6 +12,10 @@
 
 `tpmtool.exe /?`
 
+- Compare SHA-256 PCR bank values in the TCG log with hardware values on builds that expose the command:
+
+`tpmtool.exe comparepcr sha256`
+
 - Collect TPM event, information, and measured-boot logs into a new access-controlled case directory:
 
 `tpmtool.exe gatherlogs "{{C:\Support\Case-123\TPM}}"`
@@ -31,9 +35,12 @@
 ## Overview
 
 `tpmtool.exe` reports basic Trusted Platform Module information, gathers TPM
-and measured-boot logs, and starts/stops TPM driver tracing. Its documented
-surface is diagnostic: it does not clear, initialize, provision, take ownership
-of, or change firmware settings for the TPM.
+and measured-boot logs, and starts/stops TPM driver tracing. The recorded build
+also exposes PCR comparison/printing and an `optionalcommands add/remove`
+operation that changes availability of extra TPM diagnostics. The tool does
+not expose TPM clear, initialize, provision, ownership, or firmware-setting
+operations, but tracing, collection, and optional-command registration are not
+pure queries.
 
 TPM state is part of BitLocker, Windows Hello, measured boot, attestation, and
 other security workflows, but one status flag is not a diagnosis of all of
@@ -48,8 +55,16 @@ workload together with the output.
 - `getdeviceinformation`: Display TPM readiness and device information.
 - `gatherlogs`: Collect TPM logs into an explicit protected output directory.
 - `drivertracing`: Start or stop TPM driver tracing according to the supplied mode.
+- `optionalcommands`: Add or remove the TpmDiagnostics optional-command surface on builds that expose it; this changes local diagnostic tooling state.
+- `comparepcr`: Compare one selected PCR bank's TCG event-log values with current hardware PCR values where supported.
+- `printpcr`: Print one selected PCR bank's TCG-log and hardware values where supported.
 
 The tool exposes diagnostics, not clear/initialize ownership operations.
+
+### Installed help
+
+<!-- mant:entries role=option case=insensitive -->
+- `/?`: Display complete installed syntax without collecting logs or changing TPM state.
 
 `getdeviceinformation` displays readiness fields whose bit meanings are defined
 by the `Win32_Tpm::IsReadyInformation` contract. Preserve the raw output; do
@@ -79,6 +94,21 @@ other recovery material and follow the owning product's supported procedure.
 Decode flags using the exact Microsoft contract and applicable build. Correlate
 event logs, firmware/BIOS state, TPM specification/version, driver, attestation,
 BitLocker/Hello state, virtualization, and a fresh reproduction.
+
+### Treating a PCR comparison as a universal attestation verdict
+
+`comparepcr` and `printpcr` operate on one requested hash algorithm and the
+available TCG log/hardware banks. A match or mismatch needs the exact boot,
+firmware, event-log completeness, bank availability, virtualization, and
+attestation-policy context; it does not independently certify device trust or
+identify a remediation.
+
+### Using `optionalcommands add/remove` as discovery
+
+Those installed verbs alter availability of TpmDiagnostics optional commands.
+Use `/?` to discover syntax. Change optional-command registration only in an
+approved context with before/after inventory and rollback; never omit an
+operand expecting harmless help.
 
 ### Gathering into the current or public directory
 
@@ -117,12 +147,22 @@ fixed by the utility.
 ## Version and platform differences
 
 This Windows-only utility applies to supported Windows client and server
-releases where it is present. Output, fields, elevation, virtual TPM behavior,
+releases where it is present. On Windows NT `10.0.26200.0`, installed file
+version `10.0.26100.8737` returned 24 nonempty help lines and status 0 for
+ordinary-token `/?`. Installed `optionalcommands`, `comparepcr`, and `printpcr`
+are absent from Microsoft's current online TPMTool reference, so automation
+must gate them on target help. Output, fields, elevation, virtual TPM behavior,
 measured-boot files, and trace support depend on Windows, firmware, hardware,
 boot mode, virtualization, and policy.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT 10.0.26200.0, installed file version 10.0.26100.8737
+ordinary-token /? returned 24 nonempty lines and status 0. No log collection,
+PCR read, optional-command change, driver trace, TPM clear/provision/ownership,
+firmware, BitLocker, Windows Hello or reboot mutation ran.
+
+## Related documents
 - [manage-bde.exe](manage-bde.exe.md)
 - [eventvwr.msc](eventvwr.msc.md)
 - [wevtutil.exe](wevtutil.exe.md)

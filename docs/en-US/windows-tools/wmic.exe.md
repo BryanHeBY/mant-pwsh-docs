@@ -120,8 +120,16 @@ WMIC as a Feature on Demand on Windows 11 22H2 and later and not preinstalled
 starting with Windows 11 24H2. Exact capability state, providers, classes and
 remote behavior vary by image, edition, build, architecture and installed roles.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, both PowerShell collectors resolved the real
+`C:\Windows\System32\Wbem\WMIC.exe`, fixed file version
+`10.0.26100.5074`, with a valid signature; it was not a WindowsApps execution
+alias. The executable was deliberately not invoked and FoD servicing state was
+not inferred from file identity. Use typed CIM for new automation; do not
+install WMIC or invoke mutating aliases/methods merely for evidence.
+
+## Related documents
 - [dism.exe](dism.exe.md)
 - [optionalfeatures.exe](optionalfeatures.exe.md)
 - [systeminfo.exe](systeminfo.exe.md)

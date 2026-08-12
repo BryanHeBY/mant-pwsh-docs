@@ -42,7 +42,22 @@ candidate packages, not as the final confirmation for an automated install.
 - `-e`, `--exact`: Require an exact match for the selected field/query.
 - `-n COUNT`, `--count COUNT`: Limit displayed results; it does not prove additional matches do not exist.
 - `--versions`: Include available versions where the installed client supports it.
+- `--header HEADER`: Send a reviewed HTTP header to a REST package source; do not expose credentials in process arguments or logs.
+- `--authentication-mode MODE`: Choose `silent`, `silentPreferred`, or `interactive` source authentication behavior.
+- `--authentication-account ACCOUNT`: Select the account used for source authentication.
 - `--accept-source-agreements`: Accept reviewed source agreements for unattended access.
+
+## Execution and diagnostics options
+
+<!-- mant:entries role=option case=insensitive -->
+- `-?`, `--help`: Display help for this subcommand without querying a source.
+- `--wait`: Wait for a key press before the client exits; avoid it in unattended automation.
+- `--logs`, `--open-logs`: Open the WinGet log directory in the interactive desktop.
+- `--verbose`, `--verbose-logs`: Enable verbose WinGet logging for this invocation.
+- `--nowarn`, `--ignore-warnings`: Suppress warning display; it does not resolve the underlying condition.
+- `--disable-interactivity`: Disable interactive prompts so unattended discovery does not wait for input.
+- `--proxy URL`: Use the specified proxy for this invocation; protect credentials embedded in a proxy URL.
+- `--no-proxy`: Disable proxy use for this invocation.
 
 ## Exact identity
 
@@ -91,6 +106,14 @@ Search is discovery only. Resolve one exact ID/source and inspect it with
 
 Source failure, stale metadata, policy, authentication, or client version can
 also produce incomplete discovery. Check source and exit state.
+
+## Runtime evidence
+
+A dual-collector local help audit against WinGet `1.29.280` matched all 26
+printed `search --help` long options to ManT entries. It invoked no search,
+source refresh, agreement, authentication, package lookup, or network query;
+therefore result completeness, source behavior, matching, and package identity
+remain outside this option-surface evidence.
 
 ## Related documents
 

@@ -76,8 +76,20 @@ This is Windows role-specific legacy tooling. WINS/DHCP versions, failover,
 database engine, service accounts, storage paths, backup APIs, and supported
 repair procedures differ. Do not use it for unrelated ESE databases.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`jetpack.exe` Application candidate under either PowerShell collector. No
+feature, role, or compatibility component was installed merely to change
+that result, and no same-named PATH substitute was used. This is target-host
+command-resolution evidence, not proof that the tool is unsupported on every
+applicable Windows environment.
+
+Behavior verification remains help/service/file/hash/free-path inventory
+only; no database, temporary file, service, role, failover, backup or restore
+mutation is permitted merely for evidence.
+
+## Related documents
 - [sc.exe](sc.exe.md)
 - [freedisk.exe](freedisk.exe.md)
 

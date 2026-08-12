@@ -31,6 +31,13 @@ not normal PowerShell error records.
 
 ## Important options
 
+<!-- mant:entries role=command case=insensitive -->
+- `robocopy.exe`: Copy, mirror, move, compare, list, monitor, throttle, or log
+  one explicitly identified source/destination tree under Robocopy's graded
+  exit-code contract.
+
+The following high-impact switches are addressable for precise Agent lookup.
+
 <!-- mant:entries role=option case=insensitive -->
 - `/L`: List the proposed operation without copying, deleting, or changing file attributes.
 - `/E`: Copy subdirectories including empty ones.
@@ -57,6 +64,25 @@ not normal PowerShell error records.
 - `/LOG:FILE`, `/UNILOG:FILE`: Write a normal or Unicode log to an explicit protected path.
 - `/TEE`: Write status to both the console and the selected log.
 - `/NJH`, `/NJS`, `/NP`: Suppress job header, job summary, or progress percentages; keep enough evidence for diagnosis.
+- `/EFSRAW`: Copy encrypted files in EFS raw mode; incompatible with `/MT` and
+  low-free-space mode and not a substitute for recovery-key planning.
+- `/NOCOPY`, `/NODCOPY`: Copy no file or directory metadata; these are useful
+  with narrow operations such as purge but can produce unexpected metadata.
+- `/CREATE`: Create only the directory tree and zero-length files; it still
+  mutates the destination and is not a dry run.
+- `/NOOFFLOAD`: Disable Windows Copy Offload for the transfer.
+- `/COMPRESS`: Request SMB/network compression when the path and peer support it.
+- `/SPARSE`: Enable or disable preserving sparse file state during copy.
+- `/NOCLONE`: Disable block-cloning optimization; this can change space,
+  performance, and copy-on-write behavior.
+- `/IOMAXSIZE`, `/IORATE`, `/THRESHOLD`: Select copy-file throttling I/O size,
+  rate, and minimum file-size threshold; the system/tool can adjust requested
+  values to supported limits.
+- `/LFSM`: Pause/resume in low-free-space mode at an explicit floor; without a
+  value the current reference uses 10% of destination size, and the mode is
+  incompatible with `/MT` and `/EFSRAW`.
+- `/?`: Display installed help. Complete help can return 16, which is a help
+  status and must not be interpreted through completed-copy exit semantics.
 
 ## Start with a bounded preview
 
@@ -124,9 +150,22 @@ Do not use `$?` alone for Robocopy success criteria.
 Robocopy is Windows-only. Options and metadata behavior vary by Windows build,
 source/destination filesystem, SMB/server capabilities, privileges, reparse
 points, and installed tool version. Query `robocopy /?` on the target.
+On exact System32 file version `10.0.26100.1`, `/?` printed 163 nonempty stdout
+lines, produced no PowerShell error records, and returned 16. No source,
+destination, filter, path, log, job, filesystem traversal, copy, deletion,
+metadata, network, or registry operation was supplied.
+
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 file version 10.0.26100.1 /? printed
+163 nonempty stdout lines, no PowerShell error records, and returned 16.
+Current installed/official high-impact entries added EFS raw,
+no-metadata/create, offload/compression/sparse/block-clone, I/O throttling,
+low-free-space mode, executable and help selectors. No source, destination,
+filter, log, job, traversal, copy, deletion, metadata, network, or registry
+operation ran.
 
 ## Related documents
-
 - [where.exe](where.exe.md)
 - [schtasks.exe](schtasks.exe.md)
 - [Windows tools for PowerShell](windows-tools.md)

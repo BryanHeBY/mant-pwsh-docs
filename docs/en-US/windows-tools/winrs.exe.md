@@ -6,7 +6,7 @@
 
 - Identify the exact WS-Management endpoint before starting a remote shell:
 
-`winrm.exe identify -r:"{{server}}"`
+`winrm.cmd identify -r:"{{server}}"`
 
 - Show the remote computer name using the caller's negotiated identity:
 
@@ -167,10 +167,23 @@ when the intended endpoint/transport supports it.
 protection, profile rules, compression, shell quotas, encoding, remote program
 architecture, and exit/cancellation behavior vary by Windows/WMF build, endpoint
 configuration, domain/workgroup, policy, and caller/target program.
+On exact System32 file version `10.0.26100.8457`, `/?` returned 0 with 38
+nonempty stdout lines and no PowerShell error records. No endpoint, command,
+directory, environment variable, profile, credential, certificate, transport,
+input, or remote operation was supplied.
+
+## Runtime evidence
+
+The protected local-help fixture resolved exact System32 `winrs.exe` and
+captured `/?` under Windows PowerShell `5.1.26100.8875` and PowerShell `7.6.4`.
+Both returned status `0`, 38 nonempty stdout lines, and no stderr. No endpoint,
+remote command, host, credential, certificate, transport, input, profile, or
+environment was supplied, so connection, authentication, delegation, parsing,
+cancellation, and remote exit behavior remain unverified.
 
 ## Related documents
 
-- [winrm.exe](winrm.exe.md)
+- [winrm.cmd](winrm.cmd.md)
 - [cmd.exe](cmd.exe.md)
 - [whoami.exe](whoami.exe.md)
 

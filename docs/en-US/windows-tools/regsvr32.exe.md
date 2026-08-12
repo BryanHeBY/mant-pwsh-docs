@@ -4,9 +4,10 @@
 > Register or unregister only a trusted, vendor-documented self-registering COM server after verifying file identity, signature, architecture, registry scope, elevation and rollback; loading the DLL executes its registration code.
 > More information: https://learn.microsoft.com/windows-server/administration/windows-commands/regsvr32.
 
-- Open the installed help without loading a target DLL:
+- Inspect the exact RegSvr32 executable/version without opening its UI or
+  supplying component code:
 
-`regsvr32.exe /?`
+`Get-Item -LiteralPath "$env:SystemRoot\System32\regsvr32.exe" | Select-Object FullName, Length, @{n='FileVersionFixed';e={$_.VersionInfo.FileVersionRaw.ToString()}}, @{n='FileVersionString';e={$_.VersionInfo.FileVersion}}`
 
 - Inspect a proposed local DLL's hash, signature and version before any registration:
 
@@ -83,8 +84,24 @@ health separately. Do not rely on PowerShell object formatting as an argument.
 elevation, per-user/per-machine behavior and component exports vary by target.
 The component vendor's installation contract is as important as Windows syntax.
 
-## Related documents
+On Windows NT `10.0.26200.0`, exact System32 file version `10.0.26100.1` was
+confirmed from file metadata. A console-capture attempt produced no reliable
+text payload and left no residual RegSvr32 process, so no help-output or status
+claim is retained. Its help/error UI can be a dialog, and ordinary operation
+requires a component path that loads code. Runtime verification therefore
+remains an approved disposable component/UI fixture; no DLL or OCX was supplied,
+loaded, installed, registered, unregistered, or executed merely for evidence.
 
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 file version 10.0.26100.1 was
+confirmed from file metadata. A console-capture attempt produced no reliable
+text payload and left no residual process; no help/status claim is retained.
+Operation requires a component path that loads code, so an approved disposable
+component/UI fixture remains required; no DLL/OCX load, register, unregister or
+install action ran.
+
+## Related documents
 - [reg.exe](reg.exe.md)
 - [where.exe](where.exe.md)
 - [rundll32.exe](rundll32.exe.md)

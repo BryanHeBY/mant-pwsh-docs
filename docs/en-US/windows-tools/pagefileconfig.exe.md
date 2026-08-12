@@ -81,8 +81,16 @@ PageFileConfig is deprecated and may be absent. CIM class availability starts
 with older Windows versions, but automatic-management, crash-dump, storage,
 policy, virtualization, and product-support behavior varies by release.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`pagefileconfig.exe` Application candidate under either PowerShell collector.
+No legacy tool or substitute was installed or invoked. Typed CIM queries are
+the supported read-only migration path, but their host values are not retained
+as portable evidence. No page-file, automatic-management, registry, dump,
+storage, workload, or reboot mutation is required for verification.
+
+## Related documents
 - [wmic.exe](wmic.exe.md)
 - [systempropertiesadvanced.exe](systempropertiesadvanced.exe.md)
 

@@ -50,10 +50,11 @@ component.
 ## PowerShell boundaries
 
 PowerShell commonly resolves `md`/`mkdir` to its own convenience commands,
-not Cmd. Prefer `New-Item -ItemType Directory -LiteralPath` (or a deliberately
-chosen `-Path`) and inspect the returned item. Invoke `cmd.exe /d /c md ...`
-only for the builtin contract; check its exit code and verify the resolved
-absolute path and resulting item type.
+not Cmd. `New-Item` exposes `-Path`, not `-LiteralPath`, in both Windows
+PowerShell 5.1 and PowerShell 7. Validate the intended parent and exact target,
+then use `New-Item -ItemType Directory -Path $path` and inspect the returned
+item. Invoke `cmd.exe /d /c md ...` only for the builtin contract; check its
+exit code and verify the resolved absolute path and resulting item type.
 
 ## Common mistakes
 
@@ -86,6 +87,15 @@ valid tree in the wrong location.
 The cmd builtin is Windows-only. PowerShell's `New-Item` is cross-platform and
 provider-aware, but the commands named `md` and `mkdir` vary by platform and
 session. Inspect resolution and provider semantics on the target edition.
+
+## Runtime evidence
+
+The protected fixture asked child Cmd to create a two-level directory below a
+verified GUID-named temporary root. Both PowerShell collectors confirmed that
+command extensions created the intermediate directory; the entire task root
+was then removed. Existing paths, access failures, junction traversal,
+caller-owned directories, and extensions-disabled behavior remain outside the
+fixture.
 
 ## Related documents
 

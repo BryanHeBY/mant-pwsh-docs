@@ -89,8 +89,15 @@ The broad Learn header includes client Windows, but that does not make the
 server setting applicable. Profile containers and newer application packaging
 may add further path semantics.
 
-## Related documents
+## Runtime evidence
 
+Exact System32 discovery on the recorded Windows NT 10.0.26200.0 Home China
+client found flattemp.exe absent; no PATH substitute or query/mutation ran.
+Representative Session Host query/effective-path verification remains pending;
+no flattening, environment, policy, directory, ACL, cleanup, or session
+mutation is permitted merely for evidence.
+
+## Related documents
 - [change.exe](change.exe.md)
 - [query.exe](query.exe.md)
 - [gpresult.exe](gpresult.exe.md)

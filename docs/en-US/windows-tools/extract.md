@@ -98,8 +98,20 @@ behave differently. Cabinet chaining and compression support depend on the
 actual utility/version. Verify local help and test a known fixture before a
 recovery or deployment workflow.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT 10.0.26200.0, exact `extract.exe` discovery found no built-in
+application, while signed System32 `extrac32.exe` was present at 61,440 bytes
+with fixed version `5.0.1.1`, display version
+`5.00 (WinBuild.160101.0800)`, and a valid signature. Exact
+`extrac32.exe /?` piped through System32 `more` returned 19 nonempty lines and
+status `0` under both PowerShell collectors; the localized help payload was not
+retained. No cabinet or destination operand was supplied. `/D` fixture listing
+and extraction remain untested; those require an approved inert cabinet and,
+for extraction, a disposable empty directory plus independent manifest/hash
+checks. Never run untrusted SFX content merely for evidence.
+
+## Related documents
 - [expand.exe](expand.exe.md)
 - [makecab.exe](makecab.exe.md)
 - [dism.exe](dism.exe.md)

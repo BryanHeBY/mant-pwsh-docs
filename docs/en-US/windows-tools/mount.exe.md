@@ -10,7 +10,7 @@
 
 - Verify that Client for NFS and the exact native command are already installed:
 
-`Get-Command mount.exe -ErrorAction SilentlyContinue | Select-Object Source,@{Name='FileVersion';Expression={$_.FileVersionInfo.FileVersion}}`
+`Get-Command mount.exe -ErrorAction SilentlyContinue | Select-Object Source,@{Name='FileVersionFixed';Expression={$_.FileVersionInfo.FileVersionRaw.ToString()}},@{Name='FileVersionString';Expression={$_.FileVersionInfo.FileVersion}}`
 
 - Discover exports from one approved server before choosing a path:
 
@@ -104,9 +104,19 @@ and alias/function precedence should be ruled out with `Get-Command -All`.
 Windows-only and Client-for-NFS dependent. NFS/security/version support varies
 by Windows edition/build and server implementation. The command's file mode,
 language and NFSv3-era options are not equivalent to modern Unix clients.
+Exact System32 discovery on the recorded Windows NT `10.0.26200.0` Home China
+client found neither `mount.exe` nor companion `umount.exe`; do not substitute
+a PATH match or install NFS components merely for documentation evidence.
+
+## Runtime evidence
+
+Exact System32 discovery on the recorded Windows NT 10.0.26200.0 Home China
+client found mount.exe and its companion umount.exe absent; no PATH substitute,
+inventory, mapping, export, credential, mount, lock, ACL, service, feature, or
+firewall action ran. No-argument inventory remains pending where NFS is
+installed.
 
 ## Related documents
-
 - [showmount.exe](showmount.exe.md)
 - [nfsadmin.exe](nfsadmin.exe.md)
 - [nfsstat.exe](nfsstat.exe.md)

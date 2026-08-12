@@ -2,6 +2,7 @@
 # bcdedit.exe
 
 > Inspect and back up Windows Boot Configuration Data before making narrowly scoped boot changes.
+> Viewing the system BCD store also requires an elevated administrative shell.
 > More information: https://learn.microsoft.com/windows-server/administration/windows-commands/bcdedit.
 
 - List active entries with full identifiers from the current system store:
@@ -39,7 +40,8 @@ The default target is the running system's system store. `/store path` selects
 an explicit offline store for most operations. `/enum active` shows active
 entries, `/enum all` broadens scope, and `/v` prints full GUIDs instead of
 friendly well-known identifiers. Administrative privileges are required for
-modification, and an incorrect change can make Windows unbootable.
+viewing the system store as well as modification, and an incorrect change can
+make Windows unbootable.
 
 ## Identifier and store model
 
@@ -172,6 +174,13 @@ output. Do not parse column spacing or translated labels as an API. In a
 System32-only executable; prefer a 64-bit administrative shell or the supported
 `Sysnative` route from a 32-bit process.
 
+Do not diagnose a failed well-known identifier from its first error line alone.
+On the recorded non-elevated host, `/enum active` reported that the store could
+not be opened, while `/enum '{current}'` reported `entry type is invalid`; both
+returned exit code 1 because the system-store query lacked the required access.
+Record elevation, the complete native diagnostics, target store, arguments,
+and `$LASTEXITCODE` before deciding that an identifier is malformed.
+
 ## Version and platform differences
 
 This Windows-only command applies to supported Windows client and server
@@ -180,8 +189,23 @@ BIOS), architecture, Windows version, Secure Boot, virtualization, debugger
 support, and policy. Use the help installed on the target host and current
 Microsoft option reference.
 
-## Related documents
+On Windows NT `10.0.26200.0`, exact System32 file version `10.0.26100.1`
+printed 72 nonempty standard-output help lines for `/?`, no standard-error
+lines, and returned 0 without requiring BCD-store access. This does not override
+the separately observed ordinary-token `/enum` access failures. No store,
+object, element, firmware entry, debugger, hypervisor, boot sequence, timeout,
+or boot configuration was read or changed by the help probe.
 
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 file version 10.0.26100.1 explicit
+/? returned 72 nonempty stdout lines, no stderr and status 0 without store
+access. Under the recorded ordinary token, /enum active and valid /enum
+'{current}' both returned 1 with different access/context diagnostics; no BCD
+state changed. Successful elevated and offline-store verification remains
+pending.
+
+## Related documents
 - [bcdboot.exe](bcdboot.exe.md)
 - [cipher.exe](cipher.exe.md)
 - [dism.exe](dism.exe.md)

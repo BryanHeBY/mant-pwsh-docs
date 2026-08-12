@@ -113,8 +113,20 @@ producer's success or completeness; preserve both results separately.
 PowerShell command resolution, native-pipeline encoding, console code page,
 terminal behavior, screen size, and available prompt keys vary by environment.
 
-## Related documents
+On Windows NT `10.0.26200.0`, exact System32 file version `10.0.26100.1`
+printed 28 nonempty help lines for `/?`, returned 0, and produced no Windows
+PowerShell 5.1 `ErrorRecord` objects. No file or pipeline input was supplied,
+so no interactive pager, prompt, content transformation, or sensitive output
+inspection occurred.
 
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 file version 10.0.26100.1 explicit
+/? returned 28 nonempty help lines, status 0 and no Windows PowerShell 5.1
+ErrorRecord objects. No input was supplied and no interactive pager opened
+against real, unbounded, binary or sensitive output.
+
+## Related documents
 - [chcp.com](chcp.com.md)
 - [type](type.md)
 - [windows-tools](windows-tools.md)

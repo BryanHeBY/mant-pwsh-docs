@@ -26,9 +26,9 @@
 ## Overview
 
 `pathping.exe` first discovers an ICMP-visible route and then sends repeated
-probes to estimate latency and loss for hops and links. `/n` skips reverse
-lookups, `/q` controls queries per hop, `/p` controls milliseconds between
-probes, and `/4` or `/6` fixes the address family. Its sampling phase is
+probes to estimate latency and loss for hops and links. `-n`/`/n` skips reverse
+lookups, `-q`/`/q` controls queries per hop, `-p`/`/p` controls milliseconds
+between probes, and `-4`/`/4` or `-6`/`/6` fixes the address family. Its sampling phase is
 intentionally slower than `tracert`.
 
 ## Syntax and parameters
@@ -40,18 +40,21 @@ intentionally slower than `tracert`.
 The final destination is required. Sampling duration grows with the hop count,
 query count, per-hop period, and response timeout.
 
+Installed help uses `-`, while Microsoft's locked page uses `/`; the recorded
+build accepts both prefix forms.
+
 <!-- mant:entries role=option case=insensitive -->
-- `/n`: Keep hop addresses numeric and skip reverse-DNS name resolution.
-- `/h`: Set the maximum number of hops to search for the destination.
-- `/g`: Use the following loose source route host list where the network still
+- `-n`, `/n`: Keep hop addresses numeric and skip reverse-DNS name resolution.
+- `-h`, `/h`: Set the maximum number of hops to search for the destination.
+- `-g`, `/g`: Use the following loose source route host list where the network still
   permits this legacy IPv4 diagnostic option.
-- `/p`: Set the wait in milliseconds between successive probes sent to a hop.
-- `/q`: Set the number of echo requests sent to each hop during sampling.
-- `/w`: Set the timeout in milliseconds for each reply.
-- `/i`: Use the following source IPv4 address.
-- `/4`: Force IPv4 name resolution and probes.
-- `/6`: Force IPv6 name resolution and probes.
-- `/?`: Display installed command help.
+- `-p`, `/p`: Set the wait in milliseconds between successive probes sent to a hop.
+- `-q`, `/q`: Set the number of echo requests sent to each hop during sampling.
+- `-w`, `/w`: Set the timeout in milliseconds for each reply.
+- `-i`, `/i`: Use the following source IPv4 address.
+- `-4`, `/4`: Force IPv4 name resolution and probes.
+- `-6`, `/6`: Force IPv6 name resolution and probes.
+- `-?`, `/?`: Display installed command help.
 
 ## PowerShell boundaries
 
@@ -88,10 +91,19 @@ suspected endpoint problem with the actual port and application protocol.
 ## Version and platform differences
 
 This executable is Windows-only. Firewalls, routing policy, and ICMP response
-policy determine which hops and measurements are visible.
+policy determine which hops and measurements are visible. On Windows NT
+`10.0.26200.0`, installed file version `10.0.26100.1` printed 13 nonempty
+help lines and returned 1 for both `/?` and `-?`. One-query, one-hop, bounded
+loopback samples verified both prefix forms and changed no network state.
+
+## Runtime evidence
+
+Installed file version 10.0.26100.1 /? and -? each printed 13 nonempty lines
+and returned 1. Locked help uses slash prefixes, installed help uses dashes,
+and one-query one-hop bounded loopback samples proved both forms without
+changing network state.
 
 ## Related documents
-
 - [tracert.exe](tracert.exe.md)
 - [ping.exe](ping.exe.md)
 - [nslookup.exe](nslookup.exe.md)

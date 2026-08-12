@@ -54,7 +54,8 @@ disconnect selectors can terminate many clients and lose unflushed work.
 - `/fo`: Format query output as `TABLE`, `LIST`, or `CSV`.
 - `/nh`: Suppress headers in `TABLE` or `CSV` query output.
 - `/v`: Include verbose query details.
-- `/?`: Display installed command help.
+- `-?`, `/?`: Display installed top-level command help. Mode-specific help is
+  `openfiles.exe /query /?`, `/local /?`, or `/disconnect /?`.
 
 ## PowerShell boundaries
 
@@ -63,6 +64,12 @@ with retained headers for bounded inventory, check `$LASTEXITCODE`, and requery
 an exact ID immediately before any disconnect. Local tracking is persistent
 host configuration requiring restart—not PowerShell session state—and must not
 be enabled merely to satisfy one ad-hoc script.
+
+The recorded ordinary token could display top-level and all three mode help
+forms, each with exit 0, but `openfiles.exe /local` returned an administrator-
+privilege diagnostic and exit 1. Treat that as an access failure, not proof
+that local-handle tracking is off, and do not elevate merely to satisfy a
+generic evidence run.
 
 ## Common mistakes
 
@@ -92,9 +99,21 @@ inspection, history, and transcripts.
 
 This administrative executable is Windows-only. Results depend on elevation,
 sharing services, remote access, tracking configuration, and restart state.
+On Windows NT `10.0.26200.0`, installed file version `10.0.26100.1` printed
+14 nonempty top-level help lines; `/query /?`, `/local /?`, and
+`/disconnect /?` printed 25, 14, and 33 respectively, all with exit 0. No
+tracking flag, restart, connection, file, user, credential, or remote state
+was changed.
+
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, installed file version 10.0.26100.1 top-level and
+query/local/disconnect mode help returned 0 with 14/25/14/33 nonempty lines.
+Ordinary-token /local status returned an administrator-privilege diagnostic and
+exit 1, which the page separates from a disabled-tracking result. No tracking
+flag, restart, connection, file, user, credential, or remote state changed.
 
 ## Related documents
-
 - [tasklist.exe](tasklist.exe.md)
 - [taskkill.exe](taskkill.exe.md)
 - [whoami.exe](whoami.exe.md)

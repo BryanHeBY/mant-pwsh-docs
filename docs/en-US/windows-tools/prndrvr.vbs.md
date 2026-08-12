@@ -95,8 +95,21 @@ support, Point and Print policy, signature enforcement, and permissions vary by
 release. The official page contains old environments and inconsistent examples;
 local script help and signed INF metadata govern the target.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`prndrvr.vbs` Application candidate under either PowerShell collector. No
+feature, role, or compatibility component was installed merely to change
+that result, and no same-named PATH substitute was used. This is target-host
+command-resolution evidence, not proof that the tool is unsupported on every
+applicable Windows environment.
+
+Behavior verification remains script discovery/help and
+local/exact-server driver listing only; no install, delete, delete-all,
+staging, package, credential or spooler mutation is permitted merely for
+evidence.
+
+## Related documents
 - [pnputil.exe](pnputil.exe.md)
 - [prnmngr.vbs](prnmngr.vbs.md)
 - [rundll32.exe](rundll32.exe.md)

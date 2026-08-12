@@ -126,10 +126,20 @@ The tool is Windows-only and depends on the Security Configuration Wizard and
 applicable server-role components. Availability and the SCW security database
 vary by Windows edition/build and installed roles. A Microsoft Learn applicability
 banner does not prove that the feature is installed on a particular desktop or
-server image; verify `Get-Command`, feature state, and local help.
+server image; verify exact System32 identity, feature state, and local help.
+Exact System32 discovery on the recorded Windows NT `10.0.26200.0` client
+found no `scwcmd.exe`; no help, policy/result read, analysis, rendering,
+configuration, rollback, registration, transformation, or remote operation ran.
+
+## Runtime evidence
+
+Exact System32 discovery on Windows NT 10.0.26200.0 found no scwcmd.exe. It
+remains documented as an optional Security Configuration Wizard/server-role
+tool; no help, policy/database/result read, analysis, rendering, configure,
+rollback, register, transform, OU/list fan-out, credential, event-log,
+production-policy, GPO, or remote operation ran.
 
 ## Related documents
-
 - [secedit.exe](secedit.exe.md)
 - [gpresult.exe](gpresult.exe.md)
 - [auditpol.exe](auditpol.exe.md)

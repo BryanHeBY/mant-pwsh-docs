@@ -106,10 +106,18 @@ This command is Windows-only. Microsoft documents `/sha1` for Windows Server
 newer. Client trusted-publisher policy gained SHA-2 support with the July 2026
 security update; SHA-1 remains only for backward compatibility and is planned
 for removal from that policy. Patch level and local `rdpsign.exe /?` therefore
-belong in deployment evidence.
+belong in deployment evidence. Exact System32 discovery on the recorded
+Windows NT `10.0.26200.0` client found no `rdpsign.exe`; no help, certificate
+inventory, RDP-file read, trial signing, or in-place signing ran.
+
+## Runtime evidence
+
+Exact System32 discovery on Windows NT 10.0.26200.0 found no rdpsign.exe. It
+remains documented as an optional component/edition tool; no help, certificate
+inventory, RDP-file read, trial signing, in-place signing, trust-policy change,
+connection, authentication, redirection, or server-certificate mutation ran.
 
 ## Related documents
-
 - [mstsc.exe](mstsc.exe.md)
 - [certutil.exe](certutil.exe.md)
 - [certreq.exe](certreq.exe.md)

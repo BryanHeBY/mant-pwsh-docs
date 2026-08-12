@@ -90,6 +90,19 @@ server releases. Microsoft documents its narrow switch surface but not an
 end-to-end durability guarantee. Runtime proof is required before relying on it
 for any legacy application's compatibility behavior.
 
+On Windows NT `10.0.26200.0`, bare `verify` in a clean `/d` child Cmd returned
+one line, status 0, and reported the inherited setting as off. The fixture did
+not supply `on` or `off`, a file, or a write operation. This proves only the
+query and session-default observation, not any storage-verification guarantee.
+
+## Runtime evidence
+
+The protected fixture ran bare `verify` only in a clean child under both
+PowerShell collectors. It returned one localized state line and status `0` and
+reported the inherited setting as off. No `on`/`off` operand, file write, or
+shared Cmd state was used; the result does not establish storage durability or
+content authenticity.
+
 ## Related documents
 
 - [fc.exe](fc.exe.md)

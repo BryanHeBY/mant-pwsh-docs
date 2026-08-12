@@ -60,7 +60,7 @@ state-changing operations unless every match was reviewed.
   omitting the class ID removes the current value.
 - `/showclassid6`: Display allowed IPv6 DHCP class IDs for a matching adapter.
 - `/setclassid6`: Set or remove the IPv6 DHCP class ID for a matching adapter.
-- `/?`: Display the syntax installed with this Windows release.
+- `-?`, `/?`: Display the syntax installed with this Windows release.
 
 ## PowerShell boundaries
 
@@ -101,7 +101,20 @@ the actual destination rather than selecting the first address.
 
 This executable is Windows-only. The NetTCPIP and DnsClient PowerShell
 modules used by the typed alternatives are also Windows-specific and may be
-restricted in minimal environments.
+restricted in minimal environments. On Windows NT `10.0.26200.0`, installed
+file version `10.0.26100.1` printed 44 nonempty help lines and returned 1 for
+both `/?` and `-?`; the indexed selector surface matched that help. No
+adapter, compartment, DHCP lease/class, DNS cache/registration, or network
+state was queried or changed by the help probes.
+
+## Runtime evidence
+
+The repeatable read-only Windows CLI fixture resolved exact System32
+`ipconfig.exe`, confirmed localized `/?` help returns nonzero exit code `1`,
+and ran only the no-argument local summary. The summary returned `0` and
+nonempty output under both PowerShell collectors; captured adapter data was not
+emitted into logs. It did not use `/all`, DHCP release/renew, DNS flush,
+registration, class changes, or compartment selection.
 
 ## Related documents
 

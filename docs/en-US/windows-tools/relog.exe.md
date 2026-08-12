@@ -81,9 +81,19 @@ gaps/status, and transformation parameters.
 `relog.exe` is Windows-only. Input/output formats, SQL support, counters,
 localization, timestamp precision, merging, and provider metadata vary by build
 and the producing systems/tools.
+On exact System32 file version `10.0.26100.1`, `/?` returned 0 with 32
+nonempty stdout lines and no PowerShell error records. No input log, counter,
+time bound, sampling interval, configuration, SQL destination, output path,
+append, overwrite, merge, or conversion operation was supplied.
+
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 ReLog file version 10.0.26100.1 /?
+returned 0 with 32 nonempty stdout lines and no PowerShell error records. No
+input/counter/time/configuration/SQL/output/overwrite/merge/conversion ran;
+approved copied-input verification remains pending.
 
 ## Related documents
-
 - [typeperf.exe](typeperf.exe.md)
 - [logman.exe](logman.exe.md)
 - [tracerpt.exe](tracerpt.exe.md)

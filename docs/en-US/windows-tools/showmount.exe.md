@@ -6,7 +6,7 @@
 
 - Confirm that the optional Windows client tool is installed:
 
-`Get-Command showmount.exe -ErrorAction SilentlyContinue | Select-Object Source,@{Name='FileVersion';Expression={$_.FileVersionInfo.FileVersion}}`
+`Get-Command showmount.exe -ErrorAction SilentlyContinue | Select-Object Source,@{Name='FileVersionFixed';Expression={$_.FileVersionInfo.FileVersionRaw.ToString()}},@{Name='FileVersionString';Expression={$_.FileVersionInfo.FileVersion}}`
 
 - List exports advertised by one exact NFS server:
 
@@ -79,9 +79,18 @@ evidence. Quote IPv6/name inputs and do not confuse it with a PowerShell cmdlet.
 The Windows tool is optional/feature-dependent. Remote NFS implementations and
 versions differ; a Unix `showmount` man page is not proof of identical Windows
 options. NFSv4-only servers may intentionally expose no mountd result.
+Exact System32 discovery on the recorded Windows NT `10.0.26200.0` Home China
+client found no `showmount.exe`; do not substitute a PATH match or contact a
+remote server merely for documentation evidence.
+
+## Runtime evidence
+
+Exact System32 discovery on the recorded Windows NT 10.0.26200.0 Home China
+client found showmount.exe absent; no PATH substitute or remote request ran.
+Exact approved-server -e and controlled -d/-a data-handling verification remain
+pending where the optional client exists.
 
 ## Related documents
-
 - [rpcinfo.exe](rpcinfo.exe.md)
 - [nfsstat.exe](nfsstat.exe.md)
 - [nfsshare.exe](nfsshare.exe.md)

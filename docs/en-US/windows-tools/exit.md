@@ -92,6 +92,14 @@ The cmd form is Windows-only. PowerShell's `exit` works on every PowerShell
 platform but exits the current script/runspace/process context according to how
 PowerShell was hosted.
 
+## Runtime evidence
+
+The protected fixture ran a task-owned child batch file and confirmed under
+both PowerShell collectors that `exit /b 7` becomes the child `cmd.exe` process
+exit code `7`. This proves the explicit child-boundary case only; omitted codes,
+called-label return behavior, and bare `exit` terminating an interactive or
+caller-owned shell remain distinct.
+
 ## Related documents
 
 - [cmd.exe](cmd.exe.md)

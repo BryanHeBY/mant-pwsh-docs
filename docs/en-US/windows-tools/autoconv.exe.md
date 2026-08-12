@@ -67,11 +67,19 @@ This Windows-only internal component applies to the FAT/FAT32-to-NTFS startup
 path. Filesystem, boot-volume, encryption, recovery, and removable-media
 constraints require target-system verification.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`autoconv.exe` Application candidate under either PowerShell collector. No
+startup worker was invoked or installed. The separately present Convert help
+does not prove AutoConv availability or scheduled conversion behavior. No
+conversion, schedule, repair, filesystem, volume, partition, or reboot
+mutation is permitted merely for evidence.
+
+## Related documents
 - [DiskPart conversion and volume operations](diskpart.exe.md)
 - [autochk.exe](autochk.exe.md)
-- [format.exe](format.exe.md)
+- [format.com](format.com.md)
 
 ## Sources and license
 

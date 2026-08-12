@@ -21,6 +21,10 @@
 
 `Get-PnpDevice -Class Ports -PresentOnly | Format-Table Status, FriendlyName, InstanceId`
 
+- Read Cmd's static MODE syntax without asking MODE to interpret a device token:
+
+`cmd.exe /d /c help MODE`
+
 <!-- mant:tldr:end -->
 
 # mode.com
@@ -60,7 +64,12 @@ The slash status form is read-only; key/value operands can mutate device state.
 
 <!-- mant:entries role=option case=insensitive -->
 - `/status`: Display status for the selected console, COM, or legacy LPT device.
-- `/?`: Display installed command help and target-local family syntax.
+
+Microsoft's reference labels `/?` as help, but exact installed
+10.0.26100.1 treated `mode.com /?` as an all-device/current-CON status query.
+It is deliberately not a ManT help alias. Use `cmd.exe /d /c help MODE` for the
+verified static syntax on this build; query a specific inactive device with an
+explicit `/status` only after discovery.
 
 ## Common mistakes
 
@@ -118,10 +127,20 @@ automation, and capture `$LASTEXITCODE` immediately.
 MODE is Windows-only. Serial capabilities depend on hardware, driver and port;
 console behavior depends on host/build; code pages depend on locale/fonts;
 typematic and printer redirection may be unsupported by modern hardware.
-Target-local `mode.com /?` is required.
+Installed behavior is required. Do not assume the reference's generic `/?`
+contract: on the recorded build it returned localized CON state/status 0,
+whereas `cmd.exe /d /c help MODE` returned 11 static help lines/status 1.
+
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 Mode file version 10.0.26100.1
+contradicted the generic reference: mode.com /? returned localized current-CON
+status/status 0 rather than help. Exact cmd.exe /d /c help MODE returned 11
+static help lines/status 1 without asking Mode to parse a device token. The
+page therefore does not index /? as help. No serial, LPT, code-page,
+buffer-size or typematic mutation occurred.
 
 ## Related documents
-
 - [chcp.com](chcp.com.md)
 - [print.exe](print.exe.md)
 - [getmac.exe](getmac.exe.md)

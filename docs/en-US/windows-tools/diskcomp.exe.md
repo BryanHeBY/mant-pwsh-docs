@@ -79,8 +79,20 @@ The command is cataloged for current Windows releases, but usable floppy
 hardware, drivers, firmware, media geometry, and the executable's presence must
 be confirmed on the target host.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`diskcomp.exe` Application candidate under either PowerShell collector. No
+feature, role, or compatibility component was installed merely to change
+that result, and no same-named PATH substitute was used. This is target-host
+command-resolution evidence, not proof that the tool is unsupported on every
+applicable Windows environment.
+
+Behavior verification remains resolution/help only unless approved test
+floppies and interactive hardware are dedicated; no production/evidence media
+read or any media write is permitted merely for evidence.
+
+## Related documents
 - [diskcopy.exe](diskcopy.exe.md)
 - [fc.exe](fc.exe.md)
 

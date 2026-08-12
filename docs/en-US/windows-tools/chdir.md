@@ -55,8 +55,13 @@ availability can be changed by profiles or constrained sessions; inspect with
 - Omitting `/d` when a cmd operation must also switch drives.
 - Expecting a child `cmd.exe /c chdir ...` to change its parent shell.
 
-## Related documents
+## Runtime evidence
 
+Exact cmd.exe 10.0.26100.1 `help CHDIR` printed the same 21-line location help,
+no PowerShell error records, and returned 1 without changing location.
+Protected synonym verification remains tied to the canonical CD fixture.
+
+## Related documents
 - [cd](cd.md)
 - [cmd.exe](cmd.exe.md)
 - [pushd](pushd.md)

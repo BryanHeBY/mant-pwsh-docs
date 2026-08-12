@@ -34,8 +34,10 @@ same foreground/background value returns ERRORLEVEL 1 and makes no change.
 Microsoft's current online page is internally inconsistent: its parameter text
 says the first digit is foreground and the second background, while its `84`
 example describes first-digit background and second-digit foreground, matching
-traditional target-local `color /?` behavior. Treat installed help and a
-disposable visual test as the runtime authority; do not silently choose one.
+traditional target-local help. On the reviewed Windows build, `help color`
+explicitly says first digit background and second foreground. Treat installed
+help and a disposable visual test as the runtime authority; do not silently
+choose one for another build.
 
 ## Command interface
 
@@ -69,8 +71,13 @@ are separate. Do not write registry/default settings for a one-session need.
 
 ### Sending color commands to logs or noninteractive hosts
 
-It may do nothing or produce host-specific control effects. Detect interactive
-capability and keep automation output plain/structured by default.
+It may fail, do nothing, or produce host-specific control effects. In the
+reviewed redirected capture environment, both valid `0A` and invalid `00`
+returned 1; in separate hidden-console processes, `0A` returned 0 and `00`
+returned 1. Detect console capability and keep automation output
+plain/structured by default. Do not interpret status 1 as proof that the two
+digits were equal unless the process had a suitable console and the operand is
+known.
 
 ### Ignoring the failure result
 
@@ -90,6 +97,23 @@ This Windows Cmd builtin uses a legacy palette whose actual rendering depends
 on console host, terminal profile, theme, accessibility settings, redirection,
 and Windows build. Target-local help is necessary because the online reference
 currently contradicts its own example.
+
+On Windows NT `10.0.26200.0`, `cmd.exe /d /c help color` printed the installed
+background-then-foreground contract and the `fc` example, with Cmd's usual
+help status 1. In separate hidden-console child processes, `color 0A` returned
+0 and `color 00` returned 1; the same two calls in a redirected capture context
+both returned 1. All children exited and no console, terminal profile,
+registry default, environment, filesystem, or persistent color setting was
+changed.
+
+## Runtime evidence
+
+Installed `cmd.exe /d /c help color` described the background-first,
+foreground-second digit order and returned Cmd's normal help status `1`.
+Separate task-owned children with a hidden console returned `0` for `color 0A`
+and `1` for invalid same-digit `color 00`; redirected children returned `1`
+for both, proving that console capability is part of the result. No shared
+console, terminal profile, registry default, or persistent color state changed.
 
 ## Related documents
 

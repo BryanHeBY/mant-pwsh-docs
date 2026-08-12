@@ -73,10 +73,19 @@ exists; it does not remove target content.
 ## Version and platform differences
 
 This executable is Windows-only. Visibility varies by user, logon session,
-elevation, service context, and remote-session setup.
+elevation, service context, and remote-session setup. On Windows NT
+`10.0.26200.0`, installed file version `10.0.26100.1` printed eight nonempty
+help lines and returned 0 for `/?`. `-?` was an invalid parameter and returned
+1; no drive letter, path, substitution, file, directory, or session mapping
+was selected or changed.
+
+## Runtime evidence
+
+Installed file version 10.0.26100.1 /? printed eight nonempty lines and
+returned 0. -? was an invalid parameter and returned 1. No drive letter, path,
+substitution, file, directory, or session mapping was selected or changed.
 
 ## Related documents
-
 - [cd](cd.md)
 - [pushd](pushd.md)
 - [reg.exe](reg.exe.md)

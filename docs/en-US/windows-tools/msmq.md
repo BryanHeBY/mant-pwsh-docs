@@ -101,8 +101,14 @@ This is Windows-only optional-feature/role tooling. Workgroup versus domain,
 routing, HTTP support, triggers, AD integration, certificates, storage paths,
 clustering, feature names, and PowerShell module availability vary by release.
 
-## Related documents
+## Verification boundary
 
+Windows runtime verification remains feature/service/help/queue/new-path
+inventory only; no service executable, backup/restore, folder deletion,
+queue/message/trigger, feature, service or application mutation is permitted
+merely for evidence.
+
+## Related documents
 - [sc.exe](sc.exe.md)
 - [wevtutil.exe](wevtutil.exe.md)
 

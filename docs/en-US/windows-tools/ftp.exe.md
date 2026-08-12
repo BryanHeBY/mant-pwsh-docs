@@ -159,9 +159,21 @@ This page covers Windows `ftp.exe`, not similarly named Unix clients. Microsoft
 documents case-sensitive launcher switches, UTF-8 script requirements on modern
 Windows, IPv6 support and build-dependent buffer options. Server behavior,
 firewalls/NAT, active data ports, locale and policy affect operation.
+On exact System32 file version `10.0.26100.8115`, local `-?` help returned 2
+with 22 nonempty normalized lines. Native error-stream output became 26
+PowerShell 5.1 `ErrorRecord` objects after `2>&1`; preserve message text and
+`$LASTEXITCODE` separately. No host, port, username, password, script, input,
+data channel, file, transfer, rename, or deletion was supplied.
+
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 FTP file version 10.0.26100.8115 -?
+returned 2 with 22 normalized nonempty lines; native stderr became 26 Windows
+PowerShell 5.1 ErrorRecord objects after 2>&1. No host, credential, script,
+connection, or file operation ran; approved TCP reachability and isolated
+protocol fixtures remain pending.
 
 ## Related documents
-
 - OpenSSH and native curl: query `mant ssh --source cross-platform-tools` and
   `mant curl --source cross-platform-tools`.
 - [netstat.exe](netstat.exe.md)

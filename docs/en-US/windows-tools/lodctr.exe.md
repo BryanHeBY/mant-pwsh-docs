@@ -78,8 +78,20 @@ behavior vary by build and installed products. The current Microsoft Learn
 command page omits query/enable/disable forms exposed by many installed builds;
 check `lodctr.exe /?` on the exact target before relying on `/q`, `/e`, or `/d`.
 
-## Related documents
+On Windows NT `10.0.26200.0`, exact System32 file version `10.0.26100.7705`
+printed 45 nonempty standard-output help lines for `/?`, no standard-error
+lines, and returned 0. No provider, manifest, INI, backup, registry value,
+counter state, rebuild, restore, enable, disable, or servicing action ran.
 
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 file version 10.0.26100.7705
+explicit /? returned 45 nonempty stdout lines, no stderr and status 0. No
+provider/counter state or repair changed; query evidence and any provider
+repair still require appropriate custody, product guidance and a
+rollback-tested fixture.
+
+## Related documents
 - [unlodctr.exe](unlodctr.exe.md)
 - [typeperf.exe](typeperf.exe.md)
 - [logman.exe](logman.exe.md)

@@ -6,7 +6,7 @@
 
 - Resolve the exact native tool without changing driver state:
 
-`Get-Command pnpunattend.exe -All -ErrorAction SilentlyContinue | Select-Object Source,@{Name='FileVersion';Expression={$_.FileVersionInfo.FileVersion}}`
+`Get-Command pnpunattend.exe -All -ErrorAction SilentlyContinue | Select-Object Source,@{Name='FileVersionFixed';Expression={$_.FileVersionInfo.FileVersionRaw.ToString()}},@{Name='FileVersionString';Expression={$_.FileVersionInfo.FileVersion}}`
 
 - Display installed syntax:
 
@@ -41,7 +41,9 @@ Search-only behavior requires `/s`; the subcommand name alone is not read-only.
 <!-- mant:entries role=option case=insensitive -->
 - `/s`: Search only and suppress online driver installation.
 - `/l`: Display human-oriented driver-search log information.
-- `/?`: Display installed syntax.
+- `/help`, `/?`, `/h`: Display installed syntax. All three installed spellings
+  return help status 87 on the recorded build, so classify the payload as well
+  as the native status.
 
 ## Common mistakes
 
@@ -89,8 +91,16 @@ the header lists current Windows versions. Driver search paths, ranking,
 signing enforcement and device-install policy vary by build and deployment
 phase; validate the exact environment.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT 10.0.26200.0, exact System32 PnPUnattend file version
+10.0.26100.1 /?, /help and /h each returned eight nonempty localized stdout
+lines/status 87; /help and /h output was byte-identical and documented
+auditsystem, /s and /L. The page indexes all three help aliases. Only help ran;
+no auditSystem search, driver-path/PATH/registry, staging/install, device,
+policy, reboot or removal mutation occurred.
+
+## Related documents
 - [pnputil.exe](pnputil.exe.md)
 - [driverquery.exe](driverquery.exe.md)
 - [devmgmt.msc](devmgmt.msc.md)

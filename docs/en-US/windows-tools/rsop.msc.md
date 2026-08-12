@@ -83,8 +83,20 @@ policy APIs or MDM reports for structured automation.
 collection, policy extensions, and modeling support vary by Windows edition,
 build, domain membership, management authority, firewall, and installed tools.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the read-only file-identity audit under Windows
+PowerShell `5.1.26100.8875` and PowerShell `7.6.4` did not resolve the exact
+`rsop.msc` entry point. Both collectors reported the same result.
+
+The audit invoked no discovered command, opened no window, contacted no remote
+endpoint, and changed no state. Local absence is availability evidence for this
+host, not proof that the documented component is unavailable on another Windows
+edition, role, or optional-feature set; it does not prove that the UI loads,
+the current user is authorized, an optional snap-in or component is functional,
+or any displayed or requested operation succeeds.
+
+## Related documents
 - [gpresult.exe](gpresult.exe.md)
 - [gpedit.msc](gpedit.msc.md)
 - [secpol.msc](secpol.msc.md)

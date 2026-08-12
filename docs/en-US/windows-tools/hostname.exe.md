@@ -39,7 +39,7 @@ report a cluster network name rather than the physical node name.
 The only documented switch exposes installed help; there is no rename mode.
 
 <!-- mant:entries role=option case=insensitive -->
-- `/?`: Display the syntax installed with this executable.
+- `-?`, `/?`: Display the syntax installed with this executable.
 
 ## PowerShell boundaries
 
@@ -76,7 +76,19 @@ DNS server and record the returned canonical name and addresses separately.
 ## Version and platform differences
 
 This page documents Windows `hostname.exe`. PowerShell and .NET alternatives
-have different platform support and identity semantics.
+have different platform support and identity semantics. On Windows NT
+`10.0.26200.0`, installed file version `10.0.26100.8521` printed two nonempty
+help lines and returned 1 for both `/?` and `-?`. No host name, DNS, domain,
+cluster, environment, CIM, or system state was queried by the help probes.
+
+## Runtime evidence
+
+The repeatable privacy-bounded inventory fixture resolved exact System32
+`hostname.exe`, confirmed redirected `/?` help returns two nonempty stdout
+lines/status `1`, and captured the no-argument local query under both
+PowerShell collectors. It returned exactly one line/status `0`, but the host
+name itself was not emitted. This proves only the local short-name shape, not a
+DNS FQDN, cluster name, canonical resolver result, or permission to rename.
 
 ## Related documents
 

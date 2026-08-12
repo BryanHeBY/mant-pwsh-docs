@@ -25,7 +25,7 @@
 
 ## Overview
 
-`route.exe` displays and modifies the local IPv4 routing table. `print` is
+`route.exe` displays and modifies the classic Windows routing tables. `print` is
 read-only; `add`, `change`, and `delete` alter routes. `/p add` persists a
 route in the registry. Route selection first favors the most specific matching
 prefix and then considers route and interface metrics.
@@ -45,11 +45,14 @@ followed by their values. They are operands in `route.exe` grammar, not
 PowerShell named parameters.
 
 <!-- mant:entries role=option case=insensitive -->
-- `/f`: Flush all gateway routes before running any accompanying command; this
+- `-f`, `/f`: Flush all gateway routes before running any accompanying command; this
   is a broad destructive network change, not a force/confirmation switch.
-- `/p`: With `add`, make the route persistent across TCP/IP restarts; with
+- `-p`, `/p`: With `add`, make the route persistent across TCP/IP restarts; with
   `print`, show only persistent routes. It is ignored by other verbs.
-- `/?`: Display installed command help.
+- `-4`, `/4`: Restrict the operation to the IPv4 routing table.
+- `-6`, `/6`: Restrict the operation to the IPv6 routing table; prefer typed
+  NetTCPIP cmdlets for explicit IPv6 route changes.
+- `-?`, `/?`: Display installed command help.
 
 ## PowerShell boundaries
 
@@ -96,8 +99,26 @@ for the actual destination and test connectivity from a recoverable console.
 ## Version and platform differences
 
 This executable and the NetTCPIP alternatives are Windows-only. The classic
-reference primarily describes IPv4 route syntax; use typed Windows networking
-cmdlets for explicit IPv6 route management.
+reference primarily describes IPv4 route syntax, while installed help also
+exposes `-4` and `-6`; use typed Windows networking cmdlets for explicit IPv6
+route management. On Windows NT `10.0.26200.0`, installed file version
+`10.0.26100.8521` returned 1 and printed 52 normalized nonempty help lines for
+both `/?` and `-?`. Read-only `print` verified both prefix forms for `4` and
+`p`; no route was added, changed, deleted, flushed, or persisted.
+
+That earlier count came from direct PowerShell rendering. Host wrapping and
+normalization can change the number without changing the installed command;
+compare tokens and record the capture mode rather than treating 52 as an API.
+
+## Runtime evidence
+
+The repeatable privacy-bounded inventory fixture captured redirected `/?` and
+local `route print` under both PowerShell collectors. Help remained on stderr
+with status `1`; the query returned 87 captured stdout lines/status `0`, but no
+interface, address, gateway, metric, or route row was emitted. In this
+no-console redirected mode help used 53 logical lines, distinct from the older
+host-rendered count. No `/f`, add, change, delete, persistent route, wildcard
+mutation, remote target, or external network request ran.
 
 ## Related documents
 

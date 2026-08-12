@@ -97,6 +97,25 @@ Windows and PowerShell versions. Windows application version APIs can also be
 affected by compatibility manifests; do not generalize an API caveat to every
 inventory source or vice versa.
 
+On Windows NT `10.0.26200.0`, clean-child `ver` returned status 0 and displayed
+`10.0.26200.8875`. The same host's typed CIM fields reported Caption
+`Microsoft Windows 11 Home China`, Version `10.0.26200`, and BuildNumber
+`26200`; registry servicing fields reported DisplayVersion `25H2`,
+CurrentBuild `26200`, and UBR `8875`, while the legacy-compatible ProductName
+still said `Windows 10 Home China`. This proves why product label, base build,
+and UBR must remain separate and why ProductName alone cannot classify this
+host. No inventory or system state was changed.
+
+## Runtime evidence
+
+The protected fixture confirmed that clean-child `ver` returns status `0` and
+a localized version line after a leading blank line. On the recorded host it
+displayed `10.0.26200.8875`; separate read-only CIM and registry evidence
+identified Windows 11 Home China, base build `26200`, display version `25H2`,
+and UBR `8875`, while a legacy-compatible product-name value still said
+Windows 10. This evidence supports keeping build, revision, edition, label, and
+feature detection separate.
+
 ## Related documents
 
 - [systeminfo.exe](systeminfo.exe.md)

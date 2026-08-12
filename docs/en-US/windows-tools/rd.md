@@ -91,8 +91,13 @@ and `cmd.exe /d /c rd ...` only when cmd behavior is intended.
 This page targets supported Windows cmd; WinRE differs. Behavior depends on
 filesystem, permissions, reparse points, sharing, and active processes.
 
-## Related documents
+## Runtime evidence
 
+Exact cmd.exe 10.0.26100.1 `help RD` printed seven nonempty stdout lines, no
+PowerShell error records, and returned 1 without a directory or deletion.
+Protected disposable directory/reparse fixtures remain required.
+
+## Related documents
 - [rmdir alias](rmdir.md)
 - [del](del.md)
 - [dir](dir.md)

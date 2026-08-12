@@ -76,6 +76,14 @@ This internal Cmd command is Windows-only. `:EOF` requires command extensions,
 which are enabled by default; label parsing depends on batch encoding, line
 structure, blocks, and command-extension state.
 
+## Runtime evidence
+
+On 2026-08-12, a protected task-owned batch file called a fixed subroutine,
+set ERRORLEVEL to 7 in a nested child Cmd, and returned with `goto :EOF`.
+The caller observed 7 and the outer child exited 7 under both Windows
+PowerShell 5.1 and PowerShell 7.6.4. The fixture used only its GUID-named
+temporary directory and left no process or file behind.
+
 ## Related documents
 
 - [call](call.md)

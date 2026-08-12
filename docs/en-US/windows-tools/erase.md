@@ -58,8 +58,13 @@ version constrain actual deletion.
 - Running it without an explicit cmd context from PowerShell.
 - Using `/s /q` or wildcards before enumerating the exact target.
 
-## Related documents
+## Runtime evidence
 
+Exact cmd.exe 10.0.26100.1 `help ERASE` printed the same 19-line deletion help,
+no PowerShell error records, and returned 1 without a target or deletion.
+Protected synonym verification remains tied to the canonical DEL fixture.
+
+## Related documents
 - [del](del.md)
 - [cmd.exe](cmd.exe.md)
 - [rmdir](rmdir.md)

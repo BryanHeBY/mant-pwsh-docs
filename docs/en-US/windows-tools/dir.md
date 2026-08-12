@@ -97,8 +97,13 @@ Junctions and symbolic links can change scope or create cycles. Identify
 This page targets supported Windows cmd. WinRE has a different form. Output
 language, date format, 8.3-name creation, filesystems, and permissions vary.
 
-## Related documents
+## Runtime evidence
 
+Exact cmd.exe 10.0.26100.1 `help DIR` printed 37 nonempty stdout lines, no
+PowerShell error records, and returned 1 without a path or wildcard. Protected
+listing, short-name, and reparse fixtures remain required.
+
+## Related documents
 - [cmd.exe](cmd.exe.md)
 - [for](for.md)
 - [del](del.md)

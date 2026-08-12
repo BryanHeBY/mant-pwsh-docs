@@ -6,7 +6,7 @@
 
 - Resolve the administrative tool and WDS role state without installing or starting anything:
 
-`Get-Command wdsutil.exe -All -ErrorAction SilentlyContinue | Select-Object Source,@{Name='FileVersion';Expression={$_.FileVersionInfo.FileVersion}}; Get-WindowsFeature -Name WDS* -ErrorAction SilentlyContinue`
+`Get-Command wdsutil.exe -All -ErrorAction SilentlyContinue | Select-Object Source,@{Name='FileVersionFixed';Expression={$_.FileVersionInfo.FileVersionRaw.ToString()}},@{Name='FileVersionString';Expression={$_.FileVersionInfo.FileVersion}}; Get-WindowsFeature -Name WDS* -ErrorAction SilentlyContinue`
 
 - Display installed command help:
 
@@ -229,8 +229,22 @@ operating-system deployment, Transport Server and Configuration Manager use of
 WDS are different support boundaries. Recheck Microsoft's current support and
 security guidance for every target/server/image combination.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`wdsutil.exe` Application candidate under either PowerShell collector. No
+feature, role, or compatibility component was installed merely to change
+that result, and no same-named PATH substitute was used. This is target-host
+command-resolution evidence, not proof that the tool is unsupported on every
+applicable Windows environment.
+
+Behavior verification remains help and exact approved-server
+configuration/image inventory only; no role/service, initialization,
+authorization, device/AD, client approval, image/driver/group/filter,
+PXE/DHCP/TFTP, transport/multicast/namespace, unattended file/secret, insecure
+override, lifecycle or reboot mutation is permitted merely for evidence.
+
+## Related documents
 - [dism.exe](dism.exe.md)
 - [pnputil.exe](pnputil.exe.md)
 - [pnpunattend.exe](pnpunattend.exe.md)

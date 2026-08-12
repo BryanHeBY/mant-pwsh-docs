@@ -77,6 +77,14 @@ PowerShell use `#` or `<# ... #>` comments. Do not pass a REM line through
 This is an internal `cmd.exe` command on Windows. Parsing depends on batch,
 block, pipe, expansion, command-extension, and nested-shell context.
 
+## Runtime evidence
+
+On 2026-08-12, a protected task-owned batch subroutine placed one plain ASCII
+REM line between two fixed commands. Both Windows PowerShell 5.1 and PowerShell
+7.6.4 collectors observed the following marker and no comment text. This proves
+only the documented plain-comment case; the fixture deliberately did not put
+metacharacters, expansions, secrets, pipes, or complex blocks in the comment.
+
 ## Related documents
 
 - [cmd.exe](cmd.exe.md)

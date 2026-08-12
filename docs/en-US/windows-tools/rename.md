@@ -56,8 +56,13 @@ then verify every result before removing a rollback copy.
 - Supplying a new path even though rename operations are in-place.
 - Applying a wildcard transformation without first reviewing old-to-new pairs.
 
-## Related documents
+## Runtime evidence
 
+Exact cmd.exe 10.0.26100.1 `help RENAME` printed the same four-line rename
+help, no PowerShell error records, and returned 1 without a target. Protected
+synonym verification remains tied to the canonical REN fixture.
+
+## Related documents
 - [ren](ren.md)
 - [cmd.exe](cmd.exe.md)
 - [move](move.md)

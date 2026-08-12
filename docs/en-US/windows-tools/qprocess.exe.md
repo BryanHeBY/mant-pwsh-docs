@@ -62,7 +62,11 @@ owner, and session before any later action.
 ## Version and availability
 
 This Windows/RDS query surface depends on target release, permissions, session
-visibility, process lifetime, and remote management access.
+visibility, process lifetime, and remote management access. Exact System32
+discovery on the recorded Windows NT `10.0.26200.0` Home China client found no
+`qprocess.exe`; this is an edition/component availability observation, not a
+claim about Session Host, Server, or other client installations. Do not
+substitute a PATH match when exact discovery fails.
 
 ## Common mistakes
 
@@ -72,8 +76,13 @@ visibility, process lifetime, and remote management access.
 - Using an executable name without the documented `.exe` suffix.
 - Feeding human-readable output directly into a termination command.
 
-## Related documents
+## Runtime evidence
 
+Exact System32 discovery on the recorded Windows NT 10.0.26200.0 Home China
+client found qprocess.exe absent; no PATH substitute or process query ran.
+Representative installations where the component exists remain required.
+
+## Related documents
 - [query.exe](query.exe.md)
 - [tasklist.exe](tasklist.exe.md)
 - [quser.exe](quser.exe.md)

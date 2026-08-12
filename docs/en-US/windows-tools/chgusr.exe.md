@@ -55,8 +55,14 @@ install mode after an installer fails, or assume the mode makes an unsupported
 application multi-user safe. Follow [change.exe](change.exe.md) for full role,
 installer, first-run, rollback and nonadmin-user verification guidance.
 
-## Related documents
+## Runtime evidence
 
+Searchable replacement page. Exact System32 discovery on the recorded Windows
+NT 10.0.26200.0 Home China client found chgusr.exe absent; no PATH substitute
+or install-mode query/change ran. Runtime remains change user /query only where
+installed.
+
+## Related documents
 - [change.exe](change.exe.md)
 - [query.exe](query.exe.md)
 - [schtasks.exe](schtasks.exe.md)

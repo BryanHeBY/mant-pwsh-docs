@@ -105,6 +105,24 @@ domain hierarchy, policy, virtualization, and host role affect modification.
 PowerShell `Get-Date` parameters and convenience formats vary by edition and
 version, while the .NET round-trip `o` format is broadly available.
 
+On Windows NT `10.0.26200.0` with Chinese regional settings, a clean child Cmd
+returned one localized line and status 0 for `date /t`. A separately captured
+`Get-Date` value was a typed `System.DateTime` and produced explicit local and
+UTC round-trip values from the same instant. `w32tm /query /status /verbose`
+returned 16 stdout lines/status 0; OEM-936 decoding showed the clock was
+reported as not synchronized, while ordinary merged text capture was mojibake.
+No date, time zone, service, source, policy, synchronization, or clock state
+was changed.
+
+## Runtime evidence
+
+The protected Cmd fixture ran only `date /T` in a clean child under both
+PowerShell collectors. It returned one localized nonempty line and status `0`;
+no date-setting operand was supplied. Separate typed inventory recorded local
+and UTC values without changing the clock, time zone, synchronization service,
+policy, or source. Locale-specific parsing and clock-setting behavior remain
+outside this evidence.
+
 ## Related documents
 
 - [time](time.md)

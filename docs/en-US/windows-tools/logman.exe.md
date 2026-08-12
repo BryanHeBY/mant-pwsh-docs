@@ -100,9 +100,20 @@ Do not build provider/counter lists with `Invoke-Expression`.
 `logman.exe` is Windows-only. Collector types/options, providers/counters,
 permissions, remote behavior, ETW schema, and output vary by build, installed
 roles/products, architecture, language, policy, and caller identity.
+On exact System32 file version `10.0.26100.1`, top-level `/?` printed 131
+nonempty stdout lines, produced no PowerShell error records, and returned 1.
+No collector, ETW session, provider, counter, schedule, remote computer,
+identity, input, output, import, export, start, stop, update, or deletion was
+supplied.
+
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 LogMan file version 10.0.26100.1 /?
+printed 131 nonempty stdout lines, no PowerShell error records, and returned 1.
+No collector/session/provider/counter/schedule/remote/input/output/lifecycle
+operation ran; approved disposable collector verification remains pending.
 
 ## Related documents
-
 - [typeperf.exe](typeperf.exe.md)
 - [relog.exe](relog.exe.md)
 - [tracerpt.exe](tracerpt.exe.md)

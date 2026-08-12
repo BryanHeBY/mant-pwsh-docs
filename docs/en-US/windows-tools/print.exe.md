@@ -5,9 +5,9 @@
 > irreversible print job; PRINT is not a general document-rendering command.
 > More information: https://learn.microsoft.com/windows-server/administration/windows-commands/print.
 
-- Display target-local PRINT syntax without submitting a job:
+- Display Cmd's static PRINT syntax without invoking the print operation parser:
 
-`print.exe /?`
+`cmd.exe /d /c help PRINT`
 
 - Inventory installed queues and their driver/port identity:
 
@@ -47,7 +47,11 @@ The file operand is required; omission of destination silently selects LPT1.
 
 <!-- mant:entries role=option case=insensitive -->
 - `/d`: Select LPT1-LPT3, COM1-COM4, or an exact UNC printer queue.
-- `/?`: Display installed syntax.
+
+Microsoft's reference lists `/?` as help, but exact installed 10.0.26100.1
+treated `print.exe /?` as a file operand and reported that no file was available
+to print. It is deliberately not indexed as a help alias. Use Cmd's static
+`help PRINT` output or the locked reference before designing an invocation.
 
 ## Common mistakes
 
@@ -56,6 +60,15 @@ The file operand is required; omission of destination silently selects LPT1.
 Always resolve an exact queue or approved port and confirm server/share, driver,
 port monitor, location, media and device identity. A display name alone can be
 duplicated, renamed or point to a redirected/session printer.
+
+### Assuming `/?` is a side-effect-free help convention
+
+Do not probe PRINT with punctuation copied from another Windows tool. On the
+recorded build, `/?` entered file/print interpretation rather than help. The
+audit observed no resulting queue job across four installed printers, but that
+does not make the spelling a safe discovery contract on another queue/device.
+Use `cmd.exe /d /c help PRINT`, inspect the exact executable/version and query
+the queue before and after any separately approved disposable print test.
 
 ### Passing a printer display name where a port or UNC queue is required
 
@@ -106,8 +119,19 @@ Print Spooler, Point and Print policy, session redirection, architecture, server
 availability and device language affect behavior. PowerShell print-management
 cmdlets depend on Windows/module availability.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT 10.0.26200.0, exact System32 Print file version 10.0.26100.1
+contradicted the generic reference: print.exe /? entered file/print
+interpretation and returned localized 'no file available to print'/status 0,
+not help. It was invoked twice while correcting OEM-936 capture; before/after
+inspection found four installed printers and zero jobs, with no residual
+process. Exact cmd.exe /d /c help PRINT returned three static help lines/status
+1. The page removes the false /? semantic alias. No print job, physical output,
+raw byte stream, port mapping, queue/default, driver or spooler mutation
+occurred.
+
+## Related documents
 - [mode.com](mode.com.md)
 - [net.exe](net.exe.md)
 - [cscript.exe](cscript.exe.md)

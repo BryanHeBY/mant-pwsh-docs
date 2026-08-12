@@ -83,8 +83,16 @@ many modern systems. Verify executable resolution and the target application's
 behavior on the exact legacy image; a Microsoft Learn applicability banner is
 not evidence that the binary ships or is supported.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`append.exe` Application candidate under either PowerShell collector. No
+compatible feature was installed and no same-named PATH substitute was used.
+Parameterless list and environment reads remain for an approved compatible
+fixture; no list, environment, executable-search, working-directory, or
+application mutation is required merely for evidence.
+
+## Related documents
 - [path](path.md)
 - [where.exe](where.exe.md)
 

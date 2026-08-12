@@ -66,8 +66,16 @@ or application collisions.
 HelpCtr is a deprecated Windows Server 2003 component and may be absent. Current
 Windows help surfaces, Get Help, PowerShell help and Microsoft Learn are distinct.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`helpctr.exe` Application candidate under either PowerShell collector. No
+legacy executable or Help and Support Center content was installed or
+launched. A compatible preserved environment may verify exact identity and
+help discovery, but installation or UI launch is not required merely for
+evidence.
+
+## Related documents
 - [help](help.md)
 - [msdt.exe](msdt.exe.md)
 

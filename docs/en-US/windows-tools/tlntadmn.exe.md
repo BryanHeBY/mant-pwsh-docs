@@ -6,7 +6,7 @@
 
 - Resolve the optional legacy administration tool without installing anything:
 
-`Get-Command tlntadmn.exe -All -ErrorAction SilentlyContinue | Select-Object Source,@{Name='FileVersion';Expression={$_.FileVersionInfo.FileVersion}}`
+`Get-Command tlntadmn.exe -All -ErrorAction SilentlyContinue | Select-Object Source,@{Name='FileVersionFixed';Expression={$_.FileVersionInfo.FileVersionRaw.ToString()}},@{Name='FileVersionString';Expression={$_.FileVersionInfo.FileVersion}}`
 
 - Display current local Telnet Server settings without changing them:
 
@@ -107,12 +107,22 @@ native tool as intended; do not construct them from untrusted input.
 Windows-only and legacy-feature dependent. Broad Microsoft Learn applicability
 does not prove Telnet Server availability on a current image. Feature, service,
 authentication and firewall policy vary by edition/build.
+Exact System32 discovery on the recorded Windows NT `10.0.26200.0` Home China
+client found no `tlntadmn.exe`; do not substitute a PATH match or install,
+enable, or contact a Telnet Server merely for documentation evidence.
+
+## Runtime evidence
+
+Exact System32 discovery on the recorded Windows NT 10.0.26200.0 Home China
+client found tlntadmn.exe absent; no PATH substitute, server/session query,
+install, enable, service, message, configuration, authentication, port,
+firewall, or credential action ran. Local settings verification remains pending
+only where Telnet Server tooling exists.
 
 ## Related documents
-
 - [telnet.exe](telnet.exe.md)
 - OpenSSH: query `mant ssh --source cross-platform-tools`.
-- [winrm.exe](winrm.exe.md)
+- [winrm.cmd](winrm.cmd.md)
 - [winrs.exe](winrs.exe.md)
 
 ## Sources and license

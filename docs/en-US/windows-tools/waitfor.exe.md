@@ -6,11 +6,11 @@
 
 - Wait at most 30 seconds for one collision-resistant signal name:
 
-`waitfor.exe /T 30 "{{mant.build.20260811.001}}"; $waitExitCode = $LASTEXITCODE`
+`waitfor.exe /T 30 "{{MantBuild20260811A1B2C3}}"; $waitExitCode = $LASTEXITCODE`
 
 - Send a signal to one explicit computer instead of relying on domain broadcast:
 
-`waitfor.exe /S "{{HOST01}}" /SI "{{mant.build.20260811.001}}"; $sendExitCode = $LASTEXITCODE`
+`waitfor.exe /S "{{HOST01}}" /SI "{{MantBuild20260811A1B2C3}}"; $sendExitCode = $LASTEXITCODE`
 
 - Display target-local syntax without creating a listener or signal:
 
@@ -43,7 +43,10 @@ when those properties matter.
 - `waitfor.exe`: Wait for or send one named best-effort Windows-domain signal.
 
 The positional signal name carries no payload or durable state. Always use a
-unique name, finite wait timeout, and exact send target.
+unique name, finite wait timeout, and exact send target. Installed help limits
+names to 225 characters and permits ASCII letters/digits plus byte values
+128-255; punctuation separators such as `.`, `-`, `_`, and `:` are therefore
+not portable signal-name characters.
 
 <!-- mant:entries role=option case=insensitive -->
 - `/t`: Set a finite wait timeout in seconds.
@@ -73,12 +76,13 @@ Microsoft documents domain broadcast when no target is supplied. Always specify
 the intended computer for remote synchronization and revalidate its identity;
 do not use broad signaling as a discovery mechanism.
 
-### Reusing a common signal name
+### Reusing a common or invalid signal name
 
 Only one instance on a computer can wait for a given name, and unrelated jobs
-can collide or release the wrong waiter. Include application, environment,
-run/correlation ID, and purpose within the 225-character limit; treat names as
-operational metadata, not secrets.
+can collide or release the wrong waiter. Encode application, environment,
+run/correlation ID, and purpose using the installed character contract within
+the 225-character limit; do not copy punctuation-rich queue/topic names into
+WAITFOR. Treat names as operational metadata, not secrets.
 
 ### Putting a password on the command line
 
@@ -112,8 +116,31 @@ This Windows-only utility is documented on supported Windows client and server
 releases. Domain membership, permissions, services, firewall/network policy,
 name resolution, locale, remote credential policy, and target build affect it.
 
-## Related documents
+On Windows NT `10.0.26200.0`, exact System32 file version `10.0.26100.1`
+printed 30 nonempty help lines for `/?`, returned 0, and produced no Windows
+PowerShell 5.1 `ErrorRecord` objects. A later bounded fixture confirmed in
+both installed PowerShell editions that a valid 36-character alphanumeric name
+times out after `/T 1` with status 1, while the old punctuation-rich example
+is rejected immediately with status 1. An explicit send to the local computer
+name also returned 1 with `Cannot send the specified signal`; the listener
+remained waiting until the fixture stopped it, and no `waitfor` process
+remained. This is a host domain/network-condition result, not proof that local
+delivery is unsupported everywhere. No remote/domain broadcast, credential,
+policy, firewall, service, or durable synchronization state was changed.
 
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 file version 10.0.26100.1 explicit
+/? returned 30 nonempty help lines, status 0 and no Windows PowerShell 5.1
+ErrorRecord objects. A 2026-08-12 bounded fixture found that a valid
+36-character alphanumeric signal timed out after /T 1 with status 1 under both
+PowerShell collectors, while punctuation-rich names were rejected with status
+1. Explicit send to the local computer name also returned 1 (Cannot send the
+specified signal); the listener was task-owned, stopped in finally, and left
+zero waitfor processes. No remote/domain broadcast, credential, policy,
+firewall, service, or durable synchronization state changed.
+
+## Related documents
 - [timeout.exe](timeout.exe.md)
 - [ping.exe](ping.exe.md)
 - [schtasks.exe](schtasks.exe.md)

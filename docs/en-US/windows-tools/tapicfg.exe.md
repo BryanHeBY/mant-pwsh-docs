@@ -80,8 +80,20 @@ This is Windows/domain-only legacy telephony tooling. AD schema/functional level
 replication, TAPI components, language support, trusts, and client compatibility
 vary. Current catalog applicability does not imply a new design should use it.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`tapicfg.exe` Application candidate under either PowerShell collector. No
+feature, role, or compatibility component was installed merely to change
+that result, and no same-named PATH substitute was used. This is target-host
+command-resolution evidence, not proof that the tool is unsupported on every
+applicable Windows environment.
+
+Behavior verification remains help/show and read-only domain/SCP
+inventory only; no AD partition, SCP, default, replication, DNS, trust,
+credential or TAPI mutation is permitted merely for evidence.
+
+## Related documents
 - [tsecimp.exe](tsecimp.exe.md)
 - [tcmsetup.exe](tcmsetup.exe.md)
 

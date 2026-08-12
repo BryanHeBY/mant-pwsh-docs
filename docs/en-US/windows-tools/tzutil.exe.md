@@ -72,9 +72,18 @@ restart behavior. Do not parse localized `/l` display text as a fixed two-line A
 `tzutil.exe` is Windows-only. Installed IDs and historical/dynamic DST rules are
 serviced data and vary by Windows build/update and territory. Privilege/policy,
 automatic detection, containers, and application cache behavior also vary.
+On exact System32 file version `10.0.26100.2161`, `/?` returned 0 with 20
+nonempty stdout lines and no PowerShell error records. No current/list query,
+time-zone ID, DST suffix, policy, clock, service, or system setting changed.
+
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 TZUtil file version 10.0.26100.2161
+/? returned 0 with 20 nonempty stdout lines and no PowerShell error records. No
+current/list query or time-zone/DST/system mutation ran; /g and /l plus
+disposable setting verification remain pending.
 
 ## Related documents
-
 - [systeminfo.exe](systeminfo.exe.md)
 - [wevtutil.exe](wevtutil.exe.md)
 - [schtasks.exe](schtasks.exe.md)

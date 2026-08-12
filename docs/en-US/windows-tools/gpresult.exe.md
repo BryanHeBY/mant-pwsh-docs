@@ -51,7 +51,9 @@ Run-as identity (`/u`) and reported target identity (`/user`) are distinct.
 - `/x`: Write XML report output to the following file.
 - `/h`: Write HTML report output to the following file.
 - `/f`: Force overwrite of an existing `/x` or `/h` report file.
-- `/?`: Display installed command help.
+- `/?`: Display installed command help. On the recorded Windows build it
+  returned 0 but omitted `/x`, `/h`, and `/f`; ordinary help is therefore not
+  a complete capability inventory on every build.
 
 ## PowerShell boundaries
 
@@ -105,10 +107,23 @@ foreground work, sign-out, or restart requirements.
 
 This executable is Windows-only. Remote RSoP requires access and firewall/RPC
 support. On Windows ARM64, Microsoft documents that only the SysWOW64 build
-supports `/h`.
+supports `/h`. On Windows NT `10.0.26200.0`, installed file version
+`10.0.26100.8115` printed 35 nonempty help lines for `/?` and returned 0, but
+that help did not list the current official `/x`, `/h`, or `/f` report options.
+Keep installed help, architecture, and the current official reference as
+separate evidence rather than deleting a supported option from one shortened
+help display.
+
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, installed file version 10.0.26100.8115
+ordinary-token /? printed 35 nonempty help lines and returned 0, but omitted
+the current official /x, /h, and /f report options. The page retains those
+options and records installed help, architecture, and current official
+reference as separate evidence; no RSoP query, remote target, credential, or
+report path was supplied.
 
 ## Related documents
-
 - [systeminfo.exe](systeminfo.exe.md)
 - [auditpol.exe](auditpol.exe.md)
 - [whoami.exe](whoami.exe.md)

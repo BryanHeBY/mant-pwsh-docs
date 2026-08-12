@@ -57,8 +57,14 @@ path, or treat administrative RDP as proof of the RD Session Host role. Query
 the exact host/listeners/sessions and follow [change.exe](change.exe.md) for the full
 maintenance and rollback boundaries.
 
-## Related documents
+## Runtime evidence
 
+Searchable replacement page. Exact System32 discovery on the recorded Windows
+NT 10.0.26200.0 Home China client found chglogon.exe absent; no PATH substitute
+or admission query/change ran. Runtime remains change logon /query only where
+installed.
+
+## Related documents
 - [change.exe](change.exe.md)
 - [query.exe](query.exe.md)
 - [quser.exe](quser.exe.md)

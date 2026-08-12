@@ -6,7 +6,7 @@
 
 - Resolve the exact legacy executable:
 
-`Get-Command tsprof.exe -All -ErrorAction SilentlyContinue | Select-Object Source,@{Name='FileVersion';Expression={$_.FileVersionInfo.FileVersion}}`
+`Get-Command tsprof.exe -All -ErrorAction SilentlyContinue | Select-Object Source,@{Name='FileVersionFixed';Expression={$_.FileVersionInfo.FileVersionRaw.ToString()}},@{Name='FileVersionString';Expression={$_.FileVersionInfo.FileVersion}}`
 
 - Query one exact local user's RDS profile path:
 
@@ -101,8 +101,16 @@ Windows-only legacy RDS profile administration. The executable may be absent or
 the field may be superseded by policy/profile-container design on current
 deployments. Broad Learn applicability does not prove the workflow is current.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`tsprof.exe` Application candidate under either PowerShell collector. No RDS
+role or legacy tool was installed. `/q` and effective-policy comparison remain
+for an approved test user on a compatible Session Host; no field copy/update,
+profile/container, ACL, session, GPO, or directory mutation is required merely
+for evidence.
+
+## Related documents
 - [gpresult.exe](gpresult.exe.md)
 - [query.exe](query.exe.md)
 - [robocopy.exe](robocopy.exe.md)

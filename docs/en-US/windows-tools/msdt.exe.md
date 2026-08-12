@@ -6,7 +6,7 @@
 
 - Resolve the legacy executable without starting a pack or requesting a support passkey:
 
-`Get-Command msdt.exe -All -ErrorAction SilentlyContinue | Select-Object Source,@{Name='FileVersion';Expression={$_.FileVersionInfo.FileVersion}}`
+`$msdt = Get-Item -LiteralPath (Get-Command msdt.exe -CommandType Application).Source; $msdt.VersionInfo | Select-Object FileVersionRaw,FileVersion,ProductVersionRaw,ProductVersion`
 
 - Display local legacy syntax without running a diagnostic package:
 
@@ -18,7 +18,7 @@
 
 - Check whether the current Get Help app is present before reusing an old package name:
 
-`Get-AppxPackage -Name Microsoft.GetHelp -ErrorAction SilentlyContinue | Select-Object Name,Version,InstallLocation`
+`Get-AppxPackage -Name Microsoft.GetHelp -ErrorAction SilentlyContinue | Select-Object Name,Version,PackageFullName,SignatureKind`
 <!-- mant:tldr:end -->
 
 # msdt.exe
@@ -98,8 +98,29 @@ moving custom-package support through a feature-on-demand transition. Current
 Windows 10/11 troubleshooting inventory, Get Help behavior, and server support
 must be checked at use time.
 
-## Related documents
+Keep four identities separate: the resolved `msdt.exe` file, its two PE
+version-resource forms, the registered `Microsoft.GetHelp` package, and the
+actual troubleshooter workflow available on this Windows build. On the
+recorded host, exact System32 `msdt.exe` had fixed file/product version
+`10.0.26100.8328`, while Windows PowerShell 5.1 selected file string
+`10.0.26100.1 (WinBuild.160101.0800)` and product string `10.0.26100.1`.
+The file had a valid Microsoft Windows signature and SHA-256
+`FA39BBFC6B3B634650C2F1C7CC665CC664DCF0B9A3369B9A0FB5D716EEF4C8DA`.
+Separately, read-only package registration reported Store-signed Get Help
+`10.2409.42092.0`. Neither identity proves that a remembered MSDT pack exists,
+that Get Help exposes an equivalent flow, or that a diagnosis can complete.
 
+## Runtime evidence
+
+At 2026-08-12T13:14:54+08:00, exact System32 msdt.exe had fixed file/product
+version 10.0.26100.8328, Windows PowerShell 5.1-selected file string
+10.0.26100.1 (WinBuild.160101.0800), product string 10.0.26100.1, a valid
+Microsoft Windows signature, and SHA-256
+FA39BBFC6B3B634650C2F1C7CC665CC664DCF0B9A3369B9A0FB5D716EEF4C8DA. Separate
+read-only registration reported Store-signed Microsoft.GetHelp 10.2409.42092.0;
+neither identity proves workflow availability.
+
+## Related documents
 - [ms-settings](ms-settings.md)
 - [dxdiag.exe](dxdiag.exe.md)
 - [msinfo32.exe](msinfo32.exe.md)

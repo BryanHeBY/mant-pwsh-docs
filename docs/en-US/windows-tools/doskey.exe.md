@@ -123,8 +123,19 @@ and server releases. Behavior depends on console process, input mode, terminal
 host, PSReadLine/readline layer, executable key handling, session lifetime, and
 policy. It is not evidence that MS-DOS is running.
 
-## Related documents
+On Windows NT `10.0.26200.0`, exact System32 file version `10.0.26100.1`
+printed 24 nonempty help lines for `/?`, returned 0, and produced no Windows
+PowerShell 5.1 `ErrorRecord` objects. No macro, history item, macro file,
+keystroke, executable context, or interactive console state was read or changed.
 
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 file version 10.0.26100.1 explicit
+/? returned 24 nonempty help lines, status 0 and no Windows PowerShell 5.1
+ErrorRecord objects. No macro/history data or interactive state was read or
+changed; approved isolated fixtures remain required for those operations.
+
+## Related documents
 - [cmd.exe](cmd.exe.md)
 - [call](call.md)
 - [windows-tools](windows-tools.md)

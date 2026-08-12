@@ -42,7 +42,7 @@ Remote credentials affect query access, not the target driver trust decision.
 - `/nh`: Suppress headers in `TABLE` or `CSV` output.
 - `/v`: Include verbose driver properties; it cannot be combined with `/si`.
 - `/si`: Display signed-driver information; it cannot be combined with `/v`.
-- `/?`: Display installed command help.
+- `-?`, `/?`: Display installed command help.
 
 ## PowerShell boundaries
 
@@ -80,6 +80,21 @@ transcripts.
 
 This administrative executable is Windows-only. Visibility and fields depend
 on permissions, OS version, architecture, remote services, and driver model.
+On Windows NT `10.0.26200.0`, installed file version `10.0.26100.1` returned
+0 for both `/?` and `-?`; an earlier direct PowerShell capture counted 27
+rendered nonempty records and matched the indexed selector surface. No
+local/remote driver, device, package, signature, credential, service, or system
+state was queried by those help probes.
+
+## Runtime evidence
+
+The repeatable privacy-bounded inventory fixture captured redirected `/?` help
+and local `/fo csv /nh` under both PowerShell collectors. Help remained
+nonempty/status `0`; the query captured 468 rows/status `0`, but emitted no
+driver row or identity. Redirected help used 22 logical lines rather than the
+earlier 27 host-rendered records, so line count is collector metadata. This
+does not establish Driver Store package inventory, device state, trust,
+signature validity, remote access, or authorization.
 
 ## Related documents
 

@@ -51,7 +51,8 @@ Colon-bound values remain one native argument, for example `/wait:600`.
   policy processing.
 - `/sync`: Make the next foreground boot/logon policy application synchronous;
   `/force` and `/wait` are ignored in this mode.
-- `/?`: Display installed command help.
+- `/?`: Display installed command help; on the recorded Windows build it
+  printed complete help and returned exit code -1.
 
 ## PowerShell boundaries
 
@@ -105,10 +106,20 @@ restart/sign-in, and the actual effective configuration.
 
 This executable is Windows-only. Policy extensions, domain membership,
 network/DC reachability, permissions, elevation, foreground requirements, and
-restart/sign-in behavior vary by policy and environment.
+restart/sign-in behavior vary by policy and environment. On Windows NT
+`10.0.26200.0`, installed file version `10.0.26100.8115` printed 44 nonempty
+help lines for `/?` and returned -1. This help-specific status says nothing
+about policy reachability or refresh success; never normalize it into the
+result of a real refresh.
+
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, installed file version 10.0.26100.8115
+ordinary-token /? printed 44 nonempty help lines and returned -1. The page
+separates this help-specific status from a real refresh result; no target,
+force, wait, logoff, boot, sync, policy, domain, or network operation ran.
 
 ## Related documents
-
 - [gpresult.exe](gpresult.exe.md)
 - [auditpol.exe](auditpol.exe.md)
 - [systeminfo.exe](systeminfo.exe.md)

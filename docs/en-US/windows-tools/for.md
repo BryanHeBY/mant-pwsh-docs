@@ -96,6 +96,14 @@ Prefer PowerShell objects, CSV/JSON, or a supported API when available.
 The basic builtin is Windows-only. `/d`, `/r`, `/l`, `/f`, `usebackq`, and the
 listed modifiers require command extensions, enabled by default.
 
+## Runtime evidence
+
+The protected fixture read a task-owned ASCII file containing two nonblank
+lines and one blank line. Under both PowerShell collectors, `for /f
+"usebackq delims="` preserved each complete nonblank line including spaces and
+omitted the blank line. Encoding, `eol`, `skip`, `tokens`, command-output input,
+and exclamation-bearing data remain outside this narrow result.
+
 ## Related documents
 
 - [cmd.exe](cmd.exe.md)

@@ -75,8 +75,13 @@ structured logs, task identifiers, and verified output instead.
 The builtin is Windows-only. Visible results depend on an interactive console
 host, terminal settings, remote/session context, and host support.
 
-## Related documents
+## Runtime evidence
 
+Exact cmd.exe 10.0.26100.1 `help TITLE` printed three nonempty stdout lines, no
+PowerShell error records, and returned 1 without changing console UI state.
+Representative terminal-host verification remains required.
+
+## Related documents
 - [cmd.exe](cmd.exe.md)
 - [start](start.md)
 - [timeout.exe](timeout.exe.md)

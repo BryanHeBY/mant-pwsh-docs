@@ -73,13 +73,22 @@ Prefer structured PowerShell remoting or explicit `ssh.exe` quoting guidance.
 The referenced Windows subsystem is retired, and current availability is not
 guaranteed. Microsoft's page has an internal `rexec` wording inconsistency;
 local evidence outranks its broad applicability banner.
+Exact System32 discovery on the recorded Windows NT `10.0.26200.0` Home China
+client found no `rsh.exe`; do not acquire a same-named legacy binary, configure
+host trust, or contact a remote daemon merely for documentation evidence.
+
+## Runtime evidence
+
+Exact System32 discovery on the recorded Windows NT 10.0.26200.0 Home China
+client found rsh.exe absent; no PATH substitute, connection, trust file,
+privileged-port exception, or daemon action ran. Signature/version/help
+verification remains pending only on an approved legacy fixture.
 
 ## Related documents
-
 - [rexec.exe](rexec.exe.md)
 - OpenSSH: query `mant ssh --source cross-platform-tools`.
 - [winrs.exe](winrs.exe.md)
-- [winrm.exe](winrm.exe.md)
+- [winrm.cmd](winrm.cmd.md)
 
 ## Sources and license
 

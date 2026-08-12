@@ -4,9 +4,9 @@
 > Run a reviewed Windows Script Host script only when it intentionally needs interactive GUI dialogs; use `cscript.exe` for console output, redirection, unattended execution and dependable observation.
 > More information: https://learn.microsoft.com/windows-server/administration/windows-commands/wscript.
 
-- Show Windows Script Host GUI options:
+- Inspect the exact WScript executable/version without opening a GUI dialog:
 
-`wscript.exe //?`
+`Get-Item -LiteralPath "$env:SystemRoot\System32\wscript.exe" | Select-Object FullName, Length, @{n='FileVersionFixed';e={$_.VersionInfo.FileVersionRaw.ToString()}}, @{n='FileVersionString';e={$_.VersionInfo.FileVersion}}`
 
 - Run a reviewed local interactive script with the host banner suppressed:
 
@@ -79,8 +79,23 @@ dialogs, child processes and exit semantics still require an explicit contract.
 host configuration, bitness and policy vary by build, architecture, user and
 installed applications.
 
-## Related documents
+On Windows NT `10.0.26200.0`, exact System32 file version `10.0.26100.4768`
+was confirmed without supplying a script. A console-capture attempt produced no
+reliable text payload and left no residual WScript process. `wscript.exe` is a
+GUI host, so no help-output or exit-code claim is retained. Use
+`cscript.exe //?` for bounded console discovery, or verify WScript interactively
+in a disposable desktop session. No script, engine, COM object, dialog response,
+or persistent option was supplied or changed.
 
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 file version 10.0.26100.4768 was
+confirmed without supplying a script. A console-capture attempt produced no
+reliable text payload and left no residual process; WScript is a GUI host, so
+no help-output/status claim is retained. An approved disposable interactive
+fixture remains required and no script or persisted option changed.
+
+## Related documents
 - [cscript.exe](cscript.exe.md)
 - [cmd.exe](cmd.exe.md)
 - [tasklist.exe](tasklist.exe.md)

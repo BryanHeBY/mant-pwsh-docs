@@ -91,8 +91,20 @@ Windows-only. Job fields, permissions, script language path, remote spooler
 access, and PrintManagement availability vary by build/policy. A job can change
 between listing and action; no command provides a transaction across that race.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`prnjobs.vbs` Application candidate under either PowerShell collector. No
+feature, role, or compatibility component was installed merely to change
+that result, and no same-named PATH substitute was used. This is target-host
+command-resolution evidence, not proof that the tool is unsupported on every
+applicable Windows environment.
+
+Behavior verification remains script discovery/help and exact-queue job
+listing only; no pause, resume, cancel, spool-file, spooler, credential or
+physical-output action is permitted merely for evidence.
+
+## Related documents
 - [prnqctl.vbs](prnqctl.vbs.md)
 - [prnmngr.vbs](prnmngr.vbs.md)
 - [print.exe](print.exe.md)

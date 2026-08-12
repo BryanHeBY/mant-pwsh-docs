@@ -57,6 +57,17 @@ Windows release.
 - `download`: Download a selected installer without running it.
 - `repair`: Invoke a selected package's supported repair mechanism.
 - `dscv3`: Run DSC v3 resource operations when supported by the installed client.
+- `mcp`: Inspect or manage WinGet's MCP extended functionality where supported. This command appears in locally reviewed WinGet 1.29 help but not the cited 2026-07-19 overview.
+
+## MCP command options
+
+<!-- mant:entries role=option case=insensitive -->
+- `--enable`: Enable WinGet's MCP extended functionality; installed help says this requires Store access and it changes client functionality.
+- `--disable`: Disable WinGet's MCP extended functionality; installed help says this requires Store access and it changes client functionality.
+
+Use `winget mcp --help` for read-only discovery. Do not toggle this feature
+merely to test availability: record the exact client, policy, Store access,
+MCP security boundary, configuration owner, and rollback decision first.
 
 ## Global options
 
@@ -116,6 +127,23 @@ Windows Server 2025 when the required App Installer/client is registered.
 Commands and options depend on the independently serviced WinGet version, so
 the installed `--help` and `--version` are authoritative for a target host.
 
+On a normal packaged installation, `Get-Command winget.exe` can resolve a
+per-user app execution alias below `%LOCALAPPDATA%\Microsoft\WindowsApps`.
+That zero-length reparse point activates WinGet from the registered App
+Installer package; it is not the packaged client binary and should not be
+treated as an ordinary PE file for version-resource, signature, or hash
+collection. Use `winget --version` for the client surface and this read-only
+query when App Installer registration/version is the question:
+
+```powershell
+Get-AppxPackage -Name Microsoft.DesktopAppInstaller |
+    Select-Object Name, Version, PackageFullName, SignatureKind
+```
+
+Package registration, alias enablement, command precedence, and successful
+client launch are separate checks. Do not use a file-access failure on the
+alias as evidence that WinGet is absent or unsigned.
+
 ## Common mistakes
 
 ### Selecting a package by display name alone
@@ -133,8 +161,15 @@ behavior. Verify the installed package and intended application state.
 Inventory and review every target first. Elevate only when the selected
 installer and organizational policy require it.
 
-## Related documents
+## Runtime evidence
 
+WinGet 1.29.280 top-level and mcp help exposed 19 commands, 13 global long
+options, and two mcp-specific options, all matched by local ManT entries under
+both PowerShell collectors. The mcp command is absent from the cited 2026-07-19
+overview and is labeled as local-version evidence; only help ran, not
+enable/disable.
+
+## Related documents
 - [winget search](winget-search.md)
 - [winget show](winget-show.md)
 - [winget install](winget-install.md)
@@ -149,7 +184,9 @@ in the selected `pwsh51` or `pwsh7` ManT source.
 
 This original ManT-oriented guide was adapted from the official
 [Windows Package Manager documentation](https://learn.microsoft.com/windows/package-manager/winget/)
-and its locked source repository. It emphasizes exact package identity, native
+and Microsoft's description of
+[Windows app execution aliases](https://learn.microsoft.com/sysinternals/downloads/microsoft-store),
+plus the locked WinGet source repository. It emphasizes exact package identity, native
 exit codes, and PowerShell automation boundaries. Exact upstream revision and
 paths are recorded in `upstream/windows-tools.json`.
 

@@ -110,6 +110,14 @@ process environment rules.
 default on supported Windows releases but can be changed by policy, registry,
 launcher options, or an outer batch scope.
 
+## Runtime evidence
+
+The protected fixture used only a child `cmd.exe` and fixed task variables. It
+confirmed parse-time percent versus execution-time delayed expansion and the
+narrow `endlocal & set "NAME=%NAME%"` same-line transfer idiom under both
+PowerShell collectors. Arbitrary exclamation-bearing input, nested extension
+state, and persistence outside the child were not exercised.
+
 ## Related documents
 
 - [set](set.md)

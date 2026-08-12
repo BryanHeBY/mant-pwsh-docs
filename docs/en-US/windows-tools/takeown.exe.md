@@ -52,6 +52,9 @@ read, write, delete, or execute access.
 - `/r`: Recurse through the selected directory and its subdirectories.
 - `/d`: With `/r`, choose `Y` to take otherwise-unlistable directories or `N`
   to skip them instead of prompting.
+- `/skipsl`: With `/r`, do not follow symbolic links. This installed-build
+  selector limits link traversal but does not make a broad recursive ownership
+  change safe.
 - `/?`: Display installed command help.
 
 ## PowerShell boundaries
@@ -84,6 +87,13 @@ directory; it broadens changes precisely where scope is least visible. Prefer
 `/D N` during discovery or remove the cause of inaccessible scope before an
 approved targeted action.
 
+### Following symbolic links during recursion
+
+Current installed help exposes `/SKIPSL` with `/R`; the locked official Takeown
+page does not yet list it. Gate the selector on exact target help, still resolve
+reparse points and junctions independently, and do not assume it covers every
+kind of namespace redirection or unexpected descendant.
+
 ### Assigning the wrong owner identity
 
 Without `/A`, the current logged-on user becomes owner. With `/A`, the local
@@ -107,10 +117,19 @@ deny an operation. Ownership repair should follow evidence, not precede it.
 
 This executable is Windows-only. Target filesystem, local/remote context,
 privileges, UAC elevation, domain identity resolution, and reparse behavior
-affect results.
+affect results. On Windows NT 10.0.26200.0, file version 10.0.26100.1 exposes
+`/SKIPSL`; Microsoft's locked/current page omits it, so scripts must feature-test
+that switch before use.
+
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, installed file version 10.0.26100.1 /? returned 0
+and exposed /SKIPSL with /R; the locked and current Microsoft page omits it.
+The page records the build-dependent link-traversal boundary. No path, remote
+target, user, password, ownership, DACL, or filesystem object was supplied or
+changed.
 
 ## Related documents
-
 - [icacls.exe](icacls.exe.md)
 - [cipher.exe](cipher.exe.md)
 - [whoami.exe](whoami.exe.md)

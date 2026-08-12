@@ -66,8 +66,20 @@ This Windows-only command is deprecated and may be absent. Historical Resource
 Kit/Connection Manager documentation and current Windows catalog presence do
 not establish support for a particular deployment.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`pbadmin.exe` Application candidate under either PowerShell collector. No
+feature, role, or compatibility component was installed merely to change
+that result, and no same-named PATH substitute was used. This is target-host
+command-resolution evidence, not proof that the tool is unsupported on every
+applicable Windows environment.
+
+Behavior verification remains resolution and scoped artifact/hash
+inventory only; no GUI parse/save, phone book, package, connection, endpoint,
+route, credential or script mutation is permitted merely for evidence.
+
+## Related documents
 - [cmstp.exe](cmstp.exe.md)
 
 ## Sources and license

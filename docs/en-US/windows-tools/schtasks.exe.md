@@ -16,6 +16,10 @@
 
 `schtasks.exe /query /tn "{{\folder\task-name}}" /xml`
 
+- Show the dedicated task SID for one exact task name without confusing it with the run-as principal:
+
+`schtasks.exe /showsid /tn "{{\folder\task-name}}"`
+
 - Corroborate definition and runtime information with structured PowerShell objects:
 
 `Get-ScheduledTask -TaskPath '{{\folder\}}' -TaskName '{{task-name}}' | Get-ScheduledTaskInfo`
@@ -54,6 +58,7 @@ postcondition.
 - `/run`: Queue an immediate instance using the stored action and principal; it does not wait for completion.
 - `/end`: Request termination of an instance started by the task.
 - `/delete`: Delete task registration without undoing prior effects or necessarily stopping a running instance.
+- `/showsid`: Show the SID for the selected task's dedicated user; this is distinct from the principal that runs the action.
 - `/tn TASK`: Select an exact task path and name.
 - `/s COMPUTER`: Target a remote computer for the management operation.
 - `/u`, `/p PASSWORD`: Authenticate a remote management operation; `/u` accepts a user or `DOMAIN\USER`, and these options do not set the runtime principal.
@@ -74,6 +79,7 @@ postcondition.
 | `/run` | Queue an immediate run using saved action/principal | Ignores schedule only; does not wait for completion or change next scheduled run. |
 | `/end` | Stop a program instance started by a task | Availability/data-loss risk; verify descendants and task instance state. |
 | `/delete` | Delete task registration | Does not undo effects or necessarily stop an already running action. |
+| `/showsid` | Show the SID for a task's dedicated user | Identity inventory only; it does not report or change the action's run-as account. |
 
 For definitions needing working directory, multiple actions/triggers, repetition,
 maintenance, event subscriptions, network settings, complex principals, or
@@ -97,6 +103,13 @@ intended output. Keep the previous definition for rollback.
 password. They are different tokens at different times. Never put either
 password in source, history, transcript, process telemetry, or logs; prefer
 managed service accounts, service identities, or a supported secret workflow.
+
+### Confusing `/ShowSid` with the task's run-as principal
+
+`/ShowSid` returns the SID for the task's dedicated user derived from the exact
+task path/name. It does not replace XML/principal inspection and is not proof
+of the `/RU` account, logon type, run level, token privileges, or resource
+access. Preserve both identities when diagnosing authorization.
 
 ### Assuming an interactive test matches a scheduled run
 
@@ -205,6 +218,14 @@ schedule/date grammar, principal/logon options, event triggers, maintenance,
 remote authentication, and XML schema vary by target Windows release. Query
 installed subcommand help and export target-generated XML; do not use an old
 client's syntax as the server contract.
+
+## Runtime evidence
+
+The protected local-help fixture resolved exact System32 `schtasks.exe` and
+captured `/?` under both installed PowerShell editions. Each returned status
+`0`, 23 nonempty stdout lines, and no stderr. It supplied no `/S`, task name,
+credential, principal, action, trigger, XML, or operation selector; no task was
+listed, created, changed, run, ended, exported, or deleted.
 
 ## Related documents
 

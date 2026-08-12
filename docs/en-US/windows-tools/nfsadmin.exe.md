@@ -6,7 +6,7 @@
 
 - Confirm the optional tool and its installed version:
 
-`Get-Command nfsadmin.exe -ErrorAction SilentlyContinue | Select-Object Source,@{Name='FileVersion';Expression={$_.FileVersionInfo.FileVersion}}`
+`Get-Command nfsadmin.exe -ErrorAction SilentlyContinue | Select-Object Source,@{Name='FileVersionFixed';Expression={$_.FileVersionInfo.FileVersionRaw.ToString()}},@{Name='FileVersionString';Expression={$_.FileVersionInfo.FileVersion}}`
 
 - Display current Server for NFS settings without changing them:
 
@@ -144,9 +144,18 @@ Windows-only and feature-dependent. Learn applicability banners do not prove
 that Client/Server for NFS is installed on a given edition. Options include
 legacy NFSv3-era services and mapping mechanisms; local help, installed NFS
 PowerShell cmdlets and target-build behavior govern.
+Exact System32 discovery on the recorded Windows NT `10.0.26200.0` Home China
+client found no `nfsadmin.exe`; do not substitute a PATH match or install NFS
+components merely for documentation evidence.
+
+## Runtime evidence
+
+Exact System32 discovery on the recorded Windows NT 10.0.26200.0 Home China
+client found nfsadmin.exe absent; no PATH substitute or NFS query/mutation ran.
+Help, config display and lock listing remain pending only where the optional
+feature is already installed.
 
 ## Related documents
-
 - [nfsshare.exe](nfsshare.exe.md)
 - [nfsstat.exe](nfsstat.exe.md)
 - [showmount.exe](showmount.exe.md)

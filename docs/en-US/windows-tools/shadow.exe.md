@@ -108,8 +108,14 @@ events, and support record—not `$LASTEXITCODE` alone—establish outcome.
 rules, resolution support, permissions, audit, and remote reachability depend on
 build, edition, RDS role, policy, client, session type, and organization rules.
 
-## Related documents
+## Runtime evidence
 
+Exact System32 discovery on the recorded Windows NT 10.0.26200.0 Home China
+client found shadow.exe absent; no PATH substitute or shadow session ran. Help
+and consent/privacy verification remains pending on an approved disposable
+support session and consenting test user.
+
+## Related documents
 - [query.exe](query.exe.md)
 - [msg.exe](msg.exe.md)
 - [tscon.exe](tscon.exe.md)

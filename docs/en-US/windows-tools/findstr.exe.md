@@ -56,7 +56,7 @@ their value in the same native argument unless installed help says otherwise.
 - `/g`: Read search strings from the following colon-delimited filename.
 - `/d`: Search the following semicolon-delimited directory list.
 - `/a`: Select the two-hex-digit console color attribute for matching output.
-- `/?`: Display installed command help.
+- `-?`, `/?`: Display installed command help.
 
 Options must precede search strings and filenames. Status is normally 0 for a
 match, 1 for no match, and 2 for an operational/syntax error.
@@ -96,7 +96,19 @@ Capture `$LASTEXITCODE` immediately and distinguish 1 from actual errors.
 
 This executable is Windows-only. Some limitations documented by community
 experiments vary across old Windows versions, so they are evidence of risk,
-not a promise for every current build.
+not a promise for every current build. On Windows NT `10.0.26200.0`, installed
+file version `10.0.26100.1` printed 45 nonempty help lines and returned 0 for
+both `/?` and `-?`. No pattern, string, file, directory, standard input,
+color, or filesystem content was selected by the help probes.
+
+## Runtime evidence
+
+The protected fixture searched one fixed ASCII file with explicit `/i /n /l
+/c:"needle phrase"` under both PowerShell collectors. The fixed phrase matched
+with status `0`; a fixed absent phrase returned status `1`. It deliberately
+did not exercise FINDSTR's limited regex dialect, recursion, file/pattern list
+files, color, offline files, arbitrary encoding, long lines, binary data, or
+user content; cleanup removed the task root.
 
 ## Related documents
 

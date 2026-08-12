@@ -104,6 +104,15 @@ The scheme applies to supported Windows client releases and selected Windows
 Server desktop experiences. The official table is updated as Settings evolves;
 the page identifier must be checked for the target version and SKU.
 
+## Verification boundary
+
+No `ms-settings:` URI was launched merely for evidence. Opening a URI invokes
+the interactive Settings handler and proves neither that a page is available
+on another SKU/build nor that any setting has a particular value. Runtime
+verification requires an interactive disposable session, exact page ID, and a
+separate read-only configuration source; it must not infer state from window
+appearance or automate a localized Settings UI.
+
 ## Related documents
 
 - [control.exe](control.exe.md)

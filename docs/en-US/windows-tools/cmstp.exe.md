@@ -6,7 +6,7 @@
 
 - Resolve the Windows executable without invoking a profile:
 
-`Get-Command cmstp.exe -All -ErrorAction SilentlyContinue | Select-Object Source,@{Name='FileVersion';Expression={$_.FileVersionInfo.FileVersion}}`
+`Get-Command cmstp.exe -All -ErrorAction SilentlyContinue | Select-Object Source,@{Name='FileVersionFixed';Expression={$_.FileVersionInfo.FileVersionRaw.ToString()}},@{Name='FileVersionString';Expression={$_.FileVersionInfo.FileVersion}}`
 
 - Display local syntax without installing anything:
 
@@ -90,8 +90,18 @@ not prove a particular profile technology, package extension, or enterprise
 policy is supported on the current build. Test the exact signed/approved
 package and migration plan.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT 10.0.26200.0, exact System32 NetCfg file version 10.0.26100.8737
+-? and /? each returned status 0 with 113 nonempty stdout lines/no stderr and
+byte-identical output. Read-only -s n and /s n each returned status 0 with 56
+nonempty stdout lines and byte-identical output; inventory payload was not
+retained. Installed help prints -s/-q/-b/-m/-v/-l/-c/-i/-u/-winpe/-d/-x/-?, so
+the page indexes both verified hyphen and slash spellings. No binding map,
+INF/package, install/uninstall, device cleanup, restart, connection,
+credential, service or policy mutation occurred.
+
+## Related documents
 - [netcfg.exe](netcfg.exe.md)
 - [netsh.exe](netsh.exe.md)
 - [certutil.exe](certutil.exe.md)

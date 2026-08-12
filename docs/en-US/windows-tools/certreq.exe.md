@@ -60,13 +60,48 @@ identity, CA, encoding, overwrite, and request-policy behavior.
 - `-policy`: Create a policy request from an existing request and policy INF.
 - `-sign`: Sign a cross-certificate or qualified-subordination request.
 - `-enroll`: Enroll or renew from an enterprise certificate template.
+- `-enrollaik`: Enroll an Attestation Identity Key certificate on installed
+  builds that expose this specialized TPM-attestation workflow.
+- `-enrollcredguardcert`: Enroll a machine Credential Guard certificate from
+  the following template and optional extension INF on installed builds.
+- `-enrolllogon`: Enroll a Windows Hello for Business logon certificate through
+  ADFS on installed builds that expose this specialized workflow.
+- `-post`: Send an HTTP request to the explicitly configured URL on installed
+  builds; treat the endpoint, payload, authentication, response, and logs as a
+  network/security operation rather than local file formatting.
 - `-machine`: Use the local-machine key/store context.
 - `-user`: Use the current-user key/store context.
 - `-config`: Select an exact `CAHost\CAName` configuration.
+- `-policyserver`: Select the following enrollment-policy server URL or ID;
+  `*` can open interactive selection and is unsuitable for deterministic automation.
 - `-attrib`: Supply reviewed request attributes such as an enterprise template.
 - `-binary`: Use binary request/response handling where the selected verb supports it.
+- `-any`: Let the submission interface determine the request encoding type.
+- `-cert`: Select the following signing or renewal certificate identity; resolve
+  the exact certificate and private-key context before use.
+- `-anonymous`: Select anonymous authentication for a supported policy/enrollment
+  endpoint; this is not a general permission bypass.
+- `-kerberos`: Select Kerberos authentication for a supported endpoint.
+- `-clientcertificate`: Select the following client-certificate identity for a
+  supported connection; protect its private-key context.
+- `-username`: Supply the following enrollment-service username.
+- `-p`: Supply the following password for a supported service connection;
+  command-line use can expose the secret in arguments, history, transcripts, and logs.
+- `-pin`: Supply the following key or smart-card PIN; avoid command-line secret exposure.
 - `-crl`: Include certificate-revocation-list handling for supported operations.
 - `-rpc`: Force RPC enrollment transport where documented.
+- `-adminforcemachine`: Submit using the key-service local-system context; this
+  is an administrative identity boundary, not an ordinary machine-store synonym.
+- `-renewonbehalfof`: Submit renewal on behalf of the subject identified by the
+  signing certificate under an approved enrollment-agent policy.
+- `-nochallenge`: Skip processing the key-proof challenge where the installed
+  workflow supports it; do not weaken attestation without authoritative policy.
+- `-xchg`: Supply the following CA exchange-certificate file for private-key archival.
+- `-noeku`: Disable enhanced-key-usage filtering when selecting a signing certificate.
+- `-alternatesignaturealgorithm`: Request the alternate signature algorithm where supported.
+- `-hashalgorithm`: Select the following hash algorithm under current CA and organization policy.
+- `-unicode`: Write redirected console output as Unicode on installed builds.
+- `-unicodetext`: Write output files as Unicode text where the selected verb supports it.
 - `-f`: Permit replacement of an existing output artifact.
 - `-q`: Reduce console output without changing the operation.
 - `-v`: Emit verbose diagnostic output.
@@ -166,6 +201,22 @@ change who is represented and require CA support. Record requester and agent
 identities, constrain templates, protect signing keys, and audit the issued
 certificate rather than adding attributes until the CA accepts them.
 
+### Treating specialized installed verbs as ordinary certificate requests
+
+`-EnrollAIK`, `-EnrollCredGuardCert`, `-EnrollLogon`, and `-Post` appear in the
+recorded installed complete help but are absent from the current general
+Microsoft CertReq syntax page. They cross TPM attestation, Credential Guard,
+ADFS/Hello, or HTTP endpoint boundaries. Feature-test exact help, use the owning
+product's approved workflow, and do not infer required identity, transport,
+template, payload, or success semantics from the verb name.
+
+### Exposing enrollment credentials and PINs
+
+Installed help accepts `-p Password` and `-pin Pin`. Native arguments can be
+visible to process inventory, logging, command history, transcripts, monitoring,
+and Agents. Prefer a supported protected prompt or managed identity mechanism;
+never print, serialize, commit, or paste a real password or PIN.
+
 ## PowerShell boundaries
 
 `certreq.exe` is a native program: it emits text rather than certificate
@@ -180,10 +231,22 @@ This Windows-only command is available on supported Windows client and server
 releases, but verbs, options, providers, algorithms, templates, and enrollment
 services vary. Run `certreq.exe -v -?` and verb-specific help on the target
 host. Enterprise CA, CEP/CES, Key Attestation, offline CA, and third-party CA
-workflows have additional constraints.
+workflows have additional constraints. On Windows NT 10.0.26200.0, installed
+file version 10.0.26100.8115 complete help exposes the specialized verbs and
+options indexed above; the current general Microsoft page documents only the
+portable core, so exact target help remains authoritative for availability.
+
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, installed file version 10.0.26100.8115 -v -?
+returned 0 and exposed 40 option/verb entries plus the executable. Four
+specialized installed verbs and 18 security-relevant common options missing
+from the current general Microsoft page are indexed with build, secret,
+identity, network, attestation, and no-inference boundaries. No key, request,
+CA, template, policy server, credential, PIN, HTTP endpoint, file, store, TPM,
+ADFS, Hello, or Credential Guard operation ran.
 
 ## Related documents
-
 - [certutil.exe](certutil.exe.md)
 - [cipher.exe](cipher.exe.md)
 - [whoami.exe](whoami.exe.md)

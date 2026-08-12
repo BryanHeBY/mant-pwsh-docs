@@ -70,8 +70,16 @@ Cmd CLS is Windows-only. PowerShell `Clear-Host` is host-dependent and may work
 differently in Windows Terminal, legacy console, IDEs, remoting, redirected
 output, CI, and non-Windows terminals.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT 10.0.26200.0, exact System32 `cmd.exe` fixed version
+`10.0.26100.8737` returned two nonempty lines and status `1` for
+`cmd.exe /d /c help CLS` under both PowerShell collectors. The fixture did not
+retain the localized payload. This proves only static help discovery: CLS did
+not run, and no console, scrollback, terminal, log, history, or diagnostic
+evidence was cleared.
+
+## Related documents
 - [cmd.exe](cmd.exe.md)
 - [color](color.md)
 - [prompt](prompt.md)

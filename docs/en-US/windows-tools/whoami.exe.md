@@ -56,7 +56,7 @@ view needed for the diagnostic and protect captured output.
   views.
 - `/nh`: Suppress headers for `TABLE` or `CSV` output; this is not valid with
   every output mode.
-- `/?`: Display installed command help.
+- `-?`, `/?`: Display installed command help.
 
 ## PowerShell boundaries
 
@@ -93,7 +93,21 @@ and typed identity objects.
 ## Version and platform differences
 
 This page describes Windows `whoami.exe`. Unix-like `whoami` tools generally
-return only a user name and do not accept this token-inspection syntax.
+return only a user name and do not accept this token-inspection syntax. On
+Windows NT `10.0.26200.0`, installed file version `10.0.26100.8115` printed
+61 nonempty help lines and returned 0 for both `/?` and `-?`; its selector
+surface matched the index. No user, group, privilege, claim, logon ID, token,
+or authorization state was queried by the help probes.
+
+## Runtime evidence
+
+The repeatable read-only Windows CLI fixture resolved exact System32
+`whoami.exe`, captured localized `/?` help, and queried only the current
+process token with `/user /fo csv /nh`. It returned exit code `0` and an SID
+shape under both PowerShell collectors. The captured account and SID values
+were not emitted into test logs. This proves current-token inspection, not the
+interactive desktop user, effective access to a resource, or another logon
+session.
 
 ## Related documents
 

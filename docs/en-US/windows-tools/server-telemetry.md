@@ -84,8 +84,13 @@ Windows diagnostic data and WER evolved substantially after these Server-era
 commands. Command presence and catalog applicability do not establish that the
 switch controls every current collection/submission path.
 
-## Related documents
+## Verification boundary
 
+Windows runtime verification remains query/service/policy reads only; no
+telemetry, WER, dump, consent, policy, service, registry, upload or network
+mutation is permitted merely for evidence.
+
+## Related documents
 - [wevtutil.exe](wevtutil.exe.md)
 - [sc.exe](sc.exe.md)
 

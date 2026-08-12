@@ -54,20 +54,69 @@ read-only flags. Query, verify, reset, and password-change semantics differ.
 - `/dclist`: List discovered domain controllers for one domain.
 - `/parentdomain`: Display the parent of one named domain.
 - `/domain_trusts`: Enumerate domain trust relationships and selected attributes.
-- `/trusted_domains`: Enumerate domains trusted by the selected computer/domain.
+- `/query`: Query the selected server's Netlogon service.
+- `/dcname`: Return the PDC name for the following domain.
+- `/dnsgetdc`: Enumerate domain controllers through the DNS DC-open/next/close
+  interface with explicit capability flags.
+- `/dsgetfti`: Return interforest trust information; combining it with
+  `/update_tdo` changes the locally stored trust information.
+- `/lsaqueryfti`: Query locally stored forest-trust information for one exact
+  trusted forest.
+- `/dsgetsitecov`: Display sites covered by the selected domain controller.
+- `/dsaddresstosite`: Map one machine/address list to AD site names.
+- `/finduser`: Find which trusted domain would authenticate the named user.
+- `/whowill`: Ask which domain controller would log on the following user.
+- `/logon_query`: Query cumulative NTLM logon-attempt counts.
+- `/dsquerydns`: Query the status of the last DC-specific DNS update.
 - `/sc_query`: Display the last-used secure-channel state without live repair.
 - `/sc_verify`: Verify and potentially rebuild a broken secure channel.
 - `/sc_reset`: Reset the selected secure channel to an explicit DC where supplied.
 - `/sc_change_pwd`: Change the local member computer secure-channel password.
 - `/server`: Select a remote Windows computer's Netlogon service for supported forms.
-- `/user`: Select an alternate user for supported operations.
-- `/password`: Supply an alternate password; avoid literal secrets.
+- `/user`: Display SAM attributes for the following user on the selected
+  server; it is not an alternate-credential selector and does not query an AD
+  account.
 - `/force`: Bypass cached DC Locator results and perform new discovery.
 - `/dsregdns`: Trigger Netlogon DNS registration.
+- `/dsderegdns`: Deregister selected DC-specific DNS records; exact DNS host,
+  domain, domain GUID, and DSA GUID scope matters.
+- `/transport_notify`: Notify Netlogon of a new transport; this changes service
+  observation state and is not an inventory query.
 - `/dbflag`: Query or change Netlogon debug flags.
+- `/pdc_repl`: Force a historical UAS change message from the selected PDC.
+- `/bdc_query`: Query historical BDC replication status for a domain.
+- `/list_deltas`: Display the following legacy change-log file.
+- `/cdigest`: Compute the client digest for a supplied message/domain.
+- `/sdigest`: Compute the server digest for a supplied message/RID.
+- `/time`: Convert two hexadecimal Windows NT GMT words to text.
+- `/shutdown`: Request shutdown of the selected server with a reason and
+  optional delay; never use it for discovery or generic validation.
+- `/shutdown_abort`: Abort a pending shutdown on the selected server; this is
+  also a lifecycle change, not a query.
 - `/repl`: Invoke historical NT 4.0 BDC replication behavior, not AD replication.
 - `/sync`: Invoke historical NT 4.0 BDC synchronization behavior.
-- `/?`: Display exact target-build syntax.
+- `/update_tdo`: With `/dsgetfti`, update locally stored interforest-trust
+  information instead of only reporting it.
+- `/addresses`: Supply the comma-separated addresses for `/dsaddresstosite`.
+- `/dom`, `/domguid`, `/dsaguid`: Narrow `/dsderegdns` to the intended DNS
+  domain, domain GUID, and DSA GUID.
+- `/rid`: Supply the hexadecimal RID required by `/sdigest`.
+- `/domain`: Supply the exact domain for `/cdigest`.
+- `/primary`, `/forest`, `/direct_out`, `/direct_in`, `/all_trusts`, `/v`:
+  Filter or expand `/domain_trusts` output.
+- `/pdc`, `/ds`, `/dsp`, `/gc`, `/kdc`, `/timeserv`, `/gtimeserv`, `/ws`,
+  `/writable`, `/ldaponly`: Require matching DC capabilities during locator
+  operations.
+- `/netbios`, `/dns`, `/ip`, `/ret_dns`, `/ret_netbios`: Select locator input
+  or returned name/address forms; they do not validate the returned endpoint.
+- `/site`, `/sitespec`, `/try_next_closest_site`, `/avoidself`, `/backg`:
+  Control locator site preference/filtering and background/cache behavior.
+- `/ds_6`, `/ds_8`, `/ds_9`, `/ds_10`, `/ds_13`: Require the corresponding
+  installed DC-generation capability; treat these as build-specific flags.
+- `/keylist`, `/account`: Request the installed key-list/account locator forms;
+  verify build-specific semantics before use.
+- `/?`, `/help`: Display exact target-build syntax. On the recorded build both
+  forms wrote help to the native error stream and returned exit code 1.
 
 ## Command-family map
 
@@ -137,6 +186,12 @@ human text and is not a stable parser contract. Do not infer success from a DC
 name alone or from a single English phrase. For automation, prefer supported
 typed directory APIs/cmdlets and keep raw NLTest output as diagnostic evidence.
 
+On Windows PowerShell 5.1, the recorded build wrote all `/?` and `/help` text
+to the native error stream. Merging `2>&1` therefore produced `ErrorRecord`
+objects even though their text was ordinary help. Convert deliberately when
+rendering (`ForEach-Object { "$_" }`), retain the original stream/status as
+evidence, and do not classify `NativeCommandError` alone as an NLTest failure.
+
 ## Version and platform differences
 
 NLTest is Windows-only and feature/RSAT-dependent. Its comprehensive Microsoft
@@ -144,9 +199,21 @@ reference is labeled for older Windows Server releases, while the executable
 continues to appear in Microsoft troubleshooting workflows. Options, required
 elevation, flags, cache behavior, output, and support boundaries vary. Target-
 local help and current issue-specific Microsoft guidance take precedence.
+On Windows NT `10.0.26200.0`, installed file version `10.0.26100.8115`
+printed 56 nonempty help lines and returned 1 for both `/?` and `/help`.
+
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, installed file version 10.0.26100.8115
+ordinary-token /? and /help each printed 56 nonempty lines to the native error
+stream and returned 1. Windows PowerShell 5.1 therefore wraps merged help items
+as NativeCommandError. Installed and historical official syntax prove /user is
+a SAM query rather than alternate credentials and expose no /password; the page
+now indexes the complete installed operation/modifier surface with update, DNS
+deregistration, notification/debug, legacy replication, digest, and shutdown
+boundaries. No target or operational state was queried or changed.
 
 ## Related documents
-
 - [dcdiag.exe](dcdiag.exe.md)
 - [repadmin.exe](repadmin.exe.md)
 - [netdom.exe](netdom.exe.md)

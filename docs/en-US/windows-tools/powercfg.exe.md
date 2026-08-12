@@ -16,7 +16,7 @@
 
 `powercfg.exe /query`
 
-- Show current application/driver requests preventing display or system sleep:
+- From an elevated shell, show current application/driver requests preventing display or system sleep:
 
 `powercfg.exe /requests`
 
@@ -24,9 +24,9 @@
 
 `powercfg.exe /availablesleepstates`
 
-- Write battery history to a new explicit report and verify the resulting file:
+- Refuse to replace an existing report, write battery history to a new protected path, and verify the result:
 
-`powercfg.exe /batteryreport /output "{{C:\Evidence\battery-report.html}}"`
+`$report = "{{C:\Evidence\battery-report.html}}"; if (Test-Path -LiteralPath $report) { throw "Refusing to replace $report" }; powercfg.exe /batteryreport /output $report; if ($LASTEXITCODE -ne 0) { throw "powercfg failed: $LASTEXITCODE" }; Get-Item -LiteralPath $report`
 <!-- mant:tldr:end -->
 
 # powercfg.exe
@@ -98,7 +98,9 @@ on the target before using a build-dependent or mutating family.
 - Running `/energy` under normal workload. Microsoft recommends an idle system;
   bound duration/output and treat findings as diagnostic signals, not verdicts.
 - Reusing a default report path or trusting launch/status when an existing file
-  blocks creation. Use a new path and verify timestamp, content, host, and hash.
+  is present. On the recorded build, `/batteryreport /output` silently replaced
+  an existing writable file with exit code 0. Use a protected new path and
+  verify timestamp, content, host, and hash.
 - Publishing battery/sleep reports without review; they can reveal device,
   usage, application, identity, timing, and energy-history information.
 - Disabling hibernation casually: it affects hibernate and can affect Fast Startup.
@@ -111,14 +113,27 @@ localized tables as invariant objects. Preserve `/getactivescheme`, `/list`,
 `/query`, `/requests`, `/requestsoverride`, `/a`, wake inventory, report path and
 policy source before mutation, then re-query and test AC/DC/sleep/wake behavior.
 
+Permissions are command-specific. On the recorded ordinary token,
+`/getactivescheme` succeeded but `/requests` returned localized text requiring
+an elevated command prompt and exit code 1. Preserve that access failure rather
+than reporting “no active requests”; do not infer that every query has the same
+elevation requirement.
+
 ## Version and platform differences
 
 `powercfg.exe` is Windows-only. Options such as SleepStudy, system power reports,
 Modern Standby diagnostics, overlays/profiles and device controls depend on build,
 hardware, firmware, drivers, edition, power source, OEM configuration and policy.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT 10.0.26200.0, /requests returned exit code 1 and required
+elevation under an ordinary token, while two /batteryreport runs proved that an
+existing writable output file is silently replaced with exit code 0. The
+isolated 113656-byte report was not displayed and the verified temporary file
+and directory were deleted after the probe.
+
+## Related documents
 - [shutdown.exe](shutdown.exe.md)
 - [systeminfo.exe](systeminfo.exe.md)
 - [driverquery.exe](driverquery.exe.md)

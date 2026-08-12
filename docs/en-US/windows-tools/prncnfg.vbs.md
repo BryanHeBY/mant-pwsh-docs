@@ -125,8 +125,21 @@ permissions, and remote spooler access vary by build and policy. PrintManagement
 cmdlets are preferable when installed, but they are not evidence that the
 legacy script behaves identically.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`prncnfg.vbs` Application candidate under either PowerShell collector. No
+feature, role, or compatibility component was installed merely to change
+that result, and no same-named PATH substitute was used. This is target-host
+command-resolution evidence, not proof that the tool is unsupported on every
+applicable Windows environment.
+
+Behavior verification remains script discovery, help, exact queue reads
+and typed inventory only; no queue configuration, rename, publication,
+scheduling, retention, sharing, port, credential or spooler mutation is
+permitted merely for evidence.
+
+## Related documents
 - [prnmngr.vbs](prnmngr.vbs.md)
 - [prnport.vbs](prnport.vbs.md)
 - [prndrvr.vbs](prndrvr.vbs.md)

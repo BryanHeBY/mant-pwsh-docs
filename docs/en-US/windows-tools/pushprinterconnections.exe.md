@@ -6,7 +6,7 @@
 
 - Confirm the inbox utility's exact executable and file version without running it:
 
-`Get-Command PushPrinterConnections.exe | Select-Object Source,@{Name='FileVersion';Expression={$_.FileVersionInfo.FileVersion}}`
+`Get-Command PushPrinterConnections.exe | Select-Object Source,@{Name='FileVersionFixed';Expression={$_.FileVersionInfo.FileVersionRaw.ToString()}},@{Name='FileVersionString';Expression={$_.FileVersionInfo.FileVersion}}`
 
 - Capture the effective user Group Policy summary in the affected user's session:
 
@@ -88,8 +88,21 @@ Windows-only. The utility exists for compatibility with deployed-printer Group
 Policy workflows; modern policy processing, security updates, driver rules, and
 connection behavior vary by Windows build and domain policy.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`pushprinterconnections.exe` Application candidate under either PowerShell collector. No
+feature, role, or compatibility component was installed merely to change
+that result, and no same-named PATH substitute was used. This is target-host
+command-resolution evidence, not proof that the tool is unsupported on every
+applicable Windows environment.
+
+Behavior verification remains nonexecuting binary inventory plus
+query-only RSoP/printer/event/log inspection; do not run the utility, enable
+logging, refresh policy, log off/restart, change GPOs/connections/drivers or
+mutate spooler state merely for evidence.
+
+## Related documents
 - [gpresult.exe](gpresult.exe.md)
 - [gpupdate.exe](gpupdate.exe.md)
 - [prnmngr.vbs](prnmngr.vbs.md)

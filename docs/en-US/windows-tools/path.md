@@ -88,8 +88,13 @@ entry, and verify in a new process.
 This page describes Windows cmd search behavior. PowerShell and native process
 launchers have their own command-resolution layers before Windows searches PATH.
 
-## Related documents
+## Runtime evidence
 
+Exact cmd.exe 10.0.26100.1 `help PATH` printed eight nonempty stdout lines, no
+PowerShell error records, and returned 1 without changing the process search
+path. Protected process-local resolution fixtures remain required.
+
+## Related documents
 - [where.exe](where.exe.md)
 - [set](set.md)
 - [setlocal](setlocal.md)

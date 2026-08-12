@@ -637,7 +637,7 @@
       "name": "format",
       "source": "format.md",
       "status": "documented",
-      "target": "windows-tools/format.exe.md"
+      "target": "windows-tools/format.com.md"
     },
     {
       "name": "freedisk",

@@ -117,6 +117,15 @@ not a dependency of this repository or ManT. Server tools, client setup, and
 returned documentation can evolve; inspect the connected server's advertised
 capabilities and validate every answer against the target product and version.
 
+## Verification boundary
+
+This repository can be read and validated without connecting to the Microsoft
+Learn MCP server. No live MCP request is treated as durable evidence: server
+capabilities, client transport, search ranking, and returned text can change.
+When the optional service is used for discovery, register and verify the
+resulting authoritative Microsoft Learn page instead of copying a transient
+response into provenance.
+
 ## Related documents
 
 - [Windows tools for PowerShell](windows-tools.md)

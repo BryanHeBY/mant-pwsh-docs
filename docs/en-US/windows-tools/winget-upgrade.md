@@ -34,21 +34,46 @@ carefully as an initial installation.
 
 <!-- mant:entries role=option case=insensitive -->
 - `-q QUERY`, `--query QUERY`: Select a package by free-form query; prefer exact ID in automation.
+- `-m PATH`, `--manifest PATH`: Upgrade using a reviewed local manifest or manifest directory.
 - `--id ID`: Select one package identifier.
+- `--name NAME`, `--moniker MONIKER`: Select by display name or moniker only when exact identity is verified separately.
 - `-e`, `--exact`: Require exact selection.
 - `-v VERSION`, `--version VERSION`: Request one exact source-provided target version.
 - `-s SOURCE`, `--source SOURCE`: Restrict the upgrade candidate to one configured source.
 - `--scope SCOPE`, `--architecture ARCHITECTURE`, `--installer-type TYPE`: Restrict installer selection to reviewed deployment characteristics.
-- `--all`: Upgrade every eligible detected package, creating a multi-installer partial-failure boundary.
-- `--include-unknown`: Include packages whose current version cannot be determined reliably.
-- `--include-pinned`: Include packages otherwise excluded by non-blocking pin behavior where supported.
+- `--locale LOCALE`: Select an installer locale where available.
+- `-l LOCATION`, `--location LOCATION`: Request an upgrade location only where the installer supports it.
+- `-o FILE`, `--log FILE`: Request an installer log path where the selected installer supports it.
+- `--custom ARGUMENTS`: Add reviewed arguments after WinGet's normal installer switches.
+- `--override ARGUMENTS`: Replace WinGet's normal installer arguments; this substantially changes the manifest contract.
+- `-r`, `--recurse`, `--all`: Upgrade every eligible detected package, creating a multi-installer partial-failure boundary.
+- `-u`, `--unknown`, `--include-unknown`: Include packages whose current version cannot be determined reliably.
+- `--pinned`, `--include-pinned`: Include packages otherwise excluded by non-blocking pin behavior where supported.
+- `--purge`: Delete the portable package directory during the applicable upgrade workflow; review data-retention impact.
+- `--skip-dependencies`: Skip dependency processing only when dependencies are managed and verified separately.
+- `--ignore-security-hash`: Bypass an installer hash mismatch; this weakens a security control and should not be routine automation.
+- `--ignore-local-archive-malware-scan`: Skip the malware scan for a local archive-manifest operation; require independent verification.
 - `--uninstall-previous`: Request uninstall of the previous version where the manifest supports it.
 - `-i`, `--interactive`: Request interactive installer behavior.
 - `-h`, `--silent`: Request silent installer behavior; it is package-specific.
 - `--accept-package-agreements`, `--accept-source-agreements`: Accept reviewed agreements for unattended work.
 - `--force`: Continue through selected non-security checks without proving upgrade safety.
 - `--allow-reboot`: Permit installer-triggered restart inside an approved maintenance window.
+- `--header HEADER`: Send a reviewed HTTP header to a REST package source; do not expose credentials in process arguments or logs.
+- `--authentication-mode MODE`: Choose `silent`, `silentPreferred`, or `interactive` source authentication behavior.
+- `--authentication-account ACCOUNT`: Select the account used for source authentication.
 - `--disable-interactivity`: Disable prompts for unattended execution.
+
+## Execution and diagnostics options
+
+<!-- mant:entries role=option case=insensitive -->
+- `-?`, `--help`: Display help for this subcommand without selecting or upgrading a package.
+- `--wait`: Wait for a key press before the client exits; avoid it in unattended automation.
+- `--logs`, `--open-logs`: Open the WinGet log directory in the interactive desktop.
+- `--verbose`, `--verbose-logs`: Enable verbose WinGet logging for this invocation.
+- `--nowarn`, `--ignore-warnings`: Suppress warning display; it does not make an upgrade safe.
+- `--proxy URL`: Use the specified proxy for this invocation; protect credentials embedded in a proxy URL.
+- `--no-proxy`: Disable proxy use for this invocation.
 
 ## Upgrade one package
 
@@ -100,6 +125,14 @@ application. Bulk invocation is not atomic.
 
 An unknown installed version weakens comparison and rollback reasoning.
 Identify the product/version independently before opting it into upgrade.
+
+## Runtime evidence
+
+A dual-collector local help audit against WinGet `1.29.280` matched all 47
+printed `upgrade --help` long options to ManT entries. It ran no inventory,
+source query, installer, download, agreement, package selection, upgrade, or
+restart operation. Eligibility, pins, detection, rollback, logs, and
+post-upgrade state remain outside this option-surface evidence.
 
 ## Related documents
 

@@ -130,8 +130,22 @@ remote access, table layout, service version, FRS role, and support depend on
 Server/DC generation and installed components. A current Learn applicability
 banner does not mean FRS should be enabled for modern SYSVOL.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`ntfrsutl.exe` Application candidate under either PowerShell collector. No
+feature, role, or compatibility component was installed merely to change
+that result, and no same-named PATH substitute was used. This is target-host
+command-resolution evidence, not proof that the tool is unsupported on every
+applicable Windows environment.
+
+Behavior verification remains exact approved legacy-FRS server
+help/version/sets/poll display only after mechanism/membership proof; no
+forced/fast/slow poll, service, registry, AD/replica-set object, D2/D4,
+journal-wrap, staging/log or recovery mutation is permitted merely for
+evidence.
+
+## Related documents
 - [dfsrmig.exe](dfsrmig.exe.md)
 - [dcdiag.exe](dcdiag.exe.md)
 - [repadmin.exe](repadmin.exe.md)

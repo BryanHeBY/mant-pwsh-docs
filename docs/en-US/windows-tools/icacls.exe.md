@@ -129,8 +129,14 @@ filesystem/provider that supports Windows security descriptors; privileges,
 domain resolution, integrity labels, reparse points, and remote shares affect
 behavior.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT 10.0.26200.0, installed file version 10.0.26100.1 ordinary-token
+/? returned complete help and status 0. No path, ACL, SID, account, owner,
+inheritance, integrity, link, recursion, save, restore, or remote credential
+was supplied or changed.
+
+## Related documents
 - [takeown.exe](takeown.exe.md)
 - [whoami.exe](whoami.exe.md)
 - [secedit.exe](secedit.exe.md)

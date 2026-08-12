@@ -115,6 +115,15 @@ input availability, validate the result, and never execute it as code.
 This builtin is available in `cmd.exe` on supported Windows client and server
 releases. The Windows Recovery Environment exposes a different `set` form.
 
+## Runtime evidence
+
+A fixed child-batch fixture confirmed under both PowerShell collectors that
+percent expansion inside a parsed parenthesized block retained `before`, while
+narrowly enabled delayed expansion observed the later value `after`. All
+variables existed only in task-owned child processes. `/A`, `/P`, arbitrary
+exclamation-bearing data, and persistent or parent-process environment changes
+remain outside this evidence.
+
 ## Related documents
 
 - [cmd.exe](cmd.exe.md)

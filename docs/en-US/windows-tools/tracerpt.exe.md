@@ -84,9 +84,19 @@ artifact. Do not feed untrusted symbol/provider paths into automation.
 `tracerpt.exe` is Windows-only. Accepted formats, decoding, reports, manifests,
 symbols, ETW provider schemas, timestamp handling, and output vary by build,
 architecture, providers, trace flags, and analysis-host resources.
+On exact System32 file version `10.0.26100.1`, `/?` printed 49 nonempty stdout
+lines, produced no PowerShell error records, and returned 1. No trace/log,
+real-time session, manifest, symbol/TMF path, report, summary, event dump,
+schema export, input, or output was supplied or created.
+
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 TraceRpt file version 10.0.26100.1
+/? printed 49 nonempty stdout lines, no PowerShell error records, and returned
+1. No trace/session/schema/symbol/report/summary/dump/input/output ran;
+approved copied-trace verification remains pending.
 
 ## Related documents
-
 - [logman.exe](logman.exe.md)
 - [relog.exe](relog.exe.md)
 - [wevtutil.exe](wevtutil.exe.md)

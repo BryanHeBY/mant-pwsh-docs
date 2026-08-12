@@ -9,9 +9,9 @@
 
 `Get-Command at.exe -All -ErrorAction SilentlyContinue | Format-List Source, Version`
 
-- List legacy AT jobs without creating or deleting one:
+- Request the legacy AT-job inventory and preserve failure/deprecation status:
 
-`at.exe`
+`at.exe; $atExitCode = $LASTEXITCODE`
 
 - Inventory modern scheduled tasks with explicit, machine-readable CSV output:
 
@@ -49,8 +49,8 @@ Use only for inventory/migration; new automation belongs in Task Scheduler.
 - `/delete`: Delete one ID or, when no ID is supplied, every AT job.
 - `/yes`: Suppress confirmation for broad deletion.
 - `/interactive`: Request obsolete interactive-desktop behavior.
-- `/every`: Repeat on the supplied weekday/date set.
-- `/next`: Run at the next occurrence of the supplied weekday/date.
+- `/every:{{date}}`: Repeat on the supplied weekday/date set.
+- `/next:{{date}}`: Run at the next occurrence of the supplied weekday/date.
 - `/?`: Display installed syntax and deprecation status.
 
 ## Common mistakes
@@ -105,8 +105,34 @@ visibility vary by Windows build. The Microsoft Learn page and installed help
 currently differ in emphasis; installed behavior must be recorded during
 migration.
 
-## Related documents
+On the recorded Windows NT `10.0.26200.0` host, exact System32 `at.exe` had
+fixed file/product version `10.0.26100.1150`, Windows PowerShell 5.1-selected
+file/product version string `10.0.26100.8457`, description `Schedule service command line
+interface`, a valid `Microsoft Windows` signature, and SHA-256
+`16885037343CCDF6F1F2061FC769C27EC3333918A2D95C7D7B7D176818C056A0`.
+`/?` returned 25 nonempty localized stdout lines, no stderr, and status 0; it
+began by deprecating AT in favor of SchTasks and then displayed the complete
+legacy grammar. A no-argument inventory attempt returned only the deprecation
+message plus a localized invalid-binding-handle diagnostic, no job rows, no
+stderr, and status 1. Therefore an empty-looking invocation on a current host
+is not proof that no legacy jobs exist. Preserve output/status and use the Task
+Scheduler APIs or SchTasks as the authoritative current inventory. No time,
+command, ID, remote computer, delete option, or other mutating operand was
+supplied.
 
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 AT had fixed file/product version
+10.0.26100.1150 and Windows PowerShell 5.1-selected version string
+10.0.26100.8457, a valid Microsoft Windows signature, and SHA-256
+16885037343CCDF6F1F2061FC769C27EC3333918A2D95C7D7B7D176818C056A0. /? returned
+25 localized stdout lines/status 0 and explicitly deprecated AT; a no-argument
+inventory returned only the deprecation and invalid-binding-handle
+diagnostics/status 1, not job rows. No time, command, ID, remote host or delete
+option was supplied. Task creation, edit, run and deletion remain forbidden
+merely for evidence.
+
+## Related documents
 - [schtasks.exe](schtasks.exe.md)
 - [cmd.exe](cmd.exe.md)
 - [date](date.md)

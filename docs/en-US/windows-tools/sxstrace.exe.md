@@ -92,8 +92,21 @@ when the reproduction executable's completion is part of the evidence contract.
 trace permissions and application architecture vary by build, servicing state,
 edition and installed runtimes.
 
-## Related documents
+On Windows NT `10.0.26200.0`, exact System32 file version `10.0.26100.8457`
+printed 14 nonempty help lines for `-?`, returned 1, and produced no Windows
+PowerShell 5.1 `ErrorRecord` objects. The nonzero status does not invalidate
+the help payload. No trace session, ETL file, parsed output, application launch,
+manifest, assembly, or servicing state was created or changed.
 
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 file version 10.0.26100.8457
+explicit -? returned 14 nonempty help lines, status 1 and no Windows PowerShell
+5.1 ErrorRecord objects. No trace or artifact was created; an approved
+disposable failing application and protected fixture paths remain required,
+with guaranteed stop cleanup and ETL preservation before parse.
+
+## Related documents
 - [wevtutil.exe](wevtutil.exe.md)
 - [tracerpt.exe](tracerpt.exe.md)
 - [sfc.exe](sfc.exe.md)

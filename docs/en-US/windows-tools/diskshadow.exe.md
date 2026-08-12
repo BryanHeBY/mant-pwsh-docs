@@ -198,8 +198,19 @@ target-host discovery is mandatory. Transport, import, mask, break, and some
 context options require capable hardware providers and are not generic client
 features.
 
-## Related documents
+## Runtime evidence
 
+On 2026-08-12, exact discovery found neither
+`C:\Windows\System32\diskshadow.exe` nor an Application candidate on this
+Windows client. This is host-availability evidence, not proof that DiskShadow
+is unsupported on every client build. No feature was installed and no
+same-named PATH substitute was used. Installed help and query-only interpreter
+commands remain to be checked on an approved Windows Server or a client where
+the exact Microsoft binary is present; creation, writer events, exposure,
+transport, break, delete, and revert require purpose-built disposable VSS and
+recovery fixtures rather than this workstation.
+
+## Related documents
 - [vssadmin.exe](vssadmin.exe.md)
 - [wbadmin.exe](wbadmin.exe.md)
 - [mountvol.exe](mountvol.exe.md)

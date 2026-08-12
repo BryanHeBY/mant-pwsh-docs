@@ -46,7 +46,7 @@ finite `/t` timeout.
 - `/t`: Set 0 through 9999 seconds before the `/d` character is selected.
 - `/d`: Select the following declared default character when `/t` expires.
 - `/m`: Display the following prompt text before waiting for input.
-- `/?`: Display installed command help.
+- `-?`, `/?`: Display installed command help.
 
 ## Result contract
 
@@ -97,9 +97,17 @@ waiting for a key.
 
 `choice.exe` is Windows-only. Extended-character input depends on the active
 console environment; prefer explicit ASCII choices for portable batch files.
+On Windows NT `10.0.26200.0`, installed file version `10.0.26100.1` printed
+39 nonempty help lines and returned 0 for both `/?` and `-?`. No prompt,
+choice, timeout, default character, input, or console state was selected.
+
+## Runtime evidence
+
+Installed file version 10.0.26100.1 /? and -? each printed 39 nonempty lines
+and returned 0. No prompt, choice, timeout, default character, input, or
+console state was selected.
 
 ## Related documents
-
 - [cmd.exe](cmd.exe.md)
 - [setlocal](setlocal.md)
 - [timeout.exe](timeout.exe.md)

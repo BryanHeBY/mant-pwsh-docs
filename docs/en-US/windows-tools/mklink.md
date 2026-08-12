@@ -77,6 +77,15 @@ and process context. Do not silently replace the requested type with a junction.
 This cmd builtin is Windows-only. Relative-target resolution and allowed link
 types depend on filesystem, Windows configuration, and target location.
 
+## Runtime evidence
+
+The protected fixture created one empty task-owned target directory and ran
+`mklink /J LINK TARGET` below the same verified temporary root. Under both
+PowerShell collectors, the first path existed afterward as a reparse point and
+the child returned `0`; cleanup removed the task root. Symbolic-link privilege,
+hard links, remote targets, traversal, deletion through links, and caller-owned
+paths remain outside this junction-only evidence.
+
 ## Related documents
 
 - [attrib.exe](attrib.exe.md)

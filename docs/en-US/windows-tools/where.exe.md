@@ -31,6 +31,13 @@ script must diagnose which executable a Windows process can find.
 
 ## Important options
 
+<!-- mant:entries role=command case=insensitive -->
+- `where.exe`: Locate matching files using Windows current-directory, `PATH`,
+  `PATHEXT`, explicit path-list, environment-variable, or recursive-directory
+  search rules; this is not PowerShell command precedence.
+
+The following switches select scope, status-only behavior, or display format.
+
 <!-- mant:entries role=option case=insensitive -->
 - `/r DIRECTORY`: Recursively search below one explicit directory instead of normal current-directory and `PATH` lookup.
 - `/q`: Suppress matches and report only status 0 for a match or 1 for no match/failure.
@@ -91,6 +98,19 @@ lookup. `where.exe` follows Windows path and `PATHEXT` rules, while
 `where.exe` is available on supported Windows client and server releases. Its
 filesystem visibility depends on the caller's token, path contents, network
 access, and filesystem state at the time of the search.
+On exact System32 file version `10.0.26100.1`, `/?` returned 0 with 33
+nonempty stdout lines and no PowerShell error records. No search pattern,
+directory, environment variable, PATH list, filesystem traversal, or network
+path was supplied.
+
+## Runtime evidence
+
+The repeatable read-only Windows CLI fixture resolved exact System32
+`where.exe`, captured localized `/?` help, and searched only for `where.exe`
+through the current PATH. Both PowerShell collectors returned exit code `0`
+and exactly one candidate equal to the expected System32 path. No recursive
+directory, wildcard, environment expansion, or network path was supplied.
+This remains a Windows path lookup result, not PowerShell command precedence.
 
 ## Related documents
 

@@ -84,9 +84,18 @@ Windows-only and NFS-feature dependent. Available client/server/mount data and
 counter names depend on installed roles, NFS version and build. Microsoft's
 page uses Unix-like “root user” wording for `-z`; verify actual Windows
 elevation behavior locally without resetting production counters.
+Exact System32 discovery on the recorded Windows NT `10.0.26200.0` Home China
+client found no `nfsstat.exe`; do not substitute a PATH match or install NFS
+components merely for documentation evidence.
+
+## Runtime evidence
+
+Exact System32 discovery on the recorded Windows NT 10.0.26200.0 Home China
+client found nfsstat.exe absent; no PATH substitute, counter query/reset,
+mount, service, workload, or firewall action ran. Read-only counter/mount
+verification remains pending where NFS is installed.
 
 ## Related documents
-
 - [nfsadmin.exe](nfsadmin.exe.md)
 - [nfsshare.exe](nfsshare.exe.md)
 - [showmount.exe](showmount.exe.md)

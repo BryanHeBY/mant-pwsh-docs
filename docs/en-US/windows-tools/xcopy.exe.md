@@ -129,7 +129,23 @@ and perform a final inventory; it is not a success guarantee.
 ## Version and platform differences
 
 This executable is Windows-only. Filesystem features, EFS, ACL/SACL handling,
-long paths, block cloning, network compression, and link behavior vary.
+long paths, block cloning, network compression, and link behavior vary. On
+Windows NT `10.0.26200.0`, installed file version `10.0.26100.1` printed 63
+nonempty help lines and returned 0 for `/?`; `-?` was treated as a source name,
+not help. A `/s /e /h /i /l` run against the bounded existing `tests/runtime`
+tree listed seven lines, returned 0, and did not create the preflighted absent
+target directory.
+
+## Runtime evidence
+
+The protected fixture selected one task-owned source subtree and a distinct
+absent sibling destination, then ran exact `xcopy.exe` with `/s /e /h /i /l`.
+Both PowerShell collectors returned a nonempty preview/status `0`, and the
+destination still did not exist afterward. No file was copied. The result does
+not cover destination-inside-source topology, manual trailing-separator
+quoting, prompts, overwrite, links, ACL/SACL, EFS, archive-bit changes,
+restart/network behavior, errors hidden by `/c`, or equivalence between preview
+and a later changed source tree.
 
 ## Related documents
 

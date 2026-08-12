@@ -79,8 +79,19 @@ localized text; it is unsuitable for unattended remoting. Capture
 Although cataloged for current Windows, availability and operation depend on
 legacy floppy hardware, drivers, compatible geometry, and interactive access.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`diskcopy.exe` Application candidate under either PowerShell collector. No
+feature, role, or compatibility component was installed merely to change
+that result, and no same-named PATH substitute was used. This is target-host
+command-resolution evidence, not proof that the tool is unsupported on every
+applicable Windows environment.
+
+Behavior verification remains resolution/help only; no floppy/media
+formatting, copying, swapping or writes are permitted merely for evidence.
+
+## Related documents
 - [diskcomp.exe](diskcomp.exe.md)
 - [copy](copy.md)
 - [xcopy.exe](xcopy.exe.md)

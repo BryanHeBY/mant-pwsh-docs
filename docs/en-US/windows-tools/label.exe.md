@@ -92,11 +92,22 @@ This Windows-only command is documented on supported Windows client and server
 releases. Label length, allowed characters, case display, filesystem behavior,
 permissions, mount-point syntax, and clustered/virtual storage constraints vary.
 
-## Related documents
+On Windows NT `10.0.26200.0`, exact System32 file version `10.0.26100.1`
+printed ten nonempty help lines for `/?`, returned 0, and produced no Windows
+PowerShell 5.1 `ErrorRecord` objects. No drive, volume, mount point, label text,
+prompt response, filesystem metadata, or storage state was supplied or changed.
 
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 file version 10.0.26100.1 explicit
+/? returned ten nonempty help lines, status 0 and no Windows PowerShell 5.1
+ErrorRecord objects. No drive/volume target or label text was supplied and no
+label create, change or deletion ran.
+
+## Related documents
 - [vol](vol.md)
 - [mountvol.exe](mountvol.exe.md)
-- [format.exe](format.exe.md)
+- [format.com](format.com.md)
 
 ## Sources and license
 

@@ -76,8 +76,20 @@ This command is legacy and normally absent from modern Windows. PowerShell 7
 and Windows PowerShell 5.1 also have different default file/native-pipe encoding
 histories. Verify the shell edition, host, code page, font, and target program.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`graftabl.exe` Application candidate under either PowerShell collector. No
+feature, role, or compatibility component was installed merely to change
+that result, and no same-named PATH substitute was used. This is target-host
+command-resolution evidence, not proof that the tool is unsupported on every
+applicable Windows environment.
+
+Behavior verification remains resolution, /status and encoding reads
+only; no graphics/input/output/file/native-pipe code-page or font mutation is
+permitted merely for evidence.
+
+## Related documents
 - [chcp.com](chcp.com.md)
 - [mode.com](mode.com.md)
 

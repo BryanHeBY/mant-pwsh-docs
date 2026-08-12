@@ -96,8 +96,13 @@ for reviewed PowerShell scripts.
 This page targets supported Windows cmd. WinRE differs. Filesystem semantics,
 8.3 names, permissions, and reparse behavior depend on the target volume.
 
-## Related documents
+## Runtime evidence
 
+Exact cmd.exe 10.0.26100.1 `help DEL` printed 19 nonempty stdout lines, no
+PowerShell error records, and returned 1 without a target, pattern, recursion,
+or deletion. Protected disposable deletion fixtures remain required.
+
+## Related documents
 - [erase alias](erase.md)
 - [dir](dir.md)
 - [rd](rd.md)

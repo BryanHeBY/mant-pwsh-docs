@@ -48,7 +48,12 @@ files, or persistent policy.
 - `export`: Export selected profiles to files; `key=clear` can expose secrets.
 - `start`: Start a supported hosted-network or tracing operation.
 - `stop`: Stop the corresponding hosted-network or tracing operation.
-- `report`: Generate the supported wireless diagnostic report.
+- `IHV`: Address independent-hardware-vendor logging operations; output and
+  availability depend on the adapter/driver vendor.
+- `refresh`: Refresh hosted-network settings, including security-key material
+  where requested; this is not a display operation.
+- `reportissues`: Generate a WLAN smart-trace report containing diagnostic
+  network and device information.
 - `dump`: Emit a replay script for review rather than immediate execution.
 
 Parameters such as `name=`, `interface=`, `ssid=`, and `key=` are bare
@@ -95,14 +100,34 @@ Persistent tracing continues across restart and produces diagnostic data.
 Record where it writes, reproduce for the minimum interval, stop it, and
 handle reports according to privacy and retention policy.
 
+### Calling the diagnostic command `report`
+
+Current official and installed syntax uses `reportissues`; the former generic
+`report` selector is not the command name. Generating the report starts a
+diagnostic collection and writes sensitive artifacts, so it is not a harmless
+read-only substitute for `show`. Preflight the output location, scope, consent,
+retention, and redaction workflow before an approved capture.
+
 ## Version and platform differences
 
 This Windows-only context requires a supported Wi-Fi interface and WLAN
 service. Commands, hosted-network support, MAC randomization, policy, and
 visible fields vary by hardware, driver, Windows release, and organization.
+On exact System32 Netsh file version `10.0.26100.8457`, `wlan ?` returned 0
+with 19 nonempty help lines and exposed `IHV`, `refresh`, and `reportissues`.
+Only context help ran; no interface, network, profile, filter, secret, report,
+trace, hosted-network, connection, or WLAN policy state was read or changed.
+
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 Netsh file version 10.0.26100.8457
+wlan ? returned 0 with 19 nonempty lines and corrected the former report
+selector to reportissues while adding IHV and refresh. Only context help ran;
+no interface, network, profile, filter, secret, report, trace, hosted-network,
+connection, or WLAN policy state was read or changed. Representative
+hardware/driver/policy verification remains required.
 
 ## Related documents
-
 - [netsh.exe](netsh.exe.md)
 - [getmac.exe](getmac.exe.md)
 - [ipconfig.exe](ipconfig.exe.md)

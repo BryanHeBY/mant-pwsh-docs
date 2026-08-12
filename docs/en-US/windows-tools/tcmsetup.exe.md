@@ -4,7 +4,8 @@
 > Review TAPI client prerequisites and the complete desired server list before replacing or clearing it.
 > More information: https://learn.microsoft.com/windows-server/administration/windows-commands/tcmsetup.
 
-- Read installed syntax without changing client configuration:
+- From an elevated diagnostic shell, read installed syntax without supplying
+  a client/server configuration operand:
 
 `tcmsetup.exe /?`
 
@@ -81,8 +82,23 @@ This is Windows/domain legacy telephony tooling. Client/server domains need the
 same domain or a two-way trust; provider, line assignment, callback transport,
 firewall, and configuration storage vary by release.
 
-## Related documents
+On Windows NT `10.0.26200.0`, exact System32 file version `10.0.26100.8457`
+could not be started with `/?` under the recorded ordinary token: Windows
+rejected process creation with “The requested operation requires elevation.”
+No child process or help payload existed, so no exit-code or installed-syntax
+claim is made from that attempt. No server list, callback mode, TAPI provider,
+line, phone, trust, DNS, credential, firewall, or remote state was queried or
+changed.
 
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, Windows rejected exact System32 file version
+10.0.26100.8457 /? process creation under the recorded ordinary token with
+elevation required. No child/help payload/exit code existed and no TAPI
+server-list, callback, client, provider, line, phone, trust, DNS, credential,
+firewall or remote mutation ran.
+
+## Related documents
 - [tapicfg.exe](tapicfg.exe.md)
 - [tsecimp.exe](tsecimp.exe.md)
 

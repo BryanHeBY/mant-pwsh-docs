@@ -101,6 +101,14 @@ The cmd builtin is Windows-only and follows Windows filename/filesystem rules.
 `Rename-Item` is cross-platform and provider-aware; case sensitivity,
 collisions, and allowed names depend on the provider and filesystem.
 
+## Runtime evidence
+
+The protected fixture created one task-owned file, ran Cmd `ren` with a leaf
+name only, and confirmed under both PowerShell collectors that the renamed file
+remained in its original directory. The temporary tree was removed. Wildcards,
+collisions, multi-file batches, cross-volume movement, open handles, and
+caller-owned paths were not exercised.
+
 ## Related documents
 
 - [rename](rename.md)

@@ -69,9 +69,19 @@ providers or derive names from localized `typeperf` text.
 `unlodctr.exe` is Windows-only. Legacy INI/service and manifest-provider forms,
 architecture, localization, permissions, and supported uninstall/repair behavior
 vary by Windows build and product.
+On exact System32 file version `10.0.26100.7705`, `/?` returned 0 with 18
+nonempty stdout lines and no PowerShell error records. No service/driver name,
+provider GUID, manifest, registry view, restore, unregistration, or product
+lifecycle operation was supplied.
+
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 UnlodCtr file version
+10.0.26100.7705 /? returned 0 with 18 nonempty stdout lines and no PowerShell
+error records. No service/provider/manifest/registry/restore/unregistration
+ran; query and approved product-lifecycle rollback verification remain pending.
 
 ## Related documents
-
 - [lodctr.exe](lodctr.exe.md)
 - [typeperf.exe](typeperf.exe.md)
 - [logman.exe](logman.exe.md)

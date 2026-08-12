@@ -121,6 +121,17 @@ on the target build and do not make it a portable default.
 file associations, installed applications, Windows version, user session, and
 policy. GUI and URL examples require an interactive desktop session.
 
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 `cmd.exe` fixed version
+`10.0.26100.8737` returned 89 nonempty lines and status `1` for
+`cmd.exe /d /c help START` under both PowerShell collectors. The fixture did
+not retain the localized payload. This proves only static help discovery: no
+START operand was supplied, so no program, document, URL, shell command, or
+association-selected handler launched. Behavior evidence still requires a
+disposable child process and explicit checks for title parsing, `/wait`, exit
+propagation, and handler side effects.
+
 ## Related documents
 
 - [cmd.exe](cmd.exe.md)

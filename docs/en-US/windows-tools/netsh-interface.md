@@ -35,12 +35,20 @@ scriptable and prevents hidden interactive context state.
 <!-- mant:entries role=command case=insensitive -->
 - `netsh.exe`: Run one fully qualified Windows Netsh context command.
 - `interface`: Enter or address the interface-management context.
+- `6to4`: Address legacy IPv6-over-IPv4 transition settings; do not enable it
+  from generic connectivity advice.
+- `fl48`: Display or dump build-specific virtual-interface state.
+- `fl68`: Display or dump build-specific virtual-interface state.
+- `httpstunnel`: Display or manage IP-HTTPS client/server interfaces and
+  active versus persistent state.
 - `ipv4`: Address IPv4 interfaces, addresses, routes, neighbors, DNS, and stack state.
 - `ipv6`: Address IPv6 interfaces, addresses, routes, neighbors, DNS, and stack state.
+- `isatap`: Address legacy ISATAP transition-tunnel state.
 - `tcp`: Address interface-context TCP global, supplemental, heuristic, and
   connection settings supported by the target build.
 - `udp`: Address interface-context UDP settings supported by the target build.
 - `portproxy`: Display or manage selected TCP v4/v6 listener-to-destination proxies.
+- `teredo`: Address Teredo transition-tunnel state.
 - `show`: Display the selected interface/context state without changing it.
 - `set`: Change one existing interface/context setting or policy-store value.
 - `add`: Add a supported address, route, neighbor, DNS/WINS entry, or proxy rule.
@@ -48,6 +56,14 @@ scriptable and prevents hidden interactive context state.
 - `reset`: Reset the selected context family; this is a broad mutation, not a
   generic troubleshooting query.
 - `dump`: Emit a Netsh replay script for review; do not execute it blindly.
+- `install`: Install the IPv4 protocol on builds that expose the command; this
+  is a broad stack mutation, not a repair probe.
+- `uninstall`: Uninstall the IPv4 protocol on builds that expose the command;
+  this can remove connectivity and must never be generated for validation.
+- `reload`: Reload persisted TCP configuration; installed and current official
+  help mark it experimental and explicitly say not to use it.
+- `rundown`: Force connection rundown on active TCP trace sessions; it changes
+  diagnostic-session state rather than merely showing connections.
 
 Parameters such as `name=`, `interface=`, `address=`, and `store=` are Netsh's
 bare equals-bearing grammar rather than PowerShell named parameters.
@@ -88,6 +104,14 @@ and service separately.
 Do not enable a tunnel because a generic diagnostic mentions it; verify the
 current supported design and organizational policy.
 
+### Treating every context noun as a query
+
+IPv4 `install`/`uninstall`, TCP `reload`/`rundown`, and tunnel-context
+`set`/`reset` forms are operational commands. In particular, current help says
+TCP `reload` is experimental and must not be used, while `rundown` acts on all
+active TCP trace sessions. Discover context grammar with a trailing `?`, but
+do not invoke a named operation merely to learn what it does.
+
 ### Guessing interface names
 
 Names can be localized, renamed, or duplicated across hosts. Query names and
@@ -99,9 +123,25 @@ cmdlets for reliable automation where supported.
 This Windows-only context varies substantially by release, network stack, and
 installed features. Some settings require elevation or are controlled by
 policy; current PowerShell networking cmdlets are preferred when equivalent.
+On exact System32 Netsh file version `10.0.26100.8457`, top-level `?` returned
+1 with 38 nonempty lines, while `interface ?` and the IPv4, IPv6, TCP, UDP, and
+PortProxy context-help forms all returned 0 with 22/14/16/14/10/12 lines. Help
+exposed `6to4`, `fl48`, `fl68`, `httpstunnel`, `isatap`, `teredo`, IPv4
+`install`/`uninstall`, and TCP `reload`/`rundown`. Only help ran; no interface,
+address, route, neighbor, DNS, tunnel, proxy, TCP/UDP, trace, or policy state
+was queried or changed.
+
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 Netsh file version 10.0.26100.8457
+top-level ? returned 1/38 nonempty lines, while interface and
+IPv4/IPv6/TCP/UDP/PortProxy context help returned 0 with 22/14/16/14/10/12
+lines. Help added 6to4, fl48, fl68, httpstunnel, isatap, teredo, IPv4
+install/uninstall, and TCP reload/rundown; only help ran and no network or
+trace state was queried or changed. Representative interface, policy-store,
+tunnel, and proxy environments remain required.
 
 ## Related documents
-
 - [netsh.exe](netsh.exe.md)
 - [ipconfig.exe](ipconfig.exe.md)
 - [route.exe](route.exe.md)

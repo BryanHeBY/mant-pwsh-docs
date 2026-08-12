@@ -27,6 +27,12 @@ selected process. Remote terminations are always forced.
 
 ## Important options
 
+<!-- mant:entries role=command case=insensitive -->
+- `taskkill.exe`: Terminate selected local or remote Windows processes after
+  revalidating identity, scope, dependencies, and force/tree behavior.
+
+Selection and remote options are addressable separately:
+
 <!-- mant:entries role=option case=insensitive -->
 - `/pid PID`: Select one process ID; repeat the option to select multiple PIDs.
 - `/im IMAGE`: Select processes by executable image name; `*` is accepted only with a filter.
@@ -36,6 +42,7 @@ selected process. Remote terminations are always forced.
 - `/s COMPUTER`: Target a remote computer by name or IP address.
 - `/u`: Authenticate the remote operation as another user or `DOMAIN\USER`; valid only with `/s`.
 - `/p PASSWORD`: Supply the remote password; omit its value to prompt rather than exposing a secret in the command line.
+- `/?`: Display installed syntax, filter operators, remote limitations, and force behavior without terminating a process.
 
 ## PowerShell boundaries
 
@@ -78,8 +85,13 @@ agent requests.
 This executable is Windows-only. Protected processes, permissions, services,
 jobs, and process state can prevent termination or cause dependent recovery.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT 10.0.26200.0, installed file version 10.0.26100.8457 /? returned
+0 and matched the official eight selectors plus help; command and help are now
+independently ManT-addressable. No process was selected or terminated.
+
+## Related documents
 - [tasklist.exe](tasklist.exe.md)
 - [openfiles.exe](openfiles.exe.md)
 - [whoami.exe](whoami.exe.md)

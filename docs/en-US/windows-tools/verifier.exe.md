@@ -96,8 +96,20 @@ pass; a reset command is not evidence that a rebooted system is healthy.
 Options, standard flags, rule classes, verified driver types, return codes,
 volatile support, and known build issues vary; always check exact target help.
 
-## Related documents
+On Windows NT `10.0.26200.0`, exact System32 file version `10.0.26100.1`
+printed 255 nonempty standard-output help lines for `/help`, no standard-error
+lines, and returned 0. No driver, rule, flag, volatile setting, boot state,
+reset, crash, or verification configuration was selected or changed.
 
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 file version 10.0.26100.1 explicit
+/help returned 255 nonempty stdout lines, no stderr and status 0. No
+driver/rule/flag/boot state changed; /querysettings and /query remain the only
+approved production reads, while mutation/reset requires a dedicated crash-safe
+fixture and recovery validation.
+
+## Related documents
 - [driverquery.exe](driverquery.exe.md)
 - [pnputil.exe](pnputil.exe.md)
 - [shutdown.exe](shutdown.exe.md)

@@ -57,6 +57,10 @@ Prefer `icacls` or typed ACL APIs for current automation.
 - `/d`: Deny one account access and potentially override allows.
 - `/?`: Display installed deprecated syntax.
 
+Exact installed 10.0.26100.8115 returned 42 nonempty help lines on stdout but
+status 160. This is valid help, not proof of an ACL operation failure; preserve
+payload, requested operation, and native status separately.
+
 ## Common mistakes
 
 ### Translating `/G`, `/P`, `/R`, or `/D` by name alone
@@ -109,8 +113,14 @@ depend on filesystem, object type, Windows build, domain/identity availability,
 path namespace, privileges, and local versus remote/share context. Use ICACLS
 target-local help for supported syntax.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT 10.0.26200.0, exact System32 CACLS file version 10.0.26100.8115
+/? returned 42 nonempty stdout help lines/no stderr but status 160. Only help
+ran; no path, ownership, DACL, SACL, inheritance or recursive mutation was
+supplied.
+
+## Related documents
 - [icacls.exe](icacls.exe.md)
 - [takeown.exe](takeown.exe.md)
 - [whoami.exe](whoami.exe.md)

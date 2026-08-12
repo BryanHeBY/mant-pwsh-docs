@@ -85,8 +85,16 @@ This Cmd builtin is Windows-only and documented on supported Windows client and
 server releases. Output language, filesystem support, provider paths, mounted
 volumes, recovery environments, and storage virtualization affect results.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, exact `cmd.exe /d /c vol C:` returned status 0
+and two nonempty lines under Windows PowerShell `5.1.26100.8875` and PowerShell
+`7.6.4`. The localized label and filesystem serial payload was deliberately not
+retained. This verifies one explicit local-drive query only; no downstream
+action may select a target from a label or filesystem serial alone, and no
+storage state changed.
+
+## Related documents
 - [label.exe](label.exe.md)
 - [mountvol.exe](mountvol.exe.md)
 - [cmd.exe](cmd.exe.md)

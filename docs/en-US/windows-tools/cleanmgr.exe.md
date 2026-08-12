@@ -79,8 +79,20 @@ events. Do not use `Invoke-Expression` or directly delete guessed cache trees.
 system-file elevation, profile registry state, and relationship with Storage
 Sense vary by build, edition, installed features/products, language, and policy.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the read-only file-identity audit under Windows
+PowerShell `5.1.26100.8875` and PowerShell `7.6.4` resolved the exact entry
+point to `C:\WINDOWS\system32\cleanmgr.exe`. Its fixed numeric file version was
+`10.0.26100.8737`. Both collectors reported the same result.
+
+The audit invoked no discovered command, opened no window, contacted no remote
+endpoint, and changed no state. This proves only this host's entry-point
+availability and file identity; it does not prove that the UI loads, the
+current user is authorized, an optional snap-in or component is functional, or
+any displayed or requested operation succeeds.
+
+## Related documents
 - [ms-settings](ms-settings.md)
 - [dism.exe](dism.exe.md)
 - [defrag.exe](defrag.exe.md)

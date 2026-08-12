@@ -2,6 +2,7 @@
 # vssadmin.exe
 
 > Inventory Volume Shadow Copy Service (VSS) writers, providers, storage associations, and shadow-copy identity before changing or deleting anything.
+> VssAdmin requires an elevated administrative shell even for its `list` families.
 > More information: https://learn.microsoft.com/windows-server/administration/windows-commands/vssadmin.
 
 - List registered writers and preserve each state, last error, writer ID, and instance ID:
@@ -153,6 +154,11 @@ privileged delete/resize operations. Redirect diagnostic output only to a
 protected path because it reveals volume device names, host names, providers,
 and application writers.
 
+Query-only does not mean unprivileged: on the recorded non-elevated host,
+`list providers` returned exit code 2 and explicitly required elevated
+administrator privileges. Record that access failure separately from an empty
+provider/writer/shadow result.
+
 ## Version and platform differences
 
 VssAdmin is Windows-only and current Microsoft documentation applies it to
@@ -160,6 +166,15 @@ supported Windows client and server releases. Available verbs and the shadows
 they can manage vary by Windows build, provider, VSS context, installed backup
 features, and privilege. Run `vssadmin.exe /?` and verb-specific help on the
 target host before using a mutation.
+
+## Runtime evidence
+
+On the recorded ordinary token, `vssadmin.exe list providers` returned status
+`2` and explicitly required elevated administrator privileges. This is
+query-time access evidence, not an empty provider result. No provider payload
+was retained and no shadow, writer, diff area, exposure, resize, deletion,
+revert, or snapshot operation ran; successful elevated inventory and
+disposable snapshot verification remain pending.
 
 ## Related documents
 

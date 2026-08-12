@@ -119,12 +119,23 @@ structured supported logging APIs rather than spawning this utility.
 `eventcreate.exe` is Windows-only. Remote access, event source behavior,
 rendering, permissions, channel retention/forwarding, localization, and security
 monitoring vary by build, edition, policy, and installed collection stack.
+On exact System32 file version `10.0.26100.1`, `/?` returned 0 with 34
+nonempty stdout lines and no PowerShell error records. No local/remote log,
+source, ID, type, description, computer, credential, or event was supplied or
+created.
+
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 EventCreate file version
+10.0.26100.1 /? returned 0 with 34 nonempty stdout lines and no PowerShell
+error records. No log/source/ID/type/description/computer/credential/event was
+supplied or created; approved disposable marker/forwarding verification remains
+pending.
 
 ## Related documents
-
 - [wevtutil.exe](wevtutil.exe.md)
 - [wecutil.exe](wecutil.exe.md)
-- [winrm.exe](winrm.exe.md)
+- [winrm.cmd](winrm.cmd.md)
 - [whoami.exe](whoami.exe.md)
 
 ## Sources and license

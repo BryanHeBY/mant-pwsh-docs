@@ -3,6 +3,8 @@
 
 > Analyze one local volume, then let Windows select media-appropriate optimization instead of assuming every device needs traditional defragmentation.
 > More information: https://learn.microsoft.com/windows-server/administration/windows-commands/defrag.
+> Microsoft documents local Administrators membership or equivalent as the
+> minimum requirement; record elevation and access failures even for analysis.
 
 - Analyze one exact volume and print progress plus detailed statistics:
 
@@ -45,22 +47,40 @@ Specify an exact drive letter, mount point, or volume path unless intentionally
 using all-volume scope. Operation availability depends on the storage stack.
 
 <!-- mant:entries role=option case=insensitive -->
-- `/a`: Analyze selected volumes without optimizing them.
-- `/b`: Optimize boot files to improve startup performance where supported.
-- `/c`: Select every eligible local volume.
-- `/d`: Perform traditional file defragmentation.
-- `/e`: Exclude the listed volumes from `/c` all-volume scope.
-- `/g`: Optimize storage tiers on supported tiered volumes.
-- `/h`: Run at normal instead of default low priority.
-- `/i`: Limit the seconds spent on each tier during tier optimization.
-- `/k`: Perform slab consolidation on supported thinly provisioned volumes.
-- `/l`: Send retrim hints for free blocks on supported storage.
-- `/m`: Run selected volumes in parallel, optionally limiting thread count.
-- `/o`: Choose the operation appropriate for the detected media type.
-- `/t`: Track an optimization already running on the selected volume.
-- `/u`: Display progress on screen.
-- `/v`: Display detailed analysis and operation statistics.
-- `/x`: Consolidate free space on selected volumes.
+- `/a`, `/analyze`: Analyze selected volumes without optimizing them.
+- `/b`, `/bootoptimize`: Optimize boot files to improve startup performance
+  where supported.
+- `/c`, `/allvolumes`: Select every eligible local volume.
+- `/d`, `/defrag`: Perform traditional file defragmentation.
+- `/e`, `/volumesexcept`: Exclude the listed volumes from all-volume scope.
+- `/g`, `/tieroptimize`: Optimize storage tiers on supported tiered volumes.
+- `/h`, `/normalpriority`: Run at normal instead of default low priority.
+- `/i`, `/maxruntime`: Limit the seconds spent on each tier during tier
+  optimization.
+- `/k`, `/slabconsolidate`: Perform slab consolidation on supported thinly
+  provisioned volumes.
+- `/l`, `/retrim`: Send retrim hints for free blocks on supported storage.
+- `/m`, `/multithread`: Run selected volumes in parallel, optionally limiting
+  tier-optimization thread count.
+- `/o`, `/optimize`: Choose the operation appropriate for the detected media
+  type.
+- `/t`, `/trackprogress`: Track an optimization already running on one
+  selected volume.
+- `/u`, `/printprogress`: Display progress on screen.
+- `/v`, `/verbose`: Display detailed analysis and operation statistics.
+- `/x`, `/freespaceconsolidate`: Consolidate free space on selected volumes.
+- `/file`: With `/defrag`, restrict mutation to the following explicit paths
+  or wildcard patterns on builds that expose this option.
+- `/filelist`: With `/defrag`, read paths or wildcard patterns from the
+  following list file on builds that expose this option.
+- `/layoutfile`: With `/bootoptimize`, use the following layout file instead of
+  the default `%windir%\Prefetch\layout.ini`.
+- `/onlymetadata`: With `/defrag` on NTFS, target supported metadata such as
+  the MFT and USN journal that ordinary Defrag otherwise ignores.
+- `/onlypreferred`: For explicitly named volumes, run only operations Windows
+  considers preferred from the requested operation list.
+- `/simple`: With `/defrag`, request the installed command's simple-defrag
+  mode.
 - `/?`: Display syntax supported by the installed executable.
 
 ## Operation map
@@ -76,6 +96,10 @@ using all-volume scope. Operation availability depends on the storage stack.
 | `/x` | Free-space consolidation | Can be lengthy and is not the same as `/d`. |
 | `/c`, `/e` | All volumes or all except listed | Broad scope; enumerate volumes and exclusions first. |
 | `/h`, `/m[:n]` | Normal priority or parallel background work | Can increase interference across storage paths. |
+| `/file`, `/filelist` | Selected-file traditional defrag | Current-build capability; wildcards/list contents define mutation scope. |
+| `/layoutfile` | Boot optimization using an explicit layout | Validate provenance, encoding, paths, and exact build support. |
+| `/onlymetadata`, `/simple` | Specialized traditional defrag | NTFS/build/operation restrictions apply; neither is analysis-only. |
+| `/onlypreferred` | Filter requested operations by Windows preference | Applies to explicitly named volumes; record which operations actually ran. |
 
 ## Common mistakes
 
@@ -126,6 +150,22 @@ vendor-managed volumes can require owner-specific maintenance. Determine the
 filesystem, media, allocation unit, tiering, trim/unmap support, and cluster or
 hypervisor guidance before manual optimization.
 
+### Treating `/File` or `/FileList` as analysis filters
+
+Current installed help makes both available only with `/Defrag`. They select
+files for a mutation, and wildcard expansion or an unexpected list-file line
+can broaden scope. Resolve every path against an approved volume, inspect the
+list as data, reject untrusted or changing input, and do not use either option
+to emulate `/Analyze`.
+
+### Assuming current long names and specialized modes exist everywhere
+
+Windows build `10.0.26200` help exposes long aliases plus `/File`, `/FileList`,
+`/LayoutFile`, `/OnlyMetadata`, `/OnlyPreferred`, and `/Simple`; Microsoft's
+current online Defrag page lists only the traditional short interface. Gate
+these forms on installed help and test the exact Windows build instead of
+silently falling back to a broader/default operation.
+
 ## PowerShell boundaries
 
 Defrag emits native progress and report text. Quote mount-point paths, save
@@ -138,10 +178,19 @@ stable API. For structured automation, evaluate the supported
 This Windows-only administrative command applies to supported Windows client
 and server releases. Filesystem, media detection, TRIM/UNMAP, tiering, thin
 provisioning, cluster ownership, scheduled-maintenance policy, and Windows
-version determine valid operations.
+version determine valid operations. Long aliases and the specialized
+file/layout/metadata/preference modes listed above are installed-build
+capabilities, not a promise for every supported release.
+
+## Runtime evidence
+
+Installed help returned 0 with no volume and exposed long aliases plus /File,
+/FileList, /LayoutFile, /OnlyMetadata, /OnlyPreferred, and /Simple beyond the
+current general page. No volume, analysis, defrag, retrim, consolidation, tier,
+file, or layout operation ran; media-specific disposable-volume verification
+remains pending.
 
 ## Related documents
-
 - [chkdsk.exe](chkdsk.exe.md)
 - [compact.exe](compact.exe.md)
 - [systeminfo.exe](systeminfo.exe.md)

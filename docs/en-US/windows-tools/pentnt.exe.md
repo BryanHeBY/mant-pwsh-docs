@@ -70,8 +70,15 @@ This Windows-only command is deprecated and may be absent. Its original
 hardware target is obsolete; modern Windows/hardware compatibility decisions
 must follow current processor, firmware, hypervisor, and application support.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`pentnt.exe` Application candidate under either PowerShell collector. No
+legacy workaround or substitute was installed or invoked. Historical behavior
+belongs to a preserved compatible fixture; no emulation, startup, boot,
+firmware, hypervisor, or script mutation is required merely for evidence.
+
+## Related documents
 - [systeminfo.exe](systeminfo.exe.md)
 - [wmic.exe](wmic.exe.md)
 

@@ -108,6 +108,21 @@ offset/delay/dispersion, last error/good sync, configuration provenance and even
 virtualization providers, policy, domain roles, and available parameters vary by
 Windows build. Remote queries also require the documented administrative rights.
 
+On Windows NT `10.0.26200.0`, exact System32 file version `10.0.26100.1`
+printed 130 nonempty standard-output help lines for `/?`, no standard-error
+lines, and returned 0. No peer, domain controller, remote computer, credential,
+sample, resync, registration, service, clock, policy, or time configuration was
+queried or changed by this help-only probe.
+
+## Runtime evidence
+
+The protected local-help fixture resolved exact System32 `w32tm.exe` and
+captured `/?` under both installed PowerShell editions. Each returned status
+`0`, 130 nonempty stdout lines, and no stderr. No computer, peer, domain,
+source, sample, registry path, query, resync, registration, or configuration
+operation was supplied; time topology, offsets, rights, and service health
+remain outside this help-only evidence.
+
 ## Related documents
 
 - [tzutil.exe](tzutil.exe.md)

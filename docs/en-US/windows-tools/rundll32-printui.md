@@ -143,8 +143,15 @@ Windows-only. Parameters include legacy driver architectures/types; accepted
 forms, UI, security prompts, driver installation policy, Point and Print rules,
 per-machine realization, and WOW64 behavior vary by build and patch level.
 
-## Related documents
+## Verification boundary
 
+Windows runtime verification remains local help, local/exact-computer /ge and
+typed inventory only; no
+queue/connection/default/driver/test-page/property/settings save/restore, UI,
+quiet, argument-file, credential or spooler mutation is permitted merely for
+evidence.
+
+## Related documents
 - [rundll32.exe](rundll32.exe.md)
 - [prndrvr.vbs](prndrvr.vbs.md)
 - [prnmngr.vbs](prnmngr.vbs.md)

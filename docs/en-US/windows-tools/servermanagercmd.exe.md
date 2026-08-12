@@ -83,8 +83,20 @@ This is deprecated Windows Server tooling. Server Core, Features on Demand,
 payload sources, remote management, clustering, roles and PowerShell module
 availability vary by Windows Server release.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`servermanagercmd.exe` Application candidate under either PowerShell collector. No
+feature, role, or compatibility component was installed merely to change
+that result, and no same-named PATH substitute was used. This is target-host
+command-resolution evidence, not proof that the tool is unsupported on every
+applicable Windows environment.
+
+Behavior verification remains version/query, copied XML parse and typed
+feature inventory/WhatIf only; no role/feature/payload/source/service/restart
+or remote mutation is permitted merely for evidence.
+
+## Related documents
 - [dism.exe](dism.exe.md)
 - [optionalfeatures.exe](optionalfeatures.exe.md)
 

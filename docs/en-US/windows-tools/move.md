@@ -100,8 +100,13 @@ The cmd builtin is Windows-only. EFS availability depends on the filesystem,
 Windows edition, policy, and target volume. `Move-Item` is available on all
 PowerShell platforms but its provider and filesystem behavior varies.
 
-## Related documents
+## Runtime evidence
 
+Exact cmd.exe 10.0.26100.1 `help MOVE` printed 22 nonempty stdout lines, no
+PowerShell error records, and returned 1 without a source, destination, rename,
+or move. Protected collision/EFS/partial-success fixtures remain required.
+
+## Related documents
 - [copy](copy.md)
 - [dir](dir.md)
 - [ren](ren.md)

@@ -57,7 +57,11 @@ not a typed deployment inventory.
 
 This legacy discovery surface is Windows/RDS-specific and can be absent or
 incomplete depending on roles, domain/browse mechanisms, network segmentation,
-permissions, and Windows version.
+permissions, and Windows version. Exact System32 discovery on the recorded
+Windows NT `10.0.26200.0` Home China client found no `qappsrv.exe`; this is an
+edition/component availability observation, not a claim about Session Host,
+Server, or other client installations. Do not substitute a PATH match when
+exact discovery fails.
 
 ## Common mistakes
 
@@ -67,8 +71,14 @@ permissions, and Windows version.
 - Using broad domain discovery when one known target answers the question.
 - Parsing localized text as a stable machine schema.
 
-## Related documents
+## Runtime evidence
 
+Exact System32 discovery on the recorded Windows NT 10.0.26200.0 Home China
+client found qappsrv.exe absent; no PATH substitute or legacy discovery ran.
+Representative installations where the executable and discovery mechanism exist
+remain required.
+
+## Related documents
 - [query.exe](query.exe.md)
 - [quser.exe](quser.exe.md)
 - [qwinsta.exe](qwinsta.exe.md)

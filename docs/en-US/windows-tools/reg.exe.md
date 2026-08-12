@@ -8,13 +8,17 @@
 
 `reg.exe query '{{HKCU\Software\Vendor\Product}}' /v {{ValueName}}`
 
-- Export a local key before a reviewed change:
+- Export a local key to a new protected path before a reviewed change:
 
-`reg.exe export '{{HKCU\Software\Vendor\Product}}' '{{C:\backup\product.reg}}'`
+`$key = '{{HKCU\Software\Vendor\Product}}'; $backup = '{{C:\backup\product.reg}}'; if (Test-Path -LiteralPath $backup) { throw "Refusing to replace $backup" }; reg.exe export $key $backup; if ($LASTEXITCODE -ne 0) { throw "Registry export failed: $LASTEXITCODE" }; Get-Item -LiteralPath $backup`
 
 - Query an explicit registry view:
 
 `reg.exe query '{{HKLM\Software\Vendor\Product}}' {{[/reg:32|/reg:64]}}`
+
+- Query registry-virtualization flags for one exact local key without changing them:
+
+`reg.exe flags '{{HKLM\Software\Vendor\Product}}' query {{[/reg:32|/reg:64]}}`
 
 - Add a reviewed value after backup:
 
@@ -42,6 +46,7 @@ reg.exe compare
 reg.exe copy
 reg.exe delete
 reg.exe export
+reg.exe flags
 reg.exe import
 reg.exe load
 reg.exe query
@@ -58,6 +63,7 @@ reg.exe unload
 - `export`, `import`: Transfer local registry content in `.reg` text format.
 - `save`, `restore`: Save or restore registry data in hive format.
 - `load`, `unload`: Temporarily mount or unmount a saved hive under HKLM or HKU.
+- `flags`: Query or replace registry-virtualization flags for an exact local key below `HKLM\Software`.
 
 ## Query parameters
 
@@ -116,6 +122,28 @@ For `delete`, omitting `/v`, `/ve`, and `/va` deletes the named key and its
 subkeys and values. `/va` deletes all values in the key but not its subkeys.
 Never construct a delete target from unvalidated input.
 
+## Registry virtualization flags
+
+```text
+reg.exe flags KEY query [/reg:32 | /reg:64]
+reg.exe flags KEY set [DONT_VIRTUALIZE] [DONT_SILENT_FAIL] [RECURSE_FLAG]
+                     [/reg:32 | /reg:64]
+```
+
+`flags query` is read-only. `flags set` is a replacement operation: flags
+listed on the command line are set and omitted flags are cleared. It applies
+only to local keys below `HKLM\Software` and changes legacy registry
+virtualization behavior, not ordinary key ACLs or the selected 32/64-bit view.
+
+`DONT_VIRTUALIZE` disables write virtualization, `DONT_SILENT_FAIL` disables
+the fallback reopen behavior, and `RECURSE_FLAG` makes the flags propagate to
+new descendant keys. Microsoft states that changing `RECURSE_FLAG` does not
+retroactively set or clear flags on existing descendants. Installed help on
+the recorded build shows a `/s` example for applying `set` to subkeys even
+though `/s` is absent from its formal syntax line; treat that as a
+build-dependent help discrepancy and do not use it without disposable-fixture
+verification and a complete before-state.
+
 ## PowerShell boundaries
 
 Call `reg.exe` explicitly. PowerShell's Registry provider returns typed items
@@ -127,7 +155,13 @@ check `$LASTEXITCODE` immediately.
 
 ```powershell
 $key = 'HKCU\Software\Vendor\Product'
-$backup = Join-Path $env:TEMP 'product-backup.reg'
+$backup = Join-Path $env:TEMP (
+    'product-backup-' + [guid]::NewGuid().ToString('N') + '.reg'
+)
+
+if (Test-Path -LiteralPath $backup) {
+    throw "Refusing to replace $backup"
+}
 
 reg.exe export $key $backup
 if ($LASTEXITCODE -ne 0) {
@@ -136,9 +170,12 @@ if ($LASTEXITCODE -ne 0) {
 ```
 
 `reg export` is local-only and writes a `.reg` file; `/y` overwrites an existing
-file without prompting. `reg import` changes the local registry from a file
-created in advance and supports `/reg:32` or `/reg:64`. Inspect the complete
-file and target view before importing.
+file without prompting, while omitting `/y` can stop unattended automation for
+an overwrite prompt. Use a new protected path and verify the artifact. Registry
+exports can contain credentials, tokens, paths, identities, and application
+configuration. `reg import` changes the local registry from a file created in
+advance and supports `/reg:32` or `/reg:64`. Inspect the complete file and target
+view before importing.
 
 ## Remote and root-key limits
 
@@ -180,15 +217,38 @@ These forms remove confirmation or replace persistent state. A command exit
 code cannot prove that applications will accept the new configuration. Query
 the value afterward and test the consuming feature.
 
+### Reusing an export path in unattended automation
+
+Without `/y`, an existing target can produce an interactive overwrite prompt;
+with `/y`, it is replaced. Neither behavior is a safe no-clobber default. Select
+a new protected path, reject an existing file before invoking `reg export`,
+check `$LASTEXITCODE`, and verify the resulting backup before changing state.
+
+### Treating `reg flags set` as additive
+
+Every omitted virtualization flag is cleared. Query the exact key and registry
+view first, preserve all three flag states, and avoid `set` unless the complete
+replacement state and compatibility impact are approved. Do not confuse the
+command's `RECURSE_FLAG`—which affects propagation to newly created
+descendants—with the installed help's separately shown `/s` example.
+
 ## Version and platform differences
 
 `reg.exe` is Windows-only. This page targets supported Windows 10, Windows 11,
 and Windows Server versions. Registry keys, value meanings, permissions,
 virtualization, views, and remote-service requirements are product- and
-version-specific.
+version-specific. Registry virtualization is an interim compatibility feature
+for eligible 32-bit interactive processes and keys; modern applications should
+not depend on it.
+
+## Runtime evidence
+
+Windows NT 10.0.26200.0 top-level help exposed FLAGS. Its SET syntax clears
+omitted flags; installed help also shows a /s example that is absent from the
+formal syntax line, so the page records /s as a build-dependent discrepancy
+rather than recommending it.
 
 ## Related documents
-
 - [control.exe](control.exe.md)
 - [mmc.exe](mmc.exe.md)
 - [cmd.exe](cmd.exe.md)
@@ -204,6 +264,9 @@ including the references for
 [reg delete](https://learn.microsoft.com/windows-server/administration/windows-commands/reg-delete),
 [reg export](https://learn.microsoft.com/windows-server/administration/windows-commands/reg-export),
 and [reg import](https://learn.microsoft.com/windows-server/administration/windows-commands/reg-import).
+The `flags` family follows Microsoft's
+[Registry virtualization](https://learn.microsoft.com/windows/win32/sysinfo/registry-virtualization)
+contract and the syntax installed on the recorded host.
 The 32-bit/64-bit view trap is also evidenced by the community discussion
 [How to access the 64-bit registry from a 32-bit PowerShell instance?](https://stackoverflow.com/questions/630382/how-to-access-the-64-bit-registry-from-a-32-bit-powershell-instance).
 Exact sources and licenses are recorded in `upstream/windows-tools.json`.

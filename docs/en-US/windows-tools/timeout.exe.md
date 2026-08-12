@@ -48,7 +48,7 @@ another process.
 - `/t`: Set the delay to `-1` (wait for a key) or 0 through 99999 seconds.
 - `/nobreak`: Ignore ordinary key presses during a finite delay; Ctrl+C can
   still interrupt the process.
-- `/?`: Display installed command help.
+- `-?`, `/?`: Display installed command help.
 
 ## PowerShell boundaries
 
@@ -91,10 +91,18 @@ ready. Poll a supported state with a bounded deadline and useful diagnostics.
 ## Version and platform differences
 
 This page describes Windows `timeout.exe`. PowerShell 7 on Linux or macOS can
-resolve a different native program named `timeout`, or none at all.
+resolve a different native program named `timeout`, or none at all. On Windows
+NT `10.0.26200.0`, installed file version `10.0.26100.1` printed 16 nonempty
+help lines and returned 0 for both `/?` and `-?`. No wait, key input,
+cancellation, deadline, process, or console state was selected.
+
+## Runtime evidence
+
+Installed file version 10.0.26100.1 /? and -? each printed 16 nonempty lines
+and returned 0. No wait, key input, cancellation, deadline, process, or console
+state was selected.
 
 ## Related documents
-
 - [cmd.exe](cmd.exe.md)
 - [choice.exe](choice.exe.md)
 - [Windows tools index](windows-tools.md)

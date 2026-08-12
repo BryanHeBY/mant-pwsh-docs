@@ -122,8 +122,21 @@ state, site topology, client/server version, SMB policy, privileges, and test
 output vary. Check target-local help and current DFSN documentation; do not
 infer DFSR availability from Dfsdiag presence.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`dfsdiag.exe` Application candidate under either PowerShell collector. No
+feature, role, or compatibility component was installed merely to change
+that result, and no same-named PATH substitute was used. This is target-host
+command-resolution evidence, not proof that the tool is unsupported on every
+applicable Windows environment.
+
+Behavior verification remains exact machine/root/path DFSN tests only;
+broad domain testdcs and recurse/full expansion require separate
+target-count/load approval, and no cache flush, target, priority, namespace,
+share or replication mutation is permitted merely for evidence.
+
+## Related documents
 - [dfsrmig.exe](dfsrmig.exe.md)
 - [ntfrsutl.exe](ntfrsutl.exe.md)
 - [dcdiag.exe](dcdiag.exe.md)

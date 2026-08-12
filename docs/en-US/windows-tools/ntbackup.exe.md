@@ -76,8 +76,21 @@ NTBackup is legacy Windows tooling. Recovery depends on compatible OS/restore
 utility, architecture, media, catalogs, encryption and system-state components.
 Modern Windows Backup does not supply format compatibility.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`ntbackup.exe` Application candidate under either PowerShell collector. No
+feature, role, or compatibility component was installed merely to change
+that result, and no same-named PATH substitute was used. This is target-host
+command-resolution evidence, not proof that the tool is unsupported on every
+applicable Windows environment.
+
+Behavior verification remains copied file metadata/hash/ACL, executable
+resolution and WbAdmin inventory only; no legacy utility install/launch,
+catalog, backup, restore, extraction or production write is permitted merely
+for evidence.
+
+## Related documents
 - [wbadmin.exe](wbadmin.exe.md)
 
 ## Sources and license

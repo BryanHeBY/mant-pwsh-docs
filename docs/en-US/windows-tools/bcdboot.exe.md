@@ -56,12 +56,23 @@ partition, firmware type, or migration policy change more than file-copy scope.
   firmware-entry creation behavior.
 - `/f`: Select `UEFI`, `BIOS`, or `ALL` firmware boot files and require `/s`.
 - `/v`: Emit verbose operation details.
-- `/vb`: Enable verbose logging; availability depends on the installed build.
+- `/vbcd`: Enable BCD logging; availability depends on the installed build.
 - `/m`: Merge global BCD objects and, when supplied, one named loader object.
 - `/p`: Preserve the existing Windows Boot Manager position in UEFI boot order.
 - `/addlast`: Put the Windows Boot Manager firmware entry last instead of first.
 - `/d`: Preserve the existing default operating-system loader selection.
 - `/c`: Start from the template without migrating otherwise preserved elements.
+- `/t`: With `/s` and `/f`, select a directory below the target system
+  partition instead of its root; availability depends on the installed build.
+- `/nofirmwaresync`: Disable synchronization with firmware; this is not a
+  read-only or diagnostic switch.
+- `/bcdclean`: Remove duplicate BCD entries and, with `full`, entries whose
+  devices do not exist; this is destructive cleanup, not validation.
+- `/imageroot`: Supply the image root from which boot files originate when its
+  BCD paths were constructed relative to that root.
+- `/description`: Set a boot-entry description on builds that expose the
+  switch; confirm its exact installed syntax because current help can list it
+  without a parameter description.
 - `/bootex`: Use BootEx boot binaries for applicable Secure Boot servicing.
 - `/offline`: Force offline boot-file servicing on builds that support it.
 - `/?`: Display syntax supported by the installed BCDBoot executable.
@@ -99,6 +110,11 @@ matches disk layout and deployment intent.
 | `/addlast` | Adds the Windows firmware entry last instead of the default first position; mutually exclusive with `/p`. |
 | `/d` | Preserves the existing default OS entry in `{bootmgr}`. |
 | `/c` | Starts from the template without migrating otherwise-preserved BCD elements; this can discard intentional settings. |
+| `/t directory` | Redirects copied boot files below an explicitly selected system partition on supporting builds; validate the intended nonstandard deployment layout and path first. |
+| `/nofirmwaresync` | Suppresses firmware synchronization; files and BCD state can then diverge from the entries firmware will actually use. |
+| `/bcdclean [full]` | Deletes duplicate entries and, in `full` mode, entries whose devices do not currently exist; removable, temporarily offline, encrypted, virtual, or SAN-backed devices can make valid entries look stale. |
+| `/imageroot path` | Selects the root of an applied/offline image whose BCD paths are relative to that root; it is distinct from the required Windows source directory. |
+| `/description text` | Changes a displayed entry description on builds that implement it; installed syntax may expose the token without explaining its argument contract. |
 | `/bootex` | Selects BootEx binaries when Secure Boot servicing conditions require them; follow Microsoft's current revocation rollout guidance. |
 | `/offline` | Forces offline boot-file servicing on only the Windows builds that document support; do not assume older WinPE media accepts it. |
 
@@ -167,6 +183,22 @@ otherwise preserve, including diagnostic or flight settings. It can be useful
 for a deliberate clean template, but first determine which recovery, debugger,
 hypervisor, integrity, and deployment settings must survive.
 
+### Treating `/bcdclean full` as harmless stale-entry cleanup
+
+The installed help says `full` removes entries whose corresponding devices do
+not exist. A valid removable, encrypted, detached, virtual, SAN, recovery, or
+multiboot device can be unavailable at the observation moment. Inventory every
+entry and device dependency, preserve the store, and require an approved
+removal set; never use `full` merely to make the menu shorter or validation
+output cleaner.
+
+### Assuming a successful `/nofirmwaresync` run repaired firmware boot order
+
+This switch deliberately disables firmware synchronization. The copied files
+or BCD store can be internally consistent while NVRAM still points elsewhere.
+Record whether firmware synchronization was requested and independently verify
+the actual firmware entry/order or intentional UEFI fallback path.
+
 ## PowerShell boundaries
 
 `bcdboot.exe` is a native state-changing tool. Quote Windows and target paths,
@@ -182,10 +214,24 @@ This Windows-only command is available in supported Windows and Windows PE
 environments. Options and boot binaries vary by Windows/ADK build. Firmware
 mode, architecture, GPT/MBR layout, ESP/active-partition rules, Secure Boot,
 BitLocker, multiboot design, and physical versus virtual firmware determine
-valid usage.
+valid usage. On the recorded Windows NT `10.0.26200.0` client, exact System32
+file version `10.0.26100.1` printed 53 nonempty help lines and returned 87 for
+`/?`; ordinary help therefore must not be classified as failure solely from
+its nonzero native status. That help spells BCD logging `/vbcd`, not `/vb`, and
+also exposes `/t`, `/nofirmwaresync`, `/bcdclean`, `/imageroot`, and
+`/description`. No Windows source or system partition was supplied.
+
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 file version 10.0.26100.1 /? printed
+53 nonempty stdout lines and returned 87 without a source or target. Installed
+help spells /vbcd rather than the page's former /vb and additionally exposes
+/t, /nofirmwaresync, /bcdclean, /imageroot, and /description; no boot files,
+BCD store, firmware entry, source, partition, or system state changed. Approved
+disposable Windows/WinPE firmware and partition targets remain required for
+operation verification.
 
 ## Related documents
-
 - [bcdedit.exe](bcdedit.exe.md)
 - [dism.exe](dism.exe.md)
 - [cipher.exe](cipher.exe.md)

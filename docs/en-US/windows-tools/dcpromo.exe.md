@@ -144,8 +144,21 @@ by Server release. Current Learn applicability banners do not erase Microsoft's
 deprecation/migration guidance. Use ADDSDeployment for supported modern
 automation and preserve Dcpromo only where the exact legacy platform requires it.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`dcpromo.exe` Application candidate under either PowerShell collector. No
+feature, role, or compatibility component was installed merely to change
+that result, and no same-named PATH substitute was used. This is target-host
+command-resolution evidence, not proof that the tool is unsupported on every
+applicable Windows environment.
+
+Behavior verification remains legacy help, modern module/cmdlet
+discovery, existing-DC inventory and exact-partner health queries only; no
+promotion, demotion, forced removal, role binary, RODC, IFM, answer-file,
+credential or reboot operation is permitted merely for evidence.
+
+## Related documents
 - [adprep.exe](adprep.exe.md)
 - [dcdiag.exe](dcdiag.exe.md)
 - [repadmin.exe](repadmin.exe.md)

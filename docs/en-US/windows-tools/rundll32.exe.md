@@ -98,6 +98,17 @@ unsupported across Windows releases, editions, components, and architectures.
 This page deliberately makes no claim that a copied component-specific recipe
 is portable.
 
+## Runtime evidence
+
+On Windows NT `10.0.26200.0`, both PowerShell collectors resolved signed
+`C:\Windows\System32\rundll32.exe`, fixed file version `10.0.26100.8737` and
+collector-selected file-version string `10.0.26100.8875
+(WinBuild.160101.0800)`. No DLL/export pair was invoked. Arbitrary Rundll32
+execution can load code in-process and is not a safe generic help probe.
+Behavior verification belongs to one vendor-documented compatible entry point
+with exact signed DLL identity, architecture, arguments, side effects, and a
+disposable recovery plan; it cannot validate unrelated copied recipes.
+
 ## Related documents
 
 - [cmd.exe](cmd.exe.md)

@@ -54,7 +54,8 @@ Omit the password switch/value so an approved interactive prompt can be used.
   parameterless form with `/ras` for the stored remote-access credential.
 - `/ras`: Select the stored remote-access credential for `/delete`.
 - `/list`: List all credential metadata, or only the following exact target.
-- `/?`: Display installed command help.
+- `/?`: Display installed command help; on the recorded Windows build it
+  printed complete help and returned exit code 1.
 
 ## PowerShell boundaries
 
@@ -110,10 +111,21 @@ connection.
 
 This executable is Windows-only. Available credential types, smart-card use,
 target matching, policy, and behavior of consumers vary by Windows release,
-application, protocol, and user/session context.
+application, protocol, and user/session context. On Windows NT
+`10.0.26200.0`, installed file version `10.0.26100.1` printed 18 nonempty
+help lines for `/?` and returned 1. That help-specific status is not evidence
+that credential-store access failed; classify an operational result only from
+the exact operation's output and status.
+
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, installed file version 10.0.26100.1 ordinary-token
+/? printed 18 nonempty help lines and returned 1. The page records this as
+help-specific rather than evidence of credential-store failure; no credential
+target, user, password, smart card, RAS entry, or store inventory was supplied
+or queried.
 
 ## Related documents
-
 - [whoami.exe](whoami.exe.md)
 - [klist.exe](klist.exe.md)
 - [gpresult.exe](gpresult.exe.md)

@@ -81,8 +81,21 @@ stores, preserve remote recovery, and verify effective state plus real traffic.
 stores, IPsec, remote management, firewall tooling, defaults, and UI vary by
 Windows client/server version, edition, role, management authority, and product.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the read-only file-identity audit under Windows
+PowerShell `5.1.26100.8875` and PowerShell `7.6.4` resolved the exact entry
+point to `C:\WINDOWS\system32\WF.msc`. It exposed no nonzero four-part fixed
+file version through `FileVersionInfo`; the audit retains that as absent rather
+than inventing `0.0.0.0`. Both collectors reported the same result.
+
+The audit invoked no discovered command, opened no window, contacted no remote
+endpoint, and changed no state. This proves only this host's entry-point
+availability and file identity; it does not prove that the UI loads, the
+current user is authorized, an optional snap-in or component is functional, or
+any displayed or requested operation succeeds.
+
+## Related documents
 - [netsh.exe](netsh.exe.md)
 - [gpedit.msc](gpedit.msc.md)
 - [secpol.msc](secpol.msc.md)

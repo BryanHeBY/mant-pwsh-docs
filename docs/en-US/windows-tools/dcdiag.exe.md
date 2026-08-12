@@ -164,9 +164,17 @@ Tests, event providers, SYSVOL replication technology, functional-level
 behavior, privileges, and documented applicability vary by Windows/Server
 release. Verify local `dcdiag /?`, installed feature provenance, DC/forest
 functional levels, and the current Microsoft Learn page on the target estate.
+Exact System32 discovery on the recorded Windows NT `10.0.26200.0` client
+found no `dcdiag.exe`; no help, DC, site, enterprise, DNS, replication, event,
+log, repair, or credential operation ran.
+
+## Runtime evidence
+
+Exact System32 discovery on Windows NT 10.0.26200.0 found no dcdiag.exe. It
+remains documented as an optional DC/RSAT tool; no help, DC, site, enterprise,
+DNS, replication, event, log, repair, credential, or directory operation ran.
 
 ## Related documents
-
 - [repadmin.exe](repadmin.exe.md)
 - [nltest.exe](nltest.exe.md)
 - [netdom.exe](netdom.exe.md)

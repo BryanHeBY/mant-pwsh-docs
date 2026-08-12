@@ -27,9 +27,11 @@
 
 `nbtstat.exe` diagnoses NetBIOS over TCP/IP (NetBT). It displays local and
 remote NetBIOS name tables, the local name cache, resolution statistics, and
-NetBIOS sessions. Its option letters are case-sensitive: `/a` queries by
-remote NetBIOS name, while `/A` queries by IPv4 address; `/s` resolves session
-names, while `/S` keeps numeric addresses.
+NetBIOS sessions. Installed help uses `-`, Microsoft's locked page uses `/`,
+and the recorded build accepts both. Option letters are case-sensitive:
+`-a`/`/a` queries by remote NetBIOS name, while `-A`/`/A` queries by IPv4
+address; `-s`/`/s` resolves session names, while `-S`/`/S` keeps numeric
+addresses.
 
 ## Syntax and parameters
 
@@ -41,18 +43,18 @@ The following option role is case-sensitive because Windows assigns different
 behavior to several lowercase and uppercase spellings.
 
 <!-- mant:entries role=option case=sensitive -->
-- `/a`: Query the NetBIOS name table of the following remote NetBIOS name.
-- `/A`: Query the NetBIOS name table of the following remote IPv4 address.
-- `/c`: Display the local NetBIOS name cache and resolved addresses.
-- `/n`: Display names registered locally by NetBIOS applications.
-- `/r`: Display name-resolution statistics for broadcast and WINS resolution.
-- `/R`: Purge the NetBIOS name cache and reload the preloaded `Lmhosts` entries.
-- `/RR`: Release and then refresh locally registered NetBIOS names through
+- `-a`, `/a`: Query the NetBIOS name table of the following remote NetBIOS name.
+- `-A`, `/A`: Query the NetBIOS name table of the following remote IPv4 address.
+- `-c`, `/c`: Display the local NetBIOS name cache and resolved addresses.
+- `-n`, `/n`: Display names registered locally by NetBIOS applications.
+- `-r`, `/r`: Display name-resolution statistics for broadcast and WINS resolution.
+- `-R`, `/R`: Purge the NetBIOS name cache and reload the preloaded `Lmhosts` entries.
+- `-RR`, `/RR`: Release and then refresh locally registered NetBIOS names through
   configured WINS servers.
-- `/s`: Display NetBIOS client/server sessions and try to resolve remote IP
+- `-s`, `/s`: Display NetBIOS client/server sessions and try to resolve remote IP
   addresses to names.
-- `/S`: Display NetBIOS sessions using numeric remote IP addresses.
-- `/?`: Display installed help. A trailing numeric interval is an operand that
+- `-S`, `/S`: Display NetBIOS sessions using numeric remote IP addresses.
+- `-?`, `/?`: Display installed help. A trailing numeric interval is an operand that
   repeats selected output until interrupted, not another switch.
 
 ## PowerShell boundaries
@@ -90,10 +92,21 @@ in scripts unless the caller intentionally manages duration and cancellation.
 
 This executable is Windows-only and useful only where NetBIOS over TCP/IP is
 enabled and relevant. Network policy, node type, WINS, broadcasts, and adapter
-configuration affect results.
+configuration affect results. On Windows NT `10.0.26200.0`, installed file
+version `10.0.26100.1` printed 20 normalized nonempty help lines and returned 2
+for both `/?` and `-?`; Windows PowerShell 5.1 represented that native-error
+stream as error records. Read-only local-name-table queries verified `-n` and
+`/n` produce equivalent output without purging or refreshing NetBT state.
+
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, installed file version 10.0.26100.1 /? and -? each
+printed 20 normalized native-error-stream lines and returned 2. Locked help
+uses slash prefixes, installed help uses dashes, and local-name-table display
+proved both forms while preserving case-sensitive pairs. No cache purge,
+refresh, WINS, remote, or network mutation ran.
 
 ## Related documents
-
 - [nslookup.exe](nslookup.exe.md)
 - [ipconfig.exe](ipconfig.exe.md)
 - [netstat.exe](netstat.exe.md)

@@ -55,8 +55,13 @@ contract.
 - Treating PowerShell `-Force` as a permission bypass.
 - Creating a deep relative path without first verifying the current location.
 
-## Related documents
+## Runtime evidence
 
+Exact cmd.exe 10.0.26100.1 `help MKDIR` printed the same 16-line creation help,
+no PowerShell error records, and returned 1 without creating a directory.
+Protected synonym verification remains tied to the canonical MD fixture.
+
+## Related documents
 - [md](md.md)
 - [cmd.exe](cmd.exe.md)
 - [rmdir](rmdir.md)

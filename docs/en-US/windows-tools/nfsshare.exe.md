@@ -94,9 +94,18 @@ Windows Server for NFS is optional and edition/role dependent. NFS version,
 authentication methods, mapping stores, clusters and available cmdlets vary by
 release. The legacy command's encoding options do not replace an end-to-end
 filename compatibility test.
+Exact System32 discovery on the recorded Windows NT `10.0.26200.0` Home China
+client found no `nfsshare.exe`; do not substitute a PATH match or install NFS
+components merely for documentation evidence.
+
+## Runtime evidence
+
+Exact System32 discovery on the recorded Windows NT 10.0.26200.0 Home China
+client found nfsshare.exe absent; no PATH substitute, export, ACL, mapping,
+service, or query ran. Listing/typed-ACL verification remains pending where the
+optional feature is already installed.
 
 ## Related documents
-
 - [nfsadmin.exe](nfsadmin.exe.md)
 - [nfsstat.exe](nfsstat.exe.md)
 - [showmount.exe](showmount.exe.md)

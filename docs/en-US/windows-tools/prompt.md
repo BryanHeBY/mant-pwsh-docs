@@ -82,8 +82,16 @@ automation. Prompt changes do not affect command results or security context.
 This is a Windows Cmd builtin. Tokens depend on command extensions, current
 drive/network mapping, console/terminal rendering, code page, locale, and font.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT 10.0.26200.0, exact System32 `cmd.exe` fixed version
+`10.0.26100.8737` returned 29 nonempty lines and status `1` for
+`cmd.exe /d /c help PROMPT` under both PowerShell collectors. The fixture did
+not retain the localized payload. This proves only static help discovery:
+PROMPT itself did not run, and neither the child Cmd prompt nor PowerShell's
+prompt function, profile, AutoRun configuration, or persistent state changed.
+
+## Related documents
 - [cmd.exe](cmd.exe.md)
 - [pushd](pushd.md)
 - [title](title.md)

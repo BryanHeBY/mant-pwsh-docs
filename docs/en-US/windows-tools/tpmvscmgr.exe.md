@@ -45,10 +45,16 @@ not the default for a new authentication architecture.
 Creation parameters determine secrets, management, and recoverability.
 
 <!-- mant:entries role=option case=insensitive -->
+- `/quiet`: Request quiet execution on installed builds; it does not make credential lifecycle or destructive scope safe for unattended use.
 - `/name`: Set the virtual smart-card display name.
 - `/pin`: Supply or prompt for the user PIN; avoid inline secrets.
+- `/puk`: Supply or prompt for the PIN Unlock Key; omission creates a card without a PUK under the documented contract.
 - `/adminkey`: Select a supplied, default, or random administrative key.
-- `/generate`: Permit supported key generation needed by standard management.
+- `/generate`: Format/create the card filesystem needed for ordinary certificate enrollment instead of leaving filesystem creation to a management system.
+- `/machine`: Select a remote domain computer through DCOM; remote local-administrator rights and exact host identity are required.
+- `/pinpolicy`: Define installed-build PIN length and character policy; installed help permits it only with `/pin prompt`.
+- `/attestation`: Select installed-build AIK-only or AIK-and-certificate attestation; the latter can depend on network access to a cloud CA.
+- `/instance`: Select the exact `ROOT\SMARTCARDREADER\...` instance to destroy.
 - `/?`: Display installed syntax.
 
 ## Common mistakes
@@ -75,6 +81,22 @@ Friendly name is not sufficient identity. Map instance ID to user, certificates,
 relying services, alternate sign-in, recovery, and enrollment authority. Deletion
 is irreversible and can strand the user.
 
+### Treating `/quiet` as safe unattended provisioning
+
+Quiet mode suppresses interaction; it does not validate default or exposed
+secrets, remote-machine identity, PIN policy, attestation connectivity,
+enrollment, alternate sign-in, or recovery. Keep prompt-driven secrets off
+command lines and logs, and build explicit preflight/post-verification before
+any approved automation.
+
+### Assuming help is ordinary stdout text
+
+On the recorded build, `/?` wrote BOM-less UTF-16LE to stderr and nothing to
+stdout. PowerShell's ordinary native capture exposed NULs and misleading error
+formatting even though the process returned 0. Preserve raw stream bytes when
+exact evidence matters and decode deliberately; do not classify help as a
+failure merely because it arrived on stderr or rendered badly.
+
 ### Clearing or reinitializing the TPM as troubleshooting
 
 TPM reset, OS reinstall, or ownership/provisioning changes can invalidate virtual
@@ -88,15 +110,29 @@ secure console; they are not suitable for unattended remoting. Capture the
 created instance ID and `$LASTEXITCODE` without logging secrets. PowerShell PnP
 and certificate inventory describes different layers and must be correlated.
 
+The recorded help stream is a native encoding exception: 5,316 BOM-less
+UTF-16LE bytes on stderr, zero stdout bytes, and exit 0. Do not merge streams
+before establishing their encodings if a faithful transcript is required.
+
 ## Version and platform differences
 
 This is Windows-only and depends on a supported/provisioned TPM, administrative
 rights, smart-card services, certificate enrollment, domain/DCOM for remote
-creation, and organizational authentication policy. Current Microsoft guidance
-favors Windows Hello for Business or FIDO2 for new installations.
+creation, and organizational authentication policy. On Windows NT
+`10.0.26200.0`, installed file version `4.00` help exposed `/quiet`,
+`/pinpolicy`, and `/attestation` beyond Microsoft's current online syntax, in
+addition to the documented `/puk`, `/machine`, and `/instance`. Treat these as
+installed-build capability evidence. Current Microsoft guidance favors Windows
+Hello for Business or FIDO2 for new installations.
+
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, installed file version 4.00 explicit /? returned 0
+but wrote 5316 BOM-less UTF-16LE bytes to stderr and zero bytes to stdout. No
+card, PIN/PUK/admin key, TPM, certificate, enrollment, authentication,
+attestation, DCOM or device mutation ran.
 
 ## Related documents
-
 - [tpmtool.exe](tpmtool.exe.md)
 - [certutil.exe](certutil.exe.md)
 - [manage-bde.exe](manage-bde.exe.md)

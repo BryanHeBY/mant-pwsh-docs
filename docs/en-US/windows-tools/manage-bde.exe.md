@@ -2,6 +2,7 @@
 # manage-bde.exe
 
 > Inspect BitLocker conversion, protection, lock, and protector state before changing encryption or recovery access.
+> Run state and protector queries from an elevated administrative shell and protect their output.
 > More information: https://learn.microsoft.com/windows-server/administration/windows-commands/manage-bde.
 
 - Show BitLocker state for every local volume:
@@ -199,6 +200,13 @@ status data, not generic success/failure. For structured automation, evaluate
 the supported BitLocker PowerShell cmdlets and management APIs for the target
 Windows version and policy.
 
+Read-only status is not an assurance that an ordinary token can read BitLocker
+state. On the recorded non-elevated host, `-status` returned
+`0x80041003` (`WBEM_E_ACCESS_DENIED`) and explicitly requested administrative
+rights. Treat that as an access failure, not as an unprotected or absent
+volume, and preserve the actual code before interpreting
+`-protectionaserrorlevel`.
+
 ## Version and platform differences
 
 This Windows-only administrative command applies to supported Windows client
@@ -206,6 +214,15 @@ and server releases where BitLocker components and the relevant edition/role
 are available. TPM generation/state, Secure Boot, Modern Standby, device
 encryption, domain/MDM policy, recovery environment, protector type, and OS
 versus data volume determine valid operations.
+
+## Runtime evidence
+
+On the recorded ordinary token, `manage-bde.exe -status` returned
+`0x80041003` (`WBEM_E_ACCESS_DENIED`) and explicitly required administrator
+rights. This is query-time access evidence, not an empty BitLocker inventory.
+No volume identity, protector, recovery material, conversion, protection,
+lock, unlock, suspension, or auto-unlock state was exposed or changed;
+approved elevated/disposable-volume verification remains pending.
 
 ## Related documents
 

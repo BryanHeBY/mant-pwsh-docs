@@ -96,9 +96,21 @@ The Microsoft client is Windows-only and requires TCP/IP. Executable presence,
 remote daemon availability, output format, encoding, privacy policy and network
 controls vary. The current Microsoft page lists supported Windows builds, but
 that does not imply a Finger server is installed or appropriate.
+On exact System32 file version `10.0.26100.8521`, local `/?` help returned 1
+with nine nonempty normalized lines. Native error-stream output became 13
+PowerShell 5.1 `ErrorRecord` objects after `2>&1`; preserve text and native
+status separately. No host, username, DNS, TCP connection, or remote-user
+request was supplied.
+
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 Finger file version 10.0.26100.8521
+/? returned 1 with nine normalized nonempty lines; native stderr became 13
+Windows PowerShell 5.1 ErrorRecord objects after 2>&1. No host/user/DNS/TCP
+request ran; approved reachability remains pending without querying remote
+users.
 
 ## Related documents
-
 - [whoami.exe](whoami.exe.md)
 - [nslookup.exe](nslookup.exe.md)
 - [netstat.exe](netstat.exe.md)

@@ -85,8 +85,16 @@ This Windows-only command is cataloged for current Windows client and server
 releases. Remote access, drive naming, authentication, quotas, cluster storage,
 and the command's installed presence vary by environment.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`freedisk.exe` Application candidate under either PowerShell collector. No
+feature was installed and no PATH substitute was used. Threshold/status
+behavior remains for a host where the exact tool is already present and an
+approved local or disposable target is available; no credential, cleanup,
+quota, filesystem, volume, share, or remote mutation is required for evidence.
+
+## Related documents
 - [fsutil.exe](fsutil.exe.md)
 - [dir](dir.md)
 

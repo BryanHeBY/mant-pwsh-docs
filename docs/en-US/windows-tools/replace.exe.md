@@ -108,11 +108,22 @@ construct the invocation with `Invoke-Expression`.
 ## Version and platform differences
 
 This Windows-only legacy copy utility is documented on supported Windows client
-and server releases. Filesystem timestamps, wildcard rules, attributes, ACLs,
-links, cloud/offline files, locale, and target-local help affect behavior.
+and server releases. On Windows NT `10.0.26200.0`, installed file version
+`10.0.26100.1` returned all six documented switches, two mutually constrained
+syntax forms, 18 nonempty help lines, and status 0 for explicit `/?`; no source
+or destination operand was supplied. Filesystem timestamps, wildcard rules,
+attributes, ACLs, links, cloud/offline files, locale, and target-local help
+affect behavior.
+
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, installed file version 10.0.26100.1 explicit /?
+returned the documented two syntax forms, all six switches, 18 nonempty lines
+and status 0. Runtime verification remains help-only unless approved disposable
+fixtures exist; no real file add, replacement, read-only override or recursive
+destination scan is permitted merely for evidence.
 
 ## Related documents
-
 - [copy](copy.md)
 - [xcopy.exe](xcopy.exe.md)
 - [robocopy.exe](robocopy.exe.md)

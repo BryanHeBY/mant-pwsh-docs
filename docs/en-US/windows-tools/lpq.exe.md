@@ -6,7 +6,7 @@
 
 - Confirm that the optional LPR Port Monitor client is installed:
 
-`Get-Command lpq.exe -ErrorAction SilentlyContinue | Select-Object Source,@{Name='FileVersion';Expression={$_.FileVersionInfo.FileVersion}}`
+`Get-Command lpq.exe -ErrorAction SilentlyContinue | Select-Object Source,@{Name='FileVersionFixed';Expression={$_.FileVersionInfo.FileVersionRaw.ToString()}},@{Name='FileVersionString';Expression={$_.FileVersionInfo.FileVersion}}`
 
 - Display the status of one exact LPD queue (uppercase `-S` and `-P` are required):
 
@@ -79,9 +79,18 @@ plain remote-provided text.
 Windows-only and optional-feature dependent. LPD implementations vary in queue
 names, status fields and extensions. Prefer supported authenticated/encrypted
 print management when available; LPR/LPD itself is a legacy trust model.
+Exact System32 discovery on the recorded Windows NT `10.0.26200.0` Home China
+client found no `lpq.exe`; do not substitute a PATH match or install LPR Port
+Monitor merely for documentation evidence.
+
+## Runtime evidence
+
+Exact System32 discovery on the recorded Windows NT 10.0.26200.0 Home China
+client found lpq.exe absent; no PATH substitute, server/queue query, or job
+action ran. Local help and one approved exact-server/queue query remain pending
+where LPR Port Monitor is installed.
 
 ## Related documents
-
 - [lpr.exe](lpr.exe.md)
 - [prnjobs.vbs](prnjobs.vbs.md)
 - [prnport.vbs](prnport.vbs.md)

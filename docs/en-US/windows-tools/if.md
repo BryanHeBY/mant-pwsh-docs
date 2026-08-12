@@ -101,6 +101,14 @@ matters.
 This page targets supported Windows `cmd.exe`. `/i`, comparison operators,
 `defined`, and `cmdextversion` require command extensions.
 
+## Runtime evidence
+
+The protected fixture set a child status to `7` and confirmed under both
+PowerShell collectors that `if errorlevel 8` is false while `if errorlevel 7`
+is true. It did not exercise caller-controlled comparison text, `exist` file
+type distinctions, `CMDEXTVERSION`, or environment variables that shadow
+dynamic status expansion.
+
 ## Related documents
 
 - [choice.exe](choice.exe.md)

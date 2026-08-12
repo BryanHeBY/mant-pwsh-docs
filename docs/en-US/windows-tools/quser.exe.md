@@ -54,7 +54,11 @@ stable parser and native failure is not controlled by `-ErrorAction`.
 ## Version and availability
 
 This Windows session query depends on target edition/version, Remote Desktop
-services, permissions, session type/state, and remote connectivity.
+services, permissions, session type/state, and remote connectivity. Exact
+System32 discovery on the recorded Windows NT `10.0.26200.0` Home China client
+found no `quser.exe`; this is an edition/component availability observation,
+not a claim about Session Host, Server, or other client installations. Do not
+substitute a PATH match when exact discovery fails.
 
 ## Common mistakes
 
@@ -66,8 +70,13 @@ services, permissions, session type/state, and remote connectivity.
 - Using `-ErrorAction Stop` as if native failure were a PowerShell exception;
   capture `$LASTEXITCODE` immediately.
 
-## Related documents
+## Runtime evidence
 
+Exact System32 discovery on the recorded Windows NT 10.0.26200.0 Home China
+client found quser.exe absent; no PATH substitute or session query ran.
+Representative installations where the component exists remain required.
+
+## Related documents
 - [query.exe](query.exe.md)
 - [qwinsta.exe](qwinsta.exe.md)
 - [logoff.exe](logoff.exe.md)

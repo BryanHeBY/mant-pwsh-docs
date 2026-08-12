@@ -107,12 +107,21 @@ Telnet Client is an optional Windows feature. Availability, feature servicing,
 terminal behavior, console host, encoding and server negotiation vary by build
 and endpoint. Microsoft documents TCP 23 as the default but any supplied port
 still speaks through a Telnet client, not a generic TLS client.
+Exact System32 discovery on the recorded Windows NT `10.0.26200.0` Home China
+client found no `telnet.exe`; do not substitute a PATH match or enable the
+optional feature merely for documentation evidence.
+
+## Runtime evidence
+
+Exact System32 discovery on the recorded Windows NT 10.0.26200.0 Home China
+client found telnet.exe absent; no PATH substitute, feature enablement,
+negotiation, input, credential, or transcript ran. Optional-feature/help and
+approved TCP reachability remain pending where already installed.
 
 ## Related documents
-
 - OpenSSH: query `mant ssh --source cross-platform-tools`.
 - [winrs.exe](winrs.exe.md)
-- [winrm.exe](winrm.exe.md)
+- [winrm.cmd](winrm.cmd.md)
 - [pktmon.exe](pktmon.exe.md)
 
 ## Sources and license

@@ -89,6 +89,21 @@ This builtin runs inside `cmd.exe` on supported Windows releases. Parsing can
 differ with command extensions, delayed expansion, batch versus interactive
 mode, pipe/subshell context, code page, locale, and nested launch syntax.
 
+On Windows NT `10.0.26200.0`, bare `echo` in a clean `/d` child Cmd returned
+one line, status 0, and reported echoing on. The protected Cmd fixture also
+confirms parse-time percent expansion and execution-time delayed expansion with
+fixed ASCII task data. No untrusted text, secret, persistent environment, or
+shared Cmd state was used.
+
+## Runtime evidence
+
+The protected fixture confirmed in clean child Cmd processes that bare `echo`
+returns one localized state line with status `0`, percent expansion inside a
+parenthesized block sees its parse-time value, and narrowly enabled delayed
+expansion sees the execution-time value. It used fixed ASCII task data only;
+untrusted text, secrets, metacharacters, persistent environment, and shared
+shell state were not exercised.
+
 ## Related documents
 
 - [cmd.exe](cmd.exe.md)

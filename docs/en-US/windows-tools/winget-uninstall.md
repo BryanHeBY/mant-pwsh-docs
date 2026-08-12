@@ -56,15 +56,35 @@ rollback requirement before changing the endpoint.
 - `--product-code CODE`: Select by registered product code where supported.
 - `-e`, `--exact`: Require exact matching for the selected field.
 - `-v VERSION`, `--version VERSION`: Select one installed version where the client exposes it.
+- `--all`, `--all-versions`: Remove every detected version of the selected package; confirm each target and its retained data first.
 - `-s SOURCE`, `--source SOURCE`: Restrict package correlation to one source.
-- `--scope SCOPE`, `--architecture ARCHITECTURE`, `--installer-type TYPE`: Restrict the detected removal target.
+- `--scope SCOPE`: Restrict the detected removal target to user or machine scope.
 - `-i`, `--interactive`: Request interactive uninstaller behavior.
 - `-h`, `--silent`: Request silent uninstaller behavior; actual support belongs to the package.
 - `--force`: Continue through selected non-security checks without reducing removal impact.
 - `--purge`: Remove additional package data where supported; review data-retention consequences.
 - `--preserve`: Preserve supported package data during removal where available.
 - `-o FILE`, `--log FILE`: Request an explicit installer/uninstaller log path where supported.
+- `--header HEADER`: Send a reviewed HTTP header to a REST package source; do not expose credentials in process arguments or logs.
+- `--authentication-mode MODE`: Choose `silent`, `silentPreferred`, or `interactive` source authentication behavior.
+- `--authentication-account ACCOUNT`: Select the account used for source authentication.
+- `--accept-source-agreements`: Accept reviewed source agreements for unattended package correlation.
 - `--disable-interactivity`: Disable prompts so unattended removal fails rather than waiting.
+
+Current WinGet 1.29 help and the cited official page do not list
+`--architecture` or `--installer-type` for `uninstall`; those selectors belong
+to installer-selection workflows, not this current removal interface.
+
+## Execution and diagnostics options
+
+<!-- mant:entries role=option case=insensitive -->
+- `-?`, `--help`: Display help for this subcommand without selecting or removing a package.
+- `--wait`: Wait for a key press before the client exits; avoid it in unattended automation.
+- `--logs`, `--open-logs`: Open the WinGet log directory in the interactive desktop.
+- `--verbose`, `--verbose-logs`: Enable verbose WinGet logging for this invocation.
+- `--nowarn`, `--ignore-warnings`: Suppress warning display; it does not reduce removal impact.
+- `--proxy URL`: Use the specified proxy for this invocation; protect credentials embedded in a proxy URL.
+- `--no-proxy`: Disable proxy use for this invocation.
 
 ## UI and automation
 
@@ -95,6 +115,15 @@ and user/device impact before removal.
 
 `--purge` and `--preserve` are package-specific, while shared components and
 management agents can affect other workloads. Define retention and rollback.
+
+## Runtime evidence
+
+A dual-collector local help audit against WinGet `1.29.280` matched all 33
+printed `uninstall --help` long options to ManT entries. Current help omitted
+the formerly claimed architecture/installer-type selectors and included
+`--all` and `--all-versions`; the page was synchronized accordingly. No
+inventory, target selection, uninstaller, purge/preserve behavior, package
+removal, data change, or restart ran.
 
 ## Related documents
 

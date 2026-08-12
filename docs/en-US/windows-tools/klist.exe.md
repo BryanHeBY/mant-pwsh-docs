@@ -44,8 +44,9 @@ operations use the current logon session's LUID.
 - `add_bind`: Add a preferred domain-controller binding for the specified domain.
 - `query_bind`: Display cached preferred domain-controller bindings.
 - `purge_bind`: Remove preferred domain-controller bindings.
-- `kdcoptions`: Display or supply Kerberos KDC option flags used by a ticket
-  request, following the installed command and RFC contract.
+- `cloud_debug`: Installed-build diagnostic subcommand absent from the current
+  Microsoft Klist page. Its top-level help does not define output or side
+  effects; do not invoke it merely to discover semantics.
 
 The LUID selectors use hexadecimal high/low parts and change which logon
 session a ticket operation observes or mutates.
@@ -53,7 +54,14 @@ session a ticket operation observes or mutates.
 <!-- mant:entries role=option case=insensitive -->
 - `-lh`: Select the high part of a target logon session LUID.
 - `-li`: Select the low part of a target logon session LUID.
-- `/?`: Display installed command help.
+- `-kdcoptions`: With `get`, supply Kerberos KDC option flags for the ticket
+  request under the installed syntax and RFC 4120 contract.
+- `-cacheoptions`: With `get`, supply installed-build cache options. Current
+  top-level help and the Microsoft Klist page do not define the values; do not
+  guess them.
+- `/?`, `-?`: Display installed command help. The positional `?` spelling also
+  printed the same usage and returned `-1`; it is described here instead of as
+  a second semantic entry because ManT normalizes the spellings to one selector.
 
 ## PowerShell boundaries
 
@@ -96,14 +104,40 @@ Ticket and session reports expose principals, domains, service topology,
 validity, encryption, and sometimes encoded ticket material. Store and redact
 them as authentication-sensitive diagnostics.
 
+### Treating `kdcoptions` as a standalone command
+
+The current Microsoft parameter table labels `kdcoptions` separately, but its
+syntax discussion and the installed command both show `get SPN -kdcoptions
+OPTIONS`. Use the dashed option only with an intentional ticket request. The
+installed `-cacheoptions` follows the same `get` syntax but lacks a current
+authoritative value contract; do not invent values.
+
+### Running `cloud_debug` because it appears in help
+
+The recorded build lists `cloud_debug`, while the current Microsoft Klist page
+does not. Presence establishes availability only, not safety, privilege,
+output sensitivity, or success semantics. Obtain owning-product documentation
+and an approved diagnostic scope before invoking it.
+
 ## Version and platform differences
 
 This page documents Windows `klist.exe`. Parameters and visibility depend on
 Windows release, domain/Kerberos context, logon session, and privileges; some
-operations require Domain Admin or equivalent access.
+operations require Domain Admin or equivalent access. On Windows NT
+10.0.26200.0, file version 10.0.26100.1 adds `cloud_debug` and
+`-cacheoptions` beyond the current Microsoft page; the page records but does
+not infer those build-dependent interfaces.
+
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, installed file version 10.0.26100.1 help returned
+-1 for /?, ?, and -?. Installed syntax proves -kdcoptions is a get option
+rather than a standalone command and adds -cacheoptions plus cloud_debug beyond
+the current Microsoft page. These are indexed without invented values or
+semantics. No ticket/session query, request, purge, binding, cloud diagnostic,
+SPN, LUID, domain, or KDC was supplied or changed.
 
 ## Related documents
-
 - [setspn.exe](setspn.exe.md)
 - [whoami.exe](whoami.exe.md)
 - [gpresult.exe](gpresult.exe.md)

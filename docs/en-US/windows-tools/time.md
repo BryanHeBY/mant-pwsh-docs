@@ -111,6 +111,23 @@ Windows Time topology, virtualization, and host role control safe correction.
 PowerShell formatting capabilities vary by edition/version; explicit .NET
 round-trip formatting is broadly portable.
 
+On Windows NT `10.0.26200.0` with Chinese regional settings, a clean child Cmd
+returned one localized line and status 0 for `time /t`. A separately captured
+`Get-Date` value was a typed `System.DateTime` and supplied both local and UTC
+round-trip forms from one instant. `w32tm /query /status /verbose` returned 16
+stdout lines/status 0; OEM-936 decoding reported an unsynchronized clock,
+while ordinary merged capture was mojibake. No clock, time zone, service,
+source, policy, synchronization, or system state was changed.
+
+## Runtime evidence
+
+The protected Cmd fixture ran only `time /T` in a clean child under both
+PowerShell collectors. It returned one localized nonempty line and status `0`;
+no time-setting operand was supplied. Separate typed inventory recorded local
+and UTC values without changing the clock, time zone, synchronization service,
+policy, or source. Locale parsing and elapsed-time measurement remain outside
+this evidence.
+
 ## Related documents
 
 - [date](date.md)

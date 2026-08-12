@@ -113,8 +113,14 @@ reachability vary by build, edition, RDS role/configuration, session type,
 policy, and caller token. Use installed help and a disposable representative
 session before production use.
 
-## Related documents
+## Runtime evidence
 
+Exact System32 discovery on the recorded Windows NT 10.0.26200.0 Home China
+client found logoff.exe absent; no PATH substitute or logoff ran. Help and
+lifecycle verification remains pending on an approved disposable session with
+saved-work confirmation.
+
+## Related documents
 - [query.exe](query.exe.md)
 - [msg.exe](msg.exe.md)
 - [tsdiscon.exe](tsdiscon.exe.md)

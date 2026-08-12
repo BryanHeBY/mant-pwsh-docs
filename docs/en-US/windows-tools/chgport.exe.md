@@ -58,8 +58,14 @@ Do not confuse a redirected COM endpoint with a local physical port, reverse
 same device. Query first and follow [change.exe](change.exe.md) for the complete port,
 session, framing and ownership boundary.
 
-## Related documents
+## Runtime evidence
 
+Searchable replacement page. Exact System32 discovery on the recorded Windows
+NT 10.0.26200.0 Home China client found chgport.exe absent; no PATH substitute
+or port query/change ran. Runtime remains change port /query only where
+installed.
+
+## Related documents
 - [change.exe](change.exe.md)
 - [mode.com](mode.com.md)
 - [query.exe](query.exe.md)

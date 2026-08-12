@@ -89,9 +89,22 @@ feature itself only after servicing has completed.
 
 This executable is Windows-only. Feature names, manifests, source availability,
 edition support, policies, elevation, and restart behavior vary by target.
+Exact System32 discovery on the recorded Windows NT `10.0.26200.0` client
+found file version `10.0.26100.1`. No Fondue invocation was made: the utility's
+purpose is feature enablement, so a parser/help experiment is not assumed
+side-effect-free. Runtime verification requires an approved disposable image,
+one exact feature identity, servicing-source controls, logging, reboot policy,
+and before/after feature-state evidence.
+
+## Runtime evidence
+
+Exact System32 discovery on Windows NT 10.0.26200.0 found Fondue.exe file
+version 10.0.26100.1. It was deliberately not invoked because its purpose is
+feature enablement and a parser/help experiment is not assumed
+side-effect-free; approved disposable-image, exact-feature, source-policy,
+logging, reboot, and before/after state verification remains pending.
 
 ## Related documents
-
 - [dism.exe](dism.exe.md)
 - [sfc.exe](sfc.exe.md)
 - [winget-install](winget-install.md)

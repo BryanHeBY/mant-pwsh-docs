@@ -93,8 +93,13 @@ broker/gateway/load-balanced path.
 edition, RDS role, console versus remote session type, policy, permissions, and
 deployment topology. Verify installed help and a disposable session.
 
-## Related documents
+## Runtime evidence
 
+Exact System32 discovery on the recorded Windows NT 10.0.26200.0 Home China
+client found tsdiscon.exe absent; no PATH substitute or disconnect ran. Help
+and lifecycle verification remains pending on an approved disposable session.
+
+## Related documents
 - [query.exe](query.exe.md)
 - [logoff.exe](logoff.exe.md)
 - [rwinsta.exe](rwinsta.exe.md)

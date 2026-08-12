@@ -90,6 +90,14 @@ Validate the base case and return an explicit status.
 This builtin runs only inside Windows batch files. Label calls require command
 extensions, enabled by default on supported Windows releases.
 
+## Runtime evidence
+
+The protected Cmd fixture used a fixed ASCII batch file below a verified
+GUID-named temporary root and confirmed under both PowerShell collectors that
+`call echo [%%MANT_VALUE%%]` performs CALL's second percent-expansion pass and
+returns `0`. It did not pass caller-controlled metacharacters, invoke another
+untrusted batch file, recurse, or combine CALL with pipes or redirection.
+
 ## Related documents
 
 - [cmd.exe](cmd.exe.md)

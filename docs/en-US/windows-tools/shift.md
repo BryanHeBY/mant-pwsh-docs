@@ -81,6 +81,14 @@ This Windows Cmd builtin is documented on supported releases. `/N` needs
 command extensions; parsing varies with CALL, delayed expansion, batch encoding,
 and nested Cmd layers.
 
+## Runtime evidence
+
+On 2026-08-12, a protected task-owned batch subroutine received `A B C D` and
+ran `shift /2`. Under both Windows PowerShell 5.1 and PowerShell 7.6.4
+collectors, `%1` stayed `A`, `%2` became `C`, `%3` became `D`, and `%*`
+remained the original `A B C D`. The fixture used no caller or user data and
+its verified temporary directory was removed afterward.
+
 ## Related documents
 
 - [call](call.md)

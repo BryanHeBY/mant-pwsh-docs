@@ -40,7 +40,6 @@ new deployment design.
 State changes affect firmware startup behavior and normally require a restart.
 
 <!-- mant:entries role=option case=insensitive -->
-- `/query`: Display the current Windows To Go startup-option state.
 - `/enable`: Enable the startup option for compatible USB workspaces.
 - `/disable`: Disable that startup option without blocking all USB boot paths.
 - `/?`: Display installed syntax.
@@ -50,9 +49,10 @@ pwlauncher /enable
 pwlauncher /disable
 ```
 
-Both forms are administrative mutations. The tool has no documented query
-form; command presence or help output does not reveal the effective firmware
-boot order or prove that a particular USB device will boot.
+With no parameter, the recorded installed build displays the current startup-
+option state. `/enable` and `/disable` are administrative mutations. Neither
+the state query nor help reveals the effective firmware boot order or proves
+that a particular USB device will boot.
 
 ## Common mistakes
 
@@ -94,8 +94,21 @@ USB support, UEFI/Secure Boot behavior, Windows To Go media, and policy vary by
 hardware and build; Microsoft catalog applicability does not revive the
 retired workspace feature.
 
-## Related documents
+On Windows NT `10.0.26200.0`, exact System32 file version `10.0.26100.1`
+printed seven nonempty standard-output lines for `/?`, no standard-error lines,
+and returned 0. Installed help exposes the no-parameter state query and
+`/enable`/`/disable`; it does not expose the formerly indexed `/query` token.
+No firmware, USB device, BCD entry, startup option, boot state, or reboot was
+queried or changed by this help-only probe.
 
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 file version 10.0.26100.1 explicit
+/? returned seven nonempty stdout lines, no stderr and status 0. No state
+query, startup-option change, firmware/BCD/USB/encryption/recovery read, or
+reboot ran.
+
+## Related documents
 - [bcdedit.exe](bcdedit.exe.md)
 - [bcdboot.exe](bcdboot.exe.md)
 - [manage-bde.exe](manage-bde.exe.md)

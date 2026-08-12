@@ -242,8 +242,21 @@ remote behavior, discovery, and legacy mode/flow data depend on build, edition,
 RDS role/configuration, session type, language, and caller rights. Use installed
 help and representative target runtime evidence.
 
-## Related documents
+Exact System32 discovery on the recorded Windows NT `10.0.26200.0` Home China
+client found neither `query.exe` nor the four alias executables. Record that as
+an edition/component availability result; do not substitute an unrelated PATH
+match and do not infer that another client, Session Host, Server installation,
+or recovery image lacks the family.
 
+## Runtime evidence
+
+Exact System32 discovery on the recorded Windows NT 10.0.26200.0 Home China
+client found query.exe, quser.exe, qwinsta.exe, qprocess.exe, and qappsrv.exe
+absent; no PATH substitute or RDS query ran. Representative Session Host,
+Server, local/remote, active/disconnected/listener, elevated/unelevated, and
+localized contexts remain required.
+
+## Related documents
 - [quser.exe](quser.exe.md)
 - [qwinsta.exe](qwinsta.exe.md)
 - [qprocess.exe](qprocess.exe.md)

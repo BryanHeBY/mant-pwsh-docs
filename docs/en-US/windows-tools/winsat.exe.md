@@ -4,7 +4,8 @@
 > Run bounded Windows System Assessment Tool workloads only on an idle test host; WinSAT is a benchmark, not a memory-integrity or codec-correctness test.
 > More information: https://learn.microsoft.com/windows-server/administration/windows-commands/winsat-mem.
 
-- Read installed assessment families and options:
+- From an elevated shell on an approved idle test host, read installed
+  assessment families and options without selecting a workload:
 
 `winsat.exe /?`
 
@@ -129,8 +130,23 @@ plan, virtualization, security features, media codecs, hardware acceleration,
 thermal state, topology, and installed WinSAT assets. It is not a portable
 cross-platform benchmark contract.
 
-## Related documents
+On Windows NT `10.0.26200.0`, exact System32 file version `10.0.26100.1`
+could not be started with `/?` under the recorded ordinary token: Windows
+rejected process creation with “The requested operation requires elevation.”
+No child process or help payload existed, so no exit-code or syntax claim is
+made from that attempt. No assessment, load, media parse/playback, XML artifact,
+driver, codec, power, hardware, or system state changed.
 
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, Windows rejected exact System32 file version
+10.0.26100.1 /? process creation under the recorded ordinary token with
+elevation required. No child/help payload/exit code existed and no
+assessment/load/media/XML/audio/driver/codec/power/system mutation ran;
+elevated help and workloads require an approved idle disposable host, with
+trusted media for mfmedia.
+
+## Related documents
 - [perfmon.exe](perfmon.exe.md)
 - [typeperf.exe](typeperf.exe.md)
 - [dxdiag.exe](dxdiag.exe.md)

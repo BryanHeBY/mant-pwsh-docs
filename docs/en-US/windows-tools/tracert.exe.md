@@ -27,8 +27,9 @@
 
 `tracert.exe` sends ICMP probes with increasing time-to-live values. Routers
 that return ICMP Time Exceeded messages reveal hop addresses; the destination
-ends the trace when it responds. `/d` skips reverse lookups, `/h` limits hops,
-`/w` sets a per-probe timeout in milliseconds, and `/4` or `/6` fixes the
+ends the trace when it responds. `-d`/`/d` skips reverse lookups, `-h`/`/h`
+limits hops, `-w`/`/w` sets a per-probe timeout in milliseconds, and
+`-4`/`/4` or `-6`/`/6` fixes the
 address family.
 
 ## Syntax and parameters
@@ -36,20 +37,21 @@ address family.
 <!-- mant:entries role=command case=insensitive -->
 - `tracert.exe`: Trace the ICMP-visible Windows hop path to one destination.
 
-Uppercase `/R` and `/S` are IPv6-specific and are not interchangeable with
-lowercase options used by other Windows networking tools.
+Installed help uses `-`, while Microsoft's locked page uses `/`; the recorded
+build accepts both. Uppercase `R` and `S` are IPv6-specific and are not
+interchangeable with lowercase options used by other Windows networking tools.
 
 <!-- mant:entries role=option case=sensitive -->
-- `/d`: Keep hop addresses numeric and skip reverse-DNS name resolution.
-- `/h`: Set the maximum hop count searched for the destination.
-- `/j`: Use the following loose IPv4 source-route host list.
-- `/w`: Set the wait in milliseconds for each probe reply.
-- `/R`: Trace the IPv6 round-trip path where routing headers and the target
+- `-d`, `/d`: Keep hop addresses numeric and skip reverse-DNS name resolution.
+- `-h`, `/h`: Set the maximum hop count searched for the destination.
+- `-j`, `/j`: Use the following loose IPv4 source-route host list.
+- `-w`, `/w`: Set the wait in milliseconds for each probe reply.
+- `-R`, `/R`: Trace the IPv6 round-trip path where routing headers and the target
   support that diagnostic behavior.
-- `/S`: Use the following IPv6 source address.
-- `/4`: Force IPv4.
-- `/6`: Force IPv6.
-- `/?`: Display installed command help.
+- `-S`, `/S`: Use the following IPv6 source address.
+- `-4`, `/4`: Force IPv4.
+- `-6`, `/6`: Force IPv6.
+- `-?`, `/?`: Display installed command help.
 
 ## PowerShell boundaries
 
@@ -86,7 +88,19 @@ source context, address family, timestamp, and repeated results.
 ## Version and platform differences
 
 This page documents Windows `tracert.exe`, not Unix `traceroute`. Network
-policy can filter the ICMP messages on which its view depends.
+policy can filter the ICMP messages on which its view depends. On Windows NT
+`10.0.26200.0`, installed file version `10.0.26100.1` printed 11 nonempty
+help lines and returned 1 for both `/?` and `-?`. One-hop, 100 ms loopback
+traces verified both prefix forms without contacting an external target.
+
+## Runtime evidence
+
+The repeatable read-only Windows CLI fixture resolved exact System32
+`tracert.exe`, confirmed localized `/?` help returns exit code `1`, and traced
+only IPv4 loopback with `/d`, a one-hop maximum, and a 100 ms timeout. Both
+PowerShell collectors observed exit code `0` and `127.0.0.1`; no external
+network target or name lookup was used. This does not establish real route,
+ICMP policy, topology, asymmetry, or latency behavior.
 
 ## Related documents
 

@@ -97,8 +97,19 @@ registry types, remote access, elevation and supported extraction modes vary by
 Windows version and target context. The official target help is authoritative
 for the installed build.
 
-## Related documents
+On Windows NT `10.0.26200.0`, exact System32 file version `10.0.26100.1`
+printed 82 nonempty help lines for `/?`, returned 0, and produced no Windows
+PowerShell 5.1 `ErrorRecord` objects. Only help ran; no environment value,
+registry value, remote system, credential, or persistent process state changed.
 
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 file version 10.0.26100.1 explicit
+/? returned 82 nonempty help lines, status 0 and no Windows PowerShell 5.1
+ErrorRecord objects. No environment/Path write, deletion, remote credential or
+truncation test ran.
+
+## Related documents
 - [set](set.md)
 - [path](path.md)
 - [systempropertiesadvanced.exe](systempropertiesadvanced.exe.md)

@@ -110,8 +110,21 @@ Standalone Sysinternals Sysmon has its own version and distribution lifecycle.
 Schemas, event IDs/fields, architecture, configuration support, and service
 names can vary; record the actual executable and schema with each deployment.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`sysmon.exe` Application candidate under either PowerShell collector. No
+feature, role, or compatibility component was installed merely to change
+that result, and no same-named PATH substitute was used. This is target-host
+command-resolution evidence, not proof that the tool is unsupported on every
+applicable Windows environment.
+
+Behavior verification remains signature/version, service, current
+configuration/schema and bounded existing-event reads only; no optional
+feature, service/driver, manifest, EULA, configuration, event, forwarding,
+retention or uninstall mutation is permitted merely for evidence.
+
+## Related documents
 - [wevtutil.exe](wevtutil.exe.md)
 - [wecutil.exe](wecutil.exe.md)
 - [sc.exe](sc.exe.md)

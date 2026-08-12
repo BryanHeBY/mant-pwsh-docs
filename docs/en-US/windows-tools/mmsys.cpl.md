@@ -78,8 +78,20 @@ real application, user session, endpoint role, and physical device.
 extensions, enhancements, privacy, Bluetooth/USB behavior, and available APIs
 vary by build, hardware, user session, policy, and installed software.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the read-only file-identity audit under Windows
+PowerShell `5.1.26100.8875` and PowerShell `7.6.4` resolved the exact entry
+point to `C:\WINDOWS\system32\mmsys.cpl`. Its fixed numeric file version was
+`10.0.26100.8737`. Both collectors reported the same result.
+
+The audit invoked no discovered command, opened no window, contacted no remote
+endpoint, and changed no state. This proves only this host's entry-point
+availability and file identity; it does not prove that the UI loads, the
+current user is authorized, an optional snap-in or component is functional, or
+any displayed or requested operation succeeds.
+
+## Related documents
 - [devmgmt.msc](devmgmt.msc.md)
 - [services.msc](services.msc.md)
 - [ms-settings](ms-settings.md)

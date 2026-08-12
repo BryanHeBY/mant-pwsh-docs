@@ -57,8 +57,14 @@ Protect required data before an approved recursive deletion.
 - Adding recursive quiet deletion merely to suppress a nonempty error.
 - Assuming a different spelling changes scope or recoverability.
 
-## Related documents
+## Runtime evidence
 
+Exact cmd.exe 10.0.26100.1 `help RMDIR` printed the same seven-line
+directory-removal help, no PowerShell error records, and returned 1 without a
+target. Protected synonym verification remains tied to the canonical RD
+fixture.
+
+## Related documents
 - [rd](rd.md)
 - [cmd.exe](cmd.exe.md)
 - [erase](erase.md)

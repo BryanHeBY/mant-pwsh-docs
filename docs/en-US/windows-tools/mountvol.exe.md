@@ -56,7 +56,8 @@ directory must already exist on NTFS and should be empty and dedicated.
 - `/e`: Re-enable automatic mounting of newly discovered basic volumes.
 - `/r`: Remove stale mount-point directories and registry mappings for absent volumes.
 - `/s`: Mount the EFI System Partition at the named drive letter.
-- `/?`: Display syntax supported by the installed executable.
+- `/?`: Display installed syntax; current help also enumerates real volume GUIDs
+  and mount points, so its output is storage-topology data.
 
 ## Operation boundaries
 
@@ -129,13 +130,22 @@ Verify the returned GUID, filesystem health, BitLocker lock state, permissions,
 free space, application service identity, and expected path behavior. Mounting
 cannot unlock BitLocker or make an unsupported filesystem/workload valid.
 
+### Sharing `/?` output as harmless generic help
+
+On Windows build `10.0.26200`, `mountvol.exe /?` appended every current volume
+GUID and mount point after the syntax. That can reveal EFI/recovery/unmounted
+volumes and host-specific storage topology. Redact or avoid capturing the
+inventory when only syntax is needed, and never publish raw help output without
+reviewing it as system-identifying data.
+
 ## PowerShell boundaries
 
 Mountvol is a native text tool. Quote both paths, pass the scalar volume GUID
 property rather than a storage object, and check `$LASTEXITCODE`. PowerShell
 braces are safe inside a quoted GUID string but syntactic when unquoted. Prefer
 structured Storage cmdlets for discovery while retaining Mountvol's exact
-native identity during verification.
+native identity during verification. Treat both bare and `/?` output as
+sensitive topology rather than a portable help fixture.
 
 ## Version and platform differences
 
@@ -143,6 +153,15 @@ This Windows-only administrative command applies to supported Windows client
 and server releases. Directory mount points require NTFS. Basic/dynamic/
 clustered/virtual/SAN storage ownership, automount policy, EFI availability,
 BitLocker, filesystem state, and user privileges constrain operations.
+
+## Runtime evidence
+
+Installed `mountvol.exe /?` returned status `0` but appended real volume GUID
+and mount-point topology after its syntax. The captured identifiers were not
+retained, and both bare/help output are treated as sensitive host inventory
+rather than a portable payload fixture. No access path, offline state,
+automount policy, stale cleanup, or EFI System Partition operation ran;
+disposable-volume verification remains pending.
 
 ## Related documents
 

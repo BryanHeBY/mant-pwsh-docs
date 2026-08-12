@@ -90,7 +90,20 @@ pairs first when names are not identical and explicit.
 ## Version and platform differences
 
 `fc.exe` is Windows-only. Encoding labels and text resynchronization are its
-legacy rules, not a general Unicode diff contract.
+legacy rules, not a general Unicode diff contract. On Windows NT
+`10.0.26200.0`, installed file version `10.0.26100.1` printed 22 nonempty
+help lines and returned -1 for `/?`. `-?` is not help; it produced an
+insufficient-file-specifications diagnostic. No input file or comparison ran.
+
+## Runtime evidence
+
+The protected fixture compared only fixed six-byte files below a verified
+temporary root with exact `fc.exe /b`. Identical inputs returned status `0`;
+one differing byte returned status `1` plus a nonempty difference report under
+both PowerShell collectors. No output bytes were emitted and cleanup removed
+all inputs. Text resynchronization, Unicode, whitespace/case options,
+wildcards, offline files, changing files, status `2`, hashes, signatures, and
+authenticity remain outside this binary comparison evidence.
 
 ## Related documents
 

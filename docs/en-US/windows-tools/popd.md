@@ -64,6 +64,13 @@ actual operation or give the child a stable UNC path supported by that tool.
 This page describes Windows cmd. Removal of a UNC temporary drive assignment
 requires command extensions.
 
+## Runtime evidence
+
+The protected fixture confirmed that a balanced local `pushd`/`popd` pair in
+one child `cmd.exe` restores its original directory under both PowerShell
+collectors. It did not use UNC mapping, cross-process stacks, an unbalanced
+`popd`, or a child still using a temporary mapping.
+
 ## Related documents
 
 - [pushd](pushd.md)

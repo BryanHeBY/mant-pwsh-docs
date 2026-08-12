@@ -94,7 +94,20 @@ operation can affect the target rather than the visible link entry.
 ## Version and platform differences
 
 This command is Windows-only. Supported attributes depend on filesystem,
-storage tier, cloud provider, and Windows version.
+storage tier, cloud provider, and Windows version. On Windows NT
+`10.0.26200.0`, installed file version `10.0.26100.1` printed 23 nonempty
+help lines and returned 0 for `/?`. `-?` is an invalid attribute switch rather
+than help; no path, attribute, link, recursion, file, or directory was selected.
+
+## Runtime evidence
+
+The protected file/text fixture created one fixed ASCII file below a verified
+GUID-named temporary root and invoked exact System32 `attrib.exe` with that
+single path and no `+`/`-` modifier. Both PowerShell collectors returned one
+attribute result/status `0`; the attribute text and fixture payload were not
+emitted, and cleanup removed the root. Recursive wildcards, directories,
+links, offline/provider-backed attributes, ACLs, and every attribute mutation
+remain outside this query-only evidence.
 
 ## Related documents
 

@@ -3,6 +3,9 @@
 
 > Inspect and deliberately schedule automatic filesystem checks at startup; it does not perform the check itself.
 > More information: https://learn.microsoft.com/windows-server/administration/windows-commands/chkntfs.
+> Microsoft documents Administrators membership for CHKNTFS. On the recorded
+> build an ordinary token could query `/t` but could not query `C:`; treat
+> access as form-specific and never report a failed query as clean state.
 
 - Show filesystem, dirty, exclusion, or scheduled-check state for one volume:
 
@@ -41,14 +44,17 @@ runs according to dirty state, explicit schedule, exclusions, and policy.
 - `chkntfs.exe`: Query or change Autochk startup-check policy for named volumes.
 
 With only volume arguments, the command reports their current filesystem and
-startup-check state. Mutating switches require an elevated context.
+startup-check state. Microsoft documents an administrative context for the
+command, although the recorded ordinary token could read `/t`; mutations and
+volume-state queries must not infer access from that exception.
 
 <!-- mant:entries role=option case=insensitive -->
 - `/c`: Add one or more volumes to the startup-check schedule; calls accumulate.
 - `/x`: Replace the complete startup exclusion list with the named volumes.
 - `/d`: Restore default startup-check policy except for the countdown value.
 - `/t`: With no value, display the countdown; `/t:seconds` changes it globally.
-- `/?`: Display syntax supported by the installed executable.
+- `/?`: Display installed syntax; Windows build `10.0.26200` printed complete
+  help but returned 2.
 
 ## State-change semantics
 
@@ -103,12 +109,22 @@ Mount points and letters can change across recovery, SAN, removable, or
 deployment environments. Record volume GUID, disk/partition identity,
 filesystem, and role before changing startup policy.
 
+### Treating exit 2 as one documented volume state
+
+On the recorded non-administrative token, `chkntfs C:` returned 2 with
+“Cannot query state,” while `chkntfs /?` returned the same code after complete
+help and `/t` succeeded with 0. Preserve arguments, output, token, and exit
+code; do not map 2 to dirty, excluded, scheduled, or help without the matching
+text and command form.
+
 ## PowerShell boundaries
 
 CHKNTFS emits localized native text. Quote mount points, specify exact volumes,
 check `$LASTEXITCODE`, and do not parse a single English sentence as policy.
 Use structured storage inventory to bind the displayed letter/mount point to a
-stable volume identity.
+stable volume identity. Query-time access is form-specific on the recorded
+build: an ordinary `/t` success does not prove volume queries or mutations are
+authorized.
 
 ## Version and platform differences
 
@@ -116,6 +132,15 @@ This Windows-only administrative command applies to supported Windows client
 and server releases. Startup behavior depends on filesystem, dirty state,
 boot volume role, encryption, clustered/storage-stack ownership, policy, and
 the actual restart path.
+
+## Runtime evidence
+
+Under the recorded ordinary token, `chkntfs.exe /t` returned the countdown and
+status `0`; a `C:` state query and complete `/?` help each returned `2` for
+different reasons, with help producing 23 lines. Status must therefore be
+interpreted with the exact form and payload. No schedule, exclusion, default,
+countdown value, boot, volume, or filesystem state changed; elevated
+exact-volume verification remains pending.
 
 ## Related documents
 

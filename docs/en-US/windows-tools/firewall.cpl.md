@@ -71,8 +71,20 @@ the default rule formatting omits important match conditions.
 integration, profiles, rule properties, and applet availability vary by build,
 edition, server role, management authority, and installed products.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the read-only file-identity audit under Windows
+PowerShell `5.1.26100.8875` and PowerShell `7.6.4` resolved the exact entry
+point to `C:\WINDOWS\system32\Firewall.cpl`. Its fixed numeric file version was
+`10.0.26100.1`. Both collectors reported the same result.
+
+The audit invoked no discovered command, opened no window, contacted no remote
+endpoint, and changed no state. This proves only this host's entry-point
+availability and file identity; it does not prove that the UI loads, the
+current user is authorized, an optional snap-in or component is functional, or
+any displayed or requested operation succeeds.
+
+## Related documents
 - [wf.msc](wf.msc.md)
 - [netsh.exe](netsh.exe.md)
 - [secpol.msc](secpol.msc.md)

@@ -19,6 +19,10 @@
 - Resolve the executable explicitly:
 
 `Get-Command explorer.exe -All`
+
+- Inspect both fixed and displayed version-resource values without opening Explorer:
+
+`$explorer = Get-Item -LiteralPath (Get-Command explorer.exe -CommandType Application).Source; $explorer.VersionInfo | Select-Object FileVersionRaw, FileVersion, ProductVersionRaw, ProductVersion`
 <!-- mant:tldr:end -->
 
 # explorer.exe
@@ -107,8 +111,28 @@ This page applies to interactive Windows 10, Windows 11, and Windows Server
 desktop installations. Server Core and noninteractive sessions do not provide
 the same shell experience. Explorer is not available on Linux or macOS.
 
-## Related documents
+On the recorded Windows NT `10.0.26200.0` host, `explorer.exe` resolved from
+`C:\Windows\explorer.exe`, not System32. The exact file had fixed file/product
+version `10.0.26100.8875`, Windows PowerShell 5.1-selected version strings
+`10.0.26100.8117`, a valid
+Microsoft Windows signature, and SHA-256
+`80B21E6F70524EFD84037A4EDA479DDC4BC55C0D6C1A33439B85A554E740F30C`.
+No Explorer process or window was started for this identity evidence.
 
+## Runtime evidence
+
+On Windows NT `10.0.26200.0`, the read-only file-identity audit under Windows
+PowerShell `5.1.26100.8875` and PowerShell `7.6.4` resolved the exact entry
+point to `C:\WINDOWS\explorer.exe`. Its fixed numeric file version was
+`10.0.26100.8875`. Both collectors reported the same result.
+
+The audit invoked no discovered command, opened no window, contacted no remote
+endpoint, and changed no state. This proves only this host's entry-point
+availability and file identity; it does not prove that the UI loads, the
+current user is authorized, an optional snap-in or component is functional, or
+any displayed or requested operation succeeds.
+
+## Related documents
 - [start](start.md)
 - [ms-settings](ms-settings.md)
 - [control.exe](control.exe.md)

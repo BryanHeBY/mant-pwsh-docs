@@ -80,8 +80,16 @@ batch behavior.
 This Windows Cmd builtin depends on console/host input, redirection, session,
 and locale. “Any key,” Ctrl+C, and noninteractive behavior can differ by host.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT 10.0.26200.0, exact System32 `cmd.exe` fixed version
+`10.0.26100.8737` returned two nonempty lines and status `1` for
+`cmd.exe /d /c help PAUSE` under both PowerShell collectors. The fixture did
+not retain the localized payload. This proves only static help discovery:
+PAUSE itself did not run, no input was synthesized, and no shared or unattended
+evidence process was allowed to block.
+
+## Related documents
 - [choice.exe](choice.exe.md)
 - [timeout.exe](timeout.exe.md)
 - [waitfor.exe](waitfor.exe.md)

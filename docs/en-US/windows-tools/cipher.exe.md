@@ -52,11 +52,15 @@ recovery identity before selecting any mutation.
 - `/b`: Abort the operation when an error is encountered instead of continuing.
 - `/h`: Include hidden/system entries that are otherwise omitted.
 - `/k`: Create a new EFS certificate and key for the current user; all other
-  switches are ignored.
+  switches are ignored except the supported `/ecc` selector.
 - `/r`: Generate a recovery-agent certificate and key using the following
   colon-delimited base filename, producing `.cer` and protected `.pfx` output.
 - `/smartcard`: With `/r`, write the recovery key/certificate to a smart card
   and do not generate a `.pfx` file.
+- `/ecc`: With `/k` or `/r`, request an ECC key size supported by the installed
+  command (`256`, `384`, or `521` in current installed help).
+- `/p`: Convert the following `.cer` recovery certificate to a Base64-encoded
+  recovery-policy blob for an MDM deployment.
 - `/u`: Search local drives for encrypted files and update them to current
   user/recovery keys unless `/n` is also present.
 - `/n`: With `/u`, perform inventory without updating encrypted files.
@@ -70,8 +74,14 @@ recovery identity before selecting any mutation.
   encrypted files.
 - `/certhash`: Select a certificate by SHA-1 thumbprint for add/remove modes.
 - `/certfile`: Select a certificate from the following file for `/adduser`.
+- `/user`: With `/adduser`, select the EFS user by the following user name.
+- `/flushcache`: Clear the calling user's EFS key cache locally or on the
+  server selected by `/server`.
+- `/server`: With `/flushcache`, select the following server instead of the
+  local machine.
 - `/rekey`: Update selected encrypted files to the currently configured EFS key.
-- `/?`: Display installed command help.
+- `/?`: Display installed command help; on the recorded Windows build it
+  printed complete help and returned exit code 1.
 
 ## PowerShell boundaries
 
@@ -79,7 +89,11 @@ recovery identity before selecting any mutation.
 change security-sensitive state. Pass colon-bound values as one native
 argument, capture `$LASTEXITCODE`, and re-query representative literal paths.
 Protect any `.pfx`/recovery output as credentials; do not pipe it through text
-formatting or assume PowerShell object semantics.
+formatting or assume PowerShell object semantics. On Windows build
+`10.0.26200`, `cipher.exe /?` printed complete usage but returned 1 under both
+installed PowerShell editions; help text and process status are separate
+signals. On the same host, `/Y` returned 1 with no output because the current
+user had no available EFS certificate, which is not an empty thumbprint.
 
 ## Common mistakes
 
@@ -122,14 +136,42 @@ Copy/move tools, target filesystem, shares, archives, applications, and user
 identity can change encryption or access behavior. Verify the destination file
 with `/C` and test recovery from a different approved identity.
 
+### Treating `/P` as a private-key backup
+
+`/P:certificate.cer` creates an MDM recovery-policy blob from a public recovery
+certificate. It does not replace `/X` backup of a user's EFS certificate and
+private key, `/R` recovery-agent key generation, protected key custody, or a
+tested recovery procedure.
+
+### Flushing the key cache as a harmless query
+
+`/FLUSHCACHE` changes the calling user's EFS key-cache state, and `/SERVER`
+can direct that operation to another machine. It can affect subsequent access
+and authentication behavior. Do not run it for inventory or help discovery;
+identify the user/server and obtain operational approval first.
+
 ## Version and platform differences
 
 This Windows-only command requires NTFS and an edition/configuration that
 supports EFS. Certificate policy, recovery agents, smart cards, domain policy,
 filesystem destination, and user context determine availability and recovery.
+Current installed help additionally exposes `/ECC`, `/P`, `/USER`,
+`/FLUSHCACHE`, and `/SERVER`, while Microsoft's current online command page
+does not list those forms. Treat them as installed-version capabilities and
+gate automation on local help or command-specific testing. On Windows NT
+`10.0.26200.0`, installed file version `10.0.26100.1` printed 88 nonempty
+help lines and returned 1 for `/?`; the indexed selector surface matched that
+help. This help-specific status is not an EFS, file, certificate, key,
+smart-card, server, or volume operation result.
+
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, installed file version 10.0.26100.1 ordinary-token
+/? printed 88 nonempty complete-help lines and returned 1; its selector surface
+matched the index. No path, EFS state, certificate, key, smart card, user,
+server, cache, recovery artifact, or volume operation was supplied or changed.
 
 ## Related documents
-
 - [icacls.exe](icacls.exe.md)
 - [takeown.exe](takeown.exe.md)
 - [whoami.exe](whoami.exe.md)

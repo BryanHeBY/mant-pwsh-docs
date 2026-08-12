@@ -64,9 +64,21 @@ This Windows-only internal component belongs to recovery processing. WinRE
 availability, BitLocker state, storage drivers, and drive-letter assignment
 vary by device and environment.
 
-## Related documents
+## Runtime evidence
 
-- [format.exe](format.exe.md)
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`autofmt.exe` Application candidate under either PowerShell collector. No
+feature, role, or compatibility component was installed merely to change
+that result, and no same-named PATH substitute was used. This is target-host
+command-resolution evidence, not proof that the tool is unsupported on every
+applicable Windows environment.
+
+Behavior verification remains online inventory/settings launch/help
+only; no recovery boot, AutoFmt invocation, format, filesystem, volume,
+partition, encryption or boot mutation is permitted merely for evidence.
+
+## Related documents
+- [format.com](format.com.md)
 - [diskpart.exe](diskpart.exe.md)
 - [reagentc.exe](reagentc.exe.md)
 

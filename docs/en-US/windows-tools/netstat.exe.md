@@ -43,10 +43,16 @@ repeats the selected display at that interval in seconds until interrupted.
 - `-a`: Include active TCP connections plus listening TCP and UDP ports.
 - `-b`: Show the executable involved in creating each connection or listener;
   this can be slow and requires sufficient access.
+- `-c`: Display processes ordered by the number of TCP or UDP ports currently
+  consumed; this installed, build-dependent view is not CPU utilization.
+- `-d`: Add the DSCP value associated with each connection; it does not prove
+  that every network hop honors that marking.
 - `-e`: Display Ethernet statistics such as bytes and packets sent/received;
   combine with `-s` for per-protocol statistics.
 - `-f`: Show fully qualified domain names for foreign endpoints when name
   resolution succeeds.
+- `-i`: Display how long a TCP connection has remained in its current state;
+  this is state duration, not process age or end-to-end uptime.
 - `-n`: Keep addresses and ports numeric instead of resolving host/service names.
 - `-o`: Include the owning process ID for each connection or listener.
 - `-p`: Limit a connection display or statistics report to the following
@@ -59,7 +65,7 @@ repeats the selected display at that interval in seconds until interrupted.
 - `-x`: Display NetworkDirect connections, listeners, and shared endpoints.
 - `-y`: Display the TCP connection template for all connections; it cannot be
   combined with the other documented switches.
-- `/?`: Display installed command help.
+- `-?`, `/?`: Display installed command help.
 
 ## PowerShell boundaries
 
@@ -104,6 +110,21 @@ network path using the actual service protocol.
 
 This page documents Windows `netstat.exe`. The NetTCPIP PowerShell cmdlets are
 Windows-specific. Visible ownership and executable details depend on access.
+On Windows NT `10.0.26200.0`, installed file version `10.0.26100.8521`
+printed 42 normalized nonempty help lines and returned 1 for both `/?` and
+`-?`; help used the native error stream. Installed help adds `-c`, `-d`, and
+`-i` beyond the locked general page. Only help ran for this comparison; no
+endpoint, PID, protocol, interval, or remote target was selected.
+
+## Runtime evidence
+
+The repeatable read-only Windows CLI fixture resolved exact System32
+`netstat.exe`, captured its localized `/?` text from stderr with expected exit
+code `1`, and ran one local numeric TCP/PID snapshot using `-ano -p tcp`.
+The snapshot returned `0` and nonempty output under both PowerShell collectors;
+endpoints and PIDs were counted but not emitted into logs. No interval, binary
+ownership lookup, routing table, protocol statistics, or remote target was
+used, and the snapshot remains race-prone.
 
 ## Related documents
 

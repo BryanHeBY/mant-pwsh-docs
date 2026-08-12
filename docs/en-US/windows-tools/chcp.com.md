@@ -103,8 +103,20 @@ releases. Available code pages, OEM/ANSI defaults, UTF-8 behavior, console host,
 fonts, system-locale settings, and PowerShell encoding defaults vary by build,
 locale, edition, and host.
 
-## Related documents
+On Windows NT `10.0.26200.0`, exact System32 file version `10.0.26100.1`
+printed four nonempty help lines for `/?`, returned 0, and produced no Windows
+PowerShell 5.1 `ErrorRecord` objects. Only help ran; the current console code
+pages, PowerShell encoding properties, profile, registry, system locale, and
+file bytes were not changed.
 
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 file version 10.0.26100.1 explicit
+/? returned four nonempty help lines, status 0 and no Windows PowerShell 5.1
+ErrorRecord objects. No shared-session code page, PowerShell encoding, profile,
+registry AutoRun, system locale or file bytes changed.
+
+## Related documents
 - [cmd.exe](cmd.exe.md)
 - [type](type.md)
 - [more.com](more.com.md)

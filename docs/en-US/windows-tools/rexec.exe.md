@@ -75,13 +75,22 @@ legacy examples especially unsafe.
 Deprecated and not guaranteed on current Windows. Subsystem for UNIX-based
 Applications guidance belongs to retired Windows generations. Availability of
 an unrelated Unix `rexec` does not make this Microsoft page applicable.
+Exact System32 discovery on the recorded Windows NT `10.0.26200.0` Home China
+client found no `rexec.exe`; do not acquire a same-named legacy binary or
+contact a remote daemon merely for documentation evidence.
+
+## Runtime evidence
+
+Exact System32 discovery on the recorded Windows NT 10.0.26200.0 Home China
+client found rexec.exe absent; no PATH substitute, remote call, daemon,
+credential, or firewall action ran. Signature/version/help verification remains
+pending only on an approved legacy fixture.
 
 ## Related documents
-
 - [rsh.exe](rsh.exe.md)
 - OpenSSH: query `mant ssh --source cross-platform-tools`.
 - [winrs.exe](winrs.exe.md)
-- [winrm.exe](winrm.exe.md)
+- [winrm.cmd](winrm.cmd.md)
 
 ## Sources and license
 

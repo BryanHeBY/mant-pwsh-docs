@@ -1,221 +1,93 @@
 <!-- mant:tldr:start -->
 # winrm.exe
 
-> Identify WS-Management endpoints and inventory local WinRM client/service, listener, authentication, plugin, and shell state before changing service, firewall, trust, or remoting configuration.
+> Resolve `winrm.exe` before use: Windows ships `winrm.cmd`, which invokes `winrm.vbs`; it does not ship `winrm.exe`.
 > More information: https://learn.microsoft.com/windows/win32/winrm/installation-and-configuration-for-windows-remote-management.
 
-- Display the installed command families and target-host syntax:
+- Confirm that the explicit `.exe` name is absent on the current host:
 
-`winrm.exe help`
+`Get-Command winrm.exe -All -ErrorAction SilentlyContinue`
 
-- Ask one exact endpoint to identify its WS-Management product/protocol identity:
+- Resolve every actual WinRM command-line entry without running it:
 
-`winrm.exe identify -r:"{{server}}"`
+`Get-Command winrm, winrm.cmd, winrm.vbs -All -ErrorAction SilentlyContinue`
 
-- Inventory local client configuration, including authentication and TrustedHosts:
+- Inspect the small command wrapper as data:
 
-`winrm.exe get winrm/config/client`
-
-- Inventory local WinRM service configuration and enabled authentication methods:
-
-`winrm.exe get winrm/config/service`
-
-- Enumerate local HTTP/HTTPS listener address, port, hostname, and certificate binding:
-
-`winrm.exe enumerate winrm/config/listener`
-
-- Enumerate registered management/remoting plugins and their security/configuration surfaces:
-
-`winrm.exe enumerate winrm/config/plugin`
-
-- Inventory active command shells; protect user, command, and shell identifiers in the output:
-
-`winrm.exe enumerate shell/cmd`
+`Get-Content -LiteralPath "$env:SystemRoot\System32\winrm.cmd"`
 <!-- mant:tldr:end -->
 
 # winrm.exe
 
-## Overview
+## Meaning and resolution
 
-`winrm.exe` is the native Windows Remote Management command-line client for
-WS-Management. It can identify endpoints, get/enumerate configuration/resources,
-create/set/delete configuration, invoke methods, manage listeners/plugins/
-shells, and run `quickconfig`. Those write surfaces can enable remote access,
-start services, open firewall rules, weaken authentication, expose credentials,
-or break management; the TLDR is intentionally inventory-only.
-
-WinRM is a transport/management service, not synonymous with PowerShell
-Remoting. PowerShell over WSMan additionally selects a PowerShell session
-configuration/plugin, language mode, startup process, authorization descriptor,
-serialization model, quotas, and PowerShell edition. `winrs.exe` creates a
-remote command shell with its own semantics.
-
-## Commands and common parameters
+Windows does not ship `winrm.exe`. The command-line entry point is
+`winrm.cmd`, a wrapper that invokes `winrm.vbs` with `cscript.exe`. If
+`winrm.exe` resolves, another product or local configuration supplied it; do
+not assign the system WinRM client's authority or behavior to that file.
 
 <!-- mant:entries role=command case=insensitive -->
-- `winrm.exe`: Inspect or administer WS-Management resources and WinRM configuration.
-- `identify`: Ask one endpoint to return its WS-Management identity.
-- `get`: Retrieve one configuration or resource instance.
-- `enumerate`: Enumerate instances of one configuration/resource URI.
-- `create`: Create one resource/configuration instance.
-- `set`: Change one resource/configuration instance.
-- `delete`: Delete one resource/configuration instance.
-- `invoke`: Invoke one WS-Management action/method on a resource.
-- `quickconfig`: Start/configure WinRM service, listener, and firewall as a change bundle.
-- `help`: Display command/resource-specific installed help.
+- `winrm.exe`: Non-built-in name; resolve and verify its provenance before any use.
+- `winrm.cmd`, `winrm`: Windows command wrapper for the WinRM VBScript client.
+- `winrm.vbs`: Underlying system script; normally reached through `winrm.cmd` rather than invoked as a standalone executable.
 
-Aliases, resource URIs, selectors, and values are parsed by WinRM rather than
-PowerShell. Common connection parameters still need an exact command context.
+## Why the extension matters
 
-<!-- mant:entries role=option case=insensitive -->
-- `-r`: Select the remote WS-Management endpoint URI/host.
-- `-u`: Select an alternate username.
-- `-p`: Supply its password on the command line, exposing the secret.
-- `-a`: Select an authentication mechanism supported by client and service.
-- `-encoding`: Select request encoding where the command supports it.
-- `-format`: Select output formatting such as pretty XML.
-- `-file`: Read input XML from a reviewed file.
-- `-skipcachecheck`: Skip certificate-cache validation under a narrowly reviewed need.
-- `-skipcncheck`: Skip TLS certificate name validation and weaken endpoint identity.
-- `-skiprevocationcheck`: Skip certificate revocation validation.
-- `-transport`: Select HTTP or HTTPS where the command form supports it.
-- `-quiet`: Suppress selected prompts/output without changing operation impact.
-- `-?`: Display installed syntax.
+An explicit `.exe` name must resolve that exact extension. Bare `winrm` follows
+normal command and `PATHEXT` precedence, which can be changed by aliases,
+functions, scripts, and `PATH`. Shared automation should resolve `winrm.cmd`
+or use supported WSMan/PowerShell remoting APIs with an explicit endpoint and
+security design.
 
-## Layers to inventory
-
-| Layer | Evidence | Typical failure boundary |
-| --- | --- | --- |
-| Target identity/name | DNS, SPN, certificate/SAN, `identify` | Alias/IP/workgroup choice changes mutual authentication. |
-| Client policy | `winrm/config/client` | Authentication, proxy, timeouts, TrustedHosts, certificate selection. |
-| Service policy | `winrm/config/service` | Authentication, encryption requirements, remote access, quotas. |
-| Listener | `winrm/config/listener` | HTTP/HTTPS, address filter, port, hostname, certificate thumbprint. |
-| Network | profile, route, firewall, port ownership | A listener can exist but remain unreachable or overexposed. |
-| Plugin/endpoint | `winrm/config/plugin`, PowerShell session configurations | ACL, architecture/edition, startup, language, resource limits. |
-| Shell/operation | `shell/cmd`, events, client/native status | Quotas, idle/lifetime, command, stream, cancellation, audit. |
-
-Diagnose the failing layer before changing any of them. “WinRM cannot complete
-the operation” is not authorization to run quick configuration, wildcard trust,
-or broad firewall commands.
-
-## `quickconfig` is a change bundle
-
-`winrm quickconfig`/`qc` starts and changes the WinRM service startup behavior,
-creates a listener, and enables firewall exceptions. HTTPS quick configuration
-also depends on an appropriate local-computer Server Authentication certificate.
-Microsoft notes firewall behavior is tied to network profile/configuration.
-
-Before an approved use, export service/listener/firewall/auth/plugin state,
-record management sources and policy ownership, choose HTTP versus HTTPS and
-name/certificate strategy, define least-privilege endpoint ACLs, and test an
-out-of-band recovery path. Prefer centrally reviewed Group Policy/management
-configuration for fleets rather than host-by-host `qc` drift.
-
-## Authentication, encryption, and identity
-
-Do not reduce transport security to port numbers. After authentication,
-Kerberos/NTLM/CredSSP can provide message-level protection over HTTP; HTTPS adds
-TLS endpoint/transport protection. Basic authentication does not supply WinRM
-message encryption, and `winrs /unencrypted` explicitly disables message
-encryption. Evaluate the exact authentication negotiation, channel, certificate,
-service settings, and threat model.
-
-Kerberos normally needs a domain trust and a service name/SPN that matches how
-the endpoint is addressed. IP literals, aliases, workgroups, and untrusted
-domains can fall back or fail and need a deliberate HTTPS/NTLM/certificate/
-credential design. Do not “fix” an SPN/name problem with wildcard trust.
-
-## Common mistakes
-
-### Treating TrustedHosts as a server-side allowlist
-
-TrustedHosts is client configuration used when mutual server authentication
-cannot be established. Microsoft explicitly warns that listed computers are not
-authenticated and the client might send credential information to them. It
-does not decide which clients the remote server authorizes. Keep entries exact
-and minimal; never use `*` as a generic remoting fix, and preserve/merge approved
-existing values rather than blindly replacing the list.
-
-### Running `quickconfig` before inventory
-
-It changes service, listener, and firewall state. On a workstation, public
-network, internet-facing host, hardened server, or centrally managed fleet this
-can create exposure or policy drift. Identify intended management sources,
-profiles, address filters, authentication, certificate, endpoint ACL, logging,
-and rollback first.
-
-### Assuming HTTP means plaintext or HTTPS solves authorization
-
-The negotiated authentication can protect messages over HTTP, while HTTPS does
-not grant authorization, correct SPNs/names, safe plugins, or least privilege.
-Conversely, Basic or an unencrypted option can remove expected protection.
-Capture actual transport/authentication and validate with supported security
-guidance instead of inferring from `5985`/`5986` alone.
-
-### Binding HTTPS to the wrong certificate
-
-The certificate must be in the local-computer context, valid, trusted as
-required, have Server Authentication usage, match the endpoint hostname through
-subject/SAN, and correspond to the listener thumbprint. Renewal can leave an old
-binding. Verify chain/revocation/time/private-key access and listener thumbprint;
-do not disable certificate checks or use a self-signed certificate by default.
-
-### Changing client configuration on the server by mistake
-
-`winrm/config/client` controls outbound behavior of the machine where it is set;
-`winrm/config/service`, listeners, and plugins control inbound behavior there.
-Applying TrustedHosts to the remote host does not restrict clients connecting
-to it—a recurring practitioner error. Record which host and direction each
-configuration belongs to.
-
-### Granting broad endpoint/plugin access
-
-Listener reachability is not command authorization. Plugin/session-configuration
-security descriptors, local/group membership, UAC token filtering, JEA, language
-mode, and OS resource ACLs still apply. Do not grant Administrators or weaken an
-SDDL merely to clear Access Denied; design narrowly scoped endpoints and audit.
-
-### Treating CredSSP or delegation as a routine second-hop fix
-
-Default Kerberos/NTLM remoting avoids placing reusable credentials on the remote
-host, so access from that host to a third resource can fail. CredSSP/delegation
-changes credential exposure and compromise impact. Prefer resource-specific
-delegation, JEA/run-as/service identity, or redesign after security review; do
-not enable CredSSP fleet-wide from a troubleshooting snippet.
-
-### Editing quotas and timeouts until an operation passes
-
-Envelope, memory, process, concurrent-operation, idle, and shell quotas protect
-availability. Increasing them can create denial-of-service/resource pressure
-while hiding a runaway command. Correlate events, plugin/shell identity,
-payload/runtime, cancellation, and server capacity before a bounded change.
-
-### Parsing configuration text as a stable schema
-
-WinRM output and error messages can be localized and contain URI, selector,
-certificate, identity, and policy data. Preserve raw output with host/build/
-locale/time and native status. Prefer WSMan cmdlets/APIs for structured work,
-but account for PowerShell edition/platform availability.
+Correcting the extension does not make `quickconfig`, listener, authentication,
+TrustedHosts, plugin, shell, or firewall changes safe. Inventory those layers
+and preserve an out-of-band recovery path first.
 
 ## PowerShell boundaries
 
-Call `winrm.exe` explicitly. Its resource URIs, selectors, and `@{key="value"}`
-write syntax pass through PowerShell and WinRM parsing layers; examples copied
-from cmd can misquote in PowerShell. Do not use `Invoke-Expression`. Capture
-stdout/stderr and `$LASTEXITCODE` immediately and protect configuration output.
-
-For PowerShell Remoting, prefer `Test-WSMan`, `Get-WSManInstance`,
-`Get-PSSessionConfiguration`, and the documented `Invoke-Command`/PSSession
-workflow where supported. A successful `identify` proves a WSMan response, not
-that a specific PowerShell endpoint, credential, language, module, or second hop
-will work.
+`Get-Command winrm.exe` requests that exact filename; PowerShell does not
+reinterpret it as the `.cmd` wrapper. Bare `winrm` follows normal alias,
+function, script, `PATHEXT`, and `PATH` precedence. Resolve `winrm.cmd`
+explicitly for the Windows wrapper and remember that arguments then cross
+PowerShell, `cmd.exe`, and `cscript.exe` parsing boundaries.
 
 ## Version and platform differences
 
-`winrm.exe` and the Windows WinRM service are Windows-specific. Defaults,
-commands/resources, firewall rules, authentication, TLS/certificate behavior,
-plugins, quotas, and PowerShell endpoint registration vary by Windows/WMF build,
-edition, network profile, domain/workgroup, policy, and PowerShell edition.
+The recorded Windows NT `10.0.26200.0` host supplies a 33-byte
+`C:\Windows\System32\winrm.cmd` wrapper and 204,072-byte `winrm.vbs`, with no
+built-in `winrm.exe`. WinRM availability, service state, listeners, endpoints,
+defaults, and policy vary by Windows/WMF version and managed environment;
+discover them locally without treating the recorded sizes as a compatibility
+contract. This entry point is Windows-specific.
+
+## Common mistakes
+
+### Assuming every command-line tool is a native executable
+
+The WinRM client is implemented as a command wrapper and VBScript. Process,
+quoting, localization, code-page, and error behavior therefore includes
+`cmd.exe`/`cscript.exe` boundaries rather than a single native `.exe` parser.
+
+### Executing an unexpected `winrm.exe`
+
+Do not run a newly resolved file merely to discover what it does. Inspect
+`Get-Command ... -All`, the full path, signature, owner, version metadata, and
+deployment provenance first.
+
+## Full command
+
+See [winrm.cmd](winrm.cmd.md) for read-only inventory, authentication,
+certificate, TrustedHosts, endpoint, listener, plugin, quota, and PowerShell
+remoting boundaries.
+
+## Runtime evidence
+
+The protected dual-edition fixture found zero Application matches for exact
+`winrm.exe`, while separately verifying the built-in System32 `winrm.cmd`
+wrapper. This is a command-resolution result for Windows NT `10.0.26200.0`, not
+a universal claim about arbitrary third-party files or future Windows builds.
+No similarly named executable was invoked, no WinRM resource was queried, and
+no local or remote configuration changed.
 
 ## Related documents
 
@@ -223,19 +95,11 @@ edition, network profile, domain/workgroup, policy, and PowerShell edition.
 - [sc.exe](sc.exe.md)
 - [whoami.exe](whoami.exe.md)
 
-See the separately installed `pwsh7` and `pwsh51` sources for their shell
-manuals and edition-specific remoting boundaries.
-
 ## Sources and license
 
-This original guide was adapted from Microsoft's official
-[WinRM installation/configuration](https://learn.microsoft.com/windows/win32/winrm/installation-and-configuration-for-windows-remote-management),
-[PowerShell remoting security](https://learn.microsoft.com/powershell/scripting/security/remoting/winrm-security),
-[remote troubleshooting](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_remote_troubleshooting),
-and [WinRM HTTPS configuration](https://learn.microsoft.com/troubleshoot/windows-client/system-management-components/configure-winrm-for-https)
-references. The TrustedHosts direction error was cross-checked against a
-[practitioner question](https://stackoverflow.com/questions/12110355/powershell-winrm-trusted-hosts-not-working).
-Exact sources and licenses are recorded in `upstream/windows-tools.json`.
+This command-resolution guide is based on Microsoft's official
+[WinRM installation and configuration reference](https://learn.microsoft.com/windows/win32/winrm/installation-and-configuration-for-windows-remote-management)
+and read-only inspection of the system wrapper. Exact source and runtime
+evidence are recorded in `upstream/windows-tools.json` and `release/`.
 
 Microsoft documentation and this adaptation are licensed under CC BY 4.0.
-Stack Overflow contributions are licensed under CC BY-SA 4.0.

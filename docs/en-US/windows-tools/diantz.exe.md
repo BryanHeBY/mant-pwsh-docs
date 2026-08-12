@@ -67,8 +67,15 @@ See [makecab.exe](makecab.exe.md) for single-file and directive-file modes, outp
 defaults, multi-file layouts, PowerShell invocation, signature/provenance, and
 artifact verification. See [expand.exe](expand.exe.md) for CAB listing and extraction.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`diantz.exe` Application candidate under either PowerShell collector. This
+does not establish absence on every supported build; use the documented
+`makecab.exe` replacement and verify that exact binary. No cabinet creation or
+artifact mutation is required merely for evidence.
+
+## Related documents
 - [makecab.exe](makecab.exe.md)
 - [expand.exe](expand.exe.md)
 - [extract](extract.md)

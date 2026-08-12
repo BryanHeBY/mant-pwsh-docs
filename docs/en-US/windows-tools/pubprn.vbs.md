@@ -85,8 +85,16 @@ Windows/AD DS only. Script language path, schema/replication, delegated rights,
 print-server roles, client discovery, and Point and Print controls vary by
 environment.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`pubprn.vbs` Application candidate under either PowerShell collector. This
+does not search every localized Printing Administration script directory and
+does not prove the feature absent. Exact script/help discovery and separate
+print/AD reads remain for an approved domain print host; no publication,
+directory object, ACL, queue/share, credential, or client mutation is required.
+
+## Related documents
 - [prnmngr.vbs](prnmngr.vbs.md)
 - [prncnfg.vbs](prncnfg.vbs.md)
 - [setspn.exe](setspn.exe.md)

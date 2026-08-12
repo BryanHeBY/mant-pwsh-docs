@@ -51,6 +51,8 @@ not an adapter alias or index.
   unless that complete mutation was explicitly intended and reviewed.
 - `-s`: Add a static IPv4-to-link-layer mapping, optionally on the interface
   identified by a following local IPv4 address.
+- `-?`, `/?`: Display installed help. Both spellings are accepted on the
+  recorded build even though operational switches are documented with `-`.
 
 ## PowerShell boundaries
 
@@ -94,7 +96,22 @@ network evidence.
 ## Version and platform differences
 
 This page documents Windows `arp.exe`; syntax differs across operating
-systems. `Get-NetNeighbor` is a Windows NetTCPIP cmdlet.
+systems. `Get-NetNeighbor` is a Windows NetTCPIP cmdlet. On Windows NT
+`10.0.26200.0`, installed file version `10.0.26100.8521` returned 1 for both
+`/?` and `-?`; an earlier direct PowerShell capture counted 29 rendered
+nonempty records and matched the operational selector surface. No address,
+interface, cache entry, static mapping, or network state was queried or changed
+by those help probes.
+
+## Runtime evidence
+
+The repeatable privacy-bounded inventory fixture captured redirected `/?` help
+and local `-a` under both PowerShell collectors. Help remained nonempty/status
+`1`; the query returned 43 captured lines/status `0`, but no interface,
+address, MAC, or cache row was emitted. Redirected help used 25 logical lines
+rather than the earlier 29 host-rendered records. The cache is still only
+time- and interface-scoped on-link IPv4 evidence; no delete/add/static mapping,
+IPv6 operation, external request, or network mutation ran.
 
 ## Related documents
 

@@ -74,8 +74,16 @@ The only authoritative version statement in the available catalog is Windows
 Server 2003-era and deprecated. Do not claim support on current Windows. Record
 an environmental exception when the executable is absent.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`gettype.exe` Application candidate under either PowerShell collector. No
+legacy binary was downloaded or substituted. Any future evidence is limited
+to an already approved copied artifact's provenance, metadata, signature,
+hash, and text call sites; do not acquire or execute an unknown binary merely
+for verification.
+
+## Related documents
 - [where.exe](where.exe.md)
 - [certutil.exe](certutil.exe.md)
 

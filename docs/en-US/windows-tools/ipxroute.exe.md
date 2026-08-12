@@ -89,8 +89,21 @@ specialized compatibility environments. The Microsoft Learn applicability
 banner is not binary/driver support evidence. Prefer TCP/IP, SMB, or a vendor-
 supported application migration on current systems.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`ipxroute.exe` Application candidate under either PowerShell collector. No
+feature, role, or compatibility component was installed merely to change
+that result, and no same-named PATH substitute was used. This is target-host
+command-resolution evidence, not proof that the tool is unsupported on every
+applicable Windows environment.
+
+Behavior verification remains resolution/binding/config/servers/resolve
+reads only on an approved isolated legacy fixture; no board, broadcast,
+source-route, binding, driver, protocol or network mutation is permitted merely
+for evidence.
+
+## Related documents
 - [route.exe](route.exe.md)
 - [netsh.exe](netsh.exe.md)
 - [getmac.exe](getmac.exe.md)

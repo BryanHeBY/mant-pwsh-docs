@@ -101,8 +101,14 @@ The calling interactive channel may disconnect before it can report later steps.
 requirements, display behavior, and physical/virtual console exposure depend on
 build, edition, RDS role/topology, policy, session ownership, and host platform.
 
-## Related documents
+## Runtime evidence
 
+Exact System32 discovery on the recorded Windows NT 10.0.26200.0 Home China
+client found tscon.exe absent; no PATH substitute or connection transfer ran.
+Help and direction/security verification remains pending on an approved
+disposable topology with physical-console review.
+
+## Related documents
 - [query.exe](query.exe.md)
 - [tsdiscon.exe](tsdiscon.exe.md)
 - [logoff.exe](logoff.exe.md)

@@ -77,9 +77,20 @@ the exact properties first, or use `Set-Clipboard` with deliberate strings.
 
 `clip.exe` targets interactive Windows clipboard sessions. `Set-Clipboard`
 availability and behavior depend on PowerShell edition, platform, and host.
+Exact System32 discovery on the recorded Windows NT `10.0.26200.0` client
+found file version `10.0.26100.1`. No invocation was made: Clip has no
+side-effect-free help mode, and even empty standard input can replace the
+user's shared clipboard. Validate content/encoding only with explicit consent,
+a captured prior clipboard value where policy permits, and a restoration plan.
+
+## Runtime evidence
+
+Exact System32 discovery on Windows NT 10.0.26200.0 found Clip.exe file version
+10.0.26100.1. It was deliberately not invoked because it has no
+side-effect-free help mode and empty input can replace the user's shared
+clipboard; consented content/encoding/restoration verification remains pending.
 
 ## Related documents
-
 - [type](type.md)
 - [find.exe](find.exe.md)
 - [cmd.exe](cmd.exe.md)

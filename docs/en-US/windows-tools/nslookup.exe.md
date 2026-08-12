@@ -60,6 +60,8 @@ are outside this non-interactive option summary.
 - `-vc`: Use a virtual circuit (TCP) for the DNS request.
 - `-novc`: Use the normal datagram behavior unless truncation/retry requires
   otherwise.
+- `-?`, `/?`: Display installed non-interactive usage. On the recorded build
+  both forms wrote help to the native error stream and returned 1.
 
 ## PowerShell boundaries
 
@@ -100,10 +102,21 @@ was actually required instead of classifying the label alone as failure.
 
 This page documents Windows `nslookup.exe`. `Resolve-DnsName` belongs to the
 Windows DnsClient module. DNS results vary by queried server, network, policy,
-record TTL, and time.
+record TTL, and time. On Windows NT `10.0.26200.0`, installed file version
+`10.0.26100.1` printed five normalized nonempty help lines for both `/?` and
+`-?`; Windows PowerShell 5.1 represented the native-error stream as error
+records. Help's metavariable `-opt ...` is not indexed as a literal option.
+No lookup name, DNS server, record type, query, cache, or resolver state was
+selected or changed.
+
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, installed file version 10.0.26100.1 /? and -? each
+printed five normalized nonempty native-error-stream lines and returned 1.
+Help's -opt metavariable is not a literal indexed option. No lookup name, DNS
+server, record type, query, cache, or resolver state was selected or changed.
 
 ## Related documents
-
 - [ipconfig.exe](ipconfig.exe.md)
 - [ping.exe](ping.exe.md)
 - [hostname.exe](hostname.exe.md)

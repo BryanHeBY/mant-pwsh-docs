@@ -124,8 +124,21 @@ settings, replication technology, and Group Policy features vary by Server
 generation. Use the exact target build's help plus current Microsoft recovery
 guidance.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`dcgpofix.exe` Application candidate under either PowerShell collector. No
+feature, role, or compatibility component was installed merely to change
+that result, and no same-named PATH substitute was used. This is target-host
+command-resolution evidence, not proof that the tool is unsupported on every
+applicable Windows environment.
+
+Behavior verification remains help and exact default-GPO
+inventory/report only; a separately approved protected path is required even
+for backup. No GPO recreation, both-target action, schema bypass, restore, link
+or replication change is permitted merely for evidence.
+
+## Related documents
 - [gpresult.exe](gpresult.exe.md)
 - [gpupdate.exe](gpupdate.exe.md)
 - [gpfixup.exe](gpfixup.exe.md)

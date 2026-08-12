@@ -210,8 +210,31 @@ releases. Other subcommands can require newer builds, ReFS versions, editions,
 or features. Confirm executable help and Microsoft support for the exact host
 and volume before every operation.
 
-## Related documents
+On the recorded Windows NT `10.0.26200.0` Chinese-localized client, exact
+System32 file version `10.0.26100.3912` returned 0 for a bare invocation and
+listed all eight families above. Top-level `/?` printed the same nine nonempty
+lines but returned 22. Do not generalize `/?` to family help: without any
+volume operand, `fixboot`, `leak`, `triage`, `streamsnapshot`, `compression`,
+and `dedup` followed by `/?` printed syntax-like output and returned 87;
+`salvage /?` first required elevation and returned 1314; and `iometrics /?`
+entered a volume-hot-parameter error path and returned `-2147024891`. Start
+discovery with the bare top-level command, treat localized text and native
+status separately, and use family help only when its exact build-specific form
+has been reviewed. No volume, work directory, target, or scratch path was
+supplied, and no operation succeeded or changed filesystem state.
 
+## Runtime evidence
+
+On the recorded Windows NT 10.0.26200.0 Chinese-localized client, exact
+System32 file version 10.0.26100.3912 bare invocation returned 0 and listed
+eight families; top-level /? returned 22 with the same nine nonempty lines.
+Family /? behavior was nonuniform: six syntax-like paths returned 87, salvage
+required elevation and returned 1314, and iometrics entered a
+volume-hot-parameter error path and returned -2147024891. No volume or path was
+supplied and no operation succeeded; representative supported builds and
+disposable ReFS volumes remain required.
+
+## Related documents
 - [fsutil.exe](fsutil.exe.md)
 - [chkdsk.exe](chkdsk.exe.md)
 - [diskpart.exe](diskpart.exe.md)

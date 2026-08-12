@@ -114,8 +114,20 @@ options, wildcard behavior, output text, code page, and file-system semantics
 can vary by build and locale. Target help plus fixture verification is required
 before automation.
 
-## Related documents
+On Windows NT `10.0.26200.0`, exact System32 file version `10.0.26100.1`
+printed 12 nonempty help lines for `/?`, returned 2, and produced no Windows
+PowerShell 5.1 `ErrorRecord` objects. The nonzero status is valid help behavior,
+not a comparison result. No input path, wildcard, prompt response, file read,
+or comparison ran.
 
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 file version 10.0.26100.1 explicit
+/? returned 12 nonempty help lines, status 2 and no Windows PowerShell 5.1
+ErrorRecord objects. No comparison ran; approved inert exact-file fixtures and
+prompt-proof automation remain required for operation evidence.
+
+## Related documents
 - [fc.exe](fc.exe.md)
 - [find.exe](find.exe.md)
 - [certutil.exe](certutil.exe.md)

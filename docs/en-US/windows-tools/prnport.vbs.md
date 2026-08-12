@@ -103,8 +103,16 @@ Windows-only. Script path, Standard TCP/IP Port Monitor capabilities, SNMP,
 LPR/RAW defaults, firewall access, cluster behavior, and PrintManagement
 availability vary by build and role.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`prnport.vbs` Application candidate under either PowerShell collector. This
+does not search every localized Printing Administration script directory and
+does not prove the feature absent. Exact localized-script discovery, help, and
+port reads remain for an approved print host; no port, RAW/LPR/SNMP,
+credential, queue, or device mutation is required merely for evidence.
+
+## Related documents
 - [prnmngr.vbs](prnmngr.vbs.md)
 - [prncnfg.vbs](prncnfg.vbs.md)
 - [ping.exe](ping.exe.md)

@@ -99,8 +99,14 @@ session scope, remote access, and permissions vary by build, edition, RDS role,
 security features, and caller token. Some practitioner environments report the
 legacy executable absent; installed help is authoritative for the target.
 
-## Related documents
+## Runtime evidence
 
+Exact System32 discovery on the recorded Windows NT 10.0.26200.0 Home China
+client found tskill.exe absent; no PATH substitute or process termination ran.
+Help and lifecycle verification remains pending on an approved disposable
+process/session fixture.
+
+## Related documents
 - [query.exe](query.exe.md)
 - [qprocess.exe](qprocess.exe.md)
 - [tasklist.exe](tasklist.exe.md)

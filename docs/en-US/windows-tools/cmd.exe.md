@@ -108,8 +108,25 @@ on command extensions and the installed Windows release. This page targets the
 supported Windows 10, Windows 11, and Windows Server command interpreter
 documented by Microsoft; legacy batch behavior can differ on older systems.
 
-## Related documents
+On exact System32 `cmd.exe` file version `10.0.26100.1`, each of 29 bounded
+`cmd.exe /d /c help <name>` calls printed the requested built-in help to stdout,
+created no PowerShell error-stream objects, and returned 1. The set covered
+Cmd, environment/localization, control flow, paths/location, associations,
+listing/copy/delete/directory/move/rename/type, and MkLink. Treat this as the
+installed Help dispatcher's status contract, not as failure of every built-in.
+No command operand, path, wildcard, variable assignment, filesystem target, or
+mutation was supplied. Individual operation semantics still require protected
+fixtures; help-only evidence does not prove a destructive command safe.
 
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 cmd.exe file version 10.0.26100.1
+`cmd.exe /d /c help CMD` printed 144 nonempty stdout lines, no PowerShell error
+records, and returned 1. The same help-only contract held across 28 indexed
+built-ins; no operand, path, wildcard, assignment, or mutation was supplied.
+Protected-fixture parser and operation verification remains required.
+
+## Related documents
 - [start](start.md)
 - [where.exe](where.exe.md)
 - [sc.exe](sc.exe.md)

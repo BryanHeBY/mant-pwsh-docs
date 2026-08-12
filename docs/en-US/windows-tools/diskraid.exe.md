@@ -2,6 +2,7 @@
 # diskraid.exe
 
 > Inventory a VDS-capable hardware RAID subsystem without creating, resizing, exposing, or deleting storage.
+> Start the interpreter only in an elevated, approved nonproduction VDS context; executable presence on a client is not provider support.
 > More information: https://learn.microsoft.com/windows-server/administration/windows-commands/diskraid.
 
 - Confirm the specialist tool exists before assuming a broad Microsoft Learn banner means it is usable:
@@ -59,7 +60,7 @@ transcript easy to read but makes stale or misunderstood focus dangerous.
 | Discovery | `help`, `initiator`, `list`, `detail`, parameterless `select`, `exit` | Query only when no setting keyword is supplied. |
 | Focus/refresh | `select`, `refresh`, `reenumerate` | Focus changes later command targets; refresh/reenumeration can trigger provider/bus work. |
 | LUN lifecycle | `create`, `delete`, `add plex`, `break`, `extend`, `shrink`, `recover`, `replace`, `setflag` | Can erase data, change capacity/redundancy, rebuild, or repurpose drives. |
-| Access paths | `associate`, `dissociate`, `mask`, `unmask`, `online`, `offline`, `standby`, `lbpolicy` | Can remove host access, expose a LUN broadly, or change multipath/failover behavior. |
+| Access paths | `associate`, `dissociate`, `unmask` (`none`, `all`, or exact hosts), `online`, `offline`, `standby`, `lbpolicy` | Can remove host access, expose a LUN broadly, or change multipath/failover behavior. There is no separate `mask` command. |
 | iSCSI | `create target`, `create tpgroup`, `add/remove tpgroup`, `login`, `logout`, `chap` | Changes sessions, persistence, authentication, target topology, or secrets. |
 | Provider/controller | `automagic`, `name`, `importtarget`, `flushcache`, `invalidatecache`, `maintenance`, `reset` | Can change provisioning hints, VSS target, cache integrity, hardware state, or availability. |
 | Scripting | `rem`, `/s`, `noerr` | `noerr` deliberately continues after supported runtime failures. |
@@ -81,6 +82,8 @@ transcript easy to read but makes stale or misunderstood focus dangerous.
 - `delete`: Delete the selected supported object and potentially its data.
 - `add`: Add a plex, portal-group member, or other family-specific relationship;
   some forms erase the added storage.
+- `remove`: Remove one specified iSCSI target portal from the currently selected
+  target portal group.
 - `break`: Break a LUN/plex relationship with destructive consistency effects.
 - `extend`: Increase a selected LUN's capacity; it does not grow host partitions
   or filesystems.
@@ -90,9 +93,8 @@ transcript easy to read but makes stale or misunderstood focus dangerous.
 - `setflag`: Change provider-specific flags on selected storage.
 - `associate`: Associate a selected LUN and host/access object.
 - `dissociate`: Remove a selected LUN/access association.
-- `mask`: Remove host visibility/access to selected LUNs.
-- `unmask`: Expose selected LUNs, potentially replacing an access list unless
-  the documented add behavior is used.
+- `unmask`: Set selected-LUN host access to `none`, `all`, or exact WWN/iSCSI
+  initiators, potentially replacing the access list unless `add` is used.
 - `online`: Bring a selected supported storage/path object online.
 - `offline`: Take a selected supported storage/path object offline.
 - `standby`: Place a selected path/controller object into standby where supported.
@@ -171,13 +173,15 @@ postcondition and compensation path is explicitly designed and tested.
 deletes the removed plex and does not guarantee consistency of the remaining
 LUN. A name that sounds like topology maintenance does not describe data loss.
 
-### Using mask/unmask as a browse toggle
+### Inventing `mask` or treating `unmask` as only exposure
 
-Masking changes host visibility and can uninstall the local disk; unmasking can
-replace the access list unless `add` is supplied. `unmask lun all` exposes the
-LUN broadly and has iSCSI session constraints. Coordinate application quiesce,
-cluster ownership, multipath, filesystem identity, reservations, zoning, and
-every consuming host.
+DiskRaid has no separate `mask` command. The `unmask` command sets the selected
+LUN's access list: `unmask lun none` makes it inaccessible to every host,
+`unmask lun all` exposes it broadly, and exact WWN/initiator forms replace the
+list unless `add` is supplied. The optional `uninstall` behavior can also clean
+up the local disk association. Coordinate application quiesce, cluster
+ownership, multipath, filesystem identity, reservations, zoning, iSCSI
+sessions, and every consuming host before any form.
 
 ### Changing cache, controller, or path state while diagnosing
 
@@ -217,13 +221,24 @@ approved change, verification, and rollback/recovery evidence.
 
 Microsoft limits scripting to supported Windows Server systems with an
 associated VDS hardware provider. The current page's generated applicability
-banner is broader, so verify the installed executable and provider on the exact
-server. VDS/provider versions, firmware, HBA/iSCSI stack, multipath software,
-cluster ownership, and vendor support determine actual behavior. Prefer a
-current vendor-supported API or management tool for new deployments.
+banner is broader: the recorded Windows NT `10.0.26200.0` client contains a
+Microsoft-signed `diskraid.exe` file version `10.0.26100.1`, but executable
+presence proves neither a compatible provider nor supported client use. The
+interpreter was deliberately not started. VDS/provider versions, firmware,
+HBA/iSCSI stack, multipath software, cluster ownership, and vendor support
+determine actual behavior. Prefer a current vendor-supported API or management
+tool for new deployments.
+
+## Runtime evidence
+
+Windows NT 10.0.26200.0 contains a signed diskraid.exe file version
+10.0.26100.1, but client executable presence proves neither a VDS hardware
+provider nor supported use. The interpreter was not started. Further runtime
+verification requires an explicitly approved nonproduction VDS fixture; no
+create/delete/add/remove/break/extend/shrink/recover/replace/access/path/session/authentication/cache/controller/provider/name/online
+state or script mutation is permitted merely for evidence.
 
 ## Related documents
-
 - [diskpart.exe](diskpart.exe.md)
 - [diskshadow.exe](diskshadow.exe.md)
 - [netsh.exe](netsh.exe.md)

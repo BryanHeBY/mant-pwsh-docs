@@ -19,6 +19,10 @@
 - Find the later boot-time check record without editing `BootExecute`:
 
 `Get-WinEvent -FilterHashtable @{ LogName = 'Application'; ProviderName = 'Microsoft-Windows-Wininit' } -MaxEvents {{20}}`
+
+- Verify the protected startup component without executing it:
+
+`$autoChk = Join-Path $env:SystemRoot 'System32\autochk.exe'; Get-Item -LiteralPath $autoChk | Select-Object FullName, Length, VersionInfo; Get-AuthenticodeSignature -LiteralPath $autoChk`
 <!-- mant:tldr:end -->
 
 # autochk.exe
@@ -76,8 +80,28 @@ This is a Windows-only, NTFS startup component. The Microsoft catalog lists
 current Windows client and server releases, but startup, recovery, encryption,
 cluster, and storage-stack conditions still affect when a check can run.
 
-## Related documents
+On the recorded Windows NT `10.0.26200.0` host, exact System32 identity-only
+inspection found `autochk.exe` file/product version `10.0.26100.8328`, file
+description `Auto Check Utility`, and a valid `Microsoft Windows` signature.
+The SHA-256 digest was
+`C887DCB2448EF14EF64CB42369BB951DC33C48AC8AC04E87417B085D5451C021`.
+The executable was deliberately not started: Microsoft's supported contract
+explicitly says it cannot be run directly from the command line. This proves
+the local file identity, not that a boot-time check is scheduled or healthy.
 
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 identity-only inspection found Auto
+Check Utility file/product version 10.0.26100.8328, a valid Microsoft Windows
+signature, and SHA-256
+C887DCB2448EF14EF64CB42369BB951DC33C48AC8AC04E87417B085D5451C021. Autochk was
+deliberately not started because Microsoft's supported contract forbids direct
+command-line invocation. Remaining verification uses fsutil dirty query,
+chkntfs display and Wininit event reading only; no BootExecute, exclusion,
+schedule, countdown, filesystem, volume, repair or reboot mutation is permitted
+merely for evidence.
+
+## Related documents
 - [chkntfs.exe](chkntfs.exe.md)
 - [chkdsk.exe](chkdsk.exe.md)
 - [fsutil.exe](fsutil.exe.md)

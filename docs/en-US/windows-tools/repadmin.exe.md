@@ -148,9 +148,18 @@ page is legacy documentation; current Microsoft AD DS troubleshooting pages
 confirm use on supported Windows Server releases. Subcommands, selectors,
 privileges, output, status semantics, and AD features vary. Verify target-local
 help and current issue-specific Microsoft guidance before operational use.
+Exact System32 discovery on the recorded Windows NT `10.0.26200.0` client
+found no `repadmin.exe`; no help, replication query, CSV collection, sync,
+KCC/topology, lingering-object, password-policy, or directory change ran.
+
+## Runtime evidence
+
+Exact System32 discovery on Windows NT 10.0.26200.0 found no repadmin.exe. It
+remains documented as an optional AD DS/RSAT tool; no help, replication query,
+CSV collection, sync, replicate, KCC/topology, lingering-object, rehost,
+password-policy, credential, or directory operation ran.
 
 ## Related documents
-
 - [dcdiag.exe](dcdiag.exe.md)
 - [nltest.exe](nltest.exe.md)
 - [netdom.exe](netdom.exe.md)

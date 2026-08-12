@@ -117,8 +117,14 @@ These are Windows Server 2003-era/deprecated workflows. Architecture, BIOS/EFI,
 disk layout, drivers, licensing, Dynamic Update, RIS/WDS, recovery console, and
 component servicing differ fundamentally on current Windows.
 
-## Related documents
+## Verification boundary
 
+Windows runtime verification remains copied artifact
+metadata/signature/hash/text and current build/feature inventory only; no
+legacy binary, Setup, answer command, disk, boot, RIS/WDS or servicing mutation
+is permitted merely for evidence.
+
+## Related documents
 - [dism.exe](dism.exe.md)
 - [wdsutil.exe](wdsutil.exe.md)
 - [bcdboot.exe](bcdboot.exe.md)

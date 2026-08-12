@@ -44,15 +44,36 @@ networking cmdlets instead when an equivalent supported interface exists.
 ## Resolvable contexts
 
 <!-- mant:entries role=command case=insensitive -->
+- `netsh.exe`: Discover installed Network Shell contexts or run one complete,
+  explicitly reviewed context command.
+- `?`, `help`: Display top-level or context-specific installed help.
+- `add`: Add a configuration entry only according to the selected context's exact help.
+- `delete`: Delete a configuration entry only according to the selected context's exact help.
+- `exec`: Execute a reviewed Netsh script; script contents are privileged configuration input.
+- `set`: Update configuration only according to the selected context's exact help.
+- `show`: Display information according to the selected context; output and side effects remain context-defined.
 - `interface`: Inspect or manage IPv4/IPv6 interfaces, addresses, DNS, TCP/UDP, tunnels, and port proxy.
 - `wlan`: Inspect or manage Wi-Fi interfaces, networks, profiles, filters, reports, and tracing.
 - `winsock`: Inspect or reset provider catalogs and related Winsock settings.
 - `advfirewall`: Inspect or manage Windows Defender Firewall policy where this context is installed.
+- `bridge`: Enter the installed network-bridge context.
+- `dhcpclient`: Inspect or manage installed DHCP client behavior.
+- `dnsclient`: Inspect or manage DNS client, encrypted DNS, DDR, and interface settings on supported builds.
+- `firewall`: Enter the legacy firewall context; prefer `advfirewall` or supported PowerShell interfaces for new work.
 - `winhttp`: Inspect or manage WinHTTP proxy state, distinct from browser/user proxy state.
 - `http`: Inspect or manage HTTP Service configuration according to installed context help.
+- `ipsec`: Enter the legacy IPsec context where installed; do not confuse it with current firewall/IPsec policy tooling.
+- `lan`: Inspect or manage wired-network profiles and tracing where installed.
+- `mbn`: Inspect or manage mobile broadband interfaces and profiles where installed.
+- `namespace`: Enter the installed network-namespace context.
+- `netio`: Enter the installed network I/O context.
+- `nlm`: Enter the installed Network List Manager context.
+- `ras`: Inspect or manage Remote Access Service configuration where installed.
+- `rpc`: Inspect or manage supported RPC settings where installed.
+- `wcn`: Enter the installed Windows Connect Now context.
+- `ztdns`: Enter the installed Zero Trust DNS context; availability and policy surface are build-dependent.
 - `trace`, `wfp`: Capture network tracing or inspect Windows Filtering Platform diagnostics with protected output handling.
 - `dump`: Emit script-like configuration for contexts that implement it; read-only output can still contain sensitive topology.
-- `help`: Display top-level or context-specific installed help.
 
 ## PowerShell boundaries
 
@@ -101,14 +122,25 @@ and work from a recoverable console before a change.
   see [netsh-wlan](netsh-wlan.md).
 - `winsock`: provider catalog and send autotuning; see
   [netsh-winsock](netsh-winsock.md).
-- Other installed contexts can include `advfirewall`, `http`, `winhttp`,
-  `trace`, `wfp`, `lan`, `ras`, `rpc`, `branchcache`, and server-role contexts.
+- Other installed or role-provided contexts can include `branchcache` and
+  additional server-role helpers. The current local build exposes the complete
+  top-level set indexed above; another machine can differ.
 
 ## Version and platform differences
 
 This executable is Windows-only. Contexts, commands, remote support, elevation,
 and preferred PowerShell replacements vary by Windows release and installed
 features.
+
+## Runtime evidence
+
+The protected local-help fixture resolved exact System32 `netsh.exe` and ran
+only `netsh.exe help` under both installed PowerShell editions. Each returned
+status `0`, 36 nonempty stdout lines, and no stderr. This differs from the
+recorded `/?` collector and does not normalize every context's parser. No
+context, remote computer, credential, script, capture, show/dump selector, or
+configuration command was supplied, so helper-specific availability and
+read/write behavior remain unverified.
 
 ## Related documents
 

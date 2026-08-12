@@ -152,11 +152,23 @@ an XML file and schema-aware review for create/set operations.
 `wecutil.exe` is Windows-only. Subscription options, credential/certificate
 models, WSMan/WinRM policy, Wecsvc, Event Log channels, output encoding, scale,
 and access vary by Windows/WMF build, edition, domain/workgroup, role, and policy.
+On exact System32 file version `10.0.26100.8457`, `/?` returned 0 with 24
+nonempty stdout lines and no PowerShell error records. No subscription, source,
+collector, XML, credential, channel, service, retry, quick configuration, or
+remote operation was supplied.
+
+## Runtime evidence
+
+The protected local-help fixture resolved exact System32 `wecutil.exe` and
+captured `/?` under both installed PowerShell editions. Each returned status
+`0`, 24 nonempty stdout lines, and no stderr. No subscription, source,
+collector, channel, XML, credential, service, retry, or configuration operand
+was supplied; collection and end-to-end event provenance remain unverified.
 
 ## Related documents
 
 - [wevtutil.exe](wevtutil.exe.md)
-- [winrm.exe](winrm.exe.md)
+- [winrm.cmd](winrm.cmd.md)
 - [eventcreate.exe](eventcreate.exe.md)
 - [sc.exe](sc.exe.md)
 

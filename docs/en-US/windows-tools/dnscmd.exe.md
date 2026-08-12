@@ -161,8 +161,22 @@ equivalents vary by Windows Server/RSAT version. Some reference text preserves
 legacy terminology or obsolete switches; target-local help and current feature-
 specific Microsoft documentation govern behavior.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`dnscmd.exe` Application candidate under either PowerShell collector. No
+feature, role, or compatibility component was installed merely to change
+that result, and no same-named PATH substitute was used. This is target-host
+command-resolution evidence, not proof that the tool is unsupported on every
+applicable Windows environment.
+
+Behavior verification remains approved exact-server
+enumzones/zoneinfo/enumrecords/enumdirectorypartitions only; no record/node,
+aging/scavenging, zone, server/config, cache, forwarding, partition,
+export/import, logging, plug-in, policy/scope or DNSSEC mutation is permitted
+merely for evidence.
+
+## Related documents
 - [nslookup.exe](nslookup.exe.md)
 - [dcdiag.exe](dcdiag.exe.md)
 - [repadmin.exe](repadmin.exe.md)

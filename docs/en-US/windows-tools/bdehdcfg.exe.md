@@ -156,9 +156,19 @@ layout model are rooted in older BitLocker deployment. Executable presence,
 Core/WinPE environment, firmware, MBR/GPT, edition, policy, recovery layout,
 and current deployment guidance determine applicability. Prefer modern setup,
 Storage cmdlets, BCDBoot, and supported deployment workflows where applicable.
+Exact System32 discovery on the recorded Windows NT `10.0.26200.0` Home China
+client found no `bdehdcfg.exe`. Record this as an edition/component
+availability result; do not invoke a PATH substitute and do not infer that a
+supported legacy deployment image or another Windows edition also lacks it.
+
+## Runtime evidence
+
+Exact System32 discovery on the recorded Windows NT 10.0.26200.0 Home China
+client found bdehdcfg.exe absent; no PATH substitute, drive query, partition
+preparation, boot-layout change, or restart ran. Verification remains required
+only where the executable is present and the deployment workflow supports it.
 
 ## Related documents
-
 - [manage-bde.exe](manage-bde.exe.md)
 - [bcdboot.exe](bcdboot.exe.md)
 - [bcdedit.exe](bcdedit.exe.md)

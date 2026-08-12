@@ -77,6 +77,15 @@ The cmd builtin is Windows-only. `Get-Content` is cross-platform, but defaults
 and available encoding names differ between Windows PowerShell 5.1 and
 PowerShell 7.
 
+## Runtime evidence
+
+The protected fixture invoked the Cmd builtin through exact System32
+`cmd.exe /d /c` against one fixed four-line ASCII file. Both PowerShell
+collectors captured four lines/status `0`; payload text was not emitted and the
+GUID temporary root was removed. This does not prove encoding detection,
+binary/control-data safety, multiple-file concatenation, redirection, wildcard,
+or caller-owned input behavior.
+
 ## Related documents
 
 - [find.exe](find.exe.md)

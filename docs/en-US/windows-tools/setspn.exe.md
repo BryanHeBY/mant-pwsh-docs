@@ -55,7 +55,9 @@ replication before concluding that a second change is needed.
 - `-C`: Interpret the supplied account as a computer account.
 - `-P`: Suppress progress to the console (quiet mode); it does not make a
   directory mutation safer.
-- `/?`: Display installed command help.
+- `/?`, `-?`: Display installed command help. On the recorded Windows build
+  either documented spelling printed help and returned exit code 2; the help
+  body did not list the help spellings themselves.
 
 ## PowerShell boundaries
 
@@ -108,10 +110,22 @@ because another controller has not converged yet.
 
 This Windows tool requires AD DS or the relevant management tools, directory
 connectivity, elevation, and permissions to read or write target attributes.
-Forest/domain topology and replication affect observations.
+Forest/domain topology and replication affect observations. On Windows NT
+`10.0.26200.0`, installed file version `10.0.26100.8115` printed 59 nonempty
+help lines for `/?` and returned 2; a separate `-?` probe produced the same
+help-specific status. Do not interpret that nonzero help status as an AD DS,
+account, SPN, connectivity, or authorization failure.
+
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, installed file version 10.0.26100.8115
+ordinary-token /? printed 59 nonempty help lines and returned 2; the official
+-? spelling separately returned 2. Both are indexed in one help entry, and
+their nonzero help status is not classified as an AD DS, SPN, connectivity,
+account, or authorization failure. No domain, account, SPN, wildcard, ticket,
+directory, credential, or network target was supplied or queried.
 
 ## Related documents
-
 - [klist.exe](klist.exe.md)
 - [nslookup.exe](nslookup.exe.md)
 - [whoami.exe](whoami.exe.md)

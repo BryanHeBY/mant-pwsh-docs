@@ -88,8 +88,21 @@ Prefer PrintManagement cmdlets for structured pre/post evidence.
 Windows-only. Script availability, language path, spooler permissions, remote
 access, queue state, and PrintManagement support vary by build and policy.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`prnqctl.vbs` Application candidate under either PowerShell collector. No
+feature, role, or compatibility component was installed merely to change
+that result, and no same-named PATH substitute was used. This is target-host
+command-resolution evidence, not proof that the tool is unsupported on every
+applicable Windows environment.
+
+Behavior verification remains discovery/help and separate typed
+inventory only; no pause, resume, all-job cancel, test page,
+spooler/spool-file, credential or physical-output operation is permitted merely
+for evidence.
+
+## Related documents
 - [prnjobs.vbs](prnjobs.vbs.md)
 - [prnmngr.vbs](prnmngr.vbs.md)
 - [print.exe](print.exe.md)

@@ -86,8 +86,13 @@ arguments, working-directory assumptions, and file provenance.
 This builtin is Windows-only. Default-app behavior varies across Windows
 versions and management policy even when the classic command remains present.
 
-## Related documents
+## Runtime evidence
 
+Exact cmd.exe 10.0.26100.1 `help FTYPE` printed 24 nonempty stdout lines, no
+PowerShell error records, and returned 1 without querying or changing a
+file-type command. Protected disposable association fixtures remain required.
+
+## Related documents
 - [assoc](assoc.md)
 - [cmd.exe](cmd.exe.md)
 - [path](path.md)

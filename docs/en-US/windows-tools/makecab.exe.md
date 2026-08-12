@@ -118,8 +118,21 @@ releases. Directive variables, compression/layout constraints, filename rules,
 and the consuming installer or servicing stack determine compatibility. Use
 installed help and the relevant Cabinet SDK/reference for advanced DDF builds.
 
-## Related documents
+On Windows NT `10.0.26200.0`, exact System32 file version `5.00` printed 12
+nonempty help lines for `/?`, returned 0, and produced no Windows PowerShell
+5.1 `ErrorRecord` objects. No source, cabinet, directive file, report, setup
+artifact, compression job, or filesystem output was supplied or created.
 
+## Runtime evidence
+
+On Windows NT 10.0.26200.0, exact System32 file version 5.00 explicit /?
+returned 12 nonempty help lines, status 0 and no Windows PowerShell 5.1
+ErrorRecord objects. No cabinet or report was created; an approved disposable
+build fixture remains required and no production package, update, driver,
+installer or signed artifact may be created, replaced or installed merely for
+evidence.
+
+## Related documents
 - [diantz.exe](diantz.exe.md)
 - [expand.exe](expand.exe.md)
 - [msiexec.exe](msiexec.exe.md)

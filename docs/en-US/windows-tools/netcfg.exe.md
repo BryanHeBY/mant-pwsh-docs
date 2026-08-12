@@ -6,15 +6,15 @@
 
 - Resolve the exact native executable and show installed syntax:
 
-`Get-Command netcfg.exe -All -ErrorAction SilentlyContinue | Select-Object Source,@{Name='FileVersion';Expression={$_.FileVersionInfo.FileVersion}}; netcfg.exe /?`
+`Get-Command netcfg.exe -All -ErrorAction SilentlyContinue | Select-Object Source,@{Name='FileVersionFixed';Expression={$_.FileVersionInfo.FileVersionRaw.ToString()}},@{Name='FileVersionString';Expression={$_.FileVersionInfo.FileVersion}}; netcfg.exe -?`
 
 - List installed network components without changing them:
 
-`netcfg.exe /s n`
+`netcfg.exe -s n`
 
 - Query whether one exact component ID is installed:
 
-`netcfg.exe /q "{{MS_Server}}"; $LASTEXITCODE`
+`netcfg.exe -q "{{MS_Server}}"; $LASTEXITCODE`
 
 - Export a binding map to a new protected working directory and inspect the artifact:
 
@@ -39,43 +39,42 @@ Query and mutation modes share the same executable; `/d` and `/x` are broad,
 connectivity-breaking cleanup operations.
 
 <!-- mant:entries role=option case=insensitive -->
-- `/s`: List installed components of a selected class/type.
-- `/q`: Query whether one component ID is installed.
-- `/b`: Display the binding path containing one component.
-- `/m`: Write a network binding map in the current directory.
-- `/v`: Enable verbose information, including with binding-map output.
+- `-s`, `/s`: List installed components of a selected class/type.
+- `-q`, `/q`: Query whether one component ID is installed.
+- `-b`, `/b`: Display the binding path containing one component.
+- `-m`, `/m`: Write a network binding map in the current directory.
+- `-v`, `/v`: Enable verbose information, including with binding-map output.
 
 Component installation and removal require exact published IDs.
 
 <!-- mant:entries role=option case=insensitive -->
-- `/l`: Select the INF used for component installation.
-- `/c`: Select the component class.
-- `/i`: Install one exact component ID from the selected INF.
-- `/u`: Uninstall one exact component ID.
+- `-l`, `/l`: Select the INF used for component installation.
+- `-c`, `/c`: Select the component class.
+- `-i`, `/i`: Install one exact component ID from the selected INF.
+- `-u`, `/u`: Uninstall one exact component ID.
 
 Provisioning and broad cleanup are separate high-impact modes.
 
 <!-- mant:entries role=option case=insensitive -->
-- `/winpe`: Install the predefined WinPE networking component set.
+- `-winpe`, `/winpe`: Install the predefined WinPE networking component set.
 
 Full device cleanup is broader than WinPE provisioning.
 
 <!-- mant:entries role=option case=insensitive -->
-- `/d`: Clean all network devices and require a restart.
-- `/x`: Clean network devices, skipping those without a physical object.
+- `-d`, `/d`: Clean all network devices and require a restart.
+- `-x`, `/x`: Clean network devices, skipping those without a physical object.
+- `-?`, `/?`: Display installed syntax. Current help prints hyphen spellings,
+  while both punctuation forms are accepted on the recorded build.
 
-Use the separate `netcfg.exe /?` form to display installed syntax.
+Use the separate `netcfg.exe -?` form to display installed syntax.
 
-- `/s <type>`, `/q <component-ID>`, `/b <path>`: show components, query one
-  component and display binding paths.
-- `/m` and `/v`: write `NetworkBindingMap.txt` in the current directory and
-  optionally add verbose console detail.
-- `/l <INF> /c <class> /i <component-ID>`: install a protocol, service or
-  client from an optional INF location.
-- `/u <component-ID>`: uninstall one component.
-- `/winpe`: install the WinPE TCP/IP, NetBIOS and Microsoft Client set.
-- `/d`, `/x`: clean all network devices, with `/x` skipping devices lacking
-  physical object names; both are broad, disruptive and reboot-dependent.
+| Family | Forms and boundary |
+| --- | --- |
+| Read-only inventory | `-s`/`/s`, `-q`/`/q`, and `-b`/`/b` list, test, or display one reviewed component/binding scope. |
+| Binding-map artifact | `-m`/`/m` writes `NetworkBindingMap.txt` in the current directory; `-v`/`/v` adds detail. |
+| Component install/remove | `-l -c -i` or the slash equivalents install from an optional INF; `-u`/`/u` removes one exact component. |
+| WinPE provisioning | `-winpe`/`/winpe` installs the predefined TCP/IP, NetBIOS, and Microsoft Client set. |
+| Broad cleanup | `-d`/`/d` and `-x`/`/x` clean network devices and require a restart; the latter skips devices without physical object names. |
 
 ## Common mistakes
 
@@ -123,8 +122,18 @@ Windows-only. Component IDs, installed filters/protocols, WinPE context and
 cleanup behavior vary by build, hardware, hypervisor, VPN/security product and
 OEM image. Validate on an equivalent disposable host before mutation.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, both PowerShell collectors resolved signed
+`C:\Windows\System32\netcfg.exe`, fixed file version `10.0.26100.8737` and
+collector-selected file-version string `10.0.26100.8875
+(WinBuild.160101.0800)`. File identity does not prove a component or binding
+operation. Behavior verification remains `/s`, exact `/q`, and one new
+protected `/m` artifact only; no INF/component, WinPE, all-device cleanup,
+reboot, binding, adapter, or management-path mutation is required merely for
+evidence.
+
+## Related documents
 - [netsh.exe](netsh.exe.md)
 - [ipconfig.exe](ipconfig.exe.md)
 - [pnputil.exe](pnputil.exe.md)

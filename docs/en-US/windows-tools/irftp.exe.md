@@ -81,8 +81,15 @@ drivers, interactive session, policy, and executable presence determine whether
 it can run. Record absence as a migration signal rather than installing an
 unverified copy.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`irftp.exe` Application candidate under either PowerShell collector. No
+infrared feature, UI, device, or link was enabled. Transfer behavior requires
+a separately authorized disposable device pair and nonsensitive source; no UI
+launch or file transfer is required merely for evidence.
+
+## Related documents
 - [ftp.exe](ftp.exe.md)
 - OpenSSH: query `mant ssh --source cross-platform-tools`.
 

@@ -89,8 +89,13 @@ quotes, but disabled extensions do not. Quote paths consistently and use
 The cmd builtin is Windows-only. PowerShell's `Set-Location` is provider-aware
 and can navigate non-filesystem drives; cmd's drive-directory model is not.
 
-## Related documents
+## Runtime evidence
 
+Exact cmd.exe 10.0.26100.1 `help CD` printed 21 nonempty stdout lines, no
+PowerShell error records, and returned 1 without changing location. Protected
+per-drive and /d location fixtures remain required.
+
+## Related documents
 - [chdir](chdir.md)
 - [pushd](pushd.md)
 - [popd](popd.md)

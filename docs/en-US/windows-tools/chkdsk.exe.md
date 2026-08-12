@@ -3,6 +3,8 @@
 
 > Scan one local filesystem first, then choose online, spot, or offline repair from evidence and a current backup.
 > More information: https://learn.microsoft.com/windows-server/administration/windows-commands/chkdsk.
+> Microsoft documents local Administrators membership or equivalent as the
+> minimum requirement; an access failure is not a clean filesystem result.
 
 - Display a read-only status report for one exact local volume:
 
@@ -63,6 +65,8 @@ supported local target.
 - `/spotfix`: Perform a short offline NTFS repair of previously recorded defects.
 - `/offlinescanandfix`: Run an offline scan and repair on the selected volume.
 - `/f`: Repair logical filesystem errors and obtain or schedule exclusive access.
+- `/v`: On FAT/FAT32, display every checked file's full path and name; on NTFS,
+  display cleanup messages when present.
 - `/r`: Locate bad sectors and recover readable data in addition to `/f`; this performs much more I/O.
 - `/b`: On NTFS, clear the bad-cluster list and rescan all clusters; intended for specific post-imaging workflows.
 - `/x`: Force dismount before checking and imply `/f`; open handles become invalid.
@@ -73,6 +77,8 @@ supported local target.
 - `/sdcleanup`: Garbage-collect unneeded NTFS security descriptor data and imply `/f`.
 - `/freeorphanedchains`: On FAT/FAT32/exFAT, free orphaned chains instead of recovering their contents.
 - `/markclean`: On FAT/FAT32/exFAT, mark a volume clean if no corruption is detected, even without `/f`.
+- `/?`: Display installed command help; on Windows build `10.0.26200` this
+  prints complete help but returns 3.
 
 ## Exit codes
 
@@ -85,7 +91,10 @@ CHKDSK uses result codes, not a simple zero/nonzero success contract:
 
 Capture `$LASTEXITCODE` immediately and interpret it together with the exact
 mode and saved report. Code `1` can be a completed repair, while code `0` from
-an online scan does not prove the storage hardware is healthy.
+an online scan does not prove the storage hardware is healthy. Microsoft's
+table describes codes after a disk-check operation. Do not apply it blindly to
+help or parser invocations: installed `chkdsk.exe /?` printed complete help but
+returned 3 under both PowerShell editions without checking a volume.
 
 ## Common mistakes
 
@@ -129,6 +138,14 @@ NTFS `/i` and `/c` skip or reduce checks. `/perf` does not skip checks but uses
 more resources with `/scan` and can harm workload latency. Record every option
 and never summarize a reduced check as a complete scan.
 
+### Treating `/V` as one portable verbosity switch
+
+`/V` is filesystem-specific. Current installed help says FAT/FAT32 emits the
+full path and name of every checked file, which can produce large and sensitive
+inventory output; NTFS emits cleanup messages when any exist. Record the
+filesystem and protect captured output instead of comparing line counts across
+filesystems.
+
 ### Using CHKDSK to diagnose all storage or Windows errors
 
 CHKDSK addresses filesystem consistency. SMART/NVMe/device health, controller
@@ -156,7 +173,9 @@ storage-health evidence.
 CHKDSK is a native text command. Specify the volume explicitly, capture output
 and `$LASTEXITCODE`, and do not treat nonzero as generic process failure.
 PowerShell's preference-based native error integration can obscure these
-documented result codes, so handle the process result deliberately.
+documented result codes, so handle the process result deliberately. Separate
+help/parser status from the documented post-check result table, and record the
+token/elevation state before interpreting an empty or access-denied report.
 
 ## Version and platform differences
 
@@ -164,6 +183,14 @@ This Windows-only command applies to supported Windows client and server
 releases. Options vary by NTFS versus FAT/FAT32/exFAT and by the running or
 recovery environment. Local disk, cluster/storage virtualization, snapshots,
 encryption, device health, and workload ownership constrain safe use.
+
+## Runtime evidence
+
+On Windows NT `10.0.26200.0`, installed `chkdsk.exe /?` printed 47 help lines
+and returned status `3` under both PowerShell collectors. That is help/parser
+status, not the documented post-check “errors could not be fixed” result. No
+volume operand, scan, repair, lock, dismount, schedule, dirty-bit operation, or
+filesystem mutation ran; disposable-volume behavior remains pending.
 
 ## Related documents
 

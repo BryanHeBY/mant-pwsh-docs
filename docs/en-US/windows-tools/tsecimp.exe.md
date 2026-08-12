@@ -6,7 +6,7 @@
 
 - Resolve the exact command without changing TAPI security:
 
-`Get-Command tsecimp.exe -All -ErrorAction SilentlyContinue | Select-Object Source,@{Name='FileVersion';Expression={$_.FileVersionInfo.FileVersion}}`
+`Get-Command tsecimp.exe -All -ErrorAction SilentlyContinue | Select-Object Source,@{Name='FileVersionFixed';Expression={$_.FileVersionInfo.FileVersionRaw.ToString()}},@{Name='FileVersionString';Expression={$_.FileVersionInfo.FileVersion}}`
 
 - Display installed providers, line devices, addresses, and assigned users:
 
@@ -89,8 +89,20 @@ Windows-only legacy TAPI server administration. Provider/device availability,
 domain behavior and whether the role is meaningful vary by server build and
 installed telephony software. Validate installed help and product support.
 
-## Related documents
+## Runtime evidence
 
+On Windows NT `10.0.26200.0`, the catalog identity audit found no
+`tsecimp.exe` Application candidate under either PowerShell collector. No
+feature, role, or compatibility component was installed merely to change
+that result, and no same-named PATH substitute was used. This is target-host
+command-resolution evidence, not proof that the tool is unsupported on every
+applicable Windows environment.
+
+Behavior verification remains /d and /f on an approved copy with /v
+only; no import, domain-wide check, Tsec.ini, provider, line, address or user
+mutation is permitted merely for evidence.
+
+## Related documents
 - [sc.exe](sc.exe.md)
 - [certutil.exe](certutil.exe.md)
 - [whoami.exe](whoami.exe.md)

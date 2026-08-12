@@ -8,6 +8,10 @@
 
 `Get-Command regedit.exe -All`
 
+- Inspect both fixed and displayed version-resource values without opening Registry Editor:
+
+`$regedit = Get-Item -LiteralPath (Get-Command regedit.exe -CommandType Application).Source; $regedit.VersionInfo | Select-Object FileVersionRaw, FileVersion, ProductVersionRaw, ProductVersion`
+
 - Open Registry Editor in the current interactive session:
 
 `Start-Process regedit.exe`
@@ -83,8 +87,29 @@ never infer the intended HKCU from the window title alone.
 remote access, architecture views, UI behavior, and policy ownership vary by
 Windows version, edition, role, installed software, identity, and architecture.
 
-## Related documents
+On the recorded Windows NT `10.0.26200.0` host, `regedit.exe` resolved from
+`C:\Windows\regedit.exe`, not System32. Its fixed file/product version was
+`10.0.26100.8328`, while its Windows PowerShell 5.1-selected strings were
+`10.0.26100.8457`; the exact file had a valid Microsoft Windows signature and
+SHA-256
+`8B1E39262470502C658247DBF1BEED6D7703ED3F4AC01E614E36DA4FC6FD2C3F`.
+No editor process was started and no registry state was read or changed for
+this identity evidence.
 
+## Runtime evidence
+
+On Windows NT `10.0.26200.0`, the read-only file-identity audit under Windows
+PowerShell `5.1.26100.8875` and PowerShell `7.6.4` resolved the exact entry
+point to `C:\WINDOWS\regedit.exe`. Its fixed numeric file version was
+`10.0.26100.8328`. Both collectors reported the same result.
+
+The audit invoked no discovered command, opened no window, contacted no remote
+endpoint, and changed no state. This proves only this host's entry-point
+availability and file identity; it does not prove that the UI loads, the
+current user is authorized, an optional snap-in or component is functional, or
+any displayed or requested operation succeeds.
+
+## Related documents
 - [reg.exe](reg.exe.md)
 - [regini.exe](regini.exe.md)
 - [control.exe](control.exe.md)
