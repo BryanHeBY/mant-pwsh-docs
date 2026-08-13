@@ -163,7 +163,7 @@ function mantEntries(file) {
   }
   const result = spawnSync(
     options.mantBin,
-    [relative(file), "--outline=entries", "--format", "json", "--compact"],
+    ["--input", relative(file), "--outline=entries", "--format", "json", "--compact"],
     {
       cwd: repositoryRoot,
       encoding: "utf8",
@@ -179,8 +179,8 @@ function mantEntries(file) {
   }
   try {
     const outline = JSON.parse(result.stdout);
-    if (outline?.schema !== "mant.outline/v6" || !Array.isArray(outline.nodes)) {
-      return { entries: [], error: "ManT did not return a mant.outline/v6 document." };
+    if (outline?.schema !== "mant.outline/v7" || !Array.isArray(outline.nodes)) {
+      return { entries: [], error: `Expected mant.outline/v7; received ${outline?.schema || "no schema"}.` };
     }
     if (outline.diagnostics !== undefined && !Array.isArray(outline.diagnostics)) {
       return { entries: [], error: "ManT returned a malformed outline diagnostics field." };

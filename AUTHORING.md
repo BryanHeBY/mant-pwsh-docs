@@ -160,10 +160,14 @@ Do not invent empty or dummy entries for a command that genuinely has no
 options, subcommands, variables, or interface environment variables. The
 repository content audit records and reviews those pages separately.
 
-Repository tooling targets ManT CLI protocol v6: document queries use
-`mant.query/v6` and entry outlines use `mant.outline/v6`. These protocol
-schemas are independent of the hand-maintained provenance catalog
-`schemaVersion` in `upstream/`.
+Repository tooling targets ManT 0.7.0 and CLI protocol v7: document queries use
+`mant.query/v7`, embedded documents use `mant.document/v7`, and entry outlines
+use `mant.outline/v7`. Validate a draft explicitly with `mant --input FILE`;
+v7 reserves positional selectors for catalog discovery instead of treating a
+path-shaped selector as a direct file. Consumers should inspect
+`mant --protocol-version` rather than infer protocol compatibility from the
+package version. These protocol schemas are independent of the hand-maintained
+provenance catalog `schemaVersion` in `upstream/`.
 
 ## Examples and output
 

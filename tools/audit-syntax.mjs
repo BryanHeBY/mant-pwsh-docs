@@ -99,7 +99,7 @@ function syntaxTokens(markdown) {
 function mantOptionNames(relativePath) {
   const result = spawnSync(
     options.mantBin,
-    [relativePath, "--outline=entries", "--format", "json", "--compact"],
+    ["--input", relativePath, "--outline=entries", "--format", "json", "--compact"],
     {
       cwd: repositoryRoot,
       encoding: "utf8",
@@ -116,8 +116,8 @@ function mantOptionNames(relativePath) {
   } catch (cause) {
     fail(`${relativePath}: ManT returned invalid JSON (${cause.message}).`);
   }
-  if (outline?.schema !== "mant.outline/v6" || !Array.isArray(outline.nodes)) {
-    fail(`${relativePath}: ManT did not return a mant.outline/v6 document.`);
+  if (outline?.schema !== "mant.outline/v7" || !Array.isArray(outline.nodes)) {
+    fail(`${relativePath}: expected mant.outline/v7; received ${outline?.schema || "no schema"}.`);
   }
   return new Set(
     collectEntries(outline.nodes)

@@ -33,7 +33,7 @@ jobs:
           node-version: 22
       - uses: dtolnay/rust-toolchain@stable
       - name: Install ManT
-        run: cargo install mant --version 0.6.4 --locked
+        run: cargo install mant --version 0.7.0 --locked
       - name: Validate published documentation
         run: npm run validate
 

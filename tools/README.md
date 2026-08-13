@@ -17,7 +17,7 @@ repository level. `tools/validate.mjs` runs on Node.js 20 or newer and checks:
 - command-like `New-Item -LiteralPath` lines in published documents and
   runtime fixtures, because neither supported PowerShell edition exposes that
   parameter and syntax parsing alone cannot detect the binding error;
-- ManT v6 JSON diagnostics for every currently published document.
+- ManT v7 JSON diagnostics for every currently published document.
 
 Role-aware interface lists use the explicit `mant:entries` declarations in
 `AUTHORING.md`. The validator checks their ManT diagnostics; repository-wide
@@ -33,10 +33,11 @@ npm run validate
 
 Use `npm run validate:structure` only when ManT is intentionally unavailable;
 release work must run the normal command. GitHub Actions runs the normal ManT
-0.6.4-backed validation for pull requests, pushes to `main`, and manual
-dispatch across Ubuntu, macOS, and Windows. A separate, parallel Windows job
-runs the version-neutral runtime fixtures through both Windows PowerShell and
-pwsh. Use
+0.7.0-backed validation for pull requests, pushes to `main`, and manual
+dispatch across Ubuntu, macOS, and Windows. Validation probes
+`mant --protocol-version` before reading documents and requires the v7 query,
+document, and outline contracts. A separate, parallel Windows job runs the
+version-neutral runtime fixtures through both Windows PowerShell and pwsh. Use
 `npm run validate:release` before creating
 `v0.6.0` to enforce the full release manifest in `release/v0.6.0.json`.
 

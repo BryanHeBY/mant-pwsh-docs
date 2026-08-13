@@ -599,8 +599,33 @@ function validateMant(documents) {
     reportError(`Unable to run ${options.mantBin} --version. Install ManT or use --skip-mant for structural checks.`);
     return;
   }
+  const protocol = spawnSync(options.mantBin, ["--protocol-version", "--compact"], {
+    cwd: repositoryRoot,
+    encoding: "utf8",
+    timeout: 20_000
+  });
+  if (protocol.status !== 0) {
+    reportError(`Unable to inspect ${options.mantBin} protocol compatibility (${protocol.stderr.trim() || "no diagnostic"}).`);
+    return;
+  }
+  try {
+    const descriptor = JSON.parse(protocol.stdout);
+    if (descriptor?.protocol !== "mant.cli/v7" ||
+        descriptor?.querySchema !== "mant.query/v7" ||
+        descriptor?.documentSchema !== "mant.document/v7" ||
+        descriptor?.outlineSchema !== "mant.outline/v7") {
+      reportError(
+        `${options.mantBin} exposes ${descriptor?.protocol || "an unknown protocol"}; ` +
+        "this repository requires ManT CLI v7 document contracts."
+      );
+      return;
+    }
+  } catch (cause) {
+    reportError(`${options.mantBin} returned an invalid protocol descriptor (${cause.message}).`);
+    return;
+  }
   for (const file of documents) {
-    const result = spawnSync(options.mantBin, [relative(file), "--format", "json", "--compact"], {
+    const result = spawnSync(options.mantBin, ["--input", relative(file), "--format", "json", "--compact"], {
       cwd: repositoryRoot,
       encoding: "utf8",
       timeout: 20_000
@@ -611,8 +636,11 @@ function validateMant(documents) {
     }
     try {
       const output = JSON.parse(result.stdout);
-      if (output?.schema !== "mant.query/v6" || output.document === undefined) {
-        reportError(`${relative(file)}: ManT JSON output was not a document query result.`);
+      if (output?.schema !== "mant.query/v7" || output.document?.schema !== "mant.document/v7") {
+        reportError(
+          `${relative(file)}: expected mant.query/v7 with mant.document/v7, ` +
+          `received ${output?.schema || "no query schema"} with ${output?.document?.schema || "no document schema"}.`
+        );
         continue;
       }
       const diagnostics = output.document?.diagnostics;
