@@ -20,4 +20,4 @@ priority = 5
 repo = "https://github.com/BryanHeBY/mant-pwsh-docs.git"
 branch = "main"
 path = "docs/en-US/cross-platform-tools"
-priority = 5
+priority = -5

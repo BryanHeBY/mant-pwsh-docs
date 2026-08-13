@@ -32,7 +32,7 @@ kept separate from the portable documentation checks.
 
 Copy or merge the desired source entries from
 [sources.example.toml](sources.example.toml) into ManT's `sources.toml`, then
-update the local cache. Each entry is independent: a Windows-only setup can
+update the installed sources. Each entry is independent: a Windows-only setup can
 omit `cross-platform-tools`, while a macOS or Linux setup can omit
 `windows-tools`.
 
@@ -49,6 +49,12 @@ tool documentation distinct even where a document name overlaps. For
 example, use `mant curl --source pwsh51` for the Windows PowerShell alias
 boundary and `mant curl --source cross-platform-tools` for the native
 executable guide.
+
+ManT 0.7 compares configured source priorities with native manuals at priority
+`0`. The example keeps the PowerShell and Windows-specific collections above
+that boundary, while `cross-platform-tools` uses `-5` so an installed native
+manual wins an unqualified query. An explicit `--source` still selects this
+repository's guide.
 
 Windows entry-point documents retain their canonical suffixes, for example
 `winget.exe`, `tree.com`, `services.msc`, and `prncnfg.vbs`. On Windows, ManT
@@ -71,9 +77,9 @@ subcommand pages remain unsuffixed.
 
 ## Source maintenance
 
-ManT 0.6 reports source updates as `mant.sources-update/v2`. Removing an entry
-from `sources.toml` makes its cached document source orphaned, but an ordinary
-`mant --update-docs` does not delete it. Preview the exact cache directories
+ManT 0.7 reports source updates as `mant.sources-update/v2`. Removing an entry
+from `sources.toml` makes its installed document source orphaned, but an ordinary
+`mant --update-docs` does not delete it. Preview the exact source directories
 first, then prune only when those sources are no longer needed:
 
 ```text
@@ -82,22 +88,22 @@ mant --prune-docs
 ```
 
 The prune report uses `mant.sources-prune/v1`. Treat these report identifiers
-as CLI data-format versions, independently of this repository's 0.6.0 release
+as CLI data-format versions, independently of this repository's 0.7.0 release
 number.
 
 ## Project status
 
-The planned English 0.6.0 inventory contains 416 reviewed pages: 30 for
+The planned English 0.7.0 inventory contains 416 reviewed pages: 30 for
 PowerShell 7, 30 for Windows PowerShell 5.1, 350 Windows tool pages, and 6
 cross-platform tool pages. The normative inventory lives in
-[release/v0.6.0.json](release/v0.6.0.json).
+[release/v0.7.0.json](release/v0.7.0.json).
 The repository-wide deep-review gates, current batches, and confirmed findings
 are tracked in [QUALITY-AUDIT.md](QUALITY-AUDIT.md).
 
 Portable ManT parsing, provenance validation, and locked-upstream
-accessibility audit pass locally. The final `v0.6.0` tag remains pending recorded
+accessibility audit pass locally. The final `v0.7.0` tag remains pending recorded
 runtime verification on all platforms required by
-[V0.6.0-SCOPE.md](V0.6.0-SCOPE.md). Windows PowerShell 5.1 and PowerShell 7.6
+[V0.7.0-SCOPE.md](V0.7.0-SCOPE.md). Windows PowerShell 5.1 and PowerShell 7.6
 now have completed editorial/source/metadata passes and partial platform
 runtime evidence; remaining Windows fixtures, macOS, and compatible dotnet SDK
 hosts remain incomplete. CI runs the ManT 0.7.0 portable validator and v7

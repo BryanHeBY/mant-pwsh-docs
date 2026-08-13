@@ -17,7 +17,8 @@ directly rather than generated from copied upstream pages.
 
 Follow the detailed conventions in [AUTHORING.md](AUTHORING.md). Run
 `npm run validate` before submitting a documentation change. The command
-requires Node.js 20 or newer and ManT 0.6.0 or newer. Use
+requires Node.js 20 or newer and ManT 0.7.0 or another executable exposing the
+same v7 contracts. Use
 `npm run validate:structure` only for local structural checks when ManT is not
 available; CI requires the complete validation command.
 

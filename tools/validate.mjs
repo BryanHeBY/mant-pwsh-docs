@@ -673,8 +673,8 @@ for (const [sourceName, catalogPath] of catalogs) {
   });
 }
 validateVersionEvidenceLabels(
-  path.join(repositoryRoot, "release", "v0.6.0-runtime.md"),
-  fs.readFileSync(path.join(repositoryRoot, "release", "v0.6.0-runtime.md"), "utf8")
+  path.join(repositoryRoot, "release", "v0.7.0-runtime.md"),
+  fs.readFileSync(path.join(repositoryRoot, "release", "v0.7.0-runtime.md"), "utf8")
 );
 if (options.release !== undefined) {
   validateRelease(options.release, sourceData);

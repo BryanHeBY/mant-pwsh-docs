@@ -177,4 +177,4 @@ Behavior, syntax, key-package requirements, applicability, and the destructive
 output warning come from Microsoft's CC BY 4.0
 [repair-bde reference](https://learn.microsoft.com/windows-server/administration/windows-commands/repair-bde).
 Exact provenance and the versioned local help observation are recorded in
-`upstream/windows-tools.json` and `release/v0.6.0-runtime-evidence.md`.
+`upstream/windows-tools.json` and `release/v0.7.0-runtime-evidence.md`.

@@ -39,7 +39,7 @@ dispatch across Ubuntu, macOS, and Windows. Validation probes
 document, and outline contracts. A separate, parallel Windows job runs the
 version-neutral runtime fixtures through both Windows PowerShell and pwsh. Use
 `npm run validate:release` before creating
-`v0.6.0` to enforce the full release manifest in `release/v0.6.0.json`.
+`v0.7.0` to enforce the full release manifest in `release/v0.7.0.json`.
 
 `npm run validate:upstream` is a separate networked editorial audit. It checks
 that every locked Git source path and every web source URL in the provenance

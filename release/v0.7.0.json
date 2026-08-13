@@ -1,6 +1,6 @@
 {
   "$schema": "release-manifest/v1",
-  "release": "v0.6.0",
+  "release": "v0.7.0",
   "locale": "en-US",
   "requiredDocumentCount": 416,
   "sources": {

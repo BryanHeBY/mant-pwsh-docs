@@ -1,7 +1,7 @@
 {
   "name": "mant-pwsh-docs",
   "private": true,
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "English PowerShell and PowerShell-facing tool documentation for ManT",
   "type": "module",
   "engines": {
@@ -12,7 +12,7 @@
     "audit:syntax": "node tools/audit-syntax.mjs",
     "validate": "node tools/validate.mjs",
     "validate:structure": "node tools/validate.mjs --skip-mant",
-    "validate:release": "node tools/validate.mjs --release v0.6.0",
+    "validate:release": "node tools/validate.mjs --release v0.7.0",
     "validate:upstream": "node tools/verify-upstream.mjs"
   }
 }

@@ -78,7 +78,7 @@ to avoid an ambiguous `--explain=--size` result.
 - `--tab INDEX`: Select the destination tab for `move-pane`.
 
 The literal negated spelling `!--reloadEnvironment` is also documented for the
-environment-inheritance setting. ManT 0.6.4 does not accept `!` as a semantic
+environment-inheritance setting. ManT 0.7.0 does not accept `!` as a semantic
 option prefix, so this exceptional token remains searchable prose rather than
 an outline entry.
 

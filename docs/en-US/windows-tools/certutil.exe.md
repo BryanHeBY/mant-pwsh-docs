@@ -95,7 +95,7 @@ target identity, output paths, secrets, and rollback remain mandatory gates.
 
 #### Dot-bearing CA retrieval verbs
 
-ManT 0.6.4 preserves non-empty dotted segments in dash-option names. These
+ManT 0.7.0 preserves non-empty dotted segments in dash-option names. These
 semantic selectors therefore match the exact CertUtil invocation verbs instead
 of using index-only aliases.
 
@@ -409,7 +409,7 @@ Microsoft's current source exposes 133 verb headings; the case-insensitive
 union is 134 because the installed -ConvertEPF verb is absent online. The
 help-only -v -uSAGE form returned 0, 1600 lines, no stderr, and 162 unique
 headings: the same 134 verbs plus 28 global options. The page indexes every
-heading. ManT 0.6.4 preserves the exact leading-hyphen dot-bearing selectors
+heading. ManT 0.7.0 preserves the exact leading-hyphen dot-bearing selectors
 -ca.cert and -ca.chain; direct explanations resolve each without ambiguity.
 
 ## Related documents

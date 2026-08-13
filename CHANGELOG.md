@@ -14,7 +14,7 @@ bundles.
   385 bounded `Runtime evidence` sections and 31 explicit `Verification
   boundary` sections, enforced by validation and supported by authoring
   guidance plus conservative templates.
-- ManT protocol v6 semantic entries for PowerShell variables, including
+- ManT semantic entries for PowerShell variables, including
   automatic-variable lookup in both shell editions, and fixed attached native
   options such as `/F:Y` and `perf=default`.
 - First English release inventory: 416 reviewed ManT pages across `pwsh7`,
@@ -248,7 +248,7 @@ bundles.
   diagnosis, repair, and salvage family guides for BdeHdCfg and RefsUtil.
 - Per-page locked provenance catalogs, reader-facing source/license sections,
   and an optional upstream accessibility audit.
-- Portable Node.js validation with ManT JSON diagnostics and a 0.6.0 release gate.
+- Portable Node.js validation with ManT JSON diagnostics and a 0.7.0 release gate.
 
 ### Changed
 
@@ -256,9 +256,11 @@ bundles.
   or `.vbs` suffixes for ManT's Windows `PATHEXT` lookup model; Cmd builtins,
   PowerShell commands, URI entries, and conceptual family pages remain
   unsuffixed.
-- The initial documentation bundle version is 0.6.0, aligned with the ManT
-  protocol and runtime baseline it targets.
-- The parser and CI baseline is ManT 0.6.4. Exact dotted dash options such as
+- The initial documentation bundle version is 0.7.0, aligned with the ManT
+  release and protocol baseline it targets.
+- The parser and CI baseline is ManT 0.7.0. Direct draft reads use explicit
+  `--input` selection, and validation requires the v7 CLI, query, document, and
+  outline contracts before inspecting the corpus. Exact dotted dash options such as
   CertUtil's `-ca.cert` are now semantic option entries, and entries rejected
   by the stricter placeholder grammar use unambiguous option names with their
   compound operand syntax in prose.
@@ -271,5 +273,5 @@ bundles.
 ### Pending release verification
 
 - Runtime verification on Windows, macOS, and Linux remains required before
-  creating the final `v0.6.0` tag; see
-  [release/v0.6.0-runtime.md](release/v0.6.0-runtime.md).
+  creating the final `v0.7.0` tag; see
+  [release/v0.7.0-runtime.md](release/v0.7.0-runtime.md).
