@@ -9,6 +9,10 @@
 
 `dism.exe /Online /Get-Features /Format:Table`
 
+- Inspect the exact Windows Sandbox optional-feature identity without changing it:
+
+`dism.exe /Online /Get-FeatureInfo /FeatureName:Containers-DisposableClientVM`
+
 - List capabilities in the running Windows installation:
 
 `dism.exe /Online /Get-Capabilities /Format:Table`
@@ -58,7 +62,9 @@ image-health result.
 - `/RestoreHealth`: Scan and repair component-store corruption using configured or explicit sources.
 - `/Source:PATH`: Specify one or more known-compatible repair sources for a supported servicing operation.
 - `/LimitAccess`: Prevent DISM from contacting Windows Update as a repair source or backup source.
-- `/Get-Features`, `/Enable-Feature`, `/Disable-Feature`: Inventory or change optional Windows features by exact feature name.
+- `/Get-Features`, `/Get-FeatureInfo`, `/Enable-Feature`, `/Disable-Feature`: Inventory or change optional Windows features by exact feature name.
+- `/FeatureName:NAME`: Select one exact optional-feature identity for a feature operation.
+- `/All`: With `/Enable-Feature`, enable required parent features with their default values.
 - `/Get-Capabilities`, `/Add-Capability`, `/Remove-Capability`: Inventory or change Windows capabilities by exact identity.
 - `/Get-Packages`, `/Add-Package`, `/Remove-Package`: Inventory or service packages using exact package/path and target compatibility.
 - `/Get-Drivers`, `/Add-Driver`, `/Remove-Driver`: Inventory or service offline driver packages; use PnPUtil for running-system device/Driver Store workflows.
@@ -77,6 +83,50 @@ stable object API, and completion can still leave a pending restart.
 Record token elevation before classifying output. Exit 740 with the explicit
 elevation diagnostic means DISM did not reach the requested help or servicing
 operation; do not parse it as an empty feature list or component-store result.
+
+## Optional-feature workflow
+
+Use `/Get-Features` to discover identities and `/Get-FeatureInfo` to inspect one
+exact feature before changing it. Display names from Settings or the Windows
+Features dialog are not servicing identities. For example, the Windows Sandbox
+feature is `Containers-DisposableClientVM`:
+
+```powershell
+$queryArguments = @(
+    '/Online'
+    '/Get-FeatureInfo'
+    '/FeatureName:Containers-DisposableClientVM'
+)
+
+& dism.exe @queryArguments
+if ($LASTEXITCODE -ne 0) {
+    throw "DISM feature query failed with exit code $LASTEXITCODE."
+}
+```
+
+The corresponding mutation targets the running installation and requires an
+approved elevated session. Do not combine it with an unexplained pending
+restart. `/All` enables required parents; `/NoRestart` leaves restart timing to
+the caller but does not make the completed change immediately usable:
+
+```powershell
+$enableArguments = @(
+    '/Online'
+    '/Enable-Feature'
+    '/FeatureName:Containers-DisposableClientVM'
+    '/All'
+    '/NoRestart'
+)
+
+& dism.exe @enableArguments
+$enableExitCode = $LASTEXITCODE
+"DISM exit code: $enableExitCode"
+```
+
+Preserve the complete native output and inspect the DISM/CBS logs when the
+result is not unambiguously successful. After a deliberate restart, repeat the
+`/Get-FeatureInfo` query and verify the application or command separately; a
+successful servicing invocation alone is not proof that `wsb.exe` is present.
 
 ## Common mistakes
 
@@ -111,6 +161,14 @@ never leave a production workflow dependent on an abandoned mount directory.
 They use different identities and servicing verbs. Enumerate the correct
 family, copy the exact name, account for dependencies and source payloads, and
 query the result including pending-restart state.
+
+### Guessing a feature identity from its display name
+
+The UI label `Windows Sandbox` is not accepted as the servicing identity used
+by the command examples. Discover or verify the exact
+`Containers-DisposableClientVM` name before enabling it, and do not generalize
+that identity to a different Windows edition or image without querying the
+target.
 
 ### Treating progress or exit status as final health
 
@@ -153,6 +211,8 @@ This original guide was adapted from Microsoft's official
 [DISM overview](https://learn.microsoft.com/windows-hardware/manufacture/desktop/what-is-dism?view=windows-11),
 [DISM command-line reference](https://learn.microsoft.com/windows-hardware/manufacture/desktop/deployment-image-servicing-and-management--dism--command-line-options?view=windows-11),
 and [feature-servicing guidance](https://learn.microsoft.com/windows-hardware/manufacture/desktop/enable-or-disable-windows-features-using-dism?view=windows-11).
+The Windows Sandbox example additionally uses Microsoft's
+[installation guidance](https://learn.microsoft.com/windows/security/application-security/application-isolation/windows-sandbox/windows-sandbox-install).
 Exact sources and licenses are recorded in `upstream/windows-tools.json`.
 
 The cited documentation and this adaptation are licensed under CC BY 4.0.

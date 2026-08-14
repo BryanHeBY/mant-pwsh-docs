@@ -12,6 +12,10 @@
 
 `wsb.exe list --raw`
 
+- Inspect whether the Windows Sandbox optional feature is enabled:
+
+`Get-WindowsOptionalFeature -Online -FeatureName Containers-DisposableClientVM`
+
 - Stop one exact sandbox after preserving required artifacts:
 
 `wsb.exe stop --id {{sandbox-id}}`
@@ -31,6 +35,63 @@ Sandbox uses hypervisor isolation, but host integrations are security
 boundaries: networking and clipboard redirection are enabled by default, vGPU
 is normally enabled on non-Arm64, and a writable shared folder persists sandbox
 changes onto the host.
+
+## Install and verify the optional feature
+
+Do not infer installation from the Windows edition or the presence of Hyper-V.
+Windows Sandbox uses the exact optional-feature identity
+`Containers-DisposableClientVM`. Inspect it before looking for the application
+or CLI:
+
+```powershell
+$featureName = 'Containers-DisposableClientVM'
+$feature = Get-WindowsOptionalFeature -Online -FeatureName $featureName
+$feature | Select-Object FeatureName, State
+```
+
+Enable the feature only from an approved elevated PowerShell session. Preserve
+an existing pending-restart condition instead of stacking an unexplained
+servicing change, and use `-NoRestart` so the caller controls when open work is
+closed:
+
+```powershell
+$featureName = 'Containers-DisposableClientVM'
+$result = Enable-WindowsOptionalFeature `
+    -Online `
+    -FeatureName $featureName `
+    -All `
+    -NoRestart `
+    -ErrorAction Stop
+
+$result | Select-Object FeatureName, State, RestartNeeded
+```
+
+`-Online` changes the running Windows installation, `-All` enables required
+parent features, and `-NoRestart` suppresses an automatic restart without
+removing the restart requirement. Save work and restart deliberately when the
+result or servicing state requires it. After restart, verify feature state and
+discover each application entry point independently:
+
+```powershell
+$feature = Get-WindowsOptionalFeature `
+    -Online `
+    -FeatureName Containers-DisposableClientVM
+
+if ($feature.State -ne 'Enabled') {
+    throw "Windows Sandbox feature state is $($feature.State)."
+}
+
+Get-Command WindowsSandbox.exe, wsb.exe -ErrorAction SilentlyContinue
+Get-AppxPackage -Name WindowsSandbox |
+    Select-Object Name, Version, Status
+```
+
+On Windows 11 24H2 and later, the newer Store-serviced Sandbox application
+supplies the modern `wsb.exe` CLI. Feature enablement and CLI availability are
+therefore separate observations: an enabled feature with no `wsb.exe` can
+require the application update rather than another feature-enable operation.
+Use the equivalent elevated DISM workflow in [dism.exe](dism.exe.md) when a
+native servicing command is required.
 
 ## Syntax
 
@@ -221,6 +282,13 @@ Design an explicit artifact/result channel and authenticate what crosses it.
 List current-user sessions, match the exact ID returned by `start`, and retain
 it as immutable workflow state; never select by table order or IP address.
 
+### Treating feature state and CLI availability as the same check
+
+The Windows optional feature, GUI application, Store-serviced application
+version, and `wsb.exe` command can have different states. Query the exact
+feature, application package, and command separately before diagnosing or
+repeating an installation.
+
 ## Version and availability
 
 Windows Sandbox is an optional feature supported on Windows Pro, Enterprise,
@@ -246,8 +314,14 @@ artifact, XML configuration, IP, or stop/discard action ran.
 
 This original guide was adapted from Microsoft's
 [Windows Sandbox CLI](https://learn.microsoft.com/windows/security/application-security/application-isolation/windows-sandbox/windows-sandbox-cli),
+[installation guidance](https://learn.microsoft.com/windows/security/application-security/application-isolation/windows-sandbox/windows-sandbox-install),
+[version and servicing guidance](https://learn.microsoft.com/windows/security/application-security/application-isolation/windows-sandbox/windows-sandbox-versions),
 [configuration-file reference](https://learn.microsoft.com/windows/security/application-security/application-isolation/windows-sandbox/windows-sandbox-configure-using-wsb-file),
-and [overview](https://learn.microsoft.com/windows/security/application-security/application-isolation/windows-sandbox/).
+[overview](https://learn.microsoft.com/windows/security/application-security/application-isolation/windows-sandbox/),
+and the DISM module references for
+[`Get-WindowsOptionalFeature`](https://learn.microsoft.com/powershell/module/dism/get-windowsoptionalfeature?view=windowsserver2025-ps)
+and
+[`Enable-WindowsOptionalFeature`](https://learn.microsoft.com/powershell/module/dism/enable-windowsoptionalfeature?view=windowsserver2025-ps).
 Exact page revisions are recorded in `upstream/windows-tools.json`.
 
 The cited documentation is licensed under CC BY 4.0. This adaptation is

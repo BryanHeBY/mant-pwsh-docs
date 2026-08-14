@@ -129,6 +129,17 @@
         "url": "https://github.com/MicrosoftDocs/SupportArticles-docs/blob/main/LICENSE"
       },
       "retrievedAt": "2026-08-12"
+    },
+    "tldr-pages": {
+      "type": "git",
+      "repository": "https://github.com/tldr-pages/tldr.git",
+      "branch": "main",
+      "revision": "fec238818392b549992c16bd76a139850ff390bb",
+      "license": {
+        "spdx": "CC0-1.0",
+        "url": "https://github.com/tldr-pages/tldr/blob/main/LICENSE.md"
+      },
+      "retrievedAt": "2026-08-15"
     }
   },
   "discovery": [
@@ -936,12 +947,48 @@
         },
         {
           "type": "web",
+          "url": "https://learn.microsoft.com/en-us/windows/security/application-security/application-isolation/windows-sandbox/windows-sandbox-install",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-15"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/en-us/windows/security/application-security/application-isolation/windows-sandbox/windows-sandbox-versions",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-15"
+        },
+        {
+          "type": "web",
           "url": "https://learn.microsoft.com/en-us/windows/security/application-security/application-isolation/windows-sandbox/windows-sandbox-configure-using-wsb-file",
           "license": {
             "spdx": "CC-BY-4.0",
             "url": "https://creativecommons.org/licenses/by/4.0/"
           },
           "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/en-us/powershell/module/dism/get-windowsoptionalfeature?view=windowsserver2025-ps",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-15"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/en-us/powershell/module/dism/enable-windowsoptionalfeature?view=windowsserver2025-ps",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-15"
         },
         {
           "type": "web",
@@ -954,8 +1001,8 @@
         }
       ],
       "notes": [
-        "The page corrects the public modern interface to wsb.exe, registers every official 24H2 command and option, documents the lack of exec process I/O, and makes every .wsb integration/security element an outline node.",
-        "Official CLI and configuration contracts were reviewed; no optional feature, sandbox, hypervisor, RDP, command, host share, network, clipboard, device, artifact, or discard action ran."
+        "The page corrects the public modern interface to wsb.exe, registers every official 24H2 command and option, documents the lack of exec process I/O, makes every .wsb integration/security element an outline node, and adds the exact optional-feature install/restart/application-verification lifecycle.",
+        "Official CLI, installation, servicing, version, and configuration contracts were reviewed; no feature enable/disable, sandbox, hypervisor, RDP, command, host share, network, clipboard, device, artifact, or discard action ran."
       ]
     },
     "wsl.exe.md": {
@@ -7619,10 +7666,19 @@
             "url": "https://creativecommons.org/licenses/by/4.0/"
           },
           "checkedAt": "2026-08-11"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/en-us/windows/security/application-security/application-isolation/windows-sandbox/windows-sandbox-install",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-15"
         }
       ],
       "notes": [
-        "The TLDR is query-only; the page distinguishes online/offline/container targets, host-target compatibility, repair sources, mount commit/discard, servicing identities, logs, and pending restart.",
+        "The TLDR is query-only; the page distinguishes online/offline/container targets, host-target compatibility, repair sources, mount commit/discard, servicing identities, logs, and pending restart, with an exact Windows Sandbox feature query/change workflow.",
         "On Windows NT 10.0.26200.0, installed DISM file version 10.0.26100.8457 returned 740 (ERROR_ELEVATION_REQUIRED) before showing ordinary-token /? help. No image target, inventory, mount, cleanup, repair, feature, capability, package, driver, commit, discard, log, or scratch operation ran."
       ]
     },
@@ -11761,6 +11817,45 @@
       "notes": [
         "Microsoft's current page describes a retired subsystem, provides no usable syntax and contains a rexec wording inconsistency. The page separates RSH from SSH and PowerShell remoting and makes migration the actionable path.",
         "Exact System32 discovery on the recorded Windows NT 10.0.26200.0 Home China client found rsh.exe absent; no PATH substitute, connection, trust file, privileged-port exception, or daemon action ran. Signature/version/help verification remains pending only on an approved legacy fixture."
+      ]
+    },
+    "iexpress.exe.md": {
+      "kind": "native-cli",
+      "status": "reviewed",
+      "versions": [
+        "Windows 11 System32 file/product version 11.00.26100.1 observed on Windows NT 10.0.26200.0; archived Microsoft documentation applies to older IEAK/Windows Server context"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "tldr-pages",
+          "path": "pages/windows/iexpress.md"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/previous-versions/windows/internet-explorer/ie-it-pro/internet-explorer-11/ie11-ieak/iexpress-wizard-for-win-server",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-15"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/previous-versions/windows/internet-explorer/ie-it-pro/internet-explorer-11/ie11-ieak/iexpress-command-line-options",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-15"
+        }
+      ],
+      "notes": [
+        "The CC0 TLDR supplied the current builder-option discovery path. Microsoft establishes the wizard, SED package-definition model and generated-package extraction switches; the adaptation corrects the TLDR's ZIP wording and does not present /R as an IExpress builder switch.",
+        "On Windows NT 10.0.26200.0, exact System32 identity inspection found description Wizard, file/product version 11.00.26100.1 and length 196608 bytes. No GUI, SED build, package, extraction, embedded command, restart or output artifact ran."
       ]
     },
     "tlntadmn.exe.md": {

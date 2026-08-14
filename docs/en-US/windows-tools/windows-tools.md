@@ -567,6 +567,7 @@ license in the document's provenance catalog before adapting material.
 - [format.com](format.com.md): destructive filesystem creation gated by durable volume identity, restore, and media-aware sanitization limits.
 - [recover.exe](recover.exe.md): single-file readable-sector salvage on an imaged/clone copy, distinct from filesystem and disk recovery.
 - [makecab.exe](makecab.exe.md) / [diantz.exe](diantz.exe.md): explicit Cabinet builds, directive-file review, artifact verification, and searchable compatibility naming.
+- [iexpress.exe](iexpress.exe.md): interactive or SED-driven self-extracting package builds with builder/runtime option boundaries.
 - [expand.exe](expand.exe.md): list-first, isolated Cabinet extraction with path, collision, signature, and format boundaries.
 - [extract](extract.md): modern `extrac32.exe` replacement, silent-output handling, and non-executing Cabinet inspection/extraction.
 - [manage-bde.exe](manage-bde.exe.md): BitLocker state, protectors, escrow, and access.
