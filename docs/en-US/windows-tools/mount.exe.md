@@ -19,6 +19,18 @@
 - Mount one reviewed export on an unused drive with a hard mount and Kerberos privacy:
 
 `mount.exe -o mtype=hard sec=krb5p "{{nfs01.example.com:/exports/data}}" "{{Z:}}"`
+
+- Bound the NFS response timeout for one reviewed export:
+
+`mount.exe -o timeout={{5}} "{{nfs01.example.com:/exports/data}}" "{{Z:}}"`
+
+- Bound retries for one reviewed NFS mount:
+
+`mount.exe -o retry={{10}} "{{nfs01.example.com:/exports/data}}" "{{Z:}}"`
+
+- Preserve case-sensitive name handling where the server contract requires it:
+
+`mount.exe -o casesensitive "{{nfs01.example.com:/exports/data}}" "{{Z:}}"`
 <!-- mant:tldr:end -->
 
 # mount.exe

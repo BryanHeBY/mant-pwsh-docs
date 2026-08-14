@@ -15,6 +15,22 @@
 - Inspect the comparison result in PowerShell (0 identical, 1 different, 2 error):
 
 `fc.exe "{{old.txt}}" "{{new.txt}}"; $LASTEXITCODE`
+
+- Compare text without regard to letter case:
+
+`fc.exe /l /c "{{old.txt}}" "{{new.txt}}"`
+
+- Compare files as legacy Unicode text:
+
+`fc.exe /u "{{old.txt}}" "{{new.txt}}"`
+
+- Compare text without expanding tabs to spaces:
+
+`fc.exe /l /t "{{old.txt}}" "{{new.txt}}"`
+
+- Ignore leading/trailing whitespace and compress runs of tabs or spaces:
+
+`fc.exe /l /w "{{old.txt}}" "{{new.txt}}"`
 <!-- mant:tldr:end -->
 
 # fc.exe

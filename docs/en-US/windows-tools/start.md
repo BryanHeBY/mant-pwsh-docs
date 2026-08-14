@@ -23,6 +23,18 @@
 - Wait for the started program:
 
 `cmd.exe /d /c 'start "" /wait "{{C:\path\app.exe}}" {{argument}}'`
+
+- Open one exact directory in its registered graphical handler:
+
+`cmd.exe /d /c 'start "" "{{C:\path\directory}}"' `
+
+- Start one executable in a minimized or maximized window:
+
+`cmd.exe /d /c 'start "" {{/min|/max}} "{{C:\path\app.exe}}"' `
+
+- Start a program with one explicit working directory:
+
+`cmd.exe /d /c 'start "" /d "{{C:\work}}" "{{C:\path\app.exe}}"' `
 <!-- mant:tldr:end -->
 
 # start

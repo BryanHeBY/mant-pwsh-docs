@@ -15,6 +15,22 @@
 - Use a typed CIM query for new PowerShell automation:
 
 `Get-CimInstance -ClassName Win32_OperatingSystem | Select-Object Caption, Version, BuildNumber, OSArchitecture`
+
+- On a verified legacy fixture, display concise operating-system fields:
+
+`wmic.exe os get Caption,Version,BuildNumber,OSArchitecture`
+
+- On a verified legacy fixture, list running processes briefly:
+
+`wmic.exe process list brief`
+
+- On a verified legacy fixture, select process name, PID, and parent PID:
+
+`wmic.exe process get Name,ProcessId,ParentProcessId`
+
+- On a verified legacy fixture, inspect name and command line for one exact PID:
+
+`wmic.exe process where ProcessId={{pid}} get Name,CommandLine`
 <!-- mant:tldr:end -->
 
 # wmic.exe

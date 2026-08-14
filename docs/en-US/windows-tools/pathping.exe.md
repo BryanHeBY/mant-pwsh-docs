@@ -19,6 +19,22 @@
 - Get a quick hop list when statistical sampling is unnecessary:
 
 `tracert.exe /d {{host-or-address}}`
+
+- Run the default trace and statistical sample for one target:
+
+`pathping.exe {{host-or-address}}`
+
+- Bound the route search to a chosen maximum hop count:
+
+`pathping.exe /n /h {{max-hops}} {{host-or-address}}`
+
+- Force IPv6 for a dual-stack target:
+
+`pathping.exe /n /6 {{host-or-address}}`
+
+- Display installed timing, query-count, hop, and address-family options:
+
+`pathping.exe /?`
 <!-- mant:tldr:end -->
 
 # pathping.exe

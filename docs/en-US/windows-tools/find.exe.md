@@ -15,6 +15,10 @@
 - Distinguish match, no-match, and error after a search in PowerShell:
 
 `find.exe "{{text}}" "{{file}}"; $LASTEXITCODE`
+
+- Count lines containing one literal string:
+
+`find.exe /i /c "{{literal text}}" "{{C:\path\file.txt}}"`
 <!-- mant:tldr:end -->
 
 # find.exe

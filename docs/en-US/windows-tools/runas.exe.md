@@ -15,6 +15,18 @@
 - List supported trust levels without launching a program:
 
 `runas.exe /showtrustlevels`
+
+- Run without loading the target user's profile when the application contract permits it:
+
+`runas.exe /noprofile /user:{{domain\user}} "{{program.exe arguments}}"`
+
+- Preserve the caller's environment variables while changing the security principal:
+
+`runas.exe /env /user:{{domain\user}} "{{program.exe arguments}}"`
+
+- Open a Command Prompt as another account and enter its password interactively:
+
+`runas.exe /user:{{domain\user}} "cmd.exe /d"`
 <!-- mant:tldr:end -->
 
 # runas.exe

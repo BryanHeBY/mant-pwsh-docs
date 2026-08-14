@@ -15,6 +15,10 @@
 - Copy one PowerShell string without native-pipeline encoding ambiguity:
 
 `Set-Clipboard -Value '{{text}}'`
+
+- Copy one line of text, including its trailing newline, through the native pipeline:
+
+`Write-Output '{{text}}' | clip.exe`
 <!-- mant:tldr:end -->
 
 # clip.exe

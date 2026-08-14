@@ -31,6 +31,10 @@
 - Run with command echo disabled and extensions enabled:
 
 `cmd.exe /d /q /e:on /c {{command}}`
+
+- Start an isolated interactive shell with command extensions disabled:
+
+`cmd.exe /d /e:off`
 <!-- mant:tldr:end -->
 
 # cmd.exe

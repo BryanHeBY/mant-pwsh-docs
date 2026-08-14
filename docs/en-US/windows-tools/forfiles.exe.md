@@ -15,6 +15,18 @@
 - Use PowerShell objects for richer preview and filtering:
 
 `Get-ChildItem -LiteralPath '{{C:\path}}' -File -Recurse | Where-Object LastWriteTime -LE (Get-Date).AddDays(-30)`
+
+- List entries selected from the current directory using the default command:
+
+`forfiles.exe`
+
+- List one filename pattern in a selected directory without recursion:
+
+`forfiles.exe /p "{{C:\path}}" /m "{{*.log}}" /c "cmd.exe /d /c echo @path"`
+
+- List files modified on or after one exact locale-compatible date:
+
+`forfiles.exe /p "{{C:\path}}" /m "*" /d +{{08/01/2026}} /c "cmd.exe /d /c if @isdir==FALSE echo @path"`
 <!-- mant:tldr:end -->
 
 # forfiles.exe

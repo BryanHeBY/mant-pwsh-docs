@@ -15,6 +15,22 @@
 - Compare strings without case sensitivity:
 
 `if /i "{{%VALUE%}}"=="{{expected}}" echo matched`
+
+- Run a command only when a path does not exist:
+
+`if not exist "{{C:\path\file}}" ({{echo missing}})`
+
+- Compare two quoted strings with case sensitivity:
+
+`if "{{%VALUE%}}"=="{{expected}}" ({{echo matched}}) else ({{echo different}})`
+
+- Compare integer-like operands using an explicit numeric operator:
+
+`if {{%COUNT%}} GEQ {{10}} ({{echo threshold reached}})`
+
+- Test whether an environment variable is defined without expanding its value:
+
+`if defined {{VARIABLE}} ({{echo defined}}) else ({{echo undefined}})`
 <!-- mant:tldr:end -->
 
 # if

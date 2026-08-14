@@ -15,6 +15,14 @@
 - Iterate an inclusive numeric range:
 
 `for /l %%N in ({{1}},{{1}},{{10}}) do echo %%N`
+
+- Iterate directories matched by one reviewed pattern:
+
+`for /d %%D in ("{{C:\root\*}}") do echo %%~fD`
+
+- At an interactive Cmd prompt, use one percent sign instead of the batch-file double form:
+
+`for %F in ({{*.txt}}) do echo %~fF`
 <!-- mant:tldr:end -->
 
 # for

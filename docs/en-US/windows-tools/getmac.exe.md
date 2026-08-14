@@ -19,6 +19,14 @@
 - Query a reviewed remote computer using the current credentials:
 
 `getmac.exe /s {{computer-name}} /v /fo csv`
+
+- Emit CSV rows without a header for a parser that already fixes the schema:
+
+`getmac.exe /v /fo csv /nh`
+
+- Display installed output-format, remote-target, and credential options:
+
+`getmac.exe /?`
 <!-- mant:tldr:end -->
 
 # getmac.exe

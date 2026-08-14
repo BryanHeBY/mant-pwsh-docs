@@ -16,6 +16,26 @@
 - Verify that an approved image-file parent exists and that neither output nor log already exists:
 
 `$outputImage = [IO.Path]::GetFullPath("{{X:\approved-recovery\damaged-volume.img}}"); $logPath = [IO.Path]::GetFullPath("{{X:\approved-recovery\repair-bde.log}}"); if (-not (Test-Path -LiteralPath (Split-Path -LiteralPath $outputImage -Parent) -PathType Container) -or (Test-Path -LiteralPath $outputImage) -or (Test-Path -LiteralPath $logPath)) { throw 'Recovery parent must exist and output/log paths must be new.' }`
+
+- Inspect BitLocker state for the exact source before planning recovery:
+
+`manage-bde.exe -status {{E:}}`
+
+- Record and hash the approved external recovery-key file without displaying its contents:
+
+`Get-Item -LiteralPath "{{X:\Recovery\key.bek}}"; Get-FileHash -Algorithm SHA256 -LiteralPath "{{X:\Recovery\key.bek}}"`
+
+- After independently proving source/output identity, recover with an external key into a new image and protected log:
+
+`repair-bde.exe {{E:}} "{{X:\Recovery\recovered.img}}" -RecoveryKey "{{X:\Recovery\key.bek}}" -LogFile "{{X:\Recovery\repair-bde.log}}"`
+
+- Prompt for a password instead of exposing it in process arguments:
+
+`repair-bde.exe {{E:}} "{{X:\Recovery\recovered.img}}" -Password -LogFile "{{X:\Recovery\repair-bde.log}}"`
+
+- Supply the matching key package when damaged metadata requires it, while prompting for the password:
+
+`repair-bde.exe {{E:}} "{{X:\Recovery\recovered.img}}" -KeyPackage "{{X:\Recovery\matching-key-package}}" -Password -LogFile "{{X:\Recovery\repair-bde.log}}"`
 <!-- mant:tldr:end -->
 
 # repair-bde.exe

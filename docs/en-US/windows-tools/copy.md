@@ -15,6 +15,18 @@
 - Use the PowerShell-native operation for an ordinary copy:
 
 `Copy-Item -LiteralPath '{{source}}' -Destination '{{destination}}' -Confirm`
+
+- Copy one file into an existing directory while preserving its filename:
+
+`cmd.exe /d /c 'copy /-y "{{C:\source\file.txt}}" "{{D:\target\}}"' `
+
+- Copy one reviewed filename pattern into an existing directory with overwrite prompts:
+
+`cmd.exe /d /c 'copy /-y "{{C:\source\*.txt}}" "{{D:\target\}}"' `
+
+- Concatenate explicitly ordered text files in text mode:
+
+`cmd.exe /d /c 'copy /a "{{part1.txt}}" + "{{part2.txt}}" "{{combined.txt}}" /a'`
 <!-- mant:tldr:end -->
 
 # copy

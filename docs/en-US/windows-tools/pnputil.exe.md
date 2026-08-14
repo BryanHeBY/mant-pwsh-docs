@@ -23,6 +23,14 @@
 - Enumerate the connected device tree and include driver identities on supported builds:
 
 `pnputil.exe /enum-devicetree /connected /drivers`
+
+- Export all third-party Driver Store packages into an existing protected directory:
+
+`pnputil.exe /export-driver * "{{C:\Evidence\DriverStore}}"`
+
+- After signature, compatibility, restore, and device-impact review, add and install one exact INF:
+
+`pnputil.exe /add-driver "{{C:\Approved\driver.inf}}" /install`
 <!-- mant:tldr:end -->
 
 # pnputil.exe

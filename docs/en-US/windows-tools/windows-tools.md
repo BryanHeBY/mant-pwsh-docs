@@ -625,5 +625,11 @@ and Microsoft's description of
 Exact upstream revisions and page-level provenance are recorded in the
 repository's `upstream/windows-tools.json` catalog.
 
+Embedded quick-reference coverage is also compared with the CC0
+[tldr-pages Windows collection](https://github.com/tldr-pages/tldr/tree/main/pages/windows).
+Its pages are used as a coverage checklist, not as a substitute for Windows
+syntax review: incompatible common/Unix pages and unsafe, obsolete, or
+incorrect examples are excluded or rewritten against authoritative sources.
+
 The documentation in this source is licensed under CC BY 4.0. Product names
 and trademarks belong to their respective owners.

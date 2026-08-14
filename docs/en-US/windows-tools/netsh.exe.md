@@ -19,6 +19,18 @@
 - Prefer typed PowerShell network objects when an equivalent cmdlet exists:
 
 `Get-NetIPConfiguration | Select-Object InterfaceAlias, InterfaceIndex, IPv4Address, IPv4DefaultGateway, DNSServer`
+
+- List helper DLLs currently loaded by Netsh:
+
+`netsh.exe show helper`
+
+- Export the current Netsh-readable configuration as a reviewable command script:
+
+`netsh.exe dump > "{{C:\Evidence\netsh-config.txt}}"`
+
+- List interfaces available to the Netsh tracing context without starting a trace:
+
+`netsh.exe trace show interfaces`
 <!-- mant:tldr:end -->
 
 # netsh.exe

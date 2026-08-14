@@ -19,6 +19,22 @@
 - After reviewing the stored profile and every affected drive, run profile 101:
 
 `cleanmgr.exe /sagerun:{{101}}`
+
+- Open Disk Cleanup with low-disk defaults while retaining confirmation UI:
+
+`cleanmgr.exe /d {{C}} /lowdisk`
+
+- After retention approval, run the more automatic very-low-disk cleanup mode:
+
+`cleanmgr.exe /d {{C}} /verylowdisk`
+
+- After preserving rollback requirements, run post-upgrade automatic cleanup:
+
+`cleanmgr.exe /autoclean`
+
+- Inspect setup-related cleanup behavior only on the exact installed build and approved fixture:
+
+`cleanmgr.exe /setup`
 <!-- mant:tldr:end -->
 
 # cleanmgr.exe

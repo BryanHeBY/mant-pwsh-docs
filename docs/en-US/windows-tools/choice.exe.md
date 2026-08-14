@@ -15,6 +15,18 @@
 - Read the selected index after direct PowerShell invocation:
 
 `choice.exe /c YN /n /m '{{Continue?}}'; $selection = $LASTEXITCODE`
+
+- Prompt with one explicit set of accepted keys:
+
+`choice.exe /c {{ABC}} /n /m "{{Select A, B, or C:}}"`
+
+- Make upper- and lowercase choices distinct:
+
+`choice.exe /cs /c {{Aa}} /n /m "{{Select uppercase A or lowercase a:}}"`
+
+- Display installed choice, timeout, default, and message options:
+
+`choice.exe /?`
 <!-- mant:tldr:end -->
 
 # choice.exe

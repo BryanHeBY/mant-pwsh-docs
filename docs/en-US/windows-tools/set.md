@@ -15,6 +15,10 @@
 - Set the equivalent variable in the current PowerShell process:
 
 `$env:{{NAME}} = '{{value}}'`
+
+- Prompt interactively for one Cmd variable value:
+
+`set /p {{NAME}}={{Prompt text: }}`
 <!-- mant:tldr:end -->
 
 # set

@@ -15,6 +15,10 @@
 - Remove one verified empty directory:
 
 `cmd.exe /d /c 'rmdir "{{C:\path\empty-directory}}"'`
+
+- After reviewing the complete tree, recursively remove one verified directory with confirmation:
+
+`cmd.exe /d /c 'rmdir /s "{{C:\path\directory}}"'`
 <!-- mant:tldr:end -->
 
 # rmdir

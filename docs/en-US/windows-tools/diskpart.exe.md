@@ -27,6 +27,10 @@
 - Leave DiskPart without changing storage:
 
 `exit`
+
+- At the `DISKPART>` prompt, list volumes before selecting any volume:
+
+`list volume`
 <!-- mant:tldr:end -->
 
 # diskpart.exe

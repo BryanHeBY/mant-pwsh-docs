@@ -31,6 +31,10 @@
 - Log off the current interactive user:
 
 `shutdown.exe /l`
+
+- After remote authorization and workload approval, schedule a remote shutdown with a cancellation window:
+
+`shutdown.exe /s /m "{{\\computer-name}}" /t {{600}} /d p:4:1 /c "{{Approved maintenance change CHG-1234}}"`
 <!-- mant:tldr:end -->
 
 # shutdown.exe

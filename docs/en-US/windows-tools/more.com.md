@@ -20,6 +20,17 @@
 
 `{{command}} | Out-String -Stream | more.com`
 
+- Expand tabs to a chosen number of spaces while paging one file:
+
+`more.com /t{{4}} "{{C:\Logs\report.txt}}"`
+
+- Clear the screen before displaying each page:
+
+`more.com /c "{{C:\Logs\report.txt}}"`
+
+- Enable extended interactive paging commands:
+
+`more.com /e "{{C:\Logs\report.txt}}"`
 <!-- mant:tldr:end -->
 
 # more.com

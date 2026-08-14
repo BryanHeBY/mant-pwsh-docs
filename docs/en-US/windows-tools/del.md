@@ -15,6 +15,26 @@
 - Prefer literal-path PowerShell deletion for one exact file:
 
 `Remove-Item -LiteralPath '{{C:\path\file}}' -Confirm`
+
+- Display the installed Cmd builtin syntax and attribute selectors:
+
+`cmd.exe /d /c 'del /?'`
+
+- Permanently delete one exact reviewed ordinary file:
+
+`cmd.exe /d /c 'del "{{C:\path\file}}"'`
+
+- Prompt before forcing deletion of one reviewed read-only file:
+
+`cmd.exe /d /c 'del /f /p "{{C:\path\readonly-file}}"'`
+
+- Preview a recursive pattern with the same root before any deletion:
+
+`cmd.exe /d /c 'dir /s /b /a:-d "{{C:\root\pattern}}"'`
+
+- After reviewing that recursive list, prompt for every matching deletion:
+
+`cmd.exe /d /c 'del /s /p "{{C:\root\pattern}}"'`
 <!-- mant:tldr:end -->
 
 # del

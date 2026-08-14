@@ -15,6 +15,18 @@
 - Move matching files into an existing directory with cmd:
 
 `cmd.exe /d /c 'move /-y "{{C:\source\*.log}}" "{{D:\archive\}}"'`
+
+- Rename one file through Cmd when the destination is not an existing directory:
+
+`cmd.exe /d /c 'move /-y "{{C:\source\old.txt}}" "{{C:\source\new.txt}}"' `
+
+- Move one reviewed file across drives with overwrite confirmation:
+
+`cmd.exe /d /c 'move /-y "{{C:\source\file.txt}}" "{{D:\target\file.txt}}"' `
+
+- After explicit approval, replace an existing destination without prompting:
+
+`cmd.exe /d /c 'move /y "{{C:\source\file.txt}}" "{{D:\target\file.txt}}"' `
 <!-- mant:tldr:end -->
 
 # move

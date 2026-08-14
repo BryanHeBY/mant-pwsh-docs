@@ -19,6 +19,10 @@
 - Preserve the source, sign a deliberately named copy, and check the native result:
 
 `& { $source = "{{C:\RDP\connection.rdp}}"; $copy = "{{C:\RDP\connection.signed.rdp}}"; if (Test-Path -LiteralPath $copy) { throw "Destination already exists: $copy" }; Copy-Item -LiteralPath $source -Destination $copy -ErrorAction Stop; rdpsign.exe /sha256 "{{SHA256_certificate_thumbprint_without_spaces}}" /v $copy; $LASTEXITCODE }`
+
+- Sign one deliberately named copy with quiet output after a successful trial:
+
+`rdpsign.exe /sha256 "{{SHA256_certificate_thumbprint_without_spaces}}" /q "{{C:\RDP\connection.signed.rdp}}"`
 <!-- mant:tldr:end -->
 
 # rdpsign.exe
@@ -45,6 +49,7 @@ Test exact files and certificate lookup before modifying publication artifacts.
 - `/sha1`: Select a certificate by SHA-1 thumbprint on older supported systems.
 - `/sha256`: Select a certificate by SHA-256 fingerprint on newer systems.
 - `/l`: Validate signing inputs without changing the RDP file.
+- `/q`: Suppress successful output and minimize failure output.
 - `/v`: Display verbose signing diagnostics.
 - `/?`: Display installed syntax.
 

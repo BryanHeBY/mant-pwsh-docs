@@ -21,6 +21,14 @@
 
 `Test-NetConnection -ComputerName "{{host}}" -Port {{port}} -InformationLevel Detailed`
 
+- Open a plaintext Telnet session only to an explicitly approved Telnet service without sending credentials:
+
+`telnet.exe "{{host}}" {{port}}`
+
+- Choose one local escape character before opening an approved plaintext session:
+
+`telnet.exe /e {{x}} "{{host}}" {{port}}`
+
 <!-- mant:tldr:end -->
 
 # telnet.exe

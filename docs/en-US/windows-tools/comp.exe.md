@@ -20,6 +20,22 @@
 
 `Get-FileHash -Algorithm SHA256 -LiteralPath "{{first.bin}}", "{{second.bin}}"`
 
+- Display differing byte values in decimal on a build where prompt suppression has been established:
+
+`comp.exe /d /m "{{first.bin}}" "{{second.bin}}"; $LASTEXITCODE`
+
+- Display differing bytes as characters on a build where prompt suppression has been established:
+
+`comp.exe /a /m "{{first.bin}}" "{{second.bin}}"; $LASTEXITCODE`
+
+- Report mismatch locations as line numbers:
+
+`comp.exe /l /m "{{first.bin}}" "{{second.bin}}"; $LASTEXITCODE`
+
+- Compare only a reviewed prefix, without claiming complete-file equality:
+
+`comp.exe /n={{5}} /m "{{first.bin}}" "{{second.bin}}"; $LASTEXITCODE`
+
 <!-- mant:tldr:end -->
 
 # comp.exe
@@ -50,6 +66,7 @@ Missing operands and the follow-up prompt make default invocation interactive.
 - `/n`: Compare only the specified number of lines rather than complete inputs.
 - `/c`: Compare ASCII letters without case distinction.
 - `/offline`: Do not skip files carrying the Offline attribute.
+- `/m`: Suppress the follow-up prompt on target builds whose installed help exposes this option; it is not in Microsoft's portable online syntax.
 - `/?`: Display installed syntax; some builds also expose target-local `/m`.
 
 ## Common mistakes

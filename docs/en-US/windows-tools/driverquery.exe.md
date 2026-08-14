@@ -27,6 +27,10 @@
 - Display output formats, remote options, and verbosity switches:
 
 `driverquery.exe /?`
+
+- Display the default local driver table:
+
+`driverquery.exe`
 <!-- mant:tldr:end -->
 
 # driverquery.exe

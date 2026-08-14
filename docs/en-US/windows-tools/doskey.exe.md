@@ -20,6 +20,17 @@
 
 `doskey.exe /?`
 
+- Define one macro for the current console executable and session:
+
+`doskey.exe {{name}}={{command $*}}`
+
+- Remove one macro by assigning an empty replacement:
+
+`doskey.exe {{name}}=`
+
+- Export current executable macros to a reviewed text file:
+
+`doskey.exe /macros > "{{C:\Evidence\doskey-macros.txt}}"`
 <!-- mant:tldr:end -->
 
 # doskey.exe

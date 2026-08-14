@@ -15,6 +15,18 @@
 - Show reparse points without traversing them:
 
 `cmd.exe /d /c 'dir /a:l "{{C:\path}}"'`
+
+- Show the current Cmd directory using the normal detailed layout:
+
+`cmd.exe /d /c dir`
+
+- Emit a bare list for one exact directory without recursion:
+
+`cmd.exe /d /c 'dir /b "{{C:\path}}"' `
+
+- Sort one directory listing by modification date, oldest first:
+
+`cmd.exe /d /c 'dir /o:d "{{C:\path}}"' `
 <!-- mant:tldr:end -->
 
 # dir

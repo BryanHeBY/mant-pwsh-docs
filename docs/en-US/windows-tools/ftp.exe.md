@@ -21,6 +21,22 @@
 
 `Get-Command sftp.exe, scp.exe, curl.exe -All -ErrorAction SilentlyContinue | Format-Table Name, Source, Version`
 
+- Connect interactively to an explicitly approved FTP server:
+
+`ftp.exe "{{ftp.example.com}}"`
+
+- Request anonymous login only when the approved server explicitly supports it:
+
+`ftp.exe -A "{{ftp.example.com}}"`
+
+- Connect without automatic login so credentials are entered deliberately:
+
+`ftp.exe -n "{{ftp.example.com}}"`
+
+- Run a reviewed command file that contains no reusable credentials:
+
+`ftp.exe -n -s:"{{C:\Approved\ftp-commands.txt}}" "{{ftp.example.com}}"`
+
 <!-- mant:tldr:end -->
 
 # ftp.exe

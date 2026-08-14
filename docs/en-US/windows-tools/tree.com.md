@@ -15,6 +15,10 @@
 - Use PowerShell objects when output must be filtered or automated:
 
 `Get-ChildItem -LiteralPath '{{C:\path}}' -Recurse`
+
+- Display the directory tree below the current directory:
+
+`tree.com`
 <!-- mant:tldr:end -->
 
 # tree.com

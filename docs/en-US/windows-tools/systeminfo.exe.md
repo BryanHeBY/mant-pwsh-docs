@@ -15,6 +15,10 @@
 - Use typed PowerShell objects for local automation:
 
 `Get-ComputerInfo | Select-Object WindowsProductName, WindowsVersion, OsBuildNumber, OsArchitecture, CsTotalPhysicalMemory`
+
+- Display installed local, remote, credential, and output-format options:
+
+`systeminfo.exe /?`
 <!-- mant:tldr:end -->
 
 # systeminfo.exe

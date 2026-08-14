@@ -15,6 +15,26 @@
 - Suppress interactive dialogs and cap a reviewed unattended script at 60 seconds:
 
 `cscript.exe //NoLogo //B //T:60 '.\script.vbs'`
+
+- Run a reviewed script through one explicitly selected registered engine:
+
+`cscript.exe //NoLogo //E:{{VBScript|JScript}} "{{C:\Scripts\script.txt}}"`
+
+- Run one named job from a reviewed Windows Script File:
+
+`cscript.exe //NoLogo //Job:{{job-id}} "{{C:\Scripts\jobs.wsf}}"`
+
+- Use Unicode for redirected console input and output:
+
+`cscript.exe //NoLogo //U "{{C:\Scripts\report.vbs}}" > "{{C:\Evidence\report.txt}}"`
+
+- Enable the registered debugger and break when a script error occurs:
+
+`cscript.exe //NoLogo //D "{{C:\Scripts\script.vbs}}"`
+
+- Start a reviewed script in the registered debugger from its first line:
+
+`cscript.exe //NoLogo //X "{{C:\Scripts\script.vbs}}"`
 <!-- mant:tldr:end -->
 
 # cscript.exe

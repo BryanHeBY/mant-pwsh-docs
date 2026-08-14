@@ -20,6 +20,10 @@
 
 `expand.exe "{{C:\Incoming\package.cab}}" -F:"{{driver.inf}}" "{{C:\Analysis\package-001}}"`
 
+
+- Extract every member into a new isolated directory after reviewing the member list:
+
+`expand.exe "{{C:\Incoming\package.cab}}" -F:* "{{C:\Analysis\package-001}}"`
 <!-- mant:tldr:end -->
 
 # expand.exe

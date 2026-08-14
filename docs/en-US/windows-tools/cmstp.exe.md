@@ -19,6 +19,22 @@
 - Interactively install that reviewed profile only after approval and rollback planning:
 
 `cmstp.exe "{{C:\Approved\profile.inf}}"; $LASTEXITCODE`
+
+- Inspect section names and directive-like lines in the INF without executing it:
+
+`Select-String -LiteralPath "{{C:\Approved\profile.inf}}" -Pattern '^\s*\[|^\s*[^;].*='`
+
+- Install a reviewed profile without creating its support-files directory where the target build supports `/nf`:
+
+`cmstp.exe /nf "{{C:\Approved\profile.inf}}"; $LASTEXITCODE`
+
+- After disposable-fixture validation, perform the exact approved silent installation:
+
+`cmstp.exe /s "{{C:\Approved\profile.inf}}"; $LASTEXITCODE`
+
+- After inventory and rollback approval, silently uninstall the exact profile package:
+
+`cmstp.exe /u /s "{{C:\Approved\profile.inf}}"; $LASTEXITCODE`
 <!-- mant:tldr:end -->
 
 # cmstp.exe

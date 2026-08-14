@@ -15,6 +15,10 @@
 - Inspect the open command for the file type returned by `assoc`:
 
 `cmd.exe /d /c 'ftype {{txtfile}}'`
+
+- Page a long association listing through the exact native pager:
+
+`cmd.exe /d /c 'assoc | more.com'`
 <!-- mant:tldr:end -->
 
 # assoc

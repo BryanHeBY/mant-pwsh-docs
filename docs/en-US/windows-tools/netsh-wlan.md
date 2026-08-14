@@ -19,6 +19,22 @@
 - Inspect driver and radio capabilities:
 
 `netsh.exe wlan show drivers`
+
+- Connect using one previously reviewed saved profile name:
+
+`netsh.exe wlan connect name="{{profile-name}}"`
+
+- Disconnect the current wireless interface:
+
+`netsh.exe wlan disconnect`
+
+- Export one profile without exposing its plaintext key material:
+
+`netsh.exe wlan export profile name="{{profile-name}}" folder="{{C:\Evidence\WiFi}}" key=no`
+
+- Delete one exact saved profile after exporting any required recovery copy:
+
+`netsh.exe wlan delete profile name="{{profile-name}}"`
 <!-- mant:tldr:end -->
 
 # netsh wlan
@@ -56,8 +72,66 @@ files, or persistent policy.
   network and device information.
 - `dump`: Emit a replay script for review rather than immediate execution.
 
-Parameters such as `name=`, `interface=`, `ssid=`, and `key=` are bare
-equals-bearing Netsh tokens, not PowerShell named parameters.
+## Context parameters
+
+The parameters below are bare equals-bearing Netsh tokens, not PowerShell
+named parameters. Pass each complete `name=value` token as one native argument.
+
+### Profile, interface, filter, and export parameters
+
+<!-- mant:entries role=option case=insensitive -->
+- `permission=MODE`: Select `allow`, `block`, or `denyall` for a WLAN filter.
+- `ssid=SSID`: Select or supply an exact wireless network SSID.
+- `networktype=TYPE`: Select `infrastructure` or `adhoc` for a WLAN filter.
+- `filename=PATH`: Supply the reviewed WLAN profile XML file to import.
+- `interface=NAME`: Select one exact wireless interface; omission can broaden scope.
+- `user=SCOPE`: Apply an imported profile to `all` or only the `current` user.
+- `name=PROFILE`: Select one exact WLAN profile name; some delete forms accept wildcards.
+- `folder=PATH`: Select an existing local export directory; UNC paths are unsupported.
+- `key=MODE`: Control profile-export key handling or supply hosted-network key material according to the selected command; `clear` can disclose a secret.
+- `data=VALUE`: Supply the hosted-network refresh data requested by the exact installed command.
+
+### WLAN setting parameters
+
+<!-- mant:entries role=option case=insensitive -->
+- `allow=STATE`: Allow or deny explicit shared user credentials with `yes` or `no`.
+- `enabled=STATE`: Enable or disable the selected autoconfig, profile, or randomization setting.
+- `display=STATE`: Show or hide blocked networks.
+- `value=MINUTES`: Set the WLAN automatic-connect block period in minutes.
+- `mode=MODE`: Select hosted-network or tracing mode; accepted values depend on the selected command.
+- `keyUsage=MODE`: Make hosted-network key material `persistent` or `temporary`.
+- `priority=NUMBER`: Set a user profile's exact preference position on one interface.
+- `SSIDname=SSID`: Change the SSID stored in one selected profile.
+- `ConnectionType=TYPE`: Select infrastructure `ESS` or ad-hoc `IBSS` profile behavior.
+- `autoSwitch=STATE`: Allow or prevent switching automatically to a more preferred network.
+- `ConnectionMode=MODE`: Select `auto` or `manual` connection behavior.
+- `nonBroadcast=STATE`: Control connection behavior for a nonbroadcast network.
+- `Randomization=STATE`: Enable or disable profile-level MAC-address randomization.
+- `authentication=MODE`: Select the profile authentication mechanism supported by the target build.
+- `encryption=MODE`: Select the profile encryption mechanism supported by the target build.
+- `keyType=TYPE`: Select `networkKey` or `passphrase` for supplied key material.
+- `keyIndex=NUMBER`: Select WEP key index 1 through 4 where legacy WEP is applicable.
+- `keyMaterial=SECRET`: Supply profile key material; protect it from history, logs, telemetry, and process inspection.
+- `PMKCacheMode=STATE`: Enable or disable PMK caching for the selected profile.
+- `PMKCacheSize=NUMBER`: Set the supported PMK cache-entry count.
+- `PMKCacheTTL=SECONDS`: Set the supported PMK cache lifetime.
+- `preAuthMode=STATE`: Enable or disable preauthentication.
+- `preAuthThrottle=NUMBER`: Bound preauthentication attempts for neighboring access points.
+- `FIPS=STATE`: Enable or disable the profile's FIPS mode where supported.
+- `useOneX=STATE`: Enable or disable 802.1X authentication for the profile.
+- `authMode=MODE`: Select machine, user, guest, or combined 802.1X authentication context.
+- `ssoMode=MODE`: Select pre-logon, post-logon, or no single sign-on behavior.
+- `maxDelay=SECONDS`: Bound the single sign-on connection delay.
+- `allowDialog=STATE`: Allow or suppress an 802.1X user dialog according to policy.
+- `userVLAN=STATE`: Enable or disable user-based VLAN behavior.
+- `heldPeriod=SECONDS`: Set the 802.1X supplicant held period.
+- `AuthPeriod=SECONDS`: Set the 802.1X authentication response period.
+- `StartPeriod=SECONDS`: Set the 802.1X EAPOL start-retry period.
+- `maxStart=NUMBER`: Set the maximum EAPOL start-message count.
+- `maxAuthFailures=NUMBER`: Set the authentication-failure threshold.
+- `cacheUserData=STATE`: Enable or disable caching of user credential data.
+- `cost=MODE`: Set the profile's connection-cost classification.
+- `profiletype=SCOPE`: Change a profile between `all`-user and `current`-user scope where permitted.
 
 ## PowerShell boundaries
 

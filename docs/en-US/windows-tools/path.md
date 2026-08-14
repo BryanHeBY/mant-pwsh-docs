@@ -15,6 +15,10 @@
 - Inspect PowerShell's inherited PATH entries:
 
 `$env:PATH -split [IO.Path]::PathSeparator`
+
+- Append one directory only for a child Cmd command without changing persistent PATH:
+
+`cmd.exe /d /c 'set "PATH=%PATH%;{{C:\tools}}" & {{tool.exe}}'`
 <!-- mant:tldr:end -->
 
 # path

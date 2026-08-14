@@ -20,6 +20,21 @@
 
 `Get-ChildItem -LiteralPath "{{C:\Target}}" -File | Get-FileHash -Algorithm SHA256`
 
+- Prompt before adding source files that do not yet exist in the destination:
+
+`replace.exe "{{C:\Source\*.dll}}" "{{C:\Target}}" /A /P`
+
+- Prompt before replacing matching read-only destination files:
+
+`replace.exe "{{C:\Source\*.dll}}" "{{C:\Target}}" /R /P`
+
+- Prompt while replacing matching names throughout destination subdirectories:
+
+`replace.exe "{{C:\Source\*.dll}}" "{{C:\Target}}" /S /P`
+
+- Prompt while replacing only destination files older than their source counterparts:
+
+`replace.exe "{{C:\Source\*.dll}}" "{{C:\Target}}" /U /P`
 <!-- mant:tldr:end -->
 
 # replace.exe

@@ -19,6 +19,18 @@
 - Compare the local DNS cache before assuming a direct DNS answer is what an application used:
 
 `Get-DnsClientCache | Where-Object Entry -EQ '{{host.example.com}}'`
+
+- Request reverse-DNS PTR data for one address:
+
+`nslookup.exe -type=PTR {{192.0.2.10}}`
+
+- Query mail-exchanger records with packet-level debugging enabled:
+
+`nslookup.exe -type=MX -debug {{example.com.}}`
+
+- Query TXT records through one explicit DNS server and nonstandard approved port:
+
+`nslookup.exe -port={{5353}} -type=TXT {{example.com.}} {{dns-server-address}}`
 <!-- mant:tldr:end -->
 
 # nslookup.exe

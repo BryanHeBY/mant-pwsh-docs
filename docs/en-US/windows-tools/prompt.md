@@ -20,6 +20,10 @@
 
 `Get-Command prompt | Format-List Name, CommandType, Definition`
 
+
+- Include the current date and path in an interactive Cmd prompt:
+
+`prompt $d$s$p$g`
 <!-- mant:tldr:end -->
 
 # prompt

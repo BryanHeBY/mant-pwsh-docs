@@ -19,6 +19,14 @@
 - Collect loss and latency samples across the path after a basic trace:
 
 `pathping.exe /n {{host-or-address}}`
+
+- Trace a target using the resolver-selected address family:
+
+`tracert.exe {{host-or-address}}`
+
+- Display installed hop, wait, source-route, and address-family options:
+
+`tracert.exe /?`
 <!-- mant:tldr:end -->
 
 # tracert.exe

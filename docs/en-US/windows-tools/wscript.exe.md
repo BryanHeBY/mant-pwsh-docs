@@ -15,6 +15,26 @@
 - Use the console host instead when output and exit handling matter:
 
 `cscript.exe //NoLogo //B //T:60 '.\script.vbs'`
+
+- Suppress GUI prompts and bound a reviewed script to 60 seconds:
+
+`wscript.exe //NoLogo //B //T:60 "{{C:\Scripts\script.vbs}}"`
+
+- Run a reviewed script through one explicitly selected registered engine:
+
+`wscript.exe //NoLogo //E:{{VBScript|JScript}} "{{C:\Scripts\script.txt}}"`
+
+- Run one named job from a reviewed Windows Script File:
+
+`wscript.exe //NoLogo //Job:{{job-id}} "{{C:\Scripts\jobs.wsf}}"`
+
+- Enable the registered debugger and break when a script error occurs:
+
+`wscript.exe //NoLogo //D "{{C:\Scripts\script.vbs}}"`
+
+- Start a reviewed script in the registered debugger from its first line:
+
+`wscript.exe //NoLogo //X "{{C:\Scripts\script.vbs}}"`
 <!-- mant:tldr:end -->
 
 # wscript.exe

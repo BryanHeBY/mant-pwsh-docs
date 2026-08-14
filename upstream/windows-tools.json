@@ -175,6 +175,11 @@
         },
         {
           "type": "git",
+          "baseline": "tldr-pages",
+          "path": "pages/windows"
+        },
+        {
+          "type": "git",
           "baseline": "microsoft-docs-mcp",
           "path": "README.md"
         },
@@ -217,6 +222,7 @@
       ],
       "notes": [
         "The source index is original project text; the repositories establish the official Windows coverage boundary.",
+        "The CC0 tldr-pages Windows collection is a quick-reference coverage checklist. Windows-specific official contracts remain authoritative, and incompatible common/Unix pages or unsafe, obsolete, and incorrect examples are excluded or rewritten.",
         "The Microsoft Learn MCP service is optional and is never required to read or validate the published ManT documents.",
         "The interoperability guide distinguishes resolved executable layout, collector-selected FileVersion/ProductVersion strings, language-independent fixed numeric version parts, signatures and hashes. A read-only runtime audit reports all forms because language/code-page choice, PowerShell/.NET collector and Windows servicing can leave them different."
       ]

@@ -15,6 +15,10 @@
 - Verify the stored user value exactly; open a new process to observe it through `$env:`:
 
 `[Environment]::GetEnvironmentVariable('{{name}}', 'User')`
+
+- Display installed user, machine, remote, registry, and file-input options:
+
+`setx.exe /?`
 <!-- mant:tldr:end -->
 
 # setx.exe

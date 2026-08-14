@@ -15,6 +15,18 @@
 - Clear the read-only attribute on one verified file:
 
 `attrib.exe -r "{{C:\path\file}}"`
+
+- Display attributes for entries in the current directory:
+
+`attrib.exe`
+
+- Set the hidden attribute on one exact reviewed file:
+
+`attrib.exe +h "{{C:\path\file}}"`
+
+- Clear hidden and system attributes from one exact reviewed file:
+
+`attrib.exe -h -s "{{C:\path\file}}"`
 <!-- mant:tldr:end -->
 
 # attrib.exe

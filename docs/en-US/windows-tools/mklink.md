@@ -15,6 +15,10 @@
 - Create a directory symbolic link (use `/h` for a file hard link or `/j` for a junction):
 
 `cmd.exe /d /c 'mklink /d "{{link}}" "{{target}}"'`
+
+- Create a hard link to one file on the same volume:
+
+`cmd.exe /d /c 'mklink /h "{{link}}" "{{target}}"'`
 <!-- mant:tldr:end -->
 
 # mklink

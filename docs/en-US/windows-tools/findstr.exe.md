@@ -31,6 +31,10 @@
 - Use modern regex and structured match objects in PowerShell:
 
 `Select-String -LiteralPath '{{C:\path\file.txt}}' -Pattern '{{regex}}'`
+
+- Display installed literal, regular-expression, recursion, encoding, and output options:
+
+`findstr.exe /?`
 <!-- mant:tldr:end -->
 
 # findstr.exe

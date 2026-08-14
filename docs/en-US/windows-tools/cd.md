@@ -15,6 +15,22 @@
 - Change the current PowerShell location explicitly:
 
 `Set-Location -LiteralPath '{{D:\work\project}}'`
+
+- Display the active directory maintained by a new Cmd process:
+
+`cmd.exe /d /c cd`
+
+- Run one command from the parent of a reviewed Cmd directory:
+
+`cmd.exe /d /c 'cd /d "{{C:\work\project}}" && cd .. && {{command}}'`
+
+- Run one command from the root of a selected drive:
+
+`cmd.exe /d /c 'cd /d "{{D:\}}" && {{command}}'`
+
+- Run one command from the current user's profile directory in Cmd:
+
+`cmd.exe /d /c 'cd /d "%USERPROFILE%" && {{command}}'`
 <!-- mant:tldr:end -->
 
 # cd

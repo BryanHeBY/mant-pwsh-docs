@@ -15,6 +15,26 @@
 - Show activation expiration for the active Windows edition:
 
 `cscript.exe //nologo "$env:SystemRoot\System32\slmgr.vbs" /xpr`
+
+- Display the installation ID used by an approved offline-activation workflow:
+
+`cscript.exe //nologo "$env:SystemRoot\System32\slmgr.vbs" /dti`
+
+- List installed token-based activation issuance licenses:
+
+`cscript.exe //nologo "$env:SystemRoot\System32\slmgr.vbs" /lil`
+
+- List valid token-based activation certificates:
+
+`cscript.exe //nologo "$env:SystemRoot\System32\slmgr.vbs" /ltc`
+
+- List Active Directory activation objects visible to this computer:
+
+`cscript.exe //nologo "$env:SystemRoot\System32\slmgr.vbs" /ao-list`
+
+- Display detailed information for one exact activation ID:
+
+`cscript.exe //nologo "$env:SystemRoot\System32\slmgr.vbs" /dlv {{activation-id}}`
 <!-- mant:tldr:end -->
 
 # slmgr.vbs

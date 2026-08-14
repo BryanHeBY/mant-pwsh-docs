@@ -19,6 +19,10 @@
 - Ask the target session for an interactive response only when blocking is intended:
 
 `msg.exe {{session-id}} /server:"{{server}}" /time:{{120}} /w "{{Reply when your work is saved.}}"`
+
+- Read a short reviewed message from standard input for one exact session:
+
+`Write-Output "{{message}}" | msg.exe {{session-id}} /time:{{60}}`
 <!-- mant:tldr:end -->
 
 # msg.exe
