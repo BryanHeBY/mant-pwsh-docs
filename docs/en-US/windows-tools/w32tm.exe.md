@@ -16,9 +16,21 @@
 
 `w32tm.exe /query /configuration`
 
+- Show configured time peers and their current states:
+
+`w32tm.exe /query /peers`
+
 - Measure five offsets to one approved NTP endpoint without changing synchronization:
 
 `w32tm.exe /stripchart /computer:"{{time-source.example.com}}" /samples:{{5}} /dataonly`
+
+- Capture one NTP response with packet details:
+
+`w32tm.exe /stripchart /computer:"{{time-source.example.com}}" /packetinfo /samples:1`
+
+- Request an immediate synchronization attempt from an elevated shell:
+
+`w32tm.exe /resync /force`
 <!-- mant:tldr:end -->
 
 # w32tm.exe

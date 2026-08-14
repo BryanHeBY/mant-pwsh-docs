@@ -17,9 +17,21 @@
 
 `sfc.exe /scannow`
 
+- Display the local command syntax and supported offline selectors:
+
+`sfc.exe /?`
+
 - Repair one file in an offline Windows installation with explicit boot and Windows roots:
 
 `sfc.exe /scanfile={{D:\Windows\System32\kernel32.dll}} /offbootdir={{D:\}} /offwindir={{D:\Windows}} /offlogfile={{D:\sfc-offline.log}}`
+
+- Verify an offline Windows installation without repairing files:
+
+`sfc.exe /verifyonly /offbootdir={{D:\}} /offwindir={{D:\Windows}} /offlogfile={{D:\sfc-verify.log}}`
+
+- Verify one exact file in an offline Windows installation:
+
+`sfc.exe /verifyfile={{D:\Windows\System32\kernel32.dll}} /offbootdir={{D:\}} /offwindir={{D:\Windows}}`
 <!-- mant:tldr:end -->
 
 # sfc.exe

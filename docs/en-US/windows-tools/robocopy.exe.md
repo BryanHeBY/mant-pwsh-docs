@@ -8,6 +8,10 @@
 
 `robocopy {{source}} {{destination}} /E /L`
 
+- Copy selected filename patterns from one directory:
+
+`robocopy {{source}} {{destination}} {{*.jpg}} {{*.png}}`
+
 - Mirror a reviewed source into an empty or dedicated destination:
 
 `robocopy {{source}} {{destination}} /MIR`
@@ -15,6 +19,22 @@
 - Treat only documented serious exit codes as failures:
 
 `robocopy {{source}} {{destination}} /E; if ($LASTEXITCODE -GE 8) { throw 'robocopy failed' }`
+
+- Copy recursively while skipping source files older than destination files:
+
+`robocopy {{source}} {{destination}} /E /XO`
+
+- Preview files at least 50 MiB without copying them:
+
+`robocopy {{source}} {{destination}} /S /MIN:52428800 /L`
+
+- Use restartable mode with bounded retries for an unstable connection:
+
+`robocopy {{source}} {{destination}} /E /Z /R:5 /W:15`
+
+- Display the complete local option reference:
+
+`robocopy /?`
 <!-- mant:tldr:end -->
 
 # robocopy.exe

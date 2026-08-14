@@ -8,6 +8,18 @@
 
 `ping.exe /4 /n 4 /w 1000 {{host-or-address}}`
 
+- Send a chosen number of probes:
+
+`ping.exe /n {{count}} {{host-or-address}}`
+
+- Probe continuously until interrupted with Ctrl+C:
+
+`ping.exe /t {{host-or-address}}`
+
+- Request reverse name resolution for an address:
+
+`ping.exe /a {{address}}`
+
 - Separate name-resolution trouble from basic IP reachability:
 
 `ping.exe /4 /n 4 {{IPv4-address}}; ping.exe /4 /n 4 {{host-name}}`
@@ -19,6 +31,10 @@
 - Probe an IPv4 path-MTU hypothesis without allowing fragmentation:
 
 `ping.exe /4 /n 4 /f /l {{payload-bytes}} {{host-or-address}}`
+
+- Force an IPv6 probe:
+
+`ping.exe /6 /n 4 {{host-or-address}}`
 <!-- mant:tldr:end -->
 
 # ping.exe

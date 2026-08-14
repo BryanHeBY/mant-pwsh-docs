@@ -12,6 +12,10 @@
 
 `powercfg.exe /list`
 
+- Set one previously inspected power scheme as active:
+
+`powercfg.exe /setactive {{scheme-guid}}`
+
 - Query all effective settings in the active scheme:
 
 `powercfg.exe /query`
@@ -23,6 +27,22 @@
 - Show sleep states supported or unavailable on this exact hardware/firmware/build:
 
 `powercfg.exe /availablesleepstates`
+
+- Set the AC display timeout in minutes:
+
+`powercfg.exe /change monitor-timeout-ac {{minutes}}`
+
+- Set the battery display timeout in minutes:
+
+`powercfg.exe /change monitor-timeout-dc {{minutes}}`
+
+- Generate a sleep-study report at an explicit path:
+
+`powercfg.exe /sleepstudy /output "{{C:\Evidence\sleep-study.html}}"`
+
+- Generate a power-efficiency report at an explicit path:
+
+`powercfg.exe /energy /output "{{C:\Evidence\energy-report.html}}"`
 
 - Refuse to replace an existing report, write battery history to a new protected path, and verify the result:
 

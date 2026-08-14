@@ -19,6 +19,18 @@
 - Inspect privileges and their current states:
 
 `whoami.exe /priv /fo list`
+
+- Display the current user principal name:
+
+`whoami.exe /upn`
+
+- Display the current logon-session identifier:
+
+`whoami.exe /logonid`
+
+- Display user, groups, privileges, claims, and token details together:
+
+`whoami.exe /all`
 <!-- mant:tldr:end -->
 
 # whoami.exe

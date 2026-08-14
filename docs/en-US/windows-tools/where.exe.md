@@ -6,15 +6,23 @@
 
 - Find every matching executable on `PATH`:
 
-`where {{command-name}}`
+`where.exe {{command-name}}`
+
+- Find matches and include file size and modification time:
+
+`where.exe /t {{file-pattern}}`
 
 - Search a specific directory tree:
 
-`where /r {{path}} {{file-pattern}}`
+`where.exe /r {{path}} {{file-pattern}}`
 
 - Search one explicit path list:
 
-`where /t /f /r {{path}} {{file-pattern}}`
+`where.exe /t /f /r {{path}} {{file-pattern}}`
+
+- Test for a match using only the process exit code:
+
+`where.exe /q {{file-pattern}}; $LASTEXITCODE`
 <!-- mant:tldr:end -->
 
 # where.exe

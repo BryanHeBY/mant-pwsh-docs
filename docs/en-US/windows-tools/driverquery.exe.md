@@ -15,6 +15,18 @@
 - Display signed-driver information:
 
 `driverquery.exe /si /fo list`
+
+- Emit data rows without a header for downstream parsing:
+
+`driverquery.exe /fo csv /nh`
+
+- Query drivers from one remote computer using the current credentials:
+
+`driverquery.exe /s {{computer-name}} /fo csv`
+
+- Display output formats, remote options, and verbosity switches:
+
+`driverquery.exe /?`
 <!-- mant:tldr:end -->
 
 # driverquery.exe

@@ -12,9 +12,25 @@
 
 `taskkill.exe /pid {{1234}}`
 
+- Terminate every process with one exact image name:
+
+`taskkill.exe /im {{process.exe}}`
+
+- Force termination of one verified PID:
+
+`taskkill.exe /pid {{1234}} /f`
+
+- Terminate one image and its child-process tree:
+
+`taskkill.exe /im {{process.exe}} /t`
+
 - Preview a PowerShell termination without applying it:
 
 `Stop-Process -Id {{1234}} -WhatIf`
+
+- Display filters, remote targeting, and termination options:
+
+`taskkill.exe /?`
 <!-- mant:tldr:end -->
 
 # taskkill.exe

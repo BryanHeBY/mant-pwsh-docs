@@ -12,6 +12,22 @@
 
 `findstr.exe /s /i /m /l /c:"{{literal text}}" "{{C:\path\*}}"`
 
+- Filter another command's text output using a case-insensitive literal phrase:
+
+`{{command}} | findstr.exe /i /l /c:"{{literal phrase}}"`
+
+- Search text files with FINDSTR's limited regular-expression syntax:
+
+`findstr.exe /s /i /n /r "{{expression}}" "{{C:\path\*.txt}}"`
+
+- Print only lines that do not contain a literal string:
+
+`findstr.exe /v /l /c:"{{literal text}}" "{{C:\path\file.txt}}"`
+
+- Print only filenames containing a match:
+
+`findstr.exe /s /m /l /c:"{{literal text}}" "{{C:\path\*}}"`
+
 - Use modern regex and structured match objects in PowerShell:
 
 `Select-String -LiteralPath '{{C:\path\file.txt}}' -Pattern '{{regex}}'`

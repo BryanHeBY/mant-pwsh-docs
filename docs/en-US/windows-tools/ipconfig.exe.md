@@ -4,6 +4,10 @@
 > Inspect Windows TCP/IP, DHCP, and DNS client state.
 > More information: https://learn.microsoft.com/windows-server/administration/windows-commands/ipconfig.
 
+- Show a compact address summary for every adapter:
+
+`ipconfig.exe`
+
 - Show the complete configuration for every physical and virtual adapter:
 
 `ipconfig.exe /all`
@@ -19,6 +23,14 @@
 - Renew DHCP configuration for one reviewed adapter only:
 
 `ipconfig.exe /renew "{{adapter name from ipconfig output}}"`
+
+- Release DHCP configuration for one selected adapter:
+
+`ipconfig.exe /release "{{adapter name from ipconfig output}}"`
+
+- Flush the local DNS client resolver cache:
+
+`ipconfig.exe /flushdns`
 <!-- mant:tldr:end -->
 
 # ipconfig.exe

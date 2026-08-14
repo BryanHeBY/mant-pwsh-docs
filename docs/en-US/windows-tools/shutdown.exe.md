@@ -19,6 +19,18 @@
 - After preserving work and confirming hibernation support/policy, hibernate the local computer:
 
 `shutdown.exe /h`
+
+- After preserving work, restart the local computer immediately:
+
+`shutdown.exe /r /t 0`
+
+- Schedule a local shutdown after a chosen number of seconds:
+
+`shutdown.exe /s /t {{seconds}}`
+
+- Log off the current interactive user:
+
+`shutdown.exe /l`
 <!-- mant:tldr:end -->
 
 # shutdown.exe

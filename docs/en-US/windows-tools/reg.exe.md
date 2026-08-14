@@ -23,6 +23,18 @@
 - Add a reviewed value after backup:
 
 `reg.exe add '{{HKCU\Software\Vendor\Product}}' /v {{ValueName}} /t {{REG_SZ}} /d '{{data}}'`
+
+- Search key names, value names, and data recursively:
+
+`reg.exe query '{{HKCU\Software}}' /f '{{pattern}}' /s`
+
+- Display top-level registry operations:
+
+`reg.exe /?`
+
+- Display syntax for one registry operation:
+
+`reg.exe {{query|add|delete|copy|save|restore|load|unload|export|import|compare}} /?`
 <!-- mant:tldr:end -->
 
 # reg.exe

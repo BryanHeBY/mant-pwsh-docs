@@ -19,6 +19,22 @@
 - List numeric UDP endpoints with owning process IDs:
 
 `netstat.exe -ano -p udp`
+
+- Display every connection and listening TCP/UDP endpoint:
+
+`netstat.exe -a`
+
+- Display interface byte and packet statistics:
+
+`netstat.exe -e`
+
+- Display the current IP routing table:
+
+`netstat.exe -r`
+
+- Display per-protocol network statistics:
+
+`netstat.exe -s`
 <!-- mant:tldr:end -->
 
 # netstat.exe

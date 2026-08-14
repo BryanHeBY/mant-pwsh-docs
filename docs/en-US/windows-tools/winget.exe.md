@@ -15,6 +15,26 @@
 - Search and then inspect a package before installing it:
 
 `winget search {{query}}; winget show --id {{package-id}} --exact`
+
+- Install one exact package from the community source:
+
+`winget install --id {{package-id}} --exact --source winget`
+
+- List installed packages that match a name or package ID:
+
+`winget list {{query}}`
+
+- Upgrade one exact package instead of every eligible package:
+
+`winget upgrade --id {{package-id}} --exact --source winget`
+
+- Uninstall one exact package:
+
+`winget uninstall --id {{package-id}} --exact`
+
+- Export the current package inventory with known versions:
+
+`winget export --output "{{C:\path\packages.json}}" --include-versions`
 <!-- mant:tldr:end -->
 
 # winget.exe

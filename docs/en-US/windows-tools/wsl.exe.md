@@ -17,6 +17,30 @@
 - Run one command in a chosen distribution:
 
 `wsl --distribution {{distribution-name}} -- {{command}}`
+
+- Run an executable directly in the default distribution without a shell:
+
+`wsl --exec {{command}} {{arguments}}`
+
+- Show default distribution, default version, and kernel status:
+
+`wsl --status`
+
+- Stop one registered distribution:
+
+`wsl --terminate {{distribution-name}}`
+
+- Stop every running distribution and the WSL 2 utility VM:
+
+`wsl --shutdown`
+
+- Export a distribution to a tar archive:
+
+`wsl --export {{distribution-name}} "{{C:\path\distribution.tar}}"`
+
+- Import a tar archive as a new distribution:
+
+`wsl --import {{new-name}} "{{C:\WSL\new-name}}" "{{C:\path\distribution.tar}}"`
 <!-- mant:tldr:end -->
 
 # wsl.exe

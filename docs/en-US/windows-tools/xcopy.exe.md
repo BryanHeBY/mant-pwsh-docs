@@ -12,9 +12,29 @@
 
 `xcopy.exe "{{C:\source\*}}" "{{D:\destination\}}" /s /e /h /i /-y`
 
+- Copy only the directory structure, including empty directories:
+
+`xcopy.exe "{{C:\source\*}}" "{{D:\destination\}}" /t /e`
+
+- Preserve ownership and ACL information while copying:
+
+`xcopy.exe "{{C:\source\*}}" "{{D:\destination\}}" /s /e /o /x`
+
+- Use restartable mode for a copy over an unstable connection:
+
+`xcopy.exe "{{C:\source\*}}" "{{D:\destination\}}" /s /e /z`
+
+- Overwrite existing destination files without prompting:
+
+`xcopy.exe "{{C:\source\*}}" "{{D:\destination\}}" /s /e /y`
+
 - Inspect the native status immediately in PowerShell:
 
 `xcopy.exe {{arguments}}; $LASTEXITCODE`
+
+- Display the complete local option reference:
+
+`xcopy.exe /?`
 <!-- mant:tldr:end -->
 
 # xcopy.exe

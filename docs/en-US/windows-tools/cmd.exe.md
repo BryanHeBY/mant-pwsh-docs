@@ -8,6 +8,10 @@
 
 `cmd.exe /d /c {{ver}}`
 
+- Start an interactive command shell without loading AutoRun commands:
+
+`cmd.exe /d`
+
 - Run a batch file and preserve its exit code:
 
 `cmd.exe /d /c '"{{C:\path\script.cmd}}" {{argument}}'; $LASTEXITCODE`
@@ -15,6 +19,18 @@
 - Keep a new command shell open after an initial command:
 
 `cmd.exe /d /k {{set}}`
+
+- Enable delayed environment-variable expansion for one command string:
+
+`cmd.exe /d /v:on /c {{command}}`
+
+- Emit redirected builtin output as UTF-16 text:
+
+`cmd.exe /d /u /c {{command}}`
+
+- Run with command echo disabled and extensions enabled:
+
+`cmd.exe /d /q /e:on /c {{command}}`
 <!-- mant:tldr:end -->
 
 # cmd.exe
