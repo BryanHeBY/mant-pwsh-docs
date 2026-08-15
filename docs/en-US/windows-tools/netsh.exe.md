@@ -138,6 +138,39 @@ and work from a recoverable console before a change.
   additional server-role helpers. The current local build exposes the complete
   top-level set indexed above; another machine can differ.
 
+## OpenSSH firewall inspection
+
+`netsh.exe advfirewall` can expose or change firewall policy, but the typed
+`NetSecurity` cmdlets make an OpenSSH port/profile mismatch easier to inspect:
+
+```powershell
+$port = '{{ssh-port}}'
+$rulesByName = @(Get-NetFirewallRule -PolicyStore ActiveStore |
+    Where-Object {
+        $_.Name -match '(?i)ssh' -or $_.DisplayName -match '(?i)ssh'
+    })
+$rulesByPort = @(Get-NetFirewallPortFilter -PolicyStore ActiveStore |
+    Where-Object { $port -in @($_.LocalPort) } |
+    Get-NetFirewallRule)
+$candidateRules = @($rulesByName + $rulesByPort |
+    Sort-Object InstanceID -Unique)
+
+$candidateRules |
+    Select-Object Name, DisplayName, Enabled, Profile, Direction, Action,
+        PrimaryStatus, EnforcementStatus, PolicyStoreSource
+
+$candidateRules | Get-NetFirewallPortFilter
+
+Get-NetConnectionProfile |
+    Select-Object InterfaceAlias, NetworkCategory
+```
+
+Compare that policy with the socket owned by the `sshd` service. A port-22
+Private-profile rule does not itself admit a listener on a different port
+through a Public interface, but another enabled custom or multi-port rule can. Querying
+only the installer-created rule name is insufficient. See
+[OpenSSH Server on Windows](openssh-server.md) for the complete workflow.
+
 ## Version and platform differences
 
 This executable is Windows-only. Contexts, commands, remote support, elevation,
@@ -154,11 +187,20 @@ context, remote computer, credential, script, capture, show/dump selector, or
 configuration command was supplied, so helper-specific availability and
 read/write behavior remain unverified.
 
+A later read-only `NetSecurity` inventory on the same host proved why
+name-only inspection is incomplete. The installer-created rule did not match
+the active listener/profile, but a differently named enabled local rule covered
+the listener port and reported an `Enforced` status. Two WSL2 clients completed
+host-key scans against that listener. Exact local rule names, ports, addresses,
+distribution names, and host keys are intentionally not retained. No firewall,
+network, WSL, service, or SSH state was changed.
+
 ## Related documents
 
 - [ipconfig.exe](ipconfig.exe.md)
 - [route.exe](route.exe.md)
 - [microsoft-learn-mcp](microsoft-learn-mcp.md)
+- [OpenSSH Server on Windows](openssh-server.md)
 
 ## Sources and license
 

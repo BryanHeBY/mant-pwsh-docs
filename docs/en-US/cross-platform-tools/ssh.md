@@ -15,6 +15,10 @@
 - Inspect the effective configuration for a host:
 
 `ssh -G {{host}}`
+
+- Connect with an explicit identity and nonstandard server port:
+
+`ssh -i "{{path-to-private-key}}" -p {{port}} {{user}}@{{host}}`
 <!-- mant:tldr:end -->
 
 # ssh
@@ -100,6 +104,34 @@ command, and a remote shell may parse that command again. Avoid interpolated
 command strings, prevent unwanted stdin consumption with `-n` when needed,
 and distinguish local `$LASTEXITCODE` from text written by the remote command.
 
+## Windows Remote-SSH workflow
+
+Visual Studio Code Remote-SSH uses an ordinary SSH client connection before it
+installs or starts its remote component. Prove the same host works from a
+terminal first. For a Windows server on a nonstandard port, keep the client
+settings in `%UserProfile%\.ssh\config`:
+
+```sshconfig
+Host windows-dev
+    HostName 192.0.2.10
+    User builduser
+    Port 2222
+    IdentityFile ~/.ssh/id_ed25519
+```
+
+Inspect what the client resolved without opening a network connection:
+
+```powershell
+ssh -G windows-dev |
+    Select-String '^(hostname|user|port|identityfile) '
+```
+
+Then test `ssh windows-dev`. A TCP timeout belongs first to routing, listener,
+or firewall diagnosis; `Permission denied (publickey)` means the server was
+reached and authentication evidence should be inspected. On the Windows host,
+query `mant openssh-server --source windows-tools` for the complete capability,
+service, firewall, key, and VS Code workflow.
+
 ## Version and platform differences
 
 This page follows current OpenSSH and was runtime-checked with OpenSSH 10.4p1
@@ -153,8 +185,9 @@ remain pending.
 
 - [git](git.md)
 - [Cross-platform tools for PowerShell](cross-platform-tools.md)
-- On Windows, query `mant wsl --source windows-tools` and
-  `mant where --source windows-tools`.
+- On Windows, query `mant openssh-server --source windows-tools`,
+  `mant sshd.exe --source windows-tools`, `mant wsl --source windows-tools`,
+  and `mant where --source windows-tools`.
 
 ## Sources and license
 

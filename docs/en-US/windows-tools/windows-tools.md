@@ -240,6 +240,9 @@ license in the document's provenance catalog before adapting material.
 
 ## Windows remote management
 
+- [OpenSSH Server on Windows](openssh-server.md): capability, service, listener, firewall/profile, public-key, client, and VS Code Remote-SSH workflow.
+- [sshd.exe](sshd.exe.md): server configuration validation, effective settings, service-owned listeners, and event-log diagnosis.
+- [sshd_config](sshd_config.md): Windows server directives, conditional key paths, ACL boundaries, logging, shell, and subsystem behavior.
 - [winrm.cmd](winrm.cmd.md): WS-Management identity, client/service, listener, authentication, plugin, and shell configuration boundaries.
 - [winrs.exe](winrs.exe.md): explicit remote native command execution through an approved WinRM endpoint.
 

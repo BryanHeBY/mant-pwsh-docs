@@ -50,6 +50,22 @@ Use `Start-Process services.msc` for interactive launch. For automation, use
 `Get-Service`/`Get-CimInstance` plus `sc.exe` where its extended config/security
 families are required; preserve native status and verify runtime workload health.
 
+## OpenSSH Server inspection
+
+The localized display name for Microsoft OpenSSH Server can vary, but its
+service key name is `sshd`. Use the GUI to inspect it interactively and use
+structured commands when results must drive automation:
+
+```powershell
+Get-Service sshd | Select-Object Name, DisplayName, Status, StartType
+Get-CimInstance Win32_Service -Filter "Name='sshd'" |
+    Select-Object Name, State, StartMode, ProcessId, PathName
+```
+
+Running state does not prove that the intended address and port are listening
+or admitted by Windows Defender Firewall. Continue with [sshd.exe](sshd.exe.md)
+and [OpenSSH Server on Windows](openssh-server.md).
+
 ## Version and platform differences
 
 `services.msc` is Windows-only. Service types, triggers, protected services,
@@ -74,6 +90,8 @@ any displayed or requested operation succeeds.
 - [net.exe](net.exe.md)
 - [tasklist.exe](tasklist.exe.md)
 - [wevtutil.exe](wevtutil.exe.md)
+- [sshd.exe](sshd.exe.md)
+- [OpenSSH Server on Windows](openssh-server.md)
 
 ## Sources and license
 

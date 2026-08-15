@@ -141,10 +141,20 @@
           "type": "git",
           "baseline": "openssh-portable",
           "path": "ssh.1"
+        },
+        {
+          "type": "web",
+          "url": "https://code.visualstudio.com/docs/remote/ssh",
+          "license": {
+            "spdx": "LicenseRef-Microsoft-VS-Code",
+            "url": "https://code.visualstudio.com/license"
+          },
+          "checkedAt": "2026-08-15"
         }
       ],
       "notes": [
-        "Runtime inspection used OpenSSH 10.4p1 on Linux. On Windows NT 10.0.26200.0, the repeatable cross-platform fixture under both PowerShell collectors preserved in-box and Git-bundled candidates, selected in-box file version 9.5.5.1, and confirmed OpenSSH_for_Windows_9.5p2/LibreSSL 3.8.2 on stderr/status 0. Its -? form remained an unknown-option/usage diagnostic with eight stderr lines/status 255, not generic help. No connection, config or identity operation ran; macOS remains pending."
+        "Runtime inspection used OpenSSH 10.4p1 on Linux. On Windows NT 10.0.26200.0, the repeatable cross-platform fixture under both PowerShell collectors preserved in-box and Git-bundled candidates, selected in-box file version 9.5.5.1, and confirmed OpenSSH_for_Windows_9.5p2/LibreSSL 3.8.2 on stderr/status 0. Its -? form remained an unknown-option/usage diagnostic with eight stderr lines/status 255, not generic help. No connection, config or identity operation ran; macOS remains pending.",
+        "The Windows Remote-SSH section adds a nonstandard-port client configuration, ssh -G inspection, terminal-first failure classification, and cross-source links to the Windows server workflow; it does not claim VS Code-specific runtime verification."
       ]
     },
     "curl.md": {

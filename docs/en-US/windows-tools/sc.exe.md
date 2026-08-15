@@ -35,6 +35,10 @@
 - Query one service on a remote server; the SC server operand uses a UNC-style name:
 
 `sc.exe "{{\\server}}" query "{{service-name}}"`
+
+- Inspect the Windows OpenSSH Server service without relying on its display name:
+
+`sc.exe queryex sshd; sc.exe qc sshd`
 <!-- mant:tldr:end -->
 
 # sc.exe
@@ -216,6 +220,29 @@ RPC and its authentication/firewall policy; it is not WinRM. Record source and
 target identities, network path, name resolution, token/UAC context, SCM ACL,
 and target events. Avoid inline remote credentials and broad firewall changes.
 
+## OpenSSH service example
+
+The Windows OpenSSH Server service key name is `sshd`. Query runtime and
+configuration independently:
+
+```powershell
+sc.exe queryex sshd
+$runtimeExitCode = $LASTEXITCODE
+
+sc.exe qc sshd
+$configurationExitCode = $LASTEXITCODE
+
+[pscustomobject]@{
+    RuntimeExitCode = $runtimeExitCode
+    ConfigurationExitCode = $configurationExitCode
+}
+```
+
+SCM state does not expose the effective SSH port or prove reachability. Follow
+with `sshd.exe -t`, `sshd.exe -T`, a listener query bound to the service PID,
+and firewall-profile inspection. See [sshd.exe](sshd.exe.md) and
+[OpenSSH Server on Windows](openssh-server.md).
+
 ## PowerShell behavior
 
 Use `sc.exe` explicitly. Pass scalar service key names and keep the option and
@@ -248,6 +275,8 @@ behavior remain separately bounded.
 - [schtasks.exe](schtasks.exe.md)
 - [tasklist.exe](tasklist.exe.md)
 - [taskkill.exe](taskkill.exe.md)
+- [sshd.exe](sshd.exe.md)
+- [OpenSSH Server on Windows](openssh-server.md)
 
 ## Sources and license
 

@@ -17,6 +17,10 @@
 
 `dism.exe /Online /Get-Capabilities /Format:Table`
 
+- Inspect the exact OpenSSH Server capability before installing or removing it:
+
+`dism.exe /Online /Get-CapabilityInfo /CapabilityName:OpenSSH.Server~~~~0.0.1.0`
+
 - Inspect one WIM's image names and indexes before mounting or servicing:
 
 `dism.exe /Get-ImageInfo /ImageFile:"{{path-to-install.wim}}"`
@@ -128,6 +132,32 @@ result is not unambiguously successful. After a deliberate restart, repeat the
 `/Get-FeatureInfo` query and verify the application or command separately; a
 successful servicing invocation alone is not proof that `wsb.exe` is present.
 
+## OpenSSH Server capability workflow
+
+OpenSSH Server is a Windows capability, not the `Containers-DisposableClientVM`
+optional feature. Inventory its exact identity before changing the online
+installation:
+
+```powershell
+$capability = 'OpenSSH.Server~~~~0.0.1.0'
+dism.exe /Online /Get-CapabilityInfo "/CapabilityName:$capability"
+if ($LASTEXITCODE -ne 0) {
+    throw "OpenSSH capability query failed: $LASTEXITCODE"
+}
+```
+
+The corresponding installation is an elevated servicing change:
+
+```powershell
+dism.exe /Online /Add-Capability "/CapabilityName:$capability"
+$dismExitCode = $LASTEXITCODE
+"DISM exit code: $dismExitCode"
+```
+
+After servicing and any required restart, query the capability again, then
+verify `sshd.exe`, the `sshd` service, server configuration, listener, and
+firewall separately. See [OpenSSH Server on Windows](openssh-server.md).
+
 ## Common mistakes
 
 ### Servicing the wrong image
@@ -204,6 +234,7 @@ package, driver, commit, discard, log, or scratch operation ran.
 - [sfc.exe](sfc.exe.md)
 - [fondue.exe](fondue.exe.md)
 - [pnputil.exe](pnputil.exe.md)
+- [OpenSSH Server on Windows](openssh-server.md)
 
 ## Sources and license
 

@@ -153,6 +153,144 @@
     }
   ],
   "documents": {
+    "sshd.exe.md": {
+      "kind": "native-cli",
+      "status": "reviewed",
+      "versions": [
+        "Microsoft OpenSSH for supported Windows client and server releases; observed in-box OpenSSH_for_Windows_9.5p2 on Windows NT 10.0.26200.0"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "web",
+          "url": "https://man.openbsd.org/sshd.8",
+          "license": {
+            "spdx": "LicenseRef-OpenSSH",
+            "url": "https://github.com/openssh/openssh-portable/blob/master/LICENCE"
+          },
+          "checkedAt": "2026-08-15"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows-server/administration/openssh/openssh-server-configuration",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-15"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows-server/administration/openssh/openssh_install_firstuse",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-15"
+        }
+      ],
+      "notes": [
+        "The page exposes every installed usage option as a ManT option entry and separates configuration tests, effective Match evaluation, SCM state, service-owned listeners, firewall policy, logs, and authentication evidence.",
+        "On Windows NT 10.0.26200.0, exact System32 sshd.exe fixed version 9.5.6.1 identified as OpenSSH_for_Windows_9.5p2/LibreSSL 3.8.2. -V returned 0, -? returned unknown-option usage/status 1, -t returned 0 without output, and -T returned effective configuration/status 0. The running Automatic service owned matching IPv4/IPv6 listeners on a nondefault port; exact local listener and authentication-policy values are intentionally not retained. No configuration or system state changed."
+      ]
+    },
+    "sshd_config.md": {
+      "kind": "guide",
+      "status": "reviewed",
+      "versions": [
+        "Microsoft OpenSSH for supported Windows client and server releases; directive support varies by installed build"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows-server/administration/openssh/openssh-server-configuration",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-15"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows-server/administration/openssh/openssh_keymanagement",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-15"
+        },
+        {
+          "type": "web",
+          "url": "https://man.openbsd.org/sshd_config.5",
+          "license": {
+            "spdx": "LicenseRef-OpenSSH",
+            "url": "https://github.com/openssh/openssh-portable/blob/master/LICENCE"
+          },
+          "checkedAt": "2026-08-15"
+        }
+      ],
+      "notes": [
+        "The guide makes each Windows-relevant directive queryable through its normalized lower-case heading ID, requires -t before restart and -T -C for connection-specific Match evaluation, and distinguishes user-relative from administrator-wide key paths, ACLs, default-shell registry state, listener state, and firewall policy. ManT 0.7.1 rejects prefixless configuration keywords as option-role entries; QA-166 records the parser gap rather than misclassifying directives as commands.",
+        "On Windows NT 10.0.26200.0 with in-box OpenSSH 9.5p2, the default-path configuration passed -t and effective inspection found matching IPv4/IPv6 listeners on a nondefault port. Exact local authentication settings, key paths, addresses, and port values are intentionally not retained. No key contents, edit, ACL change, restart, registry change, or policy mutation occurred."
+      ]
+    },
+    "openssh-server.md": {
+      "kind": "guide",
+      "status": "reviewed",
+      "versions": [
+        "supported Windows releases with the Microsoft OpenSSH optional capability; VS Code Remote-SSH behavior varies by current client extension"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows-server/administration/openssh/openssh_install_firstuse",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-15"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows-server/administration/openssh/openssh-server-configuration",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-15"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows-server/administration/openssh/openssh_keymanagement",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-15"
+        },
+        {
+          "type": "web",
+          "url": "https://code.visualstudio.com/docs/remote/ssh",
+          "license": {
+            "spdx": "LicenseRef-Microsoft-VS-Code",
+            "url": "https://code.visualstudio.com/license"
+          },
+          "checkedAt": "2026-08-15"
+        }
+      ],
+      "notes": [
+        "The workflow orders capability, service, configuration, listener, firewall/profile, public-key, terminal client, and VS Code verification and includes separate trusted-LAN and narrow Public-profile firewall patterns. QA-167 corrected its initial exact-default-rule lookup by merging SSH-name and target-port candidates from ActiveStore.",
+        "Read-only Windows NT 10.0.26200.0 evidence found both capabilities installed, OpenSSH 9.5p2 configuration valid, and the Automatic service owning a nondefault listener. The installer-created rule did not match that listener/profile, but a differently named enabled local rule covered the listener port with primary status OK plus Enforced; another matching custom rule was disabled. Two WSL2 ssh-keyscan probes reached the Windows listener with status 0. Exact local rule names, ports, addresses, distribution names, host keys, authentication settings, and key paths are intentionally not retained. No matching retained firewall-change event established rule timing, and no state changed."
+      ]
+    },
     "windows-tools.md": {
       "kind": "source-index",
       "status": "reviewed",
@@ -1217,6 +1355,15 @@
             "url": "https://stackoverflow.com/help/licensing"
           },
           "checkedAt": "2026-08-11"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows-server/administration/openssh/openssh_install_firstuse",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-15"
         }
       ],
       "notes": [
@@ -1224,7 +1371,8 @@
         "Windows NT 10.0.26200.0 installed help additionally exposed qpreferrednode, qmanagedaccount, qprotection, quserservice, preferrednode, and managedaccount. Bare sc.exe and sc.exe /? printed help but returned 1639; query /? and qmanagedaccount /? treated /? as a service name and returned 123, so help probes cannot be generated uniformly.",
         "Representative remote, shared-process, pending-state, driver, recovery/trigger, ordinary/elevated, and Windows PowerShell 5.1 alias-resolution contexts remain pending without controlling or reconfiguring production services."
       ,
-        "The durable dual-edition local-help fixture resolves exact System32 SC and confirms that top-level /? emits help with status 1639; no server, service, driver, database, control, configuration, credential, or security descriptor is supplied."
+        "The durable dual-edition local-help fixture resolves exact System32 SC and confirms that top-level /? emits help with status 1639; no server, service, driver, database, control, configuration, credential, or security descriptor is supplied.",
+        "The OpenSSH example queries the exact sshd service key with queryex and qc, then hands listener, configuration, and firewall verification to the dedicated Windows OpenSSH pages."
       ]
     },
     "net.exe.md": {
@@ -3444,12 +3592,22 @@
             "url": "https://creativecommons.org/licenses/by/4.0/"
           },
           "checkedAt": "2026-08-11"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows-server/administration/openssh/openssh_install_firstuse",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-15"
         }
       ],
       "notes": [
         "The TLDR is launch-only and requires service-name/runtime/config/security identity; the page contains display-name, dependency/shared-process/workload, automatic/delayed/trigger state, service-account/SPN/rights, DACL/elevation, localized-GUI automation, policy/servicing and health-verification risks.",
         "Windows runtime verification remains manual launch-and-close only; no service control/configuration mutation is permitted merely for evidence.",
-        "Dual-collector Windows NT 10.0.26200.0 file-identity evidence resolved services.msc without launching it; this proves host-specific availability/identity only, not UI load, authorization, optional-component health, or operation behavior."
+        "Dual-collector Windows NT 10.0.26200.0 file-identity evidence resolved services.msc without launching it; this proves host-specific availability/identity only, not UI load, authorization, optional-component health, or operation behavior.",
+        "The OpenSSH section distinguishes the localized display name from the sshd service key and directs automation to service/CIM state plus dedicated listener and firewall checks."
       ]
     },
     "optionalfeatures.exe.md": {
@@ -7534,13 +7692,32 @@
           "type": "git",
           "baseline": "windowsserverdocs",
           "path": "WindowsServerDocs/administration/windows-commands/netsh.md"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/powershell/module/netsecurity/set-netfirewallrule?view=windowsserver2025-ps",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-15"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/powershell/module/netconnection/set-netconnectionprofile?view=windowsserver2025-ps",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-15"
         }
       ],
       "notes": [
         "The page requires target-side context discovery, full non-interactive context paths, protected remote credentials, and typed PowerShell alternatives where supported.",
         "On Windows NT 10.0.26200.0, installed file version 10.0.26100.8457 /? returned 1 and exposed 27 contexts plus six top-level verbs/help. The page indexes that installed surface, including current official dnsclient but build-dependent ztdns, while requiring exact target discovery. No context command, script, capture, remote target, credential, or network mutation ran."
       ,
-        "The durable dual-edition local-help fixture resolves exact System32 Netsh and confirms `help` status 0 without a context, remote computer, credential, script, capture, show/dump selector, or configuration command."
+        "The durable dual-edition local-help fixture resolves exact System32 Netsh and confirms `help` status 0 without a context, remote computer, credential, script, capture, show/dump selector, or configuration command.",
+        "The OpenSSH inspection section prefers typed NetSecurity and NetConnection evidence, merges candidates found by SSH-like names and target-port filters, and explains why the installer-created rule is not the complete effective policy. On the recorded host it found an enabled custom rule covering the nondefault listener and confirmed reachability from two WSL2 clients without retaining local identifiers or making a network mutation."
       ]
     },
     "netsh-interface.md": {
@@ -7681,10 +7858,19 @@
             "url": "https://creativecommons.org/licenses/by/4.0/"
           },
           "checkedAt": "2026-08-15"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/windows-server/administration/openssh/openssh_install_firstuse",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-15"
         }
       ],
       "notes": [
-        "The TLDR is query-only; the page distinguishes online/offline/container targets, host-target compatibility, repair sources, mount commit/discard, servicing identities, logs, and pending restart, with an exact Windows Sandbox feature query/change workflow.",
+        "The TLDR is query-first; the page distinguishes online/offline/container targets, host-target compatibility, repair sources, mount commit/discard, servicing identities, logs, and pending restart, with exact Windows Sandbox feature and OpenSSH Server capability workflows.",
         "On Windows NT 10.0.26200.0, installed DISM file version 10.0.26100.8457 returned 740 (ERROR_ELEVATION_REQUIRED) before showing ordinary-token /? help. No image target, inventory, mount, cleanup, repair, feature, capability, package, driver, commit, discard, log, or scratch operation ran."
       ]
     },
