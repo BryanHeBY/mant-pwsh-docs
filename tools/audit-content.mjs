@@ -55,6 +55,14 @@ function fail(message) {
   process.exit(2);
 }
 
+function childDiagnostic(result, fallback) {
+  const stderr = typeof result.stderr === "string" ? result.stderr.trim() : "";
+  if (stderr) return stderr;
+  if (result.error?.message) return result.error.message;
+  if (result.signal) return `ManT terminated by signal ${result.signal}`;
+  return fallback;
+}
+
 function relative(file) {
   return path.relative(repositoryRoot, file).split(path.sep).join("/");
 }
@@ -174,7 +182,7 @@ function mantEntries(file) {
   if (result.status !== 0) {
     return {
       entries: [],
-      error: result.stderr.trim() || `ManT exited with status ${String(result.status)}`
+      error: childDiagnostic(result, `ManT exited with status ${String(result.status)}`)
     };
   }
   try {

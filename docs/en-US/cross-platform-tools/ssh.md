@@ -19,6 +19,10 @@
 - Connect with an explicit identity and nonstandard server port:
 
 `ssh -i "{{path-to-private-key}}" -p {{port}} {{user}}@{{host}}`
+
+- Run unattended with no prompts and a pre-populated, explicit host-key file:
+
+`ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile="{{path/to/known_hosts}}" {{user}}@{{host}} '{{command}}'`
 <!-- mant:tldr:end -->
 
 # ssh
@@ -38,7 +42,7 @@ the remote shell or program then parses the command sent after connection.
 <!-- mant:entries role=option case=sensitive -->
 - `-G`: Print the effective client configuration after evaluating `Host` and `Match` blocks, then exit without connecting.
 - `-F FILE`: Use an explicit per-user configuration file instead of the default user configuration path.
-- `-o OPTION`: Set one `ssh_config` option on the command line; repeat for multiple options.
+- `-o OPTION`: Set one `ssh_config` option on the command line; repeat for multiple options, for example `-o BatchMode=yes`.
 - `-l USER`: Select the remote login name, equivalent to the user part of `USER@HOST`.
 - `-p PORT`: Select the remote server port; unlike `scp`, lowercase `-p` means port.
 - `-i FILE`: Select an identity file; repeatable, and agent identities can still participate unless restricted by configuration.
@@ -85,6 +89,32 @@ When PowerShell launches the Windows OpenSSH client, ensure that the intended
 `ssh.exe` wins command resolution. Use `Get-Command ssh -All` when debugging
 and an explicit path or `.exe` suffix when a script requires the Windows
 executable.
+
+## Batch mode and explicit host-key stores
+
+`-o BatchMode=yes` disables password prompts, host-key confirmation prompts,
+and other user interaction. Use it for scheduled jobs and probes that must fail
+instead of waiting for input; it does not make authentication optional.
+
+`-o UserKnownHostsFile=FILE` selects one or more user host-key database files.
+For deterministic automation, point it at a reviewed, pre-populated file and
+combine it with `-o StrictHostKeyChecking=yes`. A new or changed host key then
+fails the connection instead of prompting or silently changing trust state.
+Do not use `UserKnownHostsFile=none` as a shortcut: that discards the selected
+user host-key database rather than establishing the server's identity.
+
+```powershell
+ssh -o BatchMode=yes `
+    -o ConnectTimeout=10 `
+    -o StrictHostKeyChecking=yes `
+    -o UserKnownHostsFile="$PWD\automation_known_hosts" `
+    deploy@build.example.test 'uname -a'
+```
+
+OpenSSH accepts these configuration keywords through `-o` because they do not
+have dedicated command-line flags. Use `ssh -G HOST` to inspect their effective
+lowercase values before connecting; configuration-file precedence can otherwise
+produce a different result than expected.
 
 ## Remote commands and quoting
 
@@ -157,6 +187,12 @@ Do not treat stderr alone as failure or silently exchange the two clients.
 
 Investigate the expected destination and update trusted host keys through a
 reviewed process. Disabling verification removes server identity protection.
+
+### Assuming `BatchMode=yes` disables only password prompts
+
+It disables all interactive queries, including confirmation of a previously
+unknown host key. Pre-populate and select the intended host-key database when a
+noninteractive connection must authenticate a server it has not seen before.
 
 ### Exposing a forward beyond the intended interface
 

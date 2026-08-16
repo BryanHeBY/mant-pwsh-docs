@@ -15,6 +15,10 @@
 - Inspect the installed Git version:
 
 `git --version`
+
+- Replace one remote branch only if it still has the expected commit:
+
+`git push --force-with-lease=refs/heads/{{branch}}:{{expected-commit}} {{remote}} HEAD:refs/heads/{{branch}}`
 <!-- mant:tldr:end -->
 
 # git
@@ -97,6 +101,31 @@ Before automating a modifying command, inspect the effective repository state,
 remote URL, branch or detached-HEAD state, hooks, and policy. `git config
 --show-origin --list` helps diagnose a surprising setting without changing it.
 
+## Rewriting a published branch with a lease
+
+After an intentional rebase or other history rewrite, prefer an explicit lease
+over `git push --force`. The lease permits the non-fast-forward update only if
+the remote branch still points to the expected object; if another update moved
+the branch, the push fails instead of overwriting it.
+
+```powershell
+$expected = git rev-parse refs/remotes/origin/main
+if ($LASTEXITCODE -ne 0) {
+    throw 'Cannot resolve the expected remote-tracking commit'
+}
+
+git push --force-with-lease="refs/heads/main:$expected" `
+    origin HEAD:refs/heads/main
+```
+
+`--force-with-lease` without an explicit `<refname>:<expect>` compares against
+the corresponding local remote-tracking ref. An editor or scheduled task that
+runs `git fetch` in the background can move that local ref and weaken the check.
+Use the explicit form when the expected old object must be stable. The optional
+`--force-if-includes` check is useful with the implicit lease forms to require
+that remotely fetched updates have been integrated locally; it is a no-op with
+an explicit `<refname>:<expect>` lease.
+
 ## PowerShell boundaries
 
 Git paths and revision syntax are parsed by Git after PowerShell passes the
@@ -144,6 +173,12 @@ result. Interpret the documented contract of the selected subcommand.
 
 `add`, `restore`, `reset`, and `commit` affect different layers. Inspect both
 `status` and the exact diff before using a destructive mode.
+
+### Treating `--force-with-lease` as unconditional force
+
+A rejected lease is evidence that the remote ref does not have the expected
+value. Fetch and inspect the new history; do not immediately retry with
+`--force`, which disables the lease check and can discard someone else's work.
 
 ## Runtime evidence
 

@@ -5,6 +5,14 @@ import path from "node:path";
 import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
+function childDiagnostic(result, fallback) {
+  const stderr = typeof result.stderr === "string" ? result.stderr.trim() : "";
+  if (stderr) return stderr;
+  if (result.error?.message) return result.error.message;
+  if (result.signal) return `ManT terminated by signal ${result.signal}`;
+  return fallback;
+}
+
 const repositoryRoot = fileURLToPath(new URL("../", import.meta.url));
 const docsRoot = path.join(repositoryRoot, "docs", "en-US");
 const catalogs = new Map([
@@ -596,7 +604,11 @@ function validateMant(documents) {
     timeout: 20_000
   });
   if (version.status !== 0) {
-    reportError(`Unable to run ${options.mantBin} --version. Install ManT or use --skip-mant for structural checks.`);
+    reportError(
+      `Unable to run ${options.mantBin} --version ` +
+      `(${childDiagnostic(version, `exit status ${String(version.status)}`)}). ` +
+      "Install ManT or use --skip-mant for structural checks."
+    );
     return;
   }
   const protocol = spawnSync(options.mantBin, ["--protocol-version", "--compact"], {
@@ -605,7 +617,10 @@ function validateMant(documents) {
     timeout: 20_000
   });
   if (protocol.status !== 0) {
-    reportError(`Unable to inspect ${options.mantBin} protocol compatibility (${protocol.stderr.trim() || "no diagnostic"}).`);
+    reportError(
+      `Unable to inspect ${options.mantBin} protocol compatibility ` +
+      `(${childDiagnostic(protocol, `exit status ${String(protocol.status)}`)}).`
+    );
     return;
   }
   try {
@@ -631,7 +646,10 @@ function validateMant(documents) {
       timeout: 20_000
     });
     if (result.status !== 0) {
-      reportError(`${relative(file)}: ManT could not parse this document (${result.stderr.trim() || "no diagnostic"}).`);
+      reportError(
+        `${relative(file)}: ManT could not parse this document ` +
+        `(${childDiagnostic(result, `exit status ${String(result.status)}`)}).`
+      );
       continue;
     }
     try {

@@ -47,6 +47,14 @@ function fail(message) {
   process.exit(2);
 }
 
+function childDiagnostic(result, fallback) {
+  const stderr = typeof result.stderr === "string" ? result.stderr.trim() : "";
+  if (stderr) return stderr;
+  if (result.error?.message) return result.error.message;
+  if (result.signal) return `ManT terminated by signal ${result.signal}`;
+  return fallback;
+}
+
 function collectEntries(nodes, output = []) {
   for (const node of nodes) {
     if (node.kind === "document-entry") output.push(node);
@@ -108,7 +116,7 @@ function mantOptionNames(relativePath) {
     }
   );
   if (result.status !== 0) {
-    fail(`${relativePath}: ${result.stderr.trim() || `ManT exited with status ${String(result.status)}`}`);
+    fail(`${relativePath}: ${childDiagnostic(result, `ManT exited with status ${String(result.status)}`)}`);
   }
   let outline;
   try {
