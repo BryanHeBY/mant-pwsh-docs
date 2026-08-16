@@ -106,6 +106,27 @@ value in administrative configuration instead of relying on the word
 configuration variables, and secrets across the elevation boundary. Prefer an
 explicit clean environment and absolute executable paths.
 
+## Headless automation
+
+No Sudo for Windows mode provides unattended elevation. Every elevated Sudo
+invocation still goes through UAC verification: `forceNewWindow` opens a new
+window, `disableInput` only closes the elevated target's console input, and
+`normal` keeps the elevated target attached to the current console. None of
+these settings suppresses the UAC prompt.
+
+For a fixed unattended administrative operation, provision a narrowly scoped
+Scheduled Task or Windows service once from an approved administrator session.
+For delegated PowerShell administration, prefer a constrained Just Enough
+Administration (JEA) endpoint with explicit role capabilities and auditing.
+Do not expose an arbitrary command line, PowerShell expression, user-writable
+script, working directory, configuration file, or executable path through a
+privileged task, service, or endpoint.
+
+Changing UAC policy to approve elevation without prompting is system-wide, not
+a Sudo mode, and removes the interactive safeguard from other applications as
+well. An automation runner's own sandbox and approval policy is also separate
+from Windows UAC and is not bypassed by enabling Sudo.
+
 ## Common mistakes
 
 ### Using a cmdlet as the target
@@ -122,6 +143,12 @@ Windows Sudo uses UAC and the approving administrator. It has no Unix-style
 
 Do not paste or run elevated interactive commands while untrusted code shares
 the console. Prefer New Window or Disable Input and keep the target noninteractive.
+
+### Treating Disable Input as unattended elevation
+
+`disableInput` prevents the elevated target from reading the current console;
+it does not acknowledge UAC. Use a pre-provisioned, least-privilege automation
+boundary when no person will be present to approve elevation.
 
 ## Version and availability
 
@@ -145,6 +172,7 @@ preservation, or elevated target process ran.
 ## Related documents
 
 - [runas.exe](runas.exe.md)
+- [schtasks.exe](schtasks.exe.md)
 - PowerShell `Start-Process`
 - [Windows Terminal](wt.exe.md)
 

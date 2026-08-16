@@ -886,7 +886,7 @@
         }
       ],
       "notes": [
-        "The guide separates UAC elevation from alternate-user execution and documents current public-source options, mutually exclusive modes, environment risk, GUI lifetime behavior, and the difference between Microsoft's Settings default and the CLI compatibility value named default.",
+        "The guide separates UAC elevation from alternate-user execution and documents current public-source options, mutually exclusive modes, environment risk, GUI lifetime behavior, the difference between Microsoft's Settings default and the CLI compatibility value named default, and why no Sudo mode supplies headless elevation.",
         "A 2026-08-17 bounded Windows probe found installed Sudo 1.0.1 disabled: config returned E_ACCESSDENIED, --help returned only the disabled notice, /? and run /? returned run help, and config --help was rejected. No UAC prompt, mode change, environment preservation, or elevated target ran."
       ]
     },
