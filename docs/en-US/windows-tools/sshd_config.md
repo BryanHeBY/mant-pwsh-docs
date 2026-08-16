@@ -231,9 +231,13 @@ a different port over an interface currently classified Public.
 
 The default interactive Windows SSH shell is selected outside this file by the
 `DefaultShell` string value below `HKLM\SOFTWARE\OpenSSH`. Changing it affects
-SSH users broadly and is not required for VS Code Remote-SSH. Use a full
-executable path, validate ordinary SSH and SFTP after a change, and remember
-that startup scripts can emit text that breaks machine protocols.
+SSH users broadly, requires an elevated process, and is not required for VS
+Code Remote-SSH. Use a stable full executable path, refresh `sshd`, validate
+new ordinary SSH, interactive, SFTP, and VS Code sessions after a change, and
+remember that startup scripts can emit text that breaks machine protocols.
+Query `mant openssh-server --source windows-tools
+--node=optional-powershell-default-shell` for the PowerShell 7 procedure and
+rollback.
 
 The `Subsystem sftp` directive is independent from the interactive shell.
 Do not remove or replace it merely to change the shell used by login sessions.

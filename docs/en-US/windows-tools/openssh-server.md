@@ -259,20 +259,49 @@ from VS Code Server download or startup failures.
 
 Windows OpenSSH selects the default interactive shell from the `DefaultShell`
 string value below `HKLM\SOFTWARE\OpenSSH`. PowerShell 7 can be selected from
-an elevated session:
+an elevated session. Resolve and inspect the intended installation first, then
+pin its stable full path rather than relying on the service account's `PATH`:
 
 ```powershell
+$pwshPath = (Get-Command pwsh.exe -CommandType Application -ErrorAction Stop).Source
+if (-not (Test-Path -LiteralPath $pwshPath -PathType Leaf)) {
+    throw "PowerShell executable not found: $pwshPath"
+}
+
 New-ItemProperty `
     -Path 'HKLM:\SOFTWARE\OpenSSH' `
     -Name DefaultShell `
-    -Value 'C:\Program Files\PowerShell\7\pwsh.exe' `
+    -Value $pwshPath `
     -PropertyType String `
     -Force
+
+Restart-Service -Name sshd
 ```
 
+Writing below `HKLM` and restarting `sshd` require an elevated administrator
+process. Windows Sudo does not remove this requirement and, when enabled, still
+uses UAC. Do not set `DefaultShellCommandOption` for a normal PowerShell 7
+installation unless a tested packaging difference requires it; OpenSSH's
+default `-c` command option is accepted by `pwsh.exe`.
+
 This change affects SSH users broadly and is optional for VS Code Remote-SSH.
-Validate ordinary commands, interactive sessions, SFTP, and VS Code after the
-change; shell startup output can break machine-oriented protocols.
+Existing sessions do not change shells. After the service refresh, validate a
+new ordinary remote command, a new interactive session, SFTP, and VS Code;
+shell startup output can break machine-oriented protocols:
+
+```powershell
+ssh windows-dev '$PSVersionTable.PSVersion.ToString(); $PSHOME'
+ssh -t windows-dev
+sftp windows-dev
+```
+
+To restore the Windows default `cmd.exe` fallback, remove only the value created
+above and refresh the service from an elevated session:
+
+```powershell
+Remove-ItemProperty -Path 'HKLM:\SOFTWARE\OpenSSH' -Name DefaultShell
+Restart-Service -Name sshd
+```
 
 ## Troubleshooting map
 
