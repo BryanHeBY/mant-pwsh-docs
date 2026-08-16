@@ -8,6 +8,10 @@
 
 `sudo.exe config`
 
+- Display run-command help even when Sudo is disabled:
+
+`sudo.exe /?`
+
 - Elevate one native command in a new window:
 
 `sudo.exe --new-window {{command.exe}} {{arguments}}`
@@ -45,7 +49,7 @@ already elevated process and can be restricted by policy.
 - `disableInput`: Run inline but prevent the elevated target from reading terminal input.
 - `normal`: Run inline with input enabled; this is also called Inline mode and has the largest input-injection exposure.
 - `disable`: Disable Sudo for Windows.
-- `enable`, `default`: Enable Sudo using the current implementation's default Inline mode.
+- `enable`, `default`: Compatibility values that the current CLI implementation maps to `normal` (Inline); they do not select the safer Settings-app default described by Microsoft.
 
 ## Options
 
@@ -56,7 +60,8 @@ already elevated process and can be restricted by policy.
 - `--inline`: Override this invocation to Inline mode when policy permits it.
 - `-D DIRECTORY`, `--chdir DIRECTORY`: Set the target working directory explicitly.
 - `--enable MODE`: Set configuration to `disable`, `enable`, `forceNewWindow`, `disableInput`, `normal`, or `default` from an elevated process.
-- `-h`, `--help`: Display help.
+- `-h`, `--help`: Display standard help when Sudo is enabled; when disabled, the top-level help is replaced by the disabled-state message.
+- `/?`: Display run-command help before the enabled-state check; this spelling is not a general subcommand help flag, so `sudo.exe config --help` is rejected.
 - `-V`, `--version`: Display the Sudo for Windows version.
 
 The three per-run mode switches are mutually exclusive. A requested mode that
@@ -90,6 +95,13 @@ target cannot read input. Inline is convenient but Microsoft warns that an
 unelevated process attached to the same console can inject input into the
 elevated process. Choose the least permissive mode compatible with the command.
 
+Microsoft's user documentation describes Force New Window as the default and
+recommended configuration. The open-source CLI currently maps the legacy
+`config --enable enable` and `config --enable default` values to `normal`, which
+is Inline mode. Use the explicit `forceNewWindow`, `disableInput`, or `normal`
+value in administrative configuration instead of relying on the word
+`default`.
+
 `--preserve-env` can carry attacker-controlled executable search paths,
 configuration variables, and secrets across the elevation boundary. Prefer an
 explicit clean environment and absolute executable paths.
@@ -118,11 +130,17 @@ must be enabled in Developer settings or by supported configuration. Edition,
 organizational policy, user administrator membership, and current mode can
 prevent use. Inspect `sudo.exe config` and `sudo.exe --version` on the target.
 
-## Verification boundary
+## Runtime evidence
 
-Current public source and Microsoft documentation were reviewed for modes,
-options, UAC behavior, exit/lifetime behavior, and security boundaries. No
-elevation prompt, mode change, environment preservation, or target process ran.
+On a supported Windows 11 host with Sudo for Windows 1.0.1 installed but
+disabled, `sudo.exe --version` returned `1.0.1`. `sudo.exe config` reported the
+disabled state and returned `-2147024891` (`E_ACCESSDENIED`). Top-level
+`--help` returned only the disabled-state message with status 0, while `/?` and
+`run /?` each returned 26 run-help lines with status 0; `config --help` rejected
+the argument with status 2. Source review confirmed that the disabled state
+overrides top-level help and that the special `/?` path prints run help before
+the enabled-state check. No UAC prompt, configuration change, environment
+preservation, or elevated target process ran.
 
 ## Related documents
 
