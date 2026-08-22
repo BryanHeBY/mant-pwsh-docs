@@ -356,6 +356,15 @@
             "url": "https://creativecommons.org/licenses/by/4.0/"
           },
           "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/en-us/windows/wsl/wsl-config",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-22"
         }
       ],
       "notes": [
@@ -1280,6 +1289,24 @@
           "type": "git",
           "baseline": "windowsserverdocs",
           "path": "WindowsServerDocs/administration/windows-commands/schtasks-delete.md"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/en-us/windows/win32/taskschd/taskschedulerschema-settings-tasktype-element",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-22"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/en-us/windows/win32/taskschd/taskschedulerschema-logontrigger-triggergroup-element",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-22"
         },
         {
           "type": "web",

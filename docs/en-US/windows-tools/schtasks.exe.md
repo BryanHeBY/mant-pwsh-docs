@@ -22,11 +22,15 @@
 
 - Corroborate definition and runtime information with structured PowerShell objects:
 
-`Get-ScheduledTask -TaskPath '{{\folder\}}' -TaskName '{{task-name}}' | Get-ScheduledTaskInfo`
+`$task = Get-ScheduledTask -TaskPath '{{\folder\}}' -TaskName '{{task-name}}'; $info = $task | Get-ScheduledTaskInfo; $task | Select-Object TaskPath, TaskName, State, Principal, Triggers, Actions, Settings; $info | Select-Object LastRunTime, LastTaskResult, NextRunTime, NumberOfMissedRuns`
 
-- Read recent operational events; enable no log merely for this query:
+- Inspect missed-run, restart, battery, and long-running-task settings as typed values:
 
-`Get-WinEvent -LogName 'Microsoft-Windows-TaskScheduler/Operational' -MaxEvents {{50}}`
+`Get-ScheduledTask -TaskPath '{{\folder\}}' -TaskName '{{task-name}}' | ForEach-Object { $_.Settings | Select-Object StartWhenAvailable, RestartCount, RestartInterval, DisallowStartIfOnBatteries, StopIfGoingOnBatteries, ExecutionTimeLimit, MultipleInstances }`
+
+- Inspect the Task Scheduler operational channel before querying history; enable no log merely for this query:
+
+`Get-WinEvent -ListLog 'Microsoft-Windows-TaskScheduler/Operational' | Select-Object LogName, IsEnabled, RecordCount, LastWriteTime`
 
 - Query one task on a remote computer using the current security context:
 
@@ -166,6 +170,26 @@ useful for action testing, not for validating event filters, calendar/idle/
 startup/logon triggers, missed-run behavior, DST, conditions, or repetition.
 Exercise the actual trigger in a disposable environment and inspect history.
 
+### Treating a logon trigger as continuous supervision
+
+A logon trigger fires when its selected user logs on; it does not continuously
+re-evaluate after a child exits, WSL or another subsystem restarts, or a long
+session resumes. Inspect trigger repetition, `StartWhenAvailable`,
+restart-on-failure settings, `ExecutionTimeLimit`, and the action's own exit
+contract.
+For a long-lived workload, keep the scheduled action attached to the supervised
+process or provide an explicit health/restart design; an asynchronous wrapper
+that exits immediately makes task state and LastTaskResult describe only the
+wrapper.
+
+### Ignoring battery and missed-run settings
+
+Task Scheduler defaults can prevent a task from starting on battery or stop it
+when power changes. `StartWhenAvailable` controls whether a missed scheduled
+time can be caught up later; it does not turn a one-time logon event into a
+health monitor. Query the typed `Settings` object or exported XML instead of
+assuming the GUI defaults match the workload.
+
 ### Treating `/run` success as child-process success
 
 The command queues the task. Query task state and history until a bounded
@@ -243,7 +267,10 @@ This original guide was adapted from Microsoft's official
 [run](https://learn.microsoft.com/windows-server/administration/windows-commands/schtasks-run),
 [end](https://learn.microsoft.com/windows-server/administration/windows-commands/schtasks-end),
 and [delete](https://learn.microsoft.com/windows-server/administration/windows-commands/schtasks-delete)
-references. Recurring manual-versus-scheduled context and `/TR` parsing failures
+references, plus the official Task Scheduler
+[settings schema](https://learn.microsoft.com/windows/win32/taskschd/taskschedulerschema-settings-tasktype-element)
+and [logon-trigger schema](https://learn.microsoft.com/windows/win32/taskschd/taskschedulerschema-logontrigger-triggergroup-element).
+Recurring manual-versus-scheduled context and `/TR` parsing failures
 were cross-checked against
 [a Server Fault incident](https://serverfault.com/questions/440366/scheduled-task-fails-but-runs-fine-when-triggered-manually)
 and [a detailed quoting question](https://stackoverflow.com/questions/55214284/how-to-escape-schtasks-tr-arguments),

@@ -10,6 +10,11 @@ bundles.
 
 ### Added
 
+- PowerShell 7 and Windows PowerShell 5.1 `Get-WinEvent` guides with bounded
+  source-side filters, channel-state checks, structured event correlation, and
+  explicit disabled-log, localization, privilege, and edition boundaries;
+  expanded SchTasks and WSL guidance for logon-trigger gaps, missed runs,
+  battery/restart settings, asynchronous launchers, and supervised keepalives.
 - Exactly one reader-visible evidence disposition on every published page:
   385 bounded `Runtime evidence` sections and 31 explicit `Verification
   boundary` sections, enforced by validation and supported by authoring

@@ -203,6 +203,38 @@ The process after `--` is parsed by the Linux shell or program, not by
 PowerShell. Pass simple values as separate arguments, avoid nested command
 strings where possible, and test paths with spaces or non-ASCII characters.
 
+## Scheduled startup and keepalive
+
+Starting a distribution once is not the same as supervising it. WSL can finish
+stopping after all distribution processes exit; `wsl --list --running` is the
+supported Windows-side inventory for the current running set. A later
+`wsl --shutdown`, distribution termination, WSL servicing restart, or failed
+Linux command can invalidate a logon-time launch without producing another
+logon trigger.
+
+For a deliberate keepalive, name the distribution and run one reviewed
+long-lived Linux executable directly so the Windows caller remains attached:
+
+```powershell
+& "$env:SystemRoot\System32\wsl.exe" `
+    --distribution 'ExampleDistro' --exec sleep infinity
+$wslExit = $LASTEXITCODE
+throw "WSL keepalive exited unexpectedly with code $wslExit"
+```
+
+When Task Scheduler owns this script, avoid an asynchronous VBScript or
+`Start-Process` layer that exits before `wsl.exe`: otherwise task state and
+LastTaskResult describe the launcher, not the Linux workload. Use an absolute
+script path and working directory, inspect logon type and power/missed-run
+settings, choose an explicit restart policy, bound any retry loop, and record
+action output independently. A login trigger only starts at login; it is not a
+continuous health check.
+
+If the actual goal is a Linux service, prefer a reviewed service definition in
+the distribution (for example systemd where supported) over using a dummy
+process as application supervision. Windows still needs a deliberate policy
+for when that distribution is launched.
+
 ## Boundaries and safety
 
 Windows paths, Linux paths, line endings, permissions, user identity, mounted
@@ -305,7 +337,8 @@ This original ManT-oriented guide was adapted from the official
 documentation, the explanation of
 [Store-serviced WSL](https://learn.microsoft.com/windows/wsl/compare-versions#wsl-in-the-microsoft-store),
 and Microsoft's description of
-[Windows app execution aliases](https://learn.microsoft.com/sysinternals/downloads/microsoft-store).
+[Windows app execution aliases](https://learn.microsoft.com/sysinternals/downloads/microsoft-store),
+plus the official [WSL configuration and running-state guidance](https://learn.microsoft.com/windows/wsl/wsl-config).
 It emphasizes the Windows/Linux process boundary and explicit
 distribution selection. Exact upstream revision and paths are recorded in
 `upstream/windows-tools.json`.

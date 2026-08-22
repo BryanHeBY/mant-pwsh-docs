@@ -415,6 +415,32 @@
         "The dual-edition NoProfile provider fixture passes 14/14: fixed built-in paths return the documented provider object types; FileSystem, Registry, and Certificate expose different dynamic parameters; Get-Help -Path Cert:\\ returns provider-customized help; and Get-PSDrive can change later provider discovery by loading Microsoft.PowerShell.Security. It emits no environment value, registry data, certificate, or user path and performs no provider mutation or network access."
       ]
     },
+    "Get-WinEvent.md": {
+      "kind": "cmdlet",
+      "status": "reviewed",
+      "versions": [
+        "7.6"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/7.6/Microsoft.PowerShell.Diagnostics/Get-WinEvent.md"
+        },
+        {
+          "type": "git",
+          "baseline": "powershell-docs",
+          "path": "reference/docs-conceptual/samples/Creating-Get-WinEvent-queries-with-FilterHashtable.md"
+        }
+      ],
+      "notes": [
+        "The page prioritizes channel-state inspection, bounded source-side filters, structured event identity, and explicit disabled-channel and localization boundaries.",
+        "PowerShell 7.6.4 on Windows exposed every documented parameter through live metadata. The fixture read no event records and changed no log, retention, provider, remote host, or task state."
+      ]
+    },
     "Get-Member.md": {
       "kind": "cmdlet",
       "status": "reviewed",
