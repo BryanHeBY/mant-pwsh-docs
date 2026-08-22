@@ -19,6 +19,10 @@
 - Run non-interactive automation:
 
 `powershell.exe -NoLogo -NoProfile -NonInteractive -File {{script.ps1}}`
+
+- Run reviewed unattended automation without leaving a visible console window:
+
+`powershell.exe -NoLogo -NoProfile -NonInteractive -WindowStyle Hidden -File {{script.ps1}}`
 <!-- mant:tldr:end -->
 
 # powershell.exe
@@ -60,7 +64,8 @@ Base64-encoded command.
 - `-File PATH`, `-f PATH`: Run a Windows PowerShell script file with remaining arguments passed to that script.
 - `-NoProfile`, `-nop`: Do not load any Windows PowerShell profile scripts.
 - `-NonInteractive`, `-noni`: Do not prompt for interactive input; unsuitable
-  prompts become errors. This option does not disable profile loading.
+  prompts become errors. This option does not disable profile loading or hide
+  the process window.
 - `-NoLogo`, `-nol`: Suppress the startup banner.
 - `-NoExit`, `-noe`: Keep the session open after startup commands finish.
 - `-ExecutionPolicy POLICY`, `-ep POLICY`: Set process-scope execution policy without changing persisted policy.
@@ -69,7 +74,9 @@ Base64-encoded command.
 - `-OutputFormat FORMAT`, `-of FORMAT`: Select text or CLIXML output for the parent process.
 - `-STA`, `-MTA`: Select the apartment state of the session thread.
 - `-WorkingDirectory PATH`, `-wd PATH`: Set the initial PowerShell location.
-- `-WindowStyle STYLE`: Start the Windows process as `Normal`, `Minimized`, `Maximized`, or `Hidden`.
+- `-WindowStyle STYLE`: Start the Windows process as `Normal`, `Minimized`,
+  `Maximized`, or `Hidden`; window style does not detach the process or change
+  its exit-code and waiting contract.
 - `-ConfigurationName NAME`: Run in a registered local session configuration endpoint.
 - `-PSConsoleFile PATH`: Load a legacy `.psc1` console file created with `Export-Console`.
 - `-Version VERSION`: Start a requested installed Windows PowerShell engine version; place this option before other launcher options.
@@ -148,6 +155,14 @@ caller when appropriate, or prefer `-File` for substantial automation.
 
 Use `-NoProfile -NonInteractive` for unattended work and load required state
 explicitly.
+
+### Treating non-interactive as hidden or detached
+
+`-NonInteractive` converts prompts into errors; it does not hide a console.
+On Windows, add `-WindowStyle Hidden` when a reviewed unattended task should
+have no visible window. Hidden is a presentation setting, not a background-job
+or detachment primitive: keep the launcher synchronous when Task Scheduler or
+another supervisor must observe completion and propagate failure.
 
 ## Runtime evidence
 

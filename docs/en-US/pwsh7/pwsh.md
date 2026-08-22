@@ -19,6 +19,10 @@
 - Run a non-interactive automation script:
 
 `pwsh -NoLogo -NoProfile -NonInteractive -File {{script.ps1}}`
+
+- On Windows, run reviewed unattended automation without leaving a visible console window:
+
+`pwsh -NoLogo -NoProfile -NonInteractive -WindowStyle Hidden -File {{script.ps1}}`
 <!-- mant:tldr:end -->
 
 # pwsh
@@ -62,10 +66,14 @@ feature as mainstream.
 - `-File PATH`, `-f PATH`: Run a PowerShell script file with remaining arguments passed to that script.
 - `-NoProfile`, `-nop`: Do not load any PowerShell profile scripts.
 - `-NonInteractive`, `-noni`: Do not prompt for interactive input; unsuitable
-  prompts become errors. This option does not disable profile loading.
+  prompts become errors. This option does not disable profile loading or hide
+  the process window.
 - `-NoLogo`, `-nol`: Suppress the startup banner.
 - `-NoExit`, `-noe`: Keep the session open after startup commands finish.
 - `-WorkingDirectory PATH`, `-wd PATH`: Set the initial filesystem working directory.
+- `-WindowStyle STYLE`, `-w STYLE`: On Windows, start the session as `Normal`,
+  `Minimized`, `Maximized`, or `Hidden`; it does not detach the process or
+  change its exit-code and waiting contract.
 - `-ExecutionPolicy POLICY`, `-ep POLICY`: Set process-scope execution policy on Windows without changing persisted policy.
 - `-EncodedCommand BASE64`, `-e BASE64`: Run a UTF-16LE Base64-encoded command; use only for integrations that require it.
 - `-Login`, `-l`: Start a Unix-like login shell; this option must be the first argument.
@@ -145,6 +153,14 @@ versioned reference when bundled help and release status disagree.
 
 Use `-NoProfile` and normally `-NonInteractive`; load required modules and
 configuration explicitly.
+
+### Treating non-interactive as hidden or detached
+
+`-NonInteractive` converts prompts into errors; it does not hide a console.
+On Windows, add `-WindowStyle Hidden` when a reviewed unattended task should
+have no visible window. Hidden is a presentation setting, not a background-job
+or detachment primitive: keep the launcher synchronous when Task Scheduler or
+another supervisor must observe completion and propagate failure.
 
 ## Examples
 

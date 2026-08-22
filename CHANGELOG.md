@@ -14,7 +14,10 @@ bundles.
   source-side filters, channel-state checks, structured event correlation, and
   explicit disabled-log, localization, privilege, and edition boundaries;
   expanded SchTasks and WSL guidance for logon-trigger gaps, missed runs,
-  battery/restart settings, asynchronous launchers, and supervised keepalives.
+  battery/restart settings, asynchronous launchers, supervised keepalives, and
+  decimal-to-HRESULT interpretation of Task Scheduler status constants;
+  clarified that `-NonInteractive` does not hide a PowerShell console and that
+  `-WindowStyle Hidden` preserves synchronous supervision.
 - Exactly one reader-visible evidence disposition on every published page:
   385 bounded `Runtime evidence` sections and 31 explicit `Verification
   boundary` sections, enforced by validation and supported by authoring

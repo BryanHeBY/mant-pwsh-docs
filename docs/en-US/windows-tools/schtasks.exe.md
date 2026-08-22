@@ -28,6 +28,10 @@
 
 `Get-ScheduledTask -TaskPath '{{\folder\}}' -TaskName '{{task-name}}' | ForEach-Object { $_.Settings | Select-Object StartWhenAvailable, RestartCount, RestartInterval, DisallowStartIfOnBatteries, StopIfGoingOnBatteries, ExecutionTimeLimit, MultipleInstances }`
 
+- Display a task result in both decimal and HRESULT-style hexadecimal before interpreting it:
+
+`$result = (Get-ScheduledTaskInfo -TaskPath '{{\folder\}}' -TaskName '{{task-name}}').LastTaskResult; [pscustomobject]@{ Decimal = $result; Hex = '0x{0:X8}' -f ([uint32]$result) }`
+
 - Inspect the Task Scheduler operational channel before querying history; enable no log merely for this query:
 
 `Get-WinEvent -ListLog 'Microsoft-Windows-TaskScheduler/Operational' | Select-Object LogName, IsEnabled, RecordCount, LastWriteTime`
@@ -197,6 +201,16 @@ terminal state, then interpret the action's exit/result semantics and verify
 output. LastTaskResult may be an HRESULT, Win32 value, application exit code,
 or scheduler state; zero alone does not validate business outcome.
 
+Task Scheduler success/status constants are commonly displayed as decimal by
+PowerShell. Convert the value to eight-digit hexadecimal before looking it up.
+For example, decimal `267009` is `0x00041301`, `SCHED_S_TASK_RUNNING`, which
+means the task is currently running; it is not a child-process exit code.
+Nearby common status values include `0x00041300` (ready), `0x00041302`
+(disabled), `0x00041303` (not yet run), and `0x00041304` (no more runs).
+Interpret unknown values against the official Task Scheduler constants plus
+the action's own documented exit codes, rather than assuming every nonzero
+number is failure.
+
 ### Ending or deleting the wrong instance
 
 `/end` can interrupt writes, backups, installers, and child processes; `/delete`
@@ -269,7 +283,9 @@ This original guide was adapted from Microsoft's official
 and [delete](https://learn.microsoft.com/windows-server/administration/windows-commands/schtasks-delete)
 references, plus the official Task Scheduler
 [settings schema](https://learn.microsoft.com/windows/win32/taskschd/taskschedulerschema-settings-tasktype-element)
-and [logon-trigger schema](https://learn.microsoft.com/windows/win32/taskschd/taskschedulerschema-logontrigger-triggergroup-element).
+and [logon-trigger schema](https://learn.microsoft.com/windows/win32/taskschd/taskschedulerschema-logontrigger-triggergroup-element),
+and the official
+[error and success constants](https://learn.microsoft.com/windows/win32/taskschd/task-scheduler-error-and-success-constants).
 Recurring manual-versus-scheduled context and `/TR` parsing failures
 were cross-checked against
 [a Server Fault incident](https://serverfault.com/questions/440366/scheduled-task-fails-but-runs-fine-when-triggered-manually)

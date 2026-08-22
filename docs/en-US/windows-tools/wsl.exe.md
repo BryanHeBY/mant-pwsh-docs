@@ -230,6 +230,13 @@ settings, choose an explicit restart policy, bound any retry loop, and record
 action output independently. A login trigger only starts at login; it is not a
 continuous health check.
 
+When the scheduled executable is `powershell.exe` or `pwsh.exe`,
+`-NonInteractive` prevents prompts but does not hide the console. On Windows,
+add `-WindowStyle Hidden` when the reviewed task should have no visible window.
+This preserves synchronous supervision: unlike an asynchronous wrapper or
+detached `Start-Process`, hiding the window does not make the launcher return
+before `wsl.exe` exits.
+
 If the actual goal is a Linux service, prefer a reviewed service definition in
 the distribution (for example systemd where supported) over using a dummy
 process as application supervision. Windows still needs a deliberate policy
@@ -338,7 +345,10 @@ documentation, the explanation of
 [Store-serviced WSL](https://learn.microsoft.com/windows/wsl/compare-versions#wsl-in-the-microsoft-store),
 and Microsoft's description of
 [Windows app execution aliases](https://learn.microsoft.com/sysinternals/downloads/microsoft-store),
-plus the official [WSL configuration and running-state guidance](https://learn.microsoft.com/windows/wsl/wsl-config).
+the official [WSL configuration and running-state guidance](https://learn.microsoft.com/windows/wsl/wsl-config),
+and the PowerShell launcher references for
+[Windows PowerShell 5.1](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_powershell_exe?view=powershell-5.1)
+and [PowerShell 7](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_pwsh?view=powershell-7.6).
 It emphasizes the Windows/Linux process boundary and explicit
 distribution selection. Exact upstream revision and paths are recorded in
 `upstream/windows-tools.json`.

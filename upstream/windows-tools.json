@@ -356,15 +356,6 @@
             "url": "https://creativecommons.org/licenses/by/4.0/"
           },
           "checkedAt": "2026-08-12"
-        },
-        {
-          "type": "web",
-          "url": "https://learn.microsoft.com/en-us/windows/wsl/wsl-config",
-          "license": {
-            "spdx": "CC-BY-4.0",
-            "url": "https://creativecommons.org/licenses/by/4.0/"
-          },
-          "checkedAt": "2026-08-22"
         }
       ],
       "notes": [
@@ -1195,6 +1186,33 @@
             "url": "https://creativecommons.org/licenses/by/4.0/"
           },
           "checkedAt": "2026-08-12"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/en-us/windows/wsl/wsl-config",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-22"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_powershell_exe?view=powershell-5.1",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-22"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_pwsh?view=powershell-7.6",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-22"
         }
       ],
       "notes": [
@@ -1302,6 +1320,15 @@
         {
           "type": "web",
           "url": "https://learn.microsoft.com/en-us/windows/win32/taskschd/taskschedulerschema-logontrigger-triggergroup-element",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-22"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-error-and-success-constants",
           "license": {
             "spdx": "CC-BY-4.0",
             "url": "https://creativecommons.org/licenses/by/4.0/"
