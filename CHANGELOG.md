@@ -17,7 +17,9 @@ bundles.
   battery/restart settings, asynchronous launchers, supervised keepalives, and
   decimal-to-HRESULT interpretation of Task Scheduler status constants;
   clarified that `-NonInteractive` does not hide a PowerShell console and that
-  `-WindowStyle Hidden` preserves synchronous supervision.
+  `-WindowStyle Hidden` preserves synchronous supervision; and separated
+  trigger timing from task logon type, principal, and profile-scoped WSL
+  distribution discovery for boot-time workloads.
 - Exactly one reader-visible evidence disposition on every published page:
   385 bounded `Runtime evidence` sections and 31 explicit `Verification
   boundary` sections, enforced by validation and supported by authoring

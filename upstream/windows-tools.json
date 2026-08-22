@@ -1198,6 +1198,42 @@
         },
         {
           "type": "web",
+          "url": "https://learn.microsoft.com/en-us/windows/wsl/use-custom-distro",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-22"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/en-us/windows/wsl/systemd",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-22"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/en-us/windows/win32/api/taskschd/ne-taskschd-task_logon_type",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-22"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/en-us/windows/win32/taskschd/starting-an-executable-on-system-boot",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-22"
+        },
+        {
+          "type": "web",
           "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_powershell_exe?view=powershell-5.1",
           "license": {
             "spdx": "CC-BY-4.0",
@@ -1320,6 +1356,24 @@
         {
           "type": "web",
           "url": "https://learn.microsoft.com/en-us/windows/win32/taskschd/taskschedulerschema-logontrigger-triggergroup-element",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-22"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/en-us/windows/win32/api/taskschd/ne-taskschd-task_logon_type",
+          "license": {
+            "spdx": "CC-BY-4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          "checkedAt": "2026-08-22"
+        },
+        {
+          "type": "web",
+          "url": "https://learn.microsoft.com/en-us/windows/win32/taskschd/starting-an-executable-on-system-boot",
           "license": {
             "spdx": "CC-BY-4.0",
             "url": "https://creativecommons.org/licenses/by/4.0/"

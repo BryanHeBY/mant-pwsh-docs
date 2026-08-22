@@ -242,6 +242,34 @@ the distribution (for example systemd where supported) over using a dummy
 process as application supervision. Windows still needs a deliberate policy
 for when that distribution is launched.
 
+### Windows startup before interactive login
+
+WSL distribution discovery is sensitive to the Windows security context. Do
+not assume that a task moved to another user or to SYSTEM sees the same
+registered distributions, package aliases, files, credentials, or default
+distribution. Before changing a principal, run `wsl --list --verbose` under
+the exact proposed identity and verify the named distribution and all required
+resources there.
+
+Three designs have different ownership boundaries:
+
+1. A user logon trigger with an interactive token starts after that user signs
+   in. It is simple, but it is not independent of that session.
+2. A boot trigger with the same Windows user and Password logon can start
+   before interactive sign-in. Registration needs a local credential workflow,
+   and password rotation becomes part of operations.
+3. A dedicated service account with its own imported and configured
+   distribution separates the workload from a personal login, but also creates
+   a distinct distribution registration, filesystem, configuration, and
+   lifecycle to maintain.
+
+S4U avoids storing a password but cannot access network resources or EFS files,
+so it is unsuitable for many remote-development workloads. Do not convert an
+existing user-owned WSL task directly to SYSTEM without first proving that the
+distribution and every dependency exist in that context. Linux systemd can
+supervise services after the distribution starts; it does not replace the
+Windows-side boot trigger or principal decision.
+
 ## Boundaries and safety
 
 Windows paths, Linux paths, line endings, permissions, user identity, mounted
@@ -346,6 +374,10 @@ documentation, the explanation of
 and Microsoft's description of
 [Windows app execution aliases](https://learn.microsoft.com/sysinternals/downloads/microsoft-store),
 the official [WSL configuration and running-state guidance](https://learn.microsoft.com/windows/wsl/wsl-config),
+the official [custom-distribution import guidance](https://learn.microsoft.com/windows/wsl/use-custom-distro)
+and [WSL systemd guidance](https://learn.microsoft.com/windows/wsl/systemd),
+the Task Scheduler [logon-type contract](https://learn.microsoft.com/windows/win32/api/taskschd/ne-taskschd-task_logon_type)
+and [boot-trigger example](https://learn.microsoft.com/windows/win32/taskschd/starting-an-executable-on-system-boot),
 and the PowerShell launcher references for
 [Windows PowerShell 5.1](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_powershell_exe?view=powershell-5.1)
 and [PowerShell 7](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_pwsh?view=powershell-7.6).

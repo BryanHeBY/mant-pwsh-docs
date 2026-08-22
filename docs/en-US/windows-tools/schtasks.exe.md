@@ -94,6 +94,27 @@ maintenance, event subscriptions, network settings, complex principals, or
 security descriptors, prefer reviewed Task Scheduler XML or the ScheduledTasks
 PowerShell module over compressing policy into one `/create` line.
 
+## Boot, logon, and principal independence
+
+A trigger answers **when** Task Scheduler should attempt a start. The task
+principal and logon type answer **which security context** exists at that time.
+Changing only a logon trigger to a boot trigger does not make an
+interactive-token task independent of an interactive sign-in.
+
+| Logon type | Existing interactive sign-in required? | Important boundary |
+| --- | --- | --- |
+| Interactive token | Yes | Runs only in an existing session for that user. |
+| Password | No | The password is supplied when the task is registered and password rotation must be handled. |
+| S4U | No | Stores no password, but has no access to network resources or encrypted files. |
+| Service account | No | Uses `SYSTEM`, `LocalService`, or `NetworkService`; it has no ordinary user profile. |
+
+For a task that must start before interactive sign-in, combine a boot trigger
+with a logon type that can create a noninteractive session, then test the exact
+principal's access to every dependency. Do not place passwords in command
+lines, source, Agent messages, transcripts, or logs. Register them through a
+local interactive credential workflow, or use a purpose-built managed service
+identity where the workload supports one.
+
 ## Common mistakes
 
 ### Treating “task created successfully” as validation
@@ -159,6 +180,11 @@ automation. `/NP` stores no password and limits access to local resources.
 SYSTEM is noninteractive and has a machine network identity, broad local rights,
 and no ordinary user profile. `/RL HIGHEST` selects the highest available run
 level for that principal; it does not grant missing permissions.
+A boot trigger does not change these logon-type rules. Switching a task to
+SYSTEM also does not carry over user-profile state such as per-user app
+registrations, package aliases, certificates, credentials, mapped resources,
+or WSL distribution inventory. Inspect and test dependencies under the exact
+proposed principal before replacing a working user-owned definition.
 
 ### Using `/F` as idempotency
 
@@ -284,6 +310,8 @@ and [delete](https://learn.microsoft.com/windows-server/administration/windows-c
 references, plus the official Task Scheduler
 [settings schema](https://learn.microsoft.com/windows/win32/taskschd/taskschedulerschema-settings-tasktype-element)
 and [logon-trigger schema](https://learn.microsoft.com/windows/win32/taskschd/taskschedulerschema-logontrigger-triggergroup-element),
+the official [task logon types](https://learn.microsoft.com/windows/win32/api/taskschd/ne-taskschd-task_logon_type)
+and [boot-trigger example](https://learn.microsoft.com/windows/win32/taskschd/starting-an-executable-on-system-boot),
 and the official
 [error and success constants](https://learn.microsoft.com/windows/win32/taskschd/task-scheduler-error-and-success-constants).
 Recurring manual-versus-scheduled context and `/TR` parsing failures
